@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Header from '@/components/Header/index'
+import { Header } from '@/components'
 import { ThemeProvider } from 'vue-styled-components'
 
 // global styles

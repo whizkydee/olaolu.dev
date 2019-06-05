@@ -142,6 +142,7 @@ const GlobalStyle = injectGlobal`
   }
 
   .pente {
+    background: ${colors['electric-blue']};
     background: ${`linear-gradient(90deg, ${colors['electric-blue']} 60%, ${
       colors.lime
     } 40%)`};

@@ -18,7 +18,7 @@ const StyledHeader = styled.header`
     }
   }
 
-  #social__nav {
+  #contact__menu {
     top: 20px;
     right: 49px;
     z-index: 999;
@@ -27,10 +27,11 @@ const StyledHeader = styled.header`
     display: flex;
     padding: 50px;
     box-shadow: none;
+    user-select: none;
     position: absolute;
     flex-direction: column;
     background-color: #ffffff;
-    transition: opacity 0.2s, box-shadow 0.1s 0.1s;
+    transition: opacity 0.2s, box-shadow 0.6s 200ms;
 
     &:not([aria-expanded='true']) {
       opacity: 0;
@@ -42,8 +43,8 @@ const StyledHeader = styled.header`
       box-shadow: 0 10px 53px 0 rgba(163, 204, 170, 0.3);
 
       .title,
-      .basic__contacts,
-      .social__contacts {
+      .basic__contact,
+      .social__contact {
         opacity: 1;
         transform: translateY(0);
       }
@@ -64,13 +65,13 @@ const StyledHeader = styled.header`
     }
   }
 
-  .basic__contacts,
-  .social__contacts {
+  .basic__contact,
+  .social__contact {
     opacity: 0;
     transition: opacity, transform 0.2s;
   }
 
-  .basic__contacts {
+  .basic__contact {
     line-height: 2.5;
     font-size: 1.2em;
     margin-top: 30px;
@@ -78,7 +79,7 @@ const StyledHeader = styled.header`
     transform: translateY(30px);
   }
 
-  .social__contacts {
+  .social__contact {
     display: flex;
     margin-top: auto;
     transition-delay: 300ms;

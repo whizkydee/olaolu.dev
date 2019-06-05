@@ -4,15 +4,22 @@ const StyledHomepage = styled.section`
   display: flex;
   position: relative;
   align-items: center;
-  height: ${props => `calc(100vh - ${props.theme.headerHeight})`};
+  padding-bottom: 60px;
+  flex-direction: column;
+  min-height: ${props => `calc(50vh - ${props.theme.headerHeight})`};
 
-  .content__wrapper {
+  .primary__content,
+  .bottom__content {
     width: 100%;
     display: flex;
-    padding: 0 8em;
+    padding: 0 10em;
+    max-width: 1500px;
     align-items: center;
     justify-content: space-between;
-    margin-top: ${props => `-` + props.theme.headerHeight};
+  }
+
+  .primary__content {
+    margin-top: 0px;
   }
 
   .cavalier {
@@ -23,8 +30,11 @@ const StyledHomepage = styled.section`
       width: 417px;
       font-size: 4em;
       font-weight: 900;
-      letter-spacing: -2.25px;
       color: ${props => props.theme.colors.lime};
+
+      span {
+        color: #fff;
+      }
     }
 
     p {
@@ -36,16 +46,40 @@ const StyledHomepage = styled.section`
   }
 
   .visage {
-    width: 401px;
-    height: 501px;
+    width: 350px;
+    height: 370px;
     margin-right: 8em;
-    border: 2px solid #fff;
+    border: 1.5px solid #fff;
 
-    img {
-      height: 100%;
+    div {
+      width: inherit;
+      height: inherit;
       margin-top: -35px;
       margin-left: -30px;
       background-color: #fff;
+      background-size: cover;
+      /* background-image: url(/img/olaolu.jpg); */
+    }
+  }
+
+  .bottom__content {
+    margin-top: auto;
+    padding-right: 6em;
+
+    > * {
+      display: flex;
+    }
+  }
+
+  .deux__points {
+    width: 500px;
+    font-size: 0.9em;
+    line-height: 1.5;
+    justify-content: space-between;
+    color: ${props => props.theme.colors.lime};
+
+    li {
+      width: calc(50% - 20px);
     }
   }
 `

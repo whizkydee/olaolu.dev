@@ -1,38 +1,32 @@
 import Vue from 'vue'
+import { Link } from '@/components'
 import StyledHeader from './styles'
 import { SauceDripLogo } from '@/assets'
-
-const Link = Vue.component('Link', {
-  render() {
-    const { href, external } = this
-
-    return (
-      <li>
-        <a
-          href={href}
-          target={external && '_blank'}
-          rel={external && 'noreferrer noopener'}
-        >
-          {this.$slots.default}
-        </a>
-      </li>
-    )
-  },
-
-  props: {
-    href: String,
-    external: { type: Boolean, default: false },
-  },
-})
 
 const Header = Vue.component('Header', {
   data: () => ({
     menuOpen: false,
   }),
 
+  mounted() {
+    document.addEventListener('mouseup', this.maybeCloseMenu)
+  },
+
+  destroyed() {
+    document.removeEventListener('mouseup', this.maybeCloseMenu)
+  },
+
   methods: {
     toggleMenu() {
       this.menuOpen = !this.menuOpen
+    },
+
+    maybeCloseMenu(event) {
+      if (this.menuOpen) {
+        if (event.target.closest('.menu__toggle, #contact__menu')) return
+
+        this.menuOpen = false
+      }
     },
   },
 
@@ -54,19 +48,19 @@ const Header = Vue.component('Header', {
         />
 
         <nav
-          id="social__nav"
+          id="contact__menu"
           role="navigation"
           aria-label="Contact links"
           aria-expanded={'' + this.menuOpen}
         >
           <span class="title">Say Hello</span>
 
-          <ul class="basic__contacts">
+          <ul class="basic__contact">
             <Link href="mailto:hello@olaolu.me">hello@olaolu.me</Link>
             <Link href="tel:+234808XXXXXXX">+234 808 XXX XXXX</Link>
           </ul>
 
-          <ul class="social__contacts">
+          <ul class="social__contact">
             <Link external href="https://facebook.com/mrolaolu">
               FB
             </Link>
