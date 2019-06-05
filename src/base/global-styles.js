@@ -147,10 +147,6 @@ const GlobalStyle = injectGlobal`
       colors.lime
     } 33%)`};
   }
-
-  #main {
-    outline: none;
-  }
 `
 
 export default GlobalStyle

@@ -17,9 +17,7 @@ const App = Vue.component('App', {
 
         <Header />
 
-        <main role="main" id="main" tabindex="-1">
-          <router-view />
-        </main>
+        <router-view />
       </ThemeProvider>
     )
   },

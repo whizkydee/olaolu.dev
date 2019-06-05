@@ -1,6 +1,6 @@
 import styled from 'vue-styled-components'
 
-const StyledHomepage = styled.section`
+const StyledPitchSlate = styled.section`
   display: flex;
   position: relative;
   align-items: center;
@@ -12,8 +12,6 @@ const StyledHomepage = styled.section`
   .bottom__content {
     width: 100%;
     display: flex;
-    padding: 0 10em;
-    max-width: 1500px;
     align-items: center;
     justify-content: space-between;
   }
@@ -48,7 +46,7 @@ const StyledHomepage = styled.section`
   .visage {
     width: 350px;
     height: 370px;
-    margin-right: 8em;
+    margin-right: 6em;
     border: 1.5px solid #fff;
 
     div {
@@ -83,6 +81,6 @@ const StyledHomepage = styled.section`
     }
   }
 `
-StyledHomepage.name = 'StyledHomepage'
+StyledPitchSlate.name = 'StyledPitchSlate'
 
-export default StyledHomepage
+export default StyledPitchSlate

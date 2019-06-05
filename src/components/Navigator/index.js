@@ -6,7 +6,9 @@ const Navigator = Vue.component('Navigator', {
     return (
       <StyledNavigator id="section__nav">
         <ul>
-          <Link href="#une">1</Link>
+          <Link href="#une" class="current">
+            1
+          </Link>
           <Link href="#deux">2</Link>
           <Link href="#trois">3</Link>
           <Link href="#quatre">4</Link>
