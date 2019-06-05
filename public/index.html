@@ -1,17 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>olaolu.me</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta
+      name="description"
+      content="Olaolu is a Front end engineer and UX Strategist in Lagos, Nigeria"
+    />
+    <title>Olaolu Olawuyi</title>
+    <link rel="manifest" href="<%= BASE_URL %>manifest.json" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+
+    <meta property="og:title" content="Olaolu Olawuyi" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Olaolu Olawuyi" />
+    <meta property="og:url" content="https://olaolu.me" />
+
+    <style type="text/css">
+      @font-face {
+        font-family: 'SF UI Text';
+        src: url('/fonts/SF-UI-Text-Heavy.otf') format('opentype');
+        font-display: swap;
+        font-style: normal;
+        font-weight: 900;
+      }
+
+      @font-face {
+        font-family: 'SF UI Text';
+        src: url('/fonts/SF-UI-Text-Bold.otf') format('opentype');
+        font-display: swap;
+        font-style: normal;
+        font-weight: 500;
+      }
+
+      @font-face {
+        font-family: 'SF UI Text';
+        src: url('/fonts/SF-UI-Text-Regular.otf') format('opentype');
+        font-display: swap;
+        font-style: normal;
+        font-weight: normal;
+      }
+
+      @font-face {
+        font-family: 'SF UI Text';
+        src: url('/fonts/SF-UI-Text-Medium.otf') format('opentype');
+        font-display: swap;
+        font-style: normal;
+        font-weight: 300;
+      }
+    </style>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https:\/\/schema.org",
+        "name": "Olaolu Olawuyi",
+        "alternateName": "Olaolu",
+        "url": "https:\/\/olaolu.me\/",
+        "@type": "WebSite",
+        "@id": "#website",
+        "sameAs": [
+          "https://facebook.com/mrolaolu",
+          "https://twitter.com/mrolaolu",
+          "https://medium.com/@mrolaolu",
+          "https://instagram.com/laolu_x",
+          "https://github.com/whizkydee"
+        ]
+      }
+    </script>
   </head>
   <body>
     <noscript>
-      <strong>We're sorry but olaolu.me doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong
+        >We're sorry but olaolu.me doesn't work properly without JavaScript
+        enabled. Please enable it to continue.</strong
+      >
     </noscript>
+
     <div id="app"></div>
-    <!-- built files will be auto injected -->
   </body>
 </html>
