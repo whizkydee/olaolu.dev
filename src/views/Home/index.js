@@ -14,8 +14,8 @@ const Homepage = Vue.component('Homepage', {
             </h1>
 
             <p>
-              I like to craft solid and scalable future-proof products with
-              great user experiences.
+              I like to craft solid and scalable products with great user
+              experiences.
             </p>
           </div>
 
