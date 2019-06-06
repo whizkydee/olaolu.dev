@@ -33,7 +33,7 @@ const PitchSlate = Vue.component('PitchSlate', {
             </li>
           </ul>
 
-          <Navigation />
+          <Navigation id="section__nav" />
         </div>
       </StyledPitchSlate>
     )

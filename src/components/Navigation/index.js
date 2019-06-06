@@ -16,11 +16,7 @@ const Navigation = Vue.component('Navigation', {
 
   render() {
     return (
-      <StyledNavigation
-        id="section__nav"
-        role="navigation"
-        aria-label="Main navigation"
-      >
+      <StyledNavigation role="navigation" aria-label="Main navigation">
         <ul ref="list">
           <Link clickFn={this.goToSection} href="#une" class="current">
             1
