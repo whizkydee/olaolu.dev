@@ -1,6 +1,6 @@
 import styled from 'vue-styled-components'
 
-const StyledNavigator = styled.nav`
+const StyledNavigation = styled.nav`
   position: relative;
   margin-top: -50px;
 
@@ -23,16 +23,12 @@ const StyledNavigator = styled.nav`
   }
 
   a {
+    outline: none;
     display: flex;
     width: inherit;
     position: relative;
     text-indent: -9999px;
-    outline-color: currentColor;
     color: ${props => props.theme.colors['electric-blue']};
-
-    &:hover {
-      /* text-indent: -20px; */
-    }
 
     &:after {
       content: '';
@@ -51,5 +47,5 @@ const StyledNavigator = styled.nav`
   }
 `
 
-StyledNavigator.name = 'StyledNavigator'
-export default StyledNavigator
+StyledNavigation.name = 'StyledNavigation'
+export default StyledNavigation

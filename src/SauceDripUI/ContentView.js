@@ -22,10 +22,12 @@ const ContentView = Vue.component('ContentView', {
 const StyledContentView = styled.main`
   outline: none;
 
-  [class$='__content'] {
-    padding: 0 10em;
-    max-width: 1500px;
+  > section {
+    display: flex;
+    position: relative;
+    align-items: center;
   }
 `
+StyledContentView.name = 'StyledContentView'
 
 export default ContentView

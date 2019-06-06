@@ -1,22 +1,20 @@
 import Vue from 'vue'
 import StyledPitchSlate from './styles'
-import { Navigator } from '@/components'
+import { Navigation } from '@/components'
 
 const PitchSlate = Vue.component('PitchSlate', {
   render() {
     return (
       <StyledPitchSlate class="pente">
         <div class="primary__content">
-          <div class="cavalier">
-            <h1>
+          <Cavalier
+            theme="lime"
+            text="I like to craft solid and scalable FE products with great user experiences."
+          >
+            <h1 slot="heading">
               Front end Developer<span>.</span>
             </h1>
-
-            <p>
-              I like to craft solid and scalable FE products with great user
-              experiences.
-            </p>
-          </div>
+          </Cavalier>
 
           <figure class="visage" aria-label="Photo of Olaolu">
             <div />
@@ -26,7 +24,7 @@ const PitchSlate = Vue.component('PitchSlate', {
         <div class="bottom__content">
           <ul class="deux__points">
             <li>
-              Highly skilled in progressive enhancement, design systems &amp; UI
+              Highly skilled at progressive enhancement, design systems &amp; UI
               Engineering.
             </li>
             <li>
@@ -35,7 +33,7 @@ const PitchSlate = Vue.component('PitchSlate', {
             </li>
           </ul>
 
-          <Navigator />
+          <Navigation />
         </div>
       </StyledPitchSlate>
     )

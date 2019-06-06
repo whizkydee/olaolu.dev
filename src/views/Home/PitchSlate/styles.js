@@ -1,12 +1,8 @@
 import styled from 'vue-styled-components'
 
 const StyledPitchSlate = styled.section`
-  display: flex;
-  position: relative;
-  align-items: center;
   padding-bottom: 60px;
   flex-direction: column;
-  min-height: ${props => `calc(50vh - ${props.theme.headerHeight})`};
 
   .primary__content,
   .bottom__content {
@@ -17,29 +13,16 @@ const StyledPitchSlate = styled.section`
   }
 
   .primary__content {
-    margin-top: 0px;
+    margin-top: ${props => props.theme.headerHeight};
   }
 
   .cavalier {
-    position: relative;
-
-    h1 {
-      margin: 0;
-      width: 417px;
-      font-size: 4em;
-      font-weight: 900;
-      color: ${props => props.theme.colors.lime};
-
-      span {
-        color: #fff;
-      }
+    h1 span {
+      color: #fff;
     }
 
     p {
-      color: #fff;
-      width: 438px;
       font-size: 1.3em;
-      line-height: 1.5;
     }
   }
 

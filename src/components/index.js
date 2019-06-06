@@ -1,5 +1,4 @@
 import Header from './Header'
-import ContentView from './ContentView'
-import { Navigator, Link } from './Navigator'
+import { Navigation, Link } from './Navigation'
 
-export { ContentView, Header, Navigator, Link }
+export { Header, Navigation, Link }

@@ -5,16 +5,63 @@ const StyledHeader = styled.header`
   display: flex;
   z-index: 1001;
   padding: 0 6em;
+  position: fixed;
   align-items: center;
+  background: transparent;
   justify-content: space-between;
   height: ${props => props.theme.headerHeight};
 
+  &[data-compact='true'] {
+    #logo {
+      /* width: 54px; */
+
+      svg {
+        width: inherit;
+
+        path {
+          /* fill: ${props => props.theme.colors['electric-blue']}; */
+        }
+      }
+
+      .logo_svg__lu,
+      .logo_svg__ola {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .logo_svg__ola {
+        transform: translateX(-100%);
+      }
+
+      .logo_svg__sauce__drip {
+      }
+
+      .logo_svg__lu {
+        transform: translateX(100%);
+      }
+    }
+  }
+
   #logo {
+    display: flex;
     position: relative;
+    flex-direction: column;
 
     svg {
       height: 46px;
       width: 120px;
+    }
+
+    #sauce__drip {
+      top: 0;
+      position: absolute;
+    }
+
+    .logo_svg__lu,
+    .logo_svg__ola {
+      opacity: 1;
+      transform: translate(0);
+      transition: opacity 0.2s 200ms, transform 1s;
     }
   }
 

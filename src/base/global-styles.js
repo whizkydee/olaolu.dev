@@ -49,13 +49,16 @@ const GlobalStyle = injectGlobal`
     -webkit-text-size-adjust: 100%;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
+
+    &#homepage {
+      overflow: hidden;
+    }
   }
 
   body {
     margin: 0;
     height: 100%;
     font: inherit;
-    overflow-x: hidden;
     font-weight: normal;
     line-height: inherit;
     color: ${colors.default};
@@ -126,6 +129,10 @@ const GlobalStyle = injectGlobal`
     user-select: none;
   }
 
+  .no-scroll {
+    overflow: hidden !important;
+  }
+
   #skip-link {
     margin: 3px;
     top: -50px;
@@ -146,6 +153,11 @@ const GlobalStyle = injectGlobal`
     background: ${`linear-gradient(90deg, ${colors['electric-blue']} 67%, ${
       colors.lime
     } 33%)`};
+  }
+
+  [class$='__content'] {
+    padding: 0 10em;
+    max-width: 1500px;
   }
 `
 

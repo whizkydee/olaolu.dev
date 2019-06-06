@@ -6,13 +6,19 @@ import { SauceDripLogo } from '@/assets'
 const Header = Vue.component('Header', {
   data: () => ({
     menuOpen: false,
+    isCompact: false,
   }),
 
   mounted() {
+    this.maybeTransform()
+    window.addEventListener('resize', this.maybeTransform)
+    window.addEventListener('scroll', this.maybeTransform)
     document.addEventListener('mouseup', this.maybeCloseMenu)
   },
 
   destroyed() {
+    window.removeEventListener('resize', this.maybeTransform)
+    window.removeEventListener('scroll', this.maybeTransform)
     document.removeEventListener('mouseup', this.maybeCloseMenu)
   },
 
@@ -21,11 +27,19 @@ const Header = Vue.component('Header', {
       this.menuOpen = !this.menuOpen
     },
 
+    closeMenu() {
+      this.menuOpen = false
+    },
+
+    maybeTransform() {
+      this.isCompact = window.pageYOffset > 100
+    },
+
     maybeCloseMenu(event) {
       if (this.menuOpen) {
         if (event.target.closest('.menu__toggle, #contact__menu')) return
 
-        this.menuOpen = false
+        this.closeMenu()
       }
     },
   },
@@ -34,7 +48,7 @@ const Header = Vue.component('Header', {
     const getLabel = () => (this.menuOpen ? 'Close' : 'Open') + ' contact menu'
 
     return (
-      <StyledHeader role="banner" class="pente">
+      <StyledHeader role="banner" data-compact={'' + this.isCompact}>
         <router-link to="/" id="logo" aria-label="Logo, go to homepage">
           <SauceDripLogo />
         </router-link>
@@ -49,7 +63,6 @@ const Header = Vue.component('Header', {
 
         <nav
           id="contact__menu"
-          role="navigation"
           aria-label="Contact links"
           aria-expanded={'' + this.menuOpen}
         >
