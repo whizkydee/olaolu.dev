@@ -1,17 +1,11 @@
 import Vue from 'vue'
 import StyledNavigation from './styles'
-import { scrollToElem } from '@/helpers'
-import Storage, { CURRENT_SECTION_KEY } from '@/Storage'
+import { goToSection } from '@/helpers'
 
 const Navigation = Vue.component('Navigation', {
   methods: {
-    goToSection(event) {
-      const sectionId =
-        event.target && event.target.getAttribute('href').replace(/#/g, '')
-      scrollToElem(document.getElementById(sectionId))
-
-      Storage.set(CURRENT_SECTION_KEY, sectionId)
-    },
+    goToSection: event =>
+      goToSection(document.querySelector(event.target.getAttribute('href'))),
   },
 
   render() {

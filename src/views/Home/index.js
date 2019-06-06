@@ -1,10 +1,11 @@
 import Vue from 'vue'
+import Storage from '@/Storage'
 import PitchSlate from './PitchSlate'
 import Concentrer from './Concentrer'
+import { goToSection } from '@/helpers'
 import WorkExperience from './WorkExperience'
-import { scrollToElem } from '@/helpers'
+import { CURRENT_SECTION_KEY } from '@/constants'
 import resetScroll from '@mrolaolu/helpers/resetScroll'
-import Storage, { CURRENT_SECTION_KEY } from '@/Storage'
 
 const Homepage = Vue.component('Homepage', {
   mounted() {
@@ -50,19 +51,12 @@ const Homepage = Vue.component('Homepage', {
       return sectionElem
     },
 
-    goToSection(section) {
-      if (section instanceof HTMLElement) {
-        scrollToElem(section)
-        Storage.set(CURRENT_SECTION_KEY, section.id)
-      }
-    },
-
     goToNextSection() {
-      this.goToSection(this.getSection().nextElementSibling)
+      goToSection(this.getSection().nextElementSibling)
     },
 
     goToPrevSection() {
-      this.goToSection(this.getSection().previousElementSibling)
+      goToSection(this.getSection().previousElementSibling)
     },
   },
 

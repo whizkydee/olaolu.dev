@@ -1,6 +1,5 @@
-import { SECTIONS } from '@/helpers'
+import { SECTIONS, CURRENT_SECTION_KEY } from '@/constants'
 
-export const [CURRENT_SECTION_KEY] = ['currentSection']
 const TYPES = {
   [CURRENT_SECTION_KEY]: { valid: SECTIONS, default: 'une' },
 }
@@ -15,7 +14,7 @@ class StorageError extends TypeError {
 class Storage {
   static storage = sessionStorage
 
-  static getValidTypes = key => key in TYPES && TYPES[key].valid
+  static getValidTypes = key => TYPES[key].valid
 
   static validate(keyVal = {}, cb) {
     const { key, value } = keyVal
