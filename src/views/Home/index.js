@@ -12,14 +12,20 @@ const Homepage = Vue.component('Homepage', {
     Storage.reset(CURRENT_SECTION_KEY)
     resetScroll(document.documentElement)
 
+    window.addEventListener('resize', this.recalcSection)
     document.addEventListener('keydown', this.maybeScrollJack)
   },
 
   destroyed() {
+    window.removeEventListener('resize', this.recalcSection)
     document.removeEventListener('keydown', this.maybeScrollJack)
   },
 
   methods: {
+    recalcSection() {
+      goToSection(this.getSection(Storage.get(CURRENT_SECTION_KEY)))
+    },
+
     maybeScrollJack(event) {
       switch (event.key) {
         case 'Down':
