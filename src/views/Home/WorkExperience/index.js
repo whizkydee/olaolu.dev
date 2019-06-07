@@ -16,7 +16,7 @@ const WorkExperience = Vue.component('WorkExperience', {
               Previously, I led the front end engineering team at Conectar LLC
               through building several React applications into a single powerful
               online learning platform. I deliver quality stuff freelancing and
-              consulting for a bunch of organizations internationally. I also
+              consulting for a couple of organizations internationally. I also
               created the Palenight theme for VS Code with hundreds of thousands
               of downloads.
               <br />
