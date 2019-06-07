@@ -6,14 +6,12 @@ const StyledPitchSlate = styled.section`
 
   .primary__content,
   .bottom__content {
-    width: 100%;
-    display: flex;
     align-items: center;
     justify-content: space-between;
   }
 
   .primary__content {
-    margin-top: ${props => props.theme.headerHeight};
+    margin-top: ${props => props.theme.header.height};
   }
 
   .cavalier {
@@ -27,10 +25,10 @@ const StyledPitchSlate = styled.section`
   }
 
   .visage {
-    width: 350px;
-    height: 370px;
-    margin-right: 6em;
+    width: 23.334em;
+    height: 24.67em;
     border: 1.5px solid #fff;
+    margin-right: ${props => `calc(${props.theme.header.padding} + 4em)`};
 
     div {
       width: inherit;
@@ -45,7 +43,7 @@ const StyledPitchSlate = styled.section`
 
   .bottom__content {
     margin-top: auto;
-    padding-right: 6em;
+    padding-right: ${props => props.theme.header.padding};
 
     > * {
       display: flex;
@@ -54,8 +52,8 @@ const StyledPitchSlate = styled.section`
 
   .deux__points {
     width: 500px;
-    font-size: 0.9em;
     line-height: 1.5;
+    font-size: 0.95em;
     justify-content: space-between;
     color: ${props => props.theme.colors.lime};
 

@@ -1,26 +1,21 @@
 import styled from 'vue-styled-components'
+import { createMenuShadow } from '@/helpers'
 
 const StyledHeader = styled.header`
   width: 100%;
   display: flex;
   z-index: 1001;
-  padding: 0 6em;
   position: fixed;
   align-items: center;
   background: transparent;
   justify-content: space-between;
-  height: ${props => props.theme.headerHeight};
+  height: ${props => props.theme.header.height};
+  padding: 0 ${props => props.theme.header.padding};
 
   &[data-compact='true'] {
     #logo {
-      /* width: 54px; */
-
       svg {
         width: inherit;
-
-        path {
-          /* fill: ${props => props.theme.colors['electric-blue']}; */
-        }
       }
 
       .logo_svg__lu,
@@ -30,14 +25,14 @@ const StyledHeader = styled.header`
       }
 
       .logo_svg__ola {
-        transform: translateX(-100%);
+        transform: translateX(-40%);
       }
 
       .logo_svg__sauce__drip {
       }
 
       .logo_svg__lu {
-        transform: translateX(100%);
+        transform: translateX(40%);
       }
     }
   }
@@ -61,7 +56,7 @@ const StyledHeader = styled.header`
     .logo_svg__ola {
       opacity: 1;
       transform: translate(0);
-      transition: opacity 0.2s 200ms, transform 1s;
+      transition: opacity 0.2s, transform 0.5s;
     }
   }
 
@@ -75,6 +70,7 @@ const StyledHeader = styled.header`
     padding: 50px;
     box-shadow: none;
     user-select: none;
+    font-size: 1.06em;
     position: absolute;
     flex-direction: column;
     background-color: #ffffff;
@@ -87,7 +83,7 @@ const StyledHeader = styled.header`
     }
 
     &[aria-expanded='true'] {
-      box-shadow: 0 10px 53px 0 rgba(163, 204, 170, 0.3);
+      box-shadow: ${createMenuShadow()};
 
       .title,
       .basic__contact,
@@ -145,6 +141,7 @@ const StyledHeader = styled.header`
     background: none;
     position: relative;
     display: inline-flex;
+    color: ${props => props.theme.colors['electric-blue']};
 
     &:focus {
       outline: none;
@@ -172,7 +169,7 @@ const StyledHeader = styled.header`
       position: absolute;
       transition: 0.2s ease;
       transform: rotate(0deg);
-      background-color: ${props => props.theme.colors['electric-blue']};
+      background-color: currentColor;
     }
 
     &:before {

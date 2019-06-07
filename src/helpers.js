@@ -19,7 +19,7 @@ const goToSection = section => {
   }, 250)
 }
 
-const createMenuShadow = (color = 'rgba(163, 204, 170, 0.3)') =>
+const createMenuShadow = (color = 'rgba(72, 49, 212, .05)') =>
   `0 10px 53px 0 ${color}`
 
 export { scrollToElem, goToSection, createMenuShadow }
