@@ -97,8 +97,8 @@ const StyledHeader = styled.header`
       opacity: 0;
       color: #cbc9e2;
       transition: 0.2s;
-      font-weight: 300;
-      letter-spacing: 4.2px;
+      font-size: 1.06em;
+      letter-spacing: 4px;
       transition-delay: 100ms;
       text-transform: uppercase;
     }
