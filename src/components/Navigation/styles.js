@@ -1,8 +1,11 @@
 import styled from 'vue-styled-components'
 
 const StyledNavigation = styled.nav`
-  position: relative;
-  margin-top: -50px;
+  z-index: 999;
+  position: fixed;
+  margin-top: -20px;
+  right: ${props => props.theme.header.padding};
+  color: ${props => props.theme.colors['electric-blue']};
 
   ul {
     width: 17px;
@@ -27,8 +30,8 @@ const StyledNavigation = styled.nav`
     display: flex;
     width: inherit;
     position: relative;
+    color: currentColor;
     text-indent: -9999px;
-    color: ${props => props.theme.colors['electric-blue']};
 
     &:after {
       content: '';
@@ -36,6 +39,7 @@ const StyledNavigation = styled.nav`
       height: 10px;
       position: absolute;
       border-radius: 100%;
+      transition: 0.2s 100ms;
       background-color: currentColor;
     }
   }

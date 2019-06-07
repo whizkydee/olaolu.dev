@@ -9,19 +9,37 @@ const Navigation = Vue.component('Navigation', {
   },
 
   render() {
+    const { currentSection } = this.$store.state
+
     return (
       <StyledNavigation role="navigation" aria-label="Main navigation">
         <ul ref="list">
-          <Link clickFn={this.goToSection} href="#une" class="current">
+          <Link
+            href="#une"
+            clickFn={this.goToSection}
+            class={currentSection === 'une' && 'current'}
+          >
             1
           </Link>
-          <Link clickFn={this.goToSection} href="#deux">
+          <Link
+            href="#deux"
+            clickFn={this.goToSection}
+            class={currentSection === 'deux' && 'current'}
+          >
             2
           </Link>
-          <Link clickFn={this.goToSection} href="#trois">
+          <Link
+            href="#trois"
+            clickFn={this.goToSection}
+            class={currentSection === 'trois' && 'current'}
+          >
             3
           </Link>
-          <Link clickFn={this.goToSection} href="#quatre">
+          <Link
+            href="#quatre"
+            clickFn={this.goToSection}
+            class={currentSection === 'quatre' && 'current'}
+          >
             4
           </Link>
         </ul>
