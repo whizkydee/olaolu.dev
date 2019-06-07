@@ -11,9 +11,6 @@ const WorkExperience = Vue.component('WorkExperience', {
               I've built products for companies and businesses around the globe
               ranging from basic websites to complex solutions with focus on
               creating blazing fast, elegant and accessible user experiences.
-              Right now, I'm a Senior Front End Engineering contractor with
-              Pixel2HTML, an agency comprised of some of the most talented front
-              end developers across the globe.
               <br />
               <br />
               Previously, I led the front end engineering team at Conectar LLC
@@ -22,6 +19,11 @@ const WorkExperience = Vue.component('WorkExperience', {
               consulting for a bunch of organizations internationally. I also
               created the Palenight theme for VS Code with hundreds of thousands
               of downloads.
+              <br />
+              <br />
+              Right now, I'm a Senior Front End Engineering contractor with
+              Pixel2HTML building JavaScript applications for our clients across
+              the globe.
             </p>
           </Cavalier>
         </div>

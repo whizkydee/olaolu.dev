@@ -7,15 +7,15 @@ const StyledWorkExperience = styled.section`
   .experience__content {
     margin-top: 80px;
     flex-direction: column;
+  }
 
-    .cavalier {
-      h1 {
-        max-width: 387px;
-      }
+  .cavalier {
+    h1 {
+      max-width: 387px;
+    }
 
-      p {
-        width: 398px;
-      }
+    p {
+      width: 398px;
     }
   }
 `
