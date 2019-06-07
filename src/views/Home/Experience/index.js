@@ -1,10 +1,10 @@
 import Vue from 'vue'
-import StyledWorkExperience from './styles'
+import StyledExperience from './styles'
 
-const WorkExperience = Vue.component('WorkExperience', {
+const Experience = Vue.component('Experience', {
   render() {
     return (
-      <StyledWorkExperience>
+      <StyledExperience>
         <div class="experience__content">
           <Cavalier theme="lime" heading="Over the past 8 years,">
             <p slot="text">
@@ -27,9 +27,9 @@ const WorkExperience = Vue.component('WorkExperience', {
             </p>
           </Cavalier>
         </div>
-      </StyledWorkExperience>
+      </StyledExperience>
     )
   },
 })
 
-export default WorkExperience
+export default Experience

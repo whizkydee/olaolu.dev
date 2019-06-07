@@ -2,8 +2,8 @@ import Vue from 'vue'
 import { mapState } from 'vuex'
 import PitchSlate from './PitchSlate'
 import Concentrer from './Concentrer'
+import Experience from './Experience'
 import { goToSection } from '@/helpers'
-import WorkExperience from './WorkExperience'
 import resetScroll from '@mrolaolu/helpers/resetScroll'
 import { CURRENT_SECTION_KEY, NAV_FIXED_KEY } from '@/constants'
 
@@ -80,7 +80,7 @@ const Homepage = Vue.component('Homepage', {
       <ContentView id="homepage" ref="mainElem">
         <PitchSlate id="une" />
         <Concentrer id="deux" />
-        <WorkExperience id="trois" />
+        <Experience id="trois" />
       </ContentView>
     )
   },

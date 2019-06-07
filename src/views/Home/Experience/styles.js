@@ -1,6 +1,6 @@
 import styled from 'vue-styled-components'
 
-const StyledWorkExperience = styled.section`
+const StyledExperience = styled.section`
   height: 100vh;
   background-color: ${props => props.theme.colors['electric-blue']};
 
@@ -20,5 +20,5 @@ const StyledWorkExperience = styled.section`
   }
 `
 
-StyledWorkExperience.name = 'StyledWorkExperience'
-export default StyledWorkExperience
+StyledExperience.name = 'StyledExperience'
+export default StyledExperience
