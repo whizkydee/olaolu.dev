@@ -9,8 +9,8 @@ import resetScroll from '@mrolaolu/helpers/resetScroll'
 
 const Homepage = Vue.component('Homepage', {
   mounted() {
-    Storage.reset(CURRENT_SECTION_KEY)
-    resetScroll(document.documentElement)
+    // Ensure the page always starts from the beginning.
+    window.setTimeout(() => resetScroll(document.documentElement), 0)
 
     window.addEventListener('resize', this.recalcSection)
     document.addEventListener('keydown', this.maybeScrollJack)
