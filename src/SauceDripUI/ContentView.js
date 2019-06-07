@@ -26,6 +26,7 @@ const StyledContentView = styled.main`
     display: flex;
     position: relative;
     align-items: center;
+    justify-content: center;
   }
 `
 StyledContentView.name = 'StyledContentView'
