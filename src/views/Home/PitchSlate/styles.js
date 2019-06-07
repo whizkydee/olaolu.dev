@@ -53,7 +53,7 @@ const StyledPitchSlate = styled.section`
   .deux__points {
     width: 500px;
     line-height: 1.5;
-    font-size: 0.95em;
+    font-size: 0.98em;
     justify-content: space-between;
     color: ${props => props.theme.colors.lime};
 
