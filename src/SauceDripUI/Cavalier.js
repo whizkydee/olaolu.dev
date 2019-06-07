@@ -6,7 +6,7 @@ const Cavalier = Vue.component('Cavalier', {
     return (
       <StyledCavalier data-theme={this.theme} class="cavalier">
         {this.$slots.heading || <h1>{this.heading}</h1>}
-        {this.$slots.text || <p>{this.text}</p>}
+        {this.$slots.text || <p domPropsInnerHTML={this.text} />}
       </StyledCavalier>
     )
   },
@@ -45,7 +45,7 @@ const StyledCavalier = styled.div`
   p {
     width: 438px;
     line-height: 1.5;
-    font-size: 1.05em;
+    font-size: 1.07em;
     color: ${props => props.theme.colors.default};
   }
 `
