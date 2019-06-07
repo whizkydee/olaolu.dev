@@ -1,16 +1,21 @@
 import Vue from 'vue'
-import Storage from '@/Storage'
+import { mapState } from 'vuex'
 import PitchSlate from './PitchSlate'
 import Concentrer from './Concentrer'
 import { goToSection } from '@/helpers'
 import WorkExperience from './WorkExperience'
-import { CURRENT_SECTION_KEY } from '@/constants'
 import resetScroll from '@mrolaolu/helpers/resetScroll'
+import { CURRENT_SECTION_KEY, NAV_FIXED_KEY } from '@/constants'
 
 const Homepage = Vue.component('Homepage', {
+  computed: {
+    ...mapState([CURRENT_SECTION_KEY, NAV_FIXED_KEY]),
+  },
+
   mounted() {
     // Ensure the page always starts from the beginning.
     window.setTimeout(() => resetScroll(document.documentElement), 0)
+    document.getElementById('app').dataset.section = this.getCurrentSection()
 
     window.addEventListener('resize', this.recalcSection)
     document.addEventListener('keydown', this.maybeScrollJack)
@@ -22,8 +27,12 @@ const Homepage = Vue.component('Homepage', {
   },
 
   methods: {
+    getCurrentSection() {
+      return this[CURRENT_SECTION_KEY]
+    },
+
     recalcSection() {
-      goToSection(this.getSection(Storage.get(CURRENT_SECTION_KEY)))
+      goToSection(this.getSection(this.getCurrentSection()))
     },
 
     maybeScrollJack(event) {
@@ -50,7 +59,7 @@ const Homepage = Vue.component('Homepage', {
       }
     },
 
-    getSection(id = Storage.get(CURRENT_SECTION_KEY)) {
+    getSection(id = this.getCurrentSection()) {
       const sectionElem = document.getElementById(id)
 
       if (!sectionElem) return
