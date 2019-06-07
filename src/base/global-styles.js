@@ -161,9 +161,13 @@ const GlobalStyle = injectGlobal`
     display: flex;
     padding: 0 8em;
 
-    @media (max-width: 2150px) {
+    @media (max-width: 1500px) {
       padding: 0 10em;
       max-width: 1500px;
+    }
+
+    @media (min-width: 1501px) {
+      max-width: 1540px;
     }
   }
 
@@ -174,7 +178,6 @@ const GlobalStyle = injectGlobal`
       bottom: 215px;
       margin-top: 0;
     }
-
 
     &[data-section='une'] {
       #social__nav {

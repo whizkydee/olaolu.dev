@@ -22,8 +22,11 @@ const Cavalier = Vue.component('Cavalier', {
 })
 
 const StyledCavalier = styled.div`
-  font-size: 1.74vh;
   position: relative;
+
+  @media (min-height: 612px) {
+    font-size: 1.74vh;
+  }
 
   &[data-theme='lime'] {
     h1 {
