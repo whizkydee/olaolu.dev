@@ -6,39 +6,41 @@ const Navigation = Vue.component('Navigation', {
   methods: {
     goToSection: event =>
       goToSection(document.querySelector(event.target.getAttribute('href'))),
+
+    isActiveWhen(sectionId) {
+      return this.$store.state.currentSection === sectionId && 'current'
+    },
   },
 
   render() {
-    const { currentSection } = this.$store.state
-
     return (
       <StyledNavigation role="navigation" aria-label="Main navigation">
         <ul ref="list">
           <Link
             href="#une"
             clickFn={this.goToSection}
-            class={currentSection === 'une' && 'current'}
+            class={this.isActiveWhen('une')}
           >
             1
           </Link>
           <Link
             href="#deux"
             clickFn={this.goToSection}
-            class={currentSection === 'deux' && 'current'}
+            class={this.isActiveWhen('deux')}
           >
             2
           </Link>
           <Link
             href="#trois"
             clickFn={this.goToSection}
-            class={currentSection === 'trois' && 'current'}
+            class={this.isActiveWhen('trois')}
           >
             3
           </Link>
           <Link
             href="#quatre"
             clickFn={this.goToSection}
-            class={currentSection === 'quatre' && 'current'}
+            class={this.isActiveWhen('quatre')}
           >
             4
           </Link>
