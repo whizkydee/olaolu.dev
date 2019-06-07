@@ -11,11 +11,11 @@ const StyledWorkExperience = styled.section`
 
   .cavalier {
     h1 {
-      max-width: 387px;
+      max-width: 27vw;
     }
 
     p {
-      width: 398px;
+      width: 27vw;
     }
   }
 `

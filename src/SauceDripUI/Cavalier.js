@@ -22,6 +22,7 @@ const Cavalier = Vue.component('Cavalier', {
 })
 
 const StyledCavalier = styled.div`
+  font-size: 1.74vh;
   position: relative;
 
   &[data-theme='lime'] {
@@ -37,13 +38,13 @@ const StyledCavalier = styled.div`
   h1 {
     margin: 0;
     font-size: 4em;
-    max-width: 417px;
+    max-width: 30vw;
     font-weight: 900;
     color: ${props => props.theme.colors['electric-blue']};
   }
 
   p {
-    width: 438px;
+    width: 32vw;
     line-height: 1.5;
     font-size: 1.07em;
     color: ${props => props.theme.colors.default};
