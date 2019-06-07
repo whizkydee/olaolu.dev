@@ -1,4 +1,5 @@
 import theme from './theme'
+import { createMenuShadow } from '@/helpers'
 import { injectGlobal, css } from 'vue-styled-components'
 
 const { colors, fontFamily } = theme
@@ -156,8 +157,39 @@ const GlobalStyle = injectGlobal`
   }
 
   [class$='__content'] {
+    width: 100%;
+    display: flex;
     padding: 0 10em;
     max-width: 1500px;
+  }
+
+  #app {
+    position: relative;
+
+    &:not([data-section='une']) #section__nav {
+      bottom: 215px;
+      margin-top: 0;
+    }
+
+
+    &[data-section='une'] {
+      #social__nav {
+        box-shadow: ${createMenuShadow('rgba(163, 204, 170, 0.3)')};
+      }
+    }
+
+    &[data-section='deux'] {
+      #logo path {
+        fill: ${colors['electric-blue']};
+      }
+    }
+
+    &[data-section='trois'] {
+      #section__nav,
+      .menu__toggle:not(.x) {
+        color: ${colors.lime};
+      }
+    }
   }
 `
 
