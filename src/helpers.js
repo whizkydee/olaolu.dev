@@ -1,5 +1,4 @@
-import Storage from '@/Storage'
-import { CURRENT_SECTION_KEY } from '@/constants'
+import store from './store'
 
 const scrollToElem = targetElem => {
   if (!targetElem || !(targetElem instanceof HTMLElement)) return
@@ -11,10 +10,16 @@ const scrollToElem = targetElem => {
 }
 
 const goToSection = section => {
-  if (section instanceof HTMLElement) {
-    scrollToElem(section)
-    Storage.set(CURRENT_SECTION_KEY, section.id)
-  }
+  if (!(section instanceof HTMLElement)) return
+
+  scrollToElem(section)
+  window.setTimeout(() => {
+    store.commit('currentSection', section.id)
+    document.getElementById('app').dataset.section = section.id
+  }, 250)
 }
 
-export { scrollToElem, goToSection }
+const createMenuShadow = (color = 'rgba(163, 204, 170, 0.3)') =>
+  `0 10px 53px 0 ${color}`
+
+export { scrollToElem, goToSection, createMenuShadow }
