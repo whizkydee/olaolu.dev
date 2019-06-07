@@ -165,7 +165,7 @@ const StyledHeader = styled.header`
     &:after {
       content: '';
       width: 100%;
-      height: 0.15em;
+      height: 2px;
       position: absolute;
       transition: 0.2s ease;
       transform: rotate(0deg);
