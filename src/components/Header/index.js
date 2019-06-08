@@ -26,6 +26,7 @@ const Header = Vue.component('Header', {
   methods: {
     toggleMenu() {
       this.menuOpen = !this.menuOpen
+      if (!this.menuOpen) document.getElementById('main').focus()
     },
 
     closeMenu() {
