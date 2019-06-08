@@ -2,7 +2,7 @@ import Vue from 'vue'
 import { Link } from '@/components'
 import StyledHeader from './styles'
 import { SauceDripLogo } from '@/assets'
-import { CURRENT_SECTION_KEY, SECTIONS } from '@/constants'
+import { CURRENT_SECTION_KEY, SECTIONS, SOCIAL_PROFILES } from '@/constants'
 
 const Header = Vue.component('Header', {
   data: () => ({
@@ -46,6 +46,7 @@ const Header = Vue.component('Header', {
   },
 
   render() {
+    const { twitter, facebook, linkedIn, github } = SOCIAL_PROFILES
     const getLabel = () => (this.menuOpen ? 'Close' : 'Open') + ' contact menu'
 
     return (
@@ -75,16 +76,16 @@ const Header = Vue.component('Header', {
           </ul>
 
           <ul class="social__contact">
-            <Link external href="https://facebook.com/mrolaolu">
+            <Link external href={facebook} ariaLabel="Olaolu on facebook">
               FB
             </Link>
-            <Link external href="https://twitter.com/mrolaolu">
+            <Link external href={twitter} ariaLabel="Olaolu on twitter">
               TW
             </Link>
-            <Link external href="https://linkedin.com/in/olaolu-olawuyi">
+            <Link external href={linkedIn} ariaLabel="Olaolu on linkedIn">
               LN
             </Link>
-            <Link external href="https://github.com/whizkydee">
+            <Link external href={github} ariaLabel="Olaolu on github">
               GH
             </Link>
           </ul>
