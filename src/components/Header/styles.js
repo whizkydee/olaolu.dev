@@ -16,6 +16,7 @@ const StyledHeader = styled.header`
     #logo {
       svg {
         width: inherit;
+        transform: translateX(-56px);
       }
 
       .logo_svg__lu,
@@ -25,12 +26,17 @@ const StyledHeader = styled.header`
       }
 
       .logo_svg__ola {
-        transform: translateX(-40%);
+        transform: translateX(50%);
+        transform-origin: left;
       }
 
       .logo_svg__lu {
-        transform: translateX(40%);
+        transform: translateX(-50%);
       }
+    }
+
+    .menu__toggle {
+      margin-top: 15px;
     }
   }
 
@@ -42,15 +48,14 @@ const StyledHeader = styled.header`
 
     svg {
       height: 46px;
-      width: 120px;
+      width: 8.34vw;
     }
 
     .logo_svg__lu,
     .logo_svg__ola {
       opacity: 1;
       transform: translate(0);
-      transition: opacity 0.2s, transform 0.5s;
-      transition-delay: 100ms;
+      transition: opacity 0.1s, transform 0.5s 200ms ease-out;
     }
   }
 
