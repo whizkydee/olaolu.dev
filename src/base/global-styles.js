@@ -1,7 +1,7 @@
 import theme from './theme'
 import { createMenuShadow } from '@/helpers'
-import { TABBING_CLASSNAME } from '@/constants'
 import { injectGlobal, css } from 'vue-styled-components'
+import { TABBING_CLASSNAME, NAVIGATION_ID } from '@/constants'
 
 const { colors, fontFamily } = theme
 
@@ -67,7 +67,7 @@ const GlobalStyle = injectGlobal`
         outline-color: ${colors['electric-blue']};
       }
 
-      #section__nav a:focus:after {
+      #${NAVIGATION_ID} a:focus:after {
         box-shadow: 0 0 0 0.3rem rgba(24, 156, 230, 0.4);
       }
     }
@@ -182,10 +182,6 @@ const GlobalStyle = injectGlobal`
       padding: 0 10em;
       max-width: 1500px;
     }
-
-    @media (min-width: 1501px) {
-      max-width: 1540px;
-    }
   }
 
   #app {
@@ -204,7 +200,7 @@ const GlobalStyle = injectGlobal`
     }
 
     &[data-section='trois'] {
-      #section__nav,
+      #${NAVIGATION_ID},
       .menu__toggle:not(.x) {
         color: ${colors.lime};
       }

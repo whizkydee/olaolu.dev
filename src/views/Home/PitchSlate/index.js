@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import StyledPitchSlate from './styles'
 import { Navigation } from '@/components'
+import { NAVIGATION_ID } from '@/constants'
 
 const PitchSlate = Vue.component('PitchSlate', {
   render() {
@@ -34,7 +35,7 @@ const PitchSlate = Vue.component('PitchSlate', {
             </li>
           </ul>
 
-          <Navigation id="section__nav" />
+          <Navigation id={NAVIGATION_ID} />
         </div>
       </StyledPitchSlate>
     )
