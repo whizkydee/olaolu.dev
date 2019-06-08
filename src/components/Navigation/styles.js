@@ -21,9 +21,9 @@ const StyledNavigation = styled.nav`
   a {
     display: flex;
     width: inherit;
-    transition: 0s;
     position: relative;
     color: currentColor;
+    transition-delay: 100ms;
     outline-color: transparent;
 
     &:after {
