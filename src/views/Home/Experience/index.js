@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import StyledExperience from './styles'
+import { OlaoluWorkIllo } from '@/assets'
 
 const Experience = Vue.component('Experience', {
   render() {
@@ -26,6 +27,10 @@ const Experience = Vue.component('Experience', {
               the globe.
             </p>
           </Cavalier>
+
+          <div class="work__illo">
+            <OlaoluWorkIllo />
+          </div>
         </div>
       </StyledExperience>
     )

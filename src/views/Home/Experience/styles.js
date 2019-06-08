@@ -6,7 +6,8 @@ const StyledExperience = styled.section`
 
   .experience__content {
     margin-top: 80px;
-    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .cavalier {
@@ -16,6 +17,14 @@ const StyledExperience = styled.section`
 
     p {
       width: 27vw;
+    }
+  }
+
+  .work__illo {
+    position: relative;
+
+    svg {
+      width: 46vw;
     }
   }
 `
