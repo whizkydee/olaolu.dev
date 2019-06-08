@@ -18,32 +18,28 @@ const Navigation = Vue.component('Navigation', {
         <ul ref="list">
           <Link
             href="#une"
+            ariaLabel="Page 1, Pitch"
             clickFn={this.goToSection}
             class={this.isActiveWhen('une')}
-          >
-            1
-          </Link>
+          />
           <Link
             href="#deux"
+            ariaLabel="Page 2, Focus"
             clickFn={this.goToSection}
             class={this.isActiveWhen('deux')}
-          >
-            2
-          </Link>
+          />
           <Link
             href="#trois"
             clickFn={this.goToSection}
+            ariaLabel="Page 3, Experience"
             class={this.isActiveWhen('trois')}
-          >
-            3
-          </Link>
+          />
           <Link
             href="#quatre"
+            ariaLabel="Page 4"
             clickFn={this.goToSection}
             class={this.isActiveWhen('quatre')}
-          >
-            4
-          </Link>
+          />
         </ul>
       </StyledNavigation>
     )
@@ -52,12 +48,13 @@ const Navigation = Vue.component('Navigation', {
 
 const Link = Vue.component('Link', {
   render() {
-    const { href, external, clickFn } = this
+    const { href, external, ariaLabel, clickFn } = this
 
     return (
       <li>
         <a
           href={href}
+          aria-label={ariaLabel}
           onClick={e => {
             this.href.charAt(0) === '#' && e.preventDefault()
             typeof clickFn === 'function' && clickFn.call(this, e)
@@ -74,6 +71,7 @@ const Link = Vue.component('Link', {
   props: {
     href: String,
     clickFn: Function,
+    ariaLabel: String,
     external: { type: Boolean, default: false },
   },
 })

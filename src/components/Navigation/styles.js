@@ -3,7 +3,7 @@ import styled from 'vue-styled-components'
 const StyledNavigation = styled.nav`
   z-index: 999;
   position: fixed;
-  margin-top: -20px;
+  margin-top: -13px;
   right: ${props => props.theme.header.padding};
   color: ${props => props.theme.colors['electric-blue']};
 
@@ -15,14 +15,7 @@ const StyledNavigation = styled.nav`
 
   li {
     width: 100%;
-
-    &:not(:last-of-type) {
-      margin-bottom: 15px;
-    }
-
-    &:not(.current) a {
-      margin: 0 0.05em;
-    }
+    margin-bottom: 31px;
   }
 
   a {
@@ -31,7 +24,6 @@ const StyledNavigation = styled.nav`
     width: inherit;
     position: relative;
     color: currentColor;
-    text-indent: -9999px;
 
     &:after {
       content: '';

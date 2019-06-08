@@ -175,8 +175,8 @@ const GlobalStyle = injectGlobal`
     position: relative;
 
     &:not([data-section='une']) #section__nav {
-      bottom: 215px;
       margin-top: 0;
+      bottom: 201px;
     }
 
     &[data-section='une'] {
