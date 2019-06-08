@@ -75,7 +75,12 @@ const Homepage = Vue.component('Homepage', {
     },
 
     maybeScrollJack(event) {
-      if (event.target !== this.$refs.mainElem.$el) return
+      if (
+        event.target !== document.body &&
+        event.target !== this.$refs.mainElem.$el &&
+        event.target !== document.documentElement
+      )
+        return
 
       const SPACEBAR = ' '
       switch (event.key) {
