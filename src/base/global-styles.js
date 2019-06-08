@@ -191,11 +191,6 @@ const GlobalStyle = injectGlobal`
   #app {
     position: relative;
 
-    &:not([data-section='une']) #section__nav {
-      margin-top: 0;
-      bottom: 201px;
-    }
-
     &[data-section='une'] {
       #social__nav {
         box-shadow: ${createMenuShadow('rgba(163, 204, 170, 0.3)')};
