@@ -16,7 +16,7 @@ const goToSection = section => {
   window.setTimeout(() => {
     store.commit('currentSection', section.id)
     document.getElementById('app').dataset.section = section.id
-  }, 250)
+  }, 200)
 }
 
 const createMenuShadow = (color = 'rgba(72, 49, 212, .05)') =>

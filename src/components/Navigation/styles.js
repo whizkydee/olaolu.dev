@@ -21,6 +21,7 @@ const StyledNavigation = styled.nav`
   a {
     display: flex;
     width: inherit;
+    transition: 0s;
     position: relative;
     color: currentColor;
     outline-color: transparent;

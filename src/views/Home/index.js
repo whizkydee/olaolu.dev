@@ -58,7 +58,7 @@ const Homepage = Vue.component('Homepage', {
       goToSection(this.getSection().previousElementSibling)
     },
 
-    debounce(cb, timeout = 200) {
+    debounce(cb, timeout = 250) {
       if (typeof cb !== 'function') return
       window.setTimeout(cb, timeout)
     },
@@ -82,7 +82,7 @@ const Homepage = Vue.component('Homepage', {
         case 'PageDown':
         case 'ArrowRight':
           event.preventDefault()
-          this.goToNextSection()
+          this.debounce(this.goToNextSection())
           break
 
         case 'Up':
@@ -91,7 +91,7 @@ const Homepage = Vue.component('Homepage', {
         case 'PageUp':
         case 'ArrowLeft':
           event.preventDefault()
-          this.goToPrevSection()
+          this.debounce(this.goToPrevSection())
           break
       }
     },
