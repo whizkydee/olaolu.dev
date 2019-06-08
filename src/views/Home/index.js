@@ -4,8 +4,8 @@ import PitchSlate from './PitchSlate'
 import Concentrer from './Concentrer'
 import Experience from './Experience'
 import { goToSection } from '@/helpers'
-import resetScroll from '@mrolaolu/helpers/resetScroll'
-import { CURRENT_SECTION_KEY, SECTIONS } from '@/constants'
+import { getEventPath, resetScroll } from '@mrolaolu/helpers'
+import { CURRENT_SECTION_KEY, SECTIONS, NAVIGATION_ID } from '@/constants'
 
 const Homepage = Vue.component('Homepage', {
   computed: {
@@ -75,7 +75,12 @@ const Homepage = Vue.component('Homepage', {
     },
 
     maybeScrollJack(event) {
+      const isNavFocused = getEventPath(event).some(
+        ({ id }) => id === NAVIGATION_ID
+      )
+
       if (
+        !isNavFocused &&
         event.target !== document.body &&
         event.target !== this.$refs.mainElem.$el &&
         event.target !== document.documentElement
