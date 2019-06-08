@@ -5,7 +5,7 @@ import Concentrer from './Concentrer'
 import Experience from './Experience'
 import { goToSection } from '@/helpers'
 import resetScroll from '@mrolaolu/helpers/resetScroll'
-import { CURRENT_SECTION_KEY, NAV_FIXED_KEY } from '@/constants'
+import { CURRENT_SECTION_KEY, NAV_FIXED_KEY, SECTIONS } from '@/constants'
 
 const Homepage = Vue.component('Homepage', {
   computed: {
@@ -75,8 +75,11 @@ const Homepage = Vue.component('Homepage', {
     },
 
     maybeScrollJack(event) {
+      const SPACEBAR = ' '
+
       switch (event.key) {
         case 'Down':
+        case SPACEBAR:
         case 'ArrowDown':
         case 'Right':
         case 'PageDown':
@@ -92,6 +95,18 @@ const Homepage = Vue.component('Homepage', {
         case 'ArrowLeft':
           event.preventDefault()
           this.debounce(this.goToPrevSection())
+          break
+
+        case 'Home':
+          event.preventDefault()
+          this.debounce(goToSection(this.getSection(SECTIONS[0])))
+          break
+
+        case 'End':
+          event.preventDefault()
+          this.debounce(
+            goToSection(this.getSection(SECTIONS[SECTIONS.length - 1]))
+          )
           break
       }
     },
