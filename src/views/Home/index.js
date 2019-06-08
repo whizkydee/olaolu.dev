@@ -58,13 +58,18 @@ const Homepage = Vue.component('Homepage', {
       goToSection(this.getSection().previousElementSibling)
     },
 
+    debounce(cb, timeout = 400) {
+      if (typeof cb !== 'function') return
+      window.setTimeout(cb, timeout)
+    },
+
     handleMouseWheel(event) {
       switch (Math.sign(event.deltaY)) {
         case 1:
-          this.goToNextSection()
+          this.debounce(this.goToNextSection())
           break
         case -1:
-          this.goToPrevSection()
+          this.debounce(this.goToPrevSection())
           break
       }
     },
