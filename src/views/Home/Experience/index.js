@@ -13,7 +13,7 @@ const Experience = Vue.component('Experience', {
               creating blazing fast, elegant and accessible user experiences.
               <br />
               <br />
-              Previously, I led the front end engineering team at Conectar LLC
+              I previously led the front end engineering team at Conectar LLC
               through building several React applications into a single powerful
               online learning platform. I deliver quality stuff freelancing and
               consulting for a couple of organizations internationally. I also
