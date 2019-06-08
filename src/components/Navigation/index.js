@@ -18,26 +18,26 @@ const Navigation = Vue.component('Navigation', {
         <ul ref="list">
           <Link
             href="#une"
-            ariaLabel="Page 1, Pitch"
             clickFn={this.goToSection}
+            ariaLabel="Go to section 1, Pitch."
             ariaCurrent={this.isActiveWhen('une')}
           />
           <Link
             href="#deux"
-            ariaLabel="Page 2, Focus"
             clickFn={this.goToSection}
+            ariaLabel="Go to section 2, Focus."
             ariaCurrent={this.isActiveWhen('deux')}
           />
           <Link
             href="#trois"
             clickFn={this.goToSection}
-            ariaLabel="Page 3, Experience"
+            ariaLabel="Go to section 3, Experience."
             ariaCurrent={this.isActiveWhen('trois')}
           />
           <Link
             href="#quatre"
-            ariaLabel="Page 4"
             clickFn={this.goToSection}
+            ariaLabel="Go to section 4."
             ariaCurrent={this.isActiveWhen('quatre')}
           />
         </ul>

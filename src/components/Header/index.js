@@ -52,7 +52,7 @@ const Header = Vue.component('Header', {
 
     return (
       <StyledHeader role="banner" data-compact={'' + this.isCompact}>
-        <router-link to="/" id="logo" aria-label="Logo, go to homepage">
+        <router-link to="/" id="logo" aria-label="Logo, go to homepage.">
           <SauceDripLogo />
         </router-link>
 

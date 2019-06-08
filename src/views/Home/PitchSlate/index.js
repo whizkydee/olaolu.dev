@@ -18,7 +18,7 @@ const PitchSlate = Vue.component('PitchSlate', {
             </h1>
           </Cavalier>
 
-          <figure class="visage" aria-label="Photo of Olaolu">
+          <figure class="visage" aria-label="Photo of Olaolu.">
             <div />
           </figure>
         </div>
