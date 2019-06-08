@@ -28,9 +28,6 @@ const StyledHeader = styled.header`
         transform: translateX(-40%);
       }
 
-      .logo_svg__sauce__drip {
-      }
-
       .logo_svg__lu {
         transform: translateX(40%);
       }
@@ -48,16 +45,12 @@ const StyledHeader = styled.header`
       width: 120px;
     }
 
-    #sauce__drip {
-      top: 0;
-      position: absolute;
-    }
-
     .logo_svg__lu,
     .logo_svg__ola {
       opacity: 1;
       transform: translate(0);
       transition: opacity 0.2s, transform 0.5s;
+      transition-delay: 100ms;
     }
   }
 
