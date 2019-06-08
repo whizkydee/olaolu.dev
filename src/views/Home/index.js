@@ -58,7 +58,7 @@ const Homepage = Vue.component('Homepage', {
       goToSection(this.getSection().previousElementSibling)
     },
 
-    debounce(cb, timeout = 400) {
+    debounce(cb, timeout = 200) {
       if (typeof cb !== 'function') return
       window.setTimeout(cb, timeout)
     },
