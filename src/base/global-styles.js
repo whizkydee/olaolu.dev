@@ -43,8 +43,8 @@ const GlobalStyle = injectGlobal`
   html {
     width: 100%;
     height: 100%;
+    font-size: 1vw;
     position: relative;
-    font-size: 14.25px;
     scroll-behavior: smooth;
     font-family: ${fontFamily};
     -ms-text-size-adjust: 100%;

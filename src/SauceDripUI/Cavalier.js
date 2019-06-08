@@ -22,7 +22,6 @@ const Cavalier = Vue.component('Cavalier', {
 })
 
 const StyledCavalier = styled.div`
-  font-size: 1vw;
   position: relative;
 
   &[data-theme='lime'] {
