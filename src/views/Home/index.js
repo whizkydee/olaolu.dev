@@ -13,26 +13,45 @@ const Homepage = Vue.component('Homepage', {
   },
 
   mounted() {
+    const { documentElement } = document
+
     // Ensure the page always starts from the beginning.
     window.setTimeout(() => resetScroll(document.documentElement), 0)
-    document.getElementById('app').dataset.section = this.getCurrentSection()
+    document.getElementById('app').dataset.section = this.getCurrentSectionId()
 
     window.addEventListener('resize', this.recalcSection)
     document.addEventListener('keydown', this.maybeScrollJack)
+    documentElement.addEventListener('wheel', this.handleMouseWheel)
+    documentElement.addEventListener('mousewheel', this.handleMouseWheel)
   },
 
   destroyed() {
+    const { documentElement } = document
+
     window.removeEventListener('resize', this.recalcSection)
     document.removeEventListener('keydown', this.maybeScrollJack)
+    documentElement.removeEventListener('wheel', this.handleMouseWheel)
+    documentElement.removeEventListener('mousewheel', this.handleMouseWheel)
   },
 
   methods: {
-    getCurrentSection() {
+    getCurrentSectionId() {
       return this[CURRENT_SECTION_KEY]
     },
 
     recalcSection() {
-      goToSection(this.getSection(this.getCurrentSection()))
+      goToSection(this.getSection(this.getCurrentSectionId()))
+    },
+
+    handleMouseWheel(event) {
+      switch (Math.sign(event.deltaY)) {
+        case 1:
+          this.goToNextSection()
+          break
+        case -1:
+          this.goToPrevSection()
+          break
+      }
     },
 
     maybeScrollJack(event) {
@@ -54,12 +73,10 @@ const Homepage = Vue.component('Homepage', {
           event.preventDefault()
           this.goToPrevSection()
           break
-        default:
-          break
       }
     },
 
-    getSection(id = this.getCurrentSection()) {
+    getSection(id = this.getCurrentSectionId()) {
       const sectionElem = document.getElementById(id)
 
       if (!sectionElem) return
