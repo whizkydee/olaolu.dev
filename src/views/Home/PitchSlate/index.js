@@ -12,7 +12,8 @@ const PitchSlate = Vue.component('PitchSlate', {
             text="I like to craft solid and scalable FE products with great user experiences."
           >
             <h1 slot="heading">
-              Front end Developer<span>.</span>
+              Front end
+              <br /> Developer<span>.</span>
             </h1>
           </Cavalier>
 

@@ -11,7 +11,7 @@ const StyledExperience = styled.section`
 
   .cavalier {
     h1 {
-      max-width: 27vw;
+      max-width: 27.6vw;
     }
 
     p {
