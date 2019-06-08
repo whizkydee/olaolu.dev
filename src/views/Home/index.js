@@ -5,11 +5,11 @@ import Concentrer from './Concentrer'
 import Experience from './Experience'
 import { goToSection } from '@/helpers'
 import resetScroll from '@mrolaolu/helpers/resetScroll'
-import { CURRENT_SECTION_KEY, NAV_FIXED_KEY, SECTIONS } from '@/constants'
+import { CURRENT_SECTION_KEY, SECTIONS } from '@/constants'
 
 const Homepage = Vue.component('Homepage', {
   computed: {
-    ...mapState([CURRENT_SECTION_KEY, NAV_FIXED_KEY]),
+    ...mapState([CURRENT_SECTION_KEY]),
   },
 
   mounted() {
