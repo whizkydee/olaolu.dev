@@ -2,6 +2,7 @@ import styled from 'vue-styled-components'
 
 const StyledNavigation = styled.nav`
   z-index: 999;
+  bottom: 25vh;
   position: fixed;
   right: ${props => props.theme.header.padding};
   color: ${props => props.theme.colors['electric-blue']};
