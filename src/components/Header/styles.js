@@ -14,8 +14,9 @@ const StyledHeader = styled.header`
 
   &[data-compact='true'] {
     #logo {
+      width: unset;
+
       svg {
-        width: inherit;
         transform: translateX(-56px);
       }
 
@@ -34,28 +35,26 @@ const StyledHeader = styled.header`
         transform: translateX(-50%);
       }
     }
-
-    .menu__toggle {
-      margin-top: 15px;
-    }
   }
 
   #logo {
+    height: 46px;
+    width: 8.34vw;
     display: flex;
     position: relative;
     flex-direction: column;
     outline-color: transparent;
 
     svg {
-      height: 46px;
-      width: 8.34vw;
+      width: inherit;
+      height: inherit;
     }
 
     .logo_svg__lu,
     .logo_svg__ola {
       opacity: 1;
       transform: translate(0);
-      transition: opacity 0.1s, transform 0.5s 200ms ease-out;
+      transition: opacity 0.5s, transform 0.5s 200ms ease-out;
     }
   }
 
@@ -141,6 +140,7 @@ const StyledHeader = styled.header`
     height: 30px;
     z-index: 1000;
     background: none;
+    margin-top: 10px;
     position: relative;
     display: inline-flex;
     color: ${props => props.theme.colors['electric-blue']};
