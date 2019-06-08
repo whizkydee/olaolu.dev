@@ -59,7 +59,6 @@ const StyledHeader = styled.header`
     right: 49px;
     z-index: 999;
     width: 320px;
-    height: 300px;
     display: flex;
     padding: 50px;
     box-shadow: none;
@@ -115,7 +114,7 @@ const StyledHeader = styled.header`
   .basic__contact {
     line-height: 2.5;
     font-size: 1.2em;
-    margin-top: 30px;
+    margin: 30px 0 40px;
     transition-delay: 100ms;
     transform: translateY(30px);
   }

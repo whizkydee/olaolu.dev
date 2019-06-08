@@ -47,7 +47,7 @@ const Header = Vue.component('Header', {
   },
 
   render() {
-    const { twitter, facebook, linkedIn, github } = SOCIAL_PROFILES
+    const { twitter, instagram, linkedIn, github } = SOCIAL_PROFILES
     const getLabel = () => (this.menuOpen ? 'Close' : 'Open') + ' contact menu'
 
     return (
@@ -77,17 +77,17 @@ const Header = Vue.component('Header', {
           </ul>
 
           <ul class="social__contact">
-            <Link external href={facebook} ariaLabel="Olaolu on facebook">
-              FB
-            </Link>
-            <Link external href={twitter} ariaLabel="Olaolu on twitter">
+            <Link external href={twitter} ariaLabel="Olaolu on Twitter">
               TW
             </Link>
-            <Link external href={linkedIn} ariaLabel="Olaolu on linkedIn">
+            <Link external href={github} ariaLabel="Olaolu on GitHub">
+              GH
+            </Link>
+            <Link external href={linkedIn} ariaLabel="Olaolu on LinkedIn">
               LN
             </Link>
-            <Link external href={github} ariaLabel="Olaolu on github">
-              GH
+            <Link external href={instagram} ariaLabel="Olaolu on Instagram">
+              IG
             </Link>
           </ul>
         </nav>
