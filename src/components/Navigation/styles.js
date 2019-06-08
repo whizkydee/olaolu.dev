@@ -34,12 +34,12 @@ const StyledNavigation = styled.nav`
       transition: 0.2s 100ms;
       background-color: currentColor;
     }
-  }
 
-  .current a:after {
-    transform: scale(1.4);
-    background: transparent;
-    border: 0.07em solid currentColor;
+    &[aria-current='page']:after {
+      transform: scale(1.4);
+      background: transparent;
+      border: 0.07em solid currentColor;
+    }
   }
 `
 

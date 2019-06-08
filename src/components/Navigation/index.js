@@ -8,7 +8,7 @@ const Navigation = Vue.component('Navigation', {
       goToSection(document.querySelector(event.target.getAttribute('href'))),
 
     isActiveWhen(sectionId) {
-      return this.$store.state.currentSection === sectionId && 'current'
+      return this.$store.state.currentSection === sectionId && 'page'
     },
   },
 
@@ -20,25 +20,25 @@ const Navigation = Vue.component('Navigation', {
             href="#une"
             ariaLabel="Page 1, Pitch"
             clickFn={this.goToSection}
-            class={this.isActiveWhen('une')}
+            ariaCurrent={this.isActiveWhen('une')}
           />
           <Link
             href="#deux"
             ariaLabel="Page 2, Focus"
             clickFn={this.goToSection}
-            class={this.isActiveWhen('deux')}
+            ariaCurrent={this.isActiveWhen('deux')}
           />
           <Link
             href="#trois"
             clickFn={this.goToSection}
             ariaLabel="Page 3, Experience"
-            class={this.isActiveWhen('trois')}
+            ariaCurrent={this.isActiveWhen('trois')}
           />
           <Link
             href="#quatre"
             ariaLabel="Page 4"
             clickFn={this.goToSection}
-            class={this.isActiveWhen('quatre')}
+            ariaCurrent={this.isActiveWhen('quatre')}
           />
         </ul>
       </StyledNavigation>
@@ -48,13 +48,14 @@ const Navigation = Vue.component('Navigation', {
 
 const Link = Vue.component('Link', {
   render() {
-    const { href, external, ariaLabel, clickFn } = this
+    const { href, external, ariaLabel, ariaCurrent, clickFn } = this
 
     return (
       <li>
         <a
           href={href}
           aria-label={ariaLabel}
+          aria-current={ariaCurrent}
           onClick={e => {
             this.href.charAt(0) === '#' && e.preventDefault()
             typeof clickFn === 'function' && clickFn.call(this, e)
@@ -72,6 +73,7 @@ const Link = Vue.component('Link', {
     href: String,
     clickFn: Function,
     ariaLabel: String,
+    ariaCurrent: [String, Boolean],
     external: { type: Boolean, default: false },
   },
 })
