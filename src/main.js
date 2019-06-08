@@ -8,6 +8,11 @@ import { ContentView, Cavalier } from '@/SauceDripUI'
 Vue.component('Cavalier', Cavalier)
 Vue.component('ContentView', ContentView)
 
+if (!('scrollBehavior' in document.documentElement.style)) {
+  window.__forceSmoothScrollPolyfill__ = true
+  require('smoothscroll-polyfill').polyfill()
+}
+
 Vue.config.productionTip = false
 
 new Vue({
