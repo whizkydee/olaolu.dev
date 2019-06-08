@@ -39,6 +39,10 @@ const Homepage = Vue.component('Homepage', {
       return this[CURRENT_SECTION_KEY]
     },
 
+    isCurrentSection(id) {
+      return '' + (this.getCurrentSectionId() === id)
+    },
+
     recalcSection() {
       goToSection(this.getSection(this.getCurrentSectionId()))
     },
@@ -124,11 +128,13 @@ const Homepage = Vue.component('Homepage', {
   },
 
   render() {
+    const { isCurrentSection } = this
+
     return (
       <ContentView id="homepage" ref="mainElem">
-        <PitchSlate id="une" />
-        <Concentrer id="deux" />
-        <Experience id="trois" />
+        <PitchSlate id="une" aria-hidden={!isCurrentSection('une')} />
+        <Concentrer id="deux" aria-hidden={!isCurrentSection('deux')} />
+        <Experience id="trois" aria-hidden={!isCurrentSection('trois')} />
       </ContentView>
     )
   },
