@@ -41,6 +41,7 @@ const StyledHeader = styled.header`
     display: flex;
     position: relative;
     flex-direction: column;
+    outline-color: transparent;
 
     svg {
       height: 46px;
@@ -105,6 +106,10 @@ const StyledHeader = styled.header`
 
     a {
       color: ${props => props.theme.colors['electric-blue']};
+
+      &:focus {
+        outline-color: transparent;
+      }
     }
   }
 
@@ -144,7 +149,8 @@ const StyledHeader = styled.header`
     color: ${props => props.theme.colors['electric-blue']};
 
     &:focus {
-      outline: none;
+      outline-offset: 4px;
+      outline-color: transparent;
     }
 
     &.x {

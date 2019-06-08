@@ -2,6 +2,7 @@ import Vue from 'vue'
 import { Link } from '@/components'
 import StyledHeader from './styles'
 import { SauceDripLogo } from '@/assets'
+import { CURRENT_SECTION_KEY } from '@/constants'
 
 const Header = Vue.component('Header', {
   data: () => ({
@@ -32,7 +33,7 @@ const Header = Vue.component('Header', {
     },
 
     maybeTransform() {
-      this.isCompact = window.pageYOffset > 100
+      this.isCompact = this.$store.state[CURRENT_SECTION_KEY] !== 'une'
     },
 
     maybeCloseMenu(event) {

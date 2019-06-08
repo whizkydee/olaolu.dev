@@ -1,5 +1,6 @@
 import theme from './theme'
 import { createMenuShadow } from '@/helpers'
+import { TABBING_CLASSNAME } from '@/constants'
 import { injectGlobal, css } from 'vue-styled-components'
 
 const { colors, fontFamily } = theme
@@ -53,6 +54,22 @@ const GlobalStyle = injectGlobal`
 
     &#homepage {
       overflow: hidden;
+    }
+
+    &${`.${TABBING_CLASSNAME}`} {
+      #logo:focus,
+      #contact__menu a:focus,
+      [data-section='trois'] .menu__toggle:not(.x):focus {
+        outline-color: ${colors.lime};
+      }
+
+      .menu__toggle:focus {
+        outline-color: ${colors['electric-blue']};
+      }
+
+      #section__nav a:focus:after {
+        box-shadow: 0 0 0 0.3rem rgba(24, 156, 230, 0.4);
+      }
     }
   }
 
@@ -140,8 +157,8 @@ const GlobalStyle = injectGlobal`
     padding: 15px;
     z-index: 1001;
     transition: .2s;
+    position: fixed;
     user-select: none;
-    position: absolute;
     border-radius: 3px;
 
     &:focus {

@@ -19,11 +19,11 @@ const StyledNavigation = styled.nav`
   }
 
   a {
-    outline: none;
     display: flex;
     width: inherit;
     position: relative;
     color: currentColor;
+    outline-color: transparent;
 
     &:after {
       content: '';
