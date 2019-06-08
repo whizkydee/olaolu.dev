@@ -43,6 +43,21 @@ const Homepage = Vue.component('Homepage', {
       goToSection(this.getSection(this.getCurrentSectionId()))
     },
 
+    getSection(id = this.getCurrentSectionId()) {
+      const sectionElem = document.getElementById(id)
+
+      if (!sectionElem) return
+      return sectionElem
+    },
+
+    goToNextSection() {
+      goToSection(this.getSection().nextElementSibling)
+    },
+
+    goToPrevSection() {
+      goToSection(this.getSection().previousElementSibling)
+    },
+
     handleMouseWheel(event) {
       switch (Math.sign(event.deltaY)) {
         case 1:
@@ -74,21 +89,6 @@ const Homepage = Vue.component('Homepage', {
           this.goToPrevSection()
           break
       }
-    },
-
-    getSection(id = this.getCurrentSectionId()) {
-      const sectionElem = document.getElementById(id)
-
-      if (!sectionElem) return
-      return sectionElem
-    },
-
-    goToNextSection() {
-      goToSection(this.getSection().nextElementSibling)
-    },
-
-    goToPrevSection() {
-      goToSection(this.getSection().previousElementSibling)
     },
   },
 
