@@ -15,31 +15,40 @@ const StyledNavigation = styled.nav`
 
   li {
     width: 100%;
-    margin-bottom: 31px;
   }
 
   a {
     display: flex;
     width: inherit;
+    min-height: 27px;
     position: relative;
     color: currentColor;
     transition-delay: 100ms;
     outline-color: transparent;
 
+    &:not([aria-current='page']) {
+      margin: 0 0.5px;
+    }
+
     &:after {
       content: '';
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
       position: absolute;
       border-radius: 100%;
       transition: 0.2s 100ms;
+      clip-path: circle(100%);
       background-color: currentColor;
     }
 
-    &[aria-current='page']:after {
-      transform: scale(1.4);
-      background: transparent;
-      border: 0.07em solid currentColor;
+    &[aria-current='page'] {
+      height: 30px;
+
+      &:after {
+        transform: scale(1.9);
+        background: transparent;
+        border: 0.07em solid currentColor;
+      }
     }
   }
 `

@@ -40,6 +40,12 @@ const Navigation = Vue.component('Navigation', {
             ariaLabel="Go to section 4."
             ariaCurrent={this.isActiveWhen('quatre')}
           />
+          <Link
+            href="#cinq"
+            clickFn={this.goToSection}
+            ariaLabel="Go to section 5."
+            ariaCurrent={this.isActiveWhen('cinq')}
+          />
         </ul>
       </StyledNavigation>
     )
