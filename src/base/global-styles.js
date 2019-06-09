@@ -152,17 +152,22 @@ const GlobalStyle = injectGlobal`
   }
 
   #skip-link {
-    margin: 3px;
     top: -50px;
-    padding: 15px;
     z-index: 1001;
-    transition: .2s;
+    color: #eeffff;
     position: fixed;
     user-select: none;
+    padding: 8px 15px;
     border-radius: 3px;
+    transition: top .2s;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background: ${colors.default};
 
     &:focus {
       top: 0;
+      left: 0;
+      outline: none;
     }
   }
 

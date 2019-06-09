@@ -12,7 +12,7 @@ const App = Vue.component('App', {
     return (
       <ThemeProvider id="app" theme={theme}>
         <a href="#main" id="skip-link">
-          Skip to content
+          Skip to main content
         </a>
 
         <Header />
