@@ -4,6 +4,7 @@ import PitchSlate from './PitchSlate'
 import Experience from './Experience'
 import Cornerstone from './Cornerstone'
 import { goToSection } from '@/helpers'
+import Carriageway from './Carriageway'
 import { getEventPath, resetScroll } from '@mrolaolu/helpers'
 import { CURRENT_SECTION_KEY, SECTIONS, NAVIGATION_ID } from '@/constants'
 
@@ -138,6 +139,7 @@ const Homepage = Vue.component('Homepage', {
         <PitchSlate id="une" aria-hidden={!isCurrentSection('une')} />
         <Cornerstone id="deux" aria-hidden={!isCurrentSection('deux')} />
         <Experience id="trois" aria-hidden={!isCurrentSection('trois')} />
+        <Carriageway id="quatre" aria-hidden={!isCurrentSection('quatre')} />
       </ContentView>
     )
   },

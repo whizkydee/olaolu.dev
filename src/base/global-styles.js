@@ -200,7 +200,8 @@ const GlobalStyle = injectGlobal`
       }
     }
 
-    &[data-section='deux'] {
+    &[data-section='deux'],
+    &[data-section='quatre'] {
       #logo path {
         fill: ${colors['electric-blue']};
       }

@@ -43,6 +43,7 @@ const StyledContentView = styled.main`
 
   > section {
     display: flex;
+    outline: none;
     position: relative;
     align-items: center;
     justify-content: center;
