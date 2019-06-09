@@ -39,12 +39,14 @@ const StyledCavalier = styled.div`
     font-size: 4em;
     max-width: 30vw;
     font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -2px;
     color: ${props => props.theme.colors['electric-blue']};
   }
 
   p {
     width: 32vw;
-    line-height: 1.5;
+    line-height: 1.6;
     font-size: 1.07em;
     color: ${props => props.theme.colors.default};
   }
