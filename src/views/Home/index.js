@@ -15,9 +15,11 @@ const Homepage = Vue.component('Homepage', {
   mounted() {
     const { documentElement } = document
 
+    // Set current section to the first section.
+    this.$root.$el.dataset.section = this.getCurrentSectionId()
+
     // Ensure the page always starts from the beginning.
-    window.setTimeout(() => resetScroll(document.documentElement), 0)
-    document.getElementById('app').dataset.section = this.getCurrentSectionId()
+    this.debounce(() => resetScroll(document.documentElement), 0)
 
     window.addEventListener('resize', this.recalcSection)
     document.addEventListener('keydown', this.maybeScrollJack)
@@ -40,7 +42,7 @@ const Homepage = Vue.component('Homepage', {
     },
 
     isCurrentSection(id) {
-      return '' + (this.getCurrentSectionId() === id)
+      return this.getCurrentSectionId() === id
     },
 
     recalcSection() {
@@ -86,6 +88,7 @@ const Homepage = Vue.component('Homepage', {
       if (
         !isNavFocused &&
         event.target !== document.body &&
+        event.target !== this.$root.$el &&
         event.target !== this.$refs.mainElem.$el &&
         event.target !== document.documentElement
       )

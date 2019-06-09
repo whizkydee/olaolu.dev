@@ -181,7 +181,9 @@ const GlobalStyle = injectGlobal`
   [class$='__content'] {
     width: 100%;
     display: flex;
-    padding: 0 8em;
+    @media (min-width: 1501px) {
+      padding: 0 8em;
+    }
 
     @media (max-width: 1500px) {
       padding: 0 10em;
