@@ -37,6 +37,13 @@ const StyledHeader = styled.header`
     }
   }
 
+  &[data-compact='false'] {
+    .logo_svg__lu,
+    .logo_svg__ola {
+      transition: opacity 0.5s, transform 0.5s 200ms ease-out;
+    }
+  }
+
   #logo {
     height: 46px;
     width: 8.34vw;
@@ -54,7 +61,6 @@ const StyledHeader = styled.header`
     .logo_svg__ola {
       opacity: 1;
       transform: translate(0);
-      transition: opacity 0.5s, transform 0.5s 200ms ease-out;
     }
   }
 
@@ -62,10 +68,11 @@ const StyledHeader = styled.header`
     top: 20px;
     right: 49px;
     z-index: 999;
-    width: 320px;
     display: flex;
     padding: 50px;
+    width: 22.223vw;
     box-shadow: none;
+    min-width: 320px;
     user-select: none;
     font-size: 1.06em;
     position: absolute;
