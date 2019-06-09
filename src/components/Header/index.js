@@ -66,7 +66,7 @@ const Header = Vue.component('Header', {
 
         <nav
           id="contact__menu"
-          aria-label="Contact links"
+          aria-label="Contact menu"
           aria-expanded={'' + this.menuOpen}
         >
           <span class="title">Say Hello</span>
