@@ -1,10 +1,17 @@
+import theme from '@/base/theme'
+import { toPx } from '@/helpers'
 import styled from 'vue-styled-components'
+
+const MARGIN_TOP = 60
+const LANES_HEIGHT = 575
+
+const DERIVED_HEIGHT = theme.header.height + MARGIN_TOP + LANES_HEIGHT
 
 const StyledCarriageway = styled.section`
   .carriageway__content {
-    margin-top: 60px;
     position: relative;
     justify-content: center;
+    margin-top: ${toPx(MARGIN_TOP)};
 
     @media (max-width: 1500px) {
       max-width: unset;
@@ -14,10 +21,13 @@ const StyledCarriageway = styled.section`
 
   .lanes {
     width: 100%;
-    height: 70vh;
     display: flex;
-    min-height: 575px;
     background-color: #fff;
+
+    @media (min-height: ${toPx(DERIVED_HEIGHT)}) {
+      height: 70vh;
+      min-height: ${toPx(LANES_HEIGHT)};
+    }
 
     li {
       width: 50%;

@@ -1,5 +1,7 @@
 import store from './store'
 
+const toPx = (n = 0) => n + 'px'
+
 const scrollToElem = targetElem => {
   if (!targetElem || !(targetElem instanceof HTMLElement)) return
 
@@ -22,4 +24,4 @@ const goToSection = section => {
 const createMenuShadow = (color = 'rgba(72, 49, 212, .05)') =>
   `0 10px 53px 0 ${color}`
 
-export { scrollToElem, goToSection, createMenuShadow }
+export { toPx, scrollToElem, goToSection, createMenuShadow }

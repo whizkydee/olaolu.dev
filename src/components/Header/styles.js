@@ -1,5 +1,5 @@
 import styled from 'vue-styled-components'
-import { createMenuShadow } from '@/helpers'
+import { createMenuShadow, toPx } from '@/helpers'
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -9,8 +9,8 @@ const StyledHeader = styled.header`
   align-items: center;
   background: transparent;
   justify-content: space-between;
-  height: ${props => props.theme.header.height};
   padding: 0 ${props => props.theme.header.padding};
+  height: ${props => toPx(props.theme.header.height)};
 
   &[data-compact='true'] {
     #logo {

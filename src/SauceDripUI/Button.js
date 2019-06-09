@@ -106,10 +106,10 @@ function createStyledButton(tagName, props) {
       color: ${props => props.theme.colors['electric-blue']};
 
       &:before {
-        left: 0;
         right: 0;
         bottom: 0;
         top: -1px;
+        left: -1px;
         width: 0%;
         content: '';
         z-index: -1;

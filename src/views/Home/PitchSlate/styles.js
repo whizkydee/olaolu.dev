@@ -1,3 +1,4 @@
+import { toPx } from '@/helpers'
 import styled from 'vue-styled-components'
 
 const StyledPitchSlate = styled.section`
@@ -11,7 +12,7 @@ const StyledPitchSlate = styled.section`
   }
 
   .primary__content {
-    margin-top: ${props => `calc(${props.theme.header.height} + 30px)`};
+    margin-top: ${props => `calc(${toPx(props.theme.header.height)} + 30px)`};
   }
 
   .cavalier {
@@ -53,7 +54,7 @@ const StyledPitchSlate = styled.section`
     height: 90vh;
     position: absolute;
     margin-left: -90px;
-    top: ${props => props.theme.header.height};
+    top: ${props => toPx(props.theme.header.height)};
   }
 
   .bottom__content {
