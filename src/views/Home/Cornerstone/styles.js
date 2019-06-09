@@ -1,8 +1,6 @@
 import styled from 'vue-styled-components'
 
 const StyledCornerstone = styled.section`
-  height: 100vh;
-
   .cornerstone__content {
     flex-direction: column;
 

@@ -1,7 +1,6 @@
 import styled from 'vue-styled-components'
 
 const StyledExperience = styled.section`
-  height: 100vh;
   background-color: ${props => props.theme.colors['electric-blue']};
 
   .experience__content {

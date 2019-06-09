@@ -46,6 +46,10 @@ const StyledContentView = styled.main`
     position: relative;
     align-items: center;
     justify-content: center;
+
+    &:not(#une) {
+      height: 100vh;
+    }
   }
 `
 StyledContentView.name = 'StyledContentView'
