@@ -21,6 +21,7 @@ const StyledExperience = styled.section`
   }
 
   .work__illo {
+    margin: 0;
     position: relative;
 
     svg {

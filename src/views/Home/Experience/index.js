@@ -28,9 +28,12 @@ const Experience = Vue.component('Experience', {
             </p>
           </Cavalier>
 
-          <div class="work__illo">
+          <figure
+            class="work__illo"
+            aria-label="Illustration of Olaolu surrounded with some of his past work."
+          >
             <OlaoluWorkIllo />
-          </div>
+          </figure>
         </div>
       </StyledExperience>
     )
