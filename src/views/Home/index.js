@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import { mapState } from 'vuex'
 import PitchSlate from './PitchSlate'
-import Concentrer from './Concentrer'
 import Experience from './Experience'
+import Cornerstone from './Cornerstone'
 import { goToSection } from '@/helpers'
 import { getEventPath, resetScroll } from '@mrolaolu/helpers'
 import { CURRENT_SECTION_KEY, SECTIONS, NAVIGATION_ID } from '@/constants'
@@ -133,7 +133,7 @@ const Homepage = Vue.component('Homepage', {
     return (
       <ContentView id="homepage" ref="mainElem">
         <PitchSlate id="une" aria-hidden={!isCurrentSection('une')} />
-        <Concentrer id="deux" aria-hidden={!isCurrentSection('deux')} />
+        <Cornerstone id="deux" aria-hidden={!isCurrentSection('deux')} />
         <Experience id="trois" aria-hidden={!isCurrentSection('trois')} />
       </ContentView>
     )

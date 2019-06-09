@@ -1,9 +1,9 @@
 import styled from 'vue-styled-components'
 
-const StyledConcentrer = styled.section`
+const StyledCornerstone = styled.section`
   height: 100vh;
 
-  .concentrer__content {
+  .cornerstone__content {
     flex-direction: column;
 
     .cavalier {
@@ -14,5 +14,5 @@ const StyledConcentrer = styled.section`
   }
 `
 
-StyledConcentrer.name = 'StyledConcentrer'
-export default StyledConcentrer
+StyledCornerstone.name = 'StyledCornerstone'
+export default StyledCornerstone
