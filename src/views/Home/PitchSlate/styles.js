@@ -11,12 +11,18 @@ const StyledPitchSlate = styled.section`
   }
 
   .primary__content {
-    margin-top: ${props => props.theme.header.height};
+    margin-top: ${props => `calc(${props.theme.header.height} + 30px)`};
   }
 
   .cavalier {
-    h1 span {
-      color: #fff;
+    margin-top: -10px;
+
+    h1 {
+      font-size: 4.4em;
+
+      span {
+        color: #eeffff;
+      }
     }
 
     p {
@@ -25,6 +31,7 @@ const StyledPitchSlate = styled.section`
   }
 
   .visage {
+    margin: 0;
     width: 23.334em;
     height: 24.67em;
     border: 1.5px solid #fff;
