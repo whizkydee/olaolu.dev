@@ -41,6 +41,14 @@ const StyledPitchSlate = styled.section`
     }
   }
 
+  #sauce__drip__outline {
+    left: 0;
+    height: 90vh;
+    position: absolute;
+    margin-left: -90px;
+    top: ${props => props.theme.header.height};
+  }
+
   .bottom__content {
     margin-top: auto;
     padding-right: ${props => props.theme.header.padding};

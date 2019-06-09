@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import StyledPitchSlate from './styles'
 import { Navigation } from '@/components'
+import { LogomarkOutline } from '@/assets'
 import { NAVIGATION_ID } from '@/constants'
 
 const PitchSlate = Vue.component('PitchSlate', {
@@ -8,6 +9,8 @@ const PitchSlate = Vue.component('PitchSlate', {
     return (
       <StyledPitchSlate class="pente">
         <div class="primary__content">
+          <LogomarkOutline id="sauce__drip__outline" />
+
           <Cavalier
             theme="lime"
             text="I like to craft solid and scalable FE products with great user experiences."
