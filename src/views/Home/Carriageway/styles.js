@@ -22,6 +22,7 @@ const StyledCarriageway = styled.section`
     li {
       width: 50%;
       padding: 100px;
+      padding-left: ${props => props.theme.header.padding};
 
       &:not(:last-of-type) {
         border-right: 2px solid rgba(72, 49, 212, 0.3);
