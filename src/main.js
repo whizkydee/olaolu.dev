@@ -3,8 +3,9 @@ import App from './App'
 import store from './store'
 import router from './router'
 import './registerServiceWorker'
-import { ContentView, Cavalier } from '@/SauceDripUI'
+import { ContentView, Cavalier, Button } from '@/SauceDripUI'
 
+Vue.component('Button', Button)
 Vue.component('Cavalier', Cavalier)
 Vue.component('ContentView', ContentView)
 

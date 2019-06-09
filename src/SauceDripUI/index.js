@@ -1,4 +1,5 @@
+import Button from './Button'
 import Cavalier from './Cavalier'
 import ContentView from './ContentView'
 
-export { ContentView, Cavalier }
+export { ContentView, Cavalier, Button }
