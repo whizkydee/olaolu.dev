@@ -79,7 +79,7 @@ const Homepage = Vue.component('Homepage', {
       const curTime = new Date().getTime()
       const timeDiff = curTime - this.prevTime
       this.prevTime = curTime
-      const wheelingLudicrouslyFast = timeDiff < 70
+      const wheelingLudicrouslyFast = timeDiff < 60
 
       if (!wheelingLudicrouslyFast) {
         switch (Math.sign(event.deltaY)) {
