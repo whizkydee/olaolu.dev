@@ -13,7 +13,7 @@ const Cornerstone = Vue.component('Cornerstone', {
 
           <Cavalier
             heading="Engineering"
-            text="In JavaScript applications these days where there's a thousand and one ways to go about solving a problem, I'm equipped with just the right tools and techniques to deliver fast, definitive solutions optimized for scalability &mdash; Web performance and extensibility are priorities on my radar."
+            text="In providing solutions to a problem, I'm equipped with just the right tools, and can absolutely function independently of them to deliver fast, definitive solutions optimized for scalability &mdash; Web performance and extensibility are priorities on my radar."
           />
         </div>
       </StyledCornerstone>

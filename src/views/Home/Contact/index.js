@@ -8,7 +8,7 @@ const Contact = Vue.component('Contact', {
         <div class="contact__content">
           <Cavalier
             heading="Send me a message!"
-            text="Got a question or proposal, or just want to say hello? Go ahead."
+            text="Got a question or proposal, or just want <br /> to say hello? Go ahead."
           />
 
           <ContactForm id="home__contact" />
