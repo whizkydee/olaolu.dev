@@ -60,7 +60,7 @@ const Homepage = Vue.component('Homepage', {
       return this[CURRENT_SECTION_KEY]
     },
 
-    maybeSectionHidden(id) {
+    whenSectionHidden(id) {
       return (this.getCurrentSectionId() !== id).toString()
     },
 
@@ -94,12 +94,14 @@ const Homepage = Vue.component('Homepage', {
     },
 
     handleTouchstart(event) {
+      if (typeof event.touches === 'undefined') return
       this.touchY = event.touches[0].clientY
     },
 
     handleTouchmove(event) {
-      const curTouchY = event.changedTouches[0].clientY
+      if (typeof event.changedTouches === 'undefined') return
 
+      const curTouchY = event.changedTouches[0].clientY
       if (!this.scrollingLudicrouslyFast()) {
         if (this.touchY > curTouchY) this.goToNextSection()
         else this.goToPrevSection()
@@ -170,29 +172,29 @@ const Homepage = Vue.component('Homepage', {
   },
 
   render() {
-    const { maybeSectionHidden } = this
+    const { whenSectionHidden } = this
 
     return (
       <ContentView id="homepage" ref="mainElem">
         <PitchSlate
           id={SECTIONS[0]}
-          aria-hidden={maybeSectionHidden(SECTIONS[0])}
+          aria-hidden={whenSectionHidden(SECTIONS[0])}
         />
         <Cornerstone
           id={SECTIONS[1]}
-          aria-hidden={maybeSectionHidden(SECTIONS[1])}
+          aria-hidden={whenSectionHidden(SECTIONS[1])}
         />
         <Experience
           id={SECTIONS[2]}
-          aria-hidden={maybeSectionHidden(SECTIONS[2])}
+          aria-hidden={whenSectionHidden(SECTIONS[2])}
         />
         <Carriageway
           id={SECTIONS[3]}
-          aria-hidden={maybeSectionHidden(SECTIONS[3])}
+          aria-hidden={whenSectionHidden(SECTIONS[3])}
         />
         <Contact
           id={SECTIONS[4]}
-          aria-hidden={maybeSectionHidden(SECTIONS[4])}
+          aria-hidden={whenSectionHidden(SECTIONS[4])}
         />
       </ContentView>
     )
