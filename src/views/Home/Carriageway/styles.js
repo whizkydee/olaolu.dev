@@ -1,5 +1,5 @@
 import theme from '@/base/theme'
-import { toPx } from '@/helpers'
+import { toPx } from '@mrolaolu/helpers'
 import styled from 'vue-styled-components'
 
 const MARGIN_TOP = 60

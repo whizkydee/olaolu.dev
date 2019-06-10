@@ -1,6 +1,6 @@
 import Vue from 'vue'
+import { toPx } from '@mrolaolu/helpers'
 import styled from 'vue-styled-components'
-import { toPx } from '@/helpers'
 
 const InputGroup = Vue.component('InputGroup', {
   data: () => ({

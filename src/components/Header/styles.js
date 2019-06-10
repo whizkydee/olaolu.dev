@@ -1,5 +1,6 @@
 import styled from 'vue-styled-components'
-import { createMenuShadow, toPx } from '@/helpers'
+import { toPx } from '@mrolaolu/helpers'
+import { createMenuShadow } from '@/helpers'
 
 const StyledHeader = styled.header`
   width: 100%;

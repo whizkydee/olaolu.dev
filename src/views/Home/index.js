@@ -6,7 +6,7 @@ import Experience from './Experience'
 import Cornerstone from './Cornerstone'
 import { goToSection } from '@/helpers'
 import Carriageway from './Carriageway'
-import { getEventPath, resetScroll } from '@mrolaolu/helpers'
+import { getEventPath, resetScroll, debounce } from '@mrolaolu/helpers'
 import { CURRENT_SECTION_KEY, SECTIONS, NAVIGATION_ID } from '@/constants'
 
 const Homepage = Vue.component('Homepage', {
@@ -21,11 +21,11 @@ const Homepage = Vue.component('Homepage', {
   mounted() {
     const { documentElement } = document
 
+    // Ensure the page always starts from the beginning.
+    this.debounce(() => resetScroll(), 0)
+
     // Set current section to the first section.
     this.$root.$el.dataset.section = this.getCurrentSectionId()
-
-    // Ensure the page always starts from the beginning.
-    this.debounce(() => resetScroll(document.documentElement), 0)
 
     window.addEventListener('resize', this.recalcSection)
     document.addEventListener('keydown', this.maybeScrollJack)
@@ -47,8 +47,8 @@ const Homepage = Vue.component('Homepage', {
       return this[CURRENT_SECTION_KEY]
     },
 
-    isCurrentSection(id) {
-      return this.getCurrentSectionId() === id
+    maybeSectionHidden(id) {
+      return (this.getCurrentSectionId() !== id).toString()
     },
 
     recalcSection() {
@@ -70,10 +70,7 @@ const Homepage = Vue.component('Homepage', {
       goToSection(this.getSection().previousElementSibling)
     },
 
-    debounce(cb, timeout = 250) {
-      if (typeof cb !== 'function') return
-      window.setTimeout(cb, timeout)
-    },
+    debounce: (cb, timeout = 250) => debounce(cb, timeout),
 
     handleMouseWheel(event) {
       const curTime = new Date().getTime()
@@ -144,18 +141,30 @@ const Homepage = Vue.component('Homepage', {
   },
 
   render() {
-    const { isCurrentSection } = this
+    const { maybeSectionHidden } = this
 
     return (
       <ContentView id="homepage" ref="mainElem">
-        <PitchSlate id="une" aria-hidden={'' + !isCurrentSection('une')} />
-        <Cornerstone id="deux" aria-hidden={'' + !isCurrentSection('deux')} />
-        <Experience id="trois" aria-hidden={'' + !isCurrentSection('trois')} />
-        <Carriageway
-          id="quatre"
-          aria-hidden={'' + !isCurrentSection('quatre')}
+        <PitchSlate
+          id={SECTIONS[0]}
+          aria-hidden={maybeSectionHidden(SECTIONS[0])}
         />
-        <Contact id="cinq" aria-hidden={'' + !isCurrentSection('cinq')} />
+        <Cornerstone
+          id={SECTIONS[1]}
+          aria-hidden={maybeSectionHidden(SECTIONS[1])}
+        />
+        <Experience
+          id={SECTIONS[2]}
+          aria-hidden={maybeSectionHidden(SECTIONS[2])}
+        />
+        <Carriageway
+          id={SECTIONS[3]}
+          aria-hidden={maybeSectionHidden(SECTIONS[3])}
+        />
+        <Contact
+          id={SECTIONS[4]}
+          aria-hidden={maybeSectionHidden(SECTIONS[4])}
+        />
       </ContentView>
     )
   },
