@@ -10,6 +10,10 @@ import { getEventPath, resetScroll } from '@mrolaolu/helpers'
 import { CURRENT_SECTION_KEY, SECTIONS, NAVIGATION_ID } from '@/constants'
 
 const Homepage = Vue.component('Homepage', {
+  data: () => ({
+    prevTime: new Date().getTime(),
+  }),
+
   computed: {
     ...mapState([CURRENT_SECTION_KEY]),
   },
@@ -72,13 +76,20 @@ const Homepage = Vue.component('Homepage', {
     },
 
     handleMouseWheel(event) {
-      switch (Math.sign(event.deltaY)) {
-        case 1:
-          this.debounce(this.goToNextSection())
-          break
-        case -1:
-          this.debounce(this.goToPrevSection())
-          break
+      const curTime = new Date().getTime()
+      const timeDiff = curTime - this.prevTime
+      this.prevTime = curTime
+      const wheelingLudicrouslyFast = timeDiff < 40
+
+      if (!wheelingLudicrouslyFast) {
+        switch (Math.sign(event.deltaY)) {
+          case 1:
+            this.debounce(this.goToNextSection())
+            break
+          case -1:
+            this.debounce(this.goToPrevSection())
+            break
+        }
       }
     },
 
