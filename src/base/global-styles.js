@@ -25,6 +25,7 @@ const GlobalStyle = injectGlobal`
     width: 100%;
     height: 100%;
     font-size: 1vw;
+    touch-action: none;
     position: relative;
     scroll-behavior: smooth;
     font-family: ${fontFamily};
@@ -62,6 +63,7 @@ const GlobalStyle = injectGlobal`
     margin: 0;
     height: 100%;
     font: inherit;
+    touch-action: none;
     font-weight: normal;
     line-height: inherit;
     color: ${colors.default};
@@ -94,6 +96,7 @@ const GlobalStyle = injectGlobal`
     cursor: pointer;
     border-radius: 0;
     appearance: none;
+    -webkit-tap-highlight-color: transparent;
   }
 
   textarea {

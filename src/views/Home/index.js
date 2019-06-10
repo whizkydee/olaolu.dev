@@ -11,6 +11,7 @@ import { CURRENT_SECTION_KEY, SECTIONS, NAVIGATION_ID } from '@/constants'
 
 const Homepage = Vue.component('Homepage', {
   data: () => ({
+    touchY: null,
     prevTime: new Date().getTime(),
   }),
 
@@ -29,8 +30,12 @@ const Homepage = Vue.component('Homepage', {
 
     window.addEventListener('resize', this.recalcSection)
     document.addEventListener('keydown', this.maybeScrollJack)
-    documentElement.addEventListener('wheel', this.handleMouseWheel)
-    documentElement.addEventListener('mousewheel', this.handleMouseWheel)
+    document.addEventListener('touchstart', this.handleTouchstart)
+    document.addEventListener('touchmove', this.handleTouchmove, {
+      passive: false,
+    })
+    documentElement.addEventListener('wheel', this.handleMouseWheel, false)
+    documentElement.addEventListener('mousewheel', this.handleMouseWheel, false)
   },
 
   destroyed() {
@@ -38,8 +43,16 @@ const Homepage = Vue.component('Homepage', {
 
     window.removeEventListener('resize', this.recalcSection)
     document.removeEventListener('keydown', this.maybeScrollJack)
-    documentElement.removeEventListener('wheel', this.handleMouseWheel)
-    documentElement.removeEventListener('mousewheel', this.handleMouseWheel)
+    documentElement.removeEventListener('wheel', this.handleMouseWheel, false)
+    documentElement.removeEventListener(
+      'mousewheel',
+      this.handleMouseWheel,
+      false
+    )
+    document.removeEventListener('touchstart', this.handleTouchstart)
+    document.removeEventListener('touchmove', this.handleTouchmove, {
+      passive: false,
+    })
   },
 
   methods: {
@@ -63,28 +76,44 @@ const Homepage = Vue.component('Homepage', {
     },
 
     goToNextSection() {
-      goToSection(this.getSection().nextElementSibling)
+      this.debounce(goToSection(this.getSection().nextElementSibling))
     },
 
     goToPrevSection() {
-      goToSection(this.getSection().previousElementSibling)
+      this.debounce(goToSection(this.getSection().previousElementSibling))
     },
 
     debounce: (cb, timeout = 250) => debounce(cb, timeout),
 
-    handleMouseWheel(event) {
+    scrollingLudicrouslyFast() {
       const curTime = new Date().getTime()
       const timeDiff = curTime - this.prevTime
       this.prevTime = curTime
-      const wheelingLudicrouslyFast = timeDiff < 60
 
-      if (!wheelingLudicrouslyFast) {
+      return timeDiff < 60
+    },
+
+    handleTouchstart(event) {
+      this.touchY = event.touches[0].clientY
+    },
+
+    handleTouchmove(event) {
+      const curTouchY = event.changedTouches[0].clientY
+
+      if (!this.scrollingLudicrouslyFast()) {
+        if (this.touchY > curTouchY) this.goToNextSection()
+        else this.goToPrevSection()
+      }
+    },
+
+    handleMouseWheel(event) {
+      if (!this.scrollingLudicrouslyFast()) {
         switch (Math.sign(event.deltaY)) {
           case 1:
-            this.debounce(this.goToNextSection())
+            this.goToNextSection()
             break
           case -1:
-            this.debounce(this.goToPrevSection())
+            this.goToPrevSection()
             break
         }
       }
@@ -113,7 +142,7 @@ const Homepage = Vue.component('Homepage', {
         case 'PageDown':
         case 'ArrowRight':
           event.preventDefault()
-          this.debounce(this.goToNextSection())
+          this.goToNextSection()
           break
 
         case 'Up':
@@ -122,7 +151,7 @@ const Homepage = Vue.component('Homepage', {
         case 'PageUp':
         case 'ArrowLeft':
           event.preventDefault()
-          this.debounce(this.goToPrevSection())
+          this.goToPrevSection()
           break
 
         case 'Home':

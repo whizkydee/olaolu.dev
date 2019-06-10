@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import StyledNavigation from './styles'
 import { goToSection } from '@/helpers'
-import { NAVIGATION_ITEM } from '@/constants'
+import { NAVIGATION_BULLET } from '@/constants'
 
 const Navigation = Vue.component('Navigation', {
   methods: {
@@ -19,7 +19,7 @@ const Navigation = Vue.component('Navigation', {
         <ul ref="list">
           <Link
             href="#une"
-            className={NAVIGATION_ITEM}
+            className={NAVIGATION_BULLET}
             clickFn={this.goToSection}
             ariaLabel="Go to section 1, Pitch."
             ariaCurrent={this.isActiveWhen('une')}
@@ -27,7 +27,7 @@ const Navigation = Vue.component('Navigation', {
 
           <Link
             href="#deux"
-            className={NAVIGATION_ITEM}
+            className={NAVIGATION_BULLET}
             clickFn={this.goToSection}
             ariaCurrent={this.isActiveWhen('deux')}
             ariaLabel="Go to section 2, Cornerstone."
@@ -35,7 +35,7 @@ const Navigation = Vue.component('Navigation', {
 
           <Link
             href="#trois"
-            className={NAVIGATION_ITEM}
+            className={NAVIGATION_BULLET}
             clickFn={this.goToSection}
             ariaLabel="Go to section 3, Experience."
             ariaCurrent={this.isActiveWhen('trois')}
@@ -43,7 +43,7 @@ const Navigation = Vue.component('Navigation', {
 
           <Link
             href="#quatre"
-            className={NAVIGATION_ITEM}
+            className={NAVIGATION_BULLET}
             clickFn={this.goToSection}
             ariaLabel="Go to section 4, Carriageway."
             ariaCurrent={this.isActiveWhen('quatre')}
@@ -51,7 +51,7 @@ const Navigation = Vue.component('Navigation', {
 
           <Link
             href="#cinq"
-            className={NAVIGATION_ITEM}
+            className={NAVIGATION_BULLET}
             clickFn={this.goToSection}
             ariaLabel="Go to section 5, Contact."
             ariaCurrent={this.isActiveWhen('cinq')}

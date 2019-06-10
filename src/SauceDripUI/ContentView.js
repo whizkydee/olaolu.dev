@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import styled from 'vue-styled-components'
-import { TABBING_CLASSNAME, NAVIGATION_ITEM } from '@/constants'
+import { TABBING_CLASSNAME, NAVIGATION_BULLET } from '@/constants'
 
 const ContentView = Vue.component('ContentView', {
   created() {
@@ -65,7 +65,7 @@ const StyledContentView = styled.main`
       button:not([disabled]),
       textarea:not([disabled]),
       [contentEditable='true'],
-      ${`a[href]:not(.${NAVIGATION_ITEM})`} {
+      ${`a[href]:not(.${NAVIGATION_BULLET})`} {
         &:not([tabindex='-1']) {
           visibility: hidden;
         }

@@ -25,6 +25,7 @@ const StyledNavigation = styled.nav`
     color: currentColor;
     transition-delay: 100ms;
     outline-color: transparent;
+    -webkit-tap-highlight-color: transparent;
 
     &:not([aria-current='page']) {
       margin: 0 0.5px;

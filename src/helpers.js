@@ -1,11 +1,11 @@
 import store from './store'
-import { scrollToElem } from '@mrolaolu/helpers'
+import { scrollToElem, debounce } from '@mrolaolu/helpers'
 
 const goToSection = section => {
   if (!(section instanceof HTMLElement)) return
 
   scrollToElem(section)
-  window.setTimeout(() => {
+  debounce(() => {
     store.commit('currentSection', section.id)
     document.getElementById('app').dataset.section = section.id
   }, 200)
