@@ -1,3 +1,4 @@
+export const NAVIGATION_ITEM = 'nav__item'
 export const NAVIGATION_ID = 'section__nav'
 export const TABBING_CLASSNAME = 'is__tabbing'
 export const CURRENT_SECTION_KEY = 'currentSection'

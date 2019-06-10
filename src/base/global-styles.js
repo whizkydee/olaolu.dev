@@ -1,33 +1,9 @@
 import theme from './theme'
 import { createMenuShadow } from '@/helpers'
-import { injectGlobal, css } from 'vue-styled-components'
+import { injectGlobal } from 'vue-styled-components'
 import { TABBING_CLASSNAME, NAVIGATION_ID } from '@/constants'
 
 const { colors, fontFamily } = theme
-
-const placeholderSelectors = [
-  '::placeholder',
-  ':-moz-placeholder',
-  '::-moz-placeholder',
-  ':-ms-input-placeholder',
-  '::-webkit-input-placeholder',
-]
-
-const createPlaceholderStyles = color => {
-  let styles = ''
-
-  for (let selector of placeholderSelectors)
-    styles += `
-      ${selector} {
-        opacity: 1;
-        color: ${color};
-      }
-    `
-
-  return css`
-    ${styles}
-  `
-}
 
 const GlobalStyle = injectGlobal`
   * {
@@ -38,6 +14,11 @@ const GlobalStyle = injectGlobal`
     outline-width: 2px;
     outline-style: dashed;
     outline-color: ${colors.lime};
+  }
+
+  ::placeholder {
+    opacity: 1;
+    color: rgba(61, 21, 95, .75);
   }
 
   html {
@@ -61,6 +42,10 @@ const GlobalStyle = injectGlobal`
       #contact__menu a:focus,
       [data-section='trois'] .menu__toggle:not(.x):focus {
         outline-color: ${colors.lime};
+      }
+
+      [data-section='cinq'] #logo:focus {
+        outline-color: ${colors['electric-blue']};
       }
 
       .menu__toggle:focus {
@@ -97,10 +82,6 @@ const GlobalStyle = injectGlobal`
 
     &:not([role='button']) {
       color: ${colors.default};
-
-      &:hover {
-        color: ${colors['dark-blue']};
-      }
     }
   }
 
@@ -115,6 +96,22 @@ const GlobalStyle = injectGlobal`
     appearance: none;
   }
 
+  textarea {
+    resize: none;
+  }
+
+  textarea,
+  [type='tel'],
+  [type='text'],
+  [type='email'],
+  [type='search'],
+  [type='password'] {
+    &:focus {
+      outline-color: transparent;
+    }
+  }
+
+  textarea,
   [type='tel'],
   [type='text'],
   [type='email'],
@@ -130,14 +127,11 @@ const GlobalStyle = injectGlobal`
     &:-webkit-autofill {
       color: transparent !important;
       background-image: none !important;
-      background-color: ${colors['catskill-white']} !important;
-      -webkit-text-fill-color: ${colors['default']} !important;
-      -webkit-box-shadow: 0 0 0 1000px ${colors['catskill-white']}
-        inset !important;
+      background-color: #fff !important;
+      -webkit-box-shadow: 0 0 0 1000px none inset !important;
+      -webkit-text-fill-color: rgba(61, 21, 95, .7) !important;
     }
   }
-
-  ${createPlaceholderStyles(colors['regent-gray'])}
 
   img {
     width: auto;
@@ -194,13 +188,15 @@ const GlobalStyle = injectGlobal`
   #app {
     position: relative;
 
-    &[data-section='une'] {
-      #social__nav {
+    &[data-section='une'],
+    &[data-section='cinq'] {
+      #contact__menu {
         box-shadow: ${createMenuShadow('rgba(163, 204, 170, 0.3)')};
       }
     }
 
     &[data-section='deux'],
+    &[data-section='cinq'],
     &[data-section='quatre'] {
       #logo path {
         fill: ${colors['electric-blue']};

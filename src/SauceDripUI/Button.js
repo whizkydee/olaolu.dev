@@ -52,6 +52,8 @@ const Button = Vue.component('Button', {
 function createStyledButton(tagName, props) {
   const styles = css`
     overflow: hidden;
+    min-width: 300px;
+    font-size: 0.9em;
     font-weight: bold;
     position: relative;
     user-select: none;

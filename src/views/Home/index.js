@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import { mapState } from 'vuex'
+import Contact from './Contact'
 import PitchSlate from './PitchSlate'
 import Experience from './Experience'
 import Cornerstone from './Cornerstone'
@@ -136,10 +137,14 @@ const Homepage = Vue.component('Homepage', {
 
     return (
       <ContentView id="homepage" ref="mainElem">
-        <PitchSlate id="une" aria-hidden={!isCurrentSection('une')} />
-        <Cornerstone id="deux" aria-hidden={!isCurrentSection('deux')} />
-        <Experience id="trois" aria-hidden={!isCurrentSection('trois')} />
-        <Carriageway id="quatre" aria-hidden={!isCurrentSection('quatre')} />
+        <PitchSlate id="une" aria-hidden={'' + !isCurrentSection('une')} />
+        <Cornerstone id="deux" aria-hidden={'' + !isCurrentSection('deux')} />
+        <Experience id="trois" aria-hidden={'' + !isCurrentSection('trois')} />
+        <Carriageway
+          id="quatre"
+          aria-hidden={'' + !isCurrentSection('quatre')}
+        />
+        <Contact id="cinq" aria-hidden={'' + !isCurrentSection('cinq')} />
       </ContentView>
     )
   },

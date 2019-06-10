@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import styled from 'vue-styled-components'
-import { TABBING_CLASSNAME } from '@/constants'
+import { TABBING_CLASSNAME, NAVIGATION_ITEM } from '@/constants'
 
 const ContentView = Vue.component('ContentView', {
   created() {
@@ -50,6 +50,26 @@ const StyledContentView = styled.main`
 
     &:not(#une) {
       height: 100vh;
+    }
+
+    /*
+      Do not allow hidden sections to receive
+      focus via tabbing from an active section.
+    */
+    &[aria-hidden='true'] {
+      iframe,
+      [tabindex],
+      area[href],
+      input:not([disabled]),
+      select:not([disabled]),
+      button:not([disabled]),
+      textarea:not([disabled]),
+      [contentEditable='true'],
+      ${`a[href]:not(.${NAVIGATION_ITEM})`} {
+        &:not([tabindex='-1']) {
+          visibility: hidden;
+        }
+      }
     }
   }
 `

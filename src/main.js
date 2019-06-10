@@ -3,10 +3,13 @@ import App from './App'
 import store from './store'
 import router from './router'
 import './registerServiceWorker'
-import { ContentView, Cavalier, Button } from '@/SauceDripUI'
+import { ContactForm } from '@/components'
+import { ContentView, Cavalier, Button, InputGroup } from '@/SauceDripUI'
 
 Vue.component('Button', Button)
 Vue.component('Cavalier', Cavalier)
+Vue.component('InputGroup', InputGroup)
+Vue.component('ContactForm', ContactForm)
 Vue.component('ContentView', ContentView)
 
 if (!('scrollBehavior' in document.documentElement.style)) {

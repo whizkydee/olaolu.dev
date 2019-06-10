@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import StyledNavigation from './styles'
 import { goToSection } from '@/helpers'
+import { NAVIGATION_ITEM } from '@/constants'
 
 const Navigation = Vue.component('Navigation', {
   methods: {
@@ -18,32 +19,41 @@ const Navigation = Vue.component('Navigation', {
         <ul ref="list">
           <Link
             href="#une"
+            className={NAVIGATION_ITEM}
             clickFn={this.goToSection}
             ariaLabel="Go to section 1, Pitch."
             ariaCurrent={this.isActiveWhen('une')}
           />
+
           <Link
             href="#deux"
+            className={NAVIGATION_ITEM}
             clickFn={this.goToSection}
-            ariaLabel="Go to section 2, Focus."
             ariaCurrent={this.isActiveWhen('deux')}
+            ariaLabel="Go to section 2, Cornerstone."
           />
+
           <Link
             href="#trois"
+            className={NAVIGATION_ITEM}
             clickFn={this.goToSection}
             ariaLabel="Go to section 3, Experience."
             ariaCurrent={this.isActiveWhen('trois')}
           />
+
           <Link
             href="#quatre"
+            className={NAVIGATION_ITEM}
             clickFn={this.goToSection}
-            ariaLabel="Go to section 4."
+            ariaLabel="Go to section 4, Carriageway."
             ariaCurrent={this.isActiveWhen('quatre')}
           />
+
           <Link
             href="#cinq"
+            className={NAVIGATION_ITEM}
             clickFn={this.goToSection}
-            ariaLabel="Go to section 5."
+            ariaLabel="Go to section 5, Contact."
             ariaCurrent={this.isActiveWhen('cinq')}
           />
         </ul>
@@ -61,6 +71,7 @@ const Link = Vue.component('Link', {
         <a
           href={href}
           aria-label={ariaLabel}
+          class={this.className}
           aria-current={ariaCurrent}
           onClick={e => {
             this.href.charAt(0) === '#' && e.preventDefault()
@@ -79,6 +90,7 @@ const Link = Vue.component('Link', {
     href: String,
     clickFn: Function,
     ariaLabel: String,
+    className: String,
     ariaCurrent: [String, Boolean],
     external: { type: Boolean, default: false },
   },

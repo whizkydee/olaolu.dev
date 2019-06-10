@@ -21,7 +21,8 @@ const Cavalier = Vue.component('Cavalier', {
   },
 })
 
-const StyledCavalier = styled.div`
+const StyledCavalier = styled.article`
+  text-align: left;
   position: relative;
 
   &[data-theme='lime'] {
