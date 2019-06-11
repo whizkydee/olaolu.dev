@@ -33,12 +33,14 @@ const StyledPitchSlate = styled.section`
 
   .visage {
     margin: 0;
+    z-index: 1;
     width: 23.334em;
     height: 24.67em;
+    position: relative;
     border: 1.5px solid #fff;
     margin-right: ${props => `calc(${props.theme.header.padding} + 4em)`};
 
-    div {
+    .face {
       width: inherit;
       height: inherit;
       margin-top: -35px;
@@ -47,6 +49,15 @@ const StyledPitchSlate = styled.section`
       background-size: cover;
       /* background-image: url(/img/olaolu.jpg); */
     }
+  }
+
+  #avatar__shapes {
+    top: -25%;
+    width: 53em;
+    z-index: -1;
+    height: 126%;
+    right: -12.1em;
+    position: absolute;
   }
 
   #sauce__drip__outline {
@@ -78,6 +89,5 @@ const StyledPitchSlate = styled.section`
     }
   }
 `
-StyledPitchSlate.name = 'StyledPitchSlate'
 
-export default StyledPitchSlate
+export default { ...StyledPitchSlate, name: 'StyledPitchSlate' }

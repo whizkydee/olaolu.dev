@@ -3,13 +3,14 @@ import StyledPitchSlate from './styles'
 import { Navigation } from '@/components'
 import { LogomarkOutline } from '@/assets'
 import { NAVIGATION_ID } from '@/constants'
+import { AvatarShapes } from '@/assets/index'
 
 const PitchSlate = Vue.component('PitchSlate', {
   render() {
     return (
       <StyledPitchSlate class="pente">
         <div class="primary__content">
-          <LogomarkOutline id="sauce__drip__outline" />
+          <LogomarkOutline id="sauce__drip__outline" data-shape />
 
           <Cavalier
             theme="lime"
@@ -21,8 +22,9 @@ const PitchSlate = Vue.component('PitchSlate', {
             </h1>
           </Cavalier>
 
-          <figure class="visage" aria-label="Photo of Olaolu.">
-            <div />
+          <figure class="visage">
+            <AvatarShapes id="avatar__shapes" data-shape />
+            <div class="face" aria-label="Photo of Olaolu." role="img" />
           </figure>
         </div>
 
