@@ -57,6 +57,8 @@ const StyledContentView = styled.main`
       focus via tabbing from an active section.
     */
     &[aria-hidden='true'] {
+      user-select: none;
+
       iframe,
       [tabindex],
       area[href],
@@ -74,6 +76,7 @@ const StyledContentView = styled.main`
 
     &[aria-hidden='false'] {
       z-index: 3;
+      user-select: auto;
     }
   }
 `
