@@ -28,12 +28,11 @@ const StyledContactForm = styled.form`
   }
 
   textarea {
-    height: 8vh;
-    min-height: 70px;
+    height: 4.2em;
   }
 
   #submit__button {
-    margin-top: 70px;
+    margin-top: 5.6em;
   }
 `
 

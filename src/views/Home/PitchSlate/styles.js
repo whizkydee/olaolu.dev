@@ -1,5 +1,6 @@
 import { toPx } from '@mrolaolu/helpers'
 import styled from 'vue-styled-components'
+import { NAVIGATION_ID } from '@/constants'
 
 const StyledPitchSlate = styled.section`
   padding-bottom: 60px;
@@ -12,7 +13,7 @@ const StyledPitchSlate = styled.section`
   }
 
   .primary__content {
-    margin-top: ${props => `calc(${toPx(props.theme.header.height)} + 30px)`};
+    margin-top: ${props => `calc(${toPx(props.theme.header.height)} + 2em)`};
 
     @media (min-width: 1024px) and (min-height: 1000px) {
       margin-top: ${props =>
@@ -67,17 +68,22 @@ const StyledPitchSlate = styled.section`
 
   #sauce__drip__outline {
     left: 0;
-    height: 90vh;
+    height: 738px;
     position: absolute;
-    margin-left: -90px;
+    margin-left: -6.2em;
     top: ${props => toPx(props.theme.header.height)};
+
+    @media (min-width: 1024px) and (min-height: 800px) {
+      height: 90vh;
+    }
   }
 
   .bottom__content {
     margin-top: auto;
     padding-right: ${props => props.theme.header.padding};
 
-    > * {
+    .deux__points,
+    ${`#${NAVIGATION_ID}`} {
       display: flex;
     }
   }
@@ -95,4 +101,7 @@ const StyledPitchSlate = styled.section`
   }
 `
 
-export default { ...StyledPitchSlate, name: 'StyledPitchSlate' }
+export default {
+  ...StyledPitchSlate,
+  name: 'StyledPitchSlate',
+}

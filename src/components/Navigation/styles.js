@@ -48,7 +48,7 @@ const StyledNavigation = styled.nav`
       &:after {
         transform: scale(1.9);
         background: transparent;
-        border: 0.07em solid currentColor;
+        border: 1px solid currentColor;
       }
     }
   }

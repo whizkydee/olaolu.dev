@@ -100,7 +100,7 @@ function createStyledButton(tagName, props) {
       width: 100%;
       display: flex;
       min-height: 56px;
-      padding: 15px 30px;
+      padding: 1.25em 3em;
       position: relative;
       align-items: center;
       justify-content: center;

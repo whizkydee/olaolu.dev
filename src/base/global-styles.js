@@ -11,7 +11,7 @@ const GlobalStyle = injectGlobal`
   }
 
   :focus {
-    outline-width: 2px;
+    outline-width: 0.2em;
     outline-style: dashed;
     outline-color: ${colors.lime};
   }
@@ -149,7 +149,7 @@ const GlobalStyle = injectGlobal`
   }
 
   #skip-link {
-    top: -50px;
+    top: -4em;
     z-index: 1001;
     color: #eeffff;
     position: fixed;

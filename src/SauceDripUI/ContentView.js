@@ -71,6 +71,10 @@ const StyledContentView = styled.main`
         }
       }
     }
+
+    &[aria-hidden='false'] {
+      z-index: 3;
+    }
   }
 `
 

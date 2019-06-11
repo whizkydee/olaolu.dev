@@ -10,6 +10,12 @@ const StyledCarriageway = styled.section`
 
     @media (min-width: 1024px) and (min-height: 700px) {
       margin-top: ${toPx(MARGIN_TOP)};
+
+      @media (max-height: 1500px) {
+        .lanes {
+          min-height: 575px;
+        }
+      }
     }
 
     @media (max-width: 1500px) {

@@ -5,7 +5,7 @@ import { createMenuShadow } from '@/helpers'
 const StyledHeader = styled.header`
   width: 100%;
   display: flex;
-  z-index: 1001;
+  z-index: 1000;
   position: fixed;
   align-items: center;
   background: transparent;
@@ -68,7 +68,7 @@ const StyledHeader = styled.header`
   #contact__menu {
     top: 20px;
     right: 49px;
-    z-index: 999;
+    z-index: 998;
     display: flex;
     padding: 50px;
     width: 22.223vw;
@@ -103,7 +103,7 @@ const StyledHeader = styled.header`
       color: #cbc9e2;
       transition: 0.2s;
       font-size: 1.06em;
-      letter-spacing: 4px;
+      letter-spacing: 0.25em;
       transition-delay: 100ms;
       text-transform: uppercase;
     }
@@ -146,7 +146,7 @@ const StyledHeader = styled.header`
   .menu__toggle {
     width: 40px;
     height: 30px;
-    z-index: 1000;
+    z-index: 999;
     background: none;
     margin-top: 10px;
     position: relative;

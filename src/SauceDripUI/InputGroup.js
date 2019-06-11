@@ -96,7 +96,7 @@ const StyledInputGroup = styled.div`
   [type='search'],
   [type='password'] {
     border: 0;
-    padding: 10px;
+    padding: 0.6em;
     padding-left: 0;
     position: relative;
     color: currentColor;

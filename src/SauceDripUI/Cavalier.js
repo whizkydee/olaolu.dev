@@ -41,7 +41,7 @@ const StyledCavalier = styled.article`
     max-width: 30vw;
     font-weight: 900;
     line-height: 1.1;
-    letter-spacing: -2px;
+    letter-spacing: -0.03em;
     color: ${props => props.theme.colors['electric-blue']};
   }
 
