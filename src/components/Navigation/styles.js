@@ -54,5 +54,7 @@ const StyledNavigation = styled.nav`
   }
 `
 
-StyledNavigation.name = 'StyledNavigation'
-export default StyledNavigation
+export default {
+  ...StyledNavigation,
+  name: 'StyledNavigation',
+}

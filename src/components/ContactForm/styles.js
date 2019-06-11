@@ -28,7 +28,8 @@ const StyledContactForm = styled.form`
   }
 
   textarea {
-    height: 70px;
+    height: 8vh;
+    min-height: 70px;
   }
 
   #submit__button {
@@ -36,5 +37,7 @@ const StyledContactForm = styled.form`
   }
 `
 
-export default StyledContactForm
-StyledContactForm.name = 'StyledContactForm'
+export default {
+  ...StyledContactForm,
+  name: 'StyledContactForm',
+}

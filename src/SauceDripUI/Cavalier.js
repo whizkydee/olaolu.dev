@@ -52,6 +52,6 @@ const StyledCavalier = styled.article`
     color: ${props => props.theme.colors.default};
   }
 `
-StyledCavalier.name = 'StyledCavalier'
 
+StyledCavalier.name = 'StyledCavalier'
 export default Cavalier

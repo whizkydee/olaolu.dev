@@ -11,7 +11,7 @@ const Experience = Vue.component('Experience', {
             <p slot="text">
               I've built products for companies and businesses around the globe
               ranging from basic websites to complex solutions with focus on
-              creating blazing fast, elegant and accessible user experiences.
+              creating fast, elegant and accessible user experiences.
               <br />
               <br />
               I previously led the front end engineering team at Conectar LLC

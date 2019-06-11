@@ -12,5 +12,7 @@ const StyledCornerstone = styled.section`
   }
 `
 
-StyledCornerstone.name = 'StyledCornerstone'
-export default StyledCornerstone
+export default {
+  ...StyledCornerstone,
+  name: 'StyledCornerstone',
+}

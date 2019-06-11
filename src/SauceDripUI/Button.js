@@ -131,9 +131,13 @@ function createStyledButton(tagName, props) {
       }
     }
   `
-  return styled(tagName, props)`
-    ${styles}
-  `
+
+  return {
+    ...styled(tagName, props)`
+      ${styles}
+    `,
+    name: 'StyledButton',
+  }
 }
 
 const StyledButtonLink = createStyledButton('a', {})

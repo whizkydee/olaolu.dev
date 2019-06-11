@@ -29,5 +29,7 @@ const StyledExperience = styled.section`
   }
 `
 
-StyledExperience.name = 'StyledExperience'
-export default StyledExperience
+export default {
+  ...StyledExperience,
+  name: 'StyledExperience',
+}

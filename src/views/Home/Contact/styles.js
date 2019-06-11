@@ -37,5 +37,7 @@ const StyledContact = styled.section`
   }
 `
 
-StyledContact.name = 'StyledContact'
-export default StyledContact
+export default {
+  ...StyledContact,
+  name: 'StyledContact',
+}

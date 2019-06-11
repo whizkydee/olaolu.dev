@@ -73,6 +73,6 @@ const StyledContentView = styled.main`
     }
   }
 `
-StyledContentView.name = 'StyledContentView'
 
+StyledContentView.name = 'StyledContentView'
 export default ContentView

@@ -194,6 +194,8 @@ const StyledHeader = styled.header`
     }
   }
 `
-StyledHeader.name = 'StyledHeader'
 
-export default StyledHeader
+export default {
+  ...StyledHeader,
+  name: 'StyledHeader',
+}

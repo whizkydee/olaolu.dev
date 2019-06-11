@@ -8,12 +8,8 @@ const StyledCarriageway = styled.section`
     position: relative;
     justify-content: center;
 
-    @media (min-width: 1024px) and (min-height: 768px) {
+    @media (min-width: 1024px) and (min-height: 700px) {
       margin-top: ${toPx(MARGIN_TOP)};
-
-      .lanes {
-        height: 575px;
-      }
     }
 
     @media (max-width: 1500px) {
@@ -54,5 +50,7 @@ const StyledCarriageway = styled.section`
   }
 `
 
-StyledCarriageway.name = 'StyledCarriageway'
-export default StyledCarriageway
+export default {
+  ...StyledCarriageway,
+  name: 'StyledCarriageway',
+}

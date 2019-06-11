@@ -13,10 +13,15 @@ const StyledPitchSlate = styled.section`
 
   .primary__content {
     margin-top: ${props => `calc(${toPx(props.theme.header.height)} + 30px)`};
+
+    @media (min-width: 1024px) and (min-height: 1000px) {
+      margin-top: ${props =>
+        `calc(${toPx(props.theme.header.height)} + 100px)`};
+    }
   }
 
   .cavalier {
-    margin-top: -10px;
+    margin-top: -30px;
 
     h1 {
       font-size: 4.4em;

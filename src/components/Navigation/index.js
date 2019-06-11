@@ -19,40 +19,40 @@ const Navigation = Vue.component('Navigation', {
         <ul ref="list">
           <Link
             href="#une"
-            className={NAVIGATION_BULLET}
             clickFn={this.goToSection}
+            className={NAVIGATION_BULLET}
             ariaLabel="Go to section 1, Pitch."
             ariaCurrent={this.isActiveWhen('une')}
           />
 
           <Link
             href="#deux"
-            className={NAVIGATION_BULLET}
             clickFn={this.goToSection}
+            className={NAVIGATION_BULLET}
             ariaCurrent={this.isActiveWhen('deux')}
             ariaLabel="Go to section 2, Cornerstone."
           />
 
           <Link
             href="#trois"
-            className={NAVIGATION_BULLET}
             clickFn={this.goToSection}
+            className={NAVIGATION_BULLET}
             ariaLabel="Go to section 3, Experience."
             ariaCurrent={this.isActiveWhen('trois')}
           />
 
           <Link
             href="#quatre"
-            className={NAVIGATION_BULLET}
             clickFn={this.goToSection}
+            className={NAVIGATION_BULLET}
             ariaLabel="Go to section 4, Carriageway."
             ariaCurrent={this.isActiveWhen('quatre')}
           />
 
           <Link
             href="#cinq"
-            className={NAVIGATION_BULLET}
             clickFn={this.goToSection}
+            className={NAVIGATION_BULLET}
             ariaLabel="Go to section 5, Contact."
             ariaCurrent={this.isActiveWhen('cinq')}
           />
@@ -73,12 +73,12 @@ const Link = Vue.component('Link', {
           aria-label={ariaLabel}
           class={this.className}
           aria-current={ariaCurrent}
+          target={external && '_blank'}
+          rel={external && 'noreferrer noopener'}
           onClick={e => {
             this.href.charAt(0) === '#' && e.preventDefault()
             typeof clickFn === 'function' && clickFn.call(this, e)
           }}
-          target={external && '_blank'}
-          rel={external && 'noreferrer noopener'}
         >
           {this.$slots.default}
         </a>
