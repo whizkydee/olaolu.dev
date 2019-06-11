@@ -1,3 +1,9 @@
+import {
+  debounce,
+  resetScroll,
+  getEventPath,
+  elementInView,
+} from '@mrolaolu/helpers'
 import Vue from 'vue'
 import { mapState } from 'vuex'
 import Contact from './Contact'
@@ -6,7 +12,6 @@ import Experience from './Experience'
 import Cornerstone from './Cornerstone'
 import { goToSection } from '@/helpers'
 import Carriageway from './Carriageway'
-import { getEventPath, resetScroll, debounce } from '@mrolaolu/helpers'
 import { CURRENT_SECTION_KEY, SECTIONS, NAVIGATION_ID } from '@/constants'
 
 const Homepage = Vue.component('Homepage', {
@@ -21,9 +26,20 @@ const Homepage = Vue.component('Homepage', {
 
   mounted() {
     const { documentElement } = document
+    const firstSectionSlightlyVisible = elementInView(
+      this.getSection(SECTIONS[0]),
+      { threshold: 0.7 }
+    )
 
-    // Ensure the page always starts from the beginning.
-    this.debounce(() => resetScroll(), 0)
+    if (firstSectionSlightlyVisible) {
+      debounce(() => resetScroll(), 0)
+    } else {
+      const sectionInView = this.getSections().filter(
+        section => Math.sign(section.getBoundingClientRect().top) !== -1
+      )[0]
+
+      if (sectionInView) goToSection(sectionInView)
+    }
 
     // Set current section to the first section.
     this.$root.$el.dataset.section = this.getCurrentSectionId()
@@ -60,12 +76,16 @@ const Homepage = Vue.component('Homepage', {
       return this[CURRENT_SECTION_KEY]
     },
 
-    whenSectionHidden(id) {
+    isSectionHidden(id) {
       return (this.getCurrentSectionId() !== id).toString()
     },
 
     recalcSection() {
       goToSection(this.getSection(this.getCurrentSectionId()))
+    },
+
+    getSections() {
+      return Array.from(this.$refs.mainElem.$el.getElementsByTagName('section'))
     },
 
     getSection(id = this.getCurrentSectionId()) {
@@ -76,21 +96,19 @@ const Homepage = Vue.component('Homepage', {
     },
 
     goToNextSection() {
-      this.debounce(goToSection(this.getSection().nextElementSibling))
+      goToSection(this.getSection().nextElementSibling)
     },
 
     goToPrevSection() {
-      this.debounce(goToSection(this.getSection().previousElementSibling))
+      goToSection(this.getSection().previousElementSibling)
     },
 
-    debounce: (cb, timeout = 250) => debounce(cb, timeout),
-
-    scrollingLudicrouslyFast() {
+    scrollingLudicrouslyFast(ms = 60) {
       const curTime = new Date().getTime()
       const timeDiff = curTime - this.prevTime
       this.prevTime = curTime
 
-      return timeDiff < 60
+      return timeDiff < ms
     },
 
     handleTouchstart(event) {
@@ -136,66 +154,64 @@ const Homepage = Vue.component('Homepage', {
         return
 
       const SPACEBAR = ' '
-      switch (event.key) {
-        case 'Down':
-        case SPACEBAR:
-        case 'ArrowDown':
-        case 'Right':
-        case 'PageDown':
-        case 'ArrowRight':
-          event.preventDefault()
-          this.goToNextSection()
-          break
 
-        case 'Up':
-        case 'ArrowUp':
-        case 'Left':
-        case 'PageUp':
-        case 'ArrowLeft':
-          event.preventDefault()
-          this.goToPrevSection()
-          break
+      if (!this.scrollingLudicrouslyFast(300)) {
+        switch (event.key) {
+          case 'Down':
+          case SPACEBAR:
+          case 'ArrowDown':
+          case 'Right':
+          case 'PageDown':
+          case 'ArrowRight':
+            event.preventDefault()
+            this.goToNextSection()
+            break
 
-        case 'Home':
-          event.preventDefault()
-          this.debounce(goToSection(this.getSection(SECTIONS[0])))
-          break
+          case 'Up':
+          case 'ArrowUp':
+          case 'Left':
+          case 'PageUp':
+          case 'ArrowLeft':
+            event.preventDefault()
+            this.goToPrevSection()
+            break
 
-        case 'End':
-          event.preventDefault()
-          this.debounce(
+          case 'Home':
+            event.preventDefault()
+            goToSection(this.getSection(SECTIONS[0]))
+            break
+
+          case 'End':
+            event.preventDefault()
             goToSection(this.getSection(SECTIONS[SECTIONS.length - 1]))
-          )
-          break
+            break
+        }
       }
     },
   },
 
   render() {
-    const { whenSectionHidden } = this
+    const { isSectionHidden } = this
 
     return (
       <ContentView id="homepage" ref="mainElem">
         <PitchSlate
           id={SECTIONS[0]}
-          aria-hidden={whenSectionHidden(SECTIONS[0])}
+          aria-hidden={isSectionHidden(SECTIONS[0])}
         />
         <Cornerstone
           id={SECTIONS[1]}
-          aria-hidden={whenSectionHidden(SECTIONS[1])}
+          aria-hidden={isSectionHidden(SECTIONS[1])}
         />
         <Experience
           id={SECTIONS[2]}
-          aria-hidden={whenSectionHidden(SECTIONS[2])}
+          aria-hidden={isSectionHidden(SECTIONS[2])}
         />
         <Carriageway
           id={SECTIONS[3]}
-          aria-hidden={whenSectionHidden(SECTIONS[3])}
+          aria-hidden={isSectionHidden(SECTIONS[3])}
         />
-        <Contact
-          id={SECTIONS[4]}
-          aria-hidden={whenSectionHidden(SECTIONS[4])}
-        />
+        <Contact id={SECTIONS[4]} aria-hidden={isSectionHidden(SECTIONS[4])} />
       </ContentView>
     )
   },

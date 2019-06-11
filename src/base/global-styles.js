@@ -27,7 +27,6 @@ const GlobalStyle = injectGlobal`
     font-size: 1vw;
     touch-action: none;
     position: relative;
-    scroll-behavior: smooth;
     font-family: ${fontFamily};
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;

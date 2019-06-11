@@ -12,11 +12,6 @@ Vue.component('InputGroup', InputGroup)
 Vue.component('ContactForm', ContactForm)
 Vue.component('ContentView', ContentView)
 
-if (!('scrollBehavior' in document.documentElement.style)) {
-  window.__forceSmoothScrollPolyfill__ = true
-  require('smoothscroll-polyfill').polyfill()
-}
-
 Vue.config.productionTip = false
 
 new Vue({
