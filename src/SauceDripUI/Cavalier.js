@@ -35,6 +35,11 @@ const StyledCavalier = styled.article`
     }
   }
 
+  p,
+  h1 {
+    transition: transform 0.5s, opacity 0.2s;
+  }
+
   h1 {
     margin: 0;
     font-size: 4em;
@@ -42,6 +47,7 @@ const StyledCavalier = styled.article`
     font-weight: 900;
     line-height: 1.1;
     letter-spacing: -0.03em;
+    transition-delay: 200ms;
     color: ${props => props.theme.colors['electric-blue']};
   }
 
@@ -49,7 +55,16 @@ const StyledCavalier = styled.article`
     width: 32vw;
     line-height: 1.6;
     font-size: 1.07em;
+    transition-delay: 400ms;
     color: ${props => props.theme.colors.default};
+
+    &:nth-of-type(2) {
+      transition-delay: 500ms;
+    }
+
+    &:nth-of-type(3) {
+      transition-delay: 600ms;
+    }
   }
 `
 

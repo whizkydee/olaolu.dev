@@ -59,6 +59,27 @@ const StyledContentView = styled.main`
     &[aria-hidden='true'] {
       user-select: none;
 
+      &:not(.scrolled) {
+        p,
+        h1 {
+          opacity: 0;
+        }
+
+        .cavalier {
+          p {
+            transform: translate3d(0, 20px, 0);
+
+            &:nth-of-type(3) {
+              transform: translate3d(0, 15px, 0);
+            }
+          }
+
+          h1 {
+            transform: translate3d(0, 30px, 0);
+          }
+        }
+      }
+
       iframe,
       [tabindex],
       area[href],
@@ -77,6 +98,14 @@ const StyledContentView = styled.main`
     &[aria-hidden='false'] {
       z-index: 3;
       user-select: auto;
+
+      .cavalier {
+        p,
+        h1 {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+        }
+      }
     }
   }
 `
