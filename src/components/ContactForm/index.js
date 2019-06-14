@@ -16,8 +16,8 @@ const ContactForm = Vue.component('ContactForm', {
             name="name"
             id="full__name"
             label="Your Name"
-            inputAttrs={{ required: true }}
             placeholder="Enter your name"
+            inputAttrs={{ required: true }}
           />
 
           <InputGroup

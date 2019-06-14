@@ -8,12 +8,18 @@ const InputGroup = Vue.component('InputGroup', {
   }),
 
   methods: {
-    handleFocus() {
+    handleFocus(event) {
       this.focused = true
+      if (this.listeners && typeof this.listeners.focus === 'function') {
+        this.listeners.focus.call(this, event)
+      }
     },
 
-    handleBlur() {
+    handleBlur(event) {
       this.focused = false
+      if (this.listeners && typeof this.listeners.blur === 'function') {
+        this.listeners.blur.call(this, event)
+      }
     },
   },
 
