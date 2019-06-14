@@ -8,10 +8,12 @@ const StyledCarriageway = styled.section`
     position: relative;
     justify-content: center;
 
-    @media (min-width: 1024px) and (min-height: 560px) {
-      margin-top: ${toPx(MARGIN_TOP)};
+    @media (min-width: 1024px) {
+      @media (min-height: 560px) {
+        margin-top: ${toPx(MARGIN_TOP)};
+      }
 
-      @media (max-height: 1500px) {
+      @media (min-height: 665px) and (max-height: 1500px) {
         .lanes {
           min-height: 40em;
         }
