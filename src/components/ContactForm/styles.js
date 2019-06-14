@@ -17,7 +17,25 @@ const StyledContactForm = styled.form`
     }
 
     &:not(:last-of-type) {
-      margin-bottom: 3.475rem;
+      margin-bottom: 3rem;
+    }
+  }
+
+  .input__group {
+    &:not(.focused) {
+      textarea,
+      input:not([type='submit']):not([type='button']) {
+        border-color: rgba(61, 21, 95, 0.4);
+      }
+    }
+
+    &.focused {
+      input,
+      textarea {
+        &::placeholder {
+          color: transparent;
+        }
+      }
     }
   }
 
@@ -25,6 +43,10 @@ const StyledContactForm = styled.form`
   input:not([type='submit']):not([type='button']) {
     line-height: 1.5;
     font-size: 1.15em;
+
+    &::placeholder {
+      transition: color 0.2s;
+    }
   }
 
   textarea {
@@ -32,7 +54,7 @@ const StyledContactForm = styled.form`
   }
 
   #submit__button {
-    margin-top: 5.6em;
+    margin-top: 5.2em;
   }
 `
 

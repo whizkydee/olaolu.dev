@@ -34,6 +34,13 @@ const StyledContact = styled.section`
     width: 60%;
     align-items: center;
     justify-content: center;
+
+    label,
+    textarea,
+    [type='text'],
+    [type='email'] {
+      font-weight: 200;
+    }
   }
 `
 
