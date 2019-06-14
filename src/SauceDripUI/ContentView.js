@@ -75,7 +75,7 @@ const StyledContentView = styled.main`
           }
 
           h1 {
-            transform: translate3d(0, 30px, 0);
+            transform: translate3d(0, 50px, 0);
           }
         }
       }

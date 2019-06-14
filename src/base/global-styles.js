@@ -37,7 +37,7 @@ const GlobalStyle = injectGlobal`
       overflow: hidden;
     }
 
-    &${`.${TABBING_CLASSNAME}`} {
+    &${`.${TABBING_CLASSNAME}`} { 
       #logo:focus,
       #contact__menu a:focus,
       [data-section='trois'] .menu__toggle:not(.x):focus {
@@ -60,6 +60,8 @@ const GlobalStyle = injectGlobal`
 
   body {
     margin: 0;
+    padding: 0;
+    width: 100%;
     height: 100%;
     font: inherit;
     touch-action: none;
@@ -96,6 +98,12 @@ const GlobalStyle = injectGlobal`
     border-radius: 0;
     appearance: none;
     -webkit-tap-highlight-color: transparent;
+  }
+
+  input,
+  button,
+  textarea {
+    border-radius: 0;
   }
 
   textarea {
@@ -154,6 +162,7 @@ const GlobalStyle = injectGlobal`
     position: fixed;
     user-select: none;
     padding: 8px 15px;
+    font-size: 14.5px;
     border-radius: 3px;
     transition: top .2s;
     border-top-left-radius: 0;
@@ -177,6 +186,7 @@ const GlobalStyle = injectGlobal`
   [class$='__content'] {
     width: 100%;
     display: flex;
+
     @media (min-width: 1501px) {
       padding: 0 8em;
     }

@@ -17,7 +17,7 @@ const StyledContactForm = styled.form`
     }
 
     &:not(:last-of-type) {
-      margin-bottom: 50px;
+      margin-bottom: 3.475rem;
     }
   }
 

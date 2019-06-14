@@ -1,5 +1,4 @@
 import styled from 'vue-styled-components'
-import { toPx } from '@mrolaolu/helpers'
 import { createMenuShadow } from '@/helpers'
 
 const StyledHeader = styled.header`
@@ -7,11 +6,12 @@ const StyledHeader = styled.header`
   display: flex;
   z-index: 1000;
   position: fixed;
+  max-height: 12rem;
   align-items: center;
   background: transparent;
   justify-content: space-between;
+  height: ${props => props.theme.header.height};
   padding: 0 ${props => props.theme.header.padding};
-  height: ${props => toPx(props.theme.header.height)};
 
   &[data-compact='true'] {
     #logo {
@@ -41,14 +41,14 @@ const StyledHeader = styled.header`
   &[data-compact='false'] {
     .logo_svg__lu,
     .logo_svg__ola {
-      transition: opacity 0.5s, transform 0.5s 200ms ease-out;
+      transition: opacity 0.5s, transform 0.5s 100ms;
     }
   }
 
   #logo {
-    height: 46px;
-    width: 8.34vw;
     display: flex;
+    width: 8.34rem;
+    height: 3.195rem;
     position: relative;
     flex-direction: column;
     outline-color: transparent;
@@ -56,6 +56,10 @@ const StyledHeader = styled.header`
     svg {
       width: inherit;
       height: inherit;
+
+      path {
+        transition: fill 700ms;
+      }
     }
 
     .logo_svg__lu,
@@ -70,16 +74,19 @@ const StyledHeader = styled.header`
     right: 49px;
     z-index: 998;
     display: flex;
-    padding: 50px;
-    width: 22.223vw;
+    width: 22.223rem;
     box-shadow: none;
-    min-width: 320px;
+    padding: 3.473rem;
     user-select: none;
     font-size: 1.06em;
     position: absolute;
     flex-direction: column;
     background-color: #ffffff;
     transition: opacity 0.2s, box-shadow 0.6s 200ms;
+
+    @media (min-width: 800px) {
+      min-width: 240px;
+    }
 
     &:not([aria-expanded='true']) {
       opacity: 0;
@@ -144,9 +151,9 @@ const StyledHeader = styled.header`
   }
 
   .menu__toggle {
-    width: 40px;
-    height: 30px;
     z-index: 999;
+    width: 2.78rem;
+    height: 2.09rem;
     background: none;
     margin-top: 10px;
     position: relative;
@@ -176,7 +183,7 @@ const StyledHeader = styled.header`
     &:after {
       content: '';
       width: 100%;
-      height: 2px;
+      height: 0.139rem;
       position: absolute;
       transition: 0.2s ease;
       transform: rotate(0deg);
@@ -189,8 +196,8 @@ const StyledHeader = styled.header`
 
     &:after {
       right: 0;
-      top: 16px;
       width: 72%;
+      top: 1.13rem;
     }
   }
 `

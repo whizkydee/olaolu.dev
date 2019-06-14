@@ -5,14 +5,14 @@ const StyledContact = styled.section`
   background-color: ${props => props.theme.colors.lime};
 
   .contact__content {
-    margin-top: 40px;
+    margin-top: 2.78em;
     align-items: center;
     flex-direction: column;
   }
 
   .cavalier {
     text-align: center;
-    margin-bottom: 70px;
+    margin-bottom: 3.478em;
 
     h1 {
       font-size: 3.2em;
@@ -22,7 +22,7 @@ const StyledContact = styled.section`
     }
 
     p {
-      margin: 0;
+      margin: 0 auto;
       font-size: 1.6em;
       line-height: 1.2;
       margin-top: 15px;

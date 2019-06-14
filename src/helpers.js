@@ -1,10 +1,12 @@
 import store from './store'
 import { debounce } from '@mrolaolu/helpers'
+import { CURRENT_SECTION_KEY } from './constants'
 
-const goToSection = section => {
+const goToSection = (section, smooth = true) => {
   if (!(section instanceof HTMLElement)) return
 
-  scrollTo(section.offsetTop)
+  if (smooth) scrollTo(section.offsetTop)
+  else window.scrollTo(0, section.offsetTop)
 
   if (section.previousElementSibling) {
     if (!section.previousElementSibling.classList.contains('scrolled'))
@@ -14,7 +16,7 @@ const goToSection = section => {
   if (!section.nextElementSibling) section.classList.add('scrolled')
 
   debounce(() => {
-    store.commit('currentSection', section.id)
+    store.commit(CURRENT_SECTION_KEY, section.id)
     document.getElementById('app').dataset.section = section.id
   }, 200)
 }
@@ -22,9 +24,9 @@ const goToSection = section => {
 const createMenuShadow = (color = 'rgba(72, 49, 212, .05)') =>
   `0 10px 53px 0 ${color}`
 
-function scrollTo(scrollTargetY = 0, speed = 700, easing = 'easeInOutCubic') {
+function scrollTo(scrollTargetY = 0, speed = 1000, easing = 'easeInOutCubic') {
   let currentTime = 0
-  const scrollY = window.scrollY || document.documentElement.scrollTop
+  const scrollY = window.pageYOffset || document.documentElement.scrollTop
 
   // min time .1, max time .8 seconds
   const time = Math.max(

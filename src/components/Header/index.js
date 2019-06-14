@@ -1,14 +1,16 @@
 import Vue from 'vue'
+import { mapState } from 'vuex'
 import { Link } from '@/components'
 import StyledHeader from './styles'
 import { SauceDripLogo } from '@/assets'
-import { CURRENT_SECTION_KEY, SECTIONS, SOCIAL_PROFILES } from '@/constants'
+import { HEADER_COMPACT, SOCIAL_PROFILES } from '@/constants'
 
 const Header = Vue.component('Header', {
   data: () => ({
     menuOpen: false,
-    isCompact: false,
   }),
+
+  computed: mapState([HEADER_COMPACT]),
 
   mounted() {
     this.maybeTransform()
@@ -34,7 +36,10 @@ const Header = Vue.component('Header', {
     },
 
     maybeTransform() {
-      this.isCompact = this.$store.state[CURRENT_SECTION_KEY] !== SECTIONS[0]
+      this.$store.commit(
+        'headerCompact',
+        window.pageYOffset > this.$el.clientHeight
+      )
     },
 
     maybeCloseMenu(event) {
@@ -51,7 +56,7 @@ const Header = Vue.component('Header', {
     const getLabel = () => (this.menuOpen ? 'Close' : 'Open') + ' contact menu'
 
     return (
-      <StyledHeader role="banner" data-compact={'' + this.isCompact}>
+      <StyledHeader role="banner" data-compact={'' + this[HEADER_COMPACT]}>
         <router-link to="/" id="logo" aria-label="Logo, go to homepage.">
           <SauceDripLogo />
         </router-link>

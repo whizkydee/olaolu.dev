@@ -24,8 +24,8 @@ const Experience = Vue.component('Experience', {
 
             <p slot="text">
               Right now, I'm a Senior Front End Engineering contractor with
-              Pixel2HTML building JavaScript applications for our clients across
-              the globe.
+              Pixel2HTML building JavaScript applications for orgs and
+              individuals.
             </p>
           </Cavalier>
 

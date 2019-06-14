@@ -1,10 +1,9 @@
-import { toPx } from '@mrolaolu/helpers'
 import styled from 'vue-styled-components'
 import { NAVIGATION_ID } from '@/constants'
 
 const StyledPitchSlate = styled.section`
-  padding-bottom: 60px;
   flex-direction: column;
+  padding-bottom: 4.17rem;
 
   .primary__content,
   .bottom__content {
@@ -13,16 +12,11 @@ const StyledPitchSlate = styled.section`
   }
 
   .primary__content {
-    margin-top: ${props => `calc(${toPx(props.theme.header.height)} + 2em)`};
-
-    @media (min-width: 1024px) and (min-height: 1000px) {
-      margin-top: ${props =>
-        `calc(${toPx(props.theme.header.height)} + 100px)`};
-    }
+    margin-top: ${props => `calc(${props.theme.header.height} + 2em)`};
   }
 
   .cavalier {
-    margin-top: -30px;
+    margin-top: -3.5em;
 
     h1 {
       font-size: 4.4em;
@@ -43,14 +37,14 @@ const StyledPitchSlate = styled.section`
     width: 23.334em;
     height: 24.67em;
     position: relative;
-    border: 1.5px solid #fff;
+    border: 0.115rem solid #fff;
     margin-right: ${props => `calc(${props.theme.header.padding} + 4em)`};
 
     .face {
       width: inherit;
       height: inherit;
-      margin-top: -35px;
-      margin-left: -30px;
+      margin-left: -2.2em;
+      margin-top: -2.435em;
       background-color: #fff;
       background-size: cover;
       /* background-image: url(/img/olaolu.jpg); */
@@ -59,10 +53,10 @@ const StyledPitchSlate = styled.section`
 
   #avatar__shapes {
     top: -25%;
-    width: 53em;
+    width: 40em;
     z-index: -1;
     height: 126%;
-    right: -12.1em;
+    right: -5.4em;
     position: absolute;
   }
 
@@ -71,10 +65,14 @@ const StyledPitchSlate = styled.section`
     height: 738px;
     position: absolute;
     margin-left: -6.2em;
-    top: ${props => toPx(props.theme.header.height)};
+    top: ${props => props.theme.header.height};
 
     @media (min-width: 1024px) and (min-height: 800px) {
       height: 90vh;
+    }
+
+    @media (max-width: 767px) {
+      display: none;
     }
   }
 
@@ -96,7 +94,7 @@ const StyledPitchSlate = styled.section`
     color: ${props => props.theme.colors.lime};
 
     li {
-      width: calc(50% - 20px);
+      width: calc(50% - 1.731em);
     }
   }
 `

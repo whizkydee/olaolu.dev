@@ -1,3 +1,8 @@
+import {
+  SquareofDots,
+  CornerstonePatternsLeft,
+  CornerstonePatternsRight,
+} from '@/assets'
 import Vue from 'vue'
 import StyledCornerstone from './styles'
 
@@ -14,16 +19,25 @@ const Cornerstone = Vue.component('Cornerstone', {
               you'll find me (~_^). I do my best to create fluent user
               experiences while staying fashionable.
             </p>
+
+            <SquareofDots
+              data-shape
+              slot="inContent"
+              class="square__of__dots"
+            />
+
+            <CornerstonePatternsRight data-shape id="cs__pattern__right" />
           </Cavalier>
 
           <Cavalier heading="Engineering">
             <p slot="text">
               In building applications and solving problems, I'm equipped with
               just the right tools, and can absolutely function independently of
-              them to deliver fast, definitive solutions optimized for
-              scalability &mdash; Web performance and extensibility are
-              priorities on my radar.
+              them to deliver fast, definitive solutions optimized for scale
+              &mdash; Web performance and scalabilty are priorities on my radar.
             </p>
+
+            <CornerstonePatternsLeft data-shape id="cs__pattern__left" />
           </Cavalier>
         </div>
       </StyledCornerstone>

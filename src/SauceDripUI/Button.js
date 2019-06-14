@@ -99,22 +99,22 @@ function createStyledButton(tagName, props) {
       z-index: 1;
       width: 100%;
       display: flex;
-      min-height: 56px;
-      padding: 1.25em 3em;
+      min-height: 4.5em;
       position: relative;
+      padding: 1.25em 3em;
       align-items: center;
       justify-content: center;
-      border: 1.49px solid currentColor;
+      border: 0.1rem solid currentColor;
       color: ${props => props.theme.colors['electric-blue']};
 
       &:before {
         right: 0;
         bottom: 0;
-        top: -1px;
-        left: -1px;
         width: 0%;
+        top: -0.1em;
         content: '';
         z-index: -1;
+        left: -0.15em;
         height: 103%;
         position: absolute;
         background: currentColor;
@@ -123,8 +123,9 @@ function createStyledButton(tagName, props) {
     }
 
     .bow__arrow {
-      width: 40px;
-      margin-left: 20px;
+      width: 3.1em;
+      height: 1.7em;
+      margin-left: 1.55em;
 
       path {
         stroke: currentColor;

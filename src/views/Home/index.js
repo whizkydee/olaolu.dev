@@ -1,9 +1,3 @@
-import {
-  debounce,
-  resetScroll,
-  getEventPath,
-  elementInView,
-} from '@mrolaolu/helpers'
 import Vue from 'vue'
 import { mapState } from 'vuex'
 import Contact from './Contact'
@@ -12,6 +6,7 @@ import Experience from './Experience'
 import Cornerstone from './Cornerstone'
 import { goToSection } from '@/helpers'
 import Carriageway from './Carriageway'
+import { debounce, resetScroll, getEventPath } from '@mrolaolu/helpers'
 import { CURRENT_SECTION_KEY, SECTIONS, NAVIGATION_ID } from '@/constants'
 
 const Homepage = Vue.component('Homepage', {
@@ -26,20 +21,29 @@ const Homepage = Vue.component('Homepage', {
 
   mounted() {
     const { documentElement } = document
-    const firstSectionSlightlyVisible = elementInView(
-      this.getSection(SECTIONS[0]),
-      { threshold: 0.7 }
-    )
 
-    if (firstSectionSlightlyVisible) {
-      debounce(() => resetScroll(), 0)
-    } else {
+    debounce(() => {
+      // Set current section to currently visible section upon reload
+      const getPercentageDiff = s =>
+        Math.abs(
+          (parseInt(s.offsetTop) -
+            parseInt(
+              Math.abs(document.documentElement.getBoundingClientRect().top)
+            )) /
+            100
+        )
+
       const sectionInView = this.getSections().filter(
-        section => Math.sign(section.getBoundingClientRect().top) !== -1
+        section => getPercentageDiff(section) < 2 // <2%
       )[0]
 
-      if (sectionInView) goToSection(sectionInView)
-    }
+      if (!sectionInView) debounce(() => resetScroll(), 10)
+      else {
+        goToSection(sectionInView)
+        if (!this[CURRENT_SECTION_KEY] === SECTIONS[0])
+          this.$store.commit('headerCompact', true)
+      }
+    })
 
     // Set current section to the first section.
     this.$root.$el.dataset.section = this.getCurrentSectionId()
@@ -81,11 +85,12 @@ const Homepage = Vue.component('Homepage', {
     },
 
     recalcSection() {
-      goToSection(this.getSection(this.getCurrentSectionId()))
+      // Immediately resize sections on window resize (no smooth).
+      goToSection(this.getSection(this.getCurrentSectionId()), false)
     },
 
     getSections() {
-      return Array.from(this.$refs.mainElem.$el.getElementsByTagName('section'))
+      return [...this.$el.getElementsByTagName('section')]
     },
 
     getSection(id = this.getCurrentSectionId()) {
@@ -146,9 +151,9 @@ const Homepage = Vue.component('Homepage', {
 
       if (
         !isNavFocused &&
+        event.target !== this.$el &&
         event.target !== document.body &&
         event.target !== this.$root.$el &&
-        event.target !== this.$refs.mainElem.$el &&
         event.target !== document.documentElement
       )
         return
@@ -194,7 +199,7 @@ const Homepage = Vue.component('Homepage', {
     const { isSectionHidden } = this
 
     return (
-      <ContentView id="homepage" ref="mainElem">
+      <ContentView id="homepage">
         <PitchSlate
           id={SECTIONS[0]}
           aria-hidden={isSectionHidden(SECTIONS[0])}

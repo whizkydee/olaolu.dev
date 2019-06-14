@@ -33,8 +33,8 @@ export const colors = {
 const theme = {
   colors,
   header: {
-    height: 160,
     padding: '6em',
+    height: '11.12em',
   },
   fontFamily: `'SF UI Text',-apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI","Oxygen","Ubuntu","Cantarell","Open Sans",sans-serif`,
 }

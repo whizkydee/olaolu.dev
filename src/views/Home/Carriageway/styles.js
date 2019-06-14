@@ -8,12 +8,12 @@ const StyledCarriageway = styled.section`
     position: relative;
     justify-content: center;
 
-    @media (min-width: 1024px) and (min-height: 700px) {
+    @media (min-width: 1024px) and (min-height: 560px) {
       margin-top: ${toPx(MARGIN_TOP)};
 
       @media (max-height: 1500px) {
         .lanes {
-          min-height: 575px;
+          min-height: 40em;
         }
       }
     }
@@ -31,17 +31,17 @@ const StyledCarriageway = styled.section`
 
     li {
       width: 50%;
-      padding: 100px;
+      padding: 6.95em;
       padding-left: ${props => props.theme.header.padding};
 
       &:not(:last-of-type) {
-        border-right: 2px solid rgba(72, 49, 212, 0.3);
+        border-right: 0.15rem solid rgba(72, 49, 212, 0.3);
       }
     }
   }
 
   .cavalier {
-    margin-bottom: 50px;
+    margin-bottom: 4.5em;
 
     h1 {
       font-size: 3.2em;
