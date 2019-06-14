@@ -70,10 +70,10 @@ const StyledHeader = styled.header`
   }
 
   #contact__menu {
-    top: 20px;
-    right: 49px;
+    top: 1.39rem;
     z-index: 998;
     display: flex;
+    right: 3.41rem;
     width: 22.223rem;
     box-shadow: none;
     padding: 3.473rem;
@@ -85,7 +85,7 @@ const StyledHeader = styled.header`
     transition: opacity 0.2s, box-shadow 0.6s 200ms;
 
     @media (min-width: 800px) {
-      min-width: 240px;
+      /* min-width: 240px; */
     }
 
     &:not([aria-expanded='true']) {
@@ -108,11 +108,10 @@ const StyledHeader = styled.header`
     .title {
       opacity: 0;
       color: #cbc9e2;
-      transition: 0.2s;
       font-size: 1.06em;
       letter-spacing: 0.25em;
-      transition-delay: 100ms;
       text-transform: uppercase;
+      transition: opacity 0.2s 100ms;
     }
 
     a {
@@ -133,8 +132,8 @@ const StyledHeader = styled.header`
   .basic__contact {
     line-height: 2.5;
     font-size: 1.2em;
-    margin: 30px 0 40px;
     transition-delay: 100ms;
+    margin: 2.09rem 0 2.78rem;
     transform: translateY(30px);
   }
 
@@ -155,9 +154,9 @@ const StyledHeader = styled.header`
     width: 2.78rem;
     height: 2.09rem;
     background: none;
-    margin-top: 10px;
     position: relative;
     display: inline-flex;
+    margin-top: 0.699rem;
     color: ${props => props.theme.colors['electric-blue']};
 
     &:focus {
@@ -166,7 +165,7 @@ const StyledHeader = styled.header`
     }
 
     &.x {
-      width: 30px;
+      width: 2.09rem;
 
       &:before {
         transform: rotate(45deg);
@@ -183,7 +182,7 @@ const StyledHeader = styled.header`
     &:after {
       content: '';
       width: 100%;
-      height: 0.139rem;
+      height: 0.14rem;
       position: absolute;
       transition: 0.2s ease;
       transform: rotate(0deg);
@@ -197,7 +196,6 @@ const StyledHeader = styled.header`
     &:after {
       right: 0;
       width: 72%;
-      top: 1.13rem;
     }
   }
 `
