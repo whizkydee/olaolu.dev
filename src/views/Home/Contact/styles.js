@@ -12,7 +12,7 @@ const StyledContact = styled.section`
 
   .cavalier {
     text-align: center;
-    margin-bottom: 3.478em;
+    margin-bottom: 5.2em;
 
     h1 {
       font-size: 3.2em;

@@ -196,6 +196,7 @@ const StyledHeader = styled.header`
     &:after {
       right: 0;
       width: 72%;
+      top: 1.13rem;
     }
   }
 `
