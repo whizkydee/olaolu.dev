@@ -91,6 +91,7 @@ const StyledContentView = styled.main`
       ${`a[href]:not(.${NAVIGATION_BULLET})`} {
         &:not([tabindex='-1']) {
           visibility: hidden;
+          transition: visibility 200ms;
         }
       }
     }

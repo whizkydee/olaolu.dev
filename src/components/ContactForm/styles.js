@@ -45,7 +45,7 @@ const StyledContactForm = styled.form`
     font-size: 1.15em;
 
     &::placeholder {
-      transition: color 0.2s;
+      transition: color 0.1s ease-out;
     }
   }
 
