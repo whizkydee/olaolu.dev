@@ -53,11 +53,11 @@ function createStyledButton(tagName, props) {
   const styles = css`
     overflow: hidden;
     font-size: 0.9em;
-    min-width: 20.9vw;
     font-weight: bold;
     position: relative;
     user-select: none;
     white-space: nowrap;
+    min-width: 23.222em;
     display: inline-flex;
     letter-spacing: 0.1em;
     background: transparent;

@@ -108,7 +108,7 @@ const Homepage = Vue.component('Homepage', {
       goToSection(this.getSection().previousElementSibling)
     },
 
-    scrollingLudicrouslyFast(ms = 60) {
+    scrollingLudicrouslyFast(ms = 80) {
       const curTime = new Date().getTime()
       const timeDiff = curTime - this.prevTime
       this.prevTime = curTime

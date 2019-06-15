@@ -37,7 +37,7 @@ const GlobalStyle = injectGlobal`
       overflow: hidden;
     }
 
-    &${`.${TABBING_CLASSNAME}`} { 
+    &${`.${TABBING_CLASSNAME}`} {
       #logo:focus,
       #contact__menu a:focus,
       [data-section='trois'] .menu__toggle:not(.x):focus {
@@ -155,7 +155,7 @@ const GlobalStyle = injectGlobal`
     overflow: hidden !important;
   }
 
-  #skip-link {
+  #skip__link {
     top: -4em;
     z-index: 1001;
     color: #eeffff;

@@ -40,6 +40,8 @@ const ContentView = Vue.component('ContentView', {
 
 const StyledContentView = styled.main`
   outline: none;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
 
   > section {
     display: flex;
@@ -99,6 +101,7 @@ const StyledContentView = styled.main`
     &[aria-hidden='false'] {
       z-index: 3;
       user-select: auto;
+      scroll-snap-align: start;
 
       .cavalier {
         p,
