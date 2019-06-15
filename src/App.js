@@ -11,8 +11,8 @@ const App = Vue.component('App', {
   render() {
     return (
       <ThemeProvider id="app" theme={theme}>
-        <a href="#main" id="skip-link">
-          Skip to main content
+        <a href="#main" id="skip__link">
+          Skip to navigation
         </a>
 
         <Header />
