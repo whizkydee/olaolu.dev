@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import StyledPitchSlate from './styles'
 import { Navigation } from '@/components'
-import { LogomarkOutline } from '@/assets'
 import { NAVIGATION_ID } from '@/constants'
-import { AvatarShapes } from '@/assets/index'
+import { LogomarkOutline, AvatarShapes } from '@/assets'
 
 const PitchSlate = Vue.component('PitchSlate', {
   render() {

@@ -1,28 +1,28 @@
-import { toPx } from '@mrolaolu/helpers'
 import styled from 'vue-styled-components'
-
-const MARGIN_TOP = 60
 
 const StyledCarriageway = styled.section`
   .carriageway__content {
     position: relative;
     justify-content: center;
 
-    @media (min-width: 1024px) {
-      @media (min-height: 560px) {
-        margin-top: ${toPx(MARGIN_TOP)};
-      }
+    @media (min-aspect-ratio: 1440/900) {
+      margin-top: 4.2rem;
+    }
 
-      @media (min-height: 665px) and (max-height: 1500px) {
-        .lanes {
-          min-height: 40em;
-        }
+    @media (min-width: 1024px) and (min-height: 665px) and (max-height: 1500px) {
+      .lanes {
+        min-height: 40em;
       }
     }
 
     @media (max-width: 1500px) {
       max-width: unset;
       padding: 0 ${props => `calc(${props.theme.header.padding} - 2em)`};
+    }
+
+    @media (min-width: 1501px) {
+      padding-left: 5em;
+      padding-right: 5em;
     }
   }
 

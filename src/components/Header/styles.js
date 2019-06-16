@@ -41,7 +41,7 @@ const StyledHeader = styled.header`
   &[data-compact='false'] {
     .logo_svg__lu,
     .logo_svg__ola {
-      transition: opacity 0.5s, transform 0.5s 100ms;
+      transition: opacity 0.3s, transform 0.5s 100ms;
     }
   }
 
@@ -51,14 +51,16 @@ const StyledHeader = styled.header`
     height: 3.195rem;
     position: relative;
     flex-direction: column;
+    transition: color 700ms;
     outline-color: transparent;
+    color: ${props => props.theme.colors.lime};
 
     svg {
       width: inherit;
       height: inherit;
 
       path {
-        transition: fill 700ms;
+        fill: currentColor;
       }
     }
 
@@ -83,10 +85,6 @@ const StyledHeader = styled.header`
     flex-direction: column;
     background-color: #ffffff;
     transition: opacity 0.2s, box-shadow 0.6s 200ms;
-
-    @media (min-width: 800px) {
-      /* min-width: 240px; */
-    }
 
     &:not([aria-expanded='true']) {
       opacity: 0;

@@ -25,7 +25,6 @@ const GlobalStyle = injectGlobal`
     width: 100%;
     height: 100%;
     font-size: 1vw;
-    touch-action: none;
     position: relative;
     font-family: ${fontFamily};
     -ms-text-size-adjust: 100%;
@@ -35,6 +34,12 @@ const GlobalStyle = injectGlobal`
 
     &#homepage {
       overflow: hidden;
+
+      &,
+      body {
+        touch-action: none;
+        -webkit-tap-highlight-color: transparent;
+      }
     }
 
     &${`.${TABBING_CLASSNAME}`} {
@@ -64,7 +69,6 @@ const GlobalStyle = injectGlobal`
     width: 100%;
     height: 100%;
     font: inherit;
-    touch-action: none;
     font-weight: normal;
     line-height: inherit;
     color: ${colors.default};
@@ -210,8 +214,8 @@ const GlobalStyle = injectGlobal`
     &[data-section='deux'],
     &[data-section='cinq'],
     &[data-section='quatre'] {
-      #logo path {
-        fill: ${colors['electric-blue']};
+      #logo {
+        color: ${colors['electric-blue']};
       }
     }
 

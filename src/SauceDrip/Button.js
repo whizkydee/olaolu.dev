@@ -4,7 +4,7 @@ import styled, { css } from 'vue-styled-components'
 
 const Button = Vue.component('Button', {
   render() {
-    const { ariaLabel, type, url, lime } = this
+    const { ariaLabel, type, url, lime, btnAttrs } = this
 
     const buttonTemplate = (
       <div class="content">
@@ -21,6 +21,7 @@ const Button = Vue.component('Button', {
           class="sauce__button"
           aria-label={ariaLabel}
           data-theme={lime && 'lime'}
+          {...{ attrs: btnAttrs }}
         >
           {buttonTemplate}
         </StyledButtonLink>
@@ -33,6 +34,7 @@ const Button = Vue.component('Button', {
         class="sauce__button"
         aria-label={ariaLabel}
         data-theme={lime && 'lime'}
+        {...{ attrs: btnAttrs }}
       >
         {buttonTemplate}
       </StyledButton>
@@ -42,6 +44,7 @@ const Button = Vue.component('Button', {
   props: {
     url: String,
     title: String,
+    btnAttrs: Object,
     ariaLabel: String,
     lime: { type: Boolean, default: false },
     type: { type: String, default: 'button' },
@@ -115,7 +118,7 @@ function createStyledButton(tagName, props) {
         content: '';
         z-index: -1;
         left: -0.15em;
-        height: 103%;
+        height: 108%;
         position: absolute;
         background: currentColor;
         transition: width 0.5s cubic-bezier(0.23, 1, 0.32, 1);
@@ -134,10 +137,10 @@ function createStyledButton(tagName, props) {
   `
 
   return {
+    name: 'StyledButton',
     ...styled(tagName, props)`
       ${styles}
     `,
-    name: 'StyledButton',
   }
 }
 

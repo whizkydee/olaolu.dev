@@ -4,7 +4,7 @@ import store from './store'
 import router from './router'
 import './registerServiceWorker'
 import { ContactForm } from '@/components'
-import { ContentView, Cavalier, Button, InputGroup } from '@/SauceDrip'
+import { ContentView, Cavalier, Button, InputGroup } from '@/Saucedrip'
 
 Vue.component('Button', Button)
 Vue.component('Cavalier', Cavalier)

@@ -22,10 +22,12 @@ const StyledContactForm = styled.form`
   }
 
   .input__group {
+    color: rgba(61, 21, 95, 0.5);
+
     &:not(.focused) {
       textarea,
       input:not([type='submit']):not([type='button']) {
-        border-color: rgba(61, 21, 95, 0.4);
+        border-color: currentColor;
       }
     }
 
@@ -46,6 +48,10 @@ const StyledContactForm = styled.form`
 
     &::placeholder {
       transition: color 0.1s ease-out;
+    }
+
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 100px #f9f9f9 inset !important;
     }
   }
 

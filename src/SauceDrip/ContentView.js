@@ -40,6 +40,7 @@ const ContentView = Vue.component('ContentView', {
 
 const StyledContentView = styled.main`
   outline: none;
+  touch-action: none;
   scroll-snap-type: y mandatory;
   -webkit-overflow-scrolling: touch;
 
@@ -54,11 +55,8 @@ const StyledContentView = styled.main`
       height: 100vh;
     }
 
-    /*
-      Do not allow hidden sections to receive
-      focus via tabbing from an active section.
-    */
     &[aria-hidden='true'] {
+      /* prevents hidden sections from being highlighted */
       user-select: none;
 
       &:not(.scrolled) {
@@ -82,6 +80,10 @@ const StyledContentView = styled.main`
         }
       }
 
+      /*
+        Prevent focusable elements in hidden sections
+        from receiving focus via tabbing from an active section.
+      */
       iframe,
       [tabindex],
       area[href],
@@ -93,7 +95,7 @@ const StyledContentView = styled.main`
       ${`a[href]:not(.${NAVIGATION_BULLET})`} {
         &:not([tabindex='-1']) {
           visibility: hidden;
-          transition: visibility 200ms;
+          transition: visibility 400ms;
         }
       }
     }

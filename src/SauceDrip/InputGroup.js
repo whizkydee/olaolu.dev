@@ -109,10 +109,6 @@ const StyledInputGroup = styled.div`
     background: transparent;
     border-bottom: ${toPx(BORDER_THICKNESS)} solid currentColor;
 
-    &:-webkit-autofill {
-      -webkit-box-shadow: 0 0 0 100px ${props => props.theme.colors.lime} inset !important;
-    }
-
     &:after {
       left: 0;
       right: 0;
@@ -124,5 +120,6 @@ const StyledInputGroup = styled.div`
     }
   }
 `
+StyledInputGroup.name = 'StyledInputGroup'
 
 export default InputGroup

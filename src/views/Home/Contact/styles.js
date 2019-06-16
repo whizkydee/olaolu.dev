@@ -2,7 +2,6 @@ import styled from 'vue-styled-components'
 
 const StyledContact = styled.section`
   position: relative;
-  background-color: ${props => props.theme.colors.lime};
 
   .contact__content {
     margin-top: 2.78em;
