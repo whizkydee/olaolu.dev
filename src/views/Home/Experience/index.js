@@ -13,6 +13,7 @@ const Experience = Vue.component('Experience', {
               ranging from basic websites to complex solutions with focus on
               creating fast, elegant and accessible user experiences.
             </p>
+
             <p slot="text">
               I previously led the front end engineering team at Conectar LLC
               through building several React applications into a single powerful
@@ -31,7 +32,7 @@ const Experience = Vue.component('Experience', {
 
           <figure
             class="work__illo"
-            aria-label="Illustration of Olaolu with some of his past work."
+            aria-label="Illustration of Olaolu and some of his past work."
           >
             <OlaoluWorkIllo />
           </figure>

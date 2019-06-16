@@ -42,7 +42,7 @@ const ContactForm = Vue.component('ContactForm', {
         </div>
 
         <Button type="submit" id="submit__button">
-          Shoot!
+          Shoot
         </Button>
       </StyledContactForm>
     )
