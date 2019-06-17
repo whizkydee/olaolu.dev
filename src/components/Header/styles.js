@@ -78,9 +78,9 @@ const StyledHeader = styled.header`
     right: 3.41rem;
     width: 22.223rem;
     box-shadow: none;
-    padding: 3.473rem;
+    font-size: 1.1em;
     user-select: none;
-    font-size: 1.06em;
+    padding: 3.473rem;
     position: absolute;
     flex-direction: column;
     background-color: #ffffff;
@@ -95,56 +95,43 @@ const StyledHeader = styled.header`
     &[aria-expanded='true'] {
       box-shadow: ${createMenuShadow()};
 
-      .title,
-      .basic__contact,
-      .social__contact {
+      .basic__contact ul,
+      .social__contact ul,
+      .basic__contact .say__hello {
         opacity: 1;
         transform: translateY(0);
       }
     }
 
-    .title {
-      opacity: 0;
-      color: #cbc9e2;
-      font-size: 1.06em;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      transition: opacity 0.2s 100ms;
+    .basic__contact {
+      margin-top: -0.8em;
+
+      .say__hello {
+        opacity: 0;
+        transition: opacity 0.2s 100ms;
+      }
     }
 
     a {
       color: ${props => props.theme.colors['electric-blue']};
-
-      &:focus {
-        outline-color: transparent;
-      }
     }
   }
 
-  .basic__contact,
-  .social__contact {
+  .basic__contact ul,
+  .social__contact ul {
     opacity: 0;
     transition: opacity, transform 0.2s;
   }
 
-  .basic__contact {
-    line-height: 2.5;
-    font-size: 1.2em;
+  .basic__contact ul {
     transition-delay: 100ms;
-    margin: 2.09rem 0 2.78rem;
+    margin: 1.2rem 0 2.78rem;
     transform: translateY(30px);
   }
 
-  .social__contact {
-    display: flex;
-    margin-top: auto;
+  .social__contact ul {
     transition-delay: 300ms;
     transform: translateY(20px);
-    justify-content: space-between;
-
-    li {
-      display: inline-block;
-    }
   }
 
   .menu__toggle {

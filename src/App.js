@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { Header } from '@/components'
+import { Header, Footer } from '@/components'
 import { ThemeProvider } from 'vue-styled-components'
 
 // global styles
@@ -18,6 +18,8 @@ const App = Vue.component('App', {
         <Header />
 
         <router-view />
+
+        <Footer />
       </ThemeProvider>
     )
   },

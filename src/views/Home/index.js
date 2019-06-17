@@ -4,8 +4,8 @@ import Contact from './Contact'
 import PitchSlate from './PitchSlate'
 import Experience from './Experience'
 import Cornerstone from './Cornerstone'
-import { goToSection } from '@/helpers'
 import Carriageway from './Carriageway'
+import { goToSection, smoothScrollToElem } from '@/helpers'
 import { debounce, resetScroll, getEventPath } from '@mrolaolu/helpers'
 import { CURRENT_SECTION_KEY, SECTIONS, NAVIGATION_ID } from '@/constants'
 
@@ -101,7 +101,10 @@ const Homepage = Vue.component('Homepage', {
     },
 
     goToNextSection() {
-      goToSection(this.getSection().nextElementSibling)
+      if (this.getCurrentSectionId() === SECTIONS[SECTIONS.length - 1]) {
+        smoothScrollToElem(document.querySelector('footer'))
+      }
+      return goToSection(this.getSection().nextElementSibling)
     },
 
     goToPrevSection() {

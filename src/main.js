@@ -3,9 +3,10 @@ import App from './App'
 import store from './store'
 import router from './router'
 import './registerServiceWorker'
-import { ContactForm } from '@/components'
+import { ContactForm, Link } from '@/components'
 import { ContentView, Cavalier, Button, InputGroup } from '@/Saucedrip'
 
+Vue.component('Link', Link)
 Vue.component('Button', Button)
 Vue.component('Cavalier', Cavalier)
 Vue.component('InputGroup', InputGroup)

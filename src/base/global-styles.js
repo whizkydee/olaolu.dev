@@ -42,7 +42,17 @@ const GlobalStyle = injectGlobal`
       }
     }
 
+    &${`:not(.${TABBING_CLASSNAME})`} {
+      a:focus {
+        outline-color: transparent;
+      }
+    }
+
     &${`.${TABBING_CLASSNAME}`} {
+      a:focus {
+        outline-color: ${colors['electric-blue']};
+      }
+
       #logo:focus,
       #contact__menu a:focus,
       [data-section='trois'] .menu__toggle:not(.x):focus {
@@ -204,8 +214,7 @@ const GlobalStyle = injectGlobal`
   #app {
     position: relative;
 
-    &[data-section='une'],
-    &[data-section='cinq'] {
+    &[data-section='une'] {
       #contact__menu {
         box-shadow: ${createMenuShadow('rgba(163, 204, 170, 0.3)')};
       }
@@ -225,6 +234,12 @@ const GlobalStyle = injectGlobal`
         color: ${colors.lime};
       }
     }
+  }
+
+  .say__hello {
+    color: #cbc9e2;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
   }
 `
 
