@@ -12,8 +12,8 @@ const StyledFooter = styled.footer`
   }
 
   .footer__content {
-    padding-top: 7rem;
-    padding-bottom: 7rem;
+    padding-top: 8rem;
+    padding-bottom: 5rem;
     flex-direction: column;
   }
 
@@ -28,7 +28,7 @@ const StyledFooter = styled.footer`
   }
 
   .footer__main {
-    margin-bottom: 5.4em;
+    margin-bottom: 7.4em;
 
     > ul {
       line-height: 2.5;
@@ -38,6 +38,7 @@ const StyledFooter = styled.footer`
   }
 
   .footer__bottom {
+    font-size: 1.15em;
     justify-content: space-between;
   }
 `
