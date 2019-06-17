@@ -1,11 +1,16 @@
 import Vue from 'vue'
 import StyledFooter from './styles'
 import { ContactPortal } from '@/components'
+import { CURRENT_SECTION_KEY, SECTIONS } from '@/constants'
 
 const Footer = Vue.component('Footer', {
   render() {
+    const isntLastSection = (
+      this.$store.state[CURRENT_SECTION_KEY] !== SECTIONS[SECTIONS.length - 1]
+    ).toString()
+
     return (
-      <StyledFooter>
+      <StyledFooter aria-hidden={isntLastSection}>
         <div class="footer__content">
           <div class="footer__main">
             <ContactPortal.Basic />

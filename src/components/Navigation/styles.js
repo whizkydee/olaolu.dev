@@ -19,6 +19,7 @@ const StyledNavigation = styled.nav`
 
   a {
     display: flex;
+    outline: none;
     width: inherit;
     min-height: 27px;
     position: relative;

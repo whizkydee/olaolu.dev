@@ -5,7 +5,13 @@ const StyledFooter = styled.footer`
   z-index: 1000;
   user-select: none;
   position: relative;
+  scroll-snap-align: start;
   background: ${props => props.theme.colors.default};
+
+  &[aria-hidden='true'] a {
+    visibility: hidden;
+    transition: visibility 400ms;
+  }
 
   a {
     color: currentColor;

@@ -49,12 +49,14 @@ const GlobalStyle = injectGlobal`
     }
 
     &${`.${TABBING_CLASSNAME}`} {
-      a:focus {
+      a:focus,
+      .sauce__button:focus {
         outline-color: ${colors['electric-blue']};
       }
 
       #logo:focus,
       #contact__menu a:focus,
+      [data-theme='lime']:focus,
       [data-section='trois'] .menu__toggle:not(.x):focus {
         outline-color: ${colors.lime};
       }
