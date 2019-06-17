@@ -5,7 +5,7 @@ import { CURRENT_SECTION_KEY } from './constants'
 const goToSection = (section, smooth = true) => {
   if (!(section instanceof HTMLElement)) return
 
-  if (smooth) scrollTo(section.offsetTop)
+  if (smooth) smoothScrollToElem(section)
   else window.scrollTo(0, section.offsetTop)
 
   if (section.previousElementSibling) {
@@ -24,7 +24,10 @@ const goToSection = (section, smooth = true) => {
 const createMenuShadow = (color = 'rgba(72, 49, 212, .05)') =>
   `0 10px 53px 0 ${color}`
 
-function scrollTo(scrollTargetY = 0, speed = 1000, easing = 'easeInOutCubic') {
+function smoothScrollToElem(elem, speed = 1000, easing = 'easeInOutCubic') {
+  if (!(elem instanceof HTMLElement)) return
+
+  const scrollTargetY = elem.offsetTop
   let currentTime = 0
   const scrollY = window.pageYOffset || document.documentElement.scrollTop
 
@@ -60,4 +63,4 @@ function scrollTo(scrollTargetY = 0, speed = 1000, easing = 'easeInOutCubic') {
   tick()
 }
 
-export { goToSection, createMenuShadow, scrollTo }
+export { goToSection, createMenuShadow, smoothScrollToElem }
