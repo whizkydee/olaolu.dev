@@ -58,7 +58,7 @@ const StyledCavalier = styled.article`
     letter-spacing: -0.03em;
     color: ${props => props.theme.colors['electric-blue']};
 
-    ${media.minWidth('medium', +1)`
+    ${media.minWidth('medium', 1)`
       max-width: 30vw;
       transition-delay: 200ms;
     `}
@@ -68,7 +68,7 @@ const StyledCavalier = styled.article`
     line-height: 1.6;
     color: ${props => props.theme.colors.default};
 
-    ${media.minWidth('medium', +1)`
+    ${media.minWidth('medium', 1)`
       width: 32vw;
       font-size: 1.07em;
       transition-delay: 310ms;

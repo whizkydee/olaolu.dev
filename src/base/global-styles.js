@@ -33,7 +33,7 @@ const GlobalStyle = injectGlobal`
     -webkit-font-smoothing: antialiased;
 
     &#homepage {
-      ${media.minWidth('medium', +1)`
+      ${media.minWidth('medium', 1)`
         font-size: 1vw;
         overflow: hidden;
 
@@ -210,7 +210,7 @@ const GlobalStyle = injectGlobal`
     width: 100%;
     display: flex;
 
-    ${media.minWidth('xLarge', +1)`
+    ${media.minWidth('xLarge', 1)`
       padding: 0 8em;
     `}
 
@@ -218,7 +218,7 @@ const GlobalStyle = injectGlobal`
       padding: 0 5em;
     `}
 
-    ${media.between(['medium', +1], ['xLarge'])`
+    ${media.between(['medium', 1], ['xLarge'])`
       padding: 0 10em;
       max-width: 1500px;
     `}

@@ -9,7 +9,7 @@ const StyledFooter = styled.footer`
   color: ${props => props.theme.colors['lime-alt']};
   background: ${props => props.theme.colors.default};
 
-  ${media.minWidth('medium', +1)`
+  ${media.minWidth('medium', 1)`
     &[aria-hidden='true'] a {
       visibility: hidden;
       transition: visibility 400ms;

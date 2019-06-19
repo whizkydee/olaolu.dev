@@ -20,7 +20,7 @@ const StyledPitchSlate = styled.section`
   }
 
   .cavalier {
-    ${media.minWidth('medium', +1)`
+    ${media.minWidth('medium', 1)`
       margin-top: -3.5em;
     `}
 
@@ -51,7 +51,7 @@ const StyledPitchSlate = styled.section`
     position: relative;
     border: 0.115rem solid #fff;
 
-    ${media.minWidth('medium', +1)`
+    ${media.minWidth('medium', 1)`
       margin-right: ${props => `calc(${props.theme.header.padding} + 4em)`};
     `}
 
@@ -96,7 +96,7 @@ const StyledPitchSlate = styled.section`
   }
 
   .bottom__content {
-    ${media.minWidth('medium', +1)`
+    ${media.minWidth('medium', 1)`
       margin-top: auto;
       padding-right: ${props => props.theme.header.padding};
     `}
@@ -115,7 +115,7 @@ const StyledPitchSlate = styled.section`
     justify-content: space-between;
     color: ${props => props.theme.colors.lime};
 
-    ${media.minWidth('medium', +1)`
+    ${media.minWidth('medium', 1)`
       width: 41%;
       font-size: 0.965em;
     `}

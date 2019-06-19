@@ -43,7 +43,7 @@ const StyledContentView = styled.main`
   outline: none;
   -webkit-overflow-scrolling: touch;
 
-  ${media.minWidth('medium', +1)`
+  ${media.minWidth('medium', 1)`
     touch-action: none;
     scroll-snap-type: y mandatory;
   `}
@@ -62,7 +62,7 @@ const StyledContentView = styled.main`
       }
     `}
 
-    ${media.minWidth('medium', +1)`
+    ${media.minWidth('medium', 1)`
       &:not(#une) {
         height: 100vh;
       }
