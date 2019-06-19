@@ -10,14 +10,18 @@ const Footer = Vue.component('Footer', {
     ).toString()
 
     return (
-      <StyledFooter aria-hidden={isntLastSection}>
+      <StyledFooter
+        id="footer"
+        role="contentinfo"
+        aria-hidden={isntLastSection}
+      >
         <div class="footer__content">
           <div class="footer__main">
             <ContactPortal.Basic />
 
             <ul>
               <Link href="/work">My Work</Link>
-              <Link href="/cookbook">My Cookbook</Link>
+              <Link href="/desk">My Desk</Link>
             </ul>
           </div>
 

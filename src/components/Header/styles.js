@@ -1,5 +1,5 @@
 import styled from 'vue-styled-components'
-import { createMenuShadow } from '@/helpers'
+import { createMenuShadow, media } from '@/helpers'
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -11,7 +11,14 @@ const StyledHeader = styled.header`
   background: transparent;
   justify-content: space-between;
   height: ${props => props.theme.header.height};
-  padding: 0 ${props => props.theme.header.padding};
+
+  ${media.minWidth('medium', +1)`
+    padding: 0 ${props => props.theme.header.padding};
+  `}
+
+  ${media.maxWidth('medium')`
+    padding: 0 3em;
+  `}
 
   &[data-compact='true'] {
     #logo {

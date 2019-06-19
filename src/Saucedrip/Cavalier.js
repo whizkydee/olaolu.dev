@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import { media } from '@/helpers'
 import styled from 'vue-styled-components'
 
 const Cavalier = Vue.component('Cavalier', {
@@ -52,28 +53,38 @@ const StyledCavalier = styled.article`
   h1 {
     margin: 0;
     font-size: 4em;
-    max-width: 30vw;
     font-weight: 900;
     line-height: 1.1;
     letter-spacing: -0.03em;
-    transition-delay: 200ms;
     color: ${props => props.theme.colors['electric-blue']};
+
+    ${media.minWidth('medium', +1)`
+      max-width: 30vw;
+      transition-delay: 200ms;
+    `}
   }
 
   p {
-    width: 32vw;
     line-height: 1.6;
-    font-size: 1.07em;
-    transition-delay: 310ms;
     color: ${props => props.theme.colors.default};
 
-    &:nth-of-type(2) {
-      transition-delay: 370ms;
-    }
+    ${media.minWidth('medium', +1)`
+      width: 32vw;
+      font-size: 1.07em;
+      transition-delay: 310ms;
 
-    &:nth-of-type(3) {
-      transition-delay: 420ms;
-    }
+      &:nth-of-type(2) {
+        transition-delay: 370ms;
+      }
+
+      &:nth-of-type(3) {
+        transition-delay: 420ms;
+      }
+    `}
+
+    ${media.maxWidth('medium')`
+      font-size: 1.3em;
+    `}
   }
 `
 

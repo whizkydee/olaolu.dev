@@ -1,3 +1,4 @@
+import { media } from '@/helpers'
 import styled from 'vue-styled-components'
 
 const StyledCarriageway = styled.section`
@@ -15,15 +16,15 @@ const StyledCarriageway = styled.section`
       }
     }
 
-    @media (max-width: 1500px) {
+    ${media.maxWidth('xLarge')`
       max-width: unset;
       padding: 0 ${props => `calc(${props.theme.header.padding} - 2em)`};
-    }
+    `}
 
-    @media (min-width: 1501px) {
+    ${media.minWidth('xLarge', 1)`
       padding-left: 5em;
       padding-right: 5em;
-    }
+    `}
   }
 
   .lanes {
@@ -31,14 +32,21 @@ const StyledCarriageway = styled.section`
     display: flex;
     background-color: #fff;
 
+    ${media.maxWidth('medium')`
+      flex-direction: column;
+    `}
+
     li {
-      width: 50%;
       padding: 6.95em;
       padding-left: ${props => props.theme.header.padding};
 
-      &:not(:last-of-type) {
-        border-right: 0.15rem solid rgba(72, 49, 212, 0.3);
-      }
+      ${media.minWidth('medium', 1)`
+        width: 50%;
+
+        &:not(:last-of-type) {
+          border-right: 0.15rem solid rgba(72, 49, 212, 0.3);
+        }
+      `}
     }
   }
 

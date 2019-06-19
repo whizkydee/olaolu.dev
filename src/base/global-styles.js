@@ -1,5 +1,5 @@
 import theme from './theme'
-import { createMenuShadow } from '@/helpers'
+import { createMenuShadow, media } from '@/helpers'
 import { injectGlobal } from 'vue-styled-components'
 import { TABBING_CLASSNAME, NAVIGATION_ID } from '@/constants'
 
@@ -24,7 +24,7 @@ const GlobalStyle = injectGlobal`
   html {
     width: 100%;
     height: 100%;
-    font-size: 1vw;
+    font-size: 14.4px;
     position: relative;
     font-family: ${fontFamily};
     -ms-text-size-adjust: 100%;
@@ -33,13 +33,20 @@ const GlobalStyle = injectGlobal`
     -webkit-font-smoothing: antialiased;
 
     &#homepage {
-      overflow: hidden;
+      ${media.minWidth('medium', +1)`
+        font-size: 1vw;
+        overflow: hidden;
 
-      &,
-      body {
-        touch-action: none;
-        -webkit-tap-highlight-color: transparent;
-      }
+        &,
+        body {
+          touch-action: none;
+          -webkit-tap-highlight-color: transparent;
+        }
+      `}
+
+      ${media.maxWidth('medium')`
+        font-size: 9px;
+      `}
     }
 
     &${`:not(.${TABBING_CLASSNAME})`} {
@@ -203,14 +210,18 @@ const GlobalStyle = injectGlobal`
     width: 100%;
     display: flex;
 
-    @media (min-width: 1501px) {
+    ${media.minWidth('xLarge', +1)`
       padding: 0 8em;
-    }
+    `}
 
-    @media (max-width: 1500px) {
+    ${media.maxWidth('medium')`
+      padding: 0 5em;
+    `}
+
+    ${media.between(['medium', +1], ['xLarge'])`
       padding: 0 10em;
       max-width: 1500px;
-    }
+    `}
   }
 
   #app {

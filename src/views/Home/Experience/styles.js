@@ -1,40 +1,52 @@
+import { media } from '@/helpers'
 import styled from 'vue-styled-components'
 
 const StyledExperience = styled.section`
   background-color: ${props => props.theme.colors['electric-blue']};
 
   .experience__content {
-    margin-top: 5.5vh;
-    align-items: center;
     justify-content: space-between;
-  }
 
-  .cavalier {
-    h1 {
-      max-width: 27.6vw;
-    }
+    ${media.minWidth('medium', +1)`
+      margin-top: 5.5vh;
+      align-items: center;
 
-    p {
-      width: 27vw;
-    }
+      .cavalier {
+        h1 {
+          max-width: 27.6vw;
+        }
+
+        p {
+          width: 27vw;
+        }
+      }
+    `}
+
+    ${media.maxWidth('medium')`
+      flex-direction: column;
+      margin-top: ${props => props.theme.header.height};
+    `}
   }
 
   .work__illo {
     margin: 0;
     position: relative;
-    transition: transform 0.5s, opacity 0.2s;
-    transition-delay: 400ms;
+
+    ${media.minWidth('medium', +1)`
+      transition: transform 0.5s, opacity 0.2s;
+      transition-delay: 400ms;
+
+      &[aria-hidden='true']:not(.scrolled) {
+        .work__illo {
+          opacity: 0;
+          transform: translate3d(0, 40px, 0);
+        }
+      }
+    `}
 
     svg {
       width: 46em;
       height: 50.14em;
-    }
-  }
-
-  &[aria-hidden='true']:not(.scrolled) {
-    .work__illo {
-      opacity: 0;
-      transform: translate3d(0, 40px, 0);
     }
   }
 

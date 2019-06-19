@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import { media, breakpoints } from '@/helpers'
 import styled from 'vue-styled-components'
 import { TABBING_CLASSNAME, NAVIGATION_BULLET } from '@/constants'
 
@@ -40,9 +41,12 @@ const ContentView = Vue.component('ContentView', {
 
 const StyledContentView = styled.main`
   outline: none;
-  touch-action: none;
-  scroll-snap-type: y mandatory;
   -webkit-overflow-scrolling: touch;
+
+  ${media.minWidth('medium', +1)`
+    touch-action: none;
+    scroll-snap-type: y mandatory;
+  `}
 
   > section {
     display: flex;
@@ -51,52 +55,67 @@ const StyledContentView = styled.main`
     align-items: center;
     justify-content: center;
 
-    &:not(#une) {
-      height: 100vh;
-    }
+    ${media.maxWidth('medium')`
+      &:not(#une) {
+        min-height: 100vh;
+        margin-bottom: 10rem;
+      }
+    `}
 
-    &[aria-hidden='true'] {
-      /* prevents hidden sections from being highlighted */
-      user-select: none;
+    ${media.minWidth('medium', +1)`
+      &:not(#une) {
+        height: 100vh;
+      }
 
-      &:not(.scrolled) {
-        p,
-        h1 {
-          opacity: 0;
-        }
+      &[aria-hidden='true'] {
+        /* prevents hidden sections from being highlighted */
+        user-select: none;
 
-        .cavalier {
-          p {
-            transform: translate3d(0, 20px, 0);
+        &:not(.scrolled) {
+          .cavalier {
+            p,
+            h1 {
+              opacity: 0;
+            }
 
-            &:nth-of-type(3) {
-              transform: translate3d(0, 15px, 0);
+            p {
+              transform: translate3d(0, 20px, 0);
+
+              &:nth-of-type(3) {
+                transform: translate3d(0, 15px, 0);
+              }
+            }
+
+            h1 {
+              transform: translate3d(0, 50px, 0);
             }
           }
+        }
 
-          h1 {
-            transform: translate3d(0, 50px, 0);
+        /*
+          Prevent focusable elements in hidden sections
+          from receiving focus via tabbing from an active section.
+        */
+        iframe,
+        [tabindex],
+        area[href],
+        input:not([disabled]),
+        select:not([disabled]),
+        button:not([disabled]),
+        textarea:not([disabled]),
+        [contentEditable='true'],
+        ${`a[href]:not(.${NAVIGATION_BULLET})`} {
+          &:not([tabindex='-1']) {
+            visibility: hidden;
+            transition: visibility 400ms;
           }
         }
       }
+    `}
 
-      /*
-        Prevent focusable elements in hidden sections
-        from receiving focus via tabbing from an active section.
-      */
-      iframe,
-      [tabindex],
-      area[href],
-      input:not([disabled]),
-      select:not([disabled]),
-      button:not([disabled]),
-      textarea:not([disabled]),
-      [contentEditable='true'],
-      ${`a[href]:not(.${NAVIGATION_BULLET})`} {
-        &:not([tabindex='-1']) {
-          visibility: hidden;
-          transition: visibility 400ms;
-        }
+    @media (min-width: ${breakpoints.medium}px) and (max-width: 768px) {
+      &:not(#une) {
+        height: 70vh;
       }
     }
 

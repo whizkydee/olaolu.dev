@@ -1,3 +1,9 @@
+import {
+  goToSection,
+  breakpoints,
+  matchesQuery,
+  smoothScrollToElem,
+} from '@/helpers'
 import Vue from 'vue'
 import { mapState } from 'vuex'
 import Contact from './Contact'
@@ -5,9 +11,8 @@ import PitchSlate from './PitchSlate'
 import Experience from './Experience'
 import Cornerstone from './Cornerstone'
 import Carriageway from './Carriageway'
-import { goToSection, smoothScrollToElem } from '@/helpers'
-import { debounce, resetScroll, getEventPath } from '@mrolaolu/helpers'
-import { CURRENT_SECTION_KEY, SECTIONS, NAVIGATION_ID } from '@/constants'
+import { SECTIONS, NAVIGATION_ID, CURRENT_SECTION_KEY } from '@/constants'
+import { debounce, resetScroll, getEventPath, toPx } from '@mrolaolu/helpers'
 
 const Homepage = Vue.component('Homepage', {
   data: () => ({
@@ -22,40 +27,48 @@ const Homepage = Vue.component('Homepage', {
   mounted() {
     const { documentElement } = document
 
-    debounce(() => {
-      // Set current section to currently visible section upon reload
-      const getPercentageDiff = s =>
-        Math.abs(
-          (parseInt(s.offsetTop) -
-            parseInt(
-              Math.abs(document.documentElement.getBoundingClientRect().top)
-            )) /
-            100
-        )
+    if (!this.isSmallDevice()) {
+      debounce(() => {
+        // Set current section to currently visible section upon reload
+        const getPercentageDiff = s =>
+          Math.abs(
+            (parseInt(s.offsetTop) -
+              parseInt(
+                Math.abs(document.documentElement.getBoundingClientRect().top)
+              )) /
+              100
+          )
 
-      const sectionInView = this.getSections().filter(
-        section => getPercentageDiff(section) < 2 // <2%
-      )[0]
+        const sectionInView = this.getSections().filter(
+          section => getPercentageDiff(section) < 2 // <2%
+        )[0]
 
-      if (!sectionInView) debounce(() => resetScroll(), 10)
-      else {
-        goToSection(sectionInView)
-        if (!this[CURRENT_SECTION_KEY] === SECTIONS[0])
-          this.$store.commit('headerCompact', true)
-      }
-    })
+        if (!sectionInView) debounce(() => resetScroll(), 100)
+        else {
+          goToSection(sectionInView)
+          if (!this[CURRENT_SECTION_KEY] === SECTIONS[0])
+            this.$store.commit('headerCompact', true)
+        }
+      })
+    }
 
     // Set current section to the first section.
     this.$root.$el.dataset.section = this.getCurrentSectionId()
 
     window.addEventListener('resize', this.recalcSection)
-    document.addEventListener('keydown', this.maybeScrollJack)
-    document.addEventListener('touchstart', this.handleTouchstart)
-    document.addEventListener('touchmove', this.handleTouchmove, {
-      passive: false,
-    })
-    documentElement.addEventListener('wheel', this.handleMouseWheel, false)
-    documentElement.addEventListener('mousewheel', this.handleMouseWheel, false)
+    if (!this.isSmallDevice()) {
+      document.addEventListener('keydown', this.maybeScrollJack)
+      document.addEventListener('touchstart', this.handleTouchstart)
+      document.addEventListener('touchmove', this.handleTouchmove, {
+        passive: false,
+      })
+      documentElement.addEventListener('wheel', this.handleMouseWheel, false)
+      documentElement.addEventListener(
+        'mousewheel',
+        this.handleMouseWheel,
+        false
+      )
+    }
   },
 
   destroyed() {
@@ -76,6 +89,10 @@ const Homepage = Vue.component('Homepage', {
   },
 
   methods: {
+    isSmallDevice() {
+      return matchesQuery(`(max-width: ${toPx(breakpoints.medium)})`)
+    },
+
     getCurrentSectionId() {
       return this[CURRENT_SECTION_KEY]
     },

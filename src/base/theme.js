@@ -1,6 +1,7 @@
 export const colors = {
   default: '#3d155f',
   lime: '#ccf381',
+  'lime-alt': '#badd76',
   'electric-blue': '#4831d4',
   white: '#fff',
   black: '#000',

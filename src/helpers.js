@@ -1,6 +1,9 @@
 import store from './store'
 import { debounce } from '@mrolaolu/helpers'
 import { CURRENT_SECTION_KEY } from './constants'
+import media, { breakpoints } from './media-helpers'
+
+const matchesQuery = query => window.matchMedia(query).matches
 
 const goToSection = (section, smooth = true) => {
   if (!(section instanceof HTMLElement)) return
@@ -63,4 +66,11 @@ function smoothScrollToElem(elem, speed = 1000, easing = 'easeInOutCubic') {
   tick()
 }
 
-export { goToSection, createMenuShadow, smoothScrollToElem }
+export {
+  media,
+  breakpoints,
+  goToSection,
+  matchesQuery,
+  createMenuShadow,
+  smoothScrollToElem,
+}

@@ -11,3 +11,6 @@ export const SOCIAL_PROFILES = {
   instagram: 'https://instagram.com/laolu_x',
   linkedIn: 'https://linkedin.com/in/olaolu-olawuyi',
 }
+export const BREAKPOINTS = {
+  small: 600,
+}

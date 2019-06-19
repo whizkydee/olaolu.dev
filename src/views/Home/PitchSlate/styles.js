@@ -1,9 +1,13 @@
+import { media } from '@/helpers'
 import styled from 'vue-styled-components'
-import { NAVIGATION_ID } from '@/constants'
 
 const StyledPitchSlate = styled.section`
   flex-direction: column;
   padding-bottom: 4.17rem;
+
+  ${media.maxWidth('medium')`
+    font-size: 0.95em;
+  `}
 
   .primary__content,
   .bottom__content {
@@ -16,7 +20,9 @@ const StyledPitchSlate = styled.section`
   }
 
   .cavalier {
-    margin-top: -3.5em;
+    ${media.minWidth('medium', +1)`
+      margin-top: -3.5em;
+    `}
 
     h1 {
       font-size: 4.4em;
@@ -28,17 +34,30 @@ const StyledPitchSlate = styled.section`
 
     p {
       font-size: 1.3em;
+
+      ${media.maxWidth('medium')`
+        max-width: 20em;
+      `}
     }
   }
 
   .visage {
-    margin: 0;
     z-index: 1;
+    margin-top: 0;
+    margin-left: 0;
     width: 23.334em;
     height: 24.67em;
+    margin-bottom: 0;
     position: relative;
     border: 0.115rem solid #fff;
-    margin-right: ${props => `calc(${props.theme.header.padding} + 4em)`};
+
+    ${media.minWidth('medium', +1)`
+      margin-right: ${props => `calc(${props.theme.header.padding} + 4em)`};
+    `}
+
+    ${media.maxWidth('medium')`
+      margin-right: ${props => `calc(${props.theme.header.padding} - 3em)`};
+    `}
 
     .face {
       width: inherit;
@@ -77,21 +96,34 @@ const StyledPitchSlate = styled.section`
   }
 
   .bottom__content {
-    margin-top: auto;
-    padding-right: ${props => props.theme.header.padding};
+    ${media.minWidth('medium', +1)`
+      margin-top: auto;
+      padding-right: ${props => props.theme.header.padding};
+    `}
 
-    .deux__points,
-    ${`#${NAVIGATION_ID}`} {
+    ${media.maxWidth('medium')`
+      margin-top: 3.7em;
+    `}
+
+    .deux__points {
       display: flex;
     }
   }
 
   .deux__points {
-    width: 41%;
     line-height: 1.5;
-    font-size: 0.965em;
     justify-content: space-between;
     color: ${props => props.theme.colors.lime};
+
+    ${media.minWidth('medium', +1)`
+      width: 41%;
+      font-size: 0.965em;
+    `}
+
+    ${media.maxWidth('medium')`
+      width: 65%;
+      font-size: 1.2em;
+    `}
 
     li {
       width: calc(50% - 1.731em);

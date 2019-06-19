@@ -22,7 +22,7 @@ const Carriageway = Vue.component('Carriageway', {
                 text="About design, <br/> front end dev, <br/> learning and life."
               />
 
-              <Button url="/cookbook">See my cookbook</Button>
+              <Button url="/desk">See my desk</Button>
             </li>
           </ul>
         </div>

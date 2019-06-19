@@ -1,17 +1,20 @@
+import { media } from '@/helpers'
 import styled from 'vue-styled-components'
 
 const StyledFooter = styled.footer`
-  color: #df678c;
   z-index: 1000;
   user-select: none;
   position: relative;
   scroll-snap-align: start;
+  color: ${props => props.theme.colors['lime-alt']};
   background: ${props => props.theme.colors.default};
 
-  &[aria-hidden='true'] a {
-    visibility: hidden;
-    transition: visibility 400ms;
-  }
+  ${media.minWidth('medium', +1)`
+    &[aria-hidden='true'] a {
+      visibility: hidden;
+      transition: visibility 400ms;
+    }
+  `}
 
   a {
     color: currentColor;

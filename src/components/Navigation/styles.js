@@ -1,11 +1,17 @@
+import { media } from '@/helpers'
 import styled from 'vue-styled-components'
 
 const StyledNavigation = styled.nav`
   z-index: 999;
+  display: none;
   position: fixed;
   margin-top: -20px;
   right: ${props => props.theme.header.padding};
   color: ${props => props.theme.colors['electric-blue']};
+
+  ${media.minWidth('medium', +1)`
+    display: flex;
+  `}
 
   ul {
     width: 17px;
