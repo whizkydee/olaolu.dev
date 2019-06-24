@@ -1,9 +1,10 @@
 import {
-  goToSection,
-  breakpoints,
+  wait,
+  toPx,
+  resetScroll,
+  getEventPath,
   matchesQuery,
-  smoothScrollToElem,
-} from '@/helpers'
+} from '@mrolaolu/helpers'
 import Vue from 'vue'
 import { mapState } from 'vuex'
 import Contact from './Contact'
@@ -11,13 +12,17 @@ import PitchSlate from './PitchSlate'
 import Experience from './Experience'
 import Cornerstone from './Cornerstone'
 import Carriageway from './Carriageway'
+import { goToSection, breakpoints, smoothScrollToElem } from '@/helpers'
 import { SECTIONS, NAVIGATION_ID, CURRENT_SECTION_KEY } from '@/constants'
-import { debounce, resetScroll, getEventPath, toPx } from '@mrolaolu/helpers'
+
+const maybeMediumScreen = () =>
+  matchesQuery(`(max-width: ${toPx(breakpoints.medium)})`)
 
 const Homepage = Vue.component('Homepage', {
   data: () => ({
     touchY: null,
     prevTime: new Date().getTime(),
+    isMediumScreen: maybeMediumScreen(),
   }),
 
   computed: {
@@ -27,8 +32,8 @@ const Homepage = Vue.component('Homepage', {
   mounted() {
     const { documentElement } = document
 
-    if (!this.isSmallDevice()) {
-      debounce(() => {
+    !this.isMediumScreen &&
+      wait(() => {
         // Set current section to currently visible section upon reload
         const getPercentageDiff = s =>
           Math.abs(
@@ -43,32 +48,25 @@ const Homepage = Vue.component('Homepage', {
           section => getPercentageDiff(section) < 2 // <2%
         )[0]
 
-        if (!sectionInView) debounce(() => resetScroll(), 100)
+        if (!sectionInView) wait(() => resetScroll(), 100)
         else {
           goToSection(sectionInView)
           if (!this[CURRENT_SECTION_KEY] === SECTIONS[0])
             this.$store.commit('headerCompact', true)
         }
       })
-    }
 
     // Set current section to the first section.
     this.$root.$el.dataset.section = this.getCurrentSectionId()
 
     window.addEventListener('resize', this.recalcSection)
-    if (!this.isSmallDevice()) {
-      document.addEventListener('keydown', this.maybeScrollJack)
-      document.addEventListener('touchstart', this.handleTouchstart)
-      document.addEventListener('touchmove', this.handleTouchmove, {
-        passive: false,
-      })
-      documentElement.addEventListener('wheel', this.handleMouseWheel, false)
-      documentElement.addEventListener(
-        'mousewheel',
-        this.handleMouseWheel,
-        false
-      )
-    }
+    document.addEventListener('keydown', this.maybeScrollJack)
+    document.addEventListener('touchstart', this.handleTouchstart)
+    document.addEventListener('touchmove', this.handleTouchmove, {
+      passive: false,
+    })
+    documentElement.addEventListener('wheel', this.handleMouseWheel, false)
+    documentElement.addEventListener('mousewheel', this.handleMouseWheel, false)
   },
 
   destroyed() {
@@ -89,10 +87,6 @@ const Homepage = Vue.component('Homepage', {
   },
 
   methods: {
-    isSmallDevice() {
-      return matchesQuery(`(max-width: ${toPx(breakpoints.medium)})`)
-    },
-
     getCurrentSectionId() {
       return this[CURRENT_SECTION_KEY]
     },
@@ -102,6 +96,8 @@ const Homepage = Vue.component('Homepage', {
     },
 
     recalcSection() {
+      this.isMediumScreen = maybeMediumScreen()
+
       // Immediately resize sections on window resize (no smooth).
       goToSection(this.getSection(this.getCurrentSectionId()), false)
     },
@@ -137,12 +133,13 @@ const Homepage = Vue.component('Homepage', {
     },
 
     handleTouchstart(event) {
-      if (typeof event.touches === 'undefined') return
+      if (typeof event.touches === 'undefined' || !this.isMediumScreen) return
       this.touchY = event.touches[0].clientY
     },
 
     handleTouchmove(event) {
-      if (typeof event.changedTouches === 'undefined') return
+      if (typeof event.changedTouches === 'undefined' || !this.isMediumScreen)
+        return
 
       const curTouchY = event.changedTouches[0].clientY
       if (!this.scrollingLudicrouslyFast()) {
@@ -217,26 +214,15 @@ const Homepage = Vue.component('Homepage', {
 
   render() {
     const { isSectionHidden } = this
+    const [une, deux, trois, quatre, cinq] = SECTIONS
 
     return (
       <ContentView id="homepage">
-        <PitchSlate
-          id={SECTIONS[0]}
-          aria-hidden={isSectionHidden(SECTIONS[0])}
-        />
-        <Cornerstone
-          id={SECTIONS[1]}
-          aria-hidden={isSectionHidden(SECTIONS[1])}
-        />
-        <Experience
-          id={SECTIONS[2]}
-          aria-hidden={isSectionHidden(SECTIONS[2])}
-        />
-        <Carriageway
-          id={SECTIONS[3]}
-          aria-hidden={isSectionHidden(SECTIONS[3])}
-        />
-        <Contact id={SECTIONS[4]} aria-hidden={isSectionHidden(SECTIONS[4])} />
+        <PitchSlate id={une} aria-hidden={isSectionHidden(une)} />
+        <Cornerstone id={deux} aria-hidden={isSectionHidden(deux)} />
+        <Experience id={trois} aria-hidden={isSectionHidden(trois)} />
+        <Carriageway id={quatre} aria-hidden={isSectionHidden(quatre)} />
+        <Contact id={cinq} aria-hidden={isSectionHidden(cinq)} />
       </ContentView>
     )
   },

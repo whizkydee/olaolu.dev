@@ -1,9 +1,7 @@
 import store from './store'
-import { debounce } from '@mrolaolu/helpers'
+import { wait } from '@mrolaolu/helpers'
 import { CURRENT_SECTION_KEY } from './constants'
 import media, { breakpoints } from './media-helpers'
-
-const matchesQuery = query => window.matchMedia(query).matches
 
 const goToSection = (section, smooth = true) => {
   if (!(section instanceof HTMLElement)) return
@@ -18,7 +16,7 @@ const goToSection = (section, smooth = true) => {
 
   if (!section.nextElementSibling) section.classList.add('scrolled')
 
-  debounce(() => {
+  wait(() => {
     store.commit(CURRENT_SECTION_KEY, section.id)
     document.getElementById('app').dataset.section = section.id
   }, 200)
@@ -66,11 +64,4 @@ function smoothScrollToElem(elem, speed = 1000, easing = 'easeInOutCubic') {
   tick()
 }
 
-export {
-  media,
-  breakpoints,
-  goToSection,
-  matchesQuery,
-  createMenuShadow,
-  smoothScrollToElem,
-}
+export { media, breakpoints, goToSection, createMenuShadow, smoothScrollToElem }

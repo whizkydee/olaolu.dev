@@ -23,7 +23,6 @@ const GlobalStyle = injectGlobal`
 
   html {
     width: 100%;
-    height: 100%;
     font-size: 14.4px;
     position: relative;
     font-family: ${fontFamily};
