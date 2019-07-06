@@ -1,7 +1,6 @@
 import theme from './theme'
-import { createMenuShadow, media } from '@/helpers'
+import { TABBING_CLASSNAME } from '@/constants'
 import { injectGlobal } from 'vue-styled-components'
-import { TABBING_CLASSNAME, NAVIGATION_ID } from '@/constants'
 
 const { colors, fontFamily } = theme
 
@@ -14,6 +13,10 @@ const GlobalStyle = injectGlobal`
     outline-width: 0.2em;
     outline-style: dashed;
     outline-color: ${colors.lime};
+  }
+
+  ::selection {
+    background-color: rgba(111, 132, 230, .3);
   }
 
   ::placeholder {
@@ -31,23 +34,6 @@ const GlobalStyle = injectGlobal`
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
 
-    &#homepage {
-      ${media.minWidth('medium', 1)`
-        font-size: 1vw;
-        overflow: hidden;
-
-        &,
-        body {
-          touch-action: none;
-          -webkit-tap-highlight-color: transparent;
-        }
-      `}
-
-      ${media.maxWidth('medium')`
-        font-size: 9px;
-      `}
-    }
-
     &${`:not(.${TABBING_CLASSNAME})`} {
       a:focus {
         outline-color: transparent;
@@ -60,23 +46,16 @@ const GlobalStyle = injectGlobal`
         outline-color: ${colors['electric-blue']};
       }
 
-      #logo:focus,
-      #contact__menu a:focus,
-      [data-theme='lime']:focus,
-      [data-section='trois'] .menu__toggle:not(.x):focus {
-        outline-color: ${colors.lime};
-      }
-
-      [data-section='cinq'] #logo:focus {
-        outline-color: ${colors['electric-blue']};
-      }
-
       .menu__toggle:focus {
         outline-color: ${colors['electric-blue']};
       }
 
-      #${NAVIGATION_ID} a:focus:after {
-        box-shadow: 0 0 0 0.3rem rgba(24, 156, 230, 0.4);
+      #logo:focus,
+      #contact__menu a:focus,
+      [data-theme='lime']:focus,
+      [data-current-section='trois'] .menu__toggle:not(.x):focus,
+      [data-current-section='footer'] .menu__toggle:not(.x):focus {
+        outline-color: ${colors.lime};
       }
     }
   }
@@ -103,7 +82,7 @@ const GlobalStyle = injectGlobal`
 
   a {
     text-decoration: none;
-    transition: opacity, color, background, transform, border .3s;
+    transition: opacity, color, background-color, transform, border .3s;
 
     &:not([role='button']) {
       color: ${colors.default};
@@ -173,6 +152,10 @@ const GlobalStyle = injectGlobal`
     user-select: none;
   }
 
+  #app {
+    position: relative;
+  }
+
   .no-scroll {
     overflow: hidden !important;
   }
@@ -195,56 +178,6 @@ const GlobalStyle = injectGlobal`
       top: 0;
       left: 0;
       outline: none;
-    }
-  }
-
-  .pente {
-    background: ${colors['electric-blue']};
-    background: ${`linear-gradient(90deg, ${colors['electric-blue']} 67%, ${
-      colors.lime
-    } 33%)`};
-  }
-
-  [class$='__content'] {
-    width: 100%;
-    display: flex;
-
-    ${media.minWidth('xLarge', 1)`
-      padding: 0 8em;
-    `}
-
-    ${media.maxWidth('medium')`
-      padding: 0 5em;
-    `}
-
-    ${media.between(['medium', 1], ['xLarge'])`
-      padding: 0 10em;
-      max-width: 1500px;
-    `}
-  }
-
-  #app {
-    position: relative;
-
-    &[data-section='une'] {
-      #contact__menu {
-        box-shadow: ${createMenuShadow('rgba(163, 204, 170, 0.3)')};
-      }
-    }
-
-    &[data-section='deux'],
-    &[data-section='cinq'],
-    &[data-section='quatre'] {
-      #logo {
-        color: ${colors['electric-blue']};
-      }
-    }
-
-    &[data-section='trois'] {
-      #${NAVIGATION_ID},
-      .menu__toggle:not(.x) {
-        color: ${colors.lime};
-      }
     }
   }
 

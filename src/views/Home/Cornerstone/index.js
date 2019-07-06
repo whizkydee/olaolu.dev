@@ -7,9 +7,10 @@ import Vue from 'vue'
 import StyledCornerstone from './styles'
 
 const Cornerstone = Vue.component('Cornerstone', {
+  props: ['name'],
   render() {
     return (
-      <StyledCornerstone>
+      <StyledCornerstone name={this.name}>
         <div class="cornerstone__content">
           <Cavalier heading="Design">
             <p slot="text">

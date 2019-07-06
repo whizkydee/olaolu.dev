@@ -1,7 +1,8 @@
 import { media } from '@/helpers'
+import { Section } from '@/components'
 import styled from 'vue-styled-components'
 
-const StyledExperience = styled.section`
+const StyledExperience = styled(Section)`
   background-color: ${props => props.theme.colors['electric-blue']};
 
   ${media.minWidth('medium', 1)`

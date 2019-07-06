@@ -3,9 +3,10 @@ import StyledExperience from './styles'
 import { OlaoluWorkIllo } from '@/assets'
 
 const Experience = Vue.component('Experience', {
+  props: ['name'],
   render() {
     return (
-      <StyledExperience>
+      <StyledExperience name={this.name}>
         <div class="experience__content">
           <Cavalier theme="lime" heading="Over the <br /> past 8 years,">
             <p slot="text">

@@ -1,25 +1,40 @@
 import store from './store'
 import { wait } from '@mrolaolu/helpers'
-import { CURRENT_SECTION_KEY } from './constants'
 import media, { breakpoints } from './media-helpers'
+import { CURRENT_SECTION_KEY, SECTION_SELECTOR } from './constants'
 
-const goToSection = (section, smooth = true) => {
+const goToSection = ([section, modifier], smooth = true) => {
   if (!(section instanceof HTMLElement)) return
 
-  if (smooth) smoothScrollToElem(section)
-  else window.scrollTo(0, section.offsetTop)
+  const getSectionId = () => section.dataset.section
+  const sections = Array.from(document.querySelectorAll(SECTION_SELECTOR))
 
-  if (section.previousElementSibling) {
-    if (!section.previousElementSibling.classList.contains('scrolled'))
-      section.previousElementSibling.classList.add('scrolled')
-  } else section.classList.add('scrolled')
+  let curSectionIndex = sections.findIndex(
+    ({ dataset }) => dataset.section === getSectionId()
+  )
 
-  if (!section.nextElementSibling) section.classList.add('scrolled')
+  const findSection = (idx = 0) => sections[curSectionIndex + idx]
 
-  wait(() => {
-    store.commit(CURRENT_SECTION_KEY, section.id)
-    document.getElementById('app').dataset.section = section.id
-  }, 200)
+  // determine what section to go to based on the modifier.
+  section =
+    modifier === 'next'
+      ? findSection(1)
+      : modifier === 'previous'
+      ? findSection(-1)
+      : section
+
+  const app = document.getElementById('app')
+  if (section) {
+    wait(1000, () => section.classList.add('scrolled'))
+
+    smooth ? smoothScrollToElem(section) : window.scrollTo(0, section.offsetTop)
+
+    wait(200, () => {
+      section.focus()
+      store.commit(CURRENT_SECTION_KEY, getSectionId())
+      app.dataset[CURRENT_SECTION_KEY] = getSectionId()
+    })
+  }
 }
 
 const createMenuShadow = (color = 'rgba(72, 49, 212, .05)') =>

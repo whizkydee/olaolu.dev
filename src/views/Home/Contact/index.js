@@ -2,9 +2,10 @@ import Vue from 'vue'
 import StyledContact from './styles'
 
 const Contact = Vue.component('Contact', {
+  props: ['name'],
   render() {
     return (
-      <StyledContact>
+      <StyledContact name={this.name}>
         <div class="contact__content">
           <Cavalier
             heading="Send me a message!"

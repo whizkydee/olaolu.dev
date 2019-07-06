@@ -1,4 +1,10 @@
 import {
+  SECTIONS,
+  NAVIGATION_ID,
+  SECTION_SELECTOR,
+  CURRENT_SECTION_KEY,
+} from '@/constants'
+import {
   wait,
   toPx,
   resetScroll,
@@ -6,14 +12,14 @@ import {
   matchesQuery,
 } from '@mrolaolu/helpers'
 import Vue from 'vue'
+import './home-styles'
 import { mapState } from 'vuex'
 import Contact from './Contact'
 import PitchSlate from './PitchSlate'
 import Experience from './Experience'
 import Cornerstone from './Cornerstone'
 import Carriageway from './Carriageway'
-import { goToSection, breakpoints, smoothScrollToElem } from '@/helpers'
-import { SECTIONS, NAVIGATION_ID, CURRENT_SECTION_KEY } from '@/constants'
+import { goToSection, breakpoints } from '@/helpers'
 
 const maybeMediumScreen = () =>
   matchesQuery(`(max-width: ${toPx(breakpoints.medium)})`)
@@ -31,33 +37,25 @@ const Homepage = Vue.component('Homepage', {
 
   mounted() {
     const { documentElement } = document
+    const sections = Array.from(document.querySelectorAll(SECTION_SELECTOR))
 
     !this.isMediumScreen &&
-      wait(() => {
+      wait(1, () => {
         // Set current section to currently visible section upon reload
-        const getPercentageDiff = s =>
-          Math.abs(
-            (parseInt(s.offsetTop) -
-              parseInt(
-                Math.abs(document.documentElement.getBoundingClientRect().top)
-              )) /
-              100
-          )
+        const sectionInView = sections.find(
+          section => this.getSectionOffsetDiffFromViewport(section) < 2 // <2%
+        )
 
-        const sectionInView = this.getSections().filter(
-          section => getPercentageDiff(section) < 2 // <2%
-        )[0]
-
-        if (!sectionInView) wait(() => resetScroll(), 100)
+        if (!sectionInView) wait(100, () => resetScroll())
         else {
-          goToSection(sectionInView)
-          if (!this[CURRENT_SECTION_KEY] === SECTIONS[0])
-            this.$store.commit('headerCompact', true)
+          goToSection([sectionInView])
+          const firstSection = this[CURRENT_SECTION_KEY] === SECTIONS[0]
+          if (!firstSection) this.$store.commit('headerCompact', true)
         }
       })
 
-    // Set current section to the first section.
-    this.$root.$el.dataset.section = this.getCurrentSectionId()
+    // Set current section to the first section by default.
+    this.$root.$el.dataset[CURRENT_SECTION_KEY] = this.getCurrentSectionId()
 
     window.addEventListener('resize', this.recalcSection)
     document.addEventListener('keydown', this.maybeScrollJack)
@@ -95,36 +93,39 @@ const Homepage = Vue.component('Homepage', {
       return (this.getCurrentSectionId() !== id).toString()
     },
 
+    getSectionOffsetDiffFromViewport(s) {
+      return Math.abs(
+        (parseInt(s.offsetTop) -
+          parseInt(
+            Math.abs(document.documentElement.getBoundingClientRect().top)
+          )) /
+          100
+      )
+    },
+
     recalcSection() {
       this.isMediumScreen = maybeMediumScreen()
 
       // Immediately resize sections on window resize (no smooth).
-      goToSection(this.getSection(this.getCurrentSectionId()), false)
-    },
-
-    getSections() {
-      return [...this.$el.getElementsByTagName('section')]
+      goToSection([this.getSection()], false)
     },
 
     getSection(id = this.getCurrentSectionId()) {
-      const sectionElem = document.getElementById(id)
+      const sectionElem = document.querySelector(`[data-section='${id}']`)
 
       if (!sectionElem) return
       return sectionElem
     },
 
     goToNextSection() {
-      if (this.getCurrentSectionId() === SECTIONS[SECTIONS.length - 1]) {
-        smoothScrollToElem(document.querySelector('footer'))
-      }
-      return goToSection(this.getSection().nextElementSibling)
+      goToSection([this.getSection(), 'next'])
     },
 
     goToPrevSection() {
-      goToSection(this.getSection().previousElementSibling)
+      goToSection([this.getSection(), 'previous'])
     },
 
-    scrollingLudicrouslyFast(ms = 80) {
+    scrollingLudicrouslyFast(ms = 100) {
       const curTime = new Date().getTime()
       const timeDiff = curTime - this.prevTime
       this.prevTime = curTime
@@ -166,8 +167,13 @@ const Homepage = Vue.component('Homepage', {
         ({ id }) => id === NAVIGATION_ID
       )
 
+      const isSectionFocused = getEventPath(event).some(
+        ({ dataset }) => dataset && dataset.section
+      )
+
       if (
         !isNavFocused &&
+        !isSectionFocused &&
         event.target !== this.$el &&
         event.target !== document.body &&
         event.target !== this.$root.$el &&
@@ -177,10 +183,11 @@ const Homepage = Vue.component('Homepage', {
 
       const SPACEBAR = ' '
 
-      if (!this.scrollingLudicrouslyFast(300)) {
+      if (!this.scrollingLudicrouslyFast(500)) {
         switch (event.key) {
           case 'Down':
           case SPACEBAR:
+          case 'Spacebar':
           case 'ArrowDown':
           case 'Right':
           case 'PageDown':
@@ -200,12 +207,12 @@ const Homepage = Vue.component('Homepage', {
 
           case 'Home':
             event.preventDefault()
-            goToSection(this.getSection(SECTIONS[0]))
+            goToSection([this.getSection(SECTIONS[0])]) // first section
             break
 
           case 'End':
             event.preventDefault()
-            goToSection(this.getSection(SECTIONS[SECTIONS.length - 1]))
+            goToSection([this.getSection(SECTIONS[SECTIONS.length - 1])]) // last section
             break
         }
       }
@@ -218,11 +225,11 @@ const Homepage = Vue.component('Homepage', {
 
     return (
       <ContentView id="homepage">
-        <PitchSlate id={une} aria-hidden={isSectionHidden(une)} />
-        <Cornerstone id={deux} aria-hidden={isSectionHidden(deux)} />
-        <Experience id={trois} aria-hidden={isSectionHidden(trois)} />
-        <Carriageway id={quatre} aria-hidden={isSectionHidden(quatre)} />
-        <Contact id={cinq} aria-hidden={isSectionHidden(cinq)} />
+        <PitchSlate name={une} aria-hidden={isSectionHidden(une)} />
+        <Cornerstone name={deux} aria-hidden={isSectionHidden(deux)} />
+        <Experience name={trois} aria-hidden={isSectionHidden(trois)} />
+        <Carriageway name={quatre} aria-hidden={isSectionHidden(quatre)} />
+        <Contact name={cinq} aria-hidden={isSectionHidden(cinq)} />
       </ContentView>
     )
   },

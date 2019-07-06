@@ -2,9 +2,10 @@ import Vue from 'vue'
 import StyledCarriageway from './styles'
 
 const Carriageway = Vue.component('Carriageway', {
+  props: ['name'],
   render() {
     return (
-      <StyledCarriageway>
+      <StyledCarriageway name={this.name}>
         <div class="carriageway__content">
           <ul class="lanes">
             <li>

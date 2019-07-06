@@ -2,33 +2,41 @@ import Vue from 'vue'
 import { mapState } from 'vuex'
 import StyledHeader from './styles'
 import { SauceDripLogo } from '@/assets'
-import { HEADER_COMPACT } from '@/constants'
 import { ContactPortal } from '@/components'
+import { HEADER_COMPACT, CURRENT_SECTION_KEY } from '@/constants'
 
 const Header = Vue.component('Header', {
   data: () => ({
     menuOpen: false,
   }),
 
-  computed: mapState([HEADER_COMPACT]),
+  computed: mapState([HEADER_COMPACT, CURRENT_SECTION_KEY]),
 
   mounted() {
     this.maybeTransform()
     window.addEventListener('resize', this.maybeTransform)
     window.addEventListener('scroll', this.maybeTransform)
+    document.addEventListener('keydown', this.maybeCloseMenu)
     document.addEventListener('mouseup', this.maybeCloseMenu)
   },
 
   destroyed() {
     window.removeEventListener('resize', this.maybeTransform)
     window.removeEventListener('scroll', this.maybeTransform)
+    document.removeEventListener('keydown', this.maybeCloseMenu)
     document.removeEventListener('mouseup', this.maybeCloseMenu)
   },
 
   methods: {
     toggleMenu() {
       this.menuOpen = !this.menuOpen
-      if (!this.menuOpen) document.getElementById('main').focus()
+
+      if (!this.menuOpen) {
+        let container = document.getElementById(
+          this[CURRENT_SECTION_KEY] === 'footer' ? 'footer' : 'main'
+        )
+        container.focus()
+      }
     },
 
     closeMenu() {
@@ -44,9 +52,15 @@ const Header = Vue.component('Header', {
 
     maybeCloseMenu(event) {
       if (this.menuOpen) {
-        if (event.target.closest('.menu__toggle, #contact__menu')) return
-
-        this.closeMenu()
+        switch (event.type) {
+          case 'keydown':
+            ;['Escape', 'Esc'].indexOf(event.key) !== -1 && this.closeMenu()
+            break
+          case 'mouseup':
+            if (event.target.closest('.menu__toggle, #contact__menu')) return
+            this.closeMenu()
+            break
+        }
       }
     },
   },

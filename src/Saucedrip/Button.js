@@ -88,7 +88,7 @@ function createStyledButton(tagName, props) {
         border-color: ${props => props.theme.colors['electric-blue']};
 
         &:before {
-          width: 101%;
+          transform: translateX(0);
           background: ${props => props.theme.colors['electric-blue']};
         }
       }
@@ -113,7 +113,7 @@ function createStyledButton(tagName, props) {
       &:before {
         right: 0;
         bottom: 0;
-        width: 0%;
+        width: 101%;
         top: -0.1em;
         content: '';
         z-index: -1;
@@ -121,7 +121,8 @@ function createStyledButton(tagName, props) {
         height: 108%;
         position: absolute;
         background: currentColor;
-        transition: width 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        transform: translateX(-101%);
+        transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
       }
     }
 

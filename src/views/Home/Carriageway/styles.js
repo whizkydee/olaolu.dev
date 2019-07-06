@@ -1,7 +1,8 @@
 import { media } from '@/helpers'
+import { Section } from '@/components'
 import styled from 'vue-styled-components'
 
-const StyledCarriageway = styled.section`
+const StyledCarriageway = styled(Section)`
   .carriageway__content {
     position: relative;
     justify-content: center;

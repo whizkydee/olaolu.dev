@@ -1,6 +1,7 @@
+import { Section } from '@/components'
 import styled from 'vue-styled-components'
 
-const StyledContact = styled.section`
+const StyledContact = styled(Section)`
   position: relative;
 
   .contact__content {

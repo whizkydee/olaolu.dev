@@ -1,25 +1,27 @@
 import Vue from 'vue'
 import StyledNavigation from './styles'
 import { goToSection } from '@/helpers'
-import { NAVIGATION_BULLET } from '@/constants'
+import { NAVIGATION_BULLET, CURRENT_SECTION_KEY } from '@/constants'
 
 const Navigation = Vue.component('Navigation', {
   methods: {
-    goToSection: event =>
-      goToSection(document.querySelector(event.target.getAttribute('href'))),
+    jumpToSection: event => {
+      let id = event.target.getAttribute('href').slice(1)
+      goToSection([document.querySelector(`[data-section='${id}']`)])
+    },
 
     isActiveWhen(sectionId) {
-      return this.$store.state.currentSection === sectionId && 'page'
+      return this.$store.state[CURRENT_SECTION_KEY] === sectionId && 'page'
     },
   },
 
   render() {
     return (
-      <StyledNavigation role="navigation" aria-label="Main navigation">
+      <StyledNavigation role="navigation" aria-label="Main navigation.">
         <ul ref="list">
           <Link
             href="#une"
-            clickFn={this.goToSection}
+            clickFn={this.jumpToSection}
             className={NAVIGATION_BULLET}
             ariaLabel="Go to section 1, Pitch."
             ariaCurrent={this.isActiveWhen('une')}
@@ -27,7 +29,7 @@ const Navigation = Vue.component('Navigation', {
 
           <Link
             href="#deux"
-            clickFn={this.goToSection}
+            clickFn={this.jumpToSection}
             className={NAVIGATION_BULLET}
             ariaCurrent={this.isActiveWhen('deux')}
             ariaLabel="Go to section 2, Cornerstone."
@@ -35,7 +37,7 @@ const Navigation = Vue.component('Navigation', {
 
           <Link
             href="#trois"
-            clickFn={this.goToSection}
+            clickFn={this.jumpToSection}
             className={NAVIGATION_BULLET}
             ariaLabel="Go to section 3, Experience."
             ariaCurrent={this.isActiveWhen('trois')}
@@ -43,7 +45,7 @@ const Navigation = Vue.component('Navigation', {
 
           <Link
             href="#quatre"
-            clickFn={this.goToSection}
+            clickFn={this.jumpToSection}
             className={NAVIGATION_BULLET}
             ariaLabel="Go to section 4, Carriageway."
             ariaCurrent={this.isActiveWhen('quatre')}
@@ -51,7 +53,7 @@ const Navigation = Vue.component('Navigation', {
 
           <Link
             href="#cinq"
-            clickFn={this.goToSection}
+            clickFn={this.jumpToSection}
             className={NAVIGATION_BULLET}
             ariaLabel="Go to section 5, Contact."
             ariaCurrent={this.isActiveWhen('cinq')}

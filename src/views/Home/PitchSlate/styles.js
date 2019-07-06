@@ -1,9 +1,15 @@
 import { media } from '@/helpers'
+import { colors } from '@/base/theme'
+import { Section } from '@/components'
 import styled from 'vue-styled-components'
 
-const StyledPitchSlate = styled.section`
+const StyledPitchSlate = styled(Section)`
   flex-direction: column;
   padding-bottom: 4.17rem;
+  background: ${colors['electric-blue']};
+  background: ${`linear-gradient(90deg, ${colors['electric-blue']} 67%, ${
+    colors.lime
+  } 33%)`};
 
   ${media.maxWidth('medium')`
     font-size: 0.95em;

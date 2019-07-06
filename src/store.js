@@ -11,7 +11,7 @@ export default new Vuex.Store({
   },
 
   mutations: {
-    currentSection(state, id) {
+    [CURRENT_SECTION_KEY](state, id) {
       state[CURRENT_SECTION_KEY] = id
     },
 

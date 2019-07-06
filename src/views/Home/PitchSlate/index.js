@@ -5,9 +5,10 @@ import { NAVIGATION_ID } from '@/constants'
 import { LogomarkOutline, AvatarShapes } from '@/assets'
 
 const PitchSlate = Vue.component('PitchSlate', {
+  props: ['name'],
   render() {
     return (
-      <StyledPitchSlate class="pente">
+      <StyledPitchSlate name={this.name}>
         <div class="primary__content">
           <LogomarkOutline id="sauce__drip__outline" data-shape />
 
