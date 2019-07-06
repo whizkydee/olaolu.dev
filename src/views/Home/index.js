@@ -163,23 +163,27 @@ const Homepage = Vue.component('Homepage', {
     },
 
     maybeScrollJack(event) {
-      const isNavFocused = getEventPath(event).some(
-        ({ id }) => id === NAVIGATION_ID
-      )
+      const maybeInEventPath = cond => getEventPath(event).some(cond)
 
-      const isSectionFocused = getEventPath(event).some(
+      const isNavFocused = maybeInEventPath(({ id }) => id === NAVIGATION_ID)
+      const isSectionFocused = maybeInEventPath(
         ({ dataset }) => dataset && dataset.section
+      )
+      const isFormFocused = maybeInEventPath(
+        ({ tagName }) => tagName && tagName === 'FORM'
       )
 
       if (
-        !isNavFocused &&
-        !isSectionFocused &&
-        event.target !== this.$el &&
-        event.target !== document.body &&
-        event.target !== this.$root.$el &&
-        event.target !== document.documentElement
-      )
+        isFormFocused ||
+        (!isNavFocused &&
+          !isSectionFocused &&
+          event.target !== this.$el &&
+          event.target !== document.body &&
+          event.target !== this.$root.$el &&
+          event.target !== document.documentElement)
+      ) {
         return
+      }
 
       const SPACEBAR = ' '
 
