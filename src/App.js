@@ -14,11 +14,8 @@ const App = Vue.component('App', {
         <a href="#main" id="skip__link">
           Skip to navigation
         </a>
-
         <Header />
-
         <router-view />
-
         <Footer />
       </ThemeProvider>
     )
