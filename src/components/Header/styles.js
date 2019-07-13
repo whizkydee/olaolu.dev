@@ -107,7 +107,7 @@ const StyledHeader = styled.header`
 
     &:not([aria-expanded='true']) {
       opacity: 0;
-      /* visibility: hidden; */
+      visibility: hidden;
       pointer-events: none;
 
       &:before {
