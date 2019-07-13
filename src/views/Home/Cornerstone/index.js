@@ -24,10 +24,15 @@ const Cornerstone = Vue.component('Cornerstone', {
             <SquareofDots
               data-shape
               slot="inContent"
+              aria-hidden="true"
               class="square__of__dots"
             />
 
-            <CornerstonePatternsRight data-shape id="cs__pattern__right" />
+            <CornerstonePatternsRight
+              data-shape
+              aria-hidden="true"
+              id="cs__pattern__right"
+            />
           </Cavalier>
 
           <Cavalier heading="Engineering">
@@ -39,7 +44,11 @@ const Cornerstone = Vue.component('Cornerstone', {
               priorities on my radar.
             </p>
 
-            <CornerstonePatternsLeft data-shape id="cs__pattern__left" />
+            <CornerstonePatternsLeft
+              data-shape
+              aria-hidden="true"
+              id="cs__pattern__left"
+            />
           </Cavalier>
         </div>
       </StyledCornerstone>
