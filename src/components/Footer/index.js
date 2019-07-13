@@ -21,6 +21,7 @@ const Footer = Vue.component('Footer', {
             <ul>
               <Link href="/work">My Work</Link>
               <Link href="/desk">My Desk</Link>
+              <Link href="/resume.pdf">My Rèsumè</Link>
             </ul>
           </div>
 
