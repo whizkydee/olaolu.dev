@@ -16,7 +16,7 @@ const StyledContact = styled(Section)`
 
     h1 {
       font-size: 3.2em;
-      font-weight: 500;
+      font-weight: bold;
       line-height: 1.3;
       max-width: unset;
     }
