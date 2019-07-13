@@ -53,6 +53,10 @@ const StyledHomepage = injectGlobal`
         color: ${colors.lime};
       }
     }
+
+    &[data-current-section='footer'] #${NAVIGATION_ID} {
+      display: none;
+    }
   }
 
   main {
@@ -65,7 +69,7 @@ const StyledHomepage = injectGlobal`
     `}
   }
 
-  #footer {
+  [data-section='footer'] {
     font-size: 1.2em;
   }
 `

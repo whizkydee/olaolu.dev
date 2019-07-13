@@ -11,9 +11,7 @@ const Footer = Vue.component('Footer', {
     return (
       <StyledFooter
         isFooter
-        id="footer"
         name="footer"
-        role="contentinfo"
         aria-hidden={isHome && '' + (currentSection !== 'footer')}
       >
         <div class="footer__content">
