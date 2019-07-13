@@ -90,17 +90,37 @@ const StyledHeader = styled.header`
     padding: 3.473rem;
     position: absolute;
     flex-direction: column;
-    background-color: #ffffff;
-    transition: opacity 0.2s, box-shadow 0.6s 200ms;
+    transition: opacity 0.4s, box-shadow 0.1s 1000ms;
+
+    &:before {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      content: '';
+      width: 100%;
+      height: 100%;
+      transition: 0.3s;
+      position: absolute;
+      background-color: #ffffff;
+    }
 
     &:not([aria-expanded='true']) {
       opacity: 0;
-      visibility: hidden;
+      /* visibility: hidden; */
       pointer-events: none;
+
+      &:before {
+        clip-path: polygon(62% 0, 100% 0%, 100% 40%, 63% 40%);
+      }
     }
 
     &[aria-expanded='true'] {
       box-shadow: ${createMenuShadow()};
+
+      &:before {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+      }
 
       .basic__contact ul,
       .social__contact ul,
@@ -111,12 +131,16 @@ const StyledHeader = styled.header`
     }
 
     .basic__contact {
-      margin-top: -0.8em;
+      margin-top: 0.8em;
 
       .say__hello {
         opacity: 0;
-        transition: opacity 0.2s 100ms;
+        transition: opacity 0.2s 200ms;
       }
+    }
+
+    .social__contact {
+      font-size: 0.9em;
     }
 
     a {
@@ -127,17 +151,17 @@ const StyledHeader = styled.header`
   .basic__contact ul,
   .social__contact ul {
     opacity: 0;
-    transition: opacity, transform 0.2s;
+    transition: opacity, transform 0.3s;
   }
 
   .basic__contact ul {
-    transition-delay: 100ms;
+    transition-delay: 200ms;
     margin: 1.2rem 0 2.78rem;
     transform: translateY(30px);
   }
 
   .social__contact ul {
-    transition-delay: 300ms;
+    transition-delay: 400ms;
     transform: translateY(20px);
   }
 
@@ -157,7 +181,7 @@ const StyledHeader = styled.header`
     }
 
     &.x {
-      width: 2.09rem;
+      transform: scale(0.9);
 
       &:before {
         transform: rotate(45deg);
