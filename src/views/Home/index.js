@@ -1,9 +1,4 @@
-import {
-  SECTIONS,
-  NAVIGATION_ID,
-  SECTION_SELECTOR,
-  CURRENT_SECTION_KEY,
-} from '@/constants'
+import Vue from 'vue'
 import {
   wait,
   toPx,
@@ -11,7 +6,12 @@ import {
   getEventPath,
   matchesQuery,
 } from '@mrolaolu/helpers'
-import Vue from 'vue'
+import {
+  SECTIONS,
+  NAVIGATION_ID,
+  SECTION_SELECTOR,
+  CURRENT_SECTION_KEY,
+} from '@/constants'
 import './home-styles'
 import { mapState } from 'vuex'
 import Contact from './Contact'
