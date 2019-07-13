@@ -37,22 +37,10 @@ const Homepage = Vue.component('Homepage', {
 
   mounted() {
     const { documentElement } = document
-    const sections = Array.from(document.querySelectorAll(SECTION_SELECTOR))
 
-    !this.isMediumScreen &&
-      wait(1, () => {
-        // Set current section to currently visible section upon reload
-        const sectionInView = sections.find(
-          section => this.getSectionOffsetDiffFromViewport(section) < 2 // <2%
-        )
-
-        if (!sectionInView) wait(100, () => resetScroll())
-        else {
-          goToSection([sectionInView])
-          const firstSection = this[CURRENT_SECTION_KEY] === SECTIONS[0]
-          if (!firstSection) this.$store.commit('headerCompact', true)
-        }
-      })
+    if (!this.isMediumScreen) {
+      wait(1, this.maybeRestoreSection)
+    }
 
     // Set current section to the first section by default.
     this.$root.$el.dataset[CURRENT_SECTION_KEY] = this.getCurrentSectionId()
@@ -85,13 +73,31 @@ const Homepage = Vue.component('Homepage', {
   },
 
   methods: {
+    /**
+     * Get the ID of the current section
+     * @return {string}
+     */
+
     getCurrentSectionId() {
       return this[CURRENT_SECTION_KEY]
     },
 
+    /**
+     * Determine if the specified section is hidden.
+     * @param {string} id - the id of the section to check
+     * @return {'true' | 'false'}
+     */
+
     isSectionHidden(id) {
       return (this.getCurrentSectionId() !== id).toString()
     },
+
+    /**
+     * Determine what element is most visible in the viewport
+     * @param {HTMLElement} s - the section
+     * @return {number} - the percentage by which is left of the element
+     * to occupy the entire viewport.
+     */
 
     getSectionOffsetDiffFromViewport(s) {
       return Math.abs(
@@ -103,12 +109,44 @@ const Homepage = Vue.component('Homepage', {
       )
     },
 
+    /**
+     * Determine what section is most visible in the viewport,
+     * and then ensure it occupies the entire viewpor.
+     * @return {void}
+     */
+
+    maybeRestoreSection() {
+      const sections = Array.from(document.querySelectorAll(SECTION_SELECTOR))
+      // Set current section to currently visible section upon reload
+      const sectionInView = sections.find(
+        section => this.getSectionOffsetDiffFromViewport(section) < 2 // <2%
+      )
+
+      if (!sectionInView) wait(100, () => resetScroll())
+      else {
+        goToSection([sectionInView])
+        const firstSection = this[CURRENT_SECTION_KEY] === SECTIONS[0]
+        if (!firstSection) this.$store.commit('headerCompact', true)
+      }
+    },
+
+    /**
+     * Recalculate position of the current section.
+     * @return {void}
+     */
+
     recalcSection() {
       this.isMediumScreen = maybeMediumScreen()
 
       // Immediately resize sections on window resize (no smooth).
       goToSection([this.getSection()], false)
     },
+
+    /**
+     * Take in a valid section id and return the corresponding element.
+     * @param {string=} id
+     * @return {HTMLElement}
+     */
 
     getSection(id = this.getCurrentSectionId()) {
       const sectionElem = document.querySelector(`[data-section='${id}']`)
@@ -117,13 +155,30 @@ const Homepage = Vue.component('Homepage', {
       return sectionElem
     },
 
+    /**
+     * Go to the section after the current one.
+     * @return {void}
+     */
+
     goToNextSection() {
       goToSection([this.getSection(), 'next'])
     },
 
+    /**
+     * Go to the section before the current one.
+     * @return {void}
+     */
+
     goToPrevSection() {
       goToSection([this.getSection(), 'previous'])
     },
+
+    /**
+     * Determine if the page is being scrolled very fast
+     * within the specified period of time
+     * @param {number} ms
+     * @return {boolean}
+     */
 
     scrollingLudicrouslyFast(ms = 100) {
       const curTime = new Date().getTime()
@@ -133,10 +188,23 @@ const Homepage = Vue.component('Homepage', {
       return timeDiff < ms
     },
 
+    /**
+     * Register the last horizontal touch position.
+     * @param {TouchEvent} event
+     * @return {void}
+     */
+
     handleTouchstart(event) {
       if (typeof event.touches === 'undefined' || !this.isMediumScreen) return
       this.touchY = event.touches[0].clientY
     },
+
+    /**
+     * GO to the next or previous section based on the
+     * touch move direction.
+     * @param {TouchEvent} event
+     * @return {void}
+     */
 
     handleTouchmove(event) {
       if (typeof event.changedTouches === 'undefined' || !this.isMediumScreen)
@@ -148,6 +216,13 @@ const Homepage = Vue.component('Homepage', {
         else this.goToPrevSection()
       }
     },
+
+    /**
+     * GO to the next or previous section based on
+     * the mouse wheel direction.
+     * @param {MouseEvent} event
+     * @return {void}
+     */
 
     handleMouseWheel(event) {
       if (!this.scrollingLudicrouslyFast()) {
@@ -162,16 +237,18 @@ const Homepage = Vue.component('Homepage', {
       }
     },
 
-    maybeScrollJack(event) {
-      const maybeInEventPath = cond => getEventPath(event).some(cond)
+    /**
+     * Hijack scrolling
+     * @param {Event} event
+     * @return {void}
+     */
 
-      const isNavFocused = maybeInEventPath(({ id }) => id === NAVIGATION_ID)
-      const isSectionFocused = maybeInEventPath(
-        ({ dataset }) => dataset && dataset.section
-      )
-      const isFormFocused = maybeInEventPath(
-        ({ tagName }) => tagName && tagName === 'FORM'
-      )
+    maybeScrollJack(event) {
+      const inEventPath = cond => getEventPath(event).some(cond)
+
+      const isNavFocused = inEventPath(o => o && o.id === NAVIGATION_ID)
+      const isSectionFocused = inEventPath(o => o.dataset && o.dataset.section)
+      const isFormFocused = inEventPath(o => o.tagName && o.tagName === 'FORM')
 
       if (
         isFormFocused ||
