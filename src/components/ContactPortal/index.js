@@ -20,7 +20,7 @@ export default {
 
   Social: Vue.component('SocialContact', {
     render() {
-      const { twitter, linkedIn, github } = SOCIAL_PROFILES
+      const { twitter, linkedIn, github, youtube } = SOCIAL_PROFILES
 
       return (
         <StyledSocialContact class="social__contact">
@@ -33,6 +33,9 @@ export default {
             </Link>
             <Link external href={linkedIn} ariaLabel="Olaolu on LinkedIn">
               LN
+            </Link>
+            <Link external href={youtube} ariaLabel="Olaolu's YouTube channel">
+              YT
             </Link>
           </ul>
         </StyledSocialContact>

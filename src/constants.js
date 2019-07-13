@@ -10,6 +10,7 @@ export const SOCIAL_PROFILES = {
   github: 'https://github.com/whizkydee',
   facebook: 'https://facebook.com/mrolaolu',
   linkedIn: 'https://linkedin.com/in/olaolu-olawuyi',
+  youtube: 'https://youtube.com/channel/UC5UiydmTsiN17NmsYmmWqEA',
 }
 export const BREAKPOINTS = {
   small: 600,
