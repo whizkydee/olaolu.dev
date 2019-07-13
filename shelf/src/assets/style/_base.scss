@@ -1,0 +1,28 @@
+// Default
+* {
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+ 	background-color: var(--bg-color);
+ 	color: var(--body-color);
+ 	transition: color .6s, background-color .6s;
+ 	font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  margin:0;
+  padding:0;
+  line-height: 1.5;
+}
+
+a:not(.button) {
+	color: var(--link-color);
+ 	transition: opacity .2s;
+	&:hover {
+		opacity: .8;
+	}
+}
+
+img {
+	max-width: 100%;
+}
