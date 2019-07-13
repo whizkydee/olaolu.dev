@@ -11,8 +11,9 @@ const Experience = Vue.component('Experience', {
           <Cavalier theme="lime" heading="Over the <br /> past 8 years,">
             <p slot="text">
               I've built products for companies and businesses around the globe
-              ranging from basic websites to complex solutions with focus on
-              creating fast, elegant and accessible user experiences.
+              ranging from basic websites to complex solutions and enterprise
+              apps with focus on creating fast, elegant and accessible user
+              experiences.
             </p>
 
             <p slot="text">
