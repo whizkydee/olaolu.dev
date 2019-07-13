@@ -32,10 +32,11 @@ const Header = Vue.component('Header', {
       this.menuOpen = !this.menuOpen
 
       if (!this.menuOpen) {
-        let container = document.getElementById(
-          this[CURRENT_SECTION_KEY] === 'footer' ? 'footer' : 'main'
-        )
-        container.focus()
+        let container =
+          this[CURRENT_SECTION_KEY] === 'footer'
+            ? document.querySelector('[data-section="footer]')
+            : document.getElementById('main')
+        container && container.focus()
       }
     },
 
