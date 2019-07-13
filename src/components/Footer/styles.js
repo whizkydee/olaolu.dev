@@ -36,8 +36,10 @@ const StyledFooter = styled(Section)`
   }
 
   .footer__bottom {
+    padding-top: 3em;
     font-size: 1.15em;
     justify-content: space-between;
+    border-top: 1px solid rgba(186, 221, 118, 0.7);
   }
 `
 
