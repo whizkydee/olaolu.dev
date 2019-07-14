@@ -4,11 +4,11 @@
   "version": "1.0.0",
   "scripts": {
     "fresh": "del dist landing/dist shelf/dist",
-    "serve:shelf": "cd shelf; yarn develop",
-    "serve:landing": "cd landing; yarn serve",
+    "serve:shelf": "cd shelf && yarn install && yarn develop",
+    "serve:landing": "cd landing && yarn install && yarn serve",
     "serve": "yarn fresh && node dev.js",
-    "build:shelf": "cd shelf; yarn build",
-    "build:landing": "cd landing; yarn build",
+    "build:shelf": "cd shelf && yarn install && yarn build",
+    "build:landing": "cd landing && yarn install && yarn build",
     "build": "yarn fresh && node build.js"
   },
   "repository": {
@@ -21,7 +21,9 @@
   },
   "homepage": "https://github.com/whizkydee/olaolu.me#readme",
   "devDependencies": {
+    "@vue/cli-service": "^3.8.0",
     "del-cli": "^2.0.0",
+    "gridsome": "^0.5.0",
     "make-dir": "^3.0.0",
     "move-file": "^1.2.0",
     "npm-run-all": "^4.1.5"
