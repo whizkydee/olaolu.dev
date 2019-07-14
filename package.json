@@ -9,7 +9,7 @@
     "serve": "yarn fresh && node dev.js",
     "build:shelf": "cd shelf && yarn install && yarn build",
     "build:landing": "cd landing && yarn install && yarn build",
-    "build": "yarn fresh && node build.js"
+    "build": "node build.js"
   },
   "repository": {
     "type": "git",

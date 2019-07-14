@@ -6,6 +6,7 @@ runAll(['serve:*'], {
   parallel: true,
   printLabel: true,
   stdin: process.stdin,
+  continueOnError: true,
   stdout: process.stdout,
   stderr: process.stderr,
 })
