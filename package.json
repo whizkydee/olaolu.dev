@@ -1,31 +1,29 @@
 {
   "name": "olaolu.me",
-  "version": "0.1.0",
   "private": true,
+  "version": "1.0.0",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "fresh": "del dist landing/dist shelf/dist",
+    "serve:shelf": "cd shelf && yarn develop",
+    "serve:landing": "cd landing && yarn serve",
+    "serve": "yarn fresh && node dev.js",
+    "build:shelf": "cd shelf && pwd && yarn install && pwd && yarn build",
+    "build:landing": "cd landing && pwd && yarn install && pwd && yarn build",
+    "build": "yarn fresh && pwd && node build.js && pwd"
   },
-  "dependencies": {
-    "@mrolaolu/helpers": "^0.1.0",
-    "core-js": "^2.6.5",
-    "register-service-worker": "^1.6.2",
-    "vue": "^2.6.10",
-    "vue-router": "^3.0.3",
-    "vue-styled-components": "^1.4.5",
-    "vuex": "^3.1.1"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/whizkydee/olaolu.me.git"
   },
+  "author": "Olaolu Olawuyi",
+  "bugs": {
+    "url": "https://github.com/whizkydee/olaolu.me/issues"
+  },
+  "homepage": "https://github.com/whizkydee/olaolu.me#readme",
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.8.0",
-    "@vue/cli-plugin-eslint": "^3.8.0",
-    "@vue/cli-plugin-pwa": "^3.8.0",
-    "@vue/cli-service": "^3.8.0",
-    "@vue/eslint-config-prettier": "^4.0.1",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0",
-    "svg-to-vue-component": "^0.3.8",
-    "vue-template-compiler": "^2.6.10"
+    "del-cli": "^2.0.0",
+    "make-dir": "^3.0.0",
+    "move-file": "^1.2.0",
+    "npm-run-all": "^4.1.5"
   }
 }

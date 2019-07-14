@@ -1,29 +1,21 @@
-# olaolu.me
+## Olaolu's website
+
+This repo is home for the codebase of my site and shelf of articles.
 
 ## Project setup
-```
-yarn install
-```
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+- Run `yarn serve` for development: Simultaneously kicks off
+  `vue-cli-service serve` for the homepage Vue app and `gridsome develop` for
+  the shelf app.
 
-### Compiles and minifies for production
-```
-yarn run build
-```
+- Run `yarn build` for production: Simultaneously runs `vue-cli-service build`
+  for the homepage Vue app and `gridsome build` for the shelf app, and then
+  merges the two `dist` directories into a root `dist`.
 
-### Run your tests
-```
-yarn run test
-```
+## License
 
-### Lints and fixes files
-```
-yarn run lint
-```
+Copyright (c) 2019-present Olaolu Olawuyi. All rights reserved.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+**The code, design and articles in this repository are intellectual property of
+the person whose name is mentioned above and as such should NOT be copied,
+modified, sublicensed or redistributed without permission from the author.**

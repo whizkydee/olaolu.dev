@@ -10,6 +10,7 @@ module.exports = {
     'no-case-declarations': 'off',
     'comma-dangle': ['off', 'always'],
     semi: ['warn', 'never'],
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
   },
   parserOptions: {
     parser: 'babel-eslint',
