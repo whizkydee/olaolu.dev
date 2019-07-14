@@ -4,11 +4,11 @@
   "version": "1.0.0",
   "scripts": {
     "fresh": "del dist landing/dist shelf/dist",
-    "serve:shelf": "cd shelf && yarn develop",
-    "serve:landing": "cd landing && yarn serve",
+    "serve:shelf": "cd shelf; yarn develop",
+    "serve:landing": "cd landing; yarn serve",
     "serve": "yarn fresh && node dev.js",
-    "build:shelf": "cd shelf && yarn build",
-    "build:landing": "cd landing && yarn build",
+    "build:shelf": "cd shelf; yarn build",
+    "build:landing": "cd landing; yarn build",
     "build": "yarn fresh && node build.js"
   },
   "repository": {
