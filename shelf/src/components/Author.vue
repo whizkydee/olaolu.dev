@@ -14,8 +14,8 @@
     </h1>
 
     <p class="author__intro">
-      A simple, hackable & minimalistic starter for Gridsome that uses Markdown
-      for content.
+      Front end developer &amp; UI Engineer with nearly a decade of experience
+      building FE products for international clients.
     </p>
 
     <p class="author__links">

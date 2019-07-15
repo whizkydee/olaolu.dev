@@ -1,11 +1,11 @@
 <template>
   <Layout>
     <div class="post-title">
+      <PostMeta :post="$page.post" />
+
       <h1 class="post-title__text">
         {{ $page.post.title }}
       </h1>
-
-      <PostMeta :post="$page.post" />
     </div>
 
     <div class="post content-box">
