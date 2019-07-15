@@ -7,9 +7,9 @@
 module.exports = {
   port: 8081,
   pathPrefix: '/shelf',
-  siteName: 'Gridsome Blog Starter',
+  siteName: `Olaolu's Shelf`,
   siteDescription:
-    'A simple, hackable & minimalistic starter for Gridsome that uses Markdown for content.',
+    'Writings of Olaolu; expert front end developer and UI Engineer',
 
   plugins: [
     {
@@ -32,7 +32,7 @@ module.exports = {
   ],
 
   transformers: {
-    //Add markdown support to all file-system sources
+    // Add markdown support to all file-system sources
     remark: {
       externalLinksTarget: '_blank',
       externalLinksRel: ['nofollow', 'noopener', 'noreferrer'],

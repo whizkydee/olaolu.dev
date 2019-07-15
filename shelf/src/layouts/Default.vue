@@ -16,7 +16,7 @@
 
     <footer class="footer">
       <span class="footer__copyright"
-        >Copyright © {{ new Date().getFullYear() }}.
+        >Copyright Olaolu Olawuyi © {{ new Date().getFullYear() }}.
       </span>
       <span class="footer__links"
         >Powered by <a href="//gridsome.org"> Gridsome </a></span
@@ -65,7 +65,12 @@ export default {
 
 .main {
   margin: 0 auto;
-  padding: 1.5vw 15px 0;
+  padding: 1.5vw 90px 0;
+}
+
+.posts {
+  padding: var(--space);
+  background-color: var(--bg-content-color);
 }
 
 .footer {

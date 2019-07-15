@@ -12,10 +12,10 @@
       />
     </div>
     <div class="post-card__content">
+      <PostMeta class="post-card__meta" :post="post" />
       <h2 class="post-card__title" v-html="post.title" />
       <p class="post-card__description" v-html="post.description" />
 
-      <PostMeta class="post-card__meta" :post="post" />
       <PostTags class="post-card__tags" :post="post" />
 
       <g-link class="post-card__link" :to="post.path">Link</g-link>
@@ -38,8 +38,13 @@ export default {
 
 <style lang="scss">
 .post-card {
-  margin-bottom: var(--space);
   position: relative;
+  margin-bottom: calc(var(--space) - 2rem);
+
+  &:not(:last-of-type) {
+    padding-bottom: 50px;
+    border-bottom: 1px solid #999999;
+  }
 
   &__header {
     margin-left: calc(var(--space) * -1);
@@ -60,11 +65,6 @@ export default {
 
   &__title {
     margin-top: 0;
-  }
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 1px 10px 30px 0 rgba(0, 0, 0, 0.1);
   }
 
   &__tags {
