@@ -25,5 +25,12 @@
     "make-dir": "^3.0.0",
     "move-file": "^1.2.0",
     "npm-run-all": "^4.1.5"
+  },
+  "bit": {
+    "env": {
+      "compiler": "bit.envs/bundlers/vue@2.5.1"
+    },
+    "componentsDefaultDirectory": "components/{name}",
+    "packageManager": "npm"
   }
 }

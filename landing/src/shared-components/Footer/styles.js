@@ -1,9 +1,10 @@
 import Section from '../Section'
+import theme from '../../base/theme'
 import styled from 'vue-styled-components'
 
 const StyledFooter = styled(Section)`
-  color: ${props => props.theme.colors['lime-alt']};
-  background: ${props => props.theme.colors.default};
+  color: ${theme.colors['lime-alt']};
+  background: ${theme.colors.default};
 
   a {
     color: currentColor;

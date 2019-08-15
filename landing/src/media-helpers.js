@@ -40,9 +40,4 @@ export const between = ([min, p1], [max, p2]) => (...body) => css`
   }
 `
 
-export default {
-  between,
-  maxWidth,
-  minWidth,
-  breakpoints,
-}
+export const media = { between, maxWidth, minWidth, breakpoints }

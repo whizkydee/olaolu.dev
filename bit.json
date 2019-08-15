@@ -1,0 +1,10 @@
+{
+  "env": {},
+  "componentsDefaultDirectory": "src/shared-components/{name}",
+  "packageManager": "yarn",
+  "resolveModules": {
+    "aliases": {
+      "@": "src"
+    }
+  }
+}

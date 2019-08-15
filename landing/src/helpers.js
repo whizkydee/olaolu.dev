@@ -1,9 +1,9 @@
 import store from './store'
+export * from './media-helpers'
 import { wait } from '@mrolaolu/helpers'
-import media, { breakpoints } from './media-helpers'
 import { CURRENT_SECTION_KEY, SECTION_SELECTOR } from './constants'
 
-const goToSection = ([section, modifier], smooth = true) => {
+export const goToSection = ([section, modifier], smooth = true) => {
   if (!(section instanceof HTMLElement)) return
 
   const getSectionId = () => section.dataset.section
@@ -37,10 +37,14 @@ const goToSection = ([section, modifier], smooth = true) => {
   }
 }
 
-const createMenuShadow = (color = 'rgba(72, 49, 212, .05)') =>
+export const createMenuShadow = (color = 'rgba(72, 49, 212, .05)') =>
   `0 10px 53px 0 ${color}`
 
-function smoothScrollToElem(elem, speed = 1000, easing = 'easeInOutCubic') {
+export function smoothScrollToElem(
+  elem,
+  speed = 1000,
+  easing = 'easeInOutCubic'
+) {
   if (!(elem instanceof HTMLElement)) return
 
   const scrollTargetY = elem.offsetTop
@@ -78,5 +82,3 @@ function smoothScrollToElem(elem, speed = 1000, easing = 'easeInOutCubic') {
 
   tick()
 }
-
-export { media, breakpoints, goToSection, createMenuShadow, smoothScrollToElem }

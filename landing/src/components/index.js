@@ -1,8 +1,17 @@
-import Header from './Header'
-import Footer from './Footer'
-import Section from './Section'
-import ContactForm from './ContactForm'
-import ContactPortal from './ContactPortal'
-import { Navigation, Link } from './Navigation'
+import Navigation from './Navigation'
+import Header from '../shared-components/Header'
+import Footer from '../shared-components/Footer'
+import NavItem from '../shared-components/NavItem'
+import Section from '../shared-components/Section'
+import ContactForm from '../shared-components/ContactForm'
+import ContactPortal from '../shared-components/ContactPortal'
 
-export { Header, Navigation, Link, ContactForm, ContactPortal, Footer, Section }
+export {
+  Header,
+  Navigation,
+  NavItem,
+  ContactForm,
+  ContactPortal,
+  Footer,
+  Section,
+}
