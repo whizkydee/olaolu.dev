@@ -25,8 +25,8 @@
 
 <script>
 import StyledHeader from './styles'
-import { SauceDripLogo } from '../../assets'
 import ContactPortal from '../ContactPortal'
+import SauceDripLogo from '../sauce-drip-logo'
 
 export default {
   name: 'Header',

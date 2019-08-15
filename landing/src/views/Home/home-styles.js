@@ -1,6 +1,6 @@
 import { colors } from '@/base/theme'
-import { injectGlobal } from 'vue-styled-components'
 import { media, createMenuShadow } from '@/helpers'
+import { injectGlobal } from 'vue-styled-components'
 import { NAVIGATION_ID, TABBING_CLASSNAME } from '@/constants'
 
 const StyledHomepage = injectGlobal`

@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import theme from '../../base/theme'
+import theme from '../theme'
 import { toPx } from '@mrolaolu/helpers'
 import styled from 'vue-styled-components'
 

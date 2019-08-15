@@ -1,5 +1,5 @@
+import theme from '../theme'
 import Section from '../Section'
-import theme from '../../base/theme'
 import styled from 'vue-styled-components'
 
 const StyledFooter = styled(Section)`

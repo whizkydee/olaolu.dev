@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { TABBING_CLASSNAME } from '../../constants'
+import { TABBING_CLASSNAME } from '../constants'
 
 export default {
   name: 'ContentView',

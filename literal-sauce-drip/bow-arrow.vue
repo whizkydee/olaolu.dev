@@ -1,0 +1,35 @@
+<template>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="72"
+    height="22"
+    viewBox="0 0 72 22"
+  >
+    <g>
+      <g>
+        <path
+          fill="none"
+          stroke="#4831d4"
+          stroke-miterlimit="50"
+          stroke-width="2"
+          d="M.043 11.119h70.714"
+        />
+      </g>
+      <g>
+        <path
+          fill="none"
+          stroke="#4831d4"
+          stroke-miterlimit="50"
+          stroke-width="2"
+          d="M60.917 1.319v0l9.8 9.8v0l-9.8 9.8v0"
+        />
+      </g>
+    </g>
+  </svg>
+</template>
+
+<script>
+export default {
+  name: 'BowArrow',
+}
+</script>

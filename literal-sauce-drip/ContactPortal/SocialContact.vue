@@ -19,7 +19,7 @@
 
 <script>
 import styled from 'vue-styled-components'
-import { SOCIAL_PROFILES } from '../../constants'
+import { SOCIAL_PROFILES } from '../constants'
 const { twitter, linkedIn, github, youtube } = SOCIAL_PROFILES
 
 const StyledSocialContact = styled.div`

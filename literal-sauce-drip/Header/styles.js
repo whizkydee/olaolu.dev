@@ -1,6 +1,6 @@
-import theme from '../../base/theme'
+import theme from '../theme'
 import styled from 'vue-styled-components'
-import { createMenuShadow, media } from '../../helpers'
+import { createMenuShadow, media } from '../helpers'
 
 const StyledHeader = styled.header`
   width: 100%;

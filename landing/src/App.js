@@ -6,7 +6,7 @@ import { ThemeProvider } from 'vue-styled-components'
 import '@/base/normalize-css'
 import '@/base/global-styles'
 import { mapState } from 'vuex'
-import theme from '@/base/theme'
+import { theme } from '@/base/theme'
 import { CURRENT_SECTION_KEY, HEADER_COMPACT } from './constants'
 
 const App = Vue.component('App', {

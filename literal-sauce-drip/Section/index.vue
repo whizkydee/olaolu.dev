@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import { media, breakpoints } from '../../helpers'
-import { NAVIGATION_BULLET } from '../../constants'
+import { NAVIGATION_BULLET } from '../constants'
+import { media, breakpoints } from '../helpers'
 import styled, { css } from 'vue-styled-components'
 
 function createStyledSection(tagName = 'section', props = {}) {
