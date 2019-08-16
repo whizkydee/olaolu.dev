@@ -1,30 +1,17 @@
-import Vue from 'vue'
-import { media, breakpoints } from '@/helpers'
-import { NAVIGATION_BULLET } from '@/constants'
+<template>
+  <StyledFooter :data-section="name" tabindex="-1" v-if="isFooter">
+    <slot />
+  </StyledFooter>
+
+  <StyledSection :data-section="name" tabindex="-1" v-else>
+    <slot />
+  </StyledSection>
+</template>
+
+<script>
+import { NAVIGATION_BULLET } from '../constants'
+import { media, breakpoints } from '../helpers'
 import styled, { css } from 'vue-styled-components'
-
-const Section = Vue.component('Section', {
-  render() {
-    if (this.isFooter) {
-      return (
-        <StyledFooter data-section={this.name} tabindex="-1">
-          {this.$slots.default}
-        </StyledFooter>
-      )
-    }
-
-    return (
-      <StyledSection data-section={this.name} tabindex="-1">
-        {this.$slots.default}
-      </StyledSection>
-    )
-  },
-
-  props: {
-    name: { type: String, required: true },
-    isFooter: { default: false, type: Boolean },
-  },
-})
 
 function createStyledSection(tagName = 'section', props = {}) {
   const styles = css`
@@ -139,4 +126,16 @@ function createStyledSection(tagName = 'section', props = {}) {
 const StyledSection = createStyledSection()
 const StyledFooter = createStyledSection('footer')
 
-export default Section
+export default {
+  name: 'Section',
+  components: {
+    StyledSection,
+    StyledFooter,
+  },
+
+  props: {
+    name: { type: String, required: true },
+    isFooter: { default: false, type: Boolean },
+  },
+}
+</script>

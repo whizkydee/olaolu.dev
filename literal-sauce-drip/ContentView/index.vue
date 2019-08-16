@@ -1,7 +1,15 @@
-import Vue from 'vue'
-import { TABBING_CLASSNAME } from '@/constants'
+<template>
+  <main id="main" role="main" tabindex="-1">
+    <slot />
+  </main>
+</template>
 
-const ContentView = Vue.component('ContentView', {
+<script>
+import { TABBING_CLASSNAME } from '../constants'
+
+export default {
+  name: 'ContentView',
+
   created() {
     document.addEventListener('mousedown', this.notTabbing)
     document.addEventListener('keydown', this.prollyTabbing)
@@ -24,17 +32,8 @@ const ContentView = Vue.component('ContentView', {
     },
   },
 
-  render() {
-    return (
-      <main id="main" role="main" tabindex="-1">
-        {this.$slots.default}
-      </main>
-    )
-  },
-
   props: {
     id: { type: String, required: true },
   },
-})
-
-export default ContentView
+}
+</script>

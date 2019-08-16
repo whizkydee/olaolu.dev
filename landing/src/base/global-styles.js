@@ -1,4 +1,4 @@
-import theme from './theme'
+import { theme } from './theme'
 import { TABBING_CLASSNAME } from '@/constants'
 import { injectGlobal } from 'vue-styled-components'
 

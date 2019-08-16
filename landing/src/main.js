@@ -3,15 +3,12 @@ import App from './App'
 import store from './store'
 import router from './router'
 import './registerServiceWorker'
-import { ContactForm, Link } from '@/components'
-import { ContentView, Cavalier, Button, InputGroup } from '@/Saucedrip'
+import * as components from '@/components'
 
-Vue.component('Link', Link)
-Vue.component('Button', Button)
-Vue.component('Cavalier', Cavalier)
-Vue.component('InputGroup', InputGroup)
-Vue.component('ContactForm', ContactForm)
-Vue.component('ContentView', ContentView)
+// Register all sauce drip components.
+for (let componentName in components) {
+  Vue.component(componentName, components[componentName])
+}
 
 Vue.config.productionTip = false
 
