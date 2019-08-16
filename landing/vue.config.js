@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   productionSourceMap: false,
 
@@ -18,5 +20,13 @@ module.exports = {
       .end()
       .use('svg-to-vue-component')
       .loader('svg-to-vue-component/loader')
+  },
+
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '@saucedrip': path.resolve('../literal-sauce-drip/'),
+      },
+    },
   },
 }

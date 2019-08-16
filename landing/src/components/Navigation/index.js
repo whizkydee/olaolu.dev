@@ -19,7 +19,7 @@ const Navigation = Vue.component('Navigation', {
     return (
       <StyledNavigation role="navigation" aria-label="Main navigation.">
         <ul ref="list">
-          <Link
+          <NavItem
             href="#une"
             clickFn={this.jumpToSection}
             className={NAVIGATION_BULLET}
@@ -27,7 +27,7 @@ const Navigation = Vue.component('Navigation', {
             ariaCurrent={this.isActiveWhen('une')}
           />
 
-          <Link
+          <NavItem
             href="#deux"
             clickFn={this.jumpToSection}
             className={NAVIGATION_BULLET}
@@ -35,7 +35,7 @@ const Navigation = Vue.component('Navigation', {
             ariaLabel="Go to section 2, Cornerstone."
           />
 
-          <Link
+          <NavItem
             href="#trois"
             clickFn={this.jumpToSection}
             className={NAVIGATION_BULLET}
@@ -43,7 +43,7 @@ const Navigation = Vue.component('Navigation', {
             ariaCurrent={this.isActiveWhen('trois')}
           />
 
-          <Link
+          <NavItem
             href="#quatre"
             clickFn={this.jumpToSection}
             className={NAVIGATION_BULLET}
@@ -51,7 +51,7 @@ const Navigation = Vue.component('Navigation', {
             ariaCurrent={this.isActiveWhen('quatre')}
           />
 
-          <Link
+          <NavItem
             href="#cinq"
             clickFn={this.jumpToSection}
             className={NAVIGATION_BULLET}
@@ -64,38 +64,4 @@ const Navigation = Vue.component('Navigation', {
   },
 })
 
-const Link = Vue.component('Link', {
-  render() {
-    const { href, external, ariaLabel, ariaCurrent, clickFn } = this
-
-    return (
-      <li>
-        <a
-          href={href}
-          aria-label={ariaLabel}
-          class={this.className}
-          aria-current={ariaCurrent}
-          target={external && '_blank'}
-          rel={external && 'noreferrer noopener'}
-          onClick={e => {
-            this.href.charAt(0) === '#' && e.preventDefault()
-            typeof clickFn === 'function' && clickFn.call(this, e)
-          }}
-        >
-          {this.$slots.default}
-        </a>
-      </li>
-    )
-  },
-
-  props: {
-    href: String,
-    clickFn: Function,
-    ariaLabel: String,
-    className: String,
-    ariaCurrent: [String, Boolean],
-    external: { type: Boolean, default: false },
-  },
-})
-
-export { Navigation, Link }
+export default Navigation

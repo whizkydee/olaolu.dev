@@ -1,5 +1,7 @@
+import theme from '../theme'
 import styled from 'vue-styled-components'
-import { createMenuShadow, media } from '@/helpers'
+import { createMenuShadow } from '../helpers'
+import { minWidth, maxWidth } from '../media-helpers'
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -10,13 +12,13 @@ const StyledHeader = styled.header`
   align-items: center;
   background: transparent;
   justify-content: space-between;
-  height: ${props => props.theme.header.height};
+  height: ${theme.header.height};
 
-  ${media.minWidth('medium', 1)`
-    padding: 0 ${props => props.theme.header.padding};
+  ${minWidth('medium', 1)`
+    padding: 0 ${theme.header.padding};
   `}
 
-  ${media.maxWidth('medium')`
+  ${maxWidth('medium')`
     padding: 0 3em;
   `}
 
@@ -60,7 +62,7 @@ const StyledHeader = styled.header`
     flex-direction: column;
     transition: color 700ms;
     outline-color: transparent;
-    color: ${props => props.theme.colors.lime};
+    color: ${theme.colors.lime};
 
     svg {
       width: inherit;
@@ -144,7 +146,7 @@ const StyledHeader = styled.header`
     }
 
     a {
-      color: ${props => props.theme.colors['electric-blue']};
+      color: ${theme.colors['electric-blue']};
     }
   }
 
@@ -173,7 +175,7 @@ const StyledHeader = styled.header`
     position: relative;
     display: inline-flex;
     margin-top: 0.699rem;
-    color: ${props => props.theme.colors['electric-blue']};
+    color: ${theme.colors['electric-blue']};
 
     &:focus {
       outline-offset: 4px;
