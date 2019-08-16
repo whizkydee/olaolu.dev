@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import NavItem from '../NavItem'
 import styled from 'vue-styled-components'
 import { SOCIAL_PROFILES } from '../constants'
 const { twitter, linkedIn, github, youtube } = SOCIAL_PROFILES
@@ -41,7 +42,7 @@ const StyledSocialContact = styled.div`
 export default {
   name: 'SocialContact',
   data: () => ({ twitter, linkedIn, github, youtube }),
-  components: { StyledSocialContact },
+  components: { StyledSocialContact, NavItem },
 }
 
 StyledSocialContact.name = 'StyledSocialContact'

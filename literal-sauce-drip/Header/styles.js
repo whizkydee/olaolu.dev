@@ -1,6 +1,7 @@
 import theme from '../theme'
 import styled from 'vue-styled-components'
-import { createMenuShadow, media } from '../helpers'
+import { createMenuShadow } from '../helpers'
+import { minWidth, maxWidth } from '../media-helpers'
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -13,11 +14,11 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   height: ${theme.header.height};
 
-  ${media.minWidth('medium', 1)`
+  ${minWidth('medium', 1)`
     padding: 0 ${theme.header.padding};
   `}
 
-  ${media.maxWidth('medium')`
+  ${maxWidth('medium')`
     padding: 0 3em;
   `}
 

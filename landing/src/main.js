@@ -5,7 +5,7 @@ import router from './router'
 import './registerServiceWorker'
 import * as components from '@/components'
 
-// Register all components.
+// Register all sauce drip components.
 for (let componentName in components) {
   Vue.component(componentName, components[componentName])
 }

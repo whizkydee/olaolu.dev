@@ -1,14 +1,14 @@
 import Cavalier from './Cavalier'
 import Navigation from './Navigation'
-import Header from '../../../literal-sauce-drip/Header'
-import Footer from '../../../literal-sauce-drip/Footer'
-import NavItem from '../../../literal-sauce-drip/NavItem'
-import Button from '../../../literal-sauce-drip/Button'
-import Section from '../../../literal-sauce-drip/Section'
-import ContentView from '../../../literal-sauce-drip/ContentView'
-import InputGroup from '../../../literal-sauce-drip/InputGroup'
-import ContactForm from '../../../literal-sauce-drip/ContactForm'
-import ContactPortal from '../../../literal-sauce-drip/ContactPortal'
+import Header from '@saucedrip/Header'
+import Footer from '@saucedrip/Footer'
+import Button from '@saucedrip/Button'
+import Section from '@saucedrip/Section'
+import NavItem from '@saucedrip/NavItem'
+import InputGroup from '@saucedrip/InputGroup'
+import ContentView from '@saucedrip/ContentView'
+import ContactForm from '@saucedrip/ContactForm'
+import ContactPortal from '@saucedrip/ContactPortal'
 
 export {
   Header,

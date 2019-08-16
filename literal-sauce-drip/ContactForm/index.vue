@@ -43,10 +43,12 @@
 </template>
 
 <script>
+import Button from '../Button'
+import InputGroup from '../InputGroup'
 import StyledContactForm from './styles'
 
 export default {
   name: 'ContactForm',
-  components: { StyledContactForm },
+  components: { StyledContactForm, InputGroup, Button },
 }
 </script>

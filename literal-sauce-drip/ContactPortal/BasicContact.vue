@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import NavItem from '../NavItem'
 import styled from 'vue-styled-components'
 
 const StyledBasicContact = styled.div`
@@ -28,7 +29,7 @@ const StyledBasicContact = styled.div`
 
 export default {
   name: 'BasicContact',
-  components: { StyledBasicContact },
+  components: { StyledBasicContact, NavItem },
 }
 
 StyledBasicContact.name = 'StyledBasicContact'

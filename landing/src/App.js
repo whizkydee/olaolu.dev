@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import { Header, Footer } from '@/components'
 import { ThemeProvider } from 'vue-styled-components'
 
 // global styles

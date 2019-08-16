@@ -1,8 +1,8 @@
 <template>
   <StyledHeader role="banner" :data-compact="compact + ''">
-    <router-link to="/" id="logo" aria-label="Logo, go to homepage.">
+    <a href="/" id="logo" aria-label="Logo, go to homepage.">
       <SauceDripLogo />
-    </router-link>
+    </a>
 
     <button
       type="button"

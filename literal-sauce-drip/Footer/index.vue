@@ -24,12 +24,14 @@
 </template>
 
 <script>
+import NavItem from '../NavItem'
 import StyledFooter from './styles'
 import ContactPortal from '../ContactPortal'
 
 export default {
   name: 'Footer',
   components: {
+    NavItem,
     StyledFooter,
     'ContactPortal.Basic': ContactPortal.Basic,
     'ContactPortal.Social': ContactPortal.Social,
