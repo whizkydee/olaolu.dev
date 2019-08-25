@@ -17,10 +17,6 @@ body {
 
 a:not(.button) {
 	color: var(--link-color);
- 	transition: opacity .2s;
-	&:hover {
-		opacity: .8;
-	}
 }
 
 img {

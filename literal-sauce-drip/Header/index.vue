@@ -64,7 +64,7 @@ export default {
     toggleMenu() {
       this.menuOpen = !this.menuOpen
 
-      if (!this.menuOpen) {
+      if (this.isHome && !this.menuOpen) {
         let container =
           this.currentSection === 'footer'
             ? document.querySelector('[data-section="footer]')

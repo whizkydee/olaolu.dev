@@ -42,8 +42,7 @@ export default {
   margin-bottom: calc(var(--space) - 2rem);
 
   &:not(:last-of-type) {
-    padding-bottom: 50px;
-    border-bottom: 1px solid #999999;
+    padding-bottom: 2.5rem;
   }
 
   &__header {

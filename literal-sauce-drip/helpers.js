@@ -1,9 +1,8 @@
 export * from './media-helpers'
-import store from '../landing/src/store'
 import { wait } from '@mrolaolu/helpers'
 import { CURRENT_SECTION_KEY, SECTION_SELECTOR } from './constants'
 
-export const goToSection = ([section, modifier], smooth = true) => {
+export const goToSection = (store, [section, modifier], smooth = true) => {
   if (!(section instanceof HTMLElement)) return
 
   const getSectionId = () => section.dataset.section
@@ -31,7 +30,7 @@ export const goToSection = ([section, modifier], smooth = true) => {
 
     wait(200, () => {
       section.focus()
-      store.commit(CURRENT_SECTION_KEY, getSectionId())
+      store && store.commit(CURRENT_SECTION_KEY, getSectionId())
       app.dataset[CURRENT_SECTION_KEY] = getSectionId()
     })
   }

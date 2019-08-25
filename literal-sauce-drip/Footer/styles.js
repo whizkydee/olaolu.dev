@@ -6,7 +6,7 @@ const StyledFooter = styled(Section)`
   color: ${theme.colors['lime-alt']};
   background: ${theme.colors.default};
 
-  a {
+  li a {
     color: currentColor;
   }
 

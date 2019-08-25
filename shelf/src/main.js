@@ -1,3 +1,6 @@
+import '@bit/mrolaolu.literal-sauce-drip.normalize-css'
+import '@bit/mrolaolu.literal-sauce-drip.global-styles'
+
 // Import main css
 import '~/assets/style/index.scss'
 
