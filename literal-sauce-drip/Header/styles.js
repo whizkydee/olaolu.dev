@@ -8,6 +8,7 @@ const StyledHeader = styled.header`
   display: flex;
   z-index: 1000;
   position: fixed;
+  font-size: 1rem;
   max-height: 12rem;
   align-items: center;
   background: transparent;
@@ -56,8 +57,8 @@ const StyledHeader = styled.header`
 
   #logo {
     display: flex;
-    width: 8.34rem;
-    height: 3.195rem;
+    width: 8.34em;
+    height: 3.195em;
     position: relative;
     flex-direction: column;
     transition: color 700ms;
@@ -81,15 +82,15 @@ const StyledHeader = styled.header`
   }
 
   #contact__menu {
-    top: 1.39rem;
+    top: 1.39em;
     z-index: 998;
     display: flex;
-    right: 3.41rem;
-    width: 22.223rem;
+    right: 3.41em;
+    width: 22.223em;
     box-shadow: none;
     font-size: 1.1em;
     user-select: none;
-    padding: 3.473rem;
+    padding: 3.473em;
     position: absolute;
     flex-direction: column;
     transition: opacity 0.4s, box-shadow 0.1s 1000ms;
@@ -157,8 +158,8 @@ const StyledHeader = styled.header`
   }
 
   .basic__contact ul {
+    margin: 1.2em 0 2.78em;
     transition-delay: 200ms;
-    margin: 1.2rem 0 2.78rem;
     transform: translateY(30px);
   }
 
@@ -169,12 +170,12 @@ const StyledHeader = styled.header`
 
   .menu__toggle {
     z-index: 999;
-    width: 2.78rem;
-    height: 2.09rem;
+    width: 2.78em;
+    height: 2.09em;
     background: none;
     position: relative;
     display: inline-flex;
-    margin-top: 0.699rem;
+    margin-top: 0.699em;
     color: ${theme.colors['electric-blue']};
 
     &:focus {
@@ -200,7 +201,7 @@ const StyledHeader = styled.header`
     &:after {
       content: '';
       width: 100%;
-      height: 0.14rem;
+      height: 0.14em;
       position: absolute;
       transition: 0.2s ease;
       transform: rotate(0deg);
@@ -214,7 +215,7 @@ const StyledHeader = styled.header`
     &:after {
       right: 0;
       width: 72%;
-      top: 1.13rem;
+      top: 1.13em;
     }
   }
 `

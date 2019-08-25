@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <Layout id="post-page">
     <div class="post-title">
       <PostMeta :post="$page.post" />
 
@@ -62,7 +62,7 @@ query Post ($path: String!) {
   post: post (path: $path) {
     title
     path
-    date (format: "D. MMMM YYYY")
+    date (format: "D MMMM YYYY")
     timeToRead
     tags {
       id
@@ -115,6 +115,22 @@ query Post ($path: String!) {
       margin-left: calc(var(--space) * -1);
       display: block;
       max-width: none;
+    }
+
+    ul,
+    ol {
+      list-style-type: disc;
+      margin-left: 1.25em;
+      margin-bottom: 1.25em;
+
+      li {
+        list-style-type: inherit;
+        margin-bottom: 0.6em;
+      }
+    }
+
+    ol {
+      list-style-type: decimal;
     }
   }
 }

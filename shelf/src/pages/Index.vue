@@ -1,5 +1,5 @@
 <template>
-  <Layout :show-logo="false">
+  <Layout :show-logo="false" id="list-of-posts">
     <!-- List posts -->
     <div class="posts">
       <PostCard
@@ -24,7 +24,7 @@
           title
           path
         }
-        date (format: "D. MMMM YYYY")
+        date (format: "D MMMM YYYY")
         timeToRead
         description
         ...on Post {

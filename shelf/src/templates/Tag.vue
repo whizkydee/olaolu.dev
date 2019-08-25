@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <Layout id="tag-page">
     <h1 class="tag-title text-center space-bottom"># {{ $page.tag.title }}</h1>
 
     <div class="posts">
@@ -22,7 +22,7 @@ query Tag ($id: String!) {
           ...on Post {
             title
             path
-            date (format: "D. MMMM YYYY")
+            date (format: "D MMMM YYYY")
             timeToRead
             description
             coverImage (width: 860, blur: 10)

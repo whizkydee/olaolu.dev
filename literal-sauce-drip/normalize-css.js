@@ -1,6 +1,6 @@
 import { injectGlobal } from 'vue-styled-components'
 
-const NormalizeCSS = injectGlobal`
+export const NormalizeCSS = injectGlobal`
   /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
   html {
@@ -181,5 +181,3 @@ const NormalizeCSS = injectGlobal`
     display: none;
   }
 `
-
-export default NormalizeCSS

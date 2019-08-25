@@ -44,6 +44,7 @@ strong {
 }
 
 blockquote {
+  margin: 0;
   border-left: 4px solid var(--border-color);
   padding-left: calc(var(--space) / 2);
   color: var(--title-color);
@@ -51,21 +52,4 @@ blockquote {
 
 em {
   font-style: italic;
-}
-
-ul {
-  list-style-type: disc;
-  margin-left: 1.25em;
-  margin-bottom: 1.25em;
-  li {
-    margin-bottom: .6em;
-  }
-}
-ol {
-  list-style-type: decimal;
-  margin-left: 1.25em;
-  margin-bottom: 1.25em;
-  li {
-    margin-bottom: .6em;
-  }
 }

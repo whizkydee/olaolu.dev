@@ -49,7 +49,7 @@ const StyledInputGroup = styled.div`
     margin-right: 20px;
   }
 
-  &.focused {
+  &.input__group.focused {
     color: ${theme.colors['electric-blue']};
   }
 
@@ -93,15 +93,15 @@ export default {
   methods: {
     handleFocus(event) {
       this.focused = true
-      if (this.inputAttrs && typeof this.inputAttrs.focus === 'function') {
-        this.inputAttrs.focus.call(this, event)
+      if (this.listen && typeof this.listen.focus === 'function') {
+        this.listen.focus.call(this, event)
       }
     },
 
     handleBlur(event) {
       this.focused = false
-      if (this.inputAttrs && typeof this.inputAttrs.blur === 'function') {
-        this.inputAttrs.blur.call(this, event)
+      if (this.listen && typeof this.listen.blur === 'function') {
+        this.listen.blur.call(this, event)
       }
     },
   },

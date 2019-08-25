@@ -16,10 +16,13 @@ import styled, { css } from 'vue-styled-components'
 function createStyledSection(tagName = 'section', props = {}) {
   const styles = css`
     display: flex;
-    outline: none;
     position: relative;
     align-items: center;
     justify-content: center;
+
+    &:focus {
+      outline: none;
+    }
 
     ${media.maxWidth('medium')`
       &:not([data-section='une']) {

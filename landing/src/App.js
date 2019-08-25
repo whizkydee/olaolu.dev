@@ -2,7 +2,7 @@ import Vue from 'vue'
 import { ThemeProvider } from 'vue-styled-components'
 
 // global styles
-import '@/base/normalize-css'
+import '@saucedrip/normalize-css'
 import '@/base/global-styles'
 import { mapState } from 'vuex'
 import { theme } from '@/base/theme'
