@@ -44,7 +44,7 @@ export default {
 
 #main {
   margin: 0 auto;
-  padding: 1.5vw 90px 0;
+  padding: 1.5vw 15px 0;
 
   &:focus {
     outline: none;
