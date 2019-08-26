@@ -7,9 +7,9 @@
     "serve:shelf": "cd shelf && yarn develop",
     "serve:landing": "cd landing && yarn serve",
     "serve": "yarn fresh && node dev.js",
-    "build:shelf": "cd shelf && pwd && yarn install && pwd && yarn build",
-    "build:landing": "cd landing && pwd && yarn install && pwd && yarn build",
-    "build": "yarn fresh && pwd && node build.js && pwd"
+    "build:shelf": "cd shelf && yarn install && yarn build",
+    "build:landing": "cd landing && yarn install && yarn build",
+    "build": "yarn fresh && node build.js"
   },
   "repository": {
     "type": "git",
