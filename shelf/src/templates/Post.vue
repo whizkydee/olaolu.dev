@@ -12,8 +12,8 @@
       <div class="post__header">
         <g-image
           alt="Cover image"
-          v-if="$page.post.coverImage"
-          :src="$page.post.coverImage"
+          v-if="$page.post.cover_image"
+          :src="$page.post.cover_image"
         />
       </div>
 
@@ -71,7 +71,7 @@ query Post ($path: String!) {
     }
     description
     content
-    coverImage (width: 860, blur: 10)
+    cover_image (width: 860, blur: 10)
   }
 }
 </page-query>

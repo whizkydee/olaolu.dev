@@ -25,7 +25,7 @@ query Tag ($id: String!) {
             date (format: "D MMMM YYYY")
             timeToRead
             description
-            coverImage (width: 860, blur: 10)
+            cover_image (width: 860, blur: 10)
             content
           }
         }
