@@ -20,10 +20,10 @@ import ContentView from '../../../literal-sauce-drip/ContentView'
 export default {
   data: () => ({ ready: false }),
   mounted() {
-    // hack to delay rendering for 100 milliseconds -
+    // hack to delay rendering for 10 milliseconds -
     // supposed time needed to render the sauce drip
     // components and paint them onto the page.
-    window.setTimeout(() => (this.ready = true), 100)
+    window.setTimeout(() => (this.ready = true), 10)
   },
   props: {
     id: String,
