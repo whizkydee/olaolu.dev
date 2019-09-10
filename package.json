@@ -1,5 +1,5 @@
 {
-  "name": "olaolu.me",
+  "name": "olaolu.dev",
   "private": true,
   "version": "1.0.0",
   "scripts": {
@@ -13,13 +13,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/whizkydee/olaolu.me.git"
+    "url": "https://github.com/whizkydee/olaolu.dev.git"
   },
   "author": "Olaolu Olawuyi",
   "bugs": {
-    "url": "https://github.com/whizkydee/olaolu.me/issues"
+    "url": "https://github.com/whizkydee/olaolu.dev/issues"
   },
-  "homepage": "https://github.com/whizkydee/olaolu.me#readme",
+  "homepage": "https://github.com/whizkydee/olaolu.dev#readme",
   "devDependencies": {
     "del-cli": "^2.0.0",
     "make-dir": "^3.0.0",

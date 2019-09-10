@@ -1,4 +1,4 @@
-# olaolu.me
+# olaolu.dev
 
 ## Project setup
 ```
