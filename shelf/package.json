@@ -1,5 +1,5 @@
 {
-  "name": "olaolu.me-shelf",
+  "name": "olaolu.dev-shelf",
   "private": true,
   "scripts": {
     "build": "gridsome build",

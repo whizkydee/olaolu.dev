@@ -3,7 +3,7 @@
     <span class="say__hello">Say Hello</span>
 
     <ul>
-      <NavItem href="mailto:hello@olaolu.me">hello@olaolu.me</NavItem>
+      <NavItem href="mailto:hello@olaolu.dev">hello@olaolu.dev</NavItem>
       <NavItem href="tel:+234808XXXXXXX">+234 808 XXX XXXX</NavItem>
     </ul>
   </StyledBasicContact>

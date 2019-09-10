@@ -4,7 +4,7 @@
     class="contact__form"
     action="https://formspree.io/mrolaolu@gmail.com"
   >
-    <input type="hidden" name="_subject" value="Message from olaolu.me!" />
+    <input type="hidden" name="_subject" value="Message from olaolu.dev!" />
 
     <div class="form__row">
       <InputGroup
