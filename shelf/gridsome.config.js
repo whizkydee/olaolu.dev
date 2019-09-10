@@ -4,8 +4,10 @@
 // Changes here requires a server restart.
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
+const { SHELF_PORT } = require('../ports')
+
 module.exports = {
-  port: 8081,
+  port: SHELF_PORT,
   pathPrefix: '/shelf',
   siteName: `Olaolu's Shelf`,
   siteDescription:

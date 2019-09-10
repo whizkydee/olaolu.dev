@@ -1,8 +1,13 @@
 export * from './media-helpers'
 import { wait } from '@mrolaolu/helpers'
-import { CURRENT_SECTION_KEY, SECTION_SELECTOR } from './constants'
+import { SECTION_SELECTOR, CURRENT_SECTION_KEY } from './constants'
+const { SHELF_PORT, LANDING_PORT } = require('../ports')
 
-export const goToSection = (store, [section, modifier], smooth = true) => {
+export function isDev() {
+  return process.env.NODE_ENV === 'development'
+}
+
+export function goToSection(store, [section, modifier], smooth = true) {
   if (!(section instanceof HTMLElement)) return
 
   const getSectionId = () => section.dataset.section
@@ -80,4 +85,14 @@ export function smoothScrollToElem(
   }
 
   tick()
+}
+
+const hostname =
+  typeof location !== 'undefined' ? 'https://' + location.hostname : ''
+export function getShelfURL() {
+  return isDev() ? 'http://localhost:' + SHELF_PORT : hostname + '/shelf'
+}
+
+export function getLandingURL() {
+  return isDev() ? 'http://localhost:' + LANDING_PORT : hostname || ''
 }
