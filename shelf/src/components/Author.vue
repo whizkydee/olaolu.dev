@@ -47,6 +47,7 @@ export default {
   padding: calc(var(--space) / 2) 0;
 
   &__image {
+    margin: 0 auto;
     border-radius: 100%;
     width: 90px;
     height: 90px;
