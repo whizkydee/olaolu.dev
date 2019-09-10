@@ -3,7 +3,7 @@
     <Header currentSection="" id="site-header" />
 
     <ContentView :id="id">
-      <slot />
+      <slot v-if="ready" />
     </ContentView>
 
     <Footer id="site-footer" />
@@ -18,6 +18,9 @@ import Header from '../../../literal-sauce-drip/Header'
 import ContentView from '../../../literal-sauce-drip/ContentView'
 
 export default {
+  data: () => ({
+    ready: Footer._compiled && Header._compiled && ContentView._compiled,
+  }),
   props: {
     id: String,
     showLogo: { default: true },
