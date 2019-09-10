@@ -1,7 +1,9 @@
 const path = require('path')
+const { LANDING_PORT } = require('../ports')
 
 module.exports = {
   productionSourceMap: false,
+  devServer: { port: LANDING_PORT },
 
   chainWebpack(config) {
     // Only convert .svg files that are imported by these files as Vue component

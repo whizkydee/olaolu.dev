@@ -9,8 +9,8 @@
         <ContactPortal.Basic />
 
         <ul>
-          <NavItem href="/work">My Work</NavItem>
-          <NavItem href="/desk">My Desk</NavItem>
+          <NavItem :href="workURL">My Work</NavItem>
+          <NavItem :href="shelfURL">My Shelf</NavItem>
           <NavItem href="/resume.pdf">My Rèsumè</NavItem>
         </ul>
       </div>
