@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <Header currentSection="" id="site-header" />
+    <Header currentSection="" id="site-header" v-if="ready" />
 
-    <ContentView :id="id">
-      <slot v-if="ready" />
+    <ContentView :id="id" v-if="ready">
+      <slot />
     </ContentView>
 
-    <Footer id="site-footer" />
+    <Footer id="site-footer" v-if="ready" />
   </div>
 </template>
 
@@ -18,9 +18,13 @@ import Header from '../../../literal-sauce-drip/Header'
 import ContentView from '../../../literal-sauce-drip/ContentView'
 
 export default {
-  data: () => ({
-    ready: Footer._compiled && Header._compiled && ContentView._compiled,
-  }),
+  data: () => ({ ready: false }),
+  mounted() {
+    // hack to delay rendering for 100 milliseconds -
+    // supposed time needed to render the sauce drip
+    // components and paint them onto the page.
+    window.setTimeout(() => (this.ready = true), 100)
+  },
   props: {
     id: String,
     showLogo: { default: true },
