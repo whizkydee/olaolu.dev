@@ -13,9 +13,9 @@
 <script>
 import Logo from '~/components/Logo.vue'
 import ToggleTheme from '~/components/ToggleTheme.vue'
-import Footer from '@bit/mrolaolu.literal-sauce-drip.footer'
-import Header from '@bit/mrolaolu.literal-sauce-drip.header'
-import ContentView from '@bit/mrolaolu.literal-sauce-drip.content-view'
+import Footer from '../../../literal-sauce-drip/Footer'
+import Header from '../../../literal-sauce-drip/Header'
+import ContentView from '../../../literal-sauce-drip/ContentView'
 
 export default {
   props: {

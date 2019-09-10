@@ -7,19 +7,14 @@
     "explore": "gridsome explore"
   },
   "dependencies": {
-    "@bit/mrolaolu.literal-sauce-drip.content-view": "^1.0.0",
-    "@bit/mrolaolu.literal-sauce-drip.footer": "^1.0.6",
-    "@bit/mrolaolu.literal-sauce-drip.global-styles": "^1.0.6",
-    "@bit/mrolaolu.literal-sauce-drip.header": "^1.0.5",
-    "@bit/mrolaolu.literal-sauce-drip.normalize-css": "^1.0.6",
-    "@gridsome/plugin-google-analytics": "^0.1.0",
-    "@gridsome/remark-prismjs": "^0.1.0",
-    "@gridsome/source-filesystem": "^0.5.0",
-    "@gridsome/transformer-remark": "^0.3.2",
-    "gridsome": "^0.6.8"
+    "@gridsome/plugin-google-analytics": "0.1.0",
+    "@gridsome/remark-prismjs": "0.0.4",
+    "@gridsome/source-filesystem": "0.3.0",
+    "@gridsome/transformer-remark": "0.2.0",
+    "gridsome": "0.5.0"
   },
   "devDependencies": {
-    "node-sass": "^4.11.0",
-    "sass-loader": "^7.1.0"
+    "node-sass": "4.11.0",
+    "sass-loader": "7.1.0"
   }
 }
