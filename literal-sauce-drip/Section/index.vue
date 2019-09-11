@@ -25,7 +25,7 @@ function createStyledSection(tagName = 'section', props = {}) {
     }
 
     ${media.maxWidth('medium')`
-      &:not([data-section='une']) {
+      &:not([data-section='une']):not([data-section='footer']) {
         min-height: 100vh;
         margin-bottom: 10rem;
       }

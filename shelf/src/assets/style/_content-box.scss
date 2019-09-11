@@ -1,17 +1,12 @@
 // Used to wrap content inside a nice box.
 .content-box {
-	background-color: var(--bg-content-color);
   margin: 0 auto;
   max-width: var(--content-width);
-  padding: var(--space);
+  padding: 0 var(--space);
 	transition: background-color .6s;
   transition: transform .3s, background-color .3s, box-shadow .6s;
 
   &:not(.post-card) {
     border-radius: var(--radius);
-  }
-
-  &.post {
-    padding: var(--space);
   }
 }
