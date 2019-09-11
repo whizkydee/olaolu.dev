@@ -23,7 +23,7 @@ const StyledFooter = styled(Section)`
   }
 
   .basic__contact {
-    margin-right: 15em;
+    margin-right: 18vw;
   }
 
   .footer__main {

@@ -86,7 +86,6 @@ query Post ($path: String!) {
   &__header {
     width: calc(100% + var(--space) * 2);
     margin-left: calc(var(--space) * -1);
-    margin-top: calc(var(--space) * -1);
     margin-bottom: calc(var(--space) / 2);
     overflow: hidden;
     border-radius: var(--radius) var(--radius) 0 0;
@@ -106,8 +105,7 @@ query Post ($path: String!) {
     }
 
     p:first-of-type {
-      font-size: 1.2em;
-      color: var(--title-color);
+      margin-top: 0;
     }
 
     img {

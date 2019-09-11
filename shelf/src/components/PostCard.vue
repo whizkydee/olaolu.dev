@@ -37,19 +37,17 @@ export default {
 </script>
 
 <style lang="scss">
+.posts {
+  margin-top: var(--space);
+}
 .post-card {
   position: relative;
-  margin-bottom: calc(var(--space) - 2rem);
-
-  &:not(:last-of-type) {
-    padding-bottom: 2.5rem;
-  }
+  margin-bottom: var(--space);
 
   &__header {
     margin-left: calc(var(--space) * -1);
     margin-right: calc(var(--space) * -1);
     margin-bottom: calc(var(--space) / 2);
-    margin-top: calc(var(--space) * -1);
     overflow: hidden;
     border-radius: var(--radius) var(--radius) 0 0;
 
