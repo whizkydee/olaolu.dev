@@ -9,7 +9,7 @@ const StyledNavigation = styled.nav`
   color: ${props => props.theme.colors['electric-blue']};
   right: ${props => `calc(${props.theme.header.padding} + 1em)`};
 
-  ${media.minWidth('medium', 1)`
+  ${media.minWidth('>medium')`
     display: flex;
   `}
 

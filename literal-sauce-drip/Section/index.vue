@@ -31,7 +31,7 @@ function createStyledSection(tagName = 'section', props = {}) {
       }
     `}
 
-    ${media.minWidth('medium', 1)`
+    ${media.minWidth('>medium')`
       &:not([data-section='une']) {
         height: 100vh;
       }
@@ -96,7 +96,7 @@ function createStyledSection(tagName = 'section', props = {}) {
       width: 100%;
       display: flex;
 
-      ${media.minWidth('xLarge', 1)`
+      ${media.minWidth('>xLarge')`
         padding: 0 8em;
       `}
 
@@ -104,7 +104,7 @@ function createStyledSection(tagName = 'section', props = {}) {
         padding: 0 5em;
       `}
 
-      ${media.between(['medium', 1], ['xLarge'])`
+      ${media.between('>medium', 'xLarge')`
         padding: 0 10em;
         max-width: 1500px;
       `}

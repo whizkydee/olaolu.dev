@@ -5,7 +5,7 @@ import { NAVIGATION_ID, TABBING_CLASSNAME } from '@/constants'
 
 const StyledHomepage = injectGlobal`
   html {
-    ${media.minWidth('medium', 1)`
+    ${media.minWidth('>medium')`
       font-size: 1vw;
       overflow: hidden;
 
@@ -63,7 +63,7 @@ const StyledHomepage = injectGlobal`
     outline: none;
     -webkit-overflow-scrolling: touch;
 
-    ${media.minWidth('medium', 1)`
+    ${media.minWidth('>medium')`
       touch-action: none;
       scroll-snap-type: y mandatory;
     `}
