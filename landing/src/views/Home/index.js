@@ -2,6 +2,7 @@ import Vue from 'vue'
 import {
   wait,
   toPx,
+  debounce,
   resetScroll,
   getEventPath,
   matchesQuery,
@@ -21,18 +22,18 @@ import Cornerstone from './Cornerstone'
 import Carriageway from './Carriageway'
 import { goToSection, breakpoints } from '@/helpers'
 
-const maybeMediumScreen = () =>
-  matchesQuery(`(max-width: ${toPx(breakpoints.medium)})`)
-
 const Homepage = Vue.component('Homepage', {
   data: () => ({
     touchY: null,
     prevTime: new Date().getTime(),
-    isMediumScreen: maybeMediumScreen(),
   }),
 
   computed: {
     ...mapState([CURRENT_SECTION_KEY]),
+
+    isMediumScreen() {
+      return matchesQuery(`(max-width: ${toPx(breakpoints.medium)})`)
+    },
   },
 
   mounted() {
@@ -45,7 +46,7 @@ const Homepage = Vue.component('Homepage', {
     // Set current section to the first section by default.
     this.$root.$el.dataset[CURRENT_SECTION_KEY] = this.getCurrentSectionId()
 
-    window.addEventListener('resize', this.recalcSection)
+    window.addEventListener('resize', debounce(this.recalcSection, 200))
     document.addEventListener('keydown', this.maybeScrollJack)
     document.addEventListener('touchstart', this.handleTouchstart)
     document.addEventListener('touchmove', this.handleTouchmove, {
@@ -56,16 +57,12 @@ const Homepage = Vue.component('Homepage', {
   },
 
   destroyed() {
-    const { documentElement } = document
+    const { documentElement: docElem } = document
 
     window.removeEventListener('resize', this.recalcSection)
     document.removeEventListener('keydown', this.maybeScrollJack)
-    documentElement.removeEventListener('wheel', this.handleMouseWheel, false)
-    documentElement.removeEventListener(
-      'mousewheel',
-      this.handleMouseWheel,
-      false
-    )
+    docElem.removeEventListener('wheel', this.handleMouseWheel, false)
+    docElem.removeEventListener('mousewheel', this.handleMouseWheel, false)
     document.removeEventListener('touchstart', this.handleTouchstart)
     document.removeEventListener('touchmove', this.handleTouchmove, {
       passive: false,
@@ -116,17 +113,21 @@ const Homepage = Vue.component('Homepage', {
      */
 
     maybeRestoreSection() {
-      const sections = Array.from(document.querySelectorAll(SECTION_SELECTOR))
+      const sections = Array.from(
+        this.$root.$el.querySelectorAll(SECTION_SELECTOR)
+      )
       // Set current section to currently visible section upon reload
       const sectionInView = sections.find(
         section => this.getSectionOffsetDiffFromViewport(section) < 2 // <2%
       )
 
-      if (!sectionInView) wait(100, () => resetScroll())
-      else {
+      if (sectionInView) {
         goToSection([sectionInView])
+
         const firstSection = this[CURRENT_SECTION_KEY] === SECTIONS[0]
         if (!firstSection) this.$store.commit('headerCompact', true)
+      } else {
+        wait(100, () => resetScroll())
       }
     },
 
@@ -136,8 +137,6 @@ const Homepage = Vue.component('Homepage', {
      */
 
     recalcSection() {
-      this.isMediumScreen = maybeMediumScreen()
-
       // Immediately resize sections on window resize (no smooth).
       goToSection([this.getSection()], false)
     },
@@ -149,7 +148,7 @@ const Homepage = Vue.component('Homepage', {
      */
 
     getSection(id = this.getCurrentSectionId()) {
-      const sectionElem = document.querySelector(`[data-section='${id}']`)
+      const sectionElem = this.$root.$el.querySelector(`[data-section='${id}']`)
 
       if (!sectionElem) return
       return sectionElem
@@ -195,7 +194,7 @@ const Homepage = Vue.component('Homepage', {
      */
 
     handleTouchstart(event) {
-      if (typeof event.touches === 'undefined' || !this.isMediumScreen) return
+      if (event.touches === undefined || this.isMediumScreen) return
       this.touchY = event.touches[0].clientY
     },
 
@@ -207,8 +206,7 @@ const Homepage = Vue.component('Homepage', {
      */
 
     handleTouchmove(event) {
-      if (typeof event.changedTouches === 'undefined' || !this.isMediumScreen)
-        return
+      if (event.changedTouches === undefined || this.isMediumScreen) return
 
       const curTouchY = event.changedTouches[0].clientY
       if (!this.scrollingLudicrouslyFast()) {
@@ -225,6 +223,8 @@ const Homepage = Vue.component('Homepage', {
      */
 
     handleMouseWheel(event) {
+      if (this.isMediumScreen) return
+
       if (!this.scrollingLudicrouslyFast()) {
         switch (Math.sign(event.deltaY)) {
           case 1:
@@ -244,6 +244,8 @@ const Homepage = Vue.component('Homepage', {
      */
 
     maybeScrollJack(event) {
+      if (this.isMediumScreen || !event) return
+
       const inEventPath = cond => getEventPath(event).some(cond)
 
       const isNavFocused = inEventPath(o => o && o.id === NAVIGATION_ID)
