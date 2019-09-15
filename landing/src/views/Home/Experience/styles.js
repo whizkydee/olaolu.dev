@@ -5,7 +5,7 @@ import styled from 'vue-styled-components'
 const StyledExperience = styled(Section)`
   background-color: ${props => props.theme.colors['electric-blue']};
 
-  ${media.minWidth('medium', 1)`
+  ${media.minWidth('>medium')`
     &[aria-hidden='true']:not(.scrolled) {
       .work__illo {
         opacity: 0;
@@ -17,7 +17,7 @@ const StyledExperience = styled(Section)`
   .experience__content {
     justify-content: space-between;
 
-    ${media.minWidth('medium', 1)`
+    ${media.minWidth('>medium')`
       margin-top: 5.5vh;
       align-items: center;
 
@@ -42,7 +42,7 @@ const StyledExperience = styled(Section)`
     margin: 0;
     position: relative;
 
-    ${media.minWidth('medium', 1)`
+    ${media.minWidth('>medium')`
       transition: transform 0.5s, opacity 0.2s;
       transition-delay: 400ms;
     `}

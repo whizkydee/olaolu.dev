@@ -26,7 +26,7 @@ const StyledPitchSlate = styled(Section)`
   }
 
   .cavalier {
-    ${media.minWidth('medium', 1)`
+    ${media.minWidth('>medium')`
       margin-top: -3.5em;
     `}
 
@@ -57,7 +57,7 @@ const StyledPitchSlate = styled(Section)`
     position: relative;
     border: 0.115rem solid #fff;
 
-    ${media.minWidth('medium', 1)`
+    ${media.minWidth('>medium')`
       margin-right: ${props => `calc(${props.theme.header.padding} + 4em)`};
     `}
 
@@ -102,7 +102,7 @@ const StyledPitchSlate = styled(Section)`
   }
 
   .bottom__content {
-    ${media.minWidth('medium', 1)`
+    ${media.minWidth('>medium')`
       margin-top: auto;
       padding-right: ${props => props.theme.header.padding};
     `}
@@ -121,7 +121,7 @@ const StyledPitchSlate = styled(Section)`
     justify-content: space-between;
     color: ${props => props.theme.colors.lime};
 
-    ${media.minWidth('medium', 1)`
+    ${media.minWidth('>medium')`
       width: 41%;
       font-size: 0.965em;
     `}

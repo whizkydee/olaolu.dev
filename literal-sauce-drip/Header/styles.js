@@ -15,7 +15,7 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   height: ${theme.header.height};
 
-  ${minWidth('medium', 1)`
+  ${minWidth('>medium')`
     padding: 0 ${theme.header.padding};
   `}
 

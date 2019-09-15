@@ -22,7 +22,7 @@ const StyledCarriageway = styled(Section)`
       padding: 0 ${props => `calc(${props.theme.header.padding} - 2em)`};
     `}
 
-    ${media.minWidth('xLarge', 1)`
+    ${media.minWidth('>xLarge')`
       padding-left: 5em;
       padding-right: 5em;
     `}
@@ -41,7 +41,7 @@ const StyledCarriageway = styled(Section)`
       padding: 6.95em;
       padding-left: ${props => props.theme.header.padding};
 
-      ${media.minWidth('medium', 1)`
+      ${media.minWidth('>medium')`
         width: 50%;
 
         &:not(:last-of-type) {
