@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import { NAVIGATION_BULLET } from '../constants'
 import { media, breakpoints } from '../helpers'
+import { NAVIGATION_BULLET } from '../constants'
 import styled, { css } from 'vue-styled-components'
 
 function createStyledSection(tagName = 'section', props = {}) {
@@ -42,10 +42,7 @@ function createStyledSection(tagName = 'section', props = {}) {
 
         &:not(.scrolled) {
           .cavalier {
-            p,
-            h1 {
-              opacity: 0;
-            }
+            p, h1 { opacity: 0; }
 
             p {
               transform: translate3d(0, 20px, 0);
@@ -91,11 +88,7 @@ function createStyledSection(tagName = 'section', props = {}) {
       scroll-snap-align: start;
 
       .cavalier {
-        p,
-        h1 {
-          opacity: 1;
-          transform: translate3d(0, 0, 0);
-        }
+        p, h1 { opacity: 1; transform: translate3d(0, 0, 0); }
       }
     }
 

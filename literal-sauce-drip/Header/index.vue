@@ -67,8 +67,8 @@ export default {
       if (this.isHome && !this.menuOpen) {
         let container =
           this.currentSection === 'footer'
-            ? document.querySelector('[data-section="footer]')
-            : document.getElementById('main')
+            ? this.$root.$el.querySelector('[data-section="footer]')
+            : this.$root.$el.getElementById('main')
         container && container.focus()
       }
     },
