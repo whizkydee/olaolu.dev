@@ -1,34 +1,36 @@
 <template>
   <Layout id="post-page">
-    <div class="post-title">
-      <PostMeta :post="$page.post" />
+    <div class="post">
+      <div class="post-title">
+        <PostMeta :post="$page.post" />
 
-      <h1 class="post-title__text">
-        {{ $page.post.title }}
-      </h1>
-    </div>
-
-    <div class="post content-box">
-      <div class="post__header">
-        <g-image
-          alt="Cover image"
-          v-if="$page.post.coverImage"
-          :src="$page.post.coverImage"
-        />
+        <h1 class="post-title__text">
+          {{ $page.post.title }}
+        </h1>
       </div>
 
-      <div class="post__content" v-html="$page.post.content" />
+      <div class="post">
+        <div class="post__header">
+          <g-image
+            alt="Cover image"
+            v-if="$page.post.coverImage"
+            :src="$page.post.coverImage"
+          />
+        </div>
 
-      <div class="post__footer">
-        <PostTags :post="$page.post" />
+        <div class="post__content" v-html="$page.post.content" />
+
+        <div class="post__footer">
+          <PostTags :post="$page.post" />
+        </div>
       </div>
-    </div>
 
-    <div class="post-comments">
-      <!-- Add comment widgets here -->
-    </div>
+      <div class="post-comments">
+        <!-- Add comment widgets here -->
+      </div>
 
-    <Author class="post-author" />
+      <Author class="post-author" />
+    </div>
   </Layout>
 </template>
 
@@ -78,8 +80,26 @@ query Post ($path: String!) {
 
 <style lang="scss">
 .post-title {
-  padding: calc(var(--space) / 2) 0 calc(var(--space) / 2);
-  text-align: center;
+  padding: 1rem 0;
+  text-align: left;
+
+  &__text {
+    color: var(--electric-blue);
+    font-size: 2em;
+    margin-bottom: 0;
+  }
+}
+
+#post-page {
+  .post-meta {
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid #cbc9dd;
+    margin-bottom: 2rem;
+
+    span:not(:last-of-type) {
+      margin-right: 7vw;
+    }
+  }
 }
 
 .post {

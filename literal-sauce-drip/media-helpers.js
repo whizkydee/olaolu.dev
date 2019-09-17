@@ -19,7 +19,7 @@ export const breakpoints = Object.keys(BREAKPOINTS).reduce((acc, cur) => {
   })
 }, {})
 
-export const composeWidth = value => {
+export function composeWidth(value) {
   return typeof value === 'number'
     ? toPx(value)
     : value in breakpoints

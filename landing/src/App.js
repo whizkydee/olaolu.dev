@@ -6,10 +6,10 @@ import '@saucedrip/normalize-css'
 import '@/base/global-styles'
 import { mapState } from 'vuex'
 import { theme } from '@/base/theme'
-import { CURRENT_SECTION_KEY, HEADER_COMPACT } from './constants'
+import { CURRENT_SECTION, HEADER_COMPACT } from './constants'
 
 const App = Vue.component('App', {
-  computed: mapState([CURRENT_SECTION_KEY, HEADER_COMPACT]),
+  computed: mapState([CURRENT_SECTION, HEADER_COMPACT]),
 
   render() {
     return (

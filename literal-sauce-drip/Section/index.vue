@@ -76,11 +76,11 @@ function createStyledSection(tagName = 'section', props = {}) {
       }
     `}
 
-    @media (min-width: ${breakpoints.medium}px) and (max-width: 768px) {
+    ${media.between(breakpoints.medium, 768)`
       &:not([data-section='une']) {
         height: 70vh;
       }
-    }
+    `}
 
     &[aria-hidden='false'] {
       z-index: 3;
@@ -96,17 +96,16 @@ function createStyledSection(tagName = 'section', props = {}) {
       width: 100%;
       display: flex;
 
-      ${media.minWidth('>xLarge')`
-        padding: 0 8em;
-      `}
-
       ${media.maxWidth('medium')`
         padding: 0 5em;
       `}
 
-      ${media.between('>medium', 'xLarge')`
+      ${media.minWidth('>medium')`
         padding: 0 10em;
-        max-width: 1500px;
+
+        ${media.maxWidth('xLarge')`
+          max-width: 1500px;
+        `}
       `}
     }
   `

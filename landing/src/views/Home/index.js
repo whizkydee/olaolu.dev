@@ -1,17 +1,9 @@
 import Vue from 'vue'
 import {
-  wait,
-  toPx,
-  debounce,
-  resetScroll,
-  getEventPath,
-  matchesQuery,
-} from '@mrolaolu/helpers'
-import {
   SECTIONS,
   NAVIGATION_ID,
   SECTION_SELECTOR,
-  CURRENT_SECTION_KEY,
+  CURRENT_SECTION,
 } from '@/constants'
 import './home-styles'
 import { mapState } from 'vuex'
@@ -21,19 +13,22 @@ import Experience from './Experience'
 import Cornerstone from './Cornerstone'
 import Carriageway from './Carriageway'
 import { goToSection, breakpoints } from '@/helpers'
+import { wait, debounce, resetScroll, getEventPath } from '@mrolaolu/helpers'
 
 const Homepage = Vue.component('Homepage', {
   data: () => ({
     touchY: null,
+    isMediumScreen: false,
     prevTime: new Date().getTime(),
   }),
 
-  computed: {
-    ...mapState([CURRENT_SECTION_KEY]),
+  computed: mapState([CURRENT_SECTION]),
 
-    isMediumScreen() {
-      return matchesQuery(`(max-width: ${toPx(breakpoints.medium)})`)
-    },
+  created() {
+    const mql = window.matchMedia(`(max-width: ${breakpoints.medium + 'px'})`)
+
+    this.isMediumScreen = mql.matches
+    mql.addListener(e => (this.isMediumScreen = e && e.matches))
   },
 
   mounted() {
@@ -44,7 +39,7 @@ const Homepage = Vue.component('Homepage', {
     }
 
     // Set current section to the first section by default.
-    this.$root.$el.dataset[CURRENT_SECTION_KEY] = this.getCurrentSectionId()
+    this.$root.$el.dataset[CURRENT_SECTION] = this.getCurrentSectionId()
 
     window.addEventListener('resize', debounce(this.recalcSection, 200))
     document.addEventListener('keydown', this.maybeScrollJack)
@@ -76,7 +71,7 @@ const Homepage = Vue.component('Homepage', {
      */
 
     getCurrentSectionId() {
-      return this[CURRENT_SECTION_KEY]
+      return this[CURRENT_SECTION]
     },
 
     /**
@@ -124,7 +119,7 @@ const Homepage = Vue.component('Homepage', {
       if (sectionInView) {
         goToSection([sectionInView])
 
-        const firstSection = this[CURRENT_SECTION_KEY] === SECTIONS[0]
+        const firstSection = this[CURRENT_SECTION] === SECTIONS[0]
         if (!firstSection) this.$store.commit('headerCompact', true)
       } else {
         wait(100, () => resetScroll())
