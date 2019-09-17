@@ -2,7 +2,7 @@
   <div id="app">
     <Header currentSection="" id="site-header" v-if="ready" />
 
-    <ContentView :id="id" v-if="ready">
+    <ContentView :id="id">
       <slot />
     </ContentView>
 
@@ -20,10 +20,10 @@ import ContentView from '../../../literal-sauce-drip/ContentView'
 export default {
   data: () => ({ ready: false }),
   mounted() {
-    // hack to delay rendering for 10 milliseconds -
+    // hack to delay rendering for 0 milliseconds -
     // supposed time needed to render the sauce drip
     // components and paint them onto the page.
-    window.setTimeout(() => (this.ready = true), 10)
+    window.setTimeout(() => (this.ready = true), 0)
   },
   props: {
     id: String,
