@@ -37,7 +37,8 @@ function createStyledSection(tagName = 'section', props = {}) {
       }
 
       &[aria-hidden='true'] {
-        /* prevents hidden sections from being highlighted */
+        /* prevent hidden sections from being highlighted */
+        overflow: hidden;
         user-select: none;
 
         &:not(.scrolled) {

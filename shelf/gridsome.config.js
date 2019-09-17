@@ -9,9 +9,9 @@ const { SHELF_PORT } = require('../ports')
 module.exports = {
   port: SHELF_PORT,
   pathPrefix: '/shelf',
-  siteName: `Olaolu's Shelf`,
+  siteName: `Olaolu's shelf`,
   siteDescription:
-    'Writings of Olaolu; expert front end developer and UI Engineer',
+    'Articles by Olaolu; Expert front end developer and UI Engineer',
 
   plugins: [
     {
