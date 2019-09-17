@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "fresh": "del dist landing/dist shelf/dist",
+    "fresh": "del dist landing/dist shelf/dist && yarn install",
     "serve:shelf": "cd shelf && yarn develop",
     "serve:landing": "cd landing && yarn serve",
     "serve": "yarn fresh && node dev.js",
