@@ -1,39 +1,33 @@
 <template>
-  <div id="app">
-    <Header currentSection="" id="site-header" v-if="ready" />
+  <div id="app" :style="!ready && 'display: none'">
+    <Header currentSection="" id="site-header" />
 
     <ContentView :id="id">
       <slot />
     </ContentView>
 
-    <Footer id="site-footer" v-if="ready" />
+    <Footer id="site-footer" />
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import ToggleTheme from '~/components/ToggleTheme.vue'
-import Footer from '../../../literal-sauce-drip/Footer'
-import Header from '../../../literal-sauce-drip/Header'
-import ContentView from '../../../literal-sauce-drip/ContentView'
+import ToggleTheme from '~/components/ToggleTheme'
 
 export default {
-  data: () => ({ ready: false }),
-  mounted() {
-    // hack to delay rendering for 0 milliseconds -
-    // supposed time needed to render the sauce drip
-    // components and paint them onto the page.
-    window.setTimeout(() => (this.ready = true), 0)
+  data: () => ({ ready: process.env.NODE_ENV === 'development' }),
+  created() {
+    // hack to hide display until sauce drip
+    // components are rendered and painted
+    // onto the page.
+    if (typeof window !== 'undefined') {
+      window.setTimeout(() => (this.ready = true), 0)
+    }
   },
   props: {
     id: String,
     showLogo: { default: true },
   },
   components: {
-    Header,
-    Logo,
-    Footer,
-    ContentView,
     ToggleTheme,
   },
 }

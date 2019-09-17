@@ -4,7 +4,7 @@ import store from './store'
 import router from './router'
 import './registerServiceWorker'
 import * as components from '@/components'
-import '@saucedrip/mixins'
+import '@saucedrip/core/mixins'
 
 // Register all sauce drip components.
 for (let componentName in components) {

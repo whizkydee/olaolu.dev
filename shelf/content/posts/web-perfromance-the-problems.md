@@ -1,6 +1,6 @@
 ---
 title: 'Web Performance: The Problems'
-date: 2019-08-27
+date: 2019-08-28
 published: true
 tags: ['web performance', 'user experience']
 canonical_url: false

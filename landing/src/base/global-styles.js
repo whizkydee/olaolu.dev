@@ -1,5 +1,5 @@
 import { colors } from './theme'
-import '@saucedrip/global-styles'
+import '@saucedrip/core/global-styles'
 import { injectGlobal } from 'vue-styled-components'
 
 const GlobalStyle = injectGlobal`

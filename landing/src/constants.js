@@ -1,1 +1,1 @@
-export * from '../../literal-sauce-drip/constants'
+export * from '@saucedrip/core/constants'

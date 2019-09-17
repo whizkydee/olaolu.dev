@@ -43,7 +43,7 @@ export default {
     PostCard,
   },
   metaInfo: {
-    title: 'Shelf',
+    title: 'Posts',
   },
 }
 </script>

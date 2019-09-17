@@ -1,6 +1,9 @@
 {
   "name": "olaolu.dev",
   "private": true,
+  "workspaces": [
+    "literal-sauce-drip"
+  ],
   "version": "1.0.0",
   "scripts": {
     "fresh": "yarn install && del dist landing/dist shelf/dist",
