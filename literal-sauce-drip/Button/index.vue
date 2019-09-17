@@ -85,7 +85,7 @@ function createStyledButton(tagName, props) {
       padding: 1.25em 3em;
       align-items: center;
       justify-content: center;
-      border: 0.1rem solid currentColor;
+      border: 1px solid currentColor;
       color: ${theme.colors['electric-blue']};
 
       &:before {

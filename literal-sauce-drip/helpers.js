@@ -1,6 +1,6 @@
 export * from './media-helpers'
 import { wait } from '@mrolaolu/helpers'
-import { SECTION_SELECTOR, CURRENT_SECTION_KEY } from './constants'
+import { SECTION_SELECTOR, CURRENT_SECTION } from './constants'
 const { SHELF_PORT, LANDING_PORT } = require('../ports')
 
 export function isDev() {
@@ -35,8 +35,8 @@ export function goToSection(store, [section, modifier], smooth = true) {
 
     wait(200, () => {
       section.focus()
-      store && store.commit(CURRENT_SECTION_KEY, getSectionId())
-      app.dataset[CURRENT_SECTION_KEY] = getSectionId()
+      store && store.commit(CURRENT_SECTION, getSectionId())
+      app.dataset[CURRENT_SECTION] = getSectionId()
     })
   }
 }

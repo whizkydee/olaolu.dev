@@ -5,21 +5,23 @@ html {
 
 // Light default theme
 body {
+  --lime: #ccf381;
+  --electric-blue: #4831d4;
  	--bg-color: #F5F4FC;
  	--bg-content-color: #F5F4FC;
- 	--bg-code: #fffbf3a;
+ 	--bg-code: #fffbf3;
  	--body-color: #444;
- 	--title-color: #111;
+ 	--title-color: #474747;
  	--link-color: #6b17e6;
- 	--border-color: rgba(0,0,0,.1);
+ 	--border-color: #cbc9dd;
   --space: 3.5rem;
-  --content-width: 860px;
+  --content-width: 940px;
   --header-height: 80px;
   --radius: 5px;
 }
 
 // Make  things smaller for mobile
-@media screen and (max-width: 650px) {
+@media (max-width: 650px) {
 	html {
 		--base-font-size: 17px;
 	}

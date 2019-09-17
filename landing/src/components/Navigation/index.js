@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import StyledNavigation from './styles'
 import { goToSection } from '@/helpers'
-import { NAVIGATION_BULLET, CURRENT_SECTION_KEY } from '@/constants'
+import { NAVIGATION_BULLET, CURRENT_SECTION } from '@/constants'
 
 const Navigation = Vue.component('Navigation', {
   methods: {
@@ -11,7 +11,7 @@ const Navigation = Vue.component('Navigation', {
     },
 
     isActiveWhen(sectionId) {
-      return this.$store.state[CURRENT_SECTION_KEY] === sectionId && 'page'
+      return this.$store.state[CURRENT_SECTION] === sectionId && 'page'
     },
   },
 

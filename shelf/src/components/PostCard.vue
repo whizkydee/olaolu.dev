@@ -1,9 +1,6 @@
 <template>
-  <div
-    class="post-card content-box"
-    :class="{ 'post-card--has-poster': post.poster }"
-  >
-    <div class="post-card__header">
+  <div class="post-card" :class="{ 'post-card--has-poster': post.poster }">
+    <div class="post-card__header" v-if="post.coverImage">
       <g-image
         alt="Cover image"
         v-if="post.coverImage"
@@ -16,7 +13,7 @@
       <h2 class="post-card__title" v-html="post.title" />
       <p class="post-card__description" v-html="post.description" />
 
-      <PostTags class="post-card__tags" :post="post" />
+      <PostTags class="post-card__tags" :post="post" v-if="post.tags" />
 
       <g-link class="post-card__link" :to="post.path">Link</g-link>
     </div>
@@ -37,12 +34,13 @@ export default {
 </script>
 
 <style lang="scss">
-.posts {
-  margin-top: var(--space);
-}
 .post-card {
   position: relative;
   margin-bottom: var(--space);
+
+  &:not(:last-of-type) {
+    border-bottom: 1px solid var(--border-color);
+  }
 
   &__header {
     margin-left: calc(var(--space) * -1);
@@ -56,12 +54,24 @@ export default {
     }
   }
 
+  &__content {
+    padding-bottom: 1.5rem;
+  }
+
   &__image {
     min-width: 100%;
   }
 
   &__title {
     margin-top: 0;
+  }
+
+  &__description {
+    margin: 0;
+
+    @media (min-width: 651px) {
+      max-width: 85%;
+    }
   }
 
   &__tags {

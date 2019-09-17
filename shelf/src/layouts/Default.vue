@@ -45,13 +45,16 @@ export default {
   font-size: 0.72rem;
 
   #logo {
-    color: #4831d4;
+    color: var(--electric-blue);
   }
 }
 
 #main {
   margin: 0 auto;
-  padding: 1.5vw 15px 0;
+  font-size: 0.9rem;
+  padding: 0 var(--space);
+  max-width: var(--content-width);
+  margin-top: calc(var(--space) * 1.2);
 
   &:focus {
     outline: none;
