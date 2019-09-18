@@ -45,10 +45,13 @@ export default {
 
 #main {
   margin: 0 auto;
-  font-size: 0.9rem;
   padding: 0 var(--space);
   max-width: var(--content-width);
   margin-top: calc(var(--space) * 1.2);
+
+  @media (min-width: 651px) {
+    font-size: 0.9rem;
+  }
 
   &:focus {
     outline: none;

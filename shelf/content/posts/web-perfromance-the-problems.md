@@ -123,8 +123,8 @@ A lot from the code quality can affect the performance of your site or product
 as an entity. Whether you’re writing a component that should take 10 lines of
 code in 50 lines, or you there’s so much dead code, or you’re just writing the
 code or using a tool in a way that it’s much slower to function; they all impact
-performance. For example, having excessive whitespace and dead code blow up file
-sizes and in turn, affects performance.
+performance. For example, having excessive unused code bumps up file sizes which
+could delay HTTP requests and in turn, affect performance.
 
 In fact, all the points listed previously in one way or the other fall under the
 quality of code you’re delivering and how experienced or competent a developer
@@ -132,8 +132,8 @@ is. Your JavaScript, CSS, HTML and other applications on the back end contribute
 to performance directly or indirectly.
 
 There are some industry standards and practices that should be followed while
-building your sites. Don’t write code that “just works**™**”. You should
-consider if you’re actually solving that problem in the most efficient way.
+building your sites. Don’t write code that “just works™”. You should consider if
+you’re actually solving that problem in the most efficient way.
 
 ## 5. Shitty servers
 

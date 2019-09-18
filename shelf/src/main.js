@@ -1,3 +1,4 @@
+import fonts from './fonts'
 import '@saucedrip/core/normalize-css'
 import '@saucedrip/core/global-styles'
 
@@ -12,6 +13,8 @@ import DefaultLayout from '~/layouts/Default.vue'
 
 // The Client API can be used here. Learn more: gridsome.org/docs/client-api
 export default function(Vue, { router, head, isClient }) {
+  head.style.push({ type: 'text/css', cssText: fonts })
+
   // Set default layout as a global component
   Vue.mixin(SharedMixins)
   Vue.component('Footer', Footer)
