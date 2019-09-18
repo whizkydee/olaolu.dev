@@ -1,6 +1,6 @@
 <template>
   <Layout :show-logo="false" id="list-of-posts">
-    <h1 class="text-center space-bottom">/shelf</h1>
+    <h1 class="text-center space-bottom no-select">/shelf</h1>
     <!-- List posts -->
     <div class="posts">
       <PostCard

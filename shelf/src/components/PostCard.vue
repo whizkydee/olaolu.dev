@@ -38,8 +38,10 @@ export default {
   position: relative;
   margin-bottom: var(--space);
 
-  &:not(:last-of-type) {
-    border-bottom: 1px solid var(--border-color);
+  @media (min-width: 461px) {
+    &:not(:last-of-type) {
+      border-bottom: 1px solid var(--border-color);
+    }
   }
 
   &__header {
@@ -68,6 +70,8 @@ export default {
 
   &__description {
     margin: 0;
+    font-weight: 300;
+    letter-spacing: 0.0118em;
 
     @media (min-width: 651px) {
       max-width: 85%;
@@ -89,6 +93,7 @@ export default {
     overflow: hidden;
     text-indent: -9999px;
     z-index: 0;
+    -webkit-tap-highlight-color: transparent;
   }
 }
 </style>
