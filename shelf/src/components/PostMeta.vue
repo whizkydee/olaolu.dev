@@ -1,6 +1,8 @@
 <template>
   <div class="post-meta">
-    <span class="post-meta__date">{{ post.date }}</span>
+    <time class="post-meta__date" :datetime="computedDate">{{
+      post.date
+    }}</time>
     <template v-if="post.timeToRead">
       <span class="post-meta__ttr">{{ post.timeToRead }} min read</span>
     </template>
@@ -8,7 +10,24 @@
 </template>
 
 <script>
+import { prefixWithZero } from '@mrolaolu/helpers'
+
 export default {
+  computed: {
+    computedDate() {
+      let date = new Date(this.post.date)
+      if (Number.isNaN(date.getDate())) return
+
+      return (
+        date.getFullYear() +
+        '-' +
+        prefixWithZero(date.getMonth() + 1) +
+        '-' +
+        prefixWithZero(date.getDate())
+      )
+    },
+  },
+
   props: ['post'],
 }
 </script>

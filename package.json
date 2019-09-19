@@ -36,7 +36,7 @@
     "eslint-plugin-vue": "^5.0.0"
   },
   "dependencies": {
-    "@mrolaolu/helpers": "^0.2.0",
+    "@mrolaolu/helpers": "^0.2.1",
     "cache-loader": "^4.1.0",
     "core-js": "^2.6.5",
     "vue": "^2.6.10",

@@ -6,14 +6,14 @@ tags: ['web performance', 'user experience']
 canonical_url: false
 description:
   'In this article, we identify the factors that influence web performance
-  negatively, look into them and discuss deeply.'
+  negatively, look into them and discuss objectively.'
 ---
 
 We’ve learnt already in the first part of this web performance series why
 performance is important and should be included at every stage of product
 design, what benefits it holds for businesses and products, and the negatives of
 poor performance. Now, let’s talk about the problems of web performance; what
-makes sites slow. So, let’s get started!
+makes sites slow.
 
 ## What makes sites slow?
 
@@ -45,18 +45,19 @@ end.
 
 ### 1. Third-party resources and scripts
 
-It’s a common and normal practice to have third-party resources and scripts on
-our sites because we most of the time consume third-party content and services
-whether it’s analytics, ads, social media plugin-ins, framework/library
-resources — we use them.
+It’s an absolutely normal and almost inevitable practice to have third-party
+resources and scripts on our sites because we most of the time consume
+third-party content and services whether it’s analytics, ads, social media
+plugin-ins, framework/library resources, we use them.
 
 However, so many times, the authors of these third-party resources just tell us
 to plug in their resources to our sites: resources that might depend on other
-resources all the way down or might be poorly written, and then they serve us.
+resources all the way down or might be poorly developed, and then they serve us.
 The fact, however, remains that most of these assets are the leading cause of
 performance problems on the web because of course, we didn’t build them, we
 don’t know how they were built, we do not own them, all we want is their
-services, so we can’t determine the quality of these services.
+services and we can’t determine the quality of these services, we can only
+assess them and act based on the information.
 
 It’s sad news that third-party resources today have control on a lot of sites
 today, and then as developers, most of the time we’re just lazy to take it back.
@@ -65,18 +66,18 @@ resource, and then end up using a very minimal portion of it, say 5% or
 something.
 
 It’s usually not a great idea to do that, there’s a lot of stuff we can do on
-our own without relying on these resources. You don’t have to include a 300kb UI
-library, meanwhile, you’re using just one of its component that’s only 3kb.
+our own without relying on these resources. We don’t have to include a 300kb UI
+library when we’re using just one of its component that’s only 3kb.
 
 ### 2. Heavy assets and resources
 
-We all have that one big file on our sites -- the one big JavaScript asset or
-the pretty 1MB image from Unsplash. Really, it’s difficult to manage these file
-sizes when everyone is in a rush, bent on results, and then we all just forget
-performance, something that our users are very well aware of. Users know when
-your site is slow, they also know most times what sites consume a lot of their
-mobile data. Generally, JavaScript occupies the top position on the list of
-front end resources that impact performance negatively, followed by images.
+We all have that one big file on our sites &ndash; the one big JavaScript asset
+or the pretty 1MB image from Unsplash. Really, it’s difficult to manage these
+file sizes when everyone is in a rush, bent on results, and then we all just
+forget performance, something that our users are very well aware of. Users know
+when your site is slow, they also know most times what sites consume a lot of
+their mobile data. Generally, JavaScript occupies the top position on the list
+of front end resources that impact performance negatively, followed by images.
 
 As developers, we write code that looks good to us, we do things that make us
 feel satisfied, but we just forget that priority in this context should be given
@@ -90,7 +91,7 @@ in the next article on optimizing performance.
 ### 3. Excessive HTTP Requests
 
 Get! Post! Front end developers, we love to do that a lot: consuming APIs and
-all — it’s fun actually, being able to tell a web server what to do, that’s
+all — it’s fun actually, being able to communicate with a web server, that’s
 power to an extent, right? Yeah, yeah, it’s awesome!
 
 But at the same time, it’s not — _winks_. Sending requests back and forth can be

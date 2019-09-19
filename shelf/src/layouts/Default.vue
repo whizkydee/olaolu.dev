@@ -60,11 +60,22 @@ export default {
 
 #site-footer {
   height: unset;
+  margin-top: 7rem;
   font-size: 0.864rem;
 
   .footer__content {
     padding-top: 5rem;
     padding-bottom: 3rem;
+  }
+}
+
+#post,
+.posts {
+  p,
+  li,
+  time,
+  span:not(.token) {
+    letter-spacing: 0.011rem;
   }
 }
 </style>

@@ -130,10 +130,10 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@mrolaolu/helpers@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@mrolaolu/helpers/-/helpers-0.2.0.tgz#d786b57d36e61578430cf7642a594327960bc220"
-  integrity sha512-52w0yZAVhb3DiefJBRpXtyK7J/XGc5qKmaz1Q9/kBmJk9LfNlmMe7E3kmqN0wIgMAqcbguVNpL8OIj5l7AjayA==
+"@mrolaolu/helpers@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@mrolaolu/helpers/-/helpers-0.2.1.tgz#c52206d67887a18ca56bab98d39db655c3a5fa93"
+  integrity sha512-xgdM2Ppjfyj0LFbITzFW1IQ27K1IHufu7Jcj/2r0dYhkTYhLVeDPH20asOn4Ceizc8Hs4sW28n6f701gH2mS7w==
 
 "@nodelib/fs.stat@^1.1.2":
   version "1.1.3"
