@@ -1,14 +1,16 @@
 <template>
   <Layout :show-logo="false" id="list-of-posts">
-    <h1 class="text-center space-bottom no-select">/shelf</h1>
+    <h1 class="text-center space-bottom no-select">
+      <span style="opacity: 0.8">/</span>shelf
+    </h1>
     <!-- List posts -->
-    <div class="posts">
+    <ol class="posts">
       <PostCard
         v-for="edge in $page.posts.edges"
         :key="edge.node.id"
         :post="edge.node"
       />
-    </div>
+    </ol>
   </Layout>
 </template>
 

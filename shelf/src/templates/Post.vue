@@ -1,6 +1,6 @@
 <template>
   <Layout id="post-page">
-    <div class="post">
+    <article id="post">
       <div class="post-title">
         <PostMeta :post="$page.post" />
 
@@ -30,7 +30,7 @@
       </div>
 
       <Author class="post-author" />
-    </div>
+    </article>
   </Layout>
 </template>
 
@@ -93,10 +93,10 @@ query Post ($path: String!) {
 #post-page {
   .post-meta {
     padding-bottom: 0.6rem;
-    border-bottom: 1px solid #cbc9dd;
+    border-bottom: 1px solid var(--border-color);
     margin-bottom: 2rem;
 
-    span:not(:last-of-type) {
+    time {
       margin-right: 7vw;
     }
   }
@@ -120,14 +120,6 @@ query Post ($path: String!) {
   }
 
   &__content {
-    h2:first-child {
-      margin-top: 0;
-    }
-
-    p:first-of-type {
-      margin-top: 0;
-    }
-
     img {
       width: calc(100% + var(--space) * 2);
       margin-left: calc(var(--space) * -1);
@@ -137,14 +129,17 @@ query Post ($path: String!) {
 
     ul,
     ol {
-      list-style-type: disc;
       margin-left: 1.25em;
       margin-bottom: 1.25em;
 
       li {
-        list-style-type: inherit;
         margin-bottom: 0.6em;
+        list-style-type: inherit;
       }
+    }
+
+    ul {
+      list-style-type: disc;
     }
 
     ol {

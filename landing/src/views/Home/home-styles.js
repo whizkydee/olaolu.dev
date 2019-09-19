@@ -6,7 +6,6 @@ import { NAVIGATION_ID, TABBING_CLASSNAME } from '@/constants'
 const StyledHomepage = injectGlobal`
   html {
     ${media.minWidth('>medium')`
-      font-size: 1vw;
       overflow: hidden;
 
       &,
@@ -14,6 +13,15 @@ const StyledHomepage = injectGlobal`
         touch-action: none;
         -webkit-tap-highlight-color: transparent;
       }
+    `}
+
+    ${media.between('>medium', 1600)`
+      font-size: 1vw;
+    `}
+
+    ${media.minWidth(1601)`
+      /* max font-size more or less */
+      font-size: 16px;
     `}
 
     ${media.maxWidth('medium')`

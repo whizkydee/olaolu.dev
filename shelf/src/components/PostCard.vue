@@ -1,5 +1,5 @@
 <template>
-  <div class="post-card" :class="{ 'post-card--has-poster': post.poster }">
+  <li class="post-card" :class="{ 'post-card--has-poster': post.poster }">
     <div class="post-card__header" v-if="post.coverImage">
       <g-image
         alt="Cover image"
@@ -17,7 +17,7 @@
 
       <g-link class="post-card__link" :to="post.path">Link</g-link>
     </div>
-  </div>
+  </li>
 </template>
 
 <script>
@@ -36,6 +36,7 @@ export default {
 <style lang="scss">
 .post-card {
   position: relative;
+  list-style-type: none;
   margin-bottom: var(--space);
 
   @media (min-width: 461px) {
@@ -71,7 +72,6 @@ export default {
   &__description {
     margin: 0;
     font-weight: 300;
-    letter-spacing: 0.0118em;
 
     @media (min-width: 651px) {
       max-width: 85%;

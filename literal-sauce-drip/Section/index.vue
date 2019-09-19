@@ -103,10 +103,10 @@ function createStyledSection(tagName = 'section', props = {}) {
 
       ${media.minWidth('>medium')`
         padding: 0 10em;
+      `}
 
-        ${media.maxWidth('xLarge')`
-          max-width: 1500px;
-        `}
+      ${media.between('>medium', 'xLarge')`
+        max-width: 1500px;
       `}
     }
   `
