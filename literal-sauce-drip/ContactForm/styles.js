@@ -41,6 +41,10 @@ const StyledContactForm = styled.form`
     }
   }
 
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 100px #f9f9f9 inset !important;
+  }
+
   textarea,
   input:not([type='submit']):not([type='button']) {
     line-height: 1.5;
@@ -48,10 +52,6 @@ const StyledContactForm = styled.form`
 
     &::placeholder {
       transition: color 0.1s ease-out;
-    }
-
-    &:-webkit-autofill {
-      -webkit-box-shadow: 0 0 0 100px #f9f9f9 inset !important;
     }
   }
 

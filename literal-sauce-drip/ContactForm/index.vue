@@ -8,19 +8,19 @@
 
     <div class="form__row">
       <InputGroup
+        required
         name="name"
         id="full__name"
         label="Your Name"
         placeholder="Enter your name"
-        :inputAttrs="{ required: true }"
       />
 
       <InputGroup
+        required
         id="email"
         type="email"
         name="_replyto"
         label="Email Address"
-        :inputAttrs="{ required: true }"
         placeholder="Enter your email address"
       />
     </div>

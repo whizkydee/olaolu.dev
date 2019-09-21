@@ -108,6 +108,10 @@ function createStyledSection(tagName = 'section', props = {}) {
       ${media.between('>medium', 'xLarge')`
         max-width: 1500px;
       `}
+
+      ${media.minWidth('>xLarge')`
+        max-width: 1800px;
+      `}
     }
   `
 

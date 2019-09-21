@@ -1,9 +1,9 @@
 import theme from '../theme'
-import styled from 'vue-styled-components'
+import { media } from '../media-helpers'
 import { createMenuShadow } from '../helpers'
-import { minWidth, maxWidth } from '../media-helpers'
+import styled, { css } from 'vue-styled-components'
 
-const StyledHeader = styled.header`
+const StyledHeader = css`
   width: 100%;
   display: flex;
   z-index: 1000;
@@ -15,11 +15,11 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   height: ${theme.header.height};
 
-  ${minWidth('>medium')`
+  ${media.minWidth('>medium')`
     padding: 0 ${theme.header.padding};
   `}
 
-  ${maxWidth('medium')`
+  ${media.maxWidth('medium')`
     padding: 0 3em;
   `}
 
@@ -119,7 +119,11 @@ const StyledHeader = styled.header`
     }
 
     &[aria-expanded='true'] {
-      box-shadow: ${createMenuShadow()};
+      ${props =>
+        !props.noMenuShadow &&
+        css`
+          box-shadow: ${createMenuShadow()};
+        `};
 
       &:before {
         clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
@@ -221,6 +225,8 @@ const StyledHeader = styled.header`
 `
 
 export default {
-  ...StyledHeader,
+  ...styled('header', { noMenuShadow: Boolean })`
+    ${StyledHeader}
+  `,
   name: 'StyledHeader',
 }

@@ -11,22 +11,6 @@ description:
   been marked up with tags or formatting instructions."
 ---
 
-```jsx {1}
-class Counter extends React.Component {
-  constructor() { ... }
-  add() { ... }
-  render() {
-    return (
-      <div className="App">
-        <button onClick={ this.add.bind(this) }>+</button>
-        <span className="count"> { this.state.count } </span>
-        <button>-</button>
-      </div>
-    )
-  }
-}
-```
-
 Markdown is intended to be as easy-to-read and easy-to-write as is
 feasible.Readability, however, is emphasized above all else. A
 Markdown-formatted document should be publishable as-is, as plain text, without
@@ -59,6 +43,24 @@ Breaks" option) which translate every line break character in a paragraph into a
 
 When you _do_ want to insert a `<br />` break tag using Markdown, you end a line
 with two or more spaces, then type return.
+
+### Code
+
+```jsx {1}
+class Counter extends React.Component {
+  constructor() { ... }
+  add() { ... }
+  render() {
+    return (
+      <div className="App">
+        <button onClick={ this.add.bind(this) }>+</button>
+        <span className="count"> { this.state.count } </span>
+        <button>-</button>
+      </div>
+    )
+  }
+}
+```
 
 ### Headers
 
@@ -121,12 +123,6 @@ code blocks:
 > ```php
 > return shell_exec("echo $input | $markdown_script");
 > ```
-
-```css
-body {
-  width: 20px;
-}
-```
 
 Any decent text editor should make email-style quoting easy. For example, with
 BBEdit, you can make a selection and choose Increase Quote Level from the Text

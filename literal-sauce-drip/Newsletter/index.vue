@@ -1,0 +1,71 @@
+<template>
+  <StyledNewsletter id="newsletter">
+    <form
+      method="post"
+      target="_blank"
+      action="https://gmail.us20.list-manage.com/subscribe/post?u=04ac543f98469334c684d8753&id=df629ce71c"
+    >
+      <h2>Join the newsletter</h2>
+
+      <div class="form-inner">
+        <InputGroup
+          required
+          type="email"
+          name="EMAIL"
+          id="mce-EMAIL"
+          label="Email Address"
+          placeholder="email@domain.com"
+          :inputAttrs="{ inputmode: 'email' }"
+        />
+
+        <Button type="submit" noArrow>Subscribe</Button>
+      </div>
+    </form>
+  </StyledNewsletter>
+</template>
+
+<script>
+import { media } from '../media-helpers'
+import styled from 'vue-styled-components'
+
+const StyledNewsletter = styled.div`
+  margin-top: 4rem;
+  padding: var(--space);
+  background-color: #fff;
+
+  h2 {
+    margin: 0;
+    margin-bottom: 0.8em;
+  }
+
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 100px #fff inset !important;
+  }
+
+  .form-inner {
+    display: flex;
+
+    ${media.maxWidth('small')`
+      flex-direction: column;
+
+      .sauce__button {
+        margin-top: 1.5em;
+      }
+    `}
+
+    ${media.minWidth('>small')`
+      align-items: flex-end;
+    `}
+  }
+
+  .sauce__button {
+    font-size: 0.7em;
+  }
+`
+StyledNewsletter.name = 'StyledNewsletter'
+
+export default {
+  name: 'Newsletter',
+  components: { StyledNewsletter },
+}
+</script>

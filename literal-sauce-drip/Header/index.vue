@@ -1,5 +1,9 @@
 <template>
-  <StyledHeader role="banner" :data-compact="compact + ''">
+  <StyledHeader
+    role="banner"
+    :data-compact="compact + ''"
+    :noMenuShadow="noMenuShadow"
+  >
     <a href="/" id="logo" aria-label="Logo, go to homepage.">
       <SauceDripLogo />
     </a>
@@ -68,7 +72,7 @@ export default {
         let container =
           this.currentSection === 'footer'
             ? this.$root.$el.querySelector('[data-section="footer]')
-            : this.$root.$el.getElementById('main')
+            : document.getElementById('main')
         container && container.focus()
       }
     },
@@ -101,6 +105,7 @@ export default {
     store: Object,
     isHome: { type: Boolean, default: false },
     compact: { type: Boolean, default: false },
+    noMenuShadow: { type: Boolean, default: false },
     currentSection: { type: String, required: true },
   },
 

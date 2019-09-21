@@ -13,6 +13,7 @@
       v-if="!textarea"
       @blur="handleBlur"
       v-bind="inputAttrs"
+      :required="required"
       @focus="handleFocus"
       :placeholder="placeholder"
     />
@@ -24,6 +25,7 @@
       v-on="listen"
       @blur="handleBlur"
       v-bind="inputAttrs"
+      :required="required"
       @focus="handleFocus"
       v-else-if="textarea"
       :placeholder="placeholder"
@@ -114,6 +116,7 @@ export default {
     name: String,
     label: String,
     listen: Object,
+    required: Boolean,
     inputAttrs: Object,
     placeholder: String,
     id: { type: String, required: true },

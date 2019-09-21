@@ -1,6 +1,6 @@
 <template>
   <Layout id="tag-page">
-    <h1 class="tag-title text-center space-bottom"># {{ $page.tag.title }}</h1>
+    <h1 class="page-heading"><span>#</span> {{ $page.tag.title }}</h1>
 
     <div class="posts">
       <PostCard
@@ -23,9 +23,7 @@ query Tag ($id: String!) {
             title
             path
             date (format: "D MMMM YYYY")
-            timeToRead
             description
-            coverImage (width: 860, blur: 10)
             content
           }
         }
@@ -44,8 +42,10 @@ export default {
     Author,
     PostCard,
   },
-  metaInfo: {
-    title: 'Hello, world!',
+  metaInfo() {
+    return {
+      title: `Posts tagged "${this.$page.tag.title}"`,
+    }
   },
 }
 </script>

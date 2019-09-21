@@ -16,6 +16,14 @@ const GlobalStyle = injectGlobal`
     color: ${colors.default};
   }
 
+  .sauce__button {
+    min-width: 23.222em;
+
+    .content {
+      min-height: 4.5em;
+    }
+  }
+
   [data-current-section='trois'] .menu__toggle:not(.x):focus,
   [data-current-section='footer'] .menu__toggle:not(.x):focus {
     outline-color: ${colors.lime};
