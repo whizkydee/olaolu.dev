@@ -1,8 +1,6 @@
 <template>
-  <Layout :show-logo="false" id="list-of-posts">
-    <h1 class="text-center space-bottom no-select">
-      <span style="opacity: 0.8">/</span>shelf
-    </h1>
+  <Layout id="list-of-posts">
+    <h1 class="page-heading"><span>/</span>shelf</h1>
     <!-- List posts -->
     <ol class="posts">
       <PostCard
@@ -40,6 +38,7 @@ import Author from '~/components/Author.vue'
 import PostCard from '~/components/PostCard.vue'
 
 export default {
+  name: 'Posts',
   components: {
     Author,
     PostCard,

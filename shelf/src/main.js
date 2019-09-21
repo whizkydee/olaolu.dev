@@ -6,7 +6,7 @@ import '@saucedrip/core/global-styles'
 import '~/assets/style/index.scss'
 
 // Import sauce drip global components
-import { Footer, Header, ContentView, SharedMixins } from '@saucedrip/core'
+import * as components from '@saucedrip/core'
 
 // Import default layout so we don't need to import it to every page
 import DefaultLayout from '~/layouts/Default.vue'
@@ -15,11 +15,14 @@ import DefaultLayout from '~/layouts/Default.vue'
 export default function(Vue, { router, head, isClient }) {
   head.style.push({ type: 'text/css', cssText: fonts })
 
-  // Set default layout as a global component
-  Vue.mixin(SharedMixins)
-  Vue.component('Footer', Footer)
-  Vue.component('Header', Header)
-  Vue.component('ContentView', ContentView)
+  // Initialize sauce drip shared mixins.
+  Vue.mixin(components.SharedMixins)
 
+  // Register all sauce drip components.
+  for (let componentName in components) {
+    Vue.component(componentName, components[componentName])
+  }
+
+  // Set default layout as a global component
   Vue.component('Layout', DefaultLayout)
 }

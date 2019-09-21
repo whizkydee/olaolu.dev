@@ -10,16 +10,15 @@ description:
 ---
 
 We’ve learnt already in the first part of this web performance series why
-performance is important and should be included at every stage of product
-design, what benefits it holds for businesses and products, and the negatives of
-poor performance. Now, let’s talk about the problems of web performance; what
-makes sites slow.
+performance is important and should be budgeted for at every stage of product
+development, what benefits it holds for businesses and products, and the
+negatives of poor performance. Now, let’s talk about the problems of web
+performance; what makes sites slow.
 
 ## What makes sites slow?
 
-No doubt, there’s a whole lot of reasons why websites are slow. Some of which
-are distinct to each site. I like to look at these factors from two
-perspectives:
+No doubt, there’s a ton of reasons why websites are slow, some of which are
+distinct to each site. I like to look at these factors from two perspectives:
 
 - the user perspective
 - the developer perspective
@@ -66,7 +65,7 @@ resource, and then end up using a very minimal portion of it, say 5% or
 something.
 
 It’s usually not a great idea to do that, there’s a lot of stuff we can do on
-our own without relying on these resources. We don’t have to include a 300kb UI
+our own without relying on these resources. We don’t have to include a 60kb UI
 library when we’re using just one of its component that’s only 3kb.
 
 ### 2. Heavy assets and resources

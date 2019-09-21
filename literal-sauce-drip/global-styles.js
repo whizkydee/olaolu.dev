@@ -124,15 +124,15 @@ const GlobalStyle = injectGlobal`
     &:invalid {
       box-shadow: none;
     }
+  }
 
-    /* disable ugly webkit autofill styles */
-    &:-webkit-autofill {
-      color: transparent !important;
-      background-image: none !important;
-      background-color: #fff !important;
-      -webkit-box-shadow: 0 0 0 1000px none inset !important;
-      -webkit-text-fill-color: rgba(61, 21, 95, .7) !important;
-    }
+  /* disable ugly webkit autofill styles */
+  input:-webkit-autofill {
+    color: transparent !important;
+    background-image: none !important;
+    background-color: #fff !important;
+    -webkit-box-shadow: 0 0 0 1000px none inset !important;
+    -webkit-text-fill-color: rgba(61, 21, 95, .7) !important;
   }
 
   img {

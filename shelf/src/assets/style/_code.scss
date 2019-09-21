@@ -1,26 +1,25 @@
 pre {
   padding: calc(var(--space) / 2);
-  font-size: .85em;
   margin-bottom: 2em;
   border-radius: var(--radius);
 }
 
 code {
-  font-size: .85em;
   padding: .2em .5em;
 }
 
 code[class*="language-"],
 pre[class*="language-"] {
-	font-family: Menlo, Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-	text-align: left;
-	white-space: pre;
-	word-spacing: normal;
-	word-break: normal;
-	word-wrap: normal;
-  line-height: 2;
-	tab-size: 2;
+  tab-size: 2;
 	hyphens: none;
+  line-height: 2;
+  text-align: left;
+	white-space: pre;
+  font-size: .85em;
+	word-wrap: normal;
+	word-break: normal;
+	word-spacing: normal;
+  font-family: Menlo, Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
 @media print {
@@ -30,19 +29,20 @@ pre[class*="language-"] {
 	}
 }
 
-/* Code blocks */
-pre[class*="language-"] {
-	overflow: auto;
-}
-
 /* Inline code */
 :not(pre) > code[class*="language-"] {
 	border-radius: var(--radius);
-	white-space: normal;
+  white-space: normal;
+  background: #edebfe;
+  padding: .2em .4em;
 }
 
 pre[class*='language-'] {
+  padding: 1em;
+  overflow: auto;
   color: #d6deeb;
+  margin: 0.5em 0;
+  background: #292d3e;
 }
 
 pre[class*='language-']::-moz-selection,
@@ -66,18 +66,6 @@ pre[class*='language-'] ::selection,
   pre[class*='language-'] {
     text-shadow: none;
   }
-}
-
-/* Code blocks */
-pre {
-  padding: 1em;
-  margin: 0.5em 0;
-  overflow: auto;
-}
-
-pre {
-  color: white;
-  background: #292d3e;
 }
 
 :not(pre) > code {

@@ -3,10 +3,6 @@ import { wait } from '@mrolaolu/helpers'
 import { SECTION_SELECTOR, CURRENT_SECTION } from './constants'
 const { SHELF_PORT, LANDING_PORT } = require('../ports')
 
-export function isDev() {
-  return process.env.NODE_ENV === 'development'
-}
-
 export function goToSection(store, [section, modifier], smooth = true) {
   if (!(section instanceof HTMLElement)) return
 
@@ -85,6 +81,10 @@ export function smoothScrollToElem(
   }
 
   tick()
+}
+
+export function isDev() {
+  return process.env.NODE_ENV === 'development'
 }
 
 const hostname =
