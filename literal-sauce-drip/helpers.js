@@ -3,10 +3,10 @@ import { wait } from '@mrolaolu/helpers'
 import { SECTION_SELECTOR, CURRENT_SECTION } from './constants'
 const { SHELF_PORT, LANDING_PORT } = require('../ports')
 
-export function goToSection(store, [section, modifier], smooth = true) {
-  if (!(section instanceof HTMLElement)) return
+export function goToSection(store, { node, modifier, smooth = true }) {
+  if (!(node instanceof HTMLElement)) return
 
-  const getSectionId = () => section.dataset.section
+  const getSectionId = () => node.dataset.section
   const sections = Array.from(document.querySelectorAll(SECTION_SELECTOR))
 
   let curSectionIndex = sections.findIndex(
@@ -16,21 +16,21 @@ export function goToSection(store, [section, modifier], smooth = true) {
   const findSection = (idx = 0) => sections[curSectionIndex + idx]
 
   // determine what section to go to based on the modifier.
-  section =
+  node =
     modifier === 'next'
       ? findSection(1)
       : modifier === 'previous'
       ? findSection(-1)
-      : section
+      : node
 
   const app = document.getElementById('app')
-  if (section) {
-    wait(1000, () => section.classList.add('scrolled'))
+  if (node) {
+    wait(1000, () => node.classList.add('scrolled'))
 
-    smooth ? smoothScrollToElem(section) : window.scrollTo(0, section.offsetTop)
+    smooth ? smoothScrollToElem(node) : window.scrollTo(0, node.offsetTop)
 
     wait(200, () => {
-      section.focus()
+      node.focus()
       store && store.commit(CURRENT_SECTION, getSectionId())
       app.dataset[CURRENT_SECTION] = getSectionId()
     })
