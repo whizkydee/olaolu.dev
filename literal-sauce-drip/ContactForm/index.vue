@@ -28,10 +28,11 @@
     <div class="form__row">
       <InputGroup
         textarea
+        required
         id="message"
         name="message"
         label="Your Message"
-        :inputAttrs="{ required: true, minlength: 30 }"
+        :inputAttrs="{ minlength: 30 }"
         placeholder="Hi, I think we need a design system for our products at Company X. Are you available to work?"
       />
     </div>

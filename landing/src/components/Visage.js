@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import { media } from '@/helpers'
 import { AvatarShapes } from '@/assets'
 import styled from 'vue-styled-components'
 
@@ -15,22 +14,12 @@ export default Vue.component('Visage', {
 })
 
 const StyledFigure = styled.figure`
+  margin: 0;
   z-index: 1;
-  margin-top: 0;
-  margin-left: 0;
   width: 23.334em;
   height: 24.67em;
-  margin-bottom: 0;
   position: relative;
   border: 0.115rem solid #fff;
-
-  ${media.minWidth('>medium')`
-    margin-right: ${props => `calc(${props.theme.header.padding} + 4em)`};
-  `}
-
-  ${media.maxWidth('medium')`
-    margin-right: ${props => `calc(${props.theme.header.padding} - 3em)`};
-  `}
 
   .face {
     width: inherit;

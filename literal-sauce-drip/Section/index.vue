@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { media, breakpoints } from '../helpers'
+import { media } from '../helpers'
 import { NAVIGATION_BULLET } from '../constants'
 import styled, { css } from 'vue-styled-components'
 
@@ -24,12 +24,19 @@ function createStyledSection(tagName = 'section', props = {}) {
       outline: none;
     }
 
-    ${media.maxWidth('medium')`
-      &:not([data-section='une']):not([data-section='footer']) {
-        min-height: 100vh;
+    &:not([data-section='une']):not([data-section='footer']) {
+      ${media.maxWidth('portrait')`
         margin-bottom: 10rem;
-      }
-    `}
+      `}
+
+      ${media.maxWidth('medium')`
+        min-height: 60vh;
+      `}
+
+      ${media.minWidth('>medium')`
+        min-height: 100vh;
+      `}
+    }
 
     ${media.minWidth('>medium')`
       &:not([data-section='une']) {
@@ -77,12 +84,6 @@ function createStyledSection(tagName = 'section', props = {}) {
       }
     `}
 
-    ${media.between(breakpoints.medium, 768)`
-      &:not([data-section='une']) {
-        height: 70vh;
-      }
-    `}
-
     &[aria-hidden='false'] {
       z-index: 3;
       user-select: auto;
@@ -105,7 +106,7 @@ function createStyledSection(tagName = 'section', props = {}) {
       `}
 
       ${media.between('>portrait', 'medium')`
-        padding: 0 5em;
+        padding: 0 7em;
       `}
 
       ${media.minWidth('>medium')`

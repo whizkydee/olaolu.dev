@@ -8,7 +8,11 @@ const Experience = Vue.component('Experience', {
     return (
       <StyledExperience name={this.name}>
         <div class="experience__content">
-          <Cavalier theme="lime" heading="Over the <br /> past 8 years,">
+          <Cavalier
+            theme="lime"
+            heading={`Over the <br /> past ${new Date().getFullYear() -
+              2011} years,`}
+          >
             <p slot="text">
               I've built products for companies and businesses around the globe
               ranging from basic websites to complex solutions and enterprise
@@ -19,10 +23,9 @@ const Experience = Vue.component('Experience', {
             <p slot="text">
               I previously led the front end engineering team at Conectar LLC
               through building several React applications into a single powerful
-              online learning platform. I deliver quality stuff freelancing and
-              consulting for a couple of organizations internationally. I also
-              created the Palenight theme for VS Code with hundreds of thousands
-              of downloads.
+              online learning platform. I deliver quality stuff contracting for
+              a organizations internationally. I also created the Palenight
+              theme for VS Code with hundreds of thousands of downloads.
             </p>
 
             <p slot="text">
@@ -34,7 +37,7 @@ const Experience = Vue.component('Experience', {
 
           <figure
             class="work__illo"
-            aria-label="Illustration of Olaolu and some of his past work."
+            aria-label="Illustration of Olaolu with cardboards of some of his past work."
           >
             <OlaoluWorkIllo />
           </figure>

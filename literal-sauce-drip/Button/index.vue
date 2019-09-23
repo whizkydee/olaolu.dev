@@ -42,6 +42,7 @@ function createStyledButton(tagName, props) {
     letter-spacing: 0.1em;
     background: transparent;
     text-transform: uppercase;
+    -webkit-tap-highlight-color: transparent;
 
     &[data-theme='lime'] {
       .content {

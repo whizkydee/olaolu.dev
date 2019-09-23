@@ -66,7 +66,7 @@ main {
 #site-footer {
   height: unset;
   margin-top: 7rem;
-  font-size: 0.864rem;
+  font-size: 0.84rem;
 
   .footer__content {
     padding-top: 5rem;

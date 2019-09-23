@@ -11,7 +11,7 @@ module.exports = {
   pathPrefix: '/shelf',
   siteName: `Olaolu's shelf`,
   siteDescription:
-    'Articles by Olaolu; Expert front end developer and UI Engineer',
+    'Articles on web development and design by Olaolu, expert front end developer and UI Engineer',
 
   plugins: [
     {

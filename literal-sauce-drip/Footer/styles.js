@@ -1,5 +1,6 @@
 import theme from '../theme'
 import Section from '../Section'
+import { media } from '../helpers'
 import styled from 'vue-styled-components'
 
 const StyledFooter = styled(Section)`
@@ -23,11 +24,21 @@ const StyledFooter = styled(Section)`
   }
 
   .basic__contact {
-    margin-right: 18vw;
+    ${media.maxWidth(460)`
+      margin-right: 12vw;
+    `}
+
+    ${media.minWidth(461)`
+      margin-right: 18vw;
+    `}
   }
 
   .footer__main {
     margin-bottom: 7.4em;
+
+    ${media.maxWidth(370)`
+      flex-direction: column;
+    `}
 
     > ul {
       line-height: 2.5;
@@ -41,6 +52,22 @@ const StyledFooter = styled(Section)`
     font-size: 1.15em;
     justify-content: space-between;
     border-top: 1px solid rgba(186, 221, 118, 0.7);
+
+    ${media.maxWidth(460)`
+      justify-content: center;
+    `}
+  }
+
+  .social__contact {
+    ${media.maxWidth('portrait')`
+      li:not(:last-of-type) {
+        margin-right: 1em;
+      }
+    `}
+
+    ${media.maxWidth(460)`
+      display: none;
+    `}
   }
 `
 

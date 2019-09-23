@@ -21,8 +21,8 @@ const App = Vue.component('App', {
         <Header
           isHome
           store={this.$store}
-          compact={this.isHeaderCompact}
           currentSection={this.currentSection}
+          compact={this.isPortrait ? false : this.isHeaderCompact}
         />
         <router-view />
         <Footer isHome currentSection={this.currentSection} />
