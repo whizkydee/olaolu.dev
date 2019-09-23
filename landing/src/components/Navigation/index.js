@@ -6,8 +6,13 @@ import { NAVIGATION_BULLET, CURRENT_SECTION } from '@/constants'
 const Navigation = Vue.component('Navigation', {
   methods: {
     jumpToSection(event) {
-      let id = event.target.getAttribute('href').slice(1)
-      goToSection([this.$root.$el.querySelector(`[data-section='${id}']`)])
+      if (!event || !event.target) return
+
+      const targetSection = this.$root.$el.querySelector(
+        `[data-section='${event.target.getAttribute('href').slice(1)}']`
+      )
+
+      goToSection({ node: targetSection })
     },
 
     isActiveWhen(sectionId) {

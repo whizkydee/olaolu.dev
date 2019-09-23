@@ -107,10 +107,11 @@ const Homepage = Vue.component('Homepage', {
       )
 
       if (sectionInView) {
-        goToSection([sectionInView])
+        goToSection({ node: sectionInView })
 
-        const firstSection = this[CURRENT_SECTION] === SECTIONS[0]
-        if (!firstSection) this.$store.commit('headerCompact', true)
+        if (this[CURRENT_SECTION] === SECTIONS[0]) {
+          this.$store.commit('headerCompact', true)
+        }
       } else wait(100, () => resetScroll())
     },
 
@@ -121,7 +122,7 @@ const Homepage = Vue.component('Homepage', {
 
     recalcSection() {
       // Immediately resize sections on window resize (no smooth).
-      goToSection([this.getSection()], false)
+      goToSection({ node: this.getSection(), smooth: false })
     },
 
     /**
@@ -143,7 +144,7 @@ const Homepage = Vue.component('Homepage', {
      */
 
     goToNextSection() {
-      goToSection([this.getSection(), 'next'])
+      goToSection({ modifier: 'next', node: this.getSection() })
     },
 
     /**
@@ -152,7 +153,7 @@ const Homepage = Vue.component('Homepage', {
      */
 
     goToPrevSection() {
-      goToSection([this.getSection(), 'previous'])
+      goToSection({ modifier: 'previous', node: this.getSection() })
     },
 
     /**
@@ -248,6 +249,7 @@ const Homepage = Vue.component('Homepage', {
       }
 
       const SPACEBAR = ' '
+      const { getSection } = this
 
       if (!this.scrollingLudicrouslyFast(500)) {
         switch (event.key) {
@@ -273,12 +275,12 @@ const Homepage = Vue.component('Homepage', {
 
           case 'Home':
             event.preventDefault()
-            goToSection([this.getSection(SECTIONS[0])]) // first section
+            goToSection({ node: getSection(SECTIONS[0]) }) // first section
             break
 
           case 'End':
             event.preventDefault()
-            goToSection([this.getSection(SECTIONS[SECTIONS.length - 1])]) // last section
+            goToSection({ node: getSection(SECTIONS[SECTIONS.length - 1]) }) // last section
             break
         }
       }
