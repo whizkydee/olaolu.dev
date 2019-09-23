@@ -12,6 +12,3 @@ export const SOCIAL_PROFILES = {
   linkedIn: 'https://linkedin.com/in/mrolaolu',
   youtube: 'https://youtube.com/channel/UC5UiydmTsiN17NmsYmmWqEA',
 }
-export const BREAKPOINTS = {
-  small: 600,
-}

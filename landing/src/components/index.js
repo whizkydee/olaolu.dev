@@ -1,3 +1,3 @@
 export * from '@saucedrip/core'
-export { default as Cavalier } from './Cavalier'
+export { default as Visage } from './Visage'
 export { default as Navigation } from './Navigation'

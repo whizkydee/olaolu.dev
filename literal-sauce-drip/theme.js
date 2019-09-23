@@ -3,6 +3,7 @@ export const colors = {
   lime: '#ccf381',
   'lime-alt': '#badd76',
   'electric-blue': '#4831d4',
+  electricBlue: '#4831d4',
   white: '#fff',
   black: '#000',
   'black-90': 'rgba(0,0,0,.9)',

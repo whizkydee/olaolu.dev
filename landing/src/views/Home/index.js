@@ -12,24 +12,16 @@ import PitchSlate from './PitchSlate'
 import Experience from './Experience'
 import Cornerstone from './Cornerstone'
 import Carriageway from './Carriageway'
-import { goToSection, breakpoints } from '@/helpers'
+import { goToSection } from '@/helpers'
 import { wait, debounce, resetScroll, getEventPath } from '@mrolaolu/helpers'
 
 const Homepage = Vue.component('Homepage', {
   data: () => ({
     touchY: null,
-    isMediumScreen: false,
     prevTime: new Date().getTime(),
   }),
 
   computed: mapState([CURRENT_SECTION]),
-
-  created() {
-    const mql = window.matchMedia(`(max-width: ${breakpoints.medium + 'px'})`)
-
-    this.isMediumScreen = mql.matches
-    mql.addListener(e => (this.isMediumScreen = e && e.matches))
-  },
 
   mounted() {
     const { documentElement } = document
@@ -304,6 +296,7 @@ const Homepage = Vue.component('Homepage', {
     return (
       <ContentView id="homepage">
         <PitchSlate name={une} aria-hidden={isSectionHidden(une)} />
+        {this.isPortrait && <div class="hey" />}
         <Cornerstone name={deux} aria-hidden={isSectionHidden(deux)} />
         <Experience name={trois} aria-hidden={isSectionHidden(trois)} />
         <Carriageway name={quatre} aria-hidden={isSectionHidden(quatre)} />

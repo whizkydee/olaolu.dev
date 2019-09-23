@@ -7,6 +7,7 @@ export const BREAKPOINTS = {
   large1: 1024,
   large2: 1440,
   xLarge: 1500,
+  portrait: 580,
 }
 
 export const breakpoints = Object.keys(BREAKPOINTS).reduce((acc, cur) => {

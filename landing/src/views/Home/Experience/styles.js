@@ -40,6 +40,7 @@ const StyledExperience = styled(Section)`
 
   .work__illo {
     margin: 0;
+    max-width: 100%;
     position: relative;
 
     ${media.minWidth('>medium')`
@@ -50,6 +51,7 @@ const StyledExperience = styled(Section)`
     svg {
       width: 46em;
       height: 50.14em;
+      max-width: inherit;
     }
   }
 

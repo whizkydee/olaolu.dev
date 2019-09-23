@@ -1,5 +1,6 @@
 import Vue from 'vue'
-import { media } from '@/helpers'
+import theme from './theme'
+import { media } from './media-helpers'
 import styled from 'vue-styled-components'
 
 const Cavalier = Vue.component('Cavalier', {
@@ -33,7 +34,7 @@ const StyledCavalier = styled.article`
 
   &[data-theme='lime'] {
     h1 {
-      color: ${props => props.theme.colors.lime};
+      color: ${theme.colors.lime};
     }
 
     p {
@@ -56,7 +57,7 @@ const StyledCavalier = styled.article`
     font-weight: 900;
     line-height: 1.1;
     letter-spacing: -0.03em;
-    color: ${props => props.theme.colors['electric-blue']};
+    color: ${theme.colors['electric-blue']};
 
     ${media.minWidth('>medium')`
       max-width: 30vw;
@@ -66,7 +67,7 @@ const StyledCavalier = styled.article`
 
   p {
     line-height: 1.6;
-    color: ${props => props.theme.colors.default};
+    color: ${theme.colors.default};
 
     ${media.minWidth('>medium')`
       width: 32vw;
