@@ -67,6 +67,17 @@ const StyledHomepage = injectGlobal`
     }
   }
 
+
+  ${media.maxWidth('portrait')`
+    header[role='banner'] {
+      font-size: 1.2rem;
+
+      .menu__toggle {
+        color: ${colors.lime};
+      }
+    }
+  `}
+
   main {
     outline: none;
     -webkit-overflow-scrolling: touch;

@@ -4,6 +4,7 @@ import { ThemeProvider } from 'vue-styled-components'
 // global styles
 import '@saucedrip/core/normalize-css'
 import '@/base/global-styles'
+
 import { mapState } from 'vuex'
 import { theme } from '@/base/theme'
 import { CURRENT_SECTION, HEADER_COMPACT } from './constants'

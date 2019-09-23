@@ -3,13 +3,15 @@ import { colors } from '@/base/theme'
 import { Section } from '@/components'
 import styled from 'vue-styled-components'
 
+const gradient = `90deg, ${colors['electric-blue']} 67%, ${colors.lime} 33%`
 const StyledPitchSlate = styled(Section)`
   flex-direction: column;
   padding-bottom: 4.17rem;
-  background: ${colors['electric-blue']};
-  background: ${`linear-gradient(90deg, ${colors['electric-blue']} 67%, ${
-    colors.lime
-  } 33%)`};
+  background: ${colors.electricBlue};
+
+  ${media.minWidth('>portrait')`
+    background: ${`linear-gradient(${gradient})`};
+  `}
 
   ${media.maxWidth('medium')`
     font-size: 0.95em;
@@ -22,7 +24,13 @@ const StyledPitchSlate = styled(Section)`
   }
 
   .primary__content {
-    margin-top: ${props => `calc(${props.theme.header.height} + 2em)`};
+    ${media.maxWidth('portrait')`
+      margin-top: ${props => `calc(${props.theme.header.height} + 6em)`};
+    `}
+
+    ${media.minWidth('>portrait')`
+      margin-top: ${props => `calc(${props.theme.header.height} + 2em)`};
+    `}
   }
 
   .cavalier {
@@ -31,7 +39,13 @@ const StyledPitchSlate = styled(Section)`
     `}
 
     h1 {
-      font-size: 4.4em;
+      ${media.maxWidth('portrait')`
+        font-size: 5em;
+      `}
+
+      ${media.minWidth('>portrait')`
+        font-size: 4.4em;
+      `}
 
       span {
         color: #eeffff;
@@ -39,50 +53,18 @@ const StyledPitchSlate = styled(Section)`
     }
 
     p {
-      font-size: 1.3em;
+      ${media.maxWidth('portrait')`
+        font-size: 2em;
+      `}
+
+      ${media.minWidth('>portrait')`
+        font-size: 1.3em;
+      `}
 
       ${media.maxWidth('medium')`
         max-width: 20em;
       `}
     }
-  }
-
-  .visage {
-    z-index: 1;
-    margin-top: 0;
-    margin-left: 0;
-    width: 23.334em;
-    height: 24.67em;
-    margin-bottom: 0;
-    position: relative;
-    border: 0.115rem solid #fff;
-
-    ${media.minWidth('>medium')`
-      margin-right: ${props => `calc(${props.theme.header.padding} + 4em)`};
-    `}
-
-    ${media.maxWidth('medium')`
-      margin-right: ${props => `calc(${props.theme.header.padding} - 3em)`};
-    `}
-
-    .face {
-      width: inherit;
-      height: inherit;
-      margin-left: -2.2em;
-      margin-top: -2.435em;
-      background-color: #fff;
-      background-size: cover;
-      /* background-image: url(/img/olaolu.jpg); */
-    }
-  }
-
-  #avatar__shapes {
-    top: -25%;
-    width: 40em;
-    z-index: -1;
-    height: 126%;
-    right: -5.4em;
-    position: absolute;
   }
 
   #sauce__drip__outline {
@@ -95,10 +77,6 @@ const StyledPitchSlate = styled(Section)`
     @media (min-width: 1024px) and (min-height: 800px) {
       height: 90vh;
     }
-
-    @media (max-width: 767px) {
-      display: none;
-    }
   }
 
   .bottom__content {
@@ -107,8 +85,12 @@ const StyledPitchSlate = styled(Section)`
       padding-right: ${props => props.theme.header.padding};
     `}
 
-    ${media.maxWidth('medium')`
+    ${media.between('>portrait', 'medium')`
       margin-top: 3.7em;
+    `}
+
+    ${media.maxWidth('portrait')`
+      margin-top: 7em;
     `}
 
     .deux__points {
@@ -127,8 +109,11 @@ const StyledPitchSlate = styled(Section)`
     `}
 
     ${media.maxWidth('medium')`
-      width: 65%;
       font-size: 1.2em;
+    `}
+
+    ${media.between('>portrait', 'medium')`
+      width: 65%;
     `}
 
     li {

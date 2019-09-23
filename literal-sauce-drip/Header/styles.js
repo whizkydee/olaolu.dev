@@ -7,7 +7,6 @@ const StyledHeader = css`
   width: 100%;
   display: flex;
   z-index: 1000;
-  position: fixed;
   font-size: 1rem;
   max-height: 12rem;
   align-items: center;
@@ -16,11 +15,13 @@ const StyledHeader = css`
   height: ${theme.header.height};
 
   ${media.minWidth('>medium')`
+    position: fixed;
     padding: 0 ${theme.header.padding};
   `}
 
   ${media.maxWidth('medium')`
     padding: 0 3em;
+    position: absolute;
   `}
 
   &[data-compact='true'] {
@@ -28,7 +29,7 @@ const StyledHeader = css`
       width: unset;
 
       svg {
-        transform: translateX(-56px);
+        transform: translateX(-3.5rem);
       }
 
       .logo_svg__lu,

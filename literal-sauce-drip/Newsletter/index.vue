@@ -5,7 +5,13 @@
       target="_blank"
       action="https://gmail.us20.list-manage.com/subscribe/post?u=04ac543f98469334c684d8753&id=df629ce71c"
     >
-      <h2>Join the newsletter</h2>
+      <Cavalier
+        text="Infrequent updates, special offers, and exclusive content"
+      >
+        <h2 slot="heading">Join the newsletter</h2>
+      </Cavalier>
+      <!-- <h2>Join the newsletter</h2>
+      <span>Infrequent updates, special offers, and exclusive content.</span> -->
 
       <div class="form-inner">
         <InputGroup

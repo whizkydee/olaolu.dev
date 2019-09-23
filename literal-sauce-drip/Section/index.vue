@@ -86,7 +86,10 @@ function createStyledSection(tagName = 'section', props = {}) {
     &[aria-hidden='false'] {
       z-index: 3;
       user-select: auto;
-      scroll-snap-align: start;
+
+      ${media.minWidth('>mediium')`
+        scroll-snap-align: start;
+      `}
 
       .cavalier {
         p, h1 { opacity: 1; transform: translate3d(0, 0, 0); }
@@ -97,7 +100,11 @@ function createStyledSection(tagName = 'section', props = {}) {
       width: 100%;
       display: flex;
 
-      ${media.maxWidth('medium')`
+      ${media.maxWidth('portrait')`
+        padding: 0 15vw;
+      `}
+
+      ${media.between('>portrait', 'medium')`
         padding: 0 5em;
       `}
 
