@@ -10,7 +10,7 @@ const PitchSlate = Vue.component('PitchSlate', {
     return (
       <StyledPitchSlate name={this.name}>
         <div class="primary__content">
-          {!this.isPortrait && (
+          {!this.isMediumScreen && (
             <LogomarkOutline id="sauce__drip__outline" data-shape />
           )}
 
@@ -41,6 +41,12 @@ const PitchSlate = Vue.component('PitchSlate', {
 
           {!this.isMediumScreen && <Navigation id={NAVIGATION_ID} />}
         </div>
+
+        {this.isPortrait && (
+          <div class="mobile__avatar">
+            <Visage />
+          </div>
+        )}
       </StyledPitchSlate>
     )
   },

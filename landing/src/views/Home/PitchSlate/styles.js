@@ -17,6 +17,10 @@ const StyledPitchSlate = styled(Section)`
     font-size: 0.95em;
   `}
 
+  ${media.maxWidth('portrait')`
+    padding-bottom: 0;
+  `}
+
   .primary__content,
   .bottom__content {
     align-items: center;
@@ -31,6 +35,16 @@ const StyledPitchSlate = styled(Section)`
     ${media.minWidth('>portrait')`
       margin-top: ${props => `calc(${props.theme.header.height} + 2em)`};
     `}
+
+    .visage {
+      ${media.minWidth('>medium')`
+        margin-right: ${props => `calc(${props.theme.header.padding} + 4em)`};
+      `}
+
+      ${media.maxWidth('medium')`
+        margin-right: ${props => `calc(${props.theme.header.padding} - 3em)`};
+      `}
+    }
   }
 
   .cavalier {
@@ -91,6 +105,7 @@ const StyledPitchSlate = styled(Section)`
 
     ${media.maxWidth('portrait')`
       margin-top: 7em;
+      margin-bottom: 4em;
     `}
 
     .deux__points {
@@ -118,6 +133,19 @@ const StyledPitchSlate = styled(Section)`
 
     li {
       width: calc(50% - 1.731em);
+    }
+  }
+
+  .mobile__avatar {
+    width: 100%;
+    display: flex;
+    padding: 7rem 0;
+    align-items: center;
+    justify-content: center;
+    background: ${props => props.theme.colors.lime};
+
+    path[fill='#ccf381'] {
+      fill: ${props => props.theme.colors.electricBlue};
     }
   }
 `

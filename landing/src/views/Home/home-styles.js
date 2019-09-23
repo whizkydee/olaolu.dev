@@ -5,9 +5,9 @@ import { NAVIGATION_ID, TABBING_CLASSNAME } from '@/constants'
 
 const StyledHomepage = injectGlobal`
   html {
-    ${media.minWidth('>medium')`
-      overflow: hidden;
+    overflow: hidden;
 
+    ${media.minWidth('>medium')`
       &,
       body {
         touch-action: none;
@@ -75,6 +75,10 @@ const StyledHomepage = injectGlobal`
       .menu__toggle {
         color: ${colors.lime};
       }
+    }
+
+    footer[data-section='footer'] {
+      font-size: 1.5rem;
     }
   `}
 

@@ -1,3 +1,4 @@
+import { media } from '@/helpers'
 import { Section } from '@/components'
 import styled from 'vue-styled-components'
 
@@ -11,8 +12,11 @@ const StyledContact = styled(Section)`
   }
 
   .cavalier {
-    text-align: center;
     margin-bottom: 5.2em;
+
+    ${media.minWidth('>portrait')`
+      text-align: center;
+    `}
 
     h1 {
       font-size: 3.2em;
@@ -27,13 +31,29 @@ const StyledContact = styled(Section)`
       line-height: 1.2;
       margin-top: 15px;
       letter-spacing: 0.02em;
+
+      ${media.maxWidth('portrait')`
+        br { display: none; }
+      `}
     }
   }
 
   #home__contact {
-    width: 60%;
     align-items: center;
     justify-content: center;
+
+    ${media.minWidth('>medium')`
+      width: 60%;
+      min-width: 500px;
+    `}
+
+    ${media.between('>portrait', 'medium')`
+      width: 90%;
+    `}
+
+    ${media.maxWidth('portrait')`
+      width: 100%;
+    `}
 
     label,
     textarea,

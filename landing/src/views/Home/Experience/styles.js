@@ -36,11 +36,15 @@ const StyledExperience = styled(Section)`
       flex-direction: column;
       margin-top: ${props => props.theme.header.height};
     `}
+
+    ${media.maxWidth('portrait')`
+      margin-top: 7.12em;
+    `}
   }
 
   .work__illo {
-    margin: 0;
-    max-width: 100%;
+    display: flex;
+    margin-right: 0;
     position: relative;
 
     ${media.minWidth('>medium')`
@@ -49,10 +53,38 @@ const StyledExperience = styled(Section)`
     `}
 
     svg {
-      width: 46em;
-      height: 50.14em;
+      flex-shrink: 0;
       max-width: inherit;
     }
+
+    ${media.maxWidth('portrait')`
+      max-width: 110%;
+      margin-top: 4vh;
+      margin-left: -10%;
+      margin-bottom: 4vh;
+
+      svg {
+        height: 40vh;
+      }
+    `}
+
+    ${media.minWidth('>portrait')`
+      margin: 0;
+
+      svg {
+        height: 50.14em;
+      }
+    `}
+
+    ${media.between('>portrait', 'medium')`
+      max-width: 95%;
+      justify-content: center;
+    `}
+
+    ${media.minWidth('>medium')`
+      width: 46em;
+      max-width: 100%;
+    `}
   }
 
   &[aria-hidden='false'] {

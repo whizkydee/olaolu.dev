@@ -26,9 +26,7 @@ const Homepage = Vue.component('Homepage', {
   mounted() {
     const { documentElement } = document
 
-    if (!this.isMediumScreen) {
-      wait(1, this.maybeRestoreSection)
-    }
+    if (!this.isMediumScreen) wait(1, this.maybeRestoreSection)
 
     // Set current section to the first section by default.
     this.$root.$el.dataset[CURRENT_SECTION] = this.getCurrentSectionId()
@@ -113,9 +111,7 @@ const Homepage = Vue.component('Homepage', {
 
         const firstSection = this[CURRENT_SECTION] === SECTIONS[0]
         if (!firstSection) this.$store.commit('headerCompact', true)
-      } else {
-        wait(100, () => resetScroll())
-      }
+      } else wait(100, () => resetScroll())
     },
 
     /**
@@ -296,7 +292,6 @@ const Homepage = Vue.component('Homepage', {
     return (
       <ContentView id="homepage">
         <PitchSlate name={une} aria-hidden={isSectionHidden(une)} />
-        {this.isPortrait && <div class="hey" />}
         <Cornerstone name={deux} aria-hidden={isSectionHidden(deux)} />
         <Experience name={trois} aria-hidden={isSectionHidden(trois)} />
         <Carriageway name={quatre} aria-hidden={isSectionHidden(quatre)} />

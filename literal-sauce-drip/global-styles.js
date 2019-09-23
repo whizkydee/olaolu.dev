@@ -69,6 +69,10 @@ const GlobalStyle = injectGlobal`
     -moz-osx-font-smoothing: inherit;
   }
 
+  main:focus {
+    outline: none;
+  }
+
   ul, ol, li {
     margin: 0;
     padding: 0;
@@ -89,13 +93,13 @@ const GlobalStyle = injectGlobal`
     cursor: pointer;
     border-radius: 0;
     appearance: none;
-    -webkit-tap-highlight-color: transparent;
   }
 
   input,
   button,
   textarea {
     border-radius: 0;
+    -webkit-tap-highlight-color: transparent;
   }
 
   textarea {

@@ -1,3 +1,4 @@
+import { media } from '@/helpers'
 import { Section } from '@/components'
 import styled from 'vue-styled-components'
 
@@ -5,8 +6,18 @@ const StyledCornerstone = styled(Section)`
   .cornerstone__content {
     flex-direction: column;
 
+    ${media.maxWidth('portrait')`
+      margin-top: 10rem;
+    `}
+
     .cavalier {
       display: flex;
+
+      ${media.maxWidth('medium')`
+        &:not(:last-of-type) {
+          margin-bottom: 6vh;
+        }
+      `}
 
       &:nth-of-type(2) {
         justify-content: flex-end;
