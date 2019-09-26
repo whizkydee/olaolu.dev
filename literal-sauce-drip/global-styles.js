@@ -52,7 +52,7 @@ const GlobalStyle = injectGlobal`
       #logo:focus,
       #contact__menu a:focus,
       [data-theme='lime']:focus {
-        outline-color: ${colors.lime};
+        outline-color: currentColor;
       }
     }
   }

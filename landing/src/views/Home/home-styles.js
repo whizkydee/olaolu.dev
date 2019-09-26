@@ -40,31 +40,33 @@ const StyledHomepage = injectGlobal`
   }
 
   #app {
-    &[data-current-section='une'] {
-      #contact__menu {
-        box-shadow: ${createMenuShadow('rgba(163, 204, 170, 0.3)')};
-      }
-    }
-
-    &[data-current-section='deux'],
-    &[data-current-section='cinq'],
-    &[data-current-section='quatre'] {
-      #logo {
-        color: ${colors['electric-blue']};
-      }
-    }
-
-    &[data-current-section='trois'],
-    &[data-current-section='footer'] {
-      #${NAVIGATION_ID},
-      .menu__toggle:not(.x) {
-        color: ${colors.lime};
-      }
-    }
-
     &[data-current-section='footer'] #${NAVIGATION_ID} {
       display: none;
     }
+
+    ${media.minWidth('>medium')`
+      &[data-current-section='une'] {
+        #contact__menu {
+          box-shadow: ${createMenuShadow('rgba(163, 204, 170, 0.3)')};
+        }
+      }
+
+      &[data-current-section='deux'],
+      &[data-current-section='cinq'],
+      &[data-current-section='quatre'] {
+        #logo {
+          color: ${colors['electric-blue']};
+        }
+      }
+
+      &[data-current-section='trois'],
+      &[data-current-section='footer'] {
+        #${NAVIGATION_ID},
+        .menu__toggle:not(.x) {
+          color: ${colors.lime};
+        }
+      }
+    `}
   }
 
 

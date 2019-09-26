@@ -3,6 +3,8 @@
     role="banner"
     :data-compact="compact + ''"
     :noMenuShadow="noMenuShadow"
+    :blue="isMediumScreen && menuOpen"
+    :data-blue="isMediumScreen && menuOpen"
   >
     <a href="/" id="logo" aria-label="Logo, go to homepage.">
       <SauceDripLogo />
@@ -21,6 +23,11 @@
       aria-label="Contact menu"
       :aria-expanded="menuOpen + ''"
     >
+      <ul id="cross__site__nav">
+        <NavItem :href="workURL">Work</NavItem>
+        <NavItem :href="shelfURL">My Shelf</NavItem>
+        <NavItem href="/resume.pdf">My Rèsumè</NavItem>
+      </ul>
       <ContactPortal.Basic />
       <ContactPortal.Social />
     </nav>
@@ -28,17 +35,14 @@
 </template>
 
 <script>
+import NavItem from '../NavItem'
 import StyledHeader from './styles'
 import ContactPortal from '../ContactPortal'
 import SauceDripLogo from '../sauce-drip-logo'
 
 export default {
   name: 'Header',
-
-  data: () => ({
-    menuOpen: false,
-  }),
-
+  data: () => ({ menuOpen: false }),
   mounted() {
     if (this.isHome) {
       this.maybeTransform()
@@ -110,6 +114,7 @@ export default {
   },
 
   components: {
+    NavItem,
     StyledHeader,
     SauceDripLogo,
     'ContactPortal.Basic': ContactPortal.Basic,

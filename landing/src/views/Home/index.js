@@ -76,12 +76,13 @@ const Homepage = Vue.component('Homepage', {
 
     /**
      * Determine what element is most visible in the viewport
-     * @param {HTMLElement} s - the section
+     * @param {HTMLElement} section - the section
      * @return {number} - the percentage by which is left of the element
      * to occupy the entire viewport.
      */
 
-    getSectionOffsetDiffFromViewport(s) {
+    getSectionOffsetDiffFromViewport(section) {
+      let s = section
       return Math.abs(
         (parseInt(s.offsetTop) -
           parseInt(
@@ -98,6 +99,8 @@ const Homepage = Vue.component('Homepage', {
      */
 
     maybeRestoreSection() {
+      let isFirstSection = this[CURRENT_SECTION] === SECTIONS[0]
+
       const sections = Array.from(
         this.$root.$el.querySelectorAll(SECTION_SELECTOR)
       )
@@ -107,11 +110,9 @@ const Homepage = Vue.component('Homepage', {
       )
 
       if (sectionInView) {
-        goToSection({ node: sectionInView })
+        goToSection({ node: sectionInView, focus: false })
 
-        if (this[CURRENT_SECTION] === SECTIONS[0]) {
-          this.$store.commit('headerCompact', true)
-        }
+        if (!isFirstSection) this.$store.commit('headerCompact', true)
       } else wait(100, () => resetScroll())
     },
 
@@ -222,7 +223,8 @@ const Homepage = Vue.component('Homepage', {
     },
 
     /**
-     * Hijack scrolling
+     * Hijack scrolling.
+     * Capture certain
      * @param {Event} event
      * @return {void}
      */
@@ -238,6 +240,7 @@ const Homepage = Vue.component('Homepage', {
 
       if (
         isFormFocused ||
+        this.scrollingLudicrouslyFast(400) ||
         (!isNavFocused &&
           !isSectionFocused &&
           event.target !== this.$el &&
@@ -251,38 +254,36 @@ const Homepage = Vue.component('Homepage', {
       const SPACEBAR = ' '
       const { getSection } = this
 
-      if (!this.scrollingLudicrouslyFast(500)) {
-        switch (event.key) {
-          case 'Down':
-          case SPACEBAR:
-          case 'Spacebar':
-          case 'ArrowDown':
-          case 'Right':
-          case 'PageDown':
-          case 'ArrowRight':
-            event.preventDefault()
-            this.goToNextSection()
-            break
+      switch (event.key) {
+        case 'Down':
+        case SPACEBAR:
+        case 'Spacebar':
+        case 'ArrowDown':
+        case 'Right':
+        case 'PageDown':
+        case 'ArrowRight':
+          event.preventDefault()
+          this.goToNextSection()
+          break
 
-          case 'Up':
-          case 'ArrowUp':
-          case 'Left':
-          case 'PageUp':
-          case 'ArrowLeft':
-            event.preventDefault()
-            this.goToPrevSection()
-            break
+        case 'Up':
+        case 'ArrowUp':
+        case 'Left':
+        case 'PageUp':
+        case 'ArrowLeft':
+          event.preventDefault()
+          this.goToPrevSection()
+          break
 
-          case 'Home':
-            event.preventDefault()
-            goToSection({ node: getSection(SECTIONS[0]) }) // first section
-            break
+        case 'Home':
+          event.preventDefault()
+          goToSection({ node: getSection(SECTIONS[0]) }) // first section
+          break
 
-          case 'End':
-            event.preventDefault()
-            goToSection({ node: getSection(SECTIONS[SECTIONS.length - 1]) }) // last section
-            break
-        }
+        case 'End':
+          event.preventDefault()
+          goToSection({ node: getSection(SECTIONS[SECTIONS.length - 1]) }) // last section
+          break
       }
     },
   },
