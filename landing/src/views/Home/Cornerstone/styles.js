@@ -53,6 +53,12 @@ const StyledCornerstone = styled(Section)`
     height: 13.41em;
     margin-left: 15em;
   }
+
+  ${media.maxWidth('medium')`
+    [data-shape] {
+      display: none;
+    }
+  `}
 `
 
 export default {

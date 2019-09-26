@@ -39,9 +39,13 @@ export default {
   list-style-type: none;
   margin-bottom: var(--space);
 
-  @media (min-width: 461px) {
-    &:not(:last-of-type) {
+  &:not(:last-of-type) {
+    @media (min-width: 461px) {
       border-bottom: 1px solid var(--border-color);
+    }
+
+    @media (max-width: 650px) {
+      margin-bottom: calc(var(--space) * 1.3);
     }
   }
 

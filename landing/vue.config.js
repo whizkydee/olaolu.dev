@@ -1,9 +1,11 @@
 const { LANDING_PORT } = require('../ports')
+const manifest = require('./public/manifest.json')
 
 module.exports = {
   productionSourceMap: false,
   devServer: { port: LANDING_PORT },
 
+  pwa: { themeColor: manifest.theme_color },
   chainWebpack(config) {
     // Only convert .svg files that are imported by these files as Vue component
     const FILE_RE = /\.(vue|js|ts|svg)$/

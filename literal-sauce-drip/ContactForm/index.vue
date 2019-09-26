@@ -1,6 +1,7 @@
 <template>
   <StyledContactForm
     method="POST"
+    target="_blank"
     class="contact__form"
     action="https://formspree.io/mrolaolu@gmail.com"
   >

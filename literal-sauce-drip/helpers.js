@@ -3,7 +3,10 @@ import { wait } from '@mrolaolu/helpers'
 import { SECTION_SELECTOR, CURRENT_SECTION } from './constants'
 const { SHELF_PORT, LANDING_PORT } = require('../ports')
 
-export function goToSection(store, { node, modifier, smooth = true }) {
+export function goToSection(
+  store,
+  { node, modifier, smooth = true, focus = true }
+) {
   if (!(node instanceof HTMLElement)) return
 
   const getSectionId = () => node.dataset.section
@@ -30,7 +33,7 @@ export function goToSection(store, { node, modifier, smooth = true }) {
     smooth ? smoothScrollToElem(node) : window.scrollTo(0, node.offsetTop)
 
     wait(200, () => {
-      node.focus()
+      focus && node.focus()
       store && store.commit(CURRENT_SECTION, getSectionId())
       app.dataset[CURRENT_SECTION] = getSectionId()
     })
@@ -89,10 +92,11 @@ export function isDev() {
 
 const hostname =
   typeof location !== 'undefined' ? 'https://' + location.hostname : ''
+
 export function getShelfURL() {
   return isDev() ? 'http://localhost:' + SHELF_PORT : hostname + '/shelf'
 }
 
 export function getLandingURL() {
-  return isDev() ? 'http://localhost:' + LANDING_PORT : hostname || ''
+  return isDev() ? 'http://localhost:' + LANDING_PORT : hostname
 }

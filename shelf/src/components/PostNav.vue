@@ -1,6 +1,6 @@
 <template>
   <nav class="post-nav">
-    <a class="post-nav__previous" :href="prevPost.path">
+    <a :href="prevPost" class="post-nav__previous" :aria-hidden="!prevPost">
       <BowArrow direction="left" />
       <span>Previous</span>
     </a>
@@ -19,7 +19,7 @@
       </svg>
     </a>
 
-    <a class="post-nav__next" :href="nextPost.path">
+    <a :href="nextPost" class="post-nav__next" :aria-hidden="!nextPost">
       <span>Next</span>
       <BowArrow />
     </a>
@@ -42,11 +42,11 @@ export default {
     },
 
     nextPost() {
-      return this.computedPosts[this.curPostIndex + 1] || {}
+      return (this.computedPosts[this.curPostIndex + 1] || {}).path
     },
 
     prevPost() {
-      return this.computedPosts[this.curPostIndex - 1] || {}
+      return (this.computedPosts[this.curPostIndex - 1] || {}).path
     },
 
     curPostIndex() {
@@ -73,14 +73,19 @@ export default {
     text-transform: uppercase;
     -webkit-tap-highlight-color: transparent;
 
-    &:not([href]) {
+    &[aria-hidden='true'] {
       opacity: 0.7;
       pointer-events: none;
     }
+    span {
+      @media (min-width: 500px) {
+        &:after {
+          content: ' Post';
+        }
+      }
 
-    @media (min-width: 500px) {
-      span:after {
-        content: ' Post';
+      @media (max-width: 349px) {
+        font-size: 0.9em;
       }
     }
   }

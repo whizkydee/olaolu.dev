@@ -1,4 +1,6 @@
 {
+  "theme_color": "#4831D8",
+  "background_color": "#4831d4",
   "name": "olaolu.dev",
   "short_name": "olaolu.dev",
   "icons": [
@@ -14,7 +16,5 @@
     }
   ],
   "start_url": "/",
-  "display": "standalone",
-  "background_color": "#4831d4",
-  "theme_color": "#4831d4"
+  "display": "standalone"
 }

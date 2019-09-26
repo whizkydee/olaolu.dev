@@ -17,6 +17,10 @@ const StyledPitchSlate = styled(Section)`
     font-size: 0.95em;
   `}
 
+  ${media.minWidth('>medium')`
+    &[aria-hidden='true'] { overflow: unset; }
+  `}
+
   ${media.maxWidth('portrait')`
     padding-bottom: 0;
   `}
@@ -37,12 +41,12 @@ const StyledPitchSlate = styled(Section)`
     `}
 
     .visage {
-      ${media.minWidth('>medium')`
-        margin-right: ${props => `calc(${props.theme.header.padding} + 4em)`};
+      ${media.maxWidth('medium')`
+        margin-right: 0;
       `}
 
-      ${media.maxWidth('medium')`
-        margin-right: ${props => `calc(${props.theme.header.padding} - 3em)`};
+      ${media.minWidth('>medium')`
+        margin-right: ${props => `calc(${props.theme.header.padding} + 4em)`};
       `}
     }
   }
@@ -83,10 +87,15 @@ const StyledPitchSlate = styled(Section)`
 
   #sauce__drip__outline {
     left: 0;
+    display: none;
     height: 738px;
     position: absolute;
     margin-left: -6.2em;
     top: ${props => props.theme.header.height};
+
+    @media (min-aspect-ratio: 1440/900) and (min-height: 738px)  {
+      display: block;
+    }
 
     @media (min-width: 1024px) and (min-height: 800px) {
       height: 90vh;

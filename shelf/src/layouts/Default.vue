@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :style="!ready && 'display: none'">
+  <ThemeProvider id="app" :style="!ready && 'display: none'" :theme="theme">
     <Header currentSection="" id="site-header" noMenuShadow />
 
     <ContentView :id="id">
@@ -7,12 +7,15 @@
     </ContentView>
 
     <Footer id="site-footer" />
-  </div>
+  </ThemeProvider>
 </template>
 
 <script>
+import theme from '@saucedrip/core/theme'
+import { ThemeProvider } from 'vue-styled-components'
+
 export default {
-  data: () => ({ ready: process.env.NODE_ENV === 'development' }),
+  data: () => ({ theme, ready: process.env.NODE_ENV === 'development' }),
   created() {
     // hack to hide display until sauce drip
     // components are rendered and painted
@@ -24,13 +27,38 @@ export default {
   props: {
     id: String,
   },
+  components: { ThemeProvider },
 }
 </script>
 
 <style lang="scss">
 #site-header {
-  position: unset;
   font-size: 0.72rem;
+  height: unset;
+
+  &:not([data-blue='true']) {
+    position: unset;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  &[data-blue='true'] {
+    padding-top: 3rem;
+
+    #contact__menu {
+      font-size: 1.1rem;
+    }
+  }
+
+  @media (max-width: 650px) {
+    padding-left: 8.8vw;
+    padding-right: 8.8vw;
+  }
+
+  @media (min-width: 651px) and (max-width: 1129px) {
+    padding-left: var(--space);
+    padding-right: var(--space);
+  }
 
   #logo {
     color: var(--electric-blue);
@@ -39,12 +67,21 @@ export default {
 
 main {
   margin: 0 auto;
-  margin-top: calc(var(--space) * 1.2);
   padding: 0 var(--space);
   max-width: var(--content-width);
 
+  @media (max-width: 650px) {
+    margin-top: 0;
+    padding-left: 8.9vw;
+    padding-right: 8.9vw;
+  }
+
   @media (min-width: 651px) {
     font-size: 0.9rem;
+  }
+
+  @media (min-width: 1024px) {
+    margin-top: calc(var(--space) * 1.2);
   }
 
   &:focus {
@@ -57,6 +94,10 @@ main {
   text-align: center;
   font-size: 1.802em;
   margin-bottom: var(--space);
+
+  @media (max-width: 650px) {
+    display: none;
+  }
 
   span {
     opacity: 0.7;
@@ -71,6 +112,16 @@ main {
   .footer__content {
     padding-top: 5rem;
     padding-bottom: 3rem;
+
+    @media (max-width: 650px) {
+      padding-left: 8.9vw;
+      padding-right: 8.9vw;
+    }
+
+    @media (min-width: 651px) and (max-width: 1129px) {
+      padding-left: var(--space);
+      padding-right: var(--space);
+    }
   }
 }
 
@@ -81,6 +132,12 @@ main {
   time,
   span:not(.token) {
     letter-spacing: 0.011rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .posts {
+    margin-top: var(--space);
   }
 }
 </style>

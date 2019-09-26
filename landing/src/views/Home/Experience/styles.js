@@ -5,11 +5,13 @@ import styled from 'vue-styled-components'
 const StyledExperience = styled(Section)`
   background-color: ${props => props.theme.colors['electric-blue']};
 
-  ${media.minWidth('>medium')`
-    &[aria-hidden='true']:not(.scrolled) {
-      .work__illo {
-        opacity: 0;
-        transform: translate3d(0, 40px, 0);
+  @media (hover: hover) and (any-pointer: fine) {
+    ${media.minWidth('>medium')`
+      &[aria-hidden='true']:not(.scrolled) {
+        .work__illo {
+          opacity: 0;
+          transform: translate3d(0, 40px, 0);
+        }
       }
     }
   `}
@@ -65,6 +67,7 @@ const StyledExperience = styled(Section)`
 
       svg {
         height: 40vh;
+        min-height: 300px;
       }
     `}
 
