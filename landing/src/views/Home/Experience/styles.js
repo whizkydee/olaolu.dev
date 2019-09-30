@@ -13,8 +13,8 @@ const StyledExperience = styled(Section)`
           transform: translate3d(0, 40px, 0);
         }
       }
-    }
-  `}
+    `}
+  }
 
   .experience__content {
     justify-content: space-between;
@@ -42,6 +42,11 @@ const StyledExperience = styled(Section)`
     ${media.maxWidth('portrait')`
       margin-top: 7.12em;
     `}
+  }
+
+  a  {
+    color: aqua;
+    border-bottom: 2px dotted;
   }
 
   .work__illo {

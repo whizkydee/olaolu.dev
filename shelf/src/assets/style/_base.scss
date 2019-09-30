@@ -7,18 +7,16 @@
 
 html {
   scroll-behavior: smooth;
+  &[lang] { line-height: 1.7; }
 }
 
 body {
  	background-color: var(--bg-color);
  	color: var(--body-color);
  	transition: color .6s, background-color .6s;
-  margin:0;
-  padding:0;
-  line-height: 1.7 !important;
 }
 
-a:not(.button) {
+a:not(.color-off) {
 	color: var(--link-color);
 }
 

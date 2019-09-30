@@ -11,6 +11,21 @@ export const SharedMixins = {
     workURL: getShelfURL().concat('/work'),
   }),
 
+  computed: {
+    isHome() {
+      if (typeof window === 'undefined') return
+      return (
+        location.href.startsWith(this.landingURL) &&
+        !location.pathname.includes('/shelf')
+      )
+    },
+
+    isShelf() {
+      if (typeof window === 'undefined') return
+      return location.href.startsWith(this.shelfURL)
+    },
+  },
+
   created() {
     if (typeof window === 'undefined') return
     ;[

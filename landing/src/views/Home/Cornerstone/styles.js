@@ -6,10 +6,6 @@ const StyledCornerstone = styled(Section)`
   .cornerstone__content {
     flex-direction: column;
 
-    ${media.maxWidth('portrait')`
-      margin-top: 10rem;
-    `}
-
     .cavalier {
       display: flex;
 

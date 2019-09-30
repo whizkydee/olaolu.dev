@@ -1,7 +1,11 @@
 import { colors } from '@/base/theme'
 import { media, createMenuShadow } from '@/helpers'
 import { injectGlobal } from 'vue-styled-components'
-import { NAVIGATION_ID, TABBING_CLASSNAME } from '@/constants'
+import {
+  NAVIGATION_ID,
+  TABBING_CLASSNAME,
+  NAVIGATION_BULLET,
+} from '@/constants'
 
 const StyledHomepage = injectGlobal`
   html {
@@ -46,7 +50,7 @@ const StyledHomepage = injectGlobal`
 
     ${media.minWidth('>medium')`
       &[data-current-section='une'] {
-        #contact__menu {
+        #contact__menu.shadow {
           box-shadow: ${createMenuShadow('rgba(163, 204, 170, 0.3)')};
         }
       }
@@ -93,6 +97,47 @@ const StyledHomepage = injectGlobal`
       scroll-snap-type: y mandatory;
     `}
   }
+
+
+  ${media.minWidth('>medium')`
+    .cavalier p { width: 32vw; }
+
+    [data-section][aria-hidden='true'] {
+      @media (hover: hover) and (any-pointer: fine) {
+        &:not(.scrolled) {
+          .cavalier {
+            p, h1 { opacity: 0; }
+
+            p {
+              transform: translate3d(0, 20px, 0);
+
+              &:nth-of-type(3) {
+                transform: translate3d(0, 15px, 0);
+              }
+            }
+
+            h1 {
+              transform: translate3d(0, 50px, 0);
+            }
+          }
+        }
+
+        /* Prevent focusable elements in hidden sections
+        from receiving focus via tabbing from an active section. */
+        [tabindex],
+        input:not([disabled]),
+        select:not([disabled]),
+        button:not([disabled]),
+        textarea:not([disabled]),
+        ${`a[href]:not(.${NAVIGATION_BULLET})`} {
+          &:not([tabindex='-1']) {
+            visibility: hidden;
+            transition: visibility 400ms;
+          }
+        }
+      }
+    }
+  `}
 
   [data-section='footer'] {
     font-size: 1.2em;

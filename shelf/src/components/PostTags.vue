@@ -1,7 +1,7 @@
 <template>
   <div class="post-tags">
     <g-link
-      class="post-tags__link"
+      class="post-tags__link color-off"
       v-for="tag in post.tags"
       :key="tag.id"
       :to="tag.path"
@@ -27,7 +27,7 @@ export default {
     color: currentColor;
     text-decoration: none;
     background-color: var(--bg-color);
-    color: currentColor !important; //Todo: remove important;
+    color: currentColor;
     border-radius: var(--radius);
   }
 }

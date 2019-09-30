@@ -21,17 +21,30 @@ const Experience = Vue.component('Experience', {
             </p>
 
             <p slot="text">
-              I previously led the front end engineering team at Conectar LLC
+              Most recently, I was a Senior front end engineering contractor
+              with Pixel2HTML building JavaScript applications and interfaces
+              for orgs and individuals.
+            </p>
+
+            <p slot="text">
+              Before then, I led the front end engineering team at Conectar LLC
               through building several React applications into a single powerful
-              online learning platform. I deliver quality stuff contracting for
-              a organizations internationally. I also created the Palenight
+              online learning platform. I deliver quality stuff contracting with
+              these organizations internationally. I also created the Palenight
               theme for VS Code with hundreds of thousands of downloads.
             </p>
 
             <p slot="text">
-              Currently, I'm a Senior Front End Engineering contractor with
-              Pixel2HTML building JavaScript applications for orgs and
-              individuals.
+              I'm now available for remote full-time or contract roles. Want us
+              to work together? Please{' '}
+              <a
+                href={`mailto:hello@olaolu.dev?subject=${encodeURI(
+                  "💡We'd love to have you on our team"
+                )}`}
+              >
+                contact me
+              </a>
+              .
             </p>
           </Cavalier>
 

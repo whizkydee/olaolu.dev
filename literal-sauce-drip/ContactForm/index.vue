@@ -3,7 +3,7 @@
     method="POST"
     target="_blank"
     class="contact__form"
-    action="https://formspree.io/mrolaolu@gmail.com"
+    action="https://formspree.io/hello@olaolu.dev"
   >
     <input type="hidden" name="_subject" value="Message from olaolu.dev!" />
 

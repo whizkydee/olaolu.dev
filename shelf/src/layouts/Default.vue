@@ -1,6 +1,6 @@
 <template>
   <ThemeProvider id="app" :style="!ready && 'display: none'" :theme="theme">
-    <Header currentSection="" id="site-header" noMenuShadow />
+    <Header id="site-header" noMenuShadow />
 
     <ContentView :id="id">
       <slot />
@@ -42,17 +42,17 @@ export default {
     padding-bottom: 3rem;
   }
 
-  &[data-blue='true'] {
+  @media (max-width: 650px) {
+    padding-left: 8.8vw;
+    padding-right: 8.8vw;
+  }
+
+  @media (max-width: 700px) {
     padding-top: 3rem;
 
     #contact__menu {
       font-size: 1.1rem;
     }
-  }
-
-  @media (max-width: 650px) {
-    padding-left: 8.8vw;
-    padding-right: 8.8vw;
   }
 
   @media (min-width: 651px) and (max-width: 1129px) {

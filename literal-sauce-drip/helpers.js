@@ -40,8 +40,9 @@ export function goToSection(
   }
 }
 
-export const createMenuShadow = (color = 'rgba(72, 49, 212, .05)') =>
-  `0 10px 53px 0 ${color}`
+export function createMenuShadow(color = 'rgba(72, 49, 212, .05)') {
+  return `0 10px 53px 0 ${color}`
+}
 
 export function smoothScrollToElem(
   elem,
@@ -90,13 +91,12 @@ export function isDev() {
   return process.env.NODE_ENV === 'development'
 }
 
-const hostname =
-  typeof location !== 'undefined' ? 'https://' + location.hostname : ''
+const host = typeof location !== 'undefined' ? 'https://' + location.host : ''
 
 export function getShelfURL() {
-  return isDev() ? 'http://localhost:' + SHELF_PORT : hostname + '/shelf'
+  return isDev() ? 'http://localhost:' + SHELF_PORT : host + '/shelf'
 }
 
 export function getLandingURL() {
-  return isDev() ? 'http://localhost:' + LANDING_PORT : hostname
+  return isDev() ? 'http://localhost:' + LANDING_PORT : host
 }

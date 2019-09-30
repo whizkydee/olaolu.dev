@@ -19,15 +19,13 @@
     />
 
     <nav
+      ref="contactMenu"
       id="contact__menu"
       aria-label="Contact menu"
       :aria-expanded="menuOpen + ''"
+      :aria-hidden="isMediumScreen && !menuOpen"
     >
-      <ul id="cross__site__nav">
-        <NavItem :href="workURL">Work</NavItem>
-        <NavItem :href="shelfURL">My Shelf</NavItem>
-        <NavItem href="/resume.pdf">My Rèsumè</NavItem>
-      </ul>
+      <CrossSiteNav />
       <ContactPortal.Basic />
       <ContactPortal.Social />
     </nav>
@@ -35,8 +33,9 @@
 </template>
 
 <script>
-import NavItem from '../NavItem'
 import StyledHeader from './styles'
+import { wait } from '@mrolaolu/helpers'
+import CrossSiteNav from '../CrossSiteNav'
 import ContactPortal from '../ContactPortal'
 import SauceDripLogo from '../sauce-drip-logo'
 
@@ -71,6 +70,17 @@ export default {
 
     toggleMenu() {
       this.menuOpen = !this.menuOpen
+      this.$refs.contactMenu.classList.remove('shadow')
+
+      if (this.menuOpen && this.isMediumScreen) {
+        document.body.classList.add('no-scroll')
+      } else {
+        document.body.classList.remove('no-scroll')
+      }
+
+      if (this.menuOpen && !this.noMenuShadow && !this.isMediumScreen) {
+        wait(200, () => this.$refs.contactMenu.classList.add('shadow'))
+      }
 
       if (this.isHome && !this.menuOpen) {
         let container =
@@ -107,14 +117,13 @@ export default {
 
   props: {
     store: Object,
-    isHome: { type: Boolean, default: false },
     compact: { type: Boolean, default: false },
+    currentSection: { type: String, default: '' },
     noMenuShadow: { type: Boolean, default: false },
-    currentSection: { type: String, required: true },
   },
 
   components: {
-    NavItem,
+    CrossSiteNav,
     StyledHeader,
     SauceDripLogo,
     'ContactPortal.Basic': ContactPortal.Basic,
