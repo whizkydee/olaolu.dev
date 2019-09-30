@@ -7,11 +7,11 @@
         <h1 class="post__header-title">{{ $page.post.title }}</h1>
       </header>
 
-      <div class="post__coverImage" v-if="$page.post.coverImage">
+      <div class="post__cover_image" v-if="$page.post.cover_image">
         <g-image
           alt="Cover image"
-          v-if="$page.post.coverImage"
-          :src="$page.post.coverImage"
+          v-if="$page.post.cover_image"
+          :src="$page.post.cover_image"
         />
       </div>
 
@@ -55,8 +55,8 @@ export default {
 </script>
 
 <page-query>
-query Post ($path: String!) {
-  post: post (path: $path) {
+query Post ($id: ID!) {
+  post: post (id: $id) {
     id
     title
     path
@@ -69,7 +69,7 @@ query Post ($path: String!) {
     }
     description
     content
-    coverImage (width: 860, blur: 10)
+    cover_image (width: 860, blur: 10)
   }
 
    posts: allPost(
@@ -116,7 +116,7 @@ query Post ($path: String!) {
 }
 
 .post {
-  &__coverImage {
+  &__cover_image {
     width: calc(100% + var(--space) * 2);
     margin-left: calc(var(--space) * -1);
     margin-bottom: calc(var(--space) / 2);

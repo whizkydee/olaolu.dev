@@ -34,8 +34,8 @@ const PitchSlate = Vue.component('PitchSlate', {
               Engineering.
             </li>
             <li>
-              Nearly a decade of experience working with clients from over 15
-              countries.
+              Nearly a decade of experience working with clients from different
+              countries of the world.
             </li>
           </ul>
 

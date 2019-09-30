@@ -5,13 +5,9 @@
       target="_blank"
       action="https://gmail.us20.list-manage.com/subscribe/post?u=04ac543f98469334c684d8753&id=df629ce71c"
     >
-      <Cavalier
-        text="Infrequent updates, special offers, and exclusive content"
-      >
+      <Cavalier>
         <h2 slot="heading">Join the newsletter</h2>
       </Cavalier>
-      <!-- <h2>Join the newsletter</h2>
-      <span>Infrequent updates, special offers, and exclusive content.</span> -->
 
       <div class="form-inner">
         <InputGroup
@@ -39,9 +35,25 @@ const StyledNewsletter = styled.div`
   padding: var(--space);
   background-color: #fff;
 
-  h2 {
-    margin: 0;
-    margin-bottom: 0.8em;
+  ${media.maxWidth(440)`
+    width: 110%;
+    margin-left: -5%;
+  `}
+
+  .cavalier {
+    font-size: 0.87em;
+    max-width: 19rem;
+    margin-bottom: 1rem;
+
+    p {
+      margin: 0;
+    }
+
+    h2 {
+      margin: 0;
+      margin-bottom: 0.2em;
+      color: ${props => props.theme.colors.electricBlue};
+    }
   }
 
   input:-webkit-autofill {
@@ -51,7 +63,7 @@ const StyledNewsletter = styled.div`
   .form-inner {
     display: flex;
 
-    ${media.maxWidth('small')`
+    ${media.maxWidth(440)`
       flex-direction: column;
 
       .sauce__button {
@@ -59,7 +71,7 @@ const StyledNewsletter = styled.div`
       }
     `}
 
-    ${media.minWidth('>small')`
+    ${media.minWidth(441)`
       align-items: flex-end;
     `}
   }

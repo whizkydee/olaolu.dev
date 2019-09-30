@@ -9,16 +9,17 @@ const StyledNavigation = styled.nav`
   right: ${props => `calc(${props.theme.header.padding} + 1em)`};
 
   ul {
-    width: 0.4em;
+    width: 0.5em;
     display: flex;
     flex-direction: column;
   }
 
   li {
-    width: 100%;
+    width: 0.4em;
   }
 
   a {
+    width: 100%;
     display: flex;
     outline: none;
     width: inherit;
@@ -40,12 +41,11 @@ const StyledNavigation = styled.nav`
       transition: transform 0.2s 100ms;
     }
 
-    &[aria-current='page']:after {
-      width: 0.76em;
-      height: 0.76em;
-      margin: 0 -3px;
-      transform: rotate(0);
-      background: transparent;
+    &[aria-current='page'] {
+      &:after {
+        transform: rotate(0) scale(2);
+        background: transparent;
+      }
     }
   }
 `

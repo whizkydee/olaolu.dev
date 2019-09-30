@@ -13,7 +13,7 @@
 </template>
 
 <page-query>
-query Tag ($id: String!) {
+query Tag ($id: ID!) {
   tag (id: $id) {
     title
     belongsTo {

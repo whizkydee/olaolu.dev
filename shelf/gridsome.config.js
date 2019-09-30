@@ -4,6 +4,7 @@
 // Changes here requires a server restart.
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
+const path = require('path')
 const { SHELF_PORT } = require('../ports')
 
 module.exports = {
@@ -13,6 +14,11 @@ module.exports = {
   siteDescription:
     'Articles on web development and design by Olaolu, expert front end developer and UI Engineer',
 
+  templates: {
+    Post: '/:title',
+    Tag: '/tag/:id',
+  },
+
   plugins: [
     {
       // Create posts from markdown files
@@ -20,18 +26,27 @@ module.exports = {
       options: {
         typeName: 'Post',
         path: 'content/posts/*.md',
-        route: '/:slug',
         refs: {
           // Creates a GraphQL collection from 'tags' in front-matter and adds a reference.
           tags: {
             typeName: 'Tag',
-            route: '/tag/:id',
             create: true,
           },
         },
       },
     },
   ],
+
+  configureWebpack: {
+    resolve: {
+      alias: {
+        // Use the copy of vue installed in the root folder
+        // to avoid duplication as a result of the one gridsome
+        // depends on.
+        vue: path.resolve(__dirname, '../node_modules/vue'),
+      },
+    },
+  },
 
   transformers: {
     // Add markdown support to all file-system sources

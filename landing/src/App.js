@@ -19,13 +19,12 @@ const App = Vue.component('App', {
           Skip to navigation
         </a>
         <Header
-          isHome
           store={this.$store}
           currentSection={this.currentSection}
           compact={this.isPortrait ? false : this.isHeaderCompact}
         />
         <router-view />
-        <Footer isHome currentSection={this.currentSection} />
+        <Footer currentSection={this.currentSection} />
       </ThemeProvider>
     )
   },

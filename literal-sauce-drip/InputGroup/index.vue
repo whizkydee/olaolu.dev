@@ -45,7 +45,7 @@ const StyledInputGroup = styled.div`
   display: flex;
   position: relative;
   flex-direction: column;
-  color: ${theme.colors.default};
+  color: rgba(61, 21, 95, 0.7);
 
   &:not(:last-child) {
     margin-right: 20px;

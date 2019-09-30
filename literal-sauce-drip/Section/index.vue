@@ -10,7 +10,6 @@
 
 <script>
 import { media } from '../helpers'
-import { NAVIGATION_BULLET } from '../constants'
 import styled, { css } from 'vue-styled-components'
 
 function createStyledSection(tagName = 'section', props = {}) {
@@ -24,11 +23,13 @@ function createStyledSection(tagName = 'section', props = {}) {
       outline: none;
     }
 
-    &:not([data-section='une']):not([data-section='footer']) {
+    &:not([data-section='footer']) {
       ${media.maxWidth('portrait')`
         margin-bottom: 10rem;
       `}
+    }
 
+    &:not([data-section='une']):not([data-section='footer']) {
       ${media.between('>portrait', 'medium')`
         &:not([data-section='trois']) {
           padding-top: 15vh;
@@ -40,61 +41,38 @@ function createStyledSection(tagName = 'section', props = {}) {
         }
       `}
 
-      ${media.minWidth('>medium')`
-        min-height: 100vh;
-      `}
+      @media (max-height: 1199px) {
+        ${media.minWidth('>medium')`
+          min-height: 100vh;
+        `}
+      }
     }
 
     ${media.minWidth('>medium')`
-      &:not([data-section='une']) {
-        height: 100vh;
+      @media (max-height: 1199px) {
+        &:not([data-section='une']) { height: 100vh; }
+
+        &[data-section="cinq"]:after {
+          content: '';
+          bottom: 0;
+          width: 100%;
+          height: 50px;
+          position: absolute;
+          background: ${props => props.theme.colors.default};
+        }
       }
 
       &[aria-hidden='true'] {
         /* prevent hidden sections from being highlighted */
         overflow: hidden;
         user-select: none;
-
-        @media (hover: hover) and (any-pointer: fine) {
-          &:not(.scrolled) {
-            .cavalier {
-              p, h1 { opacity: 0; }
-
-              p {
-                transform: translate3d(0, 20px, 0);
-
-                &:nth-of-type(3) {
-                  transform: translate3d(0, 15px, 0);
-                }
-              }
-
-              h1 {
-                transform: translate3d(0, 50px, 0);
-              }
-            }
-          }
-
-          /* Prevent focusable elements in hidden sections
-          from receiving focus via tabbing from an active section. */
-          [tabindex],
-          input:not([disabled]),
-          select:not([disabled]),
-          button:not([disabled]),
-          textarea:not([disabled]),
-          ${`a[href]:not(.${NAVIGATION_BULLET})`} {
-            &:not([tabindex='-1']) {
-              visibility: hidden;
-              transition: visibility 400ms;
-            }
-          }
-        }
       }
     `}
 
     @media (min-height: 1200px) {
       &:not([data-section='une']) {
-        height: 50vh !important;
-        min-height: 50vh !important;
+        padding-top: 10rem;
+        padding-bottom: 10rem;
       }
     }
 

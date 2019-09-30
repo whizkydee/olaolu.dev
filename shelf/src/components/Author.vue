@@ -10,7 +10,7 @@
     />
 
     <h1 v-if="showTitle" class="author__site-title">
-      {{ $static.metaData.siteName }}
+      {{ $static.metadata.siteName }}
     </h1>
 
     <p class="author__intro">
@@ -18,14 +18,13 @@
       building FE products for international clients.
     </p>
 
-    <p class="author__links">
-    </p>
+    <p class="author__links"></p>
   </div>
 </template>
 
 <static-query>
 query {
-  metaData {
+  metadata {
     siteName
   }
 }

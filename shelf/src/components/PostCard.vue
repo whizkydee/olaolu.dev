@@ -1,11 +1,11 @@
 <template>
   <li class="post-card" :class="{ 'post-card--has-poster': post.poster }">
-    <div class="post-card__header" v-if="post.coverImage">
+    <div class="post-card__header" v-if="post.cover_image">
       <g-image
         alt="Cover image"
-        v-if="post.coverImage"
+        v-if="post.cover_image"
         class="post-card__image"
-        :src="post.coverImage"
+        :src="post.cover_image"
       />
     </div>
     <div class="post-card__content">

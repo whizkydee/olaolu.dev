@@ -7,6 +7,7 @@ module.exports = {
           'es6.array.from',
           'es6.array.find',
           'es6.object.assign',
+          'es6.string.includes',
           'es6.array.find-index',
         ],
       },

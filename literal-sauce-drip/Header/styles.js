@@ -19,7 +19,7 @@ const StyledHeader = css`
     padding-left: ${theme.header.padding};
     padding-right: ${theme.header.padding};
 
-    #cross__site__nav { display: none; }
+    .cross__site__nav { display: none; }
   `}
 
   ${media.maxWidth('medium')`
@@ -45,7 +45,7 @@ const StyledHeader = css`
         }
       `}
 
-      #cross__site__nav { display: block; }
+      .cross__site__nav { display: block; }
   `}
 
   &[data-compact='true'] {
@@ -183,13 +183,21 @@ const StyledHeader = css`
       height: 100vh;
       background: #fff;
       font-size: 2.2rem;
+      transition: opacity .3s;
       justify-content: space-around;
 
       &[aria-expanded='false'] {
-        display: none;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &[aria-expanded='true'] {
+        opacity: 1;
+        pointer-events: auto;
       }
 
       ul {
+        font-size: 1em;
         line-height: 2.5;
       }
 
@@ -208,7 +216,7 @@ const StyledHeader = css`
       width: 22.223em;
       font-size: 1.1em;
       position: absolute;
-      transition: opacity 0.4s, box-shadow 0.1s 1000ms;
+      transition: opacity 0.4s, box-shadow 0.4s;
 
       &:before {
         top: 0;
@@ -237,7 +245,9 @@ const StyledHeader = css`
         ${props =>
           !props.noMenuShadow &&
           css`
-            box-shadow: ${createMenuShadow()};
+            &.shadow {
+              box-shadow: ${createMenuShadow()};
+            }
           `};
 
         &:before {

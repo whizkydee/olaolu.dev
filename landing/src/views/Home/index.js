@@ -16,12 +16,11 @@ import { goToSection } from '@/helpers'
 import { wait, debounce, resetScroll, getEventPath } from '@mrolaolu/helpers'
 
 const Homepage = Vue.component('Homepage', {
+  computed: mapState([CURRENT_SECTION]),
   data: () => ({
     touchY: null,
     prevTime: new Date().getTime(),
   }),
-
-  computed: mapState([CURRENT_SECTION]),
 
   mounted() {
     const { documentElement } = document
@@ -59,7 +58,6 @@ const Homepage = Vue.component('Homepage', {
      * Get the ID of the current section
      * @return {string}
      */
-
     getCurrentSectionId() {
       return this[CURRENT_SECTION]
     },
@@ -69,19 +67,54 @@ const Homepage = Vue.component('Homepage', {
      * @param {string} id - the id of the section to check
      * @return {'true' | 'false'}
      */
-
     isSectionHidden(id) {
       return (this.getCurrentSectionId() !== id).toString()
     },
 
     /**
-     * Determine what element is most visible in the viewport
-     * @param {HTMLElement} section - the section
-     * @return {number} - the percentage by which is left of the element
-     * to occupy the entire viewport.
+     * Recalculate position of the current section.
+     * @return {void}
      */
+    recalcSection() {
+      // Immediately resize sections on window resize (no smooth).
+      goToSection({ node: this.getSection(), smooth: false })
+    },
 
-    getSectionOffsetDiffFromViewport(section) {
+    /**
+     * Return the corresponding element for a valid section id.
+     * @param {string=} id
+     * @return {HTMLElement}
+     */
+    getSection(id = this.getCurrentSectionId()) {
+      const sectionElem = this.$root.$el.querySelector(`[data-section='${id}']`)
+
+      if (!sectionElem) return
+      return sectionElem
+    },
+
+    /**
+     * Go to the section after the current one.
+     * @return {void}
+     */
+    goToNextSection() {
+      goToSection({ modifier: 'next', node: this.getSection() })
+    },
+
+    /**
+     * Go to the section before the current one.
+     * @return {void}
+     */
+    goToPrevSection() {
+      goToSection({ modifier: 'previous', node: this.getSection() })
+    },
+
+    /**
+     * Determine what section is most visible in the viewport
+     * @param {HTMLElement} section - the section
+     * @return {number} - the percentage left for the element to
+     * occupy the entire viewport.
+     */
+    getOffsetFromViewport(section) {
       let s = section
       return Math.abs(
         (parseInt(s.offsetTop) -
@@ -97,7 +130,6 @@ const Homepage = Vue.component('Homepage', {
      * and then ensure it occupies the entire viewpor.
      * @return {void}
      */
-
     maybeRestoreSection() {
       let isFirstSection = this[CURRENT_SECTION] === SECTIONS[0]
 
@@ -106,55 +138,16 @@ const Homepage = Vue.component('Homepage', {
       )
       // Set current section to currently visible section upon reload
       const sectionInView = sections.find(
-        section => this.getSectionOffsetDiffFromViewport(section) < 2 // <2%
+        section => this.getOffsetFromViewport(section) < 2 // <2%
       )
 
       if (sectionInView) {
         goToSection({ node: sectionInView, focus: false })
 
-        if (!isFirstSection) this.$store.commit('headerCompact', true)
-      } else wait(100, () => resetScroll())
-    },
-
-    /**
-     * Recalculate position of the current section.
-     * @return {void}
-     */
-
-    recalcSection() {
-      // Immediately resize sections on window resize (no smooth).
-      goToSection({ node: this.getSection(), smooth: false })
-    },
-
-    /**
-     * Take in a valid section id and return the corresponding element.
-     * @param {string=} id
-     * @return {HTMLElement}
-     */
-
-    getSection(id = this.getCurrentSectionId()) {
-      const sectionElem = this.$root.$el.querySelector(`[data-section='${id}']`)
-
-      if (!sectionElem) return
-      return sectionElem
-    },
-
-    /**
-     * Go to the section after the current one.
-     * @return {void}
-     */
-
-    goToNextSection() {
-      goToSection({ modifier: 'next', node: this.getSection() })
-    },
-
-    /**
-     * Go to the section before the current one.
-     * @return {void}
-     */
-
-    goToPrevSection() {
-      goToSection({ modifier: 'previous', node: this.getSection() })
+        !isFirstSection && this.$store.commit('headerCompact', true)
+      } else {
+        wait(100, () => resetScroll())
+      }
     },
 
     /**
@@ -163,7 +156,6 @@ const Homepage = Vue.component('Homepage', {
      * @param {number} ms
      * @return {boolean}
      */
-
     scrollingLudicrouslyFast(ms = 100) {
       const curTime = new Date().getTime()
       const timeDiff = curTime - this.prevTime
@@ -177,7 +169,6 @@ const Homepage = Vue.component('Homepage', {
      * @param {TouchEvent} event
      * @return {void}
      */
-
     handleTouchstart(event) {
       if (event.touches === undefined || this.isMediumScreen) return
       this.touchY = event.touches[0].clientY
@@ -189,7 +180,6 @@ const Homepage = Vue.component('Homepage', {
      * @param {TouchEvent} event
      * @return {void}
      */
-
     handleTouchmove(event) {
       if (event.changedTouches === undefined || this.isMediumScreen) return
 
@@ -206,7 +196,6 @@ const Homepage = Vue.component('Homepage', {
      * @param {MouseEvent} event
      * @return {void}
      */
-
     handleMouseWheel(event) {
       if (this.isMediumScreen) return
 
@@ -228,7 +217,6 @@ const Homepage = Vue.component('Homepage', {
      * @param {Event} event
      * @return {void}
      */
-
     maybeScrollJack(event) {
       if (this.isMediumScreen || !event) return
 

@@ -8,8 +8,10 @@ const Cavalier = Vue.component('Cavalier', {
     return (
       <StyledCavalier data-theme={this.theme} class="cavalier">
         <div class="content">
-          {this.$slots.heading || <h1 domPropsInnerHTML={this.heading} />}
-          {this.$slots.text || <p domPropsInnerHTML={this.text} />}
+          {this.$slots.heading ||
+            (this.heading && <h1 domPropsInnerHTML={this.heading} />)}
+          {this.$slots.text ||
+            (this.text && <p domPropsInnerHTML={this.text} />)}
           {this.$slots.inContent}
         </div>
 
@@ -70,7 +72,7 @@ const StyledCavalier = styled.article`
     color: ${theme.colors.default};
 
     ${media.minWidth('>medium')`
-      width: 32vw;
+      max-width: 700px;
       font-size: 1.07em;
       transition-delay: 310ms;
 
@@ -78,7 +80,8 @@ const StyledCavalier = styled.article`
         transition-delay: 370ms;
       }
 
-      &:nth-of-type(3) {
+      &:nth-of-type(3),
+      &:nth-of-type(4)  {
         transition-delay: 420ms;
       }
     `}
