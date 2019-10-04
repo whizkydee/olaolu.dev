@@ -40,7 +40,10 @@ const GlobalStyle = injectGlobal`
     }
 
     &${`.${TABBING_CLASSNAME}`} {
-      a:focus,
+      a:focus {
+        outline-color: currentColor;
+      }
+
       .sauce__button:focus {
         outline-color: ${colors['electric-blue']};
       }
@@ -50,7 +53,6 @@ const GlobalStyle = injectGlobal`
       }
 
       #logo:focus,
-      #contact__menu a:focus,
       [data-theme='lime']:focus {
         outline-color: currentColor;
       }
@@ -81,6 +83,7 @@ const GlobalStyle = injectGlobal`
 
   a {
     text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
     transition: opacity, color, background-color, transform, border .3s;
   }
 

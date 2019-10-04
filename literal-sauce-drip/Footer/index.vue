@@ -24,7 +24,6 @@ import CrossSiteNav from '../CrossSiteNav'
 import ContactPortal from '../ContactPortal'
 
 export default {
-  name: 'Footer',
   components: {
     CrossSiteNav,
     StyledFooter,

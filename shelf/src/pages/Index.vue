@@ -1,5 +1,9 @@
 <template>
-  <Layout id="list-of-posts">
+  <Layout
+    id="list-of-posts"
+    description="Posts - Olaolu's shelf"
+    title="Articles on web development and design by Olaolu, expert front end developer and UI Engineer"
+  >
     <h1 class="page-heading"><span>/</span>shelf</h1>
     <!-- List posts -->
     <ol class="posts">
@@ -34,15 +38,10 @@
 </page-query>
 
 <script>
-import Author from '~/components/Author.vue'
 import PostCard from '~/components/PostCard.vue'
 
 export default {
-  name: 'Posts',
-  components: {
-    Author,
-    PostCard,
-  },
+  components: { PostCard },
   metaInfo: {
     title: 'Posts',
   },

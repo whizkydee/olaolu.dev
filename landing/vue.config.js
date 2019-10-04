@@ -1,4 +1,4 @@
-const { LANDING_PORT } = require('../ports')
+const { LANDING_PORT } = require('../config')
 const manifest = require('./public/manifest.json')
 
 module.exports = {

@@ -3,6 +3,7 @@ const path = require('path')
 const makeDir = require('make-dir')
 const runAll = require('npm-run-all')
 const moveFile = require('move-file')
+const { excludeFromShelfDir } = require('./config')
 
 const dist = { shelf: 'shelf/dist', landing: 'landing/dist' }
 
@@ -39,12 +40,16 @@ runAll(['build:*'], {
     for (let file of distFiles.shelf) {
       await moveFile(
         path.join(dist.shelf, file),
-        path.join(rootDist, '/shelf/', file)
+        path.join(
+          rootDist,
+          excludeFromShelfDir.includes(file) ? '/' : '/shelf/',
+          file
+        )
       )
     }
 
     console.log(
-      '✅ All done! dist files have been merged into the root dist directory.'
+      '✨ All done! dist files have been merged into the root dist directory.'
     )
   })
   .catch(err => {

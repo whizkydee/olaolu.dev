@@ -16,8 +16,7 @@ const Experience = Vue.component('Experience', {
             <p slot="text">
               I've built products for companies and businesses around the globe
               ranging from basic websites to complex solutions and enterprise
-              apps with focus on creating fast, elegant and accessible user
-              experiences.
+              apps with focus on fast, elegant and accessible user experiences.
             </p>
 
             <p slot="text">
@@ -28,10 +27,11 @@ const Experience = Vue.component('Experience', {
 
             <p slot="text">
               Before then, I led the front end engineering team at Conectar LLC
-              through building several React applications into a single powerful
-              online learning platform. I deliver quality stuff contracting with
-              these organizations internationally. I also created the Palenight
-              theme for VS Code with hundreds of thousands of downloads.
+              through building multiple React applications into a single
+              powerful online learning platform. I deliver quality stuff
+              contracting with these organizations internationally. I also
+              created the Palenight theme for VS Code which has seen hundreds of
+              thousands of downloads.
             </p>
 
             <p slot="text">
@@ -39,7 +39,7 @@ const Experience = Vue.component('Experience', {
               to work together? Please{' '}
               <a
                 href={`mailto:hello@olaolu.dev?subject=${encodeURI(
-                  "💡We'd love to have you on our team"
+                  "💡Let's Work Together on Project X"
                 )}`}
               >
                 contact me

@@ -1,5 +1,9 @@
 <template>
-  <Layout id="tag-page">
+  <Layout
+    id="tag-page"
+    :title="`Posts tagged &quot;${$page.tag.title}&quot;`"
+    :description="`All posts tagged &quot;${$page.tag.title}&quot;`"
+  >
     <h1 class="page-heading"><span>#</span> {{ $page.tag.title }}</h1>
 
     <div class="posts">
@@ -34,14 +38,10 @@ query Tag ($id: ID!) {
 </page-query>
 
 <script>
-import Author from '~/components/Author.vue'
 import PostCard from '~/components/PostCard.vue'
 
 export default {
-  components: {
-    Author,
-    PostCard,
-  },
+  components: { PostCard },
   metaInfo() {
     return {
       title: `Posts tagged "${this.$page.tag.title}"`,
@@ -49,6 +49,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-</style>

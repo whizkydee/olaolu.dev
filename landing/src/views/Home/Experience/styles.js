@@ -3,7 +3,7 @@ import { Section } from '@/components'
 import styled from 'vue-styled-components'
 
 const StyledExperience = styled(Section)`
-  background-color: ${props => props.theme.colors['electric-blue']};
+  background-color: ${({ theme }) => theme.colors['electric-blue']};
 
   @media (hover: hover) and (any-pointer: fine) {
     ${media.minWidth('>medium')`
@@ -36,7 +36,7 @@ const StyledExperience = styled(Section)`
 
     ${media.maxWidth('medium')`
       flex-direction: column;
-      margin-top: ${props => props.theme.header.height};
+      margin-top: ${({ theme }) => theme.header.height};
     `}
 
     ${media.maxWidth('portrait')`

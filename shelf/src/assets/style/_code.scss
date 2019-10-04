@@ -15,7 +15,6 @@ pre[class*="language-"] {
   line-height: 2;
   text-align: left;
 	white-space: pre;
-  font-size: .85em;
 	word-wrap: normal;
 	word-break: normal;
 	word-spacing: normal;
@@ -42,6 +41,7 @@ pre[class*='language-'] {
   overflow: auto;
   color: #d6deeb;
   margin: 0.5em 0;
+  font-size: .85em;
   background: #292d3e;
 }
 
@@ -70,6 +70,7 @@ pre[class*='language-'] ::selection,
 
 :not(pre) > code {
   padding: 0.1em;
+  font-size: .85em;
   border-radius: 0.3em;
   white-space: normal;
 }

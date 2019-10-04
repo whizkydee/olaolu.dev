@@ -40,7 +40,6 @@ const StyledSocialContact = styled.div`
 `
 
 export default {
-  name: 'SocialContact',
   data: () => ({ twitter, linkedIn, github, youtube }),
   components: { StyledSocialContact, NavItem },
 }

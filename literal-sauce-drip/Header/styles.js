@@ -19,7 +19,10 @@ const StyledHeader = css`
     padding-left: ${theme.header.padding};
     padding-right: ${theme.header.padding};
 
-    .cross__site__nav { display: none; }
+    .cross__site__nav {
+      line-height: 2.5;
+      font-size: 1.15em;
+    }
   `}
 
   ${media.maxWidth('medium')`
@@ -44,8 +47,6 @@ const StyledHeader = css`
           color: ${theme.colors.electricBlue} !important;
         }
       `}
-
-      .cross__site__nav { display: block; }
   `}
 
   &[data-compact='true'] {
@@ -220,15 +221,12 @@ const StyledHeader = css`
 
       &:before {
         top: 0;
-        left: 0;
         right: 0;
         bottom: 0;
         content: '';
-        width: 100%;
-        height: 100%;
         transition: 0.3s;
         position: absolute;
-        background-color: #ffffff;
+        background-color: #fff;
       }
 
       &[aria-expanded='false'] {
@@ -237,7 +235,27 @@ const StyledHeader = css`
         pointer-events: none;
 
         &:before {
-          clip-path: polygon(62% 0, 100% 0%, 100% 40%, 63% 40%);
+          width: 8.52em;
+          height: 8.52em;
+        }
+
+        .cross__site__nav,
+        .basic__contact ul,
+        .social__contact ul,
+        .basic__contact .say__hello {
+          opacity: 0;
+        }
+
+        .cross__site__nav {
+          transform: translateY(50px);
+        }
+
+        .basic__contact ul {
+          transform: translateY(40px);
+        }
+
+        .social__contact ul {
+          transform: translateY(30px);
         }
       }
 
@@ -251,9 +269,11 @@ const StyledHeader = css`
           `};
 
         &:before {
-          clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+          width: 100%;
+          height: 100%;
         }
 
+        .cross__site__nav,
         .basic__contact ul,
         .social__contact ul,
         .basic__contact .say__hello {
@@ -266,8 +286,7 @@ const StyledHeader = css`
         margin-top: 0.8em;
 
         .say__hello {
-          opacity: 0;
-          transition: opacity 0.2s 200ms;
+          transition: opacity 0.2s 400ms;
         }
       }
 
@@ -275,29 +294,32 @@ const StyledHeader = css`
         font-size: 0.9em;
       }
 
+      .cross__site__nav,
       .basic__contact ul,
       .social__contact ul {
-        opacity: 0;
         transition: opacity, transform 0.3s;
       }
 
-      .basic__contact ul {
-        margin: 1.2em 0 2.78em;
+      .cross__site__nav {
+        margin: 1.2em 0;
         transition-delay: 200ms;
-        transform: translateY(30px);
+      }
+
+      .basic__contact ul {
+        margin: 0 0 2.78em;
+        transition-delay: 400ms;
       }
 
       .social__contact ul {
-        transition-delay: 400ms;
-        transform: translateY(20px);
+        transition-delay: 600ms;
       }
     `}
   }
 `
 
 export default {
+  name: 'StyledHeader',
   ...styled('header', { noMenuShadow: Boolean, blue: Boolean })`
     ${StyledHeader}
   `,
-  name: 'StyledHeader',
 }

@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import { createMeta } from '../helpers'
 import theme from '@saucedrip/core/theme'
 import { ThemeProvider } from 'vue-styled-components'
 
@@ -24,8 +25,26 @@ export default {
       window.setTimeout(() => (this.ready = true), 0)
     }
   },
+
+  metaInfo() {
+    return {
+      meta: [
+        ...createMeta.urls(this.shelfURL + this.$route.fullPath, 1),
+        ...createMeta.titles(this.title, 1),
+        ...createMeta.descriptions(this.description),
+        { name: 'og:locale', content: 'en_US' },
+        { name: 'og:type', content: 'website' },
+        { name: 'twitter:card', content: 'summary' },
+        { name: 'twitter:site', content: '@mrolaolu' },
+        { name: 'twitter:creator', content: '@mrolaolu' },
+      ],
+    }
+  },
+
   props: {
     id: String,
+    title: { type: String, required: true },
+    description: { type: String, required: true },
   },
   components: { ThemeProvider },
 }
@@ -114,6 +133,7 @@ main {
     padding-bottom: 3rem;
 
     @media (max-width: 650px) {
+      padding-top: 3rem;
       padding-left: 8.9vw;
       padding-right: 8.9vw;
     }

@@ -10,10 +10,11 @@ import { mapState } from 'vuex'
 import Contact from './Contact'
 import PitchSlate from './PitchSlate'
 import Experience from './Experience'
+import cat from 'raw-loader!@/cat.txt'
 import Cornerstone from './Cornerstone'
 import Carriageway from './Carriageway'
 import { goToSection } from '@/helpers'
-import { wait, debounce, resetScroll, getEventPath } from '@mrolaolu/helpers'
+import { wait, debounce, getEventPath, elementInView } from '@mrolaolu/helpers'
 
 const Homepage = Vue.component('Homepage', {
   computed: mapState([CURRENT_SECTION]),
@@ -21,6 +22,22 @@ const Homepage = Vue.component('Homepage', {
     touchY: null,
     prevTime: new Date().getTime(),
   }),
+
+  beforeCreate() {
+    process.env.NODE_ENV === 'production' &&
+      console.log(`${cat}
+    Hey there 👋, curious!
+    You're probably wondering how cool my site is, yeah?
+    I can do even better, so, feel free to hit me up on
+    https://twitter.com/mrolaolu or hello@olaolu.dev to talk
+    about it or if your company is currently looking for someone
+    with my kind of skills ✨.
+
+    And... about your curiousity, the code for my site is publicly hosted
+    on https://github.com/whizkydee/olaolu.dev. That's a good place to start
+    for sure 🤞.
+    `)
+  },
 
   mounted() {
     const { documentElement } = document
@@ -68,6 +85,14 @@ const Homepage = Vue.component('Homepage', {
      * @return {'true' | 'false'}
      */
     isSectionHidden(id) {
+      if (!this.isMaxHeight) {
+        return (
+          (this.getSection(id) &&
+            !elementInView(this.getSection(id), { threshold: 0.5 })) ||
+          ''.toString()
+        )
+      }
+
       return (this.getCurrentSectionId() !== id).toString()
     },
 
@@ -146,7 +171,10 @@ const Homepage = Vue.component('Homepage', {
 
         !isFirstSection && this.$store.commit('headerCompact', true)
       } else {
-        wait(100, () => resetScroll())
+        wait(100, () => {
+          document.documentElement.scrollTop = 0
+          document.documentElement.scrollLeft = 0
+        })
       }
     },
 

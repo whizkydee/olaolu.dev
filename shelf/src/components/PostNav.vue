@@ -42,15 +42,22 @@ export default {
     },
 
     nextPost() {
-      return (this.computedPosts[this.curPostIndex + 1] || {}).path
+      return this.getPost(this.curPostIndex + 1)
     },
 
     prevPost() {
-      return (this.computedPosts[this.curPostIndex - 1] || {}).path
+      return this.getPost(this.curPostIndex - 1)
     },
 
     curPostIndex() {
       return this.computedPosts.findIndex(p => p && p.id === this.post.id)
+    },
+  },
+
+  methods: {
+    getPost(index) {
+      let { path } = this.computedPosts[index] || {}
+      return this.DEV ? path : '/shelf' + path
     },
   },
 }
@@ -126,6 +133,7 @@ export default {
   &__squares {
     svg {
       width: 1.5em;
+      height: 1.5em;
     }
 
     @media (max-width: 350px) {
@@ -136,5 +144,9 @@ export default {
       fill: currentColor;
     }
   }
+}
+
+.is__tabbing .post-nav__squares:focus {
+  outline-width: 2px;
 }
 </style>

@@ -37,6 +37,11 @@ const StyledHomepage = injectGlobal`
         outline-color: ${colors['electric-blue']};
       }
 
+      [data-current-section='trois'] .menu__toggle:not(.x):focus,
+      [data-current-section='footer'] .menu__toggle:not(.x):focus {
+        outline-color: ${colors.lime};
+      }
+
       #${NAVIGATION_ID} a:focus:after {
         box-shadow: 0 0 0 0.3rem rgba(24, 156, 230, 0.4);
       }

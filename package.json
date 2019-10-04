@@ -1,10 +1,15 @@
 {
   "name": "olaolu.dev",
   "private": true,
+  "version": "1.0.0",
   "workspaces": [
     "literal-sauce-drip"
   ],
-  "version": "1.0.0",
+  "homepage": "https://olaolu.dev",
+  "description": "Olaolu's personal website",
+  "repository": "https://github.com/whizkydee/olaolu.dev.git",
+  "bugs": "https://github.com/whizkydee/olaolu.dev/issues",
+  "author": "Olaolu Olawuyi <mrolaolu@gmail.com> (https://olaolu.dev)",
   "scripts": {
     "fresh": "yarn install && del dist landing/dist shelf/dist",
     "serve:shelf": "cd shelf && yarn develop",
@@ -15,15 +20,6 @@
     "build": "yarn fresh && pwd && node build.js && pwd",
     "deploy": "yarn build && netlify deploy --prod"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/whizkydee/olaolu.dev.git"
-  },
-  "author": "Olaolu Olawuyi",
-  "bugs": {
-    "url": "https://github.com/whizkydee/olaolu.dev/issues"
-  },
-  "homepage": "https://github.com/whizkydee/olaolu.dev#readme",
   "devDependencies": {
     "@vue/cli-plugin-eslint": "^3.8.0",
     "@vue/eslint-config-prettier": "4.0.1",
@@ -35,8 +31,10 @@
     "eslint-plugin-vue": "^5.0.0",
     "make-dir": "^3.0.0",
     "move-file": "^1.2.0",
+    "netlify-cli": "^2.15.0",
     "node-sass": "^4.11.0",
     "npm-run-all": "^4.1.5",
+    "raw-loader": "^3.1.0",
     "sass-loader": "^7.1.0"
   },
   "dependencies": {

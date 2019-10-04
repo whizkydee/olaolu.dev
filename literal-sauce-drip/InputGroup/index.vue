@@ -86,11 +86,7 @@ const StyledInputGroup = styled.div`
 `
 
 export default {
-  name: 'InputGroup',
-
-  data: () => ({
-    focused: false,
-  }),
+  data: () => ({ focused: false }),
 
   methods: {
     handleFocus(event) {

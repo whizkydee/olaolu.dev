@@ -5,14 +5,12 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 const path = require('path')
-const { SHELF_PORT } = require('../ports')
+const { SHELF_PORT } = require('../config')
 
 module.exports = {
   port: SHELF_PORT,
   pathPrefix: '/shelf',
   siteName: `Olaolu's shelf`,
-  siteDescription:
-    'Articles on web development and design by Olaolu, expert front end developer and UI Engineer',
 
   templates: {
     Post: '/:title',
@@ -41,8 +39,7 @@ module.exports = {
     resolve: {
       alias: {
         // Use the copy of vue installed in the root folder
-        // to avoid duplication as a result of the one gridsome
-        // depends on.
+        // to avoid duplication by the copy gridsome requires.
         vue: path.resolve(__dirname, '../node_modules/vue'),
       },
     },
@@ -51,9 +48,9 @@ module.exports = {
   transformers: {
     // Add markdown support to all file-system sources
     remark: {
+      autolinkHeadings: false,
       externalLinksTarget: '_blank',
       externalLinksRel: ['nofollow', 'noopener', 'noreferrer'],
-      anchorClassName: 'icon icon-link',
       plugins: ['@gridsome/remark-prismjs'],
     },
   },

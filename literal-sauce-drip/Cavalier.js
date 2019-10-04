@@ -72,7 +72,7 @@ const StyledCavalier = styled.article`
     color: ${theme.colors.default};
 
     ${media.minWidth('>medium')`
-      max-width: 700px;
+      max-width: 701px;
       font-size: 1.07em;
       transition-delay: 310ms;
 
