@@ -226,10 +226,14 @@ const StyledHeader = css`
         top: 0;
         right: 0;
         bottom: 0;
-        content: '';
+        left: 0;
         transition: 0.3s;
+        width: 100%;
+        height: 100%;
+        content: '';
         position: absolute;
         background-color: #fff;
+        transform-origin: top right;
       }
 
       &:not(.open) {
@@ -238,8 +242,7 @@ const StyledHeader = css`
         pointer-events: none;
 
         &:before {
-          width: 8.52em;
-          height: 8.52em;
+          transform: scaleX(.3826) scaleY(.27);
         }
 
         .cross-site-nav,
@@ -272,8 +275,7 @@ const StyledHeader = css`
           `};
 
         &:before {
-          width: 100%;
-          height: 100%;
+          transform: scale(1);
         }
 
         .cross-site-nav,
