@@ -5,9 +5,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-html {
-  scroll-behavior: smooth;
-  &[lang] { line-height: 1.7; }
+html[lang] {
+  line-height: 1.7;
 }
 
 body {

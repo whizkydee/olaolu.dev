@@ -108,13 +108,8 @@ impacted positively or negatively in conversion rates and revenue on products.
 - [Rebuilding Pinterest pages for performance resulted](https://medium.com/@Pinterest_Engineering/driving-user-growth-with-performance-improvements-cfc50dafadd7#.wwimdmkpp)
   in a 40% decrease in wait time, a _15%_ increase in SEO traffic and a _15%_
   increase in conversion rate to signup.
-- [AliExpress saw a](https://edge.akamai.com/ec/us/highlights/keynote-speakers.jsp#edge2016futureofcommercemodal)
-  [_10.5%_](https://edge.akamai.com/ec/us/highlights/keynote-speakers.jsp#edge2016futureofcommercemodal)
-  [increase in orders and a](https://edge.akamai.com/ec/us/highlights/keynote-speakers.jsp#edge2016futureofcommercemodal)
-  [_27%_](https://edge.akamai.com/ec/us/highlights/keynote-speakers.jsp#edge2016futureofcommercemodal)
-  [increase in conversion for new customers](https://edge.akamai.com/ec/us/highlights/keynote-speakers.jsp#edge2016futureofcommercemodal)
-  when they reduced load time by
-  36%[.](https://edge.akamai.com/ec/us/highlights/keynote-speakers.jsp#edge2016futureofcommercemodal)
+- [AliExpress saw a 10.5% increase in orders and a 27% increase in conversion for new customers](https://edge.akamai.com/ec/us/highlights/keynote-speakers.jsp#edge2016futureofcommercemodal)
+  when they reduced load time by 36%.
 
 **Where Poor Performance has affected the products**
 

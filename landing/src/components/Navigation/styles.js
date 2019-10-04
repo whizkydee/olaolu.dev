@@ -5,8 +5,8 @@ const StyledNavigation = styled.nav`
   display: flex;
   position: fixed;
   margin-top: -20px;
-  color: ${props => props.theme.colors['electric-blue']};
-  right: ${props => `calc(${props.theme.header.padding} + 1em)`};
+  color: ${({ theme }) => theme.colors['electric-blue']};
+  right: ${({ theme }) => `calc(${theme.header.padding} + 1em)`};
 
   ul {
     width: 0.5em;
@@ -23,6 +23,7 @@ const StyledNavigation = styled.nav`
     display: flex;
     outline: none;
     width: inherit;
+    cursor: pointer;
     min-height: 2em;
     position: relative;
     color: currentColor;

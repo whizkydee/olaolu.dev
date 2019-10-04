@@ -51,15 +51,6 @@ function createStyledSection(tagName = 'section', props = {}) {
     ${media.minWidth('>medium')`
       @media (max-height: 1199px) {
         &:not([data-section='une']) { height: 100vh; }
-
-        &[data-section="cinq"]:after {
-          content: '';
-          bottom: 0;
-          width: 100%;
-          height: 50px;
-          position: absolute;
-          background: ${props => props.theme.colors.default};
-        }
       }
 
       &[aria-hidden='true'] {
@@ -127,7 +118,6 @@ const StyledSection = createStyledSection()
 const StyledFooter = createStyledSection('footer')
 
 export default {
-  name: 'Section',
   components: {
     StyledSection,
     StyledFooter,

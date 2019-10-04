@@ -19,7 +19,7 @@ const StyledCarriageway = styled(Section)`
 
     ${media.maxWidth('xLarge')`
       max-width: unset;
-      padding: 0 ${props => `calc(${props.theme.header.padding} - 2em)`};
+      padding: 0 ${({ theme }) => `calc(${theme.header.padding} - 2em)`};
     `}
 
     ${media.minWidth('>xLarge')`
@@ -43,7 +43,7 @@ const StyledCarriageway = styled(Section)`
 
     li {
       padding: 6.95em;
-      padding-left: ${props => props.theme.header.padding};
+      padding-left: ${({ theme }) => theme.header.padding};
 
       &:not(:last-of-type) {
         border-style: solid;

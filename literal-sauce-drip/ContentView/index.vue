@@ -8,8 +8,6 @@
 import { TABBING_CLASSNAME } from '../constants'
 
 export default {
-  name: 'ContentView',
-
   mounted() {
     document.addEventListener('mousedown', this.notTabbing)
     document.addEventListener('keydown', this.prollyTabbing)

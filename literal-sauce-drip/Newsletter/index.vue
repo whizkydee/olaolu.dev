@@ -41,7 +41,6 @@ const StyledNewsletter = styled.div`
   `}
 
   .cavalier {
-    font-size: 0.87em;
     max-width: 19rem;
     margin-bottom: 1rem;
 
@@ -52,7 +51,7 @@ const StyledNewsletter = styled.div`
     h2 {
       margin: 0;
       margin-bottom: 0.2em;
-      color: ${props => props.theme.colors.electricBlue};
+      color: ${({ theme }) => theme.colors.electricBlue};
     }
   }
 
@@ -83,7 +82,6 @@ const StyledNewsletter = styled.div`
 StyledNewsletter.name = 'StyledNewsletter'
 
 export default {
-  name: 'Newsletter',
   components: { StyledNewsletter },
 }
 </script>

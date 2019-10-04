@@ -50,7 +50,6 @@ import InputGroup from '../InputGroup'
 import StyledContactForm from './styles'
 
 export default {
-  name: 'ContactForm',
   components: { StyledContactForm, InputGroup, Button },
 }
 </script>

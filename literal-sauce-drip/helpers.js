@@ -1,7 +1,7 @@
 export * from './media-helpers'
 import { wait } from '@mrolaolu/helpers'
 import { SECTION_SELECTOR, CURRENT_SECTION } from './constants'
-const { SHELF_PORT, LANDING_PORT } = require('../ports')
+const { SHELF_PORT, LANDING_PORT } = require('../config')
 
 export function goToSection(
   store,

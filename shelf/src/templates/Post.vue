@@ -1,5 +1,9 @@
 <template>
-  <Layout id="post-page">
+  <Layout
+    id="post-page"
+    :title="$page.post.title"
+    :description="$page.post.description"
+  >
     <article id="post">
       <header class="post__header">
         <PostMeta :post="$page.post" />
@@ -28,14 +32,12 @@
 </template>
 
 <script>
-import Author from '~/components/Author'
 import PostNav from '~/components/PostNav'
 import PostMeta from '~/components/PostMeta'
 import PostTags from '~/components/PostTags'
 
 export default {
   components: {
-    Author,
     PostNav,
     PostMeta,
     PostTags,
@@ -45,9 +47,14 @@ export default {
       title: this.$page.post.title,
       meta: [
         {
-          name: 'description',
-          content: this.$page.post.description,
+          name: 'twitter:card',
+          content: this.$page.post.cover_image
+            ? 'summary_large_image'
+            : 'summary',
         },
+        { name: 'og:type', content: 'article' },
+        { name: 'article:author', content: 'Olaolu Olawuyi' },
+        { name: 'article:published_time', content: this.$page.post.date },
       ],
     }
   },
@@ -158,6 +165,21 @@ query Post ($id: ID!) {
     ol {
       list-style-type: decimal;
     }
+
+    a {
+      --fading-electric: rgba(72, 49, 212, 0.05);
+
+      transition: 0.15s ease;
+      color: var(--electric-blue);
+      outline: 0.5em solid rgba(72, 49, 212, 0);
+      border-bottom: 3px solid var(--fading-electric);
+
+      &:hover {
+        border-color: transparent;
+        background: var(--fading-electric);
+        outline: 3px solid var(--fading-electric);
+      }
+    }
   }
 
   &__footer {
@@ -180,5 +202,9 @@ query Post ($id: ID!) {
 
 .post-author {
   margin-top: calc(var(--space) / 2);
+}
+
+.is__tabbing a:focus {
+  outline-width: 2px;
 }
 </style>

@@ -1,29 +1,15 @@
-# olaolu.dev
+## Homepage for olaolu.dev
 
-## Project setup
-```
-yarn install
-```
+This app is based off of [vue-cli](https://cli.vuejs.org).
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+- For development, run `yarn serve:landing`
+- For production, run `yarn build:landing`
 
-### Compiles and minifies for production
-```
-yarn run build
-```
+## License
 
-### Run your tests
-```
-yarn run test
-```
+Copyright (c) 2019-present Olaolu Olawuyi. All rights reserved.
 
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+**The code, design and articles in this repository are intellectual property of
+the person whose name is mentioned above (unless otherwise stated) and as such
+CANNOT be copied, modified, sublicensed or redistributed without permission from
+the author.**

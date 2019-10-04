@@ -6,7 +6,11 @@
     :blue="isMediumScreen && menuOpen"
     :data-blue="isMediumScreen && menuOpen"
   >
-    <a href="/" id="logo" aria-label="Logo, go to homepage.">
+    <a
+      id="logo"
+      :href="isHome ? landingURL : shelfURL"
+      :aria-label="`Logo, go to ${!isHome ? 'shelf' : 'homepage'}.`"
+    >
       <SauceDripLogo />
     </a>
 
@@ -40,8 +44,8 @@ import ContactPortal from '../ContactPortal'
 import SauceDripLogo from '../sauce-drip-logo'
 
 export default {
-  name: 'Header',
   data: () => ({ menuOpen: false }),
+
   mounted() {
     if (this.isHome) {
       this.maybeTransform()
@@ -79,7 +83,7 @@ export default {
       }
 
       if (this.menuOpen && !this.noMenuShadow && !this.isMediumScreen) {
-        wait(200, () => this.$refs.contactMenu.classList.add('shadow'))
+        wait(150, () => this.$refs.contactMenu.classList.add('shadow'))
       }
 
       if (this.isHome && !this.menuOpen) {

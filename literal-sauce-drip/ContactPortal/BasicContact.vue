@@ -28,7 +28,6 @@ const StyledBasicContact = styled.div`
 `
 
 export default {
-  name: 'BasicContact',
   components: { StyledBasicContact, NavItem },
 }
 

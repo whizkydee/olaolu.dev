@@ -88,6 +88,7 @@ function createStyledButton(tagName, props) {
       color: ${theme.colors['electric-blue']};
 
       &:before {
+        left: 0;
         right: 0;
         bottom: 0;
         width: 100%;
@@ -125,7 +126,6 @@ const StyledButtonLink = createStyledButton('a', {})
 const StyledButton = createStyledButton('button', {})
 
 export default {
-  name: 'Button',
   components: {
     BowArrow,
     StyledButton,

@@ -15,7 +15,7 @@
 
       <PostTags class="post-card__tags" :post="post" v-if="post.tags" />
 
-      <g-link class="post-card__link" :to="post.path">Link</g-link>
+      <g-link class="post-card__link color-off" :to="post.path">Link</g-link>
     </div>
   </li>
 </template>
@@ -93,11 +93,16 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0;
     overflow: hidden;
     text-indent: -9999px;
     z-index: 0;
+    transition: none;
     -webkit-tap-highlight-color: transparent;
   }
+}
+
+.is__tabbing .post-card__link:focus {
+  outline-color: transparent;
+  border-bottom: 5px solid var(--border-color);
 }
 </style>

@@ -33,11 +33,6 @@ const GlobalStyle = injectGlobal`
       min-height: 4.5em;
     }
   }
-
-  [data-current-section='trois'] .menu__toggle:not(.x):focus,
-  [data-current-section='footer'] .menu__toggle:not(.x):focus {
-    outline-color: ${colors.lime};
-  }
 `
 
 export default GlobalStyle

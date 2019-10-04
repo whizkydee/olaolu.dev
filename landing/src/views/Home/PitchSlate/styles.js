@@ -33,11 +33,11 @@ const StyledPitchSlate = styled(Section)`
 
   .primary__content {
     ${media.maxWidth('portrait')`
-      margin-top: ${props => `calc(${props.theme.header.height} + 6em)`};
+      margin-top: ${({ theme }) => `calc(${theme.header.height} + 6em)`};
     `}
 
     ${media.minWidth('>portrait')`
-      margin-top: ${props => `calc(${props.theme.header.height} + 2em)`};
+      margin-top: ${({ theme }) => `calc(${theme.header.height} + 2em)`};
     `}
 
     .visage {
@@ -46,7 +46,7 @@ const StyledPitchSlate = styled(Section)`
       `}
 
       ${media.minWidth('>medium')`
-        margin-right: ${props => `calc(${props.theme.header.padding} + 4em)`};
+        margin-right: ${({ theme }) => `calc(${theme.header.padding} + 4em)`};
       `}
     }
   }
@@ -91,7 +91,7 @@ const StyledPitchSlate = styled(Section)`
     height: 738px;
     position: absolute;
     margin-left: -6.2em;
-    top: ${props => props.theme.header.height};
+    top: ${({ theme }) => theme.header.height};
 
     @media (min-aspect-ratio: 1440/900) and (min-height: 738px)  {
       display: block;
@@ -105,7 +105,7 @@ const StyledPitchSlate = styled(Section)`
   .bottom__content {
     ${media.minWidth('>medium')`
       margin-top: auto;
-      padding-right: ${props => props.theme.header.padding};
+      padding-right: ${({ theme }) => theme.header.padding};
     `}
 
     ${media.between('>portrait', 'medium')`
@@ -125,7 +125,7 @@ const StyledPitchSlate = styled(Section)`
   .deux__points {
     line-height: 1.5;
     justify-content: space-between;
-    color: ${props => props.theme.colors.lime};
+    color: ${({ theme }) => theme.colors.lime};
 
     ${media.minWidth('>medium')`
       width: 41%;
@@ -151,10 +151,10 @@ const StyledPitchSlate = styled(Section)`
     padding: 7rem 0;
     align-items: center;
     justify-content: center;
-    background: ${props => props.theme.colors.lime};
+    background: ${({ theme }) => theme.colors.lime};
 
     path[fill='#ccf381'] {
-      fill: ${props => props.theme.colors.electricBlue};
+      fill: ${({ theme }) => theme.colors.electricBlue};
     }
   }
 `

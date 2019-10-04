@@ -5,6 +5,19 @@ import styled from 'vue-styled-components'
 const StyledContact = styled(Section)`
   position: relative;
 
+  ${media.minWidth('>medium')`
+    @media (max-height: 1199px) {
+      &:after {
+        bottom: 0;
+        content: '';
+        width: 100%;
+        height: 1em;
+        position: absolute;
+        background: ${({ theme }) => theme.colors.default};
+      }
+    }
+  `}
+
   .contact__content {
     margin-top: 2.78em;
     align-items: center;

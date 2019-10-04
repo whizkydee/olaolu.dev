@@ -91,40 +91,40 @@ in the next article on optimizing performance.
 
 Get! Post! Front end developers, we love to do that a lot: consuming APIs and
 all — it’s fun actually, being able to communicate with a web server, that’s
-power to an extent, right? Yeah, it’s amazing!
+power to an extent, right?
 
 But at the same time, it’s not — _winks_. Sending requests back and forth can be
 too much to handle. Imagine a superior at your office; you’re going to get a
 snack one day and then, he calls “hey, on your way, get me some venti iced
 skinny hazelnut macchiato, sugar-free syrup, extra shot, light ice, no whip
-coffee from Starbucks”. Extremely weird and confusing, right?
+coffee from Starbucks”. Extremely confusing, yeah?
 
 Similar can happen with your server when making requests. If you observe from
 that order, the most important thing to you is actually getting the snack for
 your satisfaction, just the way your users want to _use_ your product — they
 want to satisfy themselves. Too bad your superior took that power away from you
 LOL. You know how tough it can be to say no to that &ndash; same way the server
-can’t say no to your multiple requests. It just must handle it no matter how
+can’t say no to your multiple requests. It just must handle it regardless of how
 complicated it is.
 
 Your user might not need all the junks and stuff you’re fetching for them on the
 initial load, they need what matters, and you’re in place to answer those
-questions. Decide the things you’d want to have on your screen quickly if you
+questions. Identify the things you’d want to have on your screen quickly if you
 were the user.
 
 ### 4. Poor Code Quality
 
 Yes, bad code. Everyone likes to jump on a computer and start writing code
-endlessly, however, this excitement should leave us with the questions: “Am I
-doing it the right way?”, “Can this be done better?”, “What are the implications
-of doing it this way?”.
+endlessly, however, we shouldn't forget to ask the questions: “Am I doing it the
+right way?”, “Can this be done better?”, “What are the implications of doing it
+this way?”.
 
 A lot from the code quality can affect the performance of your site or product
 as an entity. Whether you’re building a functionality that should take 10 lines
-of code in 50 lines, or you there’s so much dead code, or you’re just writing
-the code or using a tool in a way that it’s much slower to function; they all
-impact performance. For example, having excessive unused code bumps up file
-sizes which could delay HTTP requests and in turn, affect performance.
+of code in 50 lines, there’s so much dead code, or you’re just writing the code
+or using a tool in a way that it’s much slower to function; they all impact
+performance. For example, having excessive unused code bumps up file sizes which
+could delay HTTP requests and in turn, affect performance.
 
 In fact, all the points listed previously in one way or the other fall under the
 quality of code you’re delivering and how experienced or competent a developer
@@ -132,7 +132,7 @@ is. Your JavaScript, CSS, HTML and other applications on the back end contribute
 to performance directly or indirectly.
 
 There are some industry standards and practices that should be followed while
-building your sites. Don’t write code that “just works™”. You should consider if
+building sites. Don’t write code that “just works™”. You should consider if
 you’re actually solving that problem in the most efficient way.
 
 ## 5. Shitty servers
@@ -141,8 +141,8 @@ you’re actually solving that problem in the most efficient way.
 
 Now that you have a clearer view on why performance matters and the several
 factors that influence performance, including a few instances of not-so-good
-practices. In the next article, we’ll finally talk about the strategies and
-patterns to tackle these problems.
+practices, in the final part of this series, we’ll talk about known and tested
+strategies to tackle these problems.
 
 In summary, how we build what we build matters because that’s always a huge part
 of the product no matter what it is. That’s what we serve users, and we should
