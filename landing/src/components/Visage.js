@@ -28,7 +28,8 @@ const StyledFigure = styled.figure`
     margin-top: -2.435em;
     background-color: #fff;
     background-size: cover;
-    /* background-image: url(/img/olaolu.jpg); */
+    background-position-x: center;
+    background-image: url(/img/avatar2.jpeg);
   }
 
   #avatar__shapes {

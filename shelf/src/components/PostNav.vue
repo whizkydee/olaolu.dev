@@ -5,7 +5,7 @@
       <span>Previous</span>
     </a>
 
-    <a href="/" aria-label="See all posts" class="post-nav__squares">
+    <a :href="shelfURL" aria-label="See all posts" class="post-nav__squares">
       <svg
         width="36"
         height="36"
@@ -57,7 +57,7 @@ export default {
   methods: {
     getPost(index) {
       let { path } = this.computedPosts[index] || {}
-      return this.DEV ? path : '/shelf' + path
+      return path ? (this.DEV ? path : '/shelf' + path) : null
     },
   },
 }

@@ -14,7 +14,7 @@ export default {
     document.documentElement.id = typeof this.id === 'string' && this.id
   },
 
-  destroyed() {
+  beforeDestroy() {
     document.removeEventListener('mousedown', this.notTabbing)
     document.removeEventListener('keydown', this.prollyTabbing)
   },

@@ -56,7 +56,7 @@ export default {
     document.addEventListener('mouseup', this.maybeCloseMenu)
   },
 
-  destroyed() {
+  beforeDestroy() {
     window.removeEventListener('resize', this.maybeTransform)
     window.removeEventListener('scroll', this.maybeTransform)
     document.removeEventListener('keydown', this.maybeCloseMenu)

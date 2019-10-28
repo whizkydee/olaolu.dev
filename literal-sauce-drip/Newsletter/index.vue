@@ -52,6 +52,12 @@ const StyledNewsletter = styled.div`
       margin: 0;
       margin-bottom: 0.2em;
       color: ${({ theme }) => theme.colors.electricBlue};
+
+      ${media.minWidth('medium')`
+        line-height: 1;
+        font-size: 2.3em;
+        margin-bottom: 0.5em;
+      `}
     }
   }
 
