@@ -11,10 +11,11 @@
   "bugs": "https://github.com/whizkydee/olaolu.dev/issues",
   "author": "Olaolu Olawuyi <mrolaolu@gmail.com> (https://olaolu.dev)",
   "scripts": {
-    "fresh": "yarn install && del dist landing/dist shelf/dist",
+    "flush": "del dist landing/dist shelf/dist",
+    "fresh": "yarn install && yarn flush",
     "serve:shelf": "cd shelf && yarn develop",
     "serve:landing": "cd landing && yarn serve",
-    "serve": "yarn fresh && node dev.js",
+    "serve": "yarn flush && node dev.js",
     "build:shelf": "cd shelf && pwd && yarn install && pwd && yarn build",
     "build:landing": "cd landing && pwd && yarn install && pwd && yarn build",
     "build": "yarn fresh && pwd && node build.js && pwd",
@@ -38,7 +39,8 @@
     "sass-loader": "^7.1.0"
   },
   "dependencies": {
-    "@mrolaolu/helpers": "^0.2.1",
+    "@gridsome/cli": "^0.3.1",
+    "@mrolaolu/helpers": "0.2.7",
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
     "vue-styled-components": "1.4.5",

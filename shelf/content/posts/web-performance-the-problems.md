@@ -18,7 +18,7 @@ performance; what makes sites slow.
 ## What makes sites slow?
 
 No doubt, there’s a ton of reasons why websites are slow, some of which are
-distinct to each site. I like to look at these factors from two perspectives:
+case-specific. I like to look at these factors from two perspectives:
 
 - the user perspective
 - the developer perspective

@@ -10,7 +10,6 @@ import { mapState } from 'vuex'
 import Contact from './Contact'
 import PitchSlate from './PitchSlate'
 import Experience from './Experience'
-import cat from 'raw-loader!@/cat.txt'
 import Cornerstone from './Cornerstone'
 import Carriageway from './Carriageway'
 import { goToSection } from '@/helpers'
@@ -23,9 +22,9 @@ const Homepage = Vue.component('Homepage', {
     prevTime: new Date().getTime(),
   }),
 
-  beforeCreate() {
+  async beforeCreate() {
     process.env.NODE_ENV === 'production' &&
-      console.log(`${cat}
+      console.log(`${await import('raw-loader!@/cat.txt').then(m => m.default)}
     Hey there 👋, curious!
     You're probably wondering how cool my site is, yeah?
     I can do even better, so, feel free to hit me up on
@@ -42,7 +41,7 @@ const Homepage = Vue.component('Homepage', {
   mounted() {
     const { documentElement } = document
 
-    if (!this.isMediumScreen) wait(1, this.maybeRestoreSection)
+    this.isMediumScreen || wait(1, this.maybeRestoreSection)
 
     // Set current section to the first section by default.
     this.$root.$el.dataset[CURRENT_SECTION] = this.getCurrentSectionId()
@@ -57,7 +56,7 @@ const Homepage = Vue.component('Homepage', {
     documentElement.addEventListener('mousewheel', this.handleMouseWheel, false)
   },
 
-  destroyed() {
+  beforeDestroy() {
     const { documentElement: docElem } = document
 
     window.removeEventListener('resize', this.recalcSection)
@@ -85,15 +84,11 @@ const Homepage = Vue.component('Homepage', {
      * @return {'true' | 'false'}
      */
     isSectionHidden(id) {
-      if (!this.isMaxHeight) {
-        return (
-          (this.getSection(id) &&
+      return this.isMaxHeight
+        ? (this.getCurrentSectionId() !== id).toString()
+        : (this.getSection(id) &&
             !elementInView(this.getSection(id), { threshold: 0.5 })) ||
-          ''.toString()
-        )
-      }
-
-      return (this.getCurrentSectionId() !== id).toString()
+            ''.toString()
     },
 
     /**
@@ -140,9 +135,8 @@ const Homepage = Vue.component('Homepage', {
      * occupy the entire viewport.
      */
     getOffsetFromViewport(section) {
-      let s = section
       return Math.abs(
-        (parseInt(s.offsetTop) -
+        (parseInt(section.offsetTop) -
           parseInt(
             Math.abs(document.documentElement.getBoundingClientRect().top)
           )) /
@@ -156,7 +150,7 @@ const Homepage = Vue.component('Homepage', {
      * @return {void}
      */
     maybeRestoreSection() {
-      let isFirstSection = this[CURRENT_SECTION] === SECTIONS[0]
+      let isFirstSection = this.getCurrentSectionId() === SECTIONS[0]
 
       const sections = Array.from(
         this.$root.$el.querySelectorAll(SECTION_SELECTOR)
@@ -230,11 +224,9 @@ const Homepage = Vue.component('Homepage', {
       if (!this.scrollingLudicrouslyFast()) {
         switch (Math.sign(event.deltaY)) {
           case 1:
-            this.goToNextSection()
-            break
+            return this.goToNextSection()
           case -1:
-            this.goToPrevSection()
-            break
+            return this.goToPrevSection()
         }
       }
     },
@@ -256,50 +248,43 @@ const Homepage = Vue.component('Homepage', {
 
       if (
         isFormFocused ||
-        this.scrollingLudicrouslyFast(400) ||
         (!isNavFocused &&
           !isSectionFocused &&
           event.target !== this.$el &&
           event.target !== document.body &&
           event.target !== this.$root.$el &&
-          event.target !== document.documentElement)
+          event.target !== document.documentElement) ||
+        this.scrollingLudicrouslyFast(400)
       ) {
         return
       }
 
-      const SPACEBAR = ' '
       const { getSection } = this
+      const SPACEBAR = [' ', 'Spacebar']
 
-      switch (event.key) {
-        case 'Down':
-        case SPACEBAR:
-        case 'Spacebar':
-        case 'ArrowDown':
-        case 'Right':
-        case 'PageDown':
-        case 'ArrowRight':
-          event.preventDefault()
-          this.goToNextSection()
-          break
-
-        case 'Up':
-        case 'ArrowUp':
-        case 'Left':
-        case 'PageUp':
-        case 'ArrowLeft':
-          event.preventDefault()
-          this.goToPrevSection()
-          break
-
-        case 'Home':
-          event.preventDefault()
-          goToSection({ node: getSection(SECTIONS[0]) }) // first section
-          break
-
-        case 'End':
-          event.preventDefault()
-          goToSection({ node: getSection(SECTIONS[SECTIONS.length - 1]) }) // last section
-          break
+      if (
+        [
+          'Down',
+          ...SPACEBAR,
+          'ArrowDown',
+          'Right',
+          'PageDown',
+          'ArrowRight',
+        ].includes(event.key)
+      ) {
+        event.preventDefault()
+        this.goToNextSection()
+      } else if (
+        ['Up', 'ArrowUp', 'Left', 'PageUp', 'ArrowLeft'].includes(event.key)
+      ) {
+        event.preventDefault()
+        this.goToPrevSection()
+      } else if (event.key === 'Home') {
+        event.preventDefault()
+        goToSection({ node: getSection(SECTIONS[0]) })
+      } else if (event.key === 'End') {
+        event.preventDefault()
+        goToSection({ node: getSection(SECTIONS[SECTIONS.length - 1]) })
       }
     },
   },

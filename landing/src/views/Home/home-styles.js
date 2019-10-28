@@ -1,11 +1,12 @@
-import { colors } from '@/base/theme'
-import { media, createMenuShadow } from '@/helpers'
-import { injectGlobal } from 'vue-styled-components'
 import {
   NAVIGATION_ID,
+  SECTION_SELECTOR,
   TABBING_CLASSNAME,
   NAVIGATION_BULLET,
 } from '@/constants'
+import { colors } from '@/base/theme'
+import { media, createMenuShadow } from '@/helpers'
+import { injectGlobal } from 'vue-styled-components'
 
 const StyledHomepage = injectGlobal`
   html {
@@ -107,7 +108,7 @@ const StyledHomepage = injectGlobal`
   ${media.minWidth('>medium')`
     .cavalier p { width: 32vw; }
 
-    [data-section][aria-hidden='true'] {
+    ${SECTION_SELECTOR}[aria-hidden='true'] {
       @media (hover: hover) and (any-pointer: fine) {
         &:not(.scrolled) {
           .cavalier {
