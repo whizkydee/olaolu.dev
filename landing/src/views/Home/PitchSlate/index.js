@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import StyledPitchSlate from './styles'
 import { Navigation } from '@/components'
+import { LogomarkOutline } from '@/assets'
 import { NAVIGATION_ID } from '@/constants'
-import { LogomarkOutline, AvatarShapes } from '@/assets'
 
 const PitchSlate = Vue.component('PitchSlate', {
   props: ['name'],
@@ -10,7 +10,9 @@ const PitchSlate = Vue.component('PitchSlate', {
     return (
       <StyledPitchSlate name={this.name}>
         <div class="primary__content">
-          <LogomarkOutline id="sauce__drip__outline" data-shape />
+          {!this.isMediumScreen && (
+            <LogomarkOutline id="sauce__drip__outline" data-shape />
+          )}
 
           <Cavalier
             theme="lime"
@@ -22,10 +24,7 @@ const PitchSlate = Vue.component('PitchSlate', {
             </h1>
           </Cavalier>
 
-          <figure class="visage">
-            <AvatarShapes id="avatar__shapes" data-shape />
-            <div class="face" aria-label="Photo of Olaolu." role="img" />
-          </figure>
+          {!this.isPortrait && <Visage />}
         </div>
 
         <div class="bottom__content">
@@ -35,13 +34,19 @@ const PitchSlate = Vue.component('PitchSlate', {
               Engineering.
             </li>
             <li>
-              Over 8 years of experience working with clients from about 15
-              countries.
+              Nearly a decade of experience working with clients from different
+              countries of the world.
             </li>
           </ul>
 
-          <Navigation id={NAVIGATION_ID} />
+          {!this.isMediumScreen && <Navigation id={NAVIGATION_ID} />}
         </div>
+
+        {this.isPortrait && (
+          <div class="mobile__avatar">
+            <Visage />
+          </div>
+        )}
       </StyledPitchSlate>
     )
   },

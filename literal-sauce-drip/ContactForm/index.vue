@@ -1,26 +1,27 @@
 <template>
   <StyledContactForm
     method="POST"
+    target="_blank"
     class="contact__form"
-    action="https://formspree.io/mrolaolu@gmail.com"
+    action="https://formspree.io/hello@olaolu.dev"
   >
-    <input type="hidden" name="_subject" value="Message from olaolu.me!" />
+    <input type="hidden" name="_subject" value="Message from olaolu.dev!" />
 
     <div class="form__row">
       <InputGroup
+        required
         name="name"
         id="full__name"
         label="Your Name"
         placeholder="Enter your name"
-        :inputAttrs="{ required: true }"
       />
 
       <InputGroup
+        required
         id="email"
         type="email"
         name="_replyto"
         label="Email Address"
-        :inputAttrs="{ required: true }"
         placeholder="Enter your email address"
       />
     </div>
@@ -28,10 +29,11 @@
     <div class="form__row">
       <InputGroup
         textarea
+        required
         id="message"
         name="message"
         label="Your Message"
-        :inputAttrs="{ required: true, minlength: 30 }"
+        :inputAttrs="{ minlength: 30 }"
         placeholder="Hi, I think we need a design system for our products at Company X. Are you available to work?"
       />
     </div>
@@ -48,7 +50,6 @@ import InputGroup from '../InputGroup'
 import StyledContactForm from './styles'
 
 export default {
-  name: 'ContactForm',
   components: { StyledContactForm, InputGroup, Button },
 }
 </script>

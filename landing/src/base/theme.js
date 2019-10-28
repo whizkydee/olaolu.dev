@@ -1,1 +1,1 @@
-export * from '../../../literal-sauce-drip/theme'
+export * from '@saucedrip/core/theme'

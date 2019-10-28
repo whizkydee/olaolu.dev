@@ -4,12 +4,18 @@
 // Changes here requires a server restart.
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
+const path = require('path')
+const { SHELF_PORT } = require('../config')
+
 module.exports = {
-  port: 8081,
+  port: SHELF_PORT,
   pathPrefix: '/shelf',
-  siteName: 'Gridsome Blog Starter',
-  siteDescription:
-    'A simple, hackable & minimalistic starter for Gridsome that uses Markdown for content.',
+  siteName: `Olaolu's shelf`,
+
+  templates: {
+    Post: '/:title',
+    Tag: '/tag/:id',
+  },
 
   plugins: [
     {
@@ -18,12 +24,10 @@ module.exports = {
       options: {
         typeName: 'Post',
         path: 'content/posts/*.md',
-        route: '/:slug',
         refs: {
           // Creates a GraphQL collection from 'tags' in front-matter and adds a reference.
           tags: {
             typeName: 'Tag',
-            route: '/tag/:id',
             create: true,
           },
         },
@@ -31,12 +35,22 @@ module.exports = {
     },
   ],
 
+  configureWebpack: {
+    resolve: {
+      alias: {
+        // Use the copy of vue installed in the root folder
+        // to avoid duplication by the copy gridsome requires.
+        vue: path.resolve(__dirname, '../node_modules/vue'),
+      },
+    },
+  },
+
   transformers: {
-    //Add markdown support to all file-system sources
+    // Add markdown support to all file-system sources
     remark: {
+      autolinkHeadings: false,
       externalLinksTarget: '_blank',
       externalLinksRel: ['nofollow', 'noopener', 'noreferrer'],
-      anchorClassName: 'icon icon-link',
       plugins: ['@gridsome/remark-prismjs'],
     },
   },

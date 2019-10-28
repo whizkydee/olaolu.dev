@@ -1,6 +1,6 @@
 {
-  "name": "olaolu.me",
-  "version": "0.1.0",
+  "name": "olaolu.dev",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -8,23 +8,13 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@mrolaolu/helpers": "^0.1.0",
-    "core-js": "^2.6.5",
     "register-service-worker": "^1.6.2",
-    "vue": "^2.6.10",
-    "vue-router": "^3.0.3",
-    "vue-styled-components": "^1.4.5",
-    "vuex": "^3.1.1"
+    "vue-router": "^3.0.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.8.0",
-    "@vue/cli-plugin-eslint": "^3.8.0",
     "@vue/cli-plugin-pwa": "^3.8.0",
-    "@vue/cli-service": "^3.8.0",
-    "@vue/eslint-config-prettier": "^4.0.1",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0",
+    "@vue/cli-service": "3.8.0",
     "svg-to-vue-component": "^0.3.8",
     "vue-template-compiler": "^2.6.10"
   }

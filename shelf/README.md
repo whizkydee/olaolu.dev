@@ -1,29 +1,15 @@
-# Gridsome Blog Starter
+## Shelf & other pages on olaolu.dev
 
-> A simple, hackable & minimalistic starter for Gridsome that uses Markdown for content.
+This app is based off of [gridsome](https://gridsome.org).
 
-## Features
-- Beautiful and simple design.
-- Markdown for content.
-- Tags support.
-- Dark / Light toggle.
-- CSS variables, SCSS & BEM for styling.
-- 100, 100, 100, 100 score on Google Lighthouse.
-- Uses same front-matter fields as Dev.to.
+- For development, run `yarn serve:shelf`
+- For production, run `yarn build:shelf`
 
-## Demo URL
+## License
 
-https://gridsome-starter-blog.netlify.com
+Copyright (c) 2019-present Olaolu Olawuyi. All rights reserved.
 
-## Install
-
-### 1. Install Gridsome CLI tool if you don't have
-
-`npm install --global @gridsome/cli`
-
-### 2. Install this starter
-
-1. `gridsome create my-gridsome-site https://github.com/gridsome/gridsome-starter-blog.git`
-2. `cd my-gridsome-site` to open folder
-3. `gridsome develop` to start local dev server at `http://localhost:8080`
-4. Happy coding 🎉🙌
+**The code, design and articles in this repository are intellectual property of
+the person whose name is mentioned above (unless otherwise stated) and as such
+CANNOT be copied, modified, sublicensed or redistributed without permission from
+the author.**

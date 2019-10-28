@@ -1,85 +1,163 @@
 <template>
-  <div id="app">
+  <ThemeProvider id="app" :style="!ready && 'display: none'" :theme="theme">
+    <Header id="site-header" noMenuShadow />
 
-    <header class="header">
-      <div class="header__left">
-        <Logo v-if="showLogo" /> 
-      </div>
-      
-      <div class="header__right">        
-        <ToggleTheme />
-      </div>
-    </header>
+    <ContentView :id="id">
+      <slot />
+    </ContentView>
 
-    <main class="main">
-      <slot/>
-    </main>
-
-    <footer class="footer">
-      <span class="footer__copyright">Copyright © {{ new Date().getFullYear() }}. </span>
-      <span class="footer__links">Powered by <a href="//gridsome.org"> Gridsome </a></span>
-    </footer>
-
-  </div>
+    <Footer id="site-footer" />
+  </ThemeProvider>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import ToggleTheme from '~/components/ToggleTheme.vue'
+import { createMeta } from '../helpers'
+import theme from '@saucedrip/core/theme'
+import { ThemeProvider } from 'vue-styled-components'
 
 export default {
-  props: {
-    showLogo: { default: true }
+  data: () => ({ theme, ready: process.env.NODE_ENV === 'development' }),
+  created() {
+    // hack to hide display until sauce drip
+    // components are rendered and painted
+    // onto the page.
+    if (typeof window !== 'undefined') {
+      window.setTimeout(() => (this.ready = true), 0)
+    }
   },
-  components: {
-    Logo,
-    ToggleTheme
-  }
+
+  metaInfo() {
+    return {
+      meta: [
+        ...createMeta.urls(this.shelfURL + this.$route.fullPath, 1),
+        ...createMeta.titles(this.title, 1),
+        ...createMeta.descriptions(this.description),
+        { name: 'og:locale', content: 'en_US' },
+        { name: 'og:type', content: 'website' },
+        { name: 'twitter:card', content: 'summary' },
+        { name: 'twitter:site', content: '@mrolaolu' },
+        { name: 'twitter:creator', content: '@mrolaolu' },
+      ],
+    }
+  },
+
+  props: {
+    id: String,
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+  },
+  components: { ThemeProvider },
 }
 </script>
 
 <style lang="scss">
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-height: var(--header-height);
-  padding: 0 calc(var(--space) / 2);
-  top:0;
-  z-index: 10;
+#site-header {
+  font-size: 0.72rem;
+  height: unset;
 
-  &__left,
-  &__right {
-    display: flex;
-    align-items: center;
+  &:not([data-blue='true']) {
+    position: unset;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
   }
 
-  @media screen and (min-width: 1300px) {
-    //Make header sticky for large screens
-    position: sticky;
-    width: 100%;
+  @media (max-width: 650px) {
+    padding-left: 8.8vw;
+    padding-right: 8.8vw;
+  }
+
+  @media (max-width: 700px) {
+    padding-top: 3rem;
+
+    #contact__menu {
+      font-size: 1.1rem;
+    }
+  }
+
+  @media (min-width: 651px) and (max-width: 1129px) {
+    padding-left: var(--space);
+    padding-right: var(--space);
+  }
+
+  #logo {
+    color: var(--electric-blue);
   }
 }
 
-.main {
+main {
   margin: 0 auto;
-  padding: 1.5vw 15px 0;
-}
+  padding: 0 var(--space);
+  max-width: var(--content-width);
 
-.footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: calc(var(--space) / 2);
-  text-align: center;
-  font-size: .8em;
-
-  > span {
-    margin: 0 .35em;
+  @media (max-width: 650px) {
+    margin-top: 0;
+    padding-left: 8.9vw;
+    padding-right: 8.9vw;
   }
 
-  a {
-    color: currentColor;
+  @media (min-width: 651px) {
+    font-size: 0.9rem;
+  }
+
+  @media (min-width: 1024px) {
+    margin-top: calc(var(--space) * 1.2);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.page-heading {
+  user-select: none;
+  text-align: center;
+  font-size: 1.802em;
+  margin-bottom: var(--space);
+
+  @media (max-width: 650px) {
+    display: none;
+  }
+
+  span {
+    opacity: 0.7;
+  }
+}
+
+#site-footer {
+  height: unset;
+  margin-top: 7rem;
+  font-size: 0.84rem;
+
+  .footer__content {
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+
+    @media (max-width: 650px) {
+      padding-top: 3rem;
+      padding-left: 8.9vw;
+      padding-right: 8.9vw;
+    }
+
+    @media (min-width: 651px) and (max-width: 1129px) {
+      padding-left: var(--space);
+      padding-right: var(--space);
+    }
+  }
+}
+
+#post,
+.posts {
+  p,
+  li,
+  time,
+  span:not(.token) {
+    letter-spacing: 0.011rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .posts {
+    margin-top: var(--space);
   }
 }
 </style>

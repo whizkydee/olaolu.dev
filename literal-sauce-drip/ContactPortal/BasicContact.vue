@@ -3,8 +3,8 @@
     <span class="say__hello">Say Hello</span>
 
     <ul>
-      <NavItem href="mailto:hello@olaolu.me">hello@olaolu.me</NavItem>
-      <NavItem href="tel:+234808XXXXXXX">+234 808 XXX XXXX</NavItem>
+      <NavItem href="mailto:hello@olaolu.dev">hello@olaolu.dev</NavItem>
+      <NavItem href="https://t.me/mrolaolu" external>t.me/mrolaolu</NavItem>
     </ul>
   </StyledBasicContact>
 </template>
@@ -28,7 +28,6 @@ const StyledBasicContact = styled.div`
 `
 
 export default {
-  name: 'BasicContact',
   components: { StyledBasicContact, NavItem },
 }
 

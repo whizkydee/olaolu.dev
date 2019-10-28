@@ -1,40 +1,48 @@
 import { toPx } from '@mrolaolu/helpers'
 import { css } from 'vue-styled-components'
 
-export const breakpoints = {
+export const BREAKPOINTS = {
   small: 420,
   medium: 700,
   large1: 1024,
   large2: 1440,
   xLarge: 1500,
+  portrait: 580,
 }
 
-export const deriveWidth = (width, bump = 0) => {
-  width = typeof width === 'number' ? width + bump : width
+export const breakpoints = Object.keys(BREAKPOINTS).reduce((acc, cur) => {
+  let breakpointValue = BREAKPOINTS[cur]
 
-  return typeof width === 'number'
-    ? toPx(width)
-    : width in breakpoints
-    ? toPx(breakpoints[width] + bump)
-    : width
+  return Object.assign(acc, {
+    [cur]: breakpointValue,
+    ['>' + cur]: breakpointValue + 1,
+    ['<' + cur]: breakpointValue - 1,
+  })
+}, {})
+
+export function composeValue(value) {
+  return typeof value === 'number'
+    ? toPx(value)
+    : value in breakpoints
+    ? toPx(breakpoints[value])
+    : value
 }
 
-export const minWidth = (width, p) => (...body) => css`
-  @media (min-width: ${deriveWidth(width, p)}) {
+export const minWidth = value => (...body) => css`
+  @media (min-width: ${composeValue(value)}) {
     ${css(...(body || ''))}
   }
 `
 
-export const maxWidth = (width, p) => (...body) => css`
-  @media (max-width: ${deriveWidth(width, p)}) {
+export const maxWidth = value => (...body) => css`
+  @media (max-width: ${composeValue(value)}) {
     ${css(...(body || ''))}
   }
 `
 
-export const between = ([min, p1], [max, p2]) => (...body) => css`
-  @media (min-width: ${deriveWidth(min, p1)}) and (max-width: ${deriveWidth(
-      max,
-      p2
+export const between = (min, max) => (...body) => css`
+  @media (min-width: ${composeValue(min)}) and (max-width: ${composeValue(
+      max
     )}) {
     ${css(...(body || ''))}
   }

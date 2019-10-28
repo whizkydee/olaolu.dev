@@ -1,17 +1,23 @@
 <template>
-  <Layout>
-    <h1 class="tag-title text-center space-bottom">
-      # {{ $page.tag.title }}
-    </h1>
+  <Layout
+    id="tag-page"
+    :title="`Posts tagged &quot;${$page.tag.title}&quot;`"
+    :description="`All posts tagged &quot;${$page.tag.title}&quot;`"
+  >
+    <h1 class="page-heading"><span>#</span> {{ $page.tag.title }}</h1>
 
     <div class="posts">
-      <PostCard v-for="edge in $page.tag.belongsTo.edges" :key="edge.node.id" :post="edge.node"/>
+      <PostCard
+        v-for="edge in $page.tag.belongsTo.edges"
+        :key="edge.node.id"
+        :post="edge.node"
+      />
     </div>
   </Layout>
 </template>
 
 <page-query>
-query Tag ($id: String!) {
+query Tag ($id: ID!) {
   tag (id: $id) {
     title
     belongsTo {
@@ -20,10 +26,8 @@ query Tag ($id: String!) {
           ...on Post {
             title
             path
-            date (format: "D. MMMM YYYY")
-            timeToRead
+            date (format: "D MMMM YYYY")
             description
-            coverImage (width: 860, blur: 10)
             content
           }
         }
@@ -34,21 +38,14 @@ query Tag ($id: String!) {
 </page-query>
 
 <script>
-import Author from '~/components/Author.vue'
 import PostCard from '~/components/PostCard.vue'
 
 export default {
-  components: {
-    Author,
-    PostCard
+  components: { PostCard },
+  metaInfo() {
+    return {
+      title: `Posts tagged "${this.$page.tag.title}"`,
+    }
   },
-  metaInfo: {
-    title: 'Hello, world!'
-  }
 }
 </script>
-
-<style lang="scss">
-
-</style>
-

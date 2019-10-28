@@ -8,15 +8,13 @@
 import { TABBING_CLASSNAME } from '../constants'
 
 export default {
-  name: 'ContentView',
-
-  created() {
+  mounted() {
     document.addEventListener('mousedown', this.notTabbing)
     document.addEventListener('keydown', this.prollyTabbing)
     document.documentElement.id = typeof this.id === 'string' && this.id
   },
 
-  destroyed() {
+  beforeDestroy() {
     document.removeEventListener('mousedown', this.notTabbing)
     document.removeEventListener('keydown', this.prollyTabbing)
   },

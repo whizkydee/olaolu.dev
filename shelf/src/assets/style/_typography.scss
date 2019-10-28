@@ -1,13 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400, 600');
-
 html {
   font-size: var(--base-font-size);
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  line-height: 1.45;
 }
 
 p {
@@ -18,8 +14,7 @@ h1, h2, h3, h4, h5 {
   transition: color .6s;
   color: var(--title-color);
   margin: 2.75rem 0 1rem;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
+  font-weight: bold;
   line-height: 1.15;
 }
 
@@ -37,13 +32,14 @@ h4 {font-size: 1.266em;}
 
 h5 {font-size: 1.125em;}
 
-small {font-size: 0.889em;}
+small {font-size: .889em;}
 
 strong {
-  font-weight: 600;
+  font-weight: bold;
 }
 
 blockquote {
+  margin: 0;
   border-left: 4px solid var(--border-color);
   padding-left: calc(var(--space) / 2);
   color: var(--title-color);
@@ -51,21 +47,4 @@ blockquote {
 
 em {
   font-style: italic;
-}
-
-ul { 
-  list-style-type: disc; 
-  margin-left: 1.25em;
-  margin-bottom: 1.25em;
-  li {
-    margin-bottom: .6em;
-  }
-}
-ol { 
-  list-style-type: decimal; 
-  margin-left: 1.25em;
-  margin-bottom: 1.25em;
-  li {
-    margin-bottom: .6em;
-  }
 }

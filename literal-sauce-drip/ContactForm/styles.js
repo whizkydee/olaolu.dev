@@ -1,8 +1,8 @@
+import { media } from '../helpers'
 import styled from 'vue-styled-components'
 
 const StyledContactForm = styled.form`
   display: flex;
-  min-width: 500px;
   position: relative;
   flex-direction: column;
 
@@ -12,9 +12,20 @@ const StyledContactForm = styled.form`
     position: relative;
     justify-content: space-between;
 
-    &:first-of-type .input__group {
-      width: 45%;
-    }
+    ${media.maxWidth('portrait')`
+      font-size: 1.2rem;
+      flex-direction: column;
+
+      .input__group:first-of-type {
+        margin-bottom: 3rem;
+      }
+    `}
+
+    ${media.minWidth('>portrait')`
+      &:first-of-type .input__group {
+        width: 45%;
+      }
+    `}
 
     &:not(:last-of-type) {
       margin-bottom: 3rem;
@@ -41,6 +52,10 @@ const StyledContactForm = styled.form`
     }
   }
 
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 100px #f9f9f9 inset !important;
+  }
+
   textarea,
   input:not([type='submit']):not([type='button']) {
     line-height: 1.5;
@@ -49,18 +64,23 @@ const StyledContactForm = styled.form`
     &::placeholder {
       transition: color 0.1s ease-out;
     }
-
-    &:-webkit-autofill {
-      -webkit-box-shadow: 0 0 0 100px #f9f9f9 inset !important;
-    }
   }
 
   textarea {
     height: 4.2em;
+
+    ${media.maxWidth('portrait')`
+      height: 6em;
+    `}
   }
 
   #submit__button {
     margin-top: 5.2em;
+
+    ${media.maxWidth('portrait')`
+      margin-top: 0;
+      align-self: flex-start;
+    `}
   }
 `
 

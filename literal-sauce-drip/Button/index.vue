@@ -38,11 +38,11 @@ function createStyledButton(tagName, props) {
     position: relative;
     user-select: none;
     white-space: nowrap;
-    min-width: 23.222em;
     display: inline-flex;
     letter-spacing: 0.1em;
     background: transparent;
     text-transform: uppercase;
+    -webkit-tap-highlight-color: transparent;
 
     &[data-theme='lime'] {
       .content {
@@ -80,22 +80,21 @@ function createStyledButton(tagName, props) {
       z-index: 1;
       width: 100%;
       display: flex;
-      min-height: 4.5em;
       position: relative;
       padding: 1.25em 3em;
       align-items: center;
       justify-content: center;
-      border: 0.1rem solid currentColor;
+      border: 1px solid currentColor;
       color: ${theme.colors['electric-blue']};
 
       &:before {
+        left: 0;
         right: 0;
         bottom: 0;
-        width: 101%;
+        width: 100%;
         top: -0.1em;
         content: '';
         z-index: -1;
-        left: -0.15em;
         height: 108%;
         position: absolute;
         background: currentColor;
@@ -127,7 +126,6 @@ const StyledButtonLink = createStyledButton('a', {})
 const StyledButton = createStyledButton('button', {})
 
 export default {
-  name: 'Button',
   components: {
     BowArrow,
     StyledButton,

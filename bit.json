@@ -1,7 +1,0 @@
-{
-    "env": {
-        "compiler": "bit.envs/bundlers/vue@2.5.1"
-    },
-    "componentsDefaultDirectory": "literal-sauce-drip/{name}",
-    "packageManager": "yarn"
-}

@@ -2,14 +2,15 @@ import Vue from 'vue'
 import { ThemeProvider } from 'vue-styled-components'
 
 // global styles
-import '@/base/normalize-css'
+import '@saucedrip/core/normalize-css'
 import '@/base/global-styles'
+
 import { mapState } from 'vuex'
 import { theme } from '@/base/theme'
-import { CURRENT_SECTION_KEY, HEADER_COMPACT } from './constants'
+import { CURRENT_SECTION, HEADER_COMPACT } from './constants'
 
 const App = Vue.component('App', {
-  computed: mapState([CURRENT_SECTION_KEY, HEADER_COMPACT]),
+  computed: mapState([CURRENT_SECTION, HEADER_COMPACT]),
 
   render() {
     return (
@@ -18,13 +19,12 @@ const App = Vue.component('App', {
           Skip to navigation
         </a>
         <Header
-          isHome
           store={this.$store}
-          compact={this.isHeaderCompact}
           currentSection={this.currentSection}
+          compact={this.isPortrait ? false : this.isHeaderCompact}
         />
         <router-view />
-        <Footer isHome currentSection={this.currentSection} />
+        <Footer currentSection={this.currentSection} />
       </ThemeProvider>
     )
   },
