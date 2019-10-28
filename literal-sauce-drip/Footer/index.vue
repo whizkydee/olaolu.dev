@@ -7,12 +7,7 @@
     <div class="footer__content">
       <div class="footer__main">
         <ContactPortal.Basic />
-
-        <ul>
-          <NavItem href="/work">My Work</NavItem>
-          <NavItem href="/desk">My Desk</NavItem>
-          <NavItem href="/resume.pdf">My Rèsumè</NavItem>
-        </ul>
+        <CrossSiteNav />
       </div>
 
       <div class="footer__bottom">
@@ -24,21 +19,19 @@
 </template>
 
 <script>
-import NavItem from '../NavItem'
 import StyledFooter from './styles'
+import CrossSiteNav from '../CrossSiteNav'
 import ContactPortal from '../ContactPortal'
 
 export default {
-  name: 'Footer',
   components: {
-    NavItem,
+    CrossSiteNav,
     StyledFooter,
     'ContactPortal.Basic': ContactPortal.Basic,
     'ContactPortal.Social': ContactPortal.Social,
   },
   props: {
     currentSection: String,
-    isHome: { type: Boolean, default: false },
   },
 }
 </script>

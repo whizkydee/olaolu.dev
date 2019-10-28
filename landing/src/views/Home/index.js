@@ -1,16 +1,9 @@
 import Vue from 'vue'
 import {
-  wait,
-  toPx,
-  resetScroll,
-  getEventPath,
-  matchesQuery,
-} from '@mrolaolu/helpers'
-import {
   SECTIONS,
   NAVIGATION_ID,
   SECTION_SELECTOR,
-  CURRENT_SECTION_KEY,
+  CURRENT_SECTION,
 } from '@/constants'
 import './home-styles'
 import { mapState } from 'vuex'
@@ -19,33 +12,41 @@ import PitchSlate from './PitchSlate'
 import Experience from './Experience'
 import Cornerstone from './Cornerstone'
 import Carriageway from './Carriageway'
-import { goToSection, breakpoints } from '@/helpers'
-
-const maybeMediumScreen = () =>
-  matchesQuery(`(max-width: ${toPx(breakpoints.medium)})`)
+import { goToSection } from '@/helpers'
+import { wait, debounce, getEventPath, elementInView } from '@mrolaolu/helpers'
 
 const Homepage = Vue.component('Homepage', {
+  computed: mapState([CURRENT_SECTION]),
   data: () => ({
     touchY: null,
     prevTime: new Date().getTime(),
-    isMediumScreen: maybeMediumScreen(),
   }),
 
-  computed: {
-    ...mapState([CURRENT_SECTION_KEY]),
+  async beforeCreate() {
+    process.env.NODE_ENV === 'production' &&
+      console.log(`${await import('raw-loader!@/cat.txt').then(m => m.default)}
+    Hey there 👋, curious!
+    You're probably wondering how cool my site is, yeah?
+    I can do even better, so, feel free to hit me up on
+    https://twitter.com/mrolaolu or hello@olaolu.dev to talk
+    about it or if your company is currently looking for someone
+    with my kind of skills ✨.
+
+    And... about your curiousity, the code for my site is publicly hosted
+    on https://github.com/whizkydee/olaolu.dev. That's a good place to start
+    for sure 🤞.
+    `)
   },
 
   mounted() {
     const { documentElement } = document
 
-    if (!this.isMediumScreen) {
-      wait(1, this.maybeRestoreSection)
-    }
+    this.isMediumScreen || wait(1, this.maybeRestoreSection)
 
     // Set current section to the first section by default.
-    this.$root.$el.dataset[CURRENT_SECTION_KEY] = this.getCurrentSectionId()
+    this.$root.$el.dataset[CURRENT_SECTION] = this.getCurrentSectionId()
 
-    window.addEventListener('resize', this.recalcSection)
+    window.addEventListener('resize', debounce(this.recalcSection, 200))
     document.addEventListener('keydown', this.maybeScrollJack)
     document.addEventListener('touchstart', this.handleTouchstart)
     document.addEventListener('touchmove', this.handleTouchmove, {
@@ -55,17 +56,13 @@ const Homepage = Vue.component('Homepage', {
     documentElement.addEventListener('mousewheel', this.handleMouseWheel, false)
   },
 
-  destroyed() {
-    const { documentElement } = document
+  beforeDestroy() {
+    const { documentElement: docElem } = document
 
     window.removeEventListener('resize', this.recalcSection)
     document.removeEventListener('keydown', this.maybeScrollJack)
-    documentElement.removeEventListener('wheel', this.handleMouseWheel, false)
-    documentElement.removeEventListener(
-      'mousewheel',
-      this.handleMouseWheel,
-      false
-    )
+    docElem.removeEventListener('wheel', this.handleMouseWheel, false)
+    docElem.removeEventListener('mousewheel', this.handleMouseWheel, false)
     document.removeEventListener('touchstart', this.handleTouchstart)
     document.removeEventListener('touchmove', this.handleTouchmove, {
       passive: false,
@@ -77,9 +74,8 @@ const Homepage = Vue.component('Homepage', {
      * Get the ID of the current section
      * @return {string}
      */
-
     getCurrentSectionId() {
-      return this[CURRENT_SECTION_KEY]
+      return this[CURRENT_SECTION]
     },
 
     /**
@@ -87,21 +83,60 @@ const Homepage = Vue.component('Homepage', {
      * @param {string} id - the id of the section to check
      * @return {'true' | 'false'}
      */
-
     isSectionHidden(id) {
-      return (this.getCurrentSectionId() !== id).toString()
+      return this.isMaxHeight
+        ? (this.getCurrentSectionId() !== id).toString()
+        : (this.getSection(id) &&
+            !elementInView(this.getSection(id), { threshold: 0.5 })) ||
+            ''.toString()
     },
 
     /**
-     * Determine what element is most visible in the viewport
-     * @param {HTMLElement} s - the section
-     * @return {number} - the percentage by which is left of the element
-     * to occupy the entire viewport.
+     * Recalculate position of the current section.
+     * @return {void}
      */
+    recalcSection() {
+      // Immediately resize sections on window resize (no smooth).
+      goToSection({ node: this.getSection(), smooth: false })
+    },
 
-    getSectionOffsetDiffFromViewport(s) {
+    /**
+     * Return the corresponding element for a valid section id.
+     * @param {string=} id
+     * @return {HTMLElement}
+     */
+    getSection(id = this.getCurrentSectionId()) {
+      const sectionElem = this.$root.$el.querySelector(`[data-section='${id}']`)
+
+      if (!sectionElem) return
+      return sectionElem
+    },
+
+    /**
+     * Go to the section after the current one.
+     * @return {void}
+     */
+    goToNextSection() {
+      goToSection({ modifier: 'next', node: this.getSection() })
+    },
+
+    /**
+     * Go to the section before the current one.
+     * @return {void}
+     */
+    goToPrevSection() {
+      goToSection({ modifier: 'previous', node: this.getSection() })
+    },
+
+    /**
+     * Determine what section is most visible in the viewport
+     * @param {HTMLElement} section - the section
+     * @return {number} - the percentage left for the element to
+     * occupy the entire viewport.
+     */
+    getOffsetFromViewport(section) {
       return Math.abs(
-        (parseInt(s.offsetTop) -
+        (parseInt(section.offsetTop) -
           parseInt(
             Math.abs(document.documentElement.getBoundingClientRect().top)
           )) /
@@ -114,63 +149,27 @@ const Homepage = Vue.component('Homepage', {
      * and then ensure it occupies the entire viewpor.
      * @return {void}
      */
-
     maybeRestoreSection() {
-      const sections = Array.from(document.querySelectorAll(SECTION_SELECTOR))
+      let isFirstSection = this.getCurrentSectionId() === SECTIONS[0]
+
+      const sections = Array.from(
+        this.$root.$el.querySelectorAll(SECTION_SELECTOR)
+      )
       // Set current section to currently visible section upon reload
       const sectionInView = sections.find(
-        section => this.getSectionOffsetDiffFromViewport(section) < 2 // <2%
+        section => this.getOffsetFromViewport(section) < 2 // <2%
       )
 
-      if (!sectionInView) wait(100, () => resetScroll())
-      else {
-        goToSection([sectionInView])
-        const firstSection = this[CURRENT_SECTION_KEY] === SECTIONS[0]
-        if (!firstSection) this.$store.commit('headerCompact', true)
+      if (sectionInView) {
+        goToSection({ node: sectionInView, focus: false })
+
+        !isFirstSection && this.$store.commit('headerCompact', true)
+      } else {
+        wait(100, () => {
+          document.documentElement.scrollTop = 0
+          document.documentElement.scrollLeft = 0
+        })
       }
-    },
-
-    /**
-     * Recalculate position of the current section.
-     * @return {void}
-     */
-
-    recalcSection() {
-      this.isMediumScreen = maybeMediumScreen()
-
-      // Immediately resize sections on window resize (no smooth).
-      goToSection([this.getSection()], false)
-    },
-
-    /**
-     * Take in a valid section id and return the corresponding element.
-     * @param {string=} id
-     * @return {HTMLElement}
-     */
-
-    getSection(id = this.getCurrentSectionId()) {
-      const sectionElem = document.querySelector(`[data-section='${id}']`)
-
-      if (!sectionElem) return
-      return sectionElem
-    },
-
-    /**
-     * Go to the section after the current one.
-     * @return {void}
-     */
-
-    goToNextSection() {
-      goToSection([this.getSection(), 'next'])
-    },
-
-    /**
-     * Go to the section before the current one.
-     * @return {void}
-     */
-
-    goToPrevSection() {
-      goToSection([this.getSection(), 'previous'])
     },
 
     /**
@@ -179,7 +178,6 @@ const Homepage = Vue.component('Homepage', {
      * @param {number} ms
      * @return {boolean}
      */
-
     scrollingLudicrouslyFast(ms = 100) {
       const curTime = new Date().getTime()
       const timeDiff = curTime - this.prevTime
@@ -193,9 +191,8 @@ const Homepage = Vue.component('Homepage', {
      * @param {TouchEvent} event
      * @return {void}
      */
-
     handleTouchstart(event) {
-      if (typeof event.touches === 'undefined' || !this.isMediumScreen) return
+      if (event.touches === undefined || this.isMediumScreen) return
       this.touchY = event.touches[0].clientY
     },
 
@@ -205,10 +202,8 @@ const Homepage = Vue.component('Homepage', {
      * @param {TouchEvent} event
      * @return {void}
      */
-
     handleTouchmove(event) {
-      if (typeof event.changedTouches === 'undefined' || !this.isMediumScreen)
-        return
+      if (event.changedTouches === undefined || this.isMediumScreen) return
 
       const curTouchY = event.changedTouches[0].clientY
       if (!this.scrollingLudicrouslyFast()) {
@@ -223,27 +218,28 @@ const Homepage = Vue.component('Homepage', {
      * @param {MouseEvent} event
      * @return {void}
      */
-
     handleMouseWheel(event) {
+      if (this.isMediumScreen) return
+
       if (!this.scrollingLudicrouslyFast()) {
         switch (Math.sign(event.deltaY)) {
           case 1:
-            this.goToNextSection()
-            break
+            return this.goToNextSection()
           case -1:
-            this.goToPrevSection()
-            break
+            return this.goToPrevSection()
         }
       }
     },
 
     /**
-     * Hijack scrolling
+     * Hijack scrolling.
+     * Capture certain
      * @param {Event} event
      * @return {void}
      */
-
     maybeScrollJack(event) {
+      if (this.isMediumScreen || !event) return
+
       const inEventPath = cond => getEventPath(event).some(cond)
 
       const isNavFocused = inEventPath(o => o && o.id === NAVIGATION_ID)
@@ -257,45 +253,38 @@ const Homepage = Vue.component('Homepage', {
           event.target !== this.$el &&
           event.target !== document.body &&
           event.target !== this.$root.$el &&
-          event.target !== document.documentElement)
+          event.target !== document.documentElement) ||
+        this.scrollingLudicrouslyFast(400)
       ) {
         return
       }
 
-      const SPACEBAR = ' '
+      const { getSection } = this
+      const SPACEBAR = [' ', 'Spacebar']
 
-      if (!this.scrollingLudicrouslyFast(500)) {
-        switch (event.key) {
-          case 'Down':
-          case SPACEBAR:
-          case 'Spacebar':
-          case 'ArrowDown':
-          case 'Right':
-          case 'PageDown':
-          case 'ArrowRight':
-            event.preventDefault()
-            this.goToNextSection()
-            break
-
-          case 'Up':
-          case 'ArrowUp':
-          case 'Left':
-          case 'PageUp':
-          case 'ArrowLeft':
-            event.preventDefault()
-            this.goToPrevSection()
-            break
-
-          case 'Home':
-            event.preventDefault()
-            goToSection([this.getSection(SECTIONS[0])]) // first section
-            break
-
-          case 'End':
-            event.preventDefault()
-            goToSection([this.getSection(SECTIONS[SECTIONS.length - 1])]) // last section
-            break
-        }
+      if (
+        [
+          'Down',
+          ...SPACEBAR,
+          'ArrowDown',
+          'Right',
+          'PageDown',
+          'ArrowRight',
+        ].includes(event.key)
+      ) {
+        event.preventDefault()
+        this.goToNextSection()
+      } else if (
+        ['Up', 'ArrowUp', 'Left', 'PageUp', 'ArrowLeft'].includes(event.key)
+      ) {
+        event.preventDefault()
+        this.goToPrevSection()
+      } else if (event.key === 'Home') {
+        event.preventDefault()
+        goToSection({ node: getSection(SECTIONS[0]) })
+      } else if (event.key === 'End') {
+        event.preventDefault()
+        goToSection({ node: getSection(SECTIONS[SECTIONS.length - 1]) })
       }
     },
   },

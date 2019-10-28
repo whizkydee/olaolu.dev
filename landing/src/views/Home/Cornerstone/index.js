@@ -17,7 +17,7 @@ const Cornerstone = Vue.component('Cornerstone', {
               I'm probably not the typical designer positioned behind an
               Illustrator artboard adjusting pixels, but I design. Immersed in
               stylesheets tweaking font sizes and contemplating layouts is where
-              you'll find me (~_^). I do my best to create fluent user
+              you'll find me (~_^). I'm committed to creating fluent user
               experiences while staying fashionable.
             </p>
 

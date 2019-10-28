@@ -9,90 +9,74 @@
 </template>
 
 <script>
-import { NAVIGATION_BULLET } from '../constants'
-import { media, breakpoints } from '../helpers'
+import { media } from '../helpers'
 import styled, { css } from 'vue-styled-components'
 
 function createStyledSection(tagName = 'section', props = {}) {
   const styles = css`
     display: flex;
-    outline: none;
     position: relative;
     align-items: center;
     justify-content: center;
 
-    ${media.maxWidth('medium')`
-      &:not([data-section='une']) {
-        min-height: 100vh;
-        margin-bottom: 10rem;
-      }
-    `}
+    &:focus {
+      outline: none;
+    }
 
-    ${media.minWidth('medium', 1)`
-      &:not([data-section='une']) {
-        height: 100vh;
+    &:not([data-section='footer']) {
+      ${media.maxWidth('portrait')`
+        margin-bottom: 10rem;
+      `}
+    }
+
+    &:not([data-section='une']):not([data-section='footer']) {
+      ${media.between('>portrait', 'medium')`
+        &:not([data-section='trois']) {
+          padding-top: 15vh;
+          padding-bottom: 15vh;
+        }
+
+        &[data-section='quatre'] {
+          padding-bottom: 0;
+        }
+      `}
+
+      @media (max-height: 1199px) {
+        ${media.minWidth('>medium')`
+          min-height: 100vh;
+        `}
+      }
+    }
+
+    ${media.minWidth('>medium')`
+      @media (max-height: 1199px) {
+        &:not([data-section='une']) { height: 100vh; }
       }
 
       &[aria-hidden='true'] {
-        /* prevents hidden sections from being highlighted */
+        /* prevent hidden sections from being highlighted */
+        overflow: hidden;
         user-select: none;
-
-        &:not(.scrolled) {
-          .cavalier {
-            p,
-            h1 {
-              opacity: 0;
-            }
-
-            p {
-              transform: translate3d(0, 20px, 0);
-
-              &:nth-of-type(3) {
-                transform: translate3d(0, 15px, 0);
-              }
-            }
-
-            h1 {
-              transform: translate3d(0, 50px, 0);
-            }
-          }
-        }
-
-        /*
-          Prevent focusable elements in hidden sections
-          from receiving focus via tabbing from an active section.
-        */
-        [tabindex],
-        input:not([disabled]),
-        select:not([disabled]),
-        button:not([disabled]),
-        textarea:not([disabled]),
-        ${`a[href]:not(.${NAVIGATION_BULLET})`} {
-          &:not([tabindex='-1']) {
-            visibility: hidden;
-            transition: visibility 400ms;
-          }
-        }
       }
     `}
 
-    @media (min-width: ${breakpoints.medium}px) and (max-width: 768px) {
+    @media (min-height: 1200px) {
       &:not([data-section='une']) {
-        height: 70vh;
+        padding-top: 10rem;
+        padding-bottom: 10rem;
       }
     }
 
     &[aria-hidden='false'] {
       z-index: 3;
       user-select: auto;
-      scroll-snap-align: start;
+
+      ${media.minWidth('>mediium')`
+        scroll-snap-align: start;
+      `}
 
       .cavalier {
-        p,
-        h1 {
-          opacity: 1;
-          transform: translate3d(0, 0, 0);
-        }
+        p, h1 { opacity: 1; transform: translate3d(0, 0, 0); }
       }
     }
 
@@ -100,17 +84,24 @@ function createStyledSection(tagName = 'section', props = {}) {
       width: 100%;
       display: flex;
 
-      ${media.minWidth('xLarge', 1)`
-        padding: 0 8em;
+      ${media.maxWidth('portrait')`
+        padding: 0 15vw;
       `}
 
-      ${media.maxWidth('medium')`
-        padding: 0 5em;
+      ${media.between('>portrait', 'medium')`
+        padding: 0 7em;
       `}
 
-      ${media.between(['medium', 1], ['xLarge'])`
+      ${media.minWidth('>medium')`
         padding: 0 10em;
+      `}
+
+      ${media.between('>medium', 'xLarge')`
         max-width: 1500px;
+      `}
+
+      ${media.minWidth('>xLarge')`
+        max-width: 1800px;
       `}
     }
   `
@@ -127,7 +118,6 @@ const StyledSection = createStyledSection()
 const StyledFooter = createStyledSection('footer')
 
 export default {
-  name: 'Section',
   components: {
     StyledSection,
     StyledFooter,

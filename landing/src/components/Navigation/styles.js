@@ -1,32 +1,29 @@
-import { media } from '@/helpers'
 import styled from 'vue-styled-components'
 
 const StyledNavigation = styled.nav`
   z-index: 999;
-  display: none;
+  display: flex;
   position: fixed;
   margin-top: -20px;
-  color: ${props => props.theme.colors['electric-blue']};
-  right: ${props => `calc(${props.theme.header.padding} + 1em)`};
-
-  ${media.minWidth('medium', 1)`
-    display: flex;
-  `}
+  color: ${({ theme }) => theme.colors['electric-blue']};
+  right: ${({ theme }) => `calc(${theme.header.padding} + 1em)`};
 
   ul {
-    width: 0.4em;
+    width: 0.5em;
     display: flex;
     flex-direction: column;
   }
 
   li {
-    width: 100%;
+    width: 0.4em;
   }
 
   a {
+    width: 100%;
     display: flex;
     outline: none;
     width: inherit;
+    cursor: pointer;
     min-height: 2em;
     position: relative;
     color: currentColor;
@@ -45,12 +42,11 @@ const StyledNavigation = styled.nav`
       transition: transform 0.2s 100ms;
     }
 
-    &[aria-current='page']:after {
-      width: 0.76em;
-      height: 0.76em;
-      margin: 0 -3px;
-      transform: rotate(0);
-      background: transparent;
+    &[aria-current='page'] {
+      &:after {
+        transform: rotate(0) scale(2);
+        background: transparent;
+      }
     }
   }
 `

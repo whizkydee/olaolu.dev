@@ -1,8 +1,11 @@
-const path = require('path')
+const { LANDING_PORT } = require('../config')
+const manifest = require('./public/manifest.json')
 
 module.exports = {
   productionSourceMap: false,
+  devServer: { port: LANDING_PORT },
 
+  pwa: { themeColor: manifest.theme_color },
   chainWebpack(config) {
     // Only convert .svg files that are imported by these files as Vue component
     const FILE_RE = /\.(vue|js|ts|svg)$/
@@ -20,13 +23,5 @@ module.exports = {
       .end()
       .use('svg-to-vue-component')
       .loader('svg-to-vue-component/loader')
-  },
-
-  configureWebpack: {
-    resolve: {
-      alias: {
-        '@saucedrip': path.resolve('../literal-sauce-drip/'),
-      },
-    },
   },
 }

@@ -1,29 +1,49 @@
 {
-  "name": "olaolu.me",
+  "name": "olaolu.dev",
   "private": true,
   "version": "1.0.0",
+  "workspaces": [
+    "literal-sauce-drip"
+  ],
+  "homepage": "https://olaolu.dev",
+  "description": "Olaolu's personal website",
+  "repository": "https://github.com/whizkydee/olaolu.dev.git",
+  "bugs": "https://github.com/whizkydee/olaolu.dev/issues",
+  "author": "Olaolu Olawuyi <mrolaolu@gmail.com> (https://olaolu.dev)",
   "scripts": {
-    "fresh": "del dist landing/dist shelf/dist",
+    "flush": "del dist landing/dist shelf/dist",
+    "fresh": "yarn install && yarn flush",
     "serve:shelf": "cd shelf && yarn develop",
     "serve:landing": "cd landing && yarn serve",
-    "serve": "yarn fresh && node dev.js",
+    "serve": "yarn flush && node dev.js",
     "build:shelf": "cd shelf && pwd && yarn install && pwd && yarn build",
     "build:landing": "cd landing && pwd && yarn install && pwd && yarn build",
-    "build": "yarn fresh && pwd && node build.js && pwd"
+    "build": "yarn fresh && pwd && node build.js && pwd",
+    "deploy": "yarn build && netlify deploy --prod"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/whizkydee/olaolu.me.git"
-  },
-  "author": "Olaolu Olawuyi",
-  "bugs": {
-    "url": "https://github.com/whizkydee/olaolu.me/issues"
-  },
-  "homepage": "https://github.com/whizkydee/olaolu.me#readme",
   "devDependencies": {
+    "@vue/cli-plugin-eslint": "^3.8.0",
+    "@vue/eslint-config-prettier": "4.0.1",
+    "babel-eslint": "^10.0.1",
+    "cache-loader": "^4.1.0",
     "del-cli": "^2.0.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-prettier": "3.1.0",
+    "eslint-plugin-vue": "^5.0.0",
     "make-dir": "^3.0.0",
     "move-file": "^1.2.0",
-    "npm-run-all": "^4.1.5"
+    "netlify-cli": "^2.15.0",
+    "node-sass": "^4.11.0",
+    "npm-run-all": "^4.1.5",
+    "raw-loader": "^3.1.0",
+    "sass-loader": "^7.1.0"
+  },
+  "dependencies": {
+    "@gridsome/cli": "^0.3.1",
+    "@mrolaolu/helpers": "0.2.7",
+    "core-js": "^2.6.5",
+    "vue": "^2.6.10",
+    "vue-styled-components": "1.4.5",
+    "vuex": "^3.1.1"
   }
 }

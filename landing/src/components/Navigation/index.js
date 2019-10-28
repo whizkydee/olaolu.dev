@@ -1,17 +1,22 @@
 import Vue from 'vue'
 import StyledNavigation from './styles'
 import { goToSection } from '@/helpers'
-import { NAVIGATION_BULLET, CURRENT_SECTION_KEY } from '@/constants'
+import { NAVIGATION_BULLET, CURRENT_SECTION } from '@/constants'
 
 const Navigation = Vue.component('Navigation', {
   methods: {
-    jumpToSection: event => {
-      let id = event.target.getAttribute('href').slice(1)
-      goToSection([document.querySelector(`[data-section='${id}']`)])
+    jumpToSection(event) {
+      if (!event || (event && !event.target)) return
+
+      const targetSection = this.$root.$el.querySelector(
+        `[data-section='${event.target.getAttribute('href').slice(1)}']`
+      )
+
+      goToSection({ node: targetSection })
     },
 
-    isActiveWhen(sectionId) {
-      return this.$store.state[CURRENT_SECTION_KEY] === sectionId && 'page'
+    isCurrent(sectionId) {
+      return this.$store.state[CURRENT_SECTION] === sectionId && 'page'
     },
   },
 
@@ -23,40 +28,40 @@ const Navigation = Vue.component('Navigation', {
             href="#une"
             clickFn={this.jumpToSection}
             className={NAVIGATION_BULLET}
-            ariaLabel="Go to section 1, Pitch."
-            ariaCurrent={this.isActiveWhen('une')}
+            ariaCurrent={this.isCurrent('une')}
+            ariaLabel="Go to first section. Pitch."
           />
 
           <NavItem
             href="#deux"
             clickFn={this.jumpToSection}
             className={NAVIGATION_BULLET}
-            ariaCurrent={this.isActiveWhen('deux')}
-            ariaLabel="Go to section 2, Cornerstone."
+            ariaCurrent={this.isCurrent('deux')}
+            ariaLabel="Go to second section. Cornerstone."
           />
 
           <NavItem
             href="#trois"
             clickFn={this.jumpToSection}
             className={NAVIGATION_BULLET}
-            ariaLabel="Go to section 3, Experience."
-            ariaCurrent={this.isActiveWhen('trois')}
+            ariaCurrent={this.isCurrent('trois')}
+            ariaLabel="Go to third section. Experience."
           />
 
           <NavItem
             href="#quatre"
             clickFn={this.jumpToSection}
             className={NAVIGATION_BULLET}
-            ariaLabel="Go to section 4, Carriageway."
-            ariaCurrent={this.isActiveWhen('quatre')}
+            ariaCurrent={this.isCurrent('quatre')}
+            ariaLabel="Go to fourth section. Carriageway."
           />
 
           <NavItem
             href="#cinq"
             clickFn={this.jumpToSection}
             className={NAVIGATION_BULLET}
-            ariaLabel="Go to section 5, Contact."
-            ariaCurrent={this.isActiveWhen('cinq')}
+            ariaCurrent={this.isCurrent('cinq')}
+            ariaLabel="Go to fifth section. Contact."
           />
         </ul>
       </StyledNavigation>

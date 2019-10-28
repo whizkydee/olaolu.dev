@@ -1,65 +1,73 @@
 <template>
-  <Layout>
-    <div class="post-title">
-      <h1 class="post-title__text">
-        {{ $page.post.title }}
-      </h1>
-      
-      <PostMeta :post="$page.post" />
+  <Layout
+    id="post-page"
+    :title="$page.post.title"
+    :description="$page.post.description"
+  >
+    <article id="post">
+      <header class="post__header">
+        <PostMeta :post="$page.post" />
 
-    </div>
-    
-    <div class="post content-box">
-      <div class="post__header">
-        <g-image alt="Cover image" v-if="$page.post.coverImage" :src="$page.post.coverImage" />
+        <h1 class="post__header-title">{{ $page.post.title }}</h1>
+      </header>
+
+      <div class="post__cover_image" v-if="$page.post.cover_image">
+        <g-image
+          alt="Cover image"
+          v-if="$page.post.cover_image"
+          :src="$page.post.cover_image"
+        />
       </div>
 
       <div class="post__content" v-html="$page.post.content" />
 
-      <div class="post__footer">
+      <footer class="post__footer">
         <PostTags :post="$page.post" />
-      </div>
-    </div>
+        <PostNav :post="$page.post" :posts="$page.posts" />
+      </footer>
 
-    <div class="post-comments">
-      <!-- Add comment widgets here -->
-    </div>
-
-    <Author class="post-author" />
+      <Newsletter />
+    </article>
   </Layout>
 </template>
 
 <script>
+import PostNav from '~/components/PostNav'
 import PostMeta from '~/components/PostMeta'
 import PostTags from '~/components/PostTags'
-import Author from '~/components/Author.vue'
 
 export default {
   components: {
-    Author,
+    PostNav,
     PostMeta,
-    PostTags
+    PostTags,
   },
-  metaInfo () {
+  metaInfo() {
     return {
       title: this.$page.post.title,
       meta: [
         {
-          name: 'description',
-          content: this.$page.post.description
-        }
-      ]
+          name: 'twitter:card',
+          content: this.$page.post.cover_image
+            ? 'summary_large_image'
+            : 'summary',
+        },
+        { name: 'og:type', content: 'article' },
+        { name: 'article:author', content: 'Olaolu Olawuyi' },
+        { name: 'article:published_time', content: this.$page.post.date },
+      ],
     }
-  }
+  },
 }
 </script>
 
 <page-query>
-query Post ($path: String!) {
-  post: post (path: $path) {
+query Post ($id: ID!) {
+  post: post (id: $id) {
+    id
     title
     path
-    date (format: "D. MMMM YYYY")
+    date (format: "D MMMM YYYY")
     timeToRead
     tags {
       id
@@ -68,27 +76,60 @@ query Post ($path: String!) {
     }
     description
     content
-    coverImage (width: 860, blur: 10)
+    cover_image (width: 860, blur: 10)
+  }
+
+   posts: allPost(
+     order: ASC,
+     sortBy: "date",
+     filter: { published: { eq: true }}
+    ) {
+    edges {
+      node {
+        id
+        path
+      }
+    }
   }
 }
 </page-query>
 
 <style lang="scss">
-.post-title {
-  padding: calc(var(--space) / 2) 0 calc(var(--space) / 2);
-  text-align: center;
+#post {
+  position: relative;
+}
+
+.post__header {
+  padding: 1rem 0;
+  text-align: left;
+
+  &-title {
+    color: var(--electric-blue);
+    font-size: 2em;
+    margin-bottom: 0;
+  }
+}
+
+#post-page {
+  .post-meta {
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 2rem;
+
+    time {
+      margin-right: 7vw;
+    }
+  }
 }
 
 .post {
-
-  &__header {
+  &__cover_image {
     width: calc(100% + var(--space) * 2);
     margin-left: calc(var(--space) * -1);
-    margin-top: calc(var(--space) * -1);
     margin-bottom: calc(var(--space) / 2);
     overflow: hidden;
     border-radius: var(--radius) var(--radius) 0 0;
-    
+
     img {
       width: 100%;
     }
@@ -99,27 +140,61 @@ query Post ($path: String!) {
   }
 
   &__content {
-    h2:first-child {
-      margin-top: 0;
-    }
-
-    p:first-of-type {
-      font-size: 1.2em;
-      color: var(--title-color);
-    }
-
     img {
       width: calc(100% + var(--space) * 2);
       margin-left: calc(var(--space) * -1);
       display: block;
       max-width: none;
     }
+
+    ul,
+    ol {
+      margin-left: 1.25em;
+      margin-bottom: 1.25em;
+
+      li {
+        margin-bottom: 0.6em;
+        list-style-type: inherit;
+      }
+    }
+
+    ul {
+      list-style-type: disc;
+    }
+
+    ol {
+      list-style-type: decimal;
+    }
+
+    a {
+      --fading-electric: rgba(72, 49, 212, 0.05);
+
+      transition: 0.15s ease;
+      color: var(--electric-blue);
+      outline: 0.5em solid rgba(72, 49, 212, 0);
+      border-bottom: 3px solid var(--fading-electric);
+
+      &:hover {
+        border-color: transparent;
+        background: var(--fading-electric);
+        outline: 3px solid var(--fading-electric);
+      }
+    }
+  }
+
+  &__footer {
+    position: relative;
+
+    div,
+    nav {
+      margin-bottom: 2.5rem;
+    }
   }
 }
 
 .post-comments {
   padding: calc(var(--space) / 2);
-  
+
   &:empty {
     display: none;
   }
@@ -127,5 +202,9 @@ query Post ($path: String!) {
 
 .post-author {
   margin-top: calc(var(--space) / 2);
+}
+
+.is__tabbing a:focus {
+  outline-width: 2px;
 }
 </style>

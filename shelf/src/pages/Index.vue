@@ -1,13 +1,18 @@
 <template>
-  <Layout :show-logo="false">
-    <!-- Author intro -->
-    <Author :show-title="true" />
-
+  <Layout
+    id="list-of-posts"
+    description="Posts - Olaolu's shelf"
+    title="Articles on web development and design by Olaolu, expert front end developer and UI Engineer"
+  >
+    <h1 class="page-heading"><span>/</span>shelf</h1>
     <!-- List posts -->
-    <div class="posts">
-      <PostCard v-for="edge in $page.posts.edges" :key="edge.node.id" :post="edge.node"/>
-    </div>
-
+    <ol class="posts">
+      <PostCard
+        v-for="edge in $page.posts.edges"
+        :key="edge.node.id"
+        :post="edge.node"
+      />
+    </ol>
   </Layout>
 </template>
 
@@ -19,15 +24,8 @@
         id
         title
         path
-        tags {
-          id
-          title
-          path
-        }
-        date (format: "D. MMMM YYYY")
-        timeToRead
+        date (format: "D MMMM YYYY")
         description
-        coverImage (width: 770, height: 380, blur: 10)
         ...on Post {
             id
             title
@@ -40,16 +38,12 @@
 </page-query>
 
 <script>
-import Author from '~/components/Author.vue'
 import PostCard from '~/components/PostCard.vue'
 
 export default {
-  components: {
-    Author,
-    PostCard
-  },
+  components: { PostCard },
   metaInfo: {
-    title: 'Hello, world!'
-  }
+    title: 'Posts',
+  },
 }
 </script>

@@ -13,6 +13,7 @@
       v-if="!textarea"
       @blur="handleBlur"
       v-bind="inputAttrs"
+      :required="required"
       @focus="handleFocus"
       :placeholder="placeholder"
     />
@@ -24,6 +25,7 @@
       v-on="listen"
       @blur="handleBlur"
       v-bind="inputAttrs"
+      :required="required"
       @focus="handleFocus"
       v-else-if="textarea"
       :placeholder="placeholder"
@@ -43,13 +45,13 @@ const StyledInputGroup = styled.div`
   display: flex;
   position: relative;
   flex-direction: column;
-  color: ${theme.colors.default};
+  color: rgba(61, 21, 95, 0.7);
 
   &:not(:last-child) {
     margin-right: 20px;
   }
 
-  &.focused {
+  &.input__group.focused {
     color: ${theme.colors['electric-blue']};
   }
 
@@ -84,24 +86,20 @@ const StyledInputGroup = styled.div`
 `
 
 export default {
-  name: 'InputGroup',
-
-  data: () => ({
-    focused: false,
-  }),
+  data: () => ({ focused: false }),
 
   methods: {
     handleFocus(event) {
       this.focused = true
-      if (this.inputAttrs && typeof this.inputAttrs.focus === 'function') {
-        this.inputAttrs.focus.call(this, event)
+      if (this.listen && typeof this.listen.focus === 'function') {
+        this.listen.focus.call(this, event)
       }
     },
 
     handleBlur(event) {
       this.focused = false
-      if (this.inputAttrs && typeof this.inputAttrs.blur === 'function') {
-        this.inputAttrs.blur.call(this, event)
+      if (this.listen && typeof this.listen.blur === 'function') {
+        this.listen.blur.call(this, event)
       }
     },
   },
@@ -114,6 +112,7 @@ export default {
     name: String,
     label: String,
     listen: Object,
+    required: Boolean,
     inputAttrs: Object,
     placeholder: String,
     id: { type: String, required: true },

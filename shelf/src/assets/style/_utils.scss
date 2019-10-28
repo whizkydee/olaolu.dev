@@ -5,3 +5,7 @@
 .space-bottom {
 	margin-bottom: var(--space);
 }
+
+.no-select {
+  user-select: none;
+}

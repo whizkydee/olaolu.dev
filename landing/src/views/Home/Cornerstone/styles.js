@@ -1,3 +1,4 @@
+import { media } from '@/helpers'
 import { Section } from '@/components'
 import styled from 'vue-styled-components'
 
@@ -7,6 +8,12 @@ const StyledCornerstone = styled(Section)`
 
     .cavalier {
       display: flex;
+
+      ${media.maxWidth('medium')`
+        &:not(:last-of-type) {
+          margin-bottom: 6vh;
+        }
+      `}
 
       &:nth-of-type(2) {
         justify-content: flex-end;
@@ -42,6 +49,12 @@ const StyledCornerstone = styled(Section)`
     height: 13.41em;
     margin-left: 15em;
   }
+
+  ${media.maxWidth('medium')`
+    [data-shape] {
+      display: none;
+    }
+  `}
 `
 
 export default {

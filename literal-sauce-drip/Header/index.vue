@@ -1,6 +1,16 @@
 <template>
-  <StyledHeader role="banner" :data-compact="compact + ''">
-    <a href="/" id="logo" aria-label="Logo, go to homepage.">
+  <StyledHeader
+    role="banner"
+    :data-compact="compact + ''"
+    :noMenuShadow="noMenuShadow"
+    :blue="isMediumScreen && menuOpen"
+    :data-blue="isMediumScreen && menuOpen"
+  >
+    <a
+      id="logo"
+      :href="isHome ? landingURL : shelfURL"
+      :aria-label="`Logo, go to ${!isHome ? 'shelf' : 'homepage'}.`"
+    >
       <SauceDripLogo />
     </a>
 
@@ -13,10 +23,13 @@
     />
 
     <nav
+      ref="contactMenu"
       id="contact__menu"
       aria-label="Contact menu"
       :aria-expanded="menuOpen + ''"
+      :aria-hidden="isMediumScreen && !menuOpen"
     >
+      <CrossSiteNav />
       <ContactPortal.Basic />
       <ContactPortal.Social />
     </nav>
@@ -25,15 +38,13 @@
 
 <script>
 import StyledHeader from './styles'
+import { wait } from '@mrolaolu/helpers'
+import CrossSiteNav from '../CrossSiteNav'
 import ContactPortal from '../ContactPortal'
 import SauceDripLogo from '../sauce-drip-logo'
 
 export default {
-  name: 'Header',
-
-  data: () => ({
-    menuOpen: false,
-  }),
+  data: () => ({ menuOpen: false }),
 
   mounted() {
     if (this.isHome) {
@@ -45,7 +56,7 @@ export default {
     document.addEventListener('mouseup', this.maybeCloseMenu)
   },
 
-  destroyed() {
+  beforeDestroy() {
     window.removeEventListener('resize', this.maybeTransform)
     window.removeEventListener('scroll', this.maybeTransform)
     document.removeEventListener('keydown', this.maybeCloseMenu)
@@ -63,11 +74,22 @@ export default {
 
     toggleMenu() {
       this.menuOpen = !this.menuOpen
+      this.$refs.contactMenu.classList.remove('shadow')
 
-      if (!this.menuOpen) {
+      if (this.menuOpen && this.isMediumScreen) {
+        document.body.classList.add('no-scroll')
+      } else {
+        document.body.classList.remove('no-scroll')
+      }
+
+      if (this.menuOpen && !this.noMenuShadow && !this.isMediumScreen) {
+        wait(150, () => this.$refs.contactMenu.classList.add('shadow'))
+      }
+
+      if (this.isHome && !this.menuOpen) {
         let container =
           this.currentSection === 'footer'
-            ? document.querySelector('[data-section="footer]')
+            ? this.$root.$el.querySelector('[data-section="footer]')
             : document.getElementById('main')
         container && container.focus()
       }
@@ -99,12 +121,13 @@ export default {
 
   props: {
     store: Object,
-    isHome: { type: Boolean, default: false },
     compact: { type: Boolean, default: false },
-    currentSection: { type: String, required: true },
+    currentSection: { type: String, default: '' },
+    noMenuShadow: { type: Boolean, default: false },
   },
 
   components: {
+    CrossSiteNav,
     StyledHeader,
     SauceDripLogo,
     'ContactPortal.Basic': ContactPortal.Basic,
