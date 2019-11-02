@@ -26,7 +26,7 @@ const StyledHomepage = injectGlobal`
 
     ${media.minWidth(1601)`
       /* max font-size more or less */
-      font-size: 16px;
+      font-size: 16.2px;
     `}
 
     ${media.maxWidth('medium')`

@@ -165,10 +165,12 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@mrolaolu/helpers@0.2.7":
-  version "0.2.7"
-  resolved "https://registry.yarnpkg.com/@mrolaolu/helpers/-/helpers-0.2.7.tgz#59f38e55ada73b735ace91b60b79a820448b62df"
-  integrity sha512-K6Kw2jq7xptEEy4U7JG+WeMLAmAyROF18vtrLV3W93I5qCeW7ICoLbYlwDeA8X38U2YKnic9TqxAK+tOLjjJLg==
+"@mrolaolu/helpers@0.2.10":
+  version "0.2.10"
+  resolved "https://registry.yarnpkg.com/@mrolaolu/helpers/-/helpers-0.2.10.tgz#23589916eb20fee986f872492a0a4404f120c0fd"
+  integrity sha512-7jQt5LwxB1jtWQM4D54EbAWjTziXHPZD+9sqbtFNKiRvvarGfeiQJ04fJB+af1YSHib6BSvrLfn2IWEvSmWlgg==
+  dependencies:
+    core-js "^3.3.4"
 
 "@netlify/cli-utils@^1.0.7":
   version "1.1.0"
@@ -2025,6 +2027,11 @@ core-js@^2.6.5:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.9.tgz#6b4b214620c834152e179323727fc19741b084f2"
   integrity sha512-HOpZf6eXmnl7la+cUdMnLvUxKNqLUzJvgIziQ0DiF3JwSImNphIqdGqzj6hIKyX04MmV0poclQ7+wjWvxQyR2A==
+
+core-js@^3.3.4:
+  version "3.3.5"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.3.5.tgz#58d20f48a95a07304b62ff752742b82b56431ed8"
+  integrity sha512-0J3K+Par/ZydhKg8pEiTcK/9d65/nqJOzY62uMkjeBmt05fDOt/khUVjDdh8TpeIuGQDy1yLDDCjiWN/8pFIuw==
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
