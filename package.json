@@ -33,14 +33,14 @@
     "make-dir": "^3.0.0",
     "move-file": "^1.2.0",
     "netlify-cli": "^2.15.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.0",
     "npm-run-all": "^4.1.5",
     "raw-loader": "^3.1.0",
     "sass-loader": "^7.1.0"
   },
   "dependencies": {
     "@gridsome/cli": "^0.3.1",
-    "@mrolaolu/helpers": "0.2.7",
+    "@mrolaolu/helpers": "0.2.10",
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
     "vue-styled-components": "1.4.5",

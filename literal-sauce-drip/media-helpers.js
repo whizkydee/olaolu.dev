@@ -20,7 +20,7 @@ export const breakpoints = Object.keys(BREAKPOINTS).reduce((acc, cur) => {
   })
 }, {})
 
-export function composeValue(value) {
+export function computeValue(value) {
   return typeof value === 'number'
     ? toPx(value)
     : value in breakpoints
@@ -29,19 +29,19 @@ export function composeValue(value) {
 }
 
 export const minWidth = value => (...body) => css`
-  @media (min-width: ${composeValue(value)}) {
+  @media (min-width: ${computeValue(value)}) {
     ${css(...(body || ''))}
   }
 `
 
 export const maxWidth = value => (...body) => css`
-  @media (max-width: ${composeValue(value)}) {
+  @media (max-width: ${computeValue(value)}) {
     ${css(...(body || ''))}
   }
 `
 
 export const between = (min, max) => (...body) => css`
-  @media (min-width: ${composeValue(min)}) and (max-width: ${composeValue(
+  @media (min-width: ${computeValue(min)}) and (max-width: ${computeValue(
       max
     )}) {
     ${css(...(body || ''))}
