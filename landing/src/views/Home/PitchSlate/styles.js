@@ -2,6 +2,7 @@ import { media } from '@/helpers'
 import { colors } from '@/base/theme'
 import { Section } from '@/components'
 import styled from 'vue-styled-components'
+import { FACE_MARGIN_LEFT } from '@/constants'
 
 const gradient = `90deg, ${colors['electric-blue']} 67%, ${colors.lime} 33%`
 const StyledPitchSlate = styled(Section)`
@@ -152,6 +153,10 @@ const StyledPitchSlate = styled(Section)`
     align-items: center;
     justify-content: center;
     background: ${({ theme }) => theme.colors.lime};
+
+    .visage {
+      margin-left: ${FACE_MARGIN_LEFT};
+    }
 
     path[fill='#ccf381'] {
       fill: ${({ theme }) => theme.colors.electricBlue};
