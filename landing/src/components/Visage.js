@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import { AvatarShapes } from '@/assets'
 import styled from 'vue-styled-components'
+import { FACE_MARGIN_LEFT } from '@/constants'
 
 export default Vue.component('Visage', {
   render() {
@@ -24,11 +25,11 @@ const StyledFigure = styled.figure`
   .face {
     width: inherit;
     height: inherit;
-    margin-left: -2.2em;
     margin-top: -2.435em;
     background-color: #fff;
     background-size: cover;
     background-position-x: center;
+    margin-left: -${FACE_MARGIN_LEFT};
     background-image: url(/img/avatar2.jpeg);
   }
 
