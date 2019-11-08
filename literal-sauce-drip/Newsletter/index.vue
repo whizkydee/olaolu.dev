@@ -2,6 +2,7 @@
   <StyledNewsletter id="newsletter">
     <form
       method="post"
+      rel="noopener"
       target="_blank"
       action="https://gmail.us20.list-manage.com/subscribe/post?u=04ac543f98469334c684d8753&id=df629ce71c"
     >
