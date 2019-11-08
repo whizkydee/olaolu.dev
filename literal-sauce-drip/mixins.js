@@ -17,6 +17,10 @@ export const SharedMixins = {
       return (this.DEV ? this.shelfURL : this.landingURL) + '/work'
     },
 
+    resumeURL() {
+      return this.shelfURL.concat('/resume')
+    },
+
     isHome() {
       return (
         typeof window !== 'undefined' &&
