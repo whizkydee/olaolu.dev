@@ -90,7 +90,7 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@gridsome/cli@^0.3.1":
+"@gridsome/cli@0.3.1":
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/@gridsome/cli/-/cli-0.3.1.tgz#8bdf97facddb3ab5338eb57521bc0bf5808561d2"
   integrity sha512-DBzX0yWAE98kn1oZ69oT5dPqUNd9Isr+2/YFU/XP7e/+5OHEYsXdVlFrLgHkEwAsJvtfbkm5s5654mQ7UoK+rg==

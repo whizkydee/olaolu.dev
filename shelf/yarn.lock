@@ -669,16 +669,15 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@gridsome/cli@^0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@gridsome/cli/-/cli-0.3.1.tgz#8bdf97facddb3ab5338eb57521bc0bf5808561d2"
-  integrity sha512-DBzX0yWAE98kn1oZ69oT5dPqUNd9Isr+2/YFU/XP7e/+5OHEYsXdVlFrLgHkEwAsJvtfbkm5s5654mQ7UoK+rg==
+"@gridsome/cli@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@gridsome/cli/-/cli-0.2.3.tgz#5d9a64fa6d3736a3855d68e003aee8d7a057d07a"
+  integrity sha512-JGCt8i+qOYd2H16dWojiikA6PdTsjKi1AtgfXKrxwEX9m2RvMVi6h+kV5mddxWMWgxrN/WsPF4Zp/5g7ky4+3g==
   dependencies:
     "@hjvedvik/tasks" "^0.0.8"
     chalk "^2.4.1"
     commander "^2.15.1"
     didyoumean "^1.2.1"
-    envinfo "^7.3.1"
     execa "^0.10.0"
     find-up "^2.1.0"
     fs-extra "^6.0.1"
@@ -687,14 +686,14 @@
     sort-package-json "^1.15.0"
     update-notifier "^3.0.1"
 
-"@gridsome/plugin-google-analytics@^0.1.0":
+"@gridsome/plugin-google-analytics@0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@gridsome/plugin-google-analytics/-/plugin-google-analytics-0.1.0.tgz#f2fdffdb05dd2928ca85c4a0d64c7e497a36ee49"
   integrity sha512-IUuIj1z0BMtNa4NPRyBP3rYGyww+RWypsHTJ7WDdIj/BuH1x7BR9cDn7kskfG5azUi1LV0lJX329Te077oG07A==
   dependencies:
     vue-analytics "^5.16.1"
 
-"@gridsome/remark-prismjs@^0.2.0":
+"@gridsome/remark-prismjs@0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@gridsome/remark-prismjs/-/remark-prismjs-0.2.0.tgz#ffdab2045cfb85edd0ebfa9c1ab7e2c7bcf5c3c2"
   integrity sha512-Hg7L+7Jcj1BSvzwYNSQ3X2VnfZNz6LK9hpZ3Z24ko1dr3FKcutWDT1qNbCSCKIOLoueNhjTNylHB/qnOWBEFuA==
@@ -706,10 +705,10 @@
     unist-builder "^1.0.4"
     unist-util-visit "^1.4.0"
 
-"@gridsome/source-filesystem@^0.6.0":
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/@gridsome/source-filesystem/-/source-filesystem-0.6.2.tgz#95f65e9fcf03624ba23f8f0bee0779fe8e8b9021"
-  integrity sha512-K1pyXwFYIlABaHq3wqOPyYt4ARzLZuUQ+UZKjDSBT9I0T0qpCbwir5kJMQkR7qY4ONflUrv8fgG6DNSrc1uzbA==
+"@gridsome/source-filesystem@0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@gridsome/source-filesystem/-/source-filesystem-0.6.0.tgz#420199ee7a34101bfd8479ca2ac66435575c3b3c"
+  integrity sha512-W6Sf9VDXotbol2ojsbHtlILYw3lIGKqy52ojHwaq0FKZlgJV8U3UahRRiL8A68xQdy1uRUTFtWTSvF3oEwUuyA==
   dependencies:
     chokidar "^2.0.4"
     fs-extra "^7.0.0"
@@ -718,7 +717,7 @@
     mime-types "^2.1.21"
     slash "^2.0.0"
 
-"@gridsome/transformer-remark@^0.3.4":
+"@gridsome/transformer-remark@0.3.4":
   version "0.3.4"
   resolved "https://registry.yarnpkg.com/@gridsome/transformer-remark/-/transformer-remark-0.3.4.tgz#7ecf37565ffb95001ed2cf7562ff1c42ac67ecbb"
   integrity sha512-EYDfZs1JmpIfoXYszmxmzHNcg4YxcbBSjFWPm4CHpie6CXreNOmXErO2WZ5QvLscEu/B5bsno/3mAL30roCxyw==
@@ -3035,11 +3034,6 @@ entities@^2.0.0:
   resolved "https://registry.yarnpkg.com/entities/-/entities-2.0.0.tgz#68d6084cab1b079767540d80e56a39b423e4abf4"
   integrity sha512-D9f7V0JSRwIxlRI2mjMqufDrRDnx8p+eEOz7aUM9SuvF8gsBzra0/6tbjl1m8eQHrZlYj6PxqE00hZ1SAIKPLw==
 
-envinfo@^7.3.1:
-  version "7.4.0"
-  resolved "https://registry.yarnpkg.com/envinfo/-/envinfo-7.4.0.tgz#bef4ece9e717423aaf0c3584651430b735ad6630"
-  integrity sha512-FdDfnWnCVjxTTpWE3d6Jgh5JDIA3Cw7LCgpM/pI7kK1ORkjaqI2r6NqQ+ln2j0dfpgxY00AWieSvtkiZQKIItA==
-
 errno@^0.1.3, errno@~0.1.7:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/errno/-/errno-0.1.7.tgz#4684d71779ad39af177e3f007996f7c67c852618"
@@ -3905,14 +3899,14 @@ gray-matter@^4.0.2:
     section-matter "^1.0.0"
     strip-bom-string "^1.0.0"
 
-gridsome@^0.7.6:
-  version "0.7.9"
-  resolved "https://registry.yarnpkg.com/gridsome/-/gridsome-0.7.9.tgz#f33ec371d9d1ce5b38d375d5c7ecf5e9c22338e2"
-  integrity sha512-IEVVS3LiUHiFZU0g2RyveF9EDMFQMNK5bxFZHfyrtI5GHJxakmqbG0cQ+7WCJ5V92Q/2KYXXqs41SC5KphcsEw==
+gridsome@0.7.6:
+  version "0.7.6"
+  resolved "https://registry.yarnpkg.com/gridsome/-/gridsome-0.7.6.tgz#416ced63848d7f523e7da3ab0ba17d5f582d7fa1"
+  integrity sha512-rsxmAJa+GezFvzEMlClI7nADBq4L+vFe1+lwdmX0AadiDlCIDHbU6WRHZdUaDFYqOP5dakruB03A6tMa1Miq7A==
   dependencies:
     "@babel/code-frame" "^7.5.5"
     "@babel/core" "^7.0.0"
-    "@gridsome/cli" "^0.3.1"
+    "@gridsome/cli" "^0.2.3"
     "@hapi/joi" "^15.1.1"
     "@sindresorhus/slugify" "^0.8.0"
     "@vue/babel-preset-app" "^3.4.0"
