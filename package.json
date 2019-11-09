@@ -39,7 +39,7 @@
     "sass-loader": "^7.1.0"
   },
   "dependencies": {
-    "@gridsome/cli": "^0.3.1",
+    "@gridsome/cli": "0.3.1",
     "@mrolaolu/helpers": "0.2.10",
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
