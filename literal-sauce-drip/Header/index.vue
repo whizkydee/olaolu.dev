@@ -1,6 +1,7 @@
 <template>
   <StyledHeader
     role="banner"
+    id="site-header"
     :data-compact="compact + ''"
     :noMenuShadow="noMenuShadow"
     :blue="isMediumScreen && menuOpen"

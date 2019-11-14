@@ -83,7 +83,6 @@ const GlobalStyle = injectGlobal`
 
   a {
     text-decoration: none;
-    -webkit-tap-highlight-color: transparent;
     transition: opacity, color, background-color, transform, border .3s;
   }
 

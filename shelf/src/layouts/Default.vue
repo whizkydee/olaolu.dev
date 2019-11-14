@@ -1,6 +1,6 @@
 <template>
   <ThemeProvider id="app" :style="!ready && 'display: none'" :theme="theme">
-    <Header id="site-header" noMenuShadow />
+    <Header noMenuShadow />
 
     <ContentView :id="id">
       <slot />

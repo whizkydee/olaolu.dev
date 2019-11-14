@@ -96,8 +96,12 @@ const StyledExperience = styled(Section)`
   }
 
   &[aria-hidden='false'] {
-    .work__illo {
+    .work__illo,
+    .square__of__dots {
       opacity: 1;
+    }
+
+    .work__illo {
       transform: translate3d(0, 0, 0);
     }
   }

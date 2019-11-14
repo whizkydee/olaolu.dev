@@ -78,7 +78,6 @@ export default {
     color: currentColor;
     align-items: center;
     text-transform: uppercase;
-    -webkit-tap-highlight-color: transparent;
 
     &[aria-hidden='true'] {
       opacity: 0.7;

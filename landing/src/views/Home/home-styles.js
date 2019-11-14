@@ -16,7 +16,6 @@ const StyledHomepage = injectGlobal`
       &,
       body {
         touch-action: none;
-        -webkit-tap-highlight-color: transparent;
       }
     `}
 
@@ -104,6 +103,12 @@ const StyledHomepage = injectGlobal`
     `}
   }
 
+  .square__of__dots {
+    z-index: -1;
+    width: 8em;
+    height: 9em;
+    position: absolute;
+  }
 
   ${media.minWidth('>medium')`
     .cavalier p { width: 32vw; }
@@ -112,7 +117,11 @@ const StyledHomepage = injectGlobal`
       @media (hover: hover) and (any-pointer: fine) {
         &:not(.scrolled) {
           .cavalier {
-            p, h1 { opacity: 0; }
+            p,
+            h1,
+            .square__of__dots {
+              opacity: 0;
+            }
 
             p {
               transform: translate3d(0, 20px, 0);
