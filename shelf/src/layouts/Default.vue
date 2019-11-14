@@ -123,6 +123,21 @@ main {
   }
 }
 
+.post__content a {
+  --fading-electric: rgba(72, 49, 212, 0.05);
+
+  transition: 0.15s ease;
+  color: var(--electric-blue);
+  outline: 0.5em solid rgba(72, 49, 212, 0);
+  border-bottom: 3px solid var(--fading-electric);
+
+  &:hover {
+    border-color: transparent;
+    background: var(--fading-electric);
+    outline: 3px solid var(--fading-electric);
+  }
+}
+
 #site-footer {
   height: unset;
   margin-top: 7rem;
