@@ -1,6 +1,6 @@
 ---
 title: 'Web Performance: The big Picture'
-date: 2019-08-27
+date: 2018-10-01
 published: true
 tags: ['web performance', 'user experience']
 canonical_url: false
@@ -17,7 +17,7 @@ of the web from a document-centric platform to a much more dynamic application
 platform — the web is more powerful than ever, making it possible for users to
 get virtually any experience on the web — and that’s awesome, really.
 
-However, the web really is getting _slower._ It’s quite unfortunate that a lot
+However, the web really is getting _slower_. It’s quite unfortunate that a lot
 of web teams and businesses just want a “magical solution” not realizing there’s
 no one antidote to poor performance of sites; there’s no one tech or approach
 that’s going to make websites or the web platform as a whole fast automagically,
