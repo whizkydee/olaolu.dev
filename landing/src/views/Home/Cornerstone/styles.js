@@ -23,10 +23,7 @@ const StyledCornerstone = styled(Section)`
 
   .square__of__dots {
     top: -4em;
-    width: 8em;
-    height: 9em;
     right: 17em;
-    position: absolute;
   }
 
   #cs__pattern__left,
