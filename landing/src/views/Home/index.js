@@ -233,7 +233,6 @@ const Homepage = Vue.component('Homepage', {
 
     /**
      * Hijack scrolling.
-     * Capture certain
      * @param {Event} event
      * @return {void}
      */
@@ -254,7 +253,7 @@ const Homepage = Vue.component('Homepage', {
           event.target !== document.body &&
           event.target !== this.$root.$el &&
           event.target !== document.documentElement) ||
-        this.scrollingLudicrouslyFast(400)
+        this.scrollingLudicrouslyFast(500)
       ) {
         return
       }
