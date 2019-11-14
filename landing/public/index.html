@@ -92,6 +92,19 @@
         ]
       }
     </script>
+
+    <% if (process.env.NODE_ENV === 'production') { %>
+    <!-- prettier-ignore -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-152557312-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'UA-152557312-1')
+    </script>
+    <% } %>
   </head>
   <body>
     <noscript>
