@@ -1,16 +1,16 @@
 <template>
   <StyledSocialContact class="social__contact">
     <ul>
-      <NavItem external :href="twitter" ariaLabel="Olaolu on Twitter">
+      <NavItem external :href="sp.twitter" ariaLabel="Olaolu on Twitter">
         TW
       </NavItem>
-      <NavItem external :href="github" ariaLabel="Olaolu on GitHub">
+      <NavItem external :href="sp.github" ariaLabel="Olaolu on GitHub">
         GH
       </NavItem>
-      <NavItem external :href="linkedIn" ariaLabel="Olaolu on LinkedIn">
+      <NavItem external :href="sp.linkedIn" ariaLabel="Olaolu on LinkedIn">
         LN
       </NavItem>
-      <NavItem external :href="youtube" ariaLabel="Olaolu's YouTube channel">
+      <NavItem external :href="sp.youtube" ariaLabel="Olaolu's YouTube channel">
         YT
       </NavItem>
     </ul>
@@ -20,8 +20,6 @@
 <script>
 import NavItem from '../NavItem'
 import styled from 'vue-styled-components'
-import { SOCIAL_PROFILES } from '../constants'
-const { twitter, linkedIn, github, youtube } = SOCIAL_PROFILES
 
 const StyledSocialContact = styled.div`
   position: relative;
@@ -40,8 +38,16 @@ const StyledSocialContact = styled.div`
 `
 
 export default {
-  data: () => ({ twitter, linkedIn, github, youtube }),
-  components: { StyledSocialContact, NavItem },
+  computed: {
+    sp() {
+      return this.socialProfiles
+    },
+  },
+
+  components: {
+    NavItem,
+    StyledSocialContact,
+  },
 }
 
 StyledSocialContact.name = 'StyledSocialContact'

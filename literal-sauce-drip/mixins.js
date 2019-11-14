@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import { SOCIAL_PROFILES } from './constants'
 import { toPx as px } from '@mrolaolu/helpers'
 import { getShelfURL, getLandingURL, breakpoints, isDev } from './helpers'
 
@@ -8,6 +9,7 @@ export const SharedMixins = {
     isMaxHeight: false,
     isMediumScreen: false,
     shelfURL: getShelfURL(),
+    socialProfiles: SOCIAL_PROFILES,
     landingURL: getLandingURL(),
     DEV: isDev(),
   }),
