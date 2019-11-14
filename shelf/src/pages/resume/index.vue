@@ -2,9 +2,8 @@
   <ContentView id="resume">
     <aside>
       <section>
-        <a :href="landingURL">olaolu.dev</a>
+        <a href="/">olaolu.dev</a>
         <span>Lagos, Nigeria</span>
-        <span>(+234) 908-252-9713</span>
         <a href="mailto:hello@olaolu.dev">hello@olaolu.dev</a>
       </section>
 
@@ -32,7 +31,7 @@
 
     <article>
       <header id="profile-summary">
-        <h1>Olaolu <br />Olawuyi</h1>
+        <h1 id="name">Olaolu <br />Olawuyi</h1>
         <h2>Expert Front end developer and UI Engineer.</h2>
         <p>
           Engineer valued for driving high-performance and elegant web
@@ -45,8 +44,9 @@
         <h3 class="heading">Experience</h3>
 
         <p>
-          I’ve worked on tons of web projects over the past 8 years, some of
-          which were for the following organizations:
+          I’ve worked on a handful of web projects over the past
+          {{ new Date().getFullYear() - 2011 }} years, some of which were for
+          the following organizations:
         </p>
 
         <ul id="companies">
@@ -70,7 +70,7 @@
               </li>
             </ul>
 
-            <p v-html="company.outro"></p>
+            <p v-html="company.outro" class="outro" />
           </li>
         </ul>
       </section>
@@ -84,25 +84,71 @@ import { createMeta } from '~/helpers'
 
 export default {
   data: () => ({ data }),
+
+  metaInfo() {
+    return {
+      title: `My Rèsumè`,
+      meta: [
+        ...createMeta.urls(this.resumeURL, 1),
+        ...createMeta.titles(`Olaolu's Rèsumè`, 1),
+        { name: 'og:locale', content: 'en_US' },
+        { name: 'og:type', content: 'website' },
+        { name: 'twitter:card', content: 'summary' },
+        { name: 'twitter:site', content: '@mrolaolu' },
+        { name: 'twitter:creator', content: '@mrolaolu' },
+      ],
+    }
+  },
 }
 </script>
 
+<page-query>
+</page-query>
+
 <style lang="scss">
-html {
+#resume {
   --base-font-size: 16px;
 
   @media (min-width: 1441px) {
     --base-font-size: 20px;
   }
-}
-body {
-  background-color: #fff;
-}
 
-main {
+  body {
+    transition: none;
+    background-color: #fff;
+  }
+
+  a,
+  h3,
+  h4 {
+    font-weight: bold;
+    display: inline-block;
+
+    &:not(.color-off) {
+      color: var(--electric-blue);
+    }
+  }
+
+  a,
+  .heading {
+    &:after {
+      content: '';
+      background: var(--lime);
+      height: 0.4em;
+      width: 109%;
+      display: block;
+      margin-top: -0.6rem;
+      margin-left: -4%;
+    }
+  }
+}
+</style>
+
+<style lang="scss" scoped>
+#app {
   display: flex;
-  user-select: none;
   max-width: unset;
+  user-select: none;
   padding-top: 6.7rem;
   padding-bottom: 6.7rem;
   background-color: var(--bg-color);
@@ -114,7 +160,7 @@ main {
 
 p,
 ul {
-  opacity: 0.85;
+  color: rgba(71, 71, 71, 0.75);
 }
 
 ul li {
@@ -132,39 +178,17 @@ ul li {
   }
 }
 
-h1 {
+#name {
+  margin-top: 0;
   line-height: 1;
   font-size: 4.5rem;
+  margin-bottom: 1rem;
   letter-spacing: -0.03em;
   color: var(--electric-blue);
 }
 
 h3 {
   margin: 0;
-}
-
-a,
-h3,
-h4 {
-  font-weight: bold;
-  display: inline-block;
-
-  &:not(.color-off) {
-    color: var(--electric-blue);
-  }
-}
-
-a,
-.heading {
-  &:after {
-    content: '';
-    background: var(--lime);
-    height: 0.4em;
-    width: 109%;
-    display: block;
-    margin-top: -0.6rem;
-    margin-left: -4%;
-  }
 }
 
 aside {
@@ -255,11 +279,11 @@ article {
 
   h4 {
     margin-top: 0;
+    line-height: 1.4;
 
     span {
-      opacity: 0.85;
       font-weight: normal;
-      color: var(--body-color);
+      color: rgba(71, 71, 71, 0.75);
 
       &:before {
         content: '— ';
@@ -271,10 +295,14 @@ article {
     margin: 0;
   }
 
+  .outro,
+  .points {
+    font-size: 1.1em;
+  }
+
   .points {
     margin-top: 1em;
     margin-left: 1em;
-    font-size: 1.1em;
 
     li {
       text-indent: -20px;
@@ -283,6 +311,10 @@ article {
         margin-bottom: 0.3em;
       }
     }
+  }
+
+  .outro {
+    margin-top: 1em;
   }
 }
 </style>
