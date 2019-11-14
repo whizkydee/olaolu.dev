@@ -21,11 +21,15 @@ export const SharedMixins = {
       return (this.DEV ? this.shelfURL : this.landingURL) + '/resume'
     },
 
+    resumePDF() {
+      return this.landingURL + `/Resume-Olaolu-Olawuyi.pdf`
+    },
+
     isHome() {
       return (
         typeof window !== 'undefined' &&
-        (location.href.startsWith(this.landingURL) &&
-          !location.pathname.includes('/shelf'))
+        location.href.startsWith(this.landingURL) &&
+        !location.pathname.includes('/shelf')
       )
     },
 
