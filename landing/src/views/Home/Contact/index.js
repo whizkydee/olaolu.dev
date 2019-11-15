@@ -6,7 +6,7 @@ const Contact = Vue.component('Contact', {
   render() {
     return (
       <StyledContact name={this.name}>
-        <div class="contact__content">
+        <div class="inner__content">
           <Cavalier
             heading="Send me a message!"
             text="Got a question or proposal, or just want <br /> to say hello? Go ahead."

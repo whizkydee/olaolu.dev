@@ -26,29 +26,48 @@ const StyledPitchSlate = styled(Section)`
     padding-bottom: 0;
   `}
 
-  .primary__content,
-  .bottom__content {
+  .inner__content {
     align-items: center;
     justify-content: space-between;
-  }
 
-  .primary__content {
-    ${media.maxWidth('portrait')`
-      margin-top: ${({ theme }) => `calc(${theme.header.height} + 6em)`};
-    `}
-
-    ${media.minWidth('>portrait')`
-      margin-top: ${({ theme }) => `calc(${theme.header.height} + 2em)`};
-    `}
-
-    .visage {
-      ${media.maxWidth('medium')`
-        margin-right: 0;
+    &.primary {
+      ${media.maxWidth('portrait')`
+        margin-top: ${({ theme }) => `calc(${theme.header.height} + 6em)`};
       `}
 
+      ${media.minWidth('>portrait')`
+        margin-top: ${({ theme }) => `calc(${theme.header.height} + 2em)`};
+      `}
+
+      .visage {
+        ${media.maxWidth('medium')`
+          margin-right: 0;
+        `}
+
+        ${media.minWidth('>medium')`
+          margin-right: ${({ theme }) => `calc(${theme.header.padding} + 4em)`};
+        `}
+      }
+    }
+
+    &.bottom {
       ${media.minWidth('>medium')`
-        margin-right: ${({ theme }) => `calc(${theme.header.padding} + 4em)`};
+        margin-top: auto;
+        padding-right: ${({ theme }) => theme.header.padding};
       `}
+
+      ${media.between('>portrait', 'medium')`
+        margin-top: 3.7em;
+      `}
+
+      ${media.maxWidth('portrait')`
+        margin-top: 7em;
+        margin-bottom: 4em;
+      `}
+
+      .deux__points {
+        display: flex;
+      }
     }
   }
 
@@ -100,26 +119,6 @@ const StyledPitchSlate = styled(Section)`
 
     @media (min-width: 1024px) and (min-height: 800px) {
       height: 90vh;
-    }
-  }
-
-  .bottom__content {
-    ${media.minWidth('>medium')`
-      margin-top: auto;
-      padding-right: ${({ theme }) => theme.header.padding};
-    `}
-
-    ${media.between('>portrait', 'medium')`
-      margin-top: 3.7em;
-    `}
-
-    ${media.maxWidth('portrait')`
-      margin-top: 7em;
-      margin-bottom: 4em;
-    `}
-
-    .deux__points {
-      display: flex;
     }
   }
 

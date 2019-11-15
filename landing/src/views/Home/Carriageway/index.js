@@ -6,7 +6,7 @@ const Carriageway = Vue.component('Carriageway', {
   render() {
     return (
       <StyledCarriageway name={this.name}>
-        <div class="carriageway__content">
+        <div class="inner__content">
           <ul class="lanes">
             <li>
               <Cavalier

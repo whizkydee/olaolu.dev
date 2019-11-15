@@ -80,7 +80,7 @@ function createStyledSection(tagName = 'section', props = {}) {
       }
     }
 
-    [class$='__content'] {
+    .inner__content {
       width: 100%;
       display: flex;
 

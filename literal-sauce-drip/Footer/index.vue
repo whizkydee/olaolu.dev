@@ -2,9 +2,10 @@
   <StyledFooter
     isFooter
     name="footer"
+    role="contentinfo"
     :aria-hidden="isHome && (currentSection !== 'footer') + ''"
   >
-    <div class="footer__content">
+    <div class="inner__content">
       <div class="footer__main">
         <ContactPortal.Basic />
         <CrossSiteNav />

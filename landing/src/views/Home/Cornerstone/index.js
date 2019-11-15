@@ -11,7 +11,7 @@ const Cornerstone = Vue.component('Cornerstone', {
   render() {
     return (
       <StyledCornerstone name={this.name}>
-        <div class="cornerstone__content">
+        <div class="inner__content">
           <Cavalier heading="Design">
             <p slot="text">
               I'm probably not the typical designer positioned behind an

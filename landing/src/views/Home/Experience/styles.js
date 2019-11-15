@@ -16,7 +16,7 @@ const StyledExperience = styled(Section)`
     `}
   }
 
-  .experience__content {
+  .inner__content {
     justify-content: space-between;
 
     ${media.minWidth('>medium')`
