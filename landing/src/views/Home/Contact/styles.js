@@ -18,7 +18,7 @@ const StyledContact = styled(Section)`
     }
   `}
 
-  .contact__content {
+  .inner__content {
     margin-top: 2.78em;
     align-items: center;
     flex-direction: column;

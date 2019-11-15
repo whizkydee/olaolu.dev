@@ -7,7 +7,7 @@ const Experience = Vue.component('Experience', {
   render() {
     return (
       <StyledExperience name={this.name}>
-        <div class="experience__content">
+        <div class="inner__content">
           <Cavalier
             theme="lime"
             heading={`Over the <br /> past ${new Date().getFullYear() -

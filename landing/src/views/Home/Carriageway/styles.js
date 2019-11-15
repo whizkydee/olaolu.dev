@@ -3,7 +3,7 @@ import { Section } from '@/components'
 import styled from 'vue-styled-components'
 
 const StyledCarriageway = styled(Section)`
-  .carriageway__content {
+  .inner__content {
     position: relative;
     justify-content: center;
 

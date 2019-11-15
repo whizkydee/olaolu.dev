@@ -11,7 +11,7 @@ const StyledFooter = styled(Section)`
     color: currentColor;
   }
 
-  .footer__content {
+  .inner__content {
     padding-top: 8rem;
     padding-bottom: 5rem;
     flex-direction: column;

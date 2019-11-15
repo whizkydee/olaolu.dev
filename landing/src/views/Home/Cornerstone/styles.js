@@ -3,7 +3,7 @@ import { Section } from '@/components'
 import styled from 'vue-styled-components'
 
 const StyledCornerstone = styled(Section)`
-  .cornerstone__content {
+  .inner__content {
     flex-direction: column;
 
     .cavalier {
