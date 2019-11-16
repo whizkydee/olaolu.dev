@@ -1,11 +1,25 @@
 import theme from '../theme'
 import Section from '../Section'
 import { media } from '../helpers'
-import styled from 'vue-styled-components'
+import { default as styled, css } from 'vue-styled-components'
 
-const StyledFooter = styled(Section)`
+// prettier-ignore
+const StyledFooter = styled(Section, { isHome: Boolean })([css`
   color: ${theme.colors['lime-alt']};
   background: ${theme.colors.default};
+
+  ${({ isHome }) =>
+    isHome && css`
+    ${media.minWidth('>medium')`
+      &[aria-hidden='true']:not(.scrolled) {
+        .footer__main,
+        .footer__bottom {
+          opacity: 0;
+          transform: translate3d(0, 40px, 0);
+        }
+      }
+    `}
+  `}
 
   li a {
     color: currentColor;
@@ -21,6 +35,13 @@ const StyledFooter = styled(Section)`
   .footer__bottom {
     width: 100%;
     display: flex;
+
+    ${({ isHome }) =>
+      isHome && css`
+      ${media.minWidth('medium')`
+        transition: transform 0.5s, opacity 0.2s;
+      `}
+    `}
   }
 
   .basic__contact {
@@ -35,6 +56,10 @@ const StyledFooter = styled(Section)`
 
   .footer__main {
     margin-bottom: 7.4em;
+
+    ${media.minWidth('medium')`
+      transition-delay: 300ms;
+    `}
 
     ${media.maxWidth(370)`
       flex-direction: column;
@@ -53,6 +78,10 @@ const StyledFooter = styled(Section)`
     justify-content: space-between;
     border-top: 1px solid rgba(186, 221, 118, 0.7);
 
+    ${media.minWidth('medium')`
+      transition-delay: 500ms;
+    `}
+
     ${media.maxWidth(460)`
       justify-content: center;
     `}
@@ -69,7 +98,18 @@ const StyledFooter = styled(Section)`
       display: none;
     `}
   }
-`
+
+  ${({ isHome }) =>
+    isHome && css`
+    &[aria-hidden='false'] {
+      .footer__main,
+      .footer__bottom {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+  `}
+`])
 
 export default {
   ...StyledFooter,

@@ -1,4 +1,4 @@
-## Olaolu's website [![Netlify Status](https://api.netlify.com/api/v1/badges/7392b4b2-2f2b-4948-b587-78f6e2f3b7b4/deploy-status)](https://app.netlify.com/sites/literal-sauce-drip/deploys)
+## Olaolu's website
 
 This repo is home for the codebase of my site and shelf of articles.
 
