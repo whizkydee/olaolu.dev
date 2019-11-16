@@ -40,7 +40,7 @@ const Cornerstone = Vue.component('Cornerstone', {
               In building JavaScript applications and solid infrastructure, I'm
               equipped with just the right tools, and can absolutely function
               independently of them to deliver fast, definitive solutions
-              optimized for scale &mdash; Web performance and scalabilty are
+              optimized for scale &mdash; performance and scalabilty are
               priorities on my radar.
             </p>
 
