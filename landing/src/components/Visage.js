@@ -30,7 +30,7 @@ const StyledFigure = styled.figure`
     background-size: cover;
     background-position-x: center;
     margin-left: -${FACE_MARGIN_LEFT};
-    background-image: url(/img/avatar2.jpeg);
+    background-image: url(/img/avatar.png);
   }
 
   #avatar__shapes {
