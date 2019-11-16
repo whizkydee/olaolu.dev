@@ -30,5 +30,4 @@ export default `
   font-style: normal;
   font-weight: 300;
 }
-</style>
 `
