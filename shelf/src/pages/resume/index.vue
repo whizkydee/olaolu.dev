@@ -1,30 +1,49 @@
 <template>
-  <ContentView id="resume">
+  <StyledResume id="resume" :style="!ready && 'display: none'">
+    <div class="meta">
+      <a
+        target="_blank"
+        class="no-marker"
+        :href="socialProfiles.linkedIn"
+        aria-label="Connect with Olaolu on LinkedIn"
+      >
+        <LinkedInIcon />
+      </a>
+      <a
+        :href="resumePDF"
+        target="_blank"
+        :hidden="isPDF"
+        class="no-marker"
+        aria-label="Download a PDF copy of this resume"
+      >
+        <DownloadIcon />
+        Download
+      </a>
+    </div>
+
     <aside>
       <section>
-        <a href="/">olaolu.dev</a>
+        <a href="https://olaolu.dev">olaolu.dev</a>
         <span>Lagos, Nigeria</span>
         <a href="mailto:hello@olaolu.dev">hello@olaolu.dev</a>
       </section>
 
       <section>
         <h3>Core Technologies:</h3>
+        <!-- prettier-ignore -->
         <ul>
-          <li v-for="(tech, index) in data.technologies" :key="index">
-            {{ tech }}
-          </li>
+          <li v-for="(tech, index) in data.technologies" :key="index">{{ tech }}</li>
         </ul>
       </section>
 
       <section>
         <h3>Others:</h3>
+        <!-- prettier-ignore -->
         <ul>
           <li
             v-for="(proficiency, index) in data.otherProficiencies"
             :key="index"
-          >
-            {{ proficiency }}
-          </li>
+          >{{ proficiency }}</li>
         </ul>
       </section>
     </aside>
@@ -34,9 +53,9 @@
         <h1 id="name">Olaolu <br />Olawuyi</h1>
         <h2>Expert Front end developer and UI Engineer.</h2>
         <p>
-          Engineer valued for driving high-performance and elegant web
-          experiences and applications. I design high-quality, user-friendly and
-          scalable web products.
+          Engineer valued for driving high-performance accessible web
+          experiences. I design quality, user-friendly and scalable products
+          regardless of stack.
         </p>
       </header>
 
@@ -74,16 +93,103 @@
           </li>
         </ul>
       </section>
+
+      <section id="projects">
+        <h3 class="heading">Projects</h3>
+        <p>
+          Links to some of my work can be found on
+          <a href="https://olaolu.dev/work">olaolu.dev/work</a> while major ones
+          can be provided upon request.
+        </p>
+      </section>
+
+      <SauceDripLogo id="logo" />
     </article>
-  </ContentView>
+  </StyledResume>
 </template>
+
+<style lang="scss">
+#resume {
+  --base-font-size: 16px;
+
+  @media (min-width: 1441px) {
+    --base-font-size: 19.2px;
+  }
+
+  body {
+    transition: none;
+    background-color: #fff;
+  }
+
+  h3,
+  h4,
+  a:not(.no-marker) {
+    font-weight: bold;
+    display: inline-block;
+
+    &:not(.color-off) {
+      color: var(--electric-blue);
+    }
+  }
+
+  .heading,
+  a:not(.no-marker) {
+    z-index: 1;
+    position: relative;
+
+    &:after {
+      content: '';
+      background: var(--lime);
+      height: 0.4em;
+      width: 109%;
+      display: block;
+      margin-top: -0.6rem;
+      margin-left: -4%;
+      position: absolute;
+      z-index: -1;
+    }
+  }
+
+  a:not(.no-marker) {
+    &:after {
+      transform: none;
+      transition: transform 0.3s;
+    }
+
+    &:hover:after {
+      transform: translateY(0.2em) scaleY(0.5);
+    }
+  }
+}
+</style>
 
 <script>
 import data from './data'
+import StyledResume from './styles'
 import { createMeta } from '~/helpers'
+import DownloadIcon from './download-icon'
+import LinkedInIcon from './linkedin-icon'
 
 export default {
-  data: () => ({ data }),
+  data: () => ({
+    data,
+    ready: process.env.NODE_ENV === 'development',
+  }),
+
+  created() {
+    // hack to hide display until scripts for
+    // styled components have been executed.
+    // TODO: Fix this
+    if (typeof window !== 'undefined') {
+      window.setTimeout(() => (this.ready = true), 0)
+    }
+  },
+
+  computed: {
+    isPDF() {
+      return this.$route.query.pdf === 'true'
+    },
+  },
 
   metaInfo() {
     return {
@@ -99,222 +205,12 @@ export default {
       ],
     }
   },
+
+  components: {
+    StyledResume,
+    DownloadIcon,
+    LinkedInIcon,
+  },
+  name: 'Resume',
 }
 </script>
-
-<page-query>
-</page-query>
-
-<style lang="scss">
-#resume {
-  --base-font-size: 16px;
-
-  @media (min-width: 1441px) {
-    --base-font-size: 20px;
-  }
-
-  body {
-    transition: none;
-    background-color: #fff;
-  }
-
-  a,
-  h3,
-  h4 {
-    font-weight: bold;
-    display: inline-block;
-
-    &:not(.color-off) {
-      color: var(--electric-blue);
-    }
-  }
-
-  a,
-  .heading {
-    &:after {
-      content: '';
-      background: var(--lime);
-      height: 0.4em;
-      width: 109%;
-      display: block;
-      margin-top: -0.6rem;
-      margin-left: -4%;
-    }
-  }
-}
-</style>
-
-<style lang="scss" scoped>
-#app {
-  display: flex;
-  max-width: unset;
-  user-select: none;
-  padding-top: 6.7rem;
-  padding-bottom: 6.7rem;
-  background-color: var(--bg-color);
-
-  @media (min-width: 1024px) {
-    margin: calc(var(--space) * 1.2) 7vw;
-  }
-}
-
-p,
-ul {
-  color: rgba(71, 71, 71, 0.75);
-}
-
-ul li {
-  position: relative;
-
-  &:before {
-    width: 0.4em;
-    content: '';
-    height: 0.4em;
-    margin-right: 0.3em;
-    vertical-align: 10%;
-    display: inline-block;
-    filter: contrast(1.2);
-    background: currentColor;
-  }
-}
-
-#name {
-  margin-top: 0;
-  line-height: 1;
-  font-size: 4.5rem;
-  margin-bottom: 1rem;
-  letter-spacing: -0.03em;
-  color: var(--electric-blue);
-}
-
-h3 {
-  margin: 0;
-}
-
-aside {
-  flex-shrink: 0;
-  position: relative;
-  margin-right: 6rem;
-
-  section {
-    position: relative;
-
-    &:not(:last-of-type) {
-      margin-bottom: 2em;
-    }
-
-    h3 {
-      font-size: 1.2em;
-    }
-
-    span {
-      display: block;
-    }
-  }
-}
-
-article {
-  max-width: 80vw;
-  position: relative;
-
-  .company > p,
-  #experience > p,
-  .company .points,
-  #profile-summary > p {
-    max-width: 70%;
-  }
-
-  p {
-    font-size: 1.2em;
-  }
-}
-
-#profile-summary {
-  position: relative;
-  margin-bottom: 5rem;
-
-  &:after {
-    content: '';
-    position: absolute;
-    width: 118%;
-    height: 1px;
-    background-color: var(--border-color);
-    margin-left: -8%;
-  }
-
-  h2 {
-    margin: 0;
-    font-weight: normal;
-  }
-
-  p {
-    margin: 3em 0 2em;
-  }
-}
-
-#companies {
-  position: relative;
-}
-
-.company {
-  position: relative;
-
-  &:before {
-    display: none;
-  }
-
-  &:not(:last-of-type) {
-    margin-bottom: 2rem;
-  }
-
-  header {
-    display: flex;
-  }
-
-  .period {
-    flex-shrink: 0;
-    margin-left: auto;
-    margin-right: 2em;
-  }
-
-  h4 {
-    margin-top: 0;
-    line-height: 1.4;
-
-    span {
-      font-weight: normal;
-      color: rgba(71, 71, 71, 0.75);
-
-      &:before {
-        content: '— ';
-      }
-    }
-  }
-
-  p {
-    margin: 0;
-  }
-
-  .outro,
-  .points {
-    font-size: 1.1em;
-  }
-
-  .points {
-    margin-top: 1em;
-    margin-left: 1em;
-
-    li {
-      text-indent: -20px;
-
-      &:not(:last-of-type) {
-        margin-bottom: 0.3em;
-      }
-    }
-  }
-
-  .outro {
-    margin-top: 1em;
-  }
-}
-</style>

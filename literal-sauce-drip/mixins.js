@@ -46,6 +46,17 @@ export const SharedMixins = {
         typeof window !== 'undefined' && location.href.startsWith(this.workURL)
       )
     },
+
+    isResume() {
+      return (
+        typeof window !== 'undefined' &&
+        location.href.startsWith(this.resumeURL)
+      )
+    },
+
+    isShelfEnv() {
+      return this.isShelf || this.isWork || this.isResume
+    },
   },
 
   created() {
