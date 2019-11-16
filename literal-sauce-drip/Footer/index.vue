@@ -2,8 +2,9 @@
   <StyledFooter
     isFooter
     name="footer"
+    :isHome="isHome"
     role="contentinfo"
-    :aria-hidden="isHome && (currentSection !== 'footer') + ''"
+    :aria-hidden="maybeHidden"
   >
     <div class="inner__content">
       <div class="footer__main">
@@ -25,6 +26,12 @@ import CrossSiteNav from '../CrossSiteNav'
 import ContactPortal from '../ContactPortal'
 
 export default {
+  computed: {
+    maybeHidden() {
+      return this.isHome && (this.currentSection !== 'footer') + ''
+    },
+  },
+
   components: {
     CrossSiteNav,
     StyledFooter,
