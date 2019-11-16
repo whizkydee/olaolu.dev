@@ -1,5 +1,4 @@
 const path = require('path')
-const save = require('save-file')
 const puppeteer = require('puppeteer')
 
 ;(async () => {
@@ -11,19 +10,25 @@ const puppeteer = require('puppeteer')
     height: 971,
   })
 
-  await page.goto('http://localhost:8081/resume', {
+  await page.goto('http://localhost:8081/resume?pdf=true', {
     waitUntil: 'networkidle2',
   })
-  const height = await page.evaluate(() => document.body.clientHeight)
 
-  await save(
-    await page.pdf({
-      height,
-      width: 1400,
-      printBackground: true,
-    }),
-    path.join(__dirname, `landing/public/Resume-Olaolu-Olawuyi.pdf`)
+  const height = await page.evaluate(() =>
+    parseInt(getComputedStyle(document.body).height)
   )
+  await page.pdf({
+    height,
+    width: '1300px',
+    printBackground: true,
+    margin: {
+      top: '85px',
+      right: '85px',
+      bottom: '85px',
+      left: '85px',
+    },
+    path: path.join(__dirname, 'landing/public/Resume-Olaolu-Olawuyi.pdf'),
+  })
 
   await browser.close()
 })()

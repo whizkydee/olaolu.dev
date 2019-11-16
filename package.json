@@ -12,7 +12,7 @@
   "author": "Olaolu Olawuyi <mrolaolu@gmail.com> (https://olaolu.dev)",
   "scripts": {
     "flush": "del dist landing/dist shelf/dist",
-    "fresh": "yarn install && yarn flush",
+    "fresh": "yarn install && yarn flush && yarn build-resume",
     "serve:shelf": "cd shelf && yarn develop",
     "serve:landing": "cd landing && yarn serve",
     "serve": "yarn flush && node dev.js",
@@ -38,8 +38,7 @@
     "npm-run-all": "^4.1.5",
     "puppeteer": "^2.0.0",
     "raw-loader": "^3.1.0",
-    "sass-loader": "^7.1.0",
-    "save-file": "^2.3.1"
+    "sass-loader": "^7.1.0"
   },
   "dependencies": {
     "@gridsome/cli": "0.3.1",

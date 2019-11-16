@@ -49,7 +49,14 @@ export default {
         'Built an appointment scheduling system from the ground up with React.',
       ],
       outro:
-        'See the extended list <a target="_blank" rel="noreferrer noopener" href="https://docs.google.com/document/d/1Gw4mcURKddzOJ7OoZsMghJDAhW5zMXler4EeOY9BP6E/edit">here</a>',
+        'See the extended list <a target="_blank" rel="noreferrer noopener" href="https://docs.google.com/document/d/1Gw4mcURKddzOJ7OoZsMghJDAhW5zMXler4EeOY9BP6E/edit">here.</a>',
+    },
+    {
+      name: 'Pneuma Media',
+      period: 'Dec 2013 - Feb 2018',
+      role: 'Full Stack Developer',
+      intro: `I worked as the only web developer. Built and maintained the back-end and front-end of a couple of websites.`,
+      points: [],
     },
   ],
   technologies: [

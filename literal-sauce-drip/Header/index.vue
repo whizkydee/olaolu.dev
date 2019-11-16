@@ -42,7 +42,6 @@ import StyledHeader from './styles'
 import { wait } from '@mrolaolu/helpers'
 import CrossSiteNav from '../CrossSiteNav'
 import ContactPortal from '../ContactPortal'
-import SauceDripLogo from '../sauce-drip-logo'
 
 export default {
   data: () => ({ menuOpen: false }),
@@ -130,7 +129,6 @@ export default {
   components: {
     CrossSiteNav,
     StyledHeader,
-    SauceDripLogo,
     'ContactPortal.Basic': ContactPortal.Basic,
     'ContactPortal.Social': ContactPortal.Social,
   },
