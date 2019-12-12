@@ -5,7 +5,7 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 const path = require('path')
-const { SHELF_PORT } = require('../config')
+const { SHELF_PORT, ANALYTICS_ID } = require('../config')
 
 module.exports = {
   port: SHELF_PORT,
@@ -18,6 +18,12 @@ module.exports = {
   },
 
   plugins: [
+    {
+      use: '@gridsome/plugin-google-analytics',
+      options: {
+        id: ANALYTICS_ID,
+      },
+    },
     {
       // Create posts from markdown files
       use: '@gridsome/source-filesystem',
