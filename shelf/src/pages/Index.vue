@@ -1,8 +1,8 @@
 <template>
   <Layout
     id="list-of-posts"
-    description="Posts - Olaolu's shelf"
-    title="Articles on web development and design by Olaolu, expert front end developer and UI Engineer"
+    title="Posts - Olaolu's shelf"
+    description="Articles on web development and design by Olaolu, expert front end developer and UI Engineer"
   >
     <h1 class="page-heading"><span>/</span>shelf</h1>
     <!-- List posts -->

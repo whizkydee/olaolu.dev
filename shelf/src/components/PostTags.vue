@@ -1,5 +1,6 @@
 <template>
   <div class="post-tags">
+    <span v-if="withTitle">Tags:</span>
     <g-link
       class="post-tags__link color-off"
       v-for="tag in post.tags"
@@ -13,20 +14,25 @@
 
 <script>
 export default {
-  props: ['post'],
+  props: ['post', 'withTitle'],
 }
 </script>
 
 <style lang="scss">
 .post-tags {
   margin: 1em 0 0;
+  font-size: 0.9em;
+
+  a,
+  span {
+    &:not(:last-child) {
+      margin-right: 0.7em;
+    }
+  }
 
   &__link {
-    margin-right: 0.7em;
-    font-size: 0.9em;
     color: currentColor;
     text-decoration: none;
-    background-color: var(--bg-color);
     color: currentColor;
     border-radius: var(--radius);
   }

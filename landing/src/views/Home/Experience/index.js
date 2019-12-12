@@ -35,14 +35,14 @@ const Experience = Vue.component('Experience', {
             </p>
 
             <p slot="text">
-              I'm now available for remote full-time or contract roles. Want us
-              to work together? You should{' '}
+              I'm now available for contracts and remote full-time roles. Want
+              us to work together? You should{' '}
               <a
                 href={`mailto:hello@olaolu.dev?subject=${encodeURI(
                   "💡Let's Work Together on Project X"
                 )}`}
               >
-                drop a line
+                contact me
               </a>
               .
             </p>
