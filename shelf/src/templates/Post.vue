@@ -22,7 +22,30 @@
       <div class="post__content" v-html="$page.post.content" />
 
       <footer class="post__footer">
-        <PostTags :post="$page.post" />
+        <div class="footer__meta">
+          <PostTags :post="$page.post" :withTitle="true" />
+
+          <div class="post__share">
+            <a
+              target="_blank"
+              :href="fbShareURL"
+              aria-label="Share this post on Facebook"
+              @click="$ga.event('Post', 'click', 'Facebook share button')"
+            >
+              <FacebookIcon />
+            </a>
+
+            <a
+              target="_blank"
+              :href="twitterShareURL"
+              aria-label="Share this post on Twitter"
+              @click="$ga.event('Post', 'click', 'Twitter share button')"
+            >
+              <TwitterIcon />
+            </a>
+          </div>
+        </div>
+
         <PostNav :post="$page.post" :posts="$page.posts" />
       </footer>
 
@@ -35,13 +58,38 @@
 import PostNav from '~/components/PostNav'
 import PostMeta from '~/components/PostMeta'
 import PostTags from '~/components/PostTags'
+import { unslashEnd } from '@mrolaolu/helpers'
+import { TwitterIcon, FacebookIcon } from '@saucedrip/core/icons'
 
 export default {
   components: {
     PostNav,
     PostMeta,
     PostTags,
+    TwitterIcon,
+    FacebookIcon,
   },
+
+  computed: {
+    shareableURL() {
+      return unslashEnd(unslashEnd(this.shelfURL) + this.$page.post.path)
+    },
+
+    fbShareURL() {
+      const { title } = this.$page.post
+      return `https://facebook.com/sharer/sharer.php?u=${encodeURI(
+        `${this.shareableURL}&quote=${title}`
+      )}`
+    },
+
+    twitterShareURL() {
+      const { title } = this.$page.post
+      return `https://twitter.com/intent/tweet?${encodeURI(
+        `url=${this.shareableURL}&via=mrolaolu&text=${title}`
+      )}`
+    },
+  },
+
   metaInfo() {
     return {
       title: this.$page.post.title,
@@ -169,11 +217,63 @@ query Post ($id: ID!) {
   }
 
   &__footer {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+
+    > div,
+    > nav {
+      margin-bottom: 2.5rem;
+    }
+
+    .footer__meta {
+      display: flex;
+      margin-top: 1em;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+
+      .post-tags {
+        margin: 0;
+        max-width: 70%;
+        flex-wrap: wrap;
+      }
+    }
+  }
+
+  &__share {
+    display: flex;
     position: relative;
 
-    div,
-    nav {
-      margin-bottom: 2.5rem;
+    a {
+      transition: 0.2s;
+      position: relative;
+
+      &:hover {
+        transform: scale(1.5);
+        filter: contrast(90%);
+      }
+
+      &:not(:last-of-type) {
+        margin-right: 1em;
+      }
+
+      &:nth-of-type(1) {
+        color: #4172b8;
+      }
+
+      &:nth-of-type(2) {
+        color: #1da1f2;
+      }
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      path {
+        fill: currentColor;
+      }
     }
   }
 }
