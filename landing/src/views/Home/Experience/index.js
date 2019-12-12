@@ -50,7 +50,7 @@ const Experience = Vue.component('Experience', {
 
           <figure
             class="work__illo"
-            aria-label="Illustration of Olaolu with cardboards of some of his past work."
+            aria-label="Illustration of Olaolu and cardboards of some of his work."
           >
             <OlaoluWorkIllo />
           </figure>
