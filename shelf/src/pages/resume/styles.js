@@ -1,7 +1,7 @@
 import ContentView from '@saucedrip/core/ContentView'
-import { default as styled } from 'vue-styled-components'
+import { default as styled, css } from 'vue-styled-components'
 
-const StyledResume = styled(ContentView)`
+const StyledResume = css`
   display: flex;
   max-width: unset;
   user-select: none;
@@ -66,24 +66,34 @@ const StyledResume = styled(ContentView)`
       position: relative;
       align-items: center;
       font-weight: normal;
+      color: rgba(71, 71, 71, 0.9);
 
       &:not([hidden]) {
         display: flex;
-      }
 
-      &:first-of-type {
-        color: #0077b5;
-      }
-
-      &:last-of-type {
-        margin-left: 1em;
-        line-height: 1.5;
-        color: rgba(71, 71, 71, 0.9);
-
-        svg {
-          opacity: 0.8;
-          margin-right: 0.3em;
+        @media (min-width: 791px) {
+          &[href^='mailto:'] {
+            display: none;
+          }
         }
+      }
+
+      &:not(:last-of-type) {
+        margin-right: 1em;
+      }
+
+      &.linkedin {
+        color: #0077b5;
+        ${({ isPDF }) =>
+          isPDF &&
+          css`
+            margin-right: 0;
+          `}
+      }
+
+      &:last-of-type svg {
+        opacity: 0.8;
+        margin-right: 0.3em;
       }
 
       svg {
@@ -338,5 +348,10 @@ const StyledResume = styled(ContentView)`
   }
 `
 
-StyledResume.name = 'StyledResume'
-export default StyledResume
+export default Object.assign(
+  {},
+  {
+    name: 'StyledResume',
+    ...styled(ContentView, { isPDF: Boolean })([StyledResume]),
+  }
+)
