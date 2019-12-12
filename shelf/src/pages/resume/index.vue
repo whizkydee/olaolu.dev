@@ -1,13 +1,22 @@
 <template>
-  <StyledResume id="resume" :style="!ready && 'display: none'">
+  <StyledResume id="resume" :style="!ready && 'display: none'" :isPDF="isPDF">
     <div class="meta">
       <a
         target="_blank"
-        class="no-marker"
+        class="no-marker linkedin"
         :href="socialProfiles.linkedIn"
         aria-label="Connect with Olaolu on LinkedIn"
+        @click="$ga.event('Resume', 'click', 'LinkedIn Button')"
       >
         <LinkedInIcon />
+      </a>
+      <a
+        class="no-marker"
+        href="mailto:hello@olaolu.dev"
+        aria-label="Send Olaolu a mail"
+        @click="$ga.event('Resume', 'click', 'Mail Button')"
+      >
+        <MailIcon />
       </a>
       <a
         :href="resumePDF"
@@ -15,6 +24,7 @@
         :hidden="isPDF"
         class="no-marker"
         aria-label="Download a PDF copy of this resume"
+        @click="$ga.event('Resume', 'click', 'Download PDF Button')"
       >
         <DownloadIcon />
         Download
@@ -25,7 +35,12 @@
       <section>
         <a href="https://olaolu.dev">olaolu.dev</a>
         <span>Lagos, Nigeria</span>
-        <a href="mailto:hello@olaolu.dev">hello@olaolu.dev</a>
+        <a
+          href="mailto:hello@olaolu.dev"
+          @click="$ga.event('Resume', 'click', 'Mail Link in Sidebar')"
+        >
+          hello@olaolu.dev
+        </a>
       </section>
 
       <section>
@@ -98,8 +113,15 @@
         <h3 class="heading">Projects</h3>
         <p>
           Links to some of my work can be found on
-          <a href="https://olaolu.dev/work">olaolu.dev/work</a> while major ones
-          can be provided upon request.
+          <a
+            href="https://olaolu.dev/work"
+            @click="
+              $ga.event('Resume', 'click', 'Work link', { transport: 'beacon' })
+            "
+          >
+            olaolu.dev/work
+          </a>
+          while major ones can be provided upon request.
         </p>
       </section>
 
@@ -167,8 +189,7 @@
 import data from './data'
 import StyledResume from './styles'
 import { createMeta } from '~/helpers'
-import DownloadIcon from './download-icon'
-import LinkedInIcon from './linkedin-icon'
+import { MailIcon, DownloadIcon, LinkedInIcon } from '@saucedrip/core/icons'
 
 export default {
   data: () => ({
@@ -207,6 +228,7 @@ export default {
   },
 
   components: {
+    MailIcon,
     StyledResume,
     DownloadIcon,
     LinkedInIcon,

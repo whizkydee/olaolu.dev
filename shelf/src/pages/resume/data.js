@@ -2,7 +2,7 @@ export default {
   companies: [
     {
       name: 'hellotax',
-      period: 'Mar 2019 - Present',
+      period: 'Mar - Nov 2019',
       role: 'Principal Software Engineer (Contractor)',
       intro: `I orchestrated and engineered the front end infrastructure and design for hellotax's new JavaScript-centric app powered by Vue and also managed a co-engineer.`,
       points: [
@@ -18,7 +18,7 @@ export default {
     {
       name: 'Pixel2HTML',
       period: 'Nov 2018 - Oct 2019',
-      role: 'Senior Front End Engineer (Contractor)',
+      role: 'Senior Frontend Engineer (Contractor)',
       intro:
         'I worked on a couple of projects for organizations and individuals as a front end engineering contractor.',
       points: [
@@ -32,9 +32,21 @@ export default {
       ],
     },
     {
+      name: 'MOONDA',
+      period: 'Nov 2018 - Jan 2019',
+      role: 'Frontend Engineer (Contractor)',
+      intro: `I worked with MOONDA as a senior contractor via Pixel2HTML to create the web experience for John Deere's AUTOTRAC UNIVERSAL 300 product.`,
+      points: [
+        'Built a contest application from the ground up using React which enabled users of the product from all around the globe to post photos and share reviews about the product',
+        'Designed and implemented a cross-browser, IE 11 compatible marketing site for the product',
+        'Implemented internationalization on the website with support for over 40 languages',
+        'Implemented automatic locale detection (with proper redirection based on that) and locale-specific content filtering',
+      ],
+    },
+    {
       name: 'Conectar',
       period: 'Jun - Nov 2018',
-      role: 'Lead Front End Engineer',
+      role: 'Lead Frontend Engineer',
       intro:
         'I led a team of developers through building multiple React applications into a single powerful online learning platform. I also re-engineered and designed several components on the platform.',
       points: [
@@ -80,9 +92,8 @@ export default {
     'Web Performance',
     'Software Testing',
     'SEO',
-    'Git',
     'Accessibility',
-    'Webpack',
+    'Build Automation',
     'Responsive Web Design',
     'UX Design/Strategy',
   ],
