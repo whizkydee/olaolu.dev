@@ -8,7 +8,6 @@ export const SECTIONS = ['une', 'deux', 'trois', 'quatre', 'cinq', 'footer']
 export const SOCIAL_PROFILES = {
   twitter: 'https://twitter.com/mrolaolu',
   github: 'https://github.com/whizkydee',
-  facebook: 'https://facebook.com/mrolaolu',
   linkedIn: 'https://linkedin.com/in/mrolaolu',
   youtube: 'https://youtube.com/channel/UC5UiydmTsiN17NmsYmmWqEA',
 }

@@ -6,7 +6,7 @@
     :data-theme="lime && 'lime'"
     v-if="typeof url === 'string'"
   >
-    <div class="content">
+    <div class="sauce__button--content">
       <slot />
       <BowArrow class="bow__arrow" v-if="!noArrow" />
     </div>
@@ -18,7 +18,7 @@
     class="sauce__button"
     :data-theme="lime && 'lime'"
   >
-    <div class="content">
+    <div class="sauce__button--content">
       <slot />
       <BowArrow class="bow__arrow" v-if="!noArrow" />
     </div>
@@ -45,12 +45,12 @@ function createStyledButton(tagName, props) {
     -webkit-tap-highlight-color: transparent;
 
     &[data-theme='lime'] {
-      .content {
+      .sauce__button--content {
         color: ${theme.colors.lime};
       }
 
-      &:hover .content,
-      &:focus .content {
+      &:hover .sauce__button--content,
+      &:focus .sauce__button--content {
         border-color: ${theme.colors.lime};
 
         &:before {
@@ -61,7 +61,7 @@ function createStyledButton(tagName, props) {
 
     &:hover,
     &:focus {
-      .content {
+      .sauce__button--content {
         color: #fff;
         border-color: ${theme.colors['electric-blue']};
 
@@ -76,7 +76,7 @@ function createStyledButton(tagName, props) {
       outline-color: transparent;
     }
 
-    .content {
+    .sauce__button--content {
       z-index: 1;
       width: 100%;
       display: flex;
@@ -97,6 +97,7 @@ function createStyledButton(tagName, props) {
         z-index: -1;
         height: 108%;
         position: absolute;
+        pointer-events: none;
         background: currentColor;
         transform: translateX(-101%);
         transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);

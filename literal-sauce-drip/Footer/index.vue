@@ -2,8 +2,8 @@
   <StyledFooter
     isFooter
     name="footer"
-    :isHome="isHome"
     role="contentinfo"
+    :shelfEnv="isShelfEnv"
     :aria-hidden="maybeHidden"
   >
     <div class="inner__content">

@@ -3,23 +3,23 @@ import Section from '../Section'
 import { media } from '../helpers'
 import { default as styled, css } from 'vue-styled-components'
 
-// prettier-ignore
-const StyledFooter = styled(Section, { isHome: Boolean })([css`
+const StyledFooter = css`
   color: ${theme.colors['lime-alt']};
   background: ${theme.colors.default};
 
-  ${({ isHome }) =>
-    isHome && css`
-    ${media.minWidth('>medium')`
-      &[aria-hidden='true']:not(.scrolled) {
-        .footer__main,
-        .footer__bottom {
-          opacity: 0;
-          transform: translate3d(0, 40px, 0);
-        }
+  ${({ shelfEnv }) =>
+    !shelfEnv &&
+    css`
+      ${media.minWidth('>medium')`
+    &[aria-hidden='true']:not(.scrolled) {
+      .footer__main,
+      .footer__bottom {
+        opacity: 0;
+        transform: translate3d(0, 40px, 0);
       }
-    `}
+    }
   `}
+    `}
 
   li a {
     color: currentColor;
@@ -36,36 +36,37 @@ const StyledFooter = styled(Section, { isHome: Boolean })([css`
     width: 100%;
     display: flex;
 
-    ${({ isHome }) =>
-      isHome && css`
-      ${media.minWidth('medium')`
-        transition: transform 0.5s, opacity 0.2s;
-      `}
+    ${({ shelfEnv }) =>
+      !shelfEnv &&
+      css`
+        ${media.minWidth('medium')`
+      transition: transform 0.5s, opacity 0.2s;
     `}
+      `}
   }
 
   .basic__contact {
     ${media.maxWidth(460)`
-      margin-right: 12vw;
-    `}
+    margin-right: 12vw;
+  `}
 
     ${media.minWidth(461)`
-      margin-right: 18vw;
-    `}
+    margin-right: 18vw;
+  `}
   }
 
   .footer__main {
     margin-bottom: 7.4em;
 
     ${media.minWidth('medium')`
-      transition-delay: 300ms;
-    `}
+    transition-delay: 300ms;
+  `}
 
     ${media.maxWidth(370)`
-      flex-direction: column;
-    `}
+    flex-direction: column;
+  `}
 
-    > ul {
+  > ul {
       line-height: 2.5;
       font-size: 1.15em;
       margin-top: 2.05em;
@@ -79,39 +80,43 @@ const StyledFooter = styled(Section, { isHome: Boolean })([css`
     border-top: 1px solid rgba(186, 221, 118, 0.7);
 
     ${media.minWidth('medium')`
-      transition-delay: 500ms;
-    `}
+    transition-delay: 500ms;
+  `}
 
     ${media.maxWidth(460)`
-      justify-content: center;
-    `}
+    justify-content: center;
+  `}
   }
 
   .social__contact {
     ${media.maxWidth('portrait')`
-      li:not(:last-of-type) {
-        margin-right: 1em;
-      }
-    `}
-
-    ${media.maxWidth(460)`
-      display: none;
-    `}
-  }
-
-  ${({ isHome }) =>
-    isHome && css`
-    &[aria-hidden='false'] {
-      .footer__main,
-      .footer__bottom {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-      }
+    li:not(:last-of-type) {
+      margin-right: 1em;
     }
   `}
-`])
 
-export default {
-  ...StyledFooter,
-  name: 'StyledFooter',
-}
+    ${media.maxWidth(460)`
+    display: none;
+  `}
+  }
+
+  ${({ shelfEnv }) =>
+    !shelfEnv &&
+    css`
+      &[aria-hidden='false'] {
+        .footer__main,
+        .footer__bottom {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+        }
+      }
+    `}
+`
+
+export default Object.assign(
+  {},
+  {
+    name: 'StyledFooter',
+    ...styled(Section, { shelfEnv: Boolean })([StyledFooter]),
+  }
+)

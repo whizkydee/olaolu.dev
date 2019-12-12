@@ -1,0 +1,5 @@
+export { default as MailIcon } from './mail-icon'
+export { default as TwitterIcon } from './twiiter-icon'
+export { default as FacebookIcon } from './facebook-icon'
+export { default as LinkedInIcon } from './linkedin-icon'
+export { default as DownloadIcon } from './download-icon'

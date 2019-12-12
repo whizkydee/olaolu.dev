@@ -1,11 +1,21 @@
 <template>
   <nav class="post-nav">
-    <a :href="prevPost" class="post-nav__previous" :aria-hidden="!prevPost">
+    <a
+      :href="prevPost"
+      class="post-nav__previous"
+      :aria-hidden="!prevPost"
+      @click="$ga.event('Post', 'click', 'Previous Post Link')"
+    >
       <BowArrow direction="left" />
       <span>Previous</span>
     </a>
 
-    <a :href="shelfURL" aria-label="See all posts" class="post-nav__squares">
+    <a
+      :href="shelfURL"
+      aria-label="See all posts"
+      class="post-nav__squares"
+      @click="$ga.event('Post', 'click', 'Post nav squares')"
+    >
       <svg
         width="36"
         height="36"
@@ -14,12 +24,18 @@
       >
         <path
           fill="#4c3eff"
-          d="M.5 15.194V.7h14.494v14.494zM21.006 15.194V.7H35.5v14.494zM.5 35.7V21.207h14.494V35.7zM21.006 35.7V21.207H35.5V35.7z"
+          d="M.5 15.194V.7h14.494v14.494zM21.006 15.194V.7H35.5v14.494zM.5
+          35.7V21.207h14.494V35.7zM21.006 35.7V21.207H35.5V35.7z"
         />
       </svg>
     </a>
 
-    <a :href="nextPost" class="post-nav__next" :aria-hidden="!nextPost">
+    <a
+      :href="nextPost"
+      class="post-nav__next"
+      :aria-hidden="!nextPost"
+      @click="$ga.event('Post', 'click', 'Next Post Link')"
+    >
       <span>Next</span>
       <BowArrow />
     </a>

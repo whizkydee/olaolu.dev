@@ -19,7 +19,7 @@ const GlobalStyle = injectGlobal`
   .sauce__button {
     min-width: 23.222em;
 
-    .content {
+    &--content {
       min-height: 4.5em;
     }
   }

@@ -317,9 +317,12 @@ const StyledHeader = css`
   }
 `
 
-export default {
-  name: 'StyledHeader',
-  ...styled('header', { noMenuShadow: Boolean, blue: Boolean })`
-    ${StyledHeader}
-  `,
-}
+export default Object.assign(
+  {},
+  {
+    name: 'StyledHeader',
+    ...styled('header', { noMenuShadow: Boolean, blue: Boolean })([
+      StyledHeader,
+    ]),
+  }
+)

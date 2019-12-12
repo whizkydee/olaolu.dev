@@ -62,8 +62,8 @@ export default {
   }
 
   @media (max-width: 650px) {
-    padding-left: 8.8vw;
-    padding-right: 8.8vw;
+    padding-left: 8.5vw;
+    padding-right: 8.5vw;
   }
 
   @media (max-width: 700px) {
@@ -172,6 +172,7 @@ main {
 
 @media (max-width: 650px) {
   .posts {
+    font-size: 0.9em;
     margin-top: var(--space);
   }
 }
