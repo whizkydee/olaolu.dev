@@ -4,7 +4,7 @@ export default {
       name: 'hellotax',
       period: 'Mar - Nov 2019',
       role: 'Principal Software Engineer (Contractor)',
-      intro: `I orchestrated and engineered the front end infrastructure and design for hellotax's new JavaScript-centric app powered by Vue and also managed a co-engineer.`,
+      intro: `I orchestrated the front end infrastructure and design for hellotax's new JavaScript-centric app powered by Vue and also managed a co-engineer.`,
       points: [
         'Crafted a 100% custom scalable UI library to enforce consistency and fluency across the application.',
         'Built a multi-role user authentication system from the ground up with JavaScript.',
@@ -35,7 +35,7 @@ export default {
       name: 'MOONDA',
       period: 'Nov 2018 - Jan 2019',
       role: 'Frontend Engineer (Contractor)',
-      intro: `I worked with MOONDA as a senior contractor via Pixel2HTML to create the web experience for John Deere's AUTOTRAC UNIVERSAL 300 product.`,
+      intro: `I worked with MOONDA as a senior contractor via Pixel2HTML to create the web experience for John Deere's ATU 300 product.`,
       points: [
         'Built a contest application from the ground up using React which enabled users of the product from all around the globe to post photos and share reviews about the product',
         'Designed and implemented a cross-browser, IE 11 compatible marketing site for the product',
