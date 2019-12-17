@@ -40,7 +40,7 @@
             $ga.event('Work', 'click', 'resume pdf', { transport: 'beacon' })
           "
         >
-          rèsumè </a
+          résumé </a
         >.
       </p>
 

@@ -4,6 +4,6 @@
     <NavItem :href="workURL" v-else>Work</NavItem>
     <NavItem :href="shelfURL" v-if="isHome || isWork">My Shelf</NavItem>
     <NavItem :href="landingURL" v-else>Home</NavItem>
-    <NavItem :href="resumeURL" external>My Rèsumè</NavItem>
+    <NavItem :href="resumeURL" external>My Résumé</NavItem>
   </ul>
 </template>
