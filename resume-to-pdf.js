@@ -17,10 +17,11 @@ const puppeteer = require('puppeteer')
   const height = await page.evaluate(() =>
     parseInt(getComputedStyle(document.body).height)
   )
+
   await page.pdf({
-    height,
-    width: '1300px',
+    width: '1230px',
     printBackground: true,
+    height: Math.min(height, 3100),
     margin: {
       top: '85px',
       right: '85px',
