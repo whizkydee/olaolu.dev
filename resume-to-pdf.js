@@ -21,7 +21,7 @@ const puppeteer = require('puppeteer')
   await page.pdf({
     width: '1230px',
     printBackground: true,
-    height: Math.min(height, 3100),
+    height: Math.min(height, 3090),
     margin: {
       top: '85px',
       right: '85px',
