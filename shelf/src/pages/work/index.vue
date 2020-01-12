@@ -1,74 +1,143 @@
 <template>
-  <Layout
+  <StyledWork
     id="list-of-projects"
     title="Work - Olaolu's shelf"
     description="Selected work including open source projects, experimentals and front-end apps by Olaolu"
   >
     <h1 class="page-heading"><span>/</span>work</h1>
+    <p class="page-desc">Selected projects I've worked on in the past.</p>
 
-    <div class="post__content">
-      <p>
-        Hey there! As you probably know, documenting one's past work can be
-        pretty tedious 😬.
-      </p>
+    <section class="work-container">
+      <ul id="projects">
+        <li v-for="(project, key) in projects" :key="key" class="project">
+          <figure v-html="project.logo"></figure>
 
-      <p>
-        Now, while this page is in the works, I've put so much effort to my
-        entire site so it's probably enough to convince you how good my work is.
-        Anyways, knock yourself out, this site is hosted on Netlify, uses JSX in
-        Vue, Gridsome and Styled Components and the codebase is right on my
-        GitHub at
-        <a
-          target="_blank"
-          href="https://github.com/whizkydee/olaolu.dev"
-          @click="$ga.event('Work', 'click', 'olaolu.dev repo link')"
-          >whizkydee/olaolu.dev
-        </a>
-        . You can also check out my other open source projects on
-        <a
-          href="https://github.com/whizkydee"
-          target="_blank"
-          @click="$ga.event('Work', 'click', 'resume pdf')"
-        >
-          GitHub
-        </a>
-        or download a copy of my
-        <a
-          :href="resumePDF"
-          target="_blank"
-          @click="
-            $ga.event('Work', 'click', 'resume pdf', { transport: 'beacon' })
-          "
-        >
-          résumé </a
-        >.
-      </p>
-
-      <p>
-        Also, I'm currently available for contracts and remote full-time roles.
-        Want us to work together? You can send me a mail at
-        <a href="mailto:hello@olaolu.dev">hello@olaolu.dev</a> or
-        <a
-          :href="socialProfiles.twitter"
-          target="_blank"
-          @click="$ga.event('Work', 'click', 'twitter link')"
-        >
-          reach me on Twitter</a
-        >!
-      </p>
-
-      <p>
-        If you're still not convinced or you're just curious about some of my
-        other work and want to hire me, feel free to send me a mail and we can
-        schedule a demo call for sometime where I'll show you the apps I've
-        worked on and probably walk you through interesting parts of the code.
-      </p>
-    </div>
-  </Layout>
+          <div class="project__info">
+            <h5>{{ project.name }}</h5>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              :href="'https://' + project.siteName"
+              class="project__info__siteName"
+              >{{ project.siteName }}</a
+            >
+          </div>
+          <g-link :to="project.path" class="project__link">Link</g-link>
+        </li>
+      </ul>
+    </section>
+  </StyledWork>
 </template>
 
 <script>
+import projectsData from './data'
+import Layout from '~/layouts/Default'
+import { default as styled } from 'vue-styled-components'
+
+const StyledWork = styled(Layout)`
+  main {
+    max-width: 1280px;
+  }
+
+  .page-heading {
+    margin-bottom: 0;
+  }
+
+  .page-desc {
+    text-align: center;
+    margin-bottom: var(--space);
+  }
+
+  #projects {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .project {
+    flex-grow: 0;
+    flex-shrink: 1;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 1.2em;
+    border-radius: 0.2rem;
+    background-color: #fff;
+    box-shadow: 0px 8px 6px -6px rgba(235, 234, 242, 0.58);
+    transition: 0.6s transform, box-shadow cubic-bezier(0.23, 1, 0.32, 1);
+
+    @media (max-width: 659px) {
+      width: 100%;
+    }
+
+    @media (min-width: 660px) and (max-width: 939px) {
+      flex-basis: calc((100% - 1em) / 2);
+    }
+
+    @media (min-width: 940px) {
+      flex-basis: calc((100% - 2em) / 3);
+    }
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 15px 8px 6px -6px rgba(235, 234, 242, 0.58);
+    }
+
+    figure {
+      margin: 0;
+      height: 10em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(245, 244, 252, 0.62);
+    }
+
+    &__info {
+      padding: 2em;
+
+      &__siteName {
+        white-space: pre;
+      }
+    }
+
+    h5 {
+      margin: 0;
+    }
+
+    &__link {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 80%;
+      overflow: hidden;
+      text-indent: -9999px;
+      z-index: 0;
+      transition: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+  }
+`
+
+function hyphenateName(name) {
+  return name
+    .toLowerCase()
+    .replace(/\s/g, '-')
+    .replace(/[!$%^&*()_+|~=`{}[\]:";'<>?,./]/gi, '')
+}
+
 export default {
+  computed: {
+    projects() {
+      return projectsData.map(project => ({
+        ...project,
+        path: '/work/' + hyphenateName(project.name),
+      }))
+    },
+  },
+
+  components: {
+    StyledWork,
+  },
   metaInfo: {
     title: 'Work',
   },
