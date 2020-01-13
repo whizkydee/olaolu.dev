@@ -4,7 +4,7 @@
     title="Work - Olaolu's shelf"
     description="Selected work including open source projects, experimentals and front-end apps by Olaolu"
   >
-    <h1 class="page-heading"><span>/</span>work</h1>
+    <h1 class="page-heading"><span>/</span>work<span>.</span></h1>
     <p class="page-desc">Selected projects I've worked on in the past.</p>
 
     <section class="work-container">
@@ -16,13 +16,20 @@
             <h5>{{ project.name }}</h5>
             <a
               target="_blank"
+              v-if="project.siteName"
               rel="noopener noreferrer"
-              :href="'https://' + project.siteName"
+              :href="project.siteURL"
               class="project__info__siteName"
               >{{ project.siteName }}</a
             >
           </div>
-          <g-link :to="project.path" class="project__link">Link</g-link>
+          <a
+            :target="!project.internalPage && '_blank'"
+            :rel="!project.internalPage && 'noopener noreferrer'"
+            :href="project.internalPage ? project.path : project.siteURL"
+            class="project__link"
+            >Link</a
+          >
         </li>
       </ul>
     </section>
@@ -32,6 +39,7 @@
 <script>
 import projectsData from './data'
 import Layout from '~/layouts/Default'
+import { hyphenateName } from '~/helpers'
 import { default as styled } from 'vue-styled-components'
 
 const StyledWork = styled(Layout)`
@@ -118,18 +126,12 @@ const StyledWork = styled(Layout)`
   }
 `
 
-function hyphenateName(name) {
-  return name
-    .toLowerCase()
-    .replace(/\s/g, '-')
-    .replace(/[!$%^&*()_+|~=`{}[\]:";'<>?,./]/gi, '')
-}
-
 export default {
   computed: {
     projects() {
       return projectsData.map(project => ({
         ...project,
+        siteURL: !!project.siteName ? 'https://' + project.siteName : null,
         path: '/work/' + hyphenateName(project.name),
       }))
     },
