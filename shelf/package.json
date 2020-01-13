@@ -11,6 +11,7 @@
     "@gridsome/remark-prismjs": "0.3.0",
     "@gridsome/source-filesystem": "0.6.2",
     "@gridsome/transformer-remark": "0.4.0",
-    "gridsome": "0.7.11"
+    "gridsome": "0.7.12",
+    "vue-carousel": "^0.18.0"
   }
 }

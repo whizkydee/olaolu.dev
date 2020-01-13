@@ -16,6 +16,6 @@
     "@vue/cli-plugin-pwa": "^3.8.0",
     "@vue/cli-service": "3.8.0",
     "svg-to-vue-component": "^0.3.8",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "2.6.11"
   }
 }
