@@ -34,7 +34,7 @@
         name="message"
         label="Your Message"
         :inputAttrs="{ minlength: 30 }"
-        placeholder="Hi, I think we need a design system for our products at Company X. Are you available to work?"
+        placeholder="Hi, I think we need a design system for our products at Company X. How soon can you hop on to discuss this?"
       />
     </div>
 

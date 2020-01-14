@@ -1,5 +1,9 @@
 <template>
-  <StyledWorkLayout :id="computedId" :title="title" :description="description">
+  <StyledWorkLayout
+    :id="'work-' + computedId"
+    :title="title"
+    :description="description"
+  >
     <h1 class="page-heading">{{ name }}</h1>
 
     <ClientOnly>
@@ -8,12 +12,17 @@
         :navigationEnabled="true"
         :perPage="1"
         :speed="1000"
+        :loop="true"
         :autoplayTimeout="3000"
         ref="carousel"
         :centerMode="true"
       >
         <slide v-for="(image, index) in images" :key="index">
-          <img :src="image" :alt="`${name}: Screen ${index + 1}`" />
+          <img
+            :src="image"
+            :alt="`${name}: Screen ${index + 1}`"
+            @click="handleSlideClick"
+          />
         </slide>
       </carousel>
     </ClientOnly>
@@ -25,7 +34,7 @@
     <section class="contact__container">
       <Cavalier
         heading="Let's Work together!"
-        text="Like my work and want something simlar for your company? Sure, let's get to business!"
+        text="Like my work and want something similar for your company? Sure, let's get to business!"
       />
       <ContactForm />
     </section>
@@ -35,6 +44,7 @@
 <script>
 import DefaultLayout from './Default'
 import { hyphenateName } from '~/helpers'
+import { openExternalWindow } from '@mrolaolu/helpers'
 import { default as styled, injectGlobal } from 'vue-styled-components'
 
 injectGlobal`
@@ -52,8 +62,13 @@ const StyledWorkLayout = styled(DefaultLayout)`
   }
 
   .VueCarousel-slide {
-    max-height: 710px;
+    max-height: 42.5vw;
+    position: relative;
     /* background-color: rgba(0, 0, 0, 0.01); */
+
+    img {
+      cursor: pointer;
+    }
   }
 
   .post__content {
@@ -73,6 +88,10 @@ const StyledWorkLayout = styled(DefaultLayout)`
     .cavalier {
       @media (min-width: 801px) {
         margin-right: 3em;
+      }
+
+      @media (max-width: 500px) {
+        font-size: 0.8em;
       }
 
       h1 {
@@ -99,6 +118,10 @@ const StyledWorkLayout = styled(DefaultLayout)`
     #submit__button {
       align-self: flex-start;
 
+      @media (max-width: 500px) {
+        font-size: 0.7em;
+      }
+
       @media (min-width: 581px) {
         margin-top: 3em;
       }
@@ -120,10 +143,15 @@ export default {
     document.removeEventListener('keydown', this.maybeScrollCarousel)
   },
   methods: {
+    handleSlideClick(event) {
+      openExternalWindow(event.target.src)
+    },
+
     maybeScrollCarousel(event) {
       const { carousel } = this.$refs
 
       if (
+        document.activeElement !== document.body &&
         event.target !== carousel.$el &&
         !carousel.$el.contains(event.target)
       ) {
@@ -155,7 +183,7 @@ export default {
         .fill('')
         .map((_, index) => {
           index = index + 1
-          return `/work-images/${this.computedId}/screen${index}.jpg`
+          return `/work-images/${this.computedId}/screen${index}.${this.imageFormat}`
         })
     },
   },
@@ -177,9 +205,21 @@ export default {
         .catch(),
   },
   props: {
-    id: { type: String },
-    name: { type: String, required: true },
-    slidesCount: { type: Number, required: true },
+    id: {
+      type: String,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    slidesCount: {
+      type: Number,
+      required: true,
+    },
+    imageFormat: {
+      type: String,
+      default: 'jpg',
+    },
   },
 }
 </script>
