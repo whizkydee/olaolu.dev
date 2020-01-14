@@ -114,12 +114,14 @@ main {
   font-size: 1.802em;
   margin-bottom: var(--space);
 
-  @media (max-width: 650px) {
-    display: none;
-  }
-
   span {
     opacity: 0.7;
+  }
+}
+
+@media (max-width: 650px) {
+  :root:not([id^='work-']) .page-heading {
+    display: none;
   }
 }
 
