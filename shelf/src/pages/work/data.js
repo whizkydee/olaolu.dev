@@ -42,7 +42,7 @@ export default [
     color: 'rgba(62,70,110,.1)',
     logo: pixelLogo,
     siteName: 'pixel2html.netlify.com',
-    internalPage: false,
+    internalPage: true,
   },
   {
     name: 'dropd',
