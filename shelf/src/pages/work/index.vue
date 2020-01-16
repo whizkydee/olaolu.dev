@@ -129,7 +129,7 @@ const StyledWork = styled(Layout)`
 
 export default {
   async beforeCreate() {
-    process.env.NODE_ENV !== 'production' &&
+    process.env.NODE_ENV === 'production' &&
       console.log(`${await import('raw-loader!@saucedrip/core/cat.txt').then(
         m => m.default
       )}
