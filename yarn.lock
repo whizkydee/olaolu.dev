@@ -165,10 +165,10 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@mrolaolu/helpers@0.2.10":
-  version "0.2.10"
-  resolved "https://registry.yarnpkg.com/@mrolaolu/helpers/-/helpers-0.2.10.tgz#23589916eb20fee986f872492a0a4404f120c0fd"
-  integrity sha512-7jQt5LwxB1jtWQM4D54EbAWjTziXHPZD+9sqbtFNKiRvvarGfeiQJ04fJB+af1YSHib6BSvrLfn2IWEvSmWlgg==
+"@mrolaolu/helpers@0.2.11":
+  version "0.2.11"
+  resolved "https://registry.yarnpkg.com/@mrolaolu/helpers/-/helpers-0.2.11.tgz#105a23dbead6af4d5bb06e80fd81144bc24de418"
+  integrity sha512-J9nJhzO6c3RihFfS02jvT89edxAgECXJnZ1nAAGd6iWn0Bzr0RFJKGjhDRT6wFg/GxeLsdXU5TfuNzzEayw5iw==
   dependencies:
     core-js "^3.3.4"
 
@@ -8507,10 +8507,10 @@ vue-styled-components@1.4.5:
     lodash.isplainobject "^4.0.6"
     stylis "^2.0.3"
 
-vue@^2.6.10:
-  version "2.6.10"
-  resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
-  integrity sha512-ImThpeNU9HbdZL3utgMCq0oiMzAkt1mcgy3/E6zWC/G6AaQoeuFdsl9nDhTDU3X1R6FK7nsIUuRACVcjI+A2GQ==
+vue@2.6.11:
+  version "2.6.11"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"
+  integrity sha512-VfPwgcGABbGAue9+sfrD4PuwFar7gPb1yl1UK1MwXoQPAw0BKSqWfoYCT/ThFrdEVWoI51dBuyCoiNU9bZDZxQ==
 
 vuex@^3.1.1:
   version "3.1.1"

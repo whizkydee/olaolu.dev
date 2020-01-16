@@ -121,7 +121,7 @@
           >
             olaolu.dev/work
           </a>
-          while major ones can be provided upon request.
+          and details can be provided upon request via a scheduled demo call.
         </p>
       </section>
 
