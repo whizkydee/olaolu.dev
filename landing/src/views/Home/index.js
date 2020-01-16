@@ -24,7 +24,9 @@ const Homepage = Vue.component('Homepage', {
 
   async beforeCreate() {
     process.env.NODE_ENV === 'production' &&
-      console.log(`${await import('raw-loader!@/cat.txt').then(m => m.default)}
+      console.log(`${await import('raw-loader!@saucedrip/core/cat.txt').then(
+        m => m.default
+      )}
     Hey there 👋, curious!
     You're probably wondering how cool my site is, yeah?
     I can do even better, so, feel free to hit me up on
