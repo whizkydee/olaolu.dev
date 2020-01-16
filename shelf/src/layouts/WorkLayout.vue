@@ -62,6 +62,7 @@ const StyledWorkLayout = styled(DefaultLayout)`
   }
 
   .VueCarousel-slide {
+    min-height: 40vw;
     max-height: 42.5vw;
     position: relative;
 
