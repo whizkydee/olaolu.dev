@@ -14,3 +14,10 @@ export const createMeta = {
   images: (...args) => createSEOProps('image', ...args),
   descriptions: (...args) => createSEOProps('description', ...args),
 }
+
+export function hyphenateName(name) {
+  return name
+    .toLowerCase()
+    .replace(/\s/g, '-')
+    .replace(/[!$%^&*()_+|~=`{}[\]:";'<>?,./]/gi, '')
+}

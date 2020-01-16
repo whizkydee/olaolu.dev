@@ -187,35 +187,6 @@ query Post ($id: ID!) {
     }
   }
 
-  &__content {
-    img {
-      width: calc(100% + var(--space) * 2);
-      margin-left: calc(var(--space) * -1);
-      display: block;
-      max-width: none;
-      border-radius: var(--radius);
-    }
-
-    ul,
-    ol {
-      margin-left: 1.25em;
-      margin-bottom: 1.25em;
-
-      li {
-        margin-bottom: 0.6em;
-        list-style-type: inherit;
-      }
-    }
-
-    ul {
-      list-style-type: disc;
-    }
-
-    ol {
-      list-style-type: decimal;
-    }
-  }
-
   &__footer {
     display: flex;
     position: relative;

@@ -1,6 +1,6 @@
 <template>
   <ThemeProvider id="app" :style="!ready && 'display: none'" :theme="theme">
-    <Header noMenuShadow />
+    <Header :noMenuShadow="!id.startsWith('work')" />
 
     <ContentView :id="id">
       <slot />
@@ -114,27 +114,60 @@ main {
   font-size: 1.802em;
   margin-bottom: var(--space);
 
-  @media (max-width: 650px) {
-    display: none;
-  }
-
   span {
     opacity: 0.7;
   }
 }
 
-.post__content a {
-  --fading-electric: rgba(72, 49, 212, 0.05);
+@media (max-width: 650px) {
+  :root:not([id^='work-']) .page-heading {
+    display: none;
+  }
+}
 
-  transition: 0.15s ease;
-  color: var(--electric-blue);
-  outline: 0.5em solid rgba(72, 49, 212, 0);
-  border-bottom: 3px solid var(--fading-electric);
+.post__content {
+  position: relative;
 
-  &:hover {
-    border-color: transparent;
-    background: var(--fading-electric);
-    outline: 3px solid var(--fading-electric);
+  img {
+    width: calc(100% + var(--space) * 2);
+    margin-left: calc(var(--space) * -1);
+    display: block;
+    max-width: none;
+    border-radius: var(--radius);
+  }
+
+  ul,
+  ol {
+    margin-left: 1.25em;
+    margin-bottom: 1.25em;
+
+    li {
+      margin-bottom: 0.6em;
+      list-style-type: inherit;
+    }
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  a {
+    --fading-electric: rgba(72, 49, 212, 0.05);
+
+    transition: 0.15s ease;
+    color: var(--electric-blue);
+    outline: 0.5em solid rgba(72, 49, 212, 0);
+    border-bottom: 3px solid var(--fading-electric);
+
+    &:hover {
+      border-color: transparent;
+      background: var(--fading-electric);
+      outline: 3px solid var(--fading-electric);
+    }
   }
 }
 

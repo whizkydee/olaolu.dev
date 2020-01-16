@@ -4,7 +4,6 @@ import { default as styled, css } from 'vue-styled-components'
 const StyledResume = css`
   display: flex;
   max-width: unset;
-  user-select: none;
   padding-top: 6.7rem;
   padding-bottom: 6.7rem;
   background-color: var(--bg-color);
