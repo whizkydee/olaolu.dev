@@ -33,7 +33,7 @@
 
     <section class="contact__container">
       <Cavalier
-        heading="Let's Work together!"
+        heading="Let's work together!"
         text="Like my work and want something similar for your company? Sure, let's get to business!"
       />
       <ContactForm />
@@ -64,7 +64,6 @@ const StyledWorkLayout = styled(DefaultLayout)`
   .VueCarousel-slide {
     max-height: 42.5vw;
     position: relative;
-    /* background-color: rgba(0, 0, 0, 0.01); */
 
     img {
       cursor: pointer;
@@ -79,7 +78,9 @@ const StyledWorkLayout = styled(DefaultLayout)`
 
   .contact__container {
     display: flex;
-    margin-top: 6rem;
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border-color);
 
     @media (max-width: 800px) {
       flex-direction: column;
@@ -179,8 +180,8 @@ export default {
       return 'Highlights of the work process on ' + this.name + '.'
     },
     images() {
-      return Array(this.slidesCount)
-        .fill('')
+      return Array(this.slideCount)
+        .fill()
         .map((_, index) => {
           index = index + 1
           return `/work-images/${this.computedId}/screen${index}.${this.imageFormat}`
@@ -208,11 +209,20 @@ export default {
     id: {
       type: String,
     },
+    tech: {
+      type: String,
+    },
+    loc: {
+      type: String,
+    },
+    period: {
+      type: String,
+    },
     name: {
       type: String,
       required: true,
     },
-    slidesCount: {
+    slideCount: {
       type: Number,
       required: true,
     },

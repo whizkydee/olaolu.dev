@@ -1,6 +1,6 @@
 <template>
   <StyledWork
-    id="list-of-projects"
+    id="work"
     title="Work - Olaolu's shelf"
     description="Selected work including open source projects, experimentals and front-end apps by Olaolu"
   >
@@ -71,7 +71,8 @@ const StyledWork = styled(Layout)`
     border-radius: 0.2rem;
     background-color: #fff;
     box-shadow: 0px 8px 6px -6px rgba(235, 234, 242, 0.58);
-    transition: 0.6s transform, box-shadow cubic-bezier(0.23, 1, 0.32, 1);
+    transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    transition-property: transform, box-shadow;
 
     @media (max-width: 659px) {
       width: 100%;

@@ -1,5 +1,12 @@
 <template>
-  <WorkLayout name="hellotax" :slidesCount="18" imageFormat="png">
+  <WorkLayout
+    name="hellotax"
+    :slideCount="18"
+    imageFormat="png"
+    loc="65,000"
+    period="Mar – Nov 2019"
+    tech="JavaScript, Vue.js, Styled Components, Vuex"
+  >
     <p>
       hellotax is a suite of tools and services tailored at providing robust and
       fast VAT Registration &amp; Returns solutions for all kinds of online
@@ -10,8 +17,8 @@
       The company already had a functioning web app but needed a professional to
       create an entirely new experience with the latest technologies to leverage
       speed and provide an optimal user experience as their customers were
-      increasing. At the core of the product is data so there was all sorts of
-      data transformation and manipulation involved and they needed to make that
+      increasing. At the core of the product is data so there was heavy data
+      transformation and manipulation involved and they needed to make that
       process as fast as possible.
     </p>
 
@@ -34,12 +41,12 @@
     </p>
 
     <p>
-      Now, it's easy to go wrong and polute data in these computations and it
-      was clear we needed solid assertion mechanisms so I created a bunch of
-      fail-safe optimized utility libraries which implemented solid type-checks
-      and validation techniques to ensure fast, yet accurate data diffing and
-      transformation work to preserve the integrity of the information displayed
-      and minimize runtime errors and unusability.
+      Now, it's easy to go wrong and polute data in these computations which
+      made it clear that we needed solid assertion mechanisms so I created a
+      bunch of fail-safe optimized utility libraries which implemented solid
+      type-checks and validation techniques to ensure fast, yet accurate data
+      diffing and transformation work to preserve the integrity of the
+      information displayed and minimize runtime errors and unusability.
     </p>
 
     <p>
