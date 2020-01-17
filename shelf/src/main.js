@@ -5,6 +5,7 @@ import '@saucedrip/core/global-styles'
 // Import main css
 import '~/assets/style/index.scss'
 
+import { registerEnv } from '@saucedrip/core/helpers'
 // Import sauce drip global components
 import * as components from '@saucedrip/core'
 import { SharedMixins } from '@saucedrip/core/mixins'
@@ -15,6 +16,7 @@ import WorkLayout from '~/layouts/WorkLayout.vue'
 
 // The Client API can be used here. Learn more: gridsome.org/docs/client-api
 export default function(Vue, { router, head, isClient }) {
+  registerEnv(Vue, 'SHELF')
   Vue.config.productionTip = false
 
   head.style.push({ type: 'text/css', cssText: fonts })

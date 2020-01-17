@@ -3,6 +3,10 @@ import { wait } from '@mrolaolu/helpers'
 import { SECTION_SELECTOR, CURRENT_SECTION } from './constants'
 const { SHELF_PORT, LANDING_PORT } = require('../config')
 
+export function registerEnv(Vue, value) {
+  Vue.prototype.__currentEnv = value
+}
+
 export function goToSection(
   store,
   { node, modifier, smooth = true, focus = true }

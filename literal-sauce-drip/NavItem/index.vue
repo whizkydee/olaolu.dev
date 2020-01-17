@@ -3,21 +3,12 @@
     <a
       :href="href"
       :class="className"
+      @click="handleClick"
       v-bind="anchorAttrs"
       :aria-label="ariaLabel"
       :aria-current="ariaCurrent"
       :target="external && '_blank'"
       :rel="external && 'noreferrer noopener'"
-      @click="
-        e => {
-          if (this.href) {
-            this.href.charAt(0) === '#' && e.preventDefault()
-          }
-          if (typeof clickFn === 'function') {
-            clickFn.call(this, e)
-          }
-        }
-      "
     >
       <slot />
     </a>
@@ -25,7 +16,34 @@
 </template>
 
 <script>
+import { isObject } from '@mrolaolu/helpers'
+
 export default {
+  methods: {
+    handleClick(event) {
+      const { href } = this
+
+      if (href) {
+        href.charAt(0) === '#' && event.preventDefault()
+      }
+      if (typeof this.clickFn === 'function') {
+        this.clickFn.call(this, event)
+      }
+
+      // Use Vue router to handle all shelf links
+      // while in the shelf environment.
+      if (
+        this.isShelfEnv &&
+        isObject(this.$router) &&
+        [this.workURL, this.shelfURL, this.resumeURL].indexOf(href) !== -1
+      ) {
+        event.preventDefault()
+        const { pathname } = new URL(href)
+        this.$router.push(pathname)
+      }
+    },
+  },
+
   props: {
     href: String,
     clickFn: Function,
