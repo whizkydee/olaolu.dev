@@ -28,11 +28,11 @@ export const SharedMixins = {
     },
 
     isHome() {
-      return (
-        typeof window !== 'undefined' &&
-        location.href.startsWith(this.landingURL) &&
-        !location.pathname.includes('/shelf')
-      )
+      return this.__currentEnv === 'HOME'
+    },
+
+    isShelfEnv() {
+      return this.__currentEnv === 'SHELF'
     },
 
     isShelf() {
@@ -52,10 +52,6 @@ export const SharedMixins = {
         typeof window !== 'undefined' &&
         location.href.startsWith(this.resumeURL)
       )
-    },
-
-    isShelfEnv() {
-      return this.isShelf || this.isWork || this.isResume
     },
   },
 

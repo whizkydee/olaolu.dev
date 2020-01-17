@@ -5,6 +5,9 @@ import router from './router'
 import './registerServiceWorker'
 import * as components from '@/components'
 import '@saucedrip/core/mixins'
+import { registerEnv } from '@saucedrip/core/helpers'
+
+registerEnv(Vue, 'HOME')
 
 // Register all sauce drip components.
 for (let componentName in components) {
