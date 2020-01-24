@@ -71,7 +71,7 @@ little bit extra work.
 
 We all have that one big file on our sites &ndash; the one big JavaScript asset
 or the pretty 1MB image from Unsplash. JavaScript occupies is on top of the list
-of front end resources that impact performance negatively, followed by images
+of frontend resources that impact performance negatively, followed by images
 and really, it’s difficult to keep track of these things when everyone is in a
 rush and hell-bent on results so we under-prioritize or forget about optmizing
 for performance, something that affects our users directly. Users know when your
@@ -87,7 +87,7 @@ accessible quickly, you do not even get the chance to show anything to the user.
 
 ### 3. Excessive HTTP Requests
 
-Get! Post! Front end developers, we love to do that a lot: consuming APIs and
+Get! Post! Frontend developers, we love to do that a lot: consuming APIs and
 all — it’s fun actually, being able to communicate with a web server, that’s
 pretty incredible, right?
 
