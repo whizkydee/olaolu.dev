@@ -11,7 +11,10 @@ export const colors = {
 export const theme = {
   colors,
   header: { padding: '6em', height: '11.12em' },
-  fontFamily: `'SF UI Text',-apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI","Oxygen","Ubuntu","Cantarell","Open Sans",sans-serif`,
+  fontFamily: `
+  'SF UI Text',-apple-system,BlinkMacSystemFont,"Helvetica Neue",
+  "Segoe UI","Oxygen","Ubuntu","Cantarell","Open Sans",sans-serif
+  `,
 }
 
 export default theme
