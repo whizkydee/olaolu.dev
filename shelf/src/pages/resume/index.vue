@@ -66,7 +66,7 @@
     <article>
       <header id="profile-summary">
         <h1 id="name">Olaolu <br />Olawuyi</h1>
-        <h2>Expert Front end developer and UI Engineer.</h2>
+        <h2>Expert Frontend developer and UI Engineer.</h2>
         <p>
           Engineer valued for driving high-performance accessible web
           experiences. I design quality, user-friendly and scalable products

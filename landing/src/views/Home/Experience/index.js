@@ -20,13 +20,13 @@ const Experience = Vue.component('Experience', {
             </p>
 
             <p slot="text">
-              Most recently, I was a Senior front end engineering contractor
-              with Pixel2HTML building JavaScript applications and interfaces
-              for orgs and individuals.
+              Most recently, I was a Senior frontend engineering contractor with
+              Pixel2HTML building JavaScript applications and interfaces for
+              orgs and individuals.
             </p>
 
             <p slot="text">
-              Before then, I led the front end engineering team at Conectar LLC
+              Before then, I led the frontend engineering team at Conectar LLC
               through building multiple React applications into a single
               powerful online learning platform. I deliver quality stuff
               contracting with these organizations internationally. I also

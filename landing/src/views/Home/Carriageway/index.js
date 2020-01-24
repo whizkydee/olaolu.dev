@@ -20,7 +20,7 @@ const Carriageway = Vue.component('Carriageway', {
             <li>
               <Cavalier
                 heading="I write, <br/> sometimes"
-                text="About design, <br/> front end dev, <br/> learning and life."
+                text="About design, <br/> frontend dev, <br/> learning and life."
               />
 
               <Button url={this.shelfURL}>Go to Shelf</Button>

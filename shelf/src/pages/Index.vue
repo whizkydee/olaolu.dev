@@ -2,7 +2,7 @@
   <Layout
     id="list-of-posts"
     title="Posts - Olaolu's shelf"
-    description="Articles on web development and design by Olaolu, expert front end developer and UI Engineer"
+    description="Articles on web development and design by Olaolu, expert frontend developer and UI Engineer"
   >
     <h1 class="page-heading"><span>/</span>shelf</h1>
     <!-- List posts -->

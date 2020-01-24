@@ -36,7 +36,7 @@
       were dealing with really huge data (reaching megabytes at times), the
       round trip time (RTT) was in high numbers which resulted in delayed
       updates. To tackle this, I had to implement a lot of the processing and
-      manipulation logic on the front end, leaving special computation work and
+      manipulation logic on the frontend, leaving special computation work and
       business logic for the back end.
     </p>
 

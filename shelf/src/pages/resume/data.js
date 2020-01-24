@@ -4,15 +4,15 @@ export default {
       name: 'hellotax',
       period: 'Mar - Nov 2019',
       role: 'Principal Software Engineer (Contractor)',
-      intro: `I orchestrated and developed the front end infrastructure, design and functionality for hellotax's new JavaScript-centric app powered by Vue and also managed a co-engineer.`,
+      intro: `I orchestrated and developed the frontend infrastructure, design and functionality for hellotax's new JavaScript-centric app powered by Vue and also managed a co-engineer.`,
       points: [
         'Crafted a 100% custom scalable UI library to enforce consistency and fluency across the application.',
         'Built a multi-role user authentication system from the ground up with JavaScript.',
         'Implemented a client-side localization system for the entire app.',
         'Built a client-side multilingual routing system with solid navigation guards.',
         'Engineered fail-safe optimized utility libraries to minimize runtime errors and unusability in production.',
-        'Implemented fast and reliable data transformation and diffing mechanisms on the front end for our data pipelines.',
-        'Engineered an overall fast, yet accessible and silky smooth user experience in the app.',
+        'Implemented fast and reliable data transformation and diffing mechanisms on the frontend for our data pipelines.',
+        'Delivered an overall fast, yet accessible and silky smooth user experience in the app.',
       ],
     },
     {
@@ -20,9 +20,9 @@ export default {
       period: 'Nov 2018 - Oct 2019',
       role: 'Senior Frontend Engineer (Contractor)',
       intro:
-        'I worked on a couple of projects for organizations and individuals as a front end engineering contractor.',
+        'I worked on a couple of projects for organizations and individuals as a frontend engineering contractor.',
       points: [
-        'Building front end applications for our several clients. Most especially JavaScript and React applications.',
+        'Building frontend applications for our several clients. Most especially JavaScript and React applications.',
         'Migrating the company site from HTML/CSS to React/Gatsby.',
         'Crafting and improving design, web accessibility and user experience for clients.',
         'Enforcing healthy codebases, coding style and standards.',
