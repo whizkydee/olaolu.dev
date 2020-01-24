@@ -22,9 +22,10 @@ export default {
   methods: {
     handleClick(event) {
       const { href } = this
+      const { pathname, hash } = new URL(href)
 
-      if (href) {
-        href.charAt(0) === '#' && event.preventDefault()
+      if (href && hash.length > 0) {
+        event.preventDefault()
       }
       if (typeof this.clickFn === 'function') {
         this.clickFn.call(this, event)
@@ -38,7 +39,6 @@ export default {
         [this.workURL, this.shelfURL, this.resumeURL].indexOf(href) !== -1
       ) {
         event.preventDefault()
-        const { pathname } = new URL(href)
         this.$router.push(pathname)
       }
     },
