@@ -9,8 +9,12 @@ import { mapState } from 'vuex'
 import { theme } from '@/base/theme'
 import { CURRENT_SECTION, HEADER_COMPACT } from './constants'
 
-const App = Vue.component('App', {
-  computed: mapState([CURRENT_SECTION, HEADER_COMPACT]),
+// prettier-ignore
+export default Vue.component('App', {
+  computed: mapState([
+    CURRENT_SECTION,
+    HEADER_COMPACT,
+  ]),
 
   render() {
     return (
@@ -19,15 +23,13 @@ const App = Vue.component('App', {
           Skip to navigation
         </a>
         <Header
-          store={this.$store}
-          currentSection={this.currentSection}
           compact={this.isPortrait ? false : this.isHeaderCompact}
+          currentSection={this.currentSection}
+          store={this.$store}
         />
-        <router-view />
+        <RouterView />
         <Footer currentSection={this.currentSection} />
       </ThemeProvider>
     )
   },
 })
-
-export default App
