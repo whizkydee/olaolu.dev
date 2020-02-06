@@ -41,7 +41,7 @@
     </p>
 
     <p>
-      Now, it's easy to go wrong and polute data in these computations which
+      Now, it's easy to go wrong and pollute data in these computations which
       made it clear that we needed solid assertion mechanisms so I created a
       bunch of fail-safe optimized utility libraries which implemented solid
       type-checks and validation techniques to ensure fast, yet accurate data

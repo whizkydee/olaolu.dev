@@ -28,7 +28,7 @@ runAll(['build:*'], {
       '✅ INDIVIDUAL BUILDS SUCCESSFUL... Proceeding to combined build...'
     )
 
-    // Move files from the homepage dist files to the root dist files
+    // Move files from the homepage dist directory to the root dist directory
     for (let file of distFiles.landing) {
       await moveFile(path.join(dist.landing, file), path.join(rootDist, file))
     }
@@ -36,7 +36,7 @@ runAll(['build:*'], {
       '✅ landing dist files moved... Proceeding to shelf dist files...'
     )
 
-    // Move files from the shelf dist files to the root dist files
+    // Move files from the shelf dist directory to the root dist directory
     for (let file of distFiles.shelf) {
       await moveFile(
         path.join(dist.shelf, file),
