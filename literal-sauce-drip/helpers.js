@@ -1,5 +1,4 @@
 export * from './media-helpers'
-import { wait } from '@mrolaolu/helpers'
 import { SECTION_SELECTOR, CURRENT_SECTION } from './constants'
 const { SHELF_PORT, LANDING_PORT } = require('../config')
 
@@ -7,45 +6,54 @@ export function registerEnv(Vue, value) {
   Vue.prototype.__currentEnv = value
 }
 
-export function goToSection(
-  store,
-  { node, modifier, smooth = true, focus = true }
-) {
-  if (!(node instanceof HTMLElement)) return
+export function goToSection(store, opts) {
+  let { node, modifier, smooth = true, focus = true } = opts
 
-  const getSectionId = () => node.dataset.section
+  if (!node) return
+  const app = document.getElementById('app')
   const sections = Array.from(document.querySelectorAll(SECTION_SELECTOR))
 
-  let curSectionIndex = sections.findIndex(
-    ({ dataset }) => dataset.section === getSectionId()
-  )
-
-  const findSection = (idx = 0) => sections[curSectionIndex + idx]
+  const getSectionId = () => {
+    return node.dataset.section
+  }
+  const findSection = (idx = 0) => {
+    return sections[curSectionIndex + idx]
+  }
+  const curSectionIndex = sections.findIndex(({ dataset }) => {
+    return dataset.section === getSectionId()
+  })
 
   // determine what section to go to based on the modifier.
-  node =
-    modifier === 'next'
-      ? findSection(1)
-      : modifier === 'previous'
-      ? findSection(-1)
-      : node
+  switch (modifier) {
+    case 'next':
+      node = findSection(1)
+      break
+    case 'previous':
+      node = findSection(-1)
+      break
 
-  const app = document.getElementById('app')
-  if (node) {
-    wait(1000, () => node.classList.add('scrolled'))
+    default:
+    // node = node
+  }
 
-    smooth ? smoothScrollToElem(node) : window.scrollTo(0, node.offsetTop)
+  if (node instanceof HTMLElement) {
+    window.setTimeout(() => {
+      node.classList.add('scrolled')
+    }, 1000)
 
-    wait(200, () => {
-      focus && node.focus()
+    if (smooth) {
+      smoothScrollToElem(node)
+    } else {
+      window.scrollTo(0, node.offsetTop)
+    }
+
+    window.setTimeout(() => {
+      if (focus) node.focus()
+
       store && store.commit(CURRENT_SECTION, getSectionId())
       app.dataset[CURRENT_SECTION] = getSectionId()
-    })
+    }, 200)
   }
-}
-
-export function createMenuShadow(color = 'rgba(72, 49, 212, .05)') {
-  return `0 10px 53px 0 ${color}`
 }
 
 export function smoothScrollToElem(
@@ -55,8 +63,8 @@ export function smoothScrollToElem(
 ) {
   if (!(elem instanceof HTMLElement)) return
 
-  const scrollTargetY = elem.offsetTop
   let currentTime = 0
+  const scrollTargetY = elem.offsetTop
   const scrollY = window.pageYOffset || document.documentElement.scrollTop
 
   // min time .1, max time .8 seconds
@@ -89,6 +97,10 @@ export function smoothScrollToElem(
   }
 
   tick()
+}
+
+export function createMenuShadow(color = 'rgba(72, 49, 212, .05)') {
+  return `0 10px 53px 0 ${color}`
 }
 
 export function isDev() {
