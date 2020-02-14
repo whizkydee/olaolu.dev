@@ -25,18 +25,22 @@ const Experience = Vue.component('Experience', {
             </p>
 
             <p slot="text">
-              Most recently, I was a Senior frontend engineering contractor with
+              Most recently, I was Principal Frontend Software Engineer at
+              hellotax crafting a suite of tools and services tailored at
+              providing robust and fast VAT Registration &amp; Returns solutions
+              for all kinds of traders across Europe.
+            </p>
+
+            <p slot="text">
+              Before then, I was a Senior frontend engineering contractor with
               Pixel2HTML building JavaScript applications and interfaces for
               orgs and individuals.
             </p>
 
             <p slot="text">
-              Before then, I led the frontend engineering team at Conectar LLC
+              I once also led the frontend team at a Russian startup, Conectar
               through building multiple React applications into a single
-              powerful online learning platform. I deliver quality stuff
-              contracting with these organizations internationally. I also
-              created the Palenight theme for VS Code which has seen hundreds of
-              thousands of downloads.
+              powerful online learning platform.
             </p>
 
             <p slot="text">
