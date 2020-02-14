@@ -18,7 +18,7 @@ const PitchSlate = Vue.component('PitchSlate', {
             theme="lime"
             text="I like to craft solid and scalable FE products with great user experiences."
           >
-            <h1 slot="heading">
+            <h1 slot="heading" aria-label="Frontend Developer.">
               Frontend
               <br /> Developer<span>.</span>
             </h1>

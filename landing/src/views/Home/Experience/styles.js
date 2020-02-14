@@ -64,6 +64,11 @@ const StyledExperience = styled(Section)`
       max-width: inherit;
     }
 
+    figcaption {
+      opacity: 0;
+      text-indent: -9999px;
+    }
+
     ${media.maxWidth('portrait')`
       max-width: 110%;
       margin-top: 4vh;
