@@ -1,10 +1,15 @@
 import Vue from 'vue'
+import { mapState } from 'vuex'
 import StyledExperience from './styles'
 import { OlaoluWorkIllo } from '@/assets'
+import { CURRENT_SECTION } from '@/constants'
 
 const Experience = Vue.component('Experience', {
-  props: ['name'],
+  computed: mapState([CURRENT_SECTION]),
+
   render() {
+    const isVisible = this.currentSection === 'trois'
+
     return (
       <StyledExperience name={this.name}>
         <div class="inner__content">
@@ -48,16 +53,17 @@ const Experience = Vue.component('Experience', {
             </p>
           </Cavalier>
 
-          <figure
-            class="work__illo"
-            aria-label="Illustration of Olaolu and cardboards of some of his work."
-          >
+          <figure class="work__illo" aria-hidden={!isVisible}>
             <OlaoluWorkIllo />
+            <figcaption>
+              Illustration of Olaolu and cardboards of some of his work.
+            </figcaption>
           </figure>
         </div>
       </StyledExperience>
     )
   },
+  props: ['name'],
 })
 
 export default Experience
