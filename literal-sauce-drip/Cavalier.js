@@ -81,7 +81,8 @@ const StyledCavalier = styled.article`
       }
 
       &:nth-of-type(3),
-      &:nth-of-type(4)  {
+      &:nth-of-type(4),
+      &:nth-of-type(5)  {
         transition-delay: 420ms;
       }
     `}
