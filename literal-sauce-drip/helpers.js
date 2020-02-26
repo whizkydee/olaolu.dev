@@ -13,11 +13,11 @@ export function goToSection(store, opts) {
   const app = document.getElementById('app')
   const sections = Array.from(document.querySelectorAll(SECTION_SELECTOR))
 
-  const getSectionId = () => {
-    return node.dataset.section
-  }
   const findSection = (idx = 0) => {
     return sections[curSectionIndex + idx]
+  }
+  const getSectionId = () => {
+    return node.dataset.section
   }
   const curSectionIndex = sections.findIndex(({ dataset }) => {
     return dataset.section === getSectionId()
@@ -31,7 +31,6 @@ export function goToSection(store, opts) {
     case 'previous':
       node = findSection(-1)
       break
-
     default:
     // node = node
   }

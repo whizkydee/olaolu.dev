@@ -127,16 +127,21 @@ const StyledButtonLink = createStyledButton('a', {})
 const StyledButton = createStyledButton('button', {})
 
 export default {
-  components: {
-    BowArrow,
-    StyledButton,
-    StyledButtonLink,
-  },
+  components: { BowArrow, StyledButton, StyledButtonLink },
   props: {
     url: String,
-    lime: { type: Boolean, default: false },
-    type: { type: String, default: 'button' },
-    noArrow: { type: Boolean, default: false },
+    lime: {
+      type: Boolean,
+      default: false,
+    },
+    type: {
+      type: String,
+      default: 'button',
+    },
+    noArrow: {
+      type: Boolean,
+      default: false,
+    },
   },
 }
 </script>

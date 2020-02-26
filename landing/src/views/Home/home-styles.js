@@ -67,7 +67,8 @@ const StyledHomepage = injectGlobal`
       left: 0;
       right: 0;
       bottom: 1px;
-      overflow: auto;
+      overflow-y: auto;
+      overflow-x: hidden;
       position: absolute;
       overflow-behavior: contain;
       -webkit-overflow-scrolling: touch;

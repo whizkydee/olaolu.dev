@@ -1,34 +1,37 @@
 <template>
   <StyledInputGroup
     :data-id="id"
-    :class="'input__group' + (focused ? ' focused' : '')"
+    :class="{
+      input__group: true,
+      focused,
+    }"
   >
-    <label :for="id" v-if="label">{{ label }}</label>
+    <label :for="id" v-if="label"> {{ label }}</label>
 
     <input
       :id="id"
-      :type="type"
-      :name="name"
       v-on="listen"
+      :placeholder="placeholder"
+      @focus="handleFocus"
       v-if="!textarea"
       @blur="handleBlur"
-      v-bind="inputAttrs"
+      :type="type"
+      :name="name"
       :required="required"
-      @focus="handleFocus"
-      :placeholder="placeholder"
+      v-bind="inputAttrs"
     />
 
     <textarea
-      :id="id"
-      rows="7"
-      :name="name"
-      v-on="listen"
-      @blur="handleBlur"
       v-bind="inputAttrs"
-      :required="required"
+      @blur="handleBlur"
       @focus="handleFocus"
-      v-else-if="textarea"
       :placeholder="placeholder"
+      v-else-if="textarea"
+      :id="id"
+      v-on="listen"
+      :name="name"
+      :required="required"
+      rows="7"
     />
     <slot />
   </StyledInputGroup>
@@ -109,15 +112,24 @@ export default {
   },
 
   props: {
-    name: String,
     label: String,
     listen: Object,
-    required: Boolean,
-    inputAttrs: Object,
+    name: String,
     placeholder: String,
-    id: { type: String, required: true },
-    type: { type: String, default: 'text' },
-    textarea: { type: Boolean, default: false },
+    inputAttrs: Object,
+    required: Boolean,
+    id: {
+      type: String,
+      required: true,
+    },
+    type: {
+      type: String,
+      default: 'text',
+    },
+    textarea: {
+      type: Boolean,
+      default: false,
+    },
   },
 }
 

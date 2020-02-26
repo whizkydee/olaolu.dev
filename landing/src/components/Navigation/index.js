@@ -1,22 +1,23 @@
 import Vue from 'vue'
-import StyledNavigation from './styles'
+import { mapState } from 'vuex'
 import { goToSection } from '@/helpers'
+import StyledNavigation from './styles'
 import { NAVIGATION_BULLET, CURRENT_SECTION } from '@/constants'
 
 const Navigation = Vue.component('Navigation', {
+  computed: mapState([CURRENT_SECTION]),
   methods: {
     jumpToSection(event) {
-      if (!event || (event && !event.target)) return
+      const sectionId = event.target.getAttribute('href').slice(1)
+      const sectionSelector = `[data-section='${sectionId}']`
 
-      const targetSection = this.$root.$el.querySelector(
-        `[data-section='${event.target.getAttribute('href').slice(1)}']`
-      )
-
-      goToSection({ node: targetSection })
+      goToSection({
+        node: this.$root.$el.querySelector(sectionSelector),
+      })
     },
 
     isCurrent(sectionId) {
-      return this.$store.state[CURRENT_SECTION] === sectionId && 'page'
+      return this.currentSection === sectionId && 'page'
     },
   },
 
