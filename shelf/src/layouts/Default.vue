@@ -108,23 +108,6 @@ main {
   }
 }
 
-.page-heading {
-  user-select: none;
-  text-align: center;
-  font-size: 1.802em;
-  margin-bottom: var(--space);
-
-  span {
-    opacity: 0.7;
-  }
-}
-
-@media (max-width: 650px) {
-  :root:not([id^='work-']) .page-heading {
-    display: none;
-  }
-}
-
 .post__content {
   position: relative;
 

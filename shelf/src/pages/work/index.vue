@@ -4,8 +4,10 @@
     title="Work - Olaolu's shelf"
     description="Selected work including open source projects, experimentals and front-end apps by Olaolu"
   >
-    <h1 class="page-heading"><span>/</span>work<span>.</span></h1>
-    <p class="page-desc">Selected projects I've worked on in the past.</p>
+    <PageHeader
+      title="work"
+      desc="Selected projects I've worked on in the past."
+    />
 
     <section class="work-container">
       <ul id="projects">
@@ -47,13 +49,8 @@ const StyledWork = styled(Layout)`
     max-width: 1280px;
   }
 
-  .page-heading {
+  .page-header__heading {
     margin-bottom: 0;
-  }
-
-  .page-desc {
-    text-align: center;
-    margin-bottom: var(--space);
   }
 
   #projects {

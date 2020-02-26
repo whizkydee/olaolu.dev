@@ -14,6 +14,8 @@ import { SharedMixins } from '@saucedrip/core/mixins'
 import DefaultLayout from '~/layouts/Default.vue'
 import WorkLayout from '~/layouts/WorkLayout.vue'
 
+import PageHeader from '~/components/PageHeader'
+
 // The Client API can be used here. Learn more: gridsome.org/docs/client-api
 export default function(Vue, { router, head, isClient }) {
   registerEnv(Vue, 'SHELF')
@@ -28,6 +30,8 @@ export default function(Vue, { router, head, isClient }) {
   for (let componentName in components) {
     Vue.component(componentName, components[componentName])
   }
+
+  Vue.component('PageHeader', PageHeader)
 
   // Set default layout as a global component
   Vue.component('Layout', DefaultLayout)
