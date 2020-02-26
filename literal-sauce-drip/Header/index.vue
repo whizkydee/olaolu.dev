@@ -20,7 +20,7 @@
       @click="toggleMenu"
       aria-haspopup="menu"
       :aria-label="getLabel()"
-      :class="'menu__toggle' + (menuOpen ? ' x' : '')"
+      :class="{ menu__toggle: true, x: menuOpen }"
     />
 
     <nav
@@ -83,7 +83,9 @@ export default {
       }
 
       if (this.menuOpen && !this.noMenuShadow && !this.isMediumScreen) {
-        wait(150, () => this.$refs.contactMenu.classList.add('shadow'))
+        wait(150, () => {
+          this.$refs.contactMenu.classList.add('shadow')
+        })
       }
 
       if (this.isHome && !this.menuOpen) {

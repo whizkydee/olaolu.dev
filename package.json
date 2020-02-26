@@ -23,14 +23,14 @@
     "deploy": "yarn build && netlify deploy --prod"
   },
   "devDependencies": {
-    "@vue/cli-plugin-eslint": "^3.8.0",
+    "@vue/cli-plugin-eslint": "3.8.0",
     "@vue/eslint-config-prettier": "4.0.1",
-    "babel-eslint": "^10.0.1",
+    "babel-eslint": "10.0.1",
     "cache-loader": "^4.1.0",
     "del-cli": "^2.0.0",
-    "eslint": "^5.16.0",
+    "eslint": "5.16.0",
     "eslint-plugin-prettier": "3.1.0",
-    "eslint-plugin-vue": "^5.0.0",
+    "eslint-plugin-vue": "5.0.0",
     "make-dir": "^3.0.0",
     "move-file": "^1.2.0",
     "netlify-cli": "^2.15.0",
@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@gridsome/cli": "0.3.1",
-    "@mrolaolu/helpers": "0.2.11",
+    "@mrolaolu/helpers": "0.2.12",
     "core-js": "^2.6.5",
     "vue": "2.6.11",
     "vue-styled-components": "1.4.5",

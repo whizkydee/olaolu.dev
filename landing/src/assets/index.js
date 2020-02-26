@@ -1,17 +1,7 @@
-import SauceDripLogo from './logo.svg'
-import AvatarShapes from './avatar-shapes.svg'
-import SquareofDots from './square-of-dots.svg'
-import OlaoluWorkIllo from './olaolu-work-illo.svg'
-import LogomarkOutline from './logomark-outline.svg'
-import CornerstonePatternsLeft from './cornerstone-patterns-left.svg'
-import CornerstonePatternsRight from './cornerstone-patterns-right.svg'
-
-export {
-  AvatarShapes,
-  SquareofDots,
-  SauceDripLogo,
-  OlaoluWorkIllo,
-  LogomarkOutline,
-  CornerstonePatternsLeft,
-  CornerstonePatternsRight,
-}
+export { default as SauceDripLogo } from './logo.svg'
+export { default as AvatarShapes } from './avatar-shapes.svg'
+export { default as SquareofDots } from './square-of-dots.svg'
+export { default as OlaoluWorkIllo } from './olaolu-work-illo.svg'
+export { default as LogomarkOutline } from './logomark-outline.svg'
+export { default as CornerstonePatternsLeft } from './cornerstone-patterns-left.svg'
+export { default as CornerstonePatternsRight } from './cornerstone-patterns-right.svg'
