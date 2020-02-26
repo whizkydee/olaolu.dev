@@ -4,7 +4,7 @@
     :title="`Posts tagged &quot;${$page.tag.title}&quot;`"
     :description="`All posts tagged &quot;${$page.tag.title}&quot;`"
   >
-    <h1 class="page-heading"><span>#</span> {{ $page.tag.title }}</h1>
+    <PageHeader :title="' ' + $page.tag.title" preTitleSymbol="#" noDot />
 
     <div class="posts">
       <PostCard

@@ -4,7 +4,7 @@
     :title="title"
     :description="description"
   >
-    <h1 class="page-heading">{{ name }}</h1>
+    <PageHeader :title="name" hideDecor />
 
     <ClientOnly>
       <carousel

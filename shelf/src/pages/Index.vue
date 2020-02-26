@@ -4,7 +4,7 @@
     title="Posts - Olaolu's shelf"
     description="Articles on web development and design by Olaolu, expert frontend developer and UX Engineer"
   >
-    <h1 class="page-heading"><span>/</span>shelf</h1>
+    <PageHeader title="shelf" noDot />
     <!-- List posts -->
     <ol class="posts">
       <PostCard
