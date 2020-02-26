@@ -137,13 +137,10 @@ const Homepage = Vue.component('Homepage', {
      * occupy the entire viewport.
      */
     getOffsetFromViewport(section) {
-      return Math.abs(
-        (parseInt(section.offsetTop) -
-          parseInt(
-            Math.abs(document.documentElement.getBoundingClientRect().top)
-          )) /
-          100
-      )
+      const offsetTop = parseInt(section.offsetTop)
+      const docElemScrollTop = parseInt(document.documentElement.scrollTop)
+
+      return Math.abs((offsetTop - docElemScrollTop) / 100) < 2
     },
 
     /**
@@ -152,22 +149,22 @@ const Homepage = Vue.component('Homepage', {
      * @return {void}
      */
     maybeRestoreSection() {
-      let isFirstSection = this.getCurrentSectionId() === SECTIONS[0]
+      const rootEl = this.$root.$el
+      const isFirstSection = this.getCurrentSectionId() === SECTIONS[0]
+      const sections = Array.from(rootEl.querySelectorAll(SECTION_SELECTOR))
 
-      const sections = Array.from(
-        this.$root.$el.querySelectorAll(SECTION_SELECTOR)
-      )
-      // Set current section to currently visible section upon reload
-      const sectionInView = sections.find(
-        section => this.getOffsetFromViewport(section) < 2 // <2%
-      )
+      // Set current section to the most visible section upon reload
+      const mostVisibleSection = sections.find(this.getOffsetFromViewport)
 
-      if (sectionInView) {
-        goToSection({ node: sectionInView, focus: false })
+      if (mostVisibleSection) {
+        goToSection({ focus: false, node: mostVisibleSection })
 
-        !isFirstSection && this.$store.commit('headerCompact', true)
+        if (!isFirstSection) {
+          this.$store.commit('headerCompact', true)
+        }
       } else {
         wait(100, () => {
+          // ...reset scroll!
           document.documentElement.scrollTop = 0
           document.documentElement.scrollLeft = 0
         })
@@ -241,7 +238,13 @@ const Homepage = Vue.component('Homepage', {
     maybeScrollJack(event) {
       if (this.isMediumScreen || !event) return
 
-      const inEventPath = cond => getEventPath(event).some(cond)
+      const isScrollableElemFocused = [
+        this.$el,
+        document.body,
+        this.$root.$el,
+        document.documentElement,
+      ].includes(event.target)
+      const inEventPath = cb => getEventPath(event).some(cb)
 
       const isNavFocused = inEventPath(o => o && o.id === NAVIGATION_ID)
       const isSectionFocused = inEventPath(o => o.dataset && o.dataset.section)
@@ -249,14 +252,10 @@ const Homepage = Vue.component('Homepage', {
 
       if (
         isFormFocused ||
-        (!isNavFocused &&
-          !isSectionFocused &&
-          event.target !== this.$el &&
-          event.target !== document.body &&
-          event.target !== this.$root.$el &&
-          event.target !== document.documentElement) ||
-        this.scrollingLudicrouslyFast(500)
+        this.scrollingLudicrouslyFast(500) ||
+        !(isNavFocused || isSectionFocused || isScrollableElemFocused)
       ) {
+        // ...do not scroll!
         return
       }
 
