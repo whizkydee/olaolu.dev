@@ -67,7 +67,7 @@ export default {
       name: 'Pneuma Media',
       period: 'Dec 2013 - Feb 2018',
       role: 'Full Stack Developer',
-      intro: `I worked as the only web developer. Built and maintained the back-end and front-end of a couple of websites.`,
+      intro: `I worked as the only engineer with this company. Built and maintained the backend and frontend of a couple of web apps for clients.`,
       points: [],
     },
   ],
