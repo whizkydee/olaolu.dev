@@ -7,7 +7,7 @@ const Cavalier = Vue.component('Cavalier', {
   render() {
     return (
       <StyledCavalier data-theme={this.theme} class="cavalier">
-        <div class="cavalier--content">
+        <div class="cavalier-content">
           {this.$slots.heading ||
             (this.heading && <h1 domPropsInnerHTML={this.heading} />)}
           {this.$slots.text ||
@@ -44,7 +44,7 @@ const StyledCavalier = styled.article`
     }
   }
 
-  .cavalier--content {
+  .cavalier-content {
     position: relative;
   }
 

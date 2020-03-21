@@ -12,7 +12,7 @@ const Experience = Vue.component('Experience', {
 
     return (
       <StyledExperience name={this.name}>
-        <div class="inner__content">
+        <div class="inner-content">
           <Cavalier
             theme="lime"
             heading={`Over the <br /> past ${new Date().getFullYear() -
@@ -57,7 +57,7 @@ const Experience = Vue.component('Experience', {
             </p>
           </Cavalier>
 
-          <figure class="work__illo" aria-hidden={!isVisible}>
+          <figure class="work-illo" aria-hidden={!isVisible}>
             <OlaoluWorkIllo />
             <figcaption>
               Illustration of Olaolu and cardboards of some of his work.

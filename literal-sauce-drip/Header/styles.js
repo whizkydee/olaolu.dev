@@ -19,7 +19,7 @@ const StyledHeader = css`
     padding-left: ${theme.header.padding};
     padding-right: ${theme.header.padding};
 
-    .cross__site__nav {
+    .cross-site-nav {
       line-height: 2.5;
       font-size: 1.15em;
     }
@@ -43,7 +43,7 @@ const StyledHeader = css`
         position: fixed;
 
         #logo,
-        .menu__toggle {
+        .menu-toggle {
           color: ${theme.colors.electricBlue} !important;
         }
       `}
@@ -111,7 +111,7 @@ const StyledHeader = css`
     }
   }
 
-  .menu__toggle {
+  .menu-toggle {
     z-index: 999;
     width: 2.78em;
     height: 2.09em;
@@ -162,7 +162,7 @@ const StyledHeader = css`
     }
   }
 
-  #contact__menu {
+  #contact-menu {
     z-index: 998;
     display: flex;
     box-shadow: none;
@@ -202,7 +202,7 @@ const StyledHeader = css`
         line-height: 2.5;
       }
 
-      .social__contact li:not(:last-of-type) {
+      .social-contact li:not(:last-of-type) {
         margin-right: 7.5vw;
       }
     `}
@@ -239,22 +239,22 @@ const StyledHeader = css`
           height: 8.52em;
         }
 
-        .cross__site__nav,
-        .basic__contact ul,
-        .social__contact ul,
-        .basic__contact .say__hello {
+        .cross-site-nav,
+        .basic-contact ul,
+        .social-contact,
+        .basic-contact .say-hello {
           opacity: 0;
         }
 
-        .cross__site__nav {
+        .cross-site-nav {
           transform: translateY(50px);
         }
 
-        .basic__contact ul {
+        .basic-contact ul {
           transform: translateY(40px);
         }
 
-        .social__contact ul {
+        .social-contact {
           transform: translateY(30px);
         }
       }
@@ -273,44 +273,44 @@ const StyledHeader = css`
           height: 100%;
         }
 
-        .cross__site__nav,
-        .basic__contact ul,
-        .social__contact ul,
-        .basic__contact .say__hello {
+        .cross-site-nav,
+        .basic-contact ul,
+        .social-contact,
+        .basic-contact .say-hello {
           opacity: 1;
           transform: translateY(0);
         }
       }
 
-      .basic__contact {
+      .basic-contact {
         margin-top: 0.8em;
 
-        .say__hello {
+        .say-hello {
           transition: opacity 0.2s 400ms;
         }
       }
 
-      .social__contact {
+      .social-contact {
         font-size: 0.9em;
       }
 
-      .cross__site__nav,
-      .basic__contact ul,
-      .social__contact ul {
+      .cross-site-nav,
+      .basic-contact ul,
+      .social-contact {
         transition: opacity, transform 0.3s;
       }
 
-      .cross__site__nav {
+      .cross-site-nav {
         margin: 1.2em 0;
         transition-delay: 200ms;
       }
 
-      .basic__contact ul {
+      .basic-contact ul {
         margin: 0 0 2.78em;
         transition-delay: 400ms;
       }
 
-      .social__contact ul {
+      .social-contact {
         transition-delay: 600ms;
       }
     `}
@@ -318,11 +318,9 @@ const StyledHeader = css`
 `
 
 export default Object.assign(
-  {},
-  {
-    name: 'StyledHeader',
-    ...styled('header', { noMenuShadow: Boolean, blue: Boolean })([
-      StyledHeader,
-    ]),
-  }
+  { name: 'StyledHeader' },
+  styled('header', {
+    noMenuShadow: Boolean,
+    blue: Boolean,
+  })([StyledHeader])
 )

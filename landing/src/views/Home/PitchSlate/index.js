@@ -9,9 +9,9 @@ const PitchSlate = Vue.component('PitchSlate', {
   render() {
     return (
       <StyledPitchSlate name={this.name}>
-        <div class="inner__content primary">
+        <div class="inner-content primary">
           {!this.isMediumScreen && (
-            <LogomarkOutline id="sauce__drip__outline" data-shape />
+            <LogomarkOutline id="sauce-drip-outline" data-shape />
           )}
 
           <Cavalier
@@ -27,8 +27,8 @@ const PitchSlate = Vue.component('PitchSlate', {
           {!this.isPortrait && <Visage />}
         </div>
 
-        <div class="inner__content bottom">
-          <ul class="deux__points">
+        <div class="inner-content bottom">
+          <ul class="deux-points">
             <li>
               Highly skilled at progressive enhancement, design systems &amp; UI
               Engineering.
@@ -43,7 +43,7 @@ const PitchSlate = Vue.component('PitchSlate', {
         </div>
 
         {this.isPortrait && (
-          <div class="mobile__avatar">
+          <div class="mobile-avatar">
             <Visage />
           </div>
         )}

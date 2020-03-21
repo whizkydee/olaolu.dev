@@ -2,25 +2,25 @@
   <StyledButtonLink
     :href="url"
     role="button"
-    class="sauce__button"
+    class="sauce-button"
     :data-theme="lime && 'lime'"
     v-if="typeof url === 'string'"
   >
-    <div class="sauce__button--content">
+    <div class="sauce-button__content">
       <slot />
-      <BowArrow class="bow__arrow" v-if="!noArrow" />
+      <BowArrow class="bow-arrow" v-if="!noArrow" />
     </div>
   </StyledButtonLink>
 
   <StyledButton
     v-else
     :type="type"
-    class="sauce__button"
+    class="sauce-button"
     :data-theme="lime && 'lime'"
   >
-    <div class="sauce__button--content">
+    <div class="sauce-button__content">
       <slot />
-      <BowArrow class="bow__arrow" v-if="!noArrow" />
+      <BowArrow class="bow-arrow" v-if="!noArrow" />
     </div>
   </StyledButton>
 </template>
@@ -45,12 +45,12 @@ function createStyledButton(tagName, props) {
     -webkit-tap-highlight-color: transparent;
 
     &[data-theme='lime'] {
-      .sauce__button--content {
+      .sauce-button__content {
         color: ${theme.colors.lime};
       }
 
-      &:hover .sauce__button--content,
-      &:focus .sauce__button--content {
+      &:hover .sauce-button__content,
+      &:focus .sauce-button__content {
         border-color: ${theme.colors.lime};
 
         &:before {
@@ -61,7 +61,7 @@ function createStyledButton(tagName, props) {
 
     &:hover,
     &:focus {
-      .sauce__button--content {
+      .sauce-button__content {
         color: #fff;
         border-color: ${theme.colors['electric-blue']};
 
@@ -76,7 +76,7 @@ function createStyledButton(tagName, props) {
       outline-color: transparent;
     }
 
-    .sauce__button--content {
+    .sauce-button__content {
       z-index: 1;
       width: 100%;
       display: flex;
@@ -104,7 +104,7 @@ function createStyledButton(tagName, props) {
       }
     }
 
-    .bow__arrow {
+    .bow-arrow {
       width: 3.1em;
       height: 1.7em;
       margin-left: 1.55em;

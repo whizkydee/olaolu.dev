@@ -19,7 +19,7 @@ export default Vue.component('App', {
   render() {
     return (
       <ThemeProvider id="app" theme={theme}>
-        <a href="#main" id="skip__link">
+        <a href="#main" id="skip-link">
           Skip to navigation
         </a>
         <Header

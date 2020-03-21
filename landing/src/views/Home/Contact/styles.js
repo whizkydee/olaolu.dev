@@ -18,7 +18,7 @@ const StyledContact = styled(Section)`
     }
   `}
 
-  .inner__content {
+  .inner-content {
     margin-top: 2.78em;
     align-items: center;
     flex-direction: column;
@@ -51,7 +51,7 @@ const StyledContact = styled(Section)`
     }
   }
 
-  #home__contact {
+  #home-contact {
     align-items: center;
     justify-content: center;
 

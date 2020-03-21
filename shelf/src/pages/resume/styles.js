@@ -348,9 +348,8 @@ const StyledResume = css`
 `
 
 export default Object.assign(
-  {},
-  {
-    name: 'StyledResume',
-    ...styled(ContentView, { isPDF: Boolean })([StyledResume]),
-  }
+  { name: 'StyledResume' },
+  styled(ContentView, {
+    isPDF: Boolean,
+  })([StyledResume])
 )

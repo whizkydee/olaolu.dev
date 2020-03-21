@@ -11,7 +11,7 @@ const Cornerstone = Vue.component('Cornerstone', {
   render() {
     return (
       <StyledCornerstone name={this.name}>
-        <div class="inner__content">
+        <div class="inner-content">
           <Cavalier heading="Design">
             <p slot="text">
               I'm probably not the typical designer positioned behind an
@@ -25,13 +25,13 @@ const Cornerstone = Vue.component('Cornerstone', {
               data-shape
               slot="inContent"
               aria-hidden="true"
-              class="square__of__dots"
+              class="square-of-dots"
             />
 
             <CornerstonePatternsRight
               data-shape
               aria-hidden="true"
-              id="cs__pattern__right"
+              id="cs-pattern-right"
             />
           </Cavalier>
 
@@ -47,7 +47,7 @@ const Cornerstone = Vue.component('Cornerstone', {
             <CornerstonePatternsLeft
               data-shape
               aria-hidden="true"
-              id="cs__pattern__left"
+              id="cs-pattern-left"
             />
           </Cavalier>
         </div>

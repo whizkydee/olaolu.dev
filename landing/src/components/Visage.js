@@ -7,7 +7,7 @@ export default Vue.component('Visage', {
   render() {
     return (
       <StyledFigure class="visage">
-        <AvatarShapes id="avatar__shapes" data-shape />
+        <AvatarShapes id="avatar-shapes" data-shape />
         <div class="face" aria-label="Photo of Olaolu." role="img" />
       </StyledFigure>
     )
@@ -33,7 +33,7 @@ const StyledFigure = styled.figure`
     background-image: url(/img/avatar.png);
   }
 
-  #avatar__shapes {
+  #avatar-shapes {
     top: -25%;
     width: 40em;
     z-index: -1;

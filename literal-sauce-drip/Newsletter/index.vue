@@ -72,7 +72,7 @@ const StyledNewsletter = styled.div`
     ${media.maxWidth(440)`
       flex-direction: column;
 
-      .sauce__button {
+      .sauce-button {
         margin-top: 1.5em;
       }
     `}
@@ -82,7 +82,7 @@ const StyledNewsletter = styled.div`
     `}
   }
 
-  .sauce__button {
+  .sauce-button {
     font-size: 0.7em;
   }
 `

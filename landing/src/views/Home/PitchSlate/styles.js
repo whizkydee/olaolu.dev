@@ -26,7 +26,7 @@ const StyledPitchSlate = styled(Section)`
     padding-bottom: 0;
   `}
 
-  .inner__content {
+  .inner-content {
     align-items: center;
     justify-content: space-between;
 
@@ -65,7 +65,7 @@ const StyledPitchSlate = styled(Section)`
         margin-bottom: 4em;
       `}
 
-      .deux__points {
+      .deux-points {
         display: flex;
       }
     }
@@ -105,7 +105,7 @@ const StyledPitchSlate = styled(Section)`
     }
   }
 
-  #sauce__drip__outline {
+  #sauce-drip-outline {
     left: 0;
     display: none;
     height: 738px;
@@ -122,7 +122,7 @@ const StyledPitchSlate = styled(Section)`
     }
   }
 
-  .deux__points {
+  .deux-points {
     line-height: 1.5;
     justify-content: space-between;
     color: ${({ theme }) => theme.colors.lime};
@@ -145,7 +145,7 @@ const StyledPitchSlate = styled(Section)`
     }
   }
 
-  .mobile__avatar {
+  .mobile-avatar {
     width: 100%;
     display: flex;
     padding: 7rem 0;

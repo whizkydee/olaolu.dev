@@ -1,5 +1,5 @@
 <template>
-  <ul class="cross__site__nav">
+  <ul class="cross-site-nav">
     <NavItem :href="landingURL" v-if="isWork">Home</NavItem>
     <NavItem :href="workURL" v-else>Work</NavItem>
     <NavItem :href="shelfURL" v-if="isHome || isWork">My Shelf</NavItem>

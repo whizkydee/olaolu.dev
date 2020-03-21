@@ -22,7 +22,7 @@
       <div class="post__content" v-html="$page.post.content" />
 
       <footer class="post__footer">
-        <div class="footer__meta">
+        <div class="footer-meta">
           <PostTags :post="$page.post" :withTitle="true" />
 
           <div class="post__share">
@@ -197,14 +197,14 @@ query Post ($id: ID!) {
       margin-bottom: 2.5rem;
     }
 
-    .footer__meta {
+    .footer-meta {
       display: flex;
       margin-top: 1em;
       flex-wrap: wrap;
       align-items: baseline;
       justify-content: space-between;
 
-      .post-tags {
+      .post__tags {
         margin: 0;
         max-width: 70%;
         flex-wrap: wrap;
@@ -261,7 +261,7 @@ query Post ($id: ID!) {
   margin-top: calc(var(--space) / 2);
 }
 
-.is__tabbing a:focus {
+.is-tabbing a:focus {
   outline-width: 2px;
 }
 </style>

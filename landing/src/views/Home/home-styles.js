@@ -47,8 +47,8 @@ const StyledHomepage = injectGlobal`
         outline-color: ${colors['electric-blue']};
       }
 
-      [data-current-section='trois'] .menu__toggle:not(.x):focus,
-      [data-current-section='footer'] .menu__toggle:not(.x):focus {
+      [data-current-section='trois'] .menu-toggle:not(.x):focus,
+      [data-current-section='footer'] .menu-toggle:not(.x):focus {
         outline-color: ${colors.lime};
       }
 
@@ -80,7 +80,7 @@ const StyledHomepage = injectGlobal`
 
     ${media.minWidth('>medium')`
       &[data-current-section='une'] {
-        #contact__menu.shadow {
+        #contact-menu.shadow {
           box-shadow: ${createMenuShadow('rgba(163, 204, 170, 0.3)')};
         }
       }
@@ -96,7 +96,7 @@ const StyledHomepage = injectGlobal`
       &[data-current-section='trois'],
       &[data-current-section='footer'] {
         #${NAVIGATION_ID},
-        .menu__toggle:not(.x) {
+        .menu-toggle:not(.x) {
           color: ${colors.lime};
         }
       }
@@ -108,7 +108,7 @@ const StyledHomepage = injectGlobal`
     header[role='banner'] {
       font-size: 1.2rem;
 
-      .menu__toggle {
+      .menu-toggle {
         color: ${colors.lime};
       }
     }
@@ -128,7 +128,7 @@ const StyledHomepage = injectGlobal`
     `}
   }
 
-  .square__of__dots {
+  .square-of-dots {
     z-index: -1;
     width: 8em;
     height: 9em;
@@ -144,7 +144,7 @@ const StyledHomepage = injectGlobal`
           .cavalier {
             p,
             h1,
-            .square__of__dots {
+            .square-of-dots {
               opacity: 0;
             }
 

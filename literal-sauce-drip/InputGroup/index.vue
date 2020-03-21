@@ -2,7 +2,7 @@
   <StyledInputGroup
     :data-id="id"
     :class="{
-      input__group: true,
+      'input-group': true,
       focused,
     }"
   >
@@ -54,7 +54,7 @@ const StyledInputGroup = styled.div`
     margin-right: 20px;
   }
 
-  &.input__group.focused {
+  &.input-group.focused {
     color: ${theme.colors['electric-blue']};
   }
 

@@ -31,7 +31,7 @@
       <slot />
     </div>
 
-    <section class="contact__container">
+    <section class="contact-container">
       <Cavalier
         heading="Let's work together!"
         text="Like my work and want something similar for your company? Sure, let's get to business!"
@@ -48,7 +48,7 @@ import { openExternalWindow } from '@mrolaolu/helpers'
 import { default as styled, injectGlobal } from 'vue-styled-components'
 
 injectGlobal`
-  :root:not(.is__tabbing) {
+  :root:not(.is-tabbing) {
     .VueCarousel-navigation-button:focus,
     .VueCarousel-dot:focus {
       outline: none;
@@ -77,7 +77,7 @@ const StyledWorkLayout = styled(DefaultLayout)`
     max-width: var(--content-width);
   }
 
-  .contact__container {
+  .contact-container {
     display: flex;
     margin-top: 3rem;
     padding-top: 3rem;
@@ -107,17 +107,17 @@ const StyledWorkLayout = styled(DefaultLayout)`
       }
     }
 
-    .contact__form {
+    .contact-form {
       flex-basis: 70%;
 
-      .form__row {
+      .form-row {
         @media (max-width: 580px) {
           font-size: unset;
         }
       }
     }
 
-    #submit__button {
+    #submit-button {
       align-self: flex-start;
 
       @media (max-width: 500px) {

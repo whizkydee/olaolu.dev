@@ -69,7 +69,7 @@ export default {
   @media (max-width: 700px) {
     padding-top: 3rem;
 
-    #contact__menu {
+    #contact-menu {
       font-size: 1.1rem;
     }
   }
@@ -119,6 +119,14 @@ main {
     border-radius: var(--radius);
   }
 
+  ul {
+    list-style-type: disc;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
   ul,
   ol {
     margin-left: 1.25em;
@@ -128,14 +136,6 @@ main {
       margin-bottom: 0.6em;
       list-style-type: inherit;
     }
-  }
-
-  ul {
-    list-style-type: disc;
-  }
-
-  ol {
-    list-style-type: decimal;
   }
 
   a {
@@ -159,7 +159,7 @@ main {
   margin-top: 7rem;
   font-size: 0.84rem;
 
-  .inner__content {
+  .inner-content {
     padding-top: 5rem;
     padding-bottom: 3rem;
 
