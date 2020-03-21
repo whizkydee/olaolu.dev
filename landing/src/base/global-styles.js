@@ -16,7 +16,7 @@ const GlobalStyle = injectGlobal`
     color: ${colors.default};
   }
 
-  .sauce__button {
+  .sauce-button {
     min-width: 23.222em;
 
     &--content {

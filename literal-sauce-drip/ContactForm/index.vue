@@ -2,16 +2,16 @@
   <StyledContactForm
     method="POST"
     target="_blank"
-    class="contact__form"
+    class="contact-form"
     action="https://formspree.io/hello@olaolu.dev"
   >
     <input type="hidden" name="_subject" value="Message from olaolu.dev!" />
 
-    <div class="form__row">
+    <div class="form-row">
       <InputGroup
         required
         name="name"
-        id="full__name"
+        id="full-name"
         label="Your Name"
         placeholder="Enter your name"
       />
@@ -26,7 +26,7 @@
       />
     </div>
 
-    <div class="form__row">
+    <div class="form-row">
       <InputGroup
         textarea
         required
@@ -38,7 +38,7 @@
       />
     </div>
 
-    <Button type="submit" id="submit__button">
+    <Button type="submit" id="submit-button">
       Shoot
     </Button>
   </StyledContactForm>

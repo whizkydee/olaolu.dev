@@ -3,7 +3,7 @@ import { Section } from '@/components'
 import styled from 'vue-styled-components'
 
 const StyledCornerstone = styled(Section)`
-  .inner__content {
+  .inner-content {
     flex-direction: column;
 
     .cavalier {
@@ -21,25 +21,25 @@ const StyledCornerstone = styled(Section)`
     }
   }
 
-  .square__of__dots {
+  .square-of-dots {
     top: -4em;
     right: 17em;
   }
 
-  #cs__pattern__left,
-  #cs__pattern__right {
+  #cs-pattern-left,
+  #cs-pattern-right {
     top: 0;
     right: 0;
     position: absolute;
   }
 
-  #cs__pattern__right {
+  #cs-pattern-right {
     width: 20em;
     height: 14.87em;
     margin-right: 10em;
   }
 
-  #cs__pattern__left {
+  #cs-pattern-left {
     left: 0;
     top: 5em;
     width: 13em;

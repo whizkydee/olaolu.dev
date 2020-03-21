@@ -8,7 +8,7 @@ const StyledExperience = styled(Section)`
   @media (hover: hover) and (any-pointer: fine) {
     ${media.minWidth('>medium')`
       &[aria-hidden='true']:not(.scrolled) {
-        .work__illo {
+        .work-illo {
           opacity: 0;
           transform: translate3d(0, 40px, 0);
         }
@@ -16,7 +16,7 @@ const StyledExperience = styled(Section)`
     `}
   }
 
-  .inner__content {
+  .inner-content {
     justify-content: space-between;
 
     ${media.minWidth('>medium')`
@@ -49,7 +49,7 @@ const StyledExperience = styled(Section)`
     border-bottom: 2px dotted;
   }
 
-  .work__illo {
+  .work-illo {
     display: flex;
     margin-right: 0;
     position: relative;
@@ -101,12 +101,12 @@ const StyledExperience = styled(Section)`
   }
 
   &[aria-hidden='false'] {
-    .work__illo,
-    .square__of__dots {
+    .work-illo,
+    .square-of-dots {
       opacity: 1;
     }
 
-    .work__illo {
+    .work-illo {
       transform: translate3d(0, 0, 0);
     }
   }

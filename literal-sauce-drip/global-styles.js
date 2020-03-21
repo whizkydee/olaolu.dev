@@ -44,11 +44,11 @@ const GlobalStyle = injectGlobal`
         outline-color: currentColor;
       }
 
-      .sauce__button:focus {
+      .sauce-button:focus {
         outline-color: ${colors['electric-blue']};
       }
 
-      .menu__toggle:focus {
+      .menu-toggle:focus {
         outline-color: ${colors['electric-blue']};
       }
 
@@ -157,7 +157,7 @@ const GlobalStyle = injectGlobal`
     overflow: hidden !important;
   }
 
-  #skip__link {
+  #skip-link {
     top: -4em;
     z-index: 1001;
     color: #eeffff;
@@ -178,7 +178,7 @@ const GlobalStyle = injectGlobal`
     }
   }
 
-  .say__hello {
+  .say-hello {
     color: #cbc9e2;
     letter-spacing: 0.25em;
     text-transform: uppercase;

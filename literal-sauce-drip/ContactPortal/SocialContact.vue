@@ -1,19 +1,17 @@
 <template>
-  <StyledSocialContact class="social__contact">
-    <ul>
-      <NavItem external :href="sp.twitter" ariaLabel="Olaolu on Twitter">
-        TW
-      </NavItem>
-      <NavItem external :href="sp.github" ariaLabel="Olaolu on GitHub">
-        GH
-      </NavItem>
-      <NavItem external :href="sp.linkedIn" ariaLabel="Olaolu on LinkedIn">
-        LN
-      </NavItem>
-      <NavItem external :href="sp.youtube" ariaLabel="Olaolu's YouTube channel">
-        YT
-      </NavItem>
-    </ul>
+  <StyledSocialContact class="social-contact">
+    <NavItem external :href="sp.twitter" ariaLabel="Olaolu on Twitter">
+      TW
+    </NavItem>
+    <NavItem external :href="sp.github" ariaLabel="Olaolu on GitHub">
+      GH
+    </NavItem>
+    <NavItem external :href="sp.linkedIn" ariaLabel="Olaolu on LinkedIn">
+      LN
+    </NavItem>
+    <NavItem external :href="sp.youtube" ariaLabel="Olaolu's YouTube channel">
+      YT
+    </NavItem>
   </StyledSocialContact>
 </template>
 
@@ -21,7 +19,7 @@
 import NavItem from '../NavItem'
 import styled from 'vue-styled-components'
 
-const StyledSocialContact = styled.div`
+const StyledSocialContact = styled.ul`
   position: relative;
 
   li {

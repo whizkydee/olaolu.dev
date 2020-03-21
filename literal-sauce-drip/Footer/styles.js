@@ -11,28 +11,28 @@ const StyledFooter = css`
     !shelfEnv &&
     css`
       ${media.minWidth('>medium')`
-    &[aria-hidden='true']:not(.scrolled) {
-      .footer__main,
-      .footer__bottom {
-        opacity: 0;
-        transform: translate3d(0, 40px, 0);
-      }
-    }
-  `}
+        &[aria-hidden='true']:not(.scrolled) {
+          .footer-main,
+          .footer-bottom {
+            opacity: 0;
+            transform: translate3d(0, 40px, 0);
+          }
+        }
+      `}
     `}
 
   li a {
     color: currentColor;
   }
 
-  .inner__content {
+  .inner-content {
     padding-top: 8rem;
     padding-bottom: 5rem;
     flex-direction: column;
   }
 
-  .footer__main,
-  .footer__bottom {
+  .footer-main,
+  .footer-bottom {
     width: 100%;
     display: flex;
 
@@ -40,31 +40,31 @@ const StyledFooter = css`
       !shelfEnv &&
       css`
         ${media.minWidth('medium')`
-      transition: transform 0.5s, opacity 0.2s;
-    `}
+          transition: transform 0.5s, opacity 0.2s;
+        `}
       `}
   }
 
-  .basic__contact {
+  .basic-contact {
     ${media.maxWidth(460)`
-    margin-right: 12vw;
-  `}
+      margin-right: 12vw;
+    `}
 
     ${media.minWidth(461)`
-    margin-right: 18vw;
-  `}
+      margin-right: 18vw;
+    `}
   }
 
-  .footer__main {
+  .footer-main {
     margin-bottom: 7.4em;
 
     ${media.minWidth('medium')`
-    transition-delay: 300ms;
-  `}
+      transition-delay: 300ms;
+    `}
 
     ${media.maxWidth(370)`
-    flex-direction: column;
-  `}
+      flex-direction: column;
+    `}
 
   > ul {
       line-height: 2.5;
@@ -73,39 +73,39 @@ const StyledFooter = css`
     }
   }
 
-  .footer__bottom {
+  .footer-bottom {
     padding-top: 3em;
     font-size: 1.15em;
     justify-content: space-between;
     border-top: 1px solid rgba(186, 221, 118, 0.7);
 
     ${media.minWidth('medium')`
-    transition-delay: 500ms;
-  `}
+      transition-delay: 500ms;
+    `}
 
     ${media.maxWidth(460)`
-    justify-content: center;
-  `}
+      justify-content: center;
+    `}
   }
 
-  .social__contact {
+  .social-contact {
     ${media.maxWidth('portrait')`
-    li:not(:last-of-type) {
-      margin-right: 1em;
-    }
-  `}
+      li:not(:last-of-type) {
+        margin-right: 1em;
+      }
+    `}
 
     ${media.maxWidth(460)`
-    display: none;
-  `}
+      display: none;
+    `}
   }
 
   ${({ shelfEnv }) =>
     !shelfEnv &&
     css`
       &[aria-hidden='false'] {
-        .footer__main,
-        .footer__bottom {
+        .footer-main,
+        .footer-bottom {
           opacity: 1;
           transform: translate3d(0, 0, 0);
         }
@@ -114,9 +114,8 @@ const StyledFooter = css`
 `
 
 export default Object.assign(
-  {},
-  {
-    name: 'StyledFooter',
-    ...styled(Section, { shelfEnv: Boolean })([StyledFooter]),
-  }
+  { name: 'StyledFooter' },
+  styled(Section, {
+    shelfEnv: Boolean,
+  })([StyledFooter])
 )

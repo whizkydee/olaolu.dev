@@ -2,8 +2,8 @@
   <StyledHeader
     role="banner"
     id="site-header"
-    :data-compact="compact + ''"
     :noMenuShadow="noMenuShadow"
+    :data-compact="String(compact)"
     :blue="isMediumScreen && menuOpen"
     :data-blue="isMediumScreen && menuOpen"
   >
@@ -20,14 +20,14 @@
       @click="toggleMenu"
       aria-haspopup="menu"
       :aria-label="getLabel()"
-      :class="{ menu__toggle: true, x: menuOpen }"
+      :class="{ 'menu-toggle': true, x: menuOpen }"
     />
 
     <nav
       ref="contactMenu"
-      id="contact__menu"
+      id="contact-menu"
       aria-label="Contact menu"
-      :aria-expanded="menuOpen + ''"
+      :aria-expanded="String(menuOpen)"
       :aria-hidden="isMediumScreen && !menuOpen"
     >
       <CrossSiteNav />
@@ -113,7 +113,7 @@ export default {
             ;['Escape', 'Esc'].indexOf(event.key) !== -1 && this.closeMenu()
             break
           case 'mouseup':
-            if (event.target.closest('.menu__toggle, #contact__menu')) return
+            if (event.target.closest('.menu-toggle, #contact-menu')) return
             this.closeMenu()
             break
         }

@@ -6,7 +6,7 @@ const StyledContactForm = styled.form`
   position: relative;
   flex-direction: column;
 
-  .form__row {
+  .form-row {
     width: 100%;
     display: flex;
     position: relative;
@@ -16,13 +16,13 @@ const StyledContactForm = styled.form`
       font-size: 1.2rem;
       flex-direction: column;
 
-      .input__group:first-of-type {
+      .input-group:first-of-type {
         margin-bottom: 3rem;
       }
     `}
 
     ${media.minWidth('>portrait')`
-      &:first-of-type .input__group {
+      &:first-of-type .input-group {
         width: 45%;
       }
     `}
@@ -32,7 +32,7 @@ const StyledContactForm = styled.form`
     }
   }
 
-  .input__group {
+  .input-group {
     color: rgba(61, 21, 95, 0.5);
 
     &:not(.focused) {
@@ -74,7 +74,7 @@ const StyledContactForm = styled.form`
     `}
   }
 
-  #submit__button {
+  #submit-button {
     margin-top: 5.2em;
 
     ${media.maxWidth('portrait')`

@@ -6,13 +6,13 @@
     :shelfEnv="isShelfEnv"
     :aria-hidden="maybeHidden"
   >
-    <div class="inner__content">
-      <div class="footer__main">
+    <div class="inner-content">
+      <div class="footer-main">
         <ContactPortal.Basic />
         <CrossSiteNav />
       </div>
 
-      <div class="footer__bottom">
+      <div class="footer-bottom">
         <span>&copy; Olaolu Olawuyi {{ new Date().getFullYear() }}</span>
         <ContactPortal.Social />
       </div>
@@ -28,7 +28,7 @@ import ContactPortal from '../ContactPortal'
 export default {
   computed: {
     maybeHidden() {
-      return this.isHome && (this.currentSection !== 'footer') + ''
+      return String(this.isHome && this.currentSection !== 'footer')
     },
   },
 

@@ -1,8 +1,8 @@
 <template>
-  <div class="post-tags">
+  <div class="post__tags">
     <span v-if="withTitle">Tags:</span>
     <g-link
-      class="post-tags__link color-off"
+      class="post__tags-link color-off"
       v-for="tag in post.tags"
       :key="tag.id"
       :to="tag.path"
@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style lang="scss">
-.post-tags {
+.post__tags {
   margin: 1em 0 0;
   font-size: 0.9em;
 
@@ -30,7 +30,7 @@ export default {
     }
   }
 
-  &__link {
+  &-link {
     color: currentColor;
     text-decoration: none;
     color: currentColor;

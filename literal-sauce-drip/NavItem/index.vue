@@ -58,7 +58,7 @@ export default {
 
 <style lang="scss" scoped>
 @media (hover: hover) and (any-pointer: fine) {
-  a:not(.nav__bullet) {
+  a:not(.nav-bullet) {
     position: relative;
 
     &:hover:after {
@@ -84,7 +84,7 @@ export default {
   }
 }
 
-.is__tabbing a:not(.nav__bullet):focus {
+.is-tabbing a:not(.nav-bullet):focus {
   outline-width: 2px;
 }
 </style>

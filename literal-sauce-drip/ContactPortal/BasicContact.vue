@@ -1,6 +1,6 @@
 <template>
-  <StyledBasicContact class="basic__contact">
-    <span class="say__hello">Say Hello</span>
+  <StyledBasicContact class="basic-contact">
+    <span class="say-hello">Say Hello</span>
 
     <ul>
       <NavItem href="mailto:hello@olaolu.dev">hello@olaolu.dev</NavItem>
