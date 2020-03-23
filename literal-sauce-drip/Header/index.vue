@@ -17,9 +17,10 @@
 
     <button
       type="button"
-      @click="toggleMenu"
-      aria-haspopup="menu"
       :aria-label="getLabel()"
+      aria-controls="contact-menu"
+      :aria-expanded="String(menuOpen)"
+      @click="toggleMenu"
       :class="{ 'menu-toggle': true, x: menuOpen }"
     />
 
@@ -27,7 +28,7 @@
       ref="contactMenu"
       id="contact-menu"
       aria-label="Contact menu"
-      :aria-expanded="String(menuOpen)"
+      :class="menuOpen && 'open'"
       :aria-hidden="isMediumScreen && !menuOpen"
     >
       <CrossSiteNav />
