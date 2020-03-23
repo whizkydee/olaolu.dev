@@ -3,7 +3,7 @@ import { Section } from '@/components'
 import styled from 'vue-styled-components'
 
 const StyledExperience = styled(Section)`
-  background-color: ${({ theme }) => theme.colors['electric-blue']};
+  background-color: ${({ theme }) => theme.colors.electricBlue};
 
   @media (hover: hover) and (any-pointer: fine) {
     ${media.minWidth('>medium')`

@@ -45,11 +45,11 @@ const GlobalStyle = injectGlobal`
       }
 
       .sauce-button:focus {
-        outline-color: ${colors['electric-blue']};
+        outline-color: ${colors.electricBlue};
       }
 
       .menu-toggle:focus {
-        outline-color: ${colors['electric-blue']};
+        outline-color: ${colors.electricBlue};
       }
 
       #logo:focus,

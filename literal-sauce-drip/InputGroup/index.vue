@@ -55,7 +55,7 @@ const StyledInputGroup = styled.div`
   }
 
   &.input-group.focused {
-    color: ${theme.colors['electric-blue']};
+    color: ${theme.colors.electricBlue};
   }
 
   label {

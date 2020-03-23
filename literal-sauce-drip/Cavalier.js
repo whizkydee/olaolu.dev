@@ -59,7 +59,7 @@ const StyledCavalier = styled.article`
     font-weight: 900;
     line-height: 1.1;
     letter-spacing: -0.03em;
-    color: ${theme.colors['electric-blue']};
+    color: ${theme.colors.electricBlue};
 
     ${media.minWidth('>medium')`
       max-width: 30vw;
