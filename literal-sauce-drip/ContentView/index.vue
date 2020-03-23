@@ -9,23 +9,23 @@ import { TABBING_CLASSNAME } from '../constants'
 
 export default {
   mounted() {
-    document.addEventListener('mousedown', this.notTabbing)
-    document.addEventListener('keydown', this.prollyTabbing)
+    document.addEventListener('mousedown', this.removeTabbingId)
+    document.addEventListener('keydown', this.maybeAddTabbingId)
     document.documentElement.id = typeof this.id === 'string' && this.id
   },
 
   beforeDestroy() {
-    document.removeEventListener('mousedown', this.notTabbing)
-    document.removeEventListener('keydown', this.prollyTabbing)
+    document.removeEventListener('mousedown', this.removeTabbingId)
+    document.removeEventListener('keydown', this.maybeAddTabbingId)
   },
 
   methods: {
-    prollyTabbing(event) {
+    maybeAddTabbingId(event) {
       if (event.key === 'Tab')
         document.documentElement.classList.add(TABBING_CLASSNAME)
     },
 
-    notTabbing() {
+    removeTabbingId() {
       document.documentElement.classList.remove(TABBING_CLASSNAME)
     },
   },
