@@ -1,6 +1,7 @@
 ## Olaolu's website
 
-This repo is home for the codebase of my site and shelf of articles.
+This repo is home for the codebase that powers my entire website and shelf of
+articles.
 
 ## Project setup
 

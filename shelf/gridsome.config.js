@@ -44,8 +44,8 @@ module.exports = {
   configureWebpack: {
     resolve: {
       alias: {
-        // Use the copy of vue installed in the root folder
-        // to avoid duplication by the copy gridsome requires.
+        // Use the version of vue installed in the root directory
+        // to avoid duplication and conflicts with the copy gridsome uses.
         vue: path.resolve(__dirname, '../node_modules/vue'),
       },
     },
