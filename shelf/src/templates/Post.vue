@@ -24,26 +24,7 @@
       <footer class="post__footer">
         <div class="footer-meta">
           <PostTags :post="$page.post" :withTitle="true" />
-
-          <div class="post__share">
-            <a
-              target="_blank"
-              :href="fbShareURL"
-              aria-label="Share this post on Facebook"
-              @click="$ga.event('Post', 'click', 'Facebook share button')"
-            >
-              <FacebookIcon />
-            </a>
-
-            <a
-              target="_blank"
-              :href="twitterShareURL"
-              aria-label="Share this post on Twitter"
-              @click="$ga.event('Post', 'click', 'Twitter share button')"
-            >
-              <TwitterIcon />
-            </a>
-          </div>
+          <PostShare :post="$page.post" />
         </div>
 
         <PostNav :post="$page.post" :posts="$page.posts" />
@@ -58,36 +39,14 @@
 import PostNav from '~/components/PostNav'
 import PostMeta from '~/components/PostMeta'
 import PostTags from '~/components/PostTags'
-import { unslashEnd } from '@mrolaolu/helpers'
-import { TwitterIcon, FacebookIcon } from '@saucedrip/core/icons'
+import PostShare from '~/components/PostShare'
 
 export default {
   components: {
     PostNav,
     PostMeta,
     PostTags,
-    TwitterIcon,
-    FacebookIcon,
-  },
-
-  computed: {
-    shareableURL() {
-      return unslashEnd(unslashEnd(this.shelfURL) + this.$page.post.path)
-    },
-
-    fbShareURL() {
-      const { title } = this.$page.post
-      return `https://facebook.com/sharer/sharer.php?u=${encodeURI(
-        `${this.shareableURL}&quote=${title}`
-      )}`
-    },
-
-    twitterShareURL() {
-      const { title } = this.$page.post
-      return `https://twitter.com/intent/tweet?${encodeURI(
-        `url=${this.shareableURL}&via=mrolaolu&text=${title}`
-      )}`
-    },
+    PostShare,
   },
 
   metaInfo() {
@@ -208,42 +167,6 @@ query Post ($id: ID!) {
         margin: 0;
         max-width: 70%;
         flex-wrap: wrap;
-      }
-    }
-  }
-
-  &__share {
-    display: flex;
-    position: relative;
-
-    a {
-      transition: 0.2s;
-      position: relative;
-
-      &:hover {
-        transform: scale(1.5);
-        filter: contrast(90%);
-      }
-
-      &:not(:last-of-type) {
-        margin-right: 1em;
-      }
-
-      &:nth-of-type(1) {
-        color: #4172b8;
-      }
-
-      &:nth-of-type(2) {
-        color: #1da1f2;
-      }
-
-      svg {
-        width: 20px;
-        height: 20px;
-      }
-
-      path {
-        fill: currentColor;
       }
     }
   }

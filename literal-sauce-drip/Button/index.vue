@@ -63,11 +63,11 @@ function createStyledButton(tagName, props) {
     &:focus {
       .sauce-button__content {
         color: #fff;
-        border-color: ${theme.colors['electric-blue']};
+        border-color: ${theme.colors.electricBlue};
 
         &:before {
           transform: translateX(0);
-          background: ${theme.colors['electric-blue']};
+          background: ${theme.colors.electricBlue};
         }
       }
     }

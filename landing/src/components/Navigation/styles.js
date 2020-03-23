@@ -5,7 +5,7 @@ const StyledNavigation = styled.nav`
   display: flex;
   position: fixed;
   margin-top: -20px;
-  color: ${({ theme }) => theme.colors['electric-blue']};
+  color: ${({ theme }) => theme.colors.electricBlue};
   right: ${({ theme }) => `calc(${theme.header.padding} + 1em)`};
 
   ul {

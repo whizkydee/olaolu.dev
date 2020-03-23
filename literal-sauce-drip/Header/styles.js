@@ -119,7 +119,7 @@ const StyledHeader = css`
     position: relative;
     display: inline-flex;
     margin-top: 0.699em;
-    color: ${theme.colors['electric-blue']};
+    color: ${theme.colors.electricBlue};
 
     &:focus {
       outline-offset: 4px;
@@ -171,7 +171,7 @@ const StyledHeader = css`
     flex-direction: column;
 
     a {
-      color: ${theme.colors['electric-blue']};
+      color: ${theme.colors.electricBlue};
     }
 
     ${media.maxWidth('medium')`
@@ -187,12 +187,12 @@ const StyledHeader = css`
       transition: opacity .3s;
       justify-content: space-around;
 
-      &[aria-expanded='false'] {
+      &:not(.open) {
         opacity: 0;
         pointer-events: none;
       }
 
-      &[aria-expanded='true'] {
+      &.open {
         opacity: 1;
         pointer-events: auto;
       }
@@ -229,7 +229,7 @@ const StyledHeader = css`
         background-color: #fff;
       }
 
-      &[aria-expanded='false'] {
+      &:not(.open) {
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
@@ -259,7 +259,7 @@ const StyledHeader = css`
         }
       }
 
-      &[aria-expanded='true'] {
+      &.open {
         ${props =>
           !props.noMenuShadow &&
           css`

@@ -44,7 +44,7 @@ const StyledHomepage = injectGlobal`
 
     &${`.${TABBING_CLASSNAME}`} {
       [data-current-section='cinq'] #logo:focus {
-        outline-color: ${colors['electric-blue']};
+        outline-color: ${colors.electricBlue};
       }
 
       [data-current-section='trois'] .menu-toggle:not(.x):focus,
@@ -89,7 +89,7 @@ const StyledHomepage = injectGlobal`
       &[data-current-section='cinq'],
       &[data-current-section='quatre'] {
         #logo {
-          color: ${colors['electric-blue']};
+          color: ${colors.electricBlue};
         }
       }
 

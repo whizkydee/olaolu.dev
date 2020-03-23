@@ -4,7 +4,7 @@ import { media } from '../helpers'
 import { default as styled, css } from 'vue-styled-components'
 
 const StyledFooter = css`
-  color: ${theme.colors['lime-alt']};
+  color: ${theme.colors.limeAlt};
   background: ${theme.colors.default};
 
   ${({ shelfEnv }) =>
