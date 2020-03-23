@@ -32,16 +32,16 @@ import styled, { css } from 'vue-styled-components'
 
 function createStyledButton(tagName, props) {
   const styles = css`
-    overflow: hidden;
-    font-size: 0.9em;
-    font-weight: bold;
     position: relative;
-    user-select: none;
-    white-space: nowrap;
-    display: inline-flex;
-    letter-spacing: 0.1em;
-    background: transparent;
+    font-weight: bold;
     text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.9em;
+    user-select: none;
+    display: inline-flex;
+    overflow: hidden;
+    background: transparent;
+    white-space: nowrap;
     -webkit-tap-highlight-color: transparent;
 
     &[data-theme='lime'] {
@@ -78,26 +78,26 @@ function createStyledButton(tagName, props) {
 
     .sauce-button__content {
       z-index: 1;
-      width: 100%;
       display: flex;
       position: relative;
-      padding: 1.25em 3em;
       align-items: center;
       justify-content: center;
+      padding: 1.25em 3em;
+      width: 100%;
+      color: ${theme.colors.electricBlue};
       border: 1px solid currentColor;
-      color: ${theme.colors['electric-blue']};
 
       &:before {
+        content: '';
+        width: 100%;
+        height: 108%;
+        pointer-events: none;
+        z-index: -1;
+        position: absolute;
+        top: -0.1em;
+        bottom: 0;
         left: 0;
         right: 0;
-        bottom: 0;
-        width: 100%;
-        top: -0.1em;
-        content: '';
-        z-index: -1;
-        height: 108%;
-        position: absolute;
-        pointer-events: none;
         background: currentColor;
         transform: translateX(-101%);
         transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
@@ -127,7 +127,11 @@ const StyledButtonLink = createStyledButton('a', {})
 const StyledButton = createStyledButton('button', {})
 
 export default {
-  components: { BowArrow, StyledButton, StyledButtonLink },
+  components: {
+    BowArrow,
+    StyledButton,
+    StyledButtonLink,
+  },
   props: {
     url: String,
     lime: {
