@@ -84,7 +84,7 @@ const StyledFooter = css`
     `}
 
     ${media.maxWidth(460)`
-      justify-content: center;
+      justify-content: left;
     `}
   }
 
