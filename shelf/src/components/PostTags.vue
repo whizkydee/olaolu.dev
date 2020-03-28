@@ -33,7 +33,6 @@ export default {
   &-link {
     color: currentColor;
     text-decoration: none;
-    color: currentColor;
     border-radius: var(--radius);
   }
 }
