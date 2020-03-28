@@ -165,10 +165,10 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@mrolaolu/helpers@0.2.12":
-  version "0.2.12"
-  resolved "https://registry.yarnpkg.com/@mrolaolu/helpers/-/helpers-0.2.12.tgz#1e32d2ea2c7fd7e7cd149eec31e6c00435ec9d87"
-  integrity sha512-sHEVLWG4fev43CqFPBTuHDrRLCjB+aSTYFCthrY758SIuzfWaxaR0fkmIjYhIh9uZYYWelvUgaivnnBkyBIfdA==
+"@mrolaolu/helpers@0.2.14":
+  version "0.2.14"
+  resolved "https://registry.yarnpkg.com/@mrolaolu/helpers/-/helpers-0.2.14.tgz#c5922588c4313d0ad02707cf80e230580a58ca71"
+  integrity sha512-o7MzVwBX4sopiKPlIJVwF5GbwjuRS1qXKM2YbqXk1l9fYdbiwqIamZmJTJCofhGsarkpBASXbk9LDFCwO0tjDg==
   dependencies:
     core-js "^3.3.4"
 
@@ -2056,9 +2056,9 @@ core-js@^2.6.5:
   integrity sha512-HOpZf6eXmnl7la+cUdMnLvUxKNqLUzJvgIziQ0DiF3JwSImNphIqdGqzj6hIKyX04MmV0poclQ7+wjWvxQyR2A==
 
 core-js@^3.3.4:
-  version "3.3.5"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.3.5.tgz#58d20f48a95a07304b62ff752742b82b56431ed8"
-  integrity sha512-0J3K+Par/ZydhKg8pEiTcK/9d65/nqJOzY62uMkjeBmt05fDOt/khUVjDdh8TpeIuGQDy1yLDDCjiWN/8pFIuw==
+  version "3.6.4"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.6.4.tgz#440a83536b458114b9cb2ac1580ba377dc470647"
+  integrity sha512-4paDGScNgZP2IXXilaffL9X7968RuvwlkK3xWtZRVqgd8SYNiVKRJvkFd1aqqEuPfN7E68ZHEp9hDj6lHj4Hyw==
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"

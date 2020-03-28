@@ -5,6 +5,13 @@ import {
   SECTION_SELECTOR,
   CURRENT_SECTION,
 } from '@/constants'
+import {
+  wait,
+  elementInView,
+  debounce,
+  isMacintosh,
+  getEventPath,
+} from '@mrolaolu/helpers'
 import './home-styles'
 import { mapState } from 'vuex'
 import Contact from './Contact'
@@ -13,7 +20,6 @@ import Experience from './Experience'
 import Cornerstone from './Cornerstone'
 import Carriageway from './Carriageway'
 import { goToSection } from '@/helpers'
-import { wait, debounce, getEventPath, elementInView } from '@mrolaolu/helpers'
 
 const Homepage = Vue.component('Homepage', {
   computed: {
@@ -143,6 +149,22 @@ const Homepage = Vue.component('Homepage', {
     },
 
     /**
+     * Jump to the absolute first section on the page.
+     * @return {void}
+     */
+    goToFirstSection() {
+      goToSection({ node: this.getSection(this.firstSection) })
+    },
+
+    /**
+     * Jump to the absolute last section on the page.
+     * @return {void}
+     */
+    goToLastSection() {
+      goToSection({ node: this.getSection(this.lastSection) })
+    },
+
+    /**
      * Determine what section is most visible in the viewport
      * @param {HTMLElement} section - the section
      * @return {number} - the percentage left for the element to
@@ -253,12 +275,20 @@ const Homepage = Vue.component('Homepage', {
     maybeScrollJack(event) {
       if (this.isMediumScreen || !event) return
 
-      const isScrollableElemFocused = [
-        this.$el,
-        document.body,
-        this.$root.$el,
-        document.documentElement,
-      ].includes(event.target)
+      const SPACEBAR = [' ', 'Spacebar']
+      const isCommandKey = isMacintosh() && event.metaKey
+      const upwardKeys = [
+        'Down',
+        ...SPACEBAR,
+        'ArrowDown',
+        'Right',
+        'PageDown',
+        'ArrowRight',
+      ]
+      const downwardKeys = ['Up', 'ArrowUp', 'Left', 'PageUp', 'ArrowLeft']
+      const isScrollableElemFocused = this.scrollableElems.includes(
+        event.target
+      )
       const inEventPath = cb => getEventPath(event).some(cb)
 
       const isNavFocused = inEventPath(o => o && o.id === NAVIGATION_ID)
@@ -274,32 +304,18 @@ const Homepage = Vue.component('Homepage', {
         return
       }
 
-      const { getSection } = this
-      const SPACEBAR = [' ', 'Spacebar']
-
-      if (
-        [
-          'Down',
-          ...SPACEBAR,
-          'ArrowDown',
-          'Right',
-          'PageDown',
-          'ArrowRight',
-        ].includes(event.key)
-      ) {
+      if (upwardKeys.includes(event.key)) {
         event.preventDefault()
-        this.goToNextSection()
-      } else if (
-        ['Up', 'ArrowUp', 'Left', 'PageUp', 'ArrowLeft'].includes(event.key)
-      ) {
+        isCommandKey ? this.goToLastSection() : this.goToNextSection()
+      } else if (downwardKeys.includes(event.key)) {
         event.preventDefault()
-        this.goToPrevSection()
+        isCommandKey ? this.goToFirstSection() : this.goToPrevSection()
       } else if (event.key === 'Home') {
         event.preventDefault()
-        goToSection({ node: getSection(SECTIONS[0]) })
+        this.goToFirstSection()
       } else if (event.key === 'End') {
         event.preventDefault()
-        goToSection({ node: getSection(SECTIONS[SECTIONS.length - 1]) })
+        this.goToLastSection()
       }
     },
   },
