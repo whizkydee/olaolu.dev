@@ -19,9 +19,7 @@ export default Vue.component('App', {
   render() {
     return (
       <ThemeProvider id="app" theme={theme}>
-        <a href="#main" id="skip-link">
-          Skip to navigation
-        </a>
+        <SkipLink to="#section-nav" />
         <Header
           compact={this.isPortrait ? false : this.isHeaderCompact}
           currentSection={this.currentSection}

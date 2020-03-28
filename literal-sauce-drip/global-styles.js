@@ -165,11 +165,9 @@ const GlobalStyle = injectGlobal`
     user-select: none;
     padding: 8px 15px;
     font-size: 14.5px;
-    border-radius: 3px;
     transition: top .2s;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
     background: ${colors.default};
+    border-bottom-right-radius: 3px;
 
     &:focus {
       top: 0;
