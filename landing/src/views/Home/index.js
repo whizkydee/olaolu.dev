@@ -276,7 +276,7 @@ const Homepage = Vue.component('Homepage', {
       if (this.isMediumScreen || !event) return
 
       const SPACEBAR = [' ', 'Spacebar']
-      const isCommandKey = isMacintosh() && event.metaKey
+      const isCommandKey = () => isMacintosh() && event.metaKey
       const upwardKeys = [
         'Down',
         ...SPACEBAR,
@@ -306,10 +306,10 @@ const Homepage = Vue.component('Homepage', {
 
       if (upwardKeys.includes(event.key)) {
         event.preventDefault()
-        isCommandKey ? this.goToLastSection() : this.goToNextSection()
+        isCommandKey() ? this.goToLastSection() : this.goToNextSection()
       } else if (downwardKeys.includes(event.key)) {
         event.preventDefault()
-        isCommandKey ? this.goToFirstSection() : this.goToPrevSection()
+        isCommandKey() ? this.goToFirstSection() : this.goToPrevSection()
       } else if (event.key === 'Home') {
         event.preventDefault()
         this.goToFirstSection()
