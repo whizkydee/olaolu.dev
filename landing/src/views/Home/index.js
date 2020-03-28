@@ -16,7 +16,19 @@ import { goToSection } from '@/helpers'
 import { wait, debounce, getEventPath, elementInView } from '@mrolaolu/helpers'
 
 const Homepage = Vue.component('Homepage', {
-  computed: mapState([CURRENT_SECTION]),
+  computed: {
+    ...mapState([CURRENT_SECTION]),
+    firstSection: { get: () => SECTIONS[0] },
+    lastSection: { get: () => SECTIONS[SECTIONS.length - 1] },
+    scrollableElems() {
+      return [
+        this.$el,
+        window.document.body,
+        this.$root.$el,
+        window.document.documentElement,
+      ]
+    },
+  },
   data: () => ({
     touchY: null,
     prevTime: new Date().getTime(),
@@ -46,7 +58,7 @@ const Homepage = Vue.component('Homepage', {
     this.isMediumScreen || wait(1, this.maybeRestoreSection)
 
     // Set current section to the first section by default.
-    this.$root.$el.dataset[CURRENT_SECTION] = this.getCurrentSectionId()
+    this.$root.$el.dataset[CURRENT_SECTION] = this.currentSection
 
     window.addEventListener('resize', debounce(this.recalcSection, 200))
     document.addEventListener('keydown', this.maybeScrollJack)
@@ -73,24 +85,24 @@ const Homepage = Vue.component('Homepage', {
 
   methods: {
     /**
-     * Get the ID of the current section
-     * @return {string}
-     */
-    getCurrentSectionId() {
-      return this[CURRENT_SECTION]
-    },
-
-    /**
      * Determine if the specified section is hidden.
      * @param {string} id - the id of the section to check
      * @return {'true' | 'false'}
      */
     isSectionHidden(id) {
-      return this.isMaxHeight
-        ? (this.getCurrentSectionId() !== id).toString()
-        : (this.getSection(id) &&
-            !elementInView(this.getSection(id), { threshold: 0.5 })) ||
-            ''.toString()
+      const section = this.getSection(id)
+      let hidden = false
+
+      if (this.isMaxHeight) {
+        hidden = this.currentSection !== id
+      } else {
+        if (!section) return
+        hidden = !elementInView(section, {
+          threshold: 0.5,
+        })
+      }
+
+      return hidden.toString()
     },
 
     /**
@@ -107,7 +119,7 @@ const Homepage = Vue.component('Homepage', {
      * @param {string=} id
      * @return {HTMLElement}
      */
-    getSection(id = this.getCurrentSectionId()) {
+    getSection(id = this.currentSection) {
       const sectionElem = this.$root.$el.querySelector(`[data-section='${id}']`)
 
       if (!sectionElem) return
@@ -140,7 +152,7 @@ const Homepage = Vue.component('Homepage', {
       const offsetTop = parseInt(section.offsetTop)
       const docElemScrollTop = parseInt(document.documentElement.scrollTop)
 
-      return Math.abs((offsetTop - docElemScrollTop) / 100) < 2
+      return Math.abs((offsetTop - docElemScrollTop) / 100) < 2 // 2 percent
     },
 
     /**
@@ -149,9 +161,10 @@ const Homepage = Vue.component('Homepage', {
      * @return {void}
      */
     maybeRestoreSection() {
-      const rootEl = this.$root.$el
-      const isFirstSection = this.getCurrentSectionId() === SECTIONS[0]
-      const sections = Array.from(rootEl.querySelectorAll(SECTION_SELECTOR))
+      const isFirstSection = this.currentSection === this.firstSection
+      const sections = Array.from(
+        this.$root.$el.querySelectorAll(SECTION_SELECTOR)
+      )
 
       // Set current section to the most visible section upon reload
       const mostVisibleSection = sections.find(this.getOffsetFromViewport)
@@ -165,8 +178,10 @@ const Homepage = Vue.component('Homepage', {
       } else {
         wait(100, () => {
           // ...reset scroll!
-          document.documentElement.scrollTop = 0
-          document.documentElement.scrollLeft = 0
+          Object.assign(document.documentElement, {
+            scrollTop: 0,
+            scrollLeft: 0,
+          })
         })
       }
     },
