@@ -92,6 +92,7 @@ export default {
     'Web Performance',
     'Software Testing',
     'SEO',
+    'Progressive Enhancement',
     'Accessibility',
     'Build Automation',
     'Responsive Web Design',
