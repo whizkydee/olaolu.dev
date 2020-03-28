@@ -1,5 +1,6 @@
 <template>
   <ThemeProvider id="app" :style="!ready && 'display: none'" :theme="theme">
+    <SkipLink to="#main">Skip to content</SkipLink>
     <Header :noMenuShadow="!id.startsWith('work')" />
 
     <ContentView :id="id">
