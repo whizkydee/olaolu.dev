@@ -101,7 +101,7 @@ export default {
   }
 }
 
-.is__tabbing .post-card__link:focus {
+.is-tabbing .post-card__link:focus {
   outline-color: transparent;
   border-bottom: 5px solid var(--border-color);
 }

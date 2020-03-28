@@ -161,7 +161,7 @@ export default {
   }
 }
 
-.is__tabbing .post-nav__squares:focus {
+.is-tabbing .post-nav__squares:focus {
   outline-width: 2px;
 }
 </style>
