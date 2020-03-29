@@ -16,6 +16,10 @@ const GlobalStyle = injectGlobal`
     color: ${colors.default};
   }
 
+  #skip-link {
+    position: fixed;
+  }
+
   .sauce-button {
     min-width: 23.222em;
 
