@@ -22,6 +22,10 @@ import Carriageway from './Carriageway'
 import { goToSection } from '@/helpers'
 
 const Homepage = Vue.component('Homepage', {
+  data: () => ({
+    touchY: null,
+    prevTime: new Date().getTime(),
+  }),
   computed: {
     ...mapState([CURRENT_SECTION]),
     firstSection: { get: () => SECTIONS[0] },
@@ -35,10 +39,6 @@ const Homepage = Vue.component('Homepage', {
       ]
     },
   },
-  data: () => ({
-    touchY: null,
-    prevTime: new Date().getTime(),
-  }),
 
   async beforeCreate() {
     process.env.NODE_ENV === 'production' &&
@@ -47,12 +47,11 @@ const Homepage = Vue.component('Homepage', {
       )}
     Hey there 👋, curious!
     You're probably wondering how cool my site is, yeah?
-    I can do even better, so, feel free to hit me up on
-    https://twitter.com/mrolaolu or hello@olaolu.dev to talk
-    about it or if your company is currently looking for someone
-    with my kind of skills ✨.
+    I can do even better, so, if your company is currently
+    looking for someone with my kind of skills, feel free to hit me up
+    on https://twitter.com/mrolaolu or hello@olaolu.dev ✨.
 
-    And... about your curiousity, the code for my site is publicly hosted
+    And... about your curiousity, the code that powers my site is publicly hosted
     on https://github.com/whizkydee/olaolu.dev. That's a good place to start
     for sure 🤞.
     `)
@@ -108,7 +107,7 @@ const Homepage = Vue.component('Homepage', {
         })
       }
 
-      return hidden.toString()
+      return String(hidden)
     },
 
     /**
@@ -277,7 +276,7 @@ const Homepage = Vue.component('Homepage', {
 
       const SPACEBAR = [' ', 'Spacebar']
       const isCommandKey = () => isMacintosh() && event.metaKey
-      const upwardKeys = [
+      const downwardKeys = [
         'Down',
         ...SPACEBAR,
         'ArrowDown',
@@ -285,7 +284,7 @@ const Homepage = Vue.component('Homepage', {
         'PageDown',
         'ArrowRight',
       ]
-      const downwardKeys = ['Up', 'ArrowUp', 'Left', 'PageUp', 'ArrowLeft']
+      const upwardKeys = ['Up', 'ArrowUp', 'Left', 'PageUp', 'ArrowLeft']
       const isScrollableElemFocused = this.scrollableElems.includes(
         event.target
       )
@@ -304,10 +303,10 @@ const Homepage = Vue.component('Homepage', {
         return
       }
 
-      if (upwardKeys.includes(event.key)) {
+      if (downwardKeys.includes(event.key)) {
         event.preventDefault()
         isCommandKey() ? this.goToLastSection() : this.goToNextSection()
-      } else if (downwardKeys.includes(event.key)) {
+      } else if (upwardKeys.includes(event.key)) {
         event.preventDefault()
         isCommandKey() ? this.goToFirstSection() : this.goToPrevSection()
       } else if (event.key === 'Home') {

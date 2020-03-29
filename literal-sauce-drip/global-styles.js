@@ -161,10 +161,10 @@ const GlobalStyle = injectGlobal`
     top: -4em;
     z-index: 1001;
     color: #eeffff;
-    position: fixed;
     user-select: none;
     padding: 8px 15px;
     font-size: 14.5px;
+    position: absolute;
     transition: top .2s;
     background: ${colors.default};
     border-bottom-right-radius: 3px;
