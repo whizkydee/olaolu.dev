@@ -9,7 +9,7 @@ export default Vue.component('SkipLink', {
   },
   render() {
     return (
-      <a href={this.computedTo} id="skip-link">
+      <a href={this.computedTo} id="skip-link" role="button">
         {this.$slots.default || 'Skip to navigation'}
       </a>
     )
