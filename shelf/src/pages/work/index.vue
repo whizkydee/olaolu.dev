@@ -134,7 +134,7 @@ export default {
     You're probably wondering how cool my site is, yeah?
     I can do even better, so, if your company is currently
     looking for someone with my kind of skills, feel free to hit me up
-    on https://twitter.com/mrolaolu or hello@olaolu.dev ✨.
+    on https://twitter.com/mrolaolu or via hello@olaolu.dev ✨.
 
     And... about your curiousity, the code that powers my site is publicly hosted
     on https://github.com/whizkydee/olaolu.dev. That's a good place to start
