@@ -13,7 +13,7 @@ export default [
     name: 'hellotax',
     color: 'rgba(24,156,230,.1)',
     logo: hellotaxLogo,
-    siteName: 'beta.hellotax.com',
+    siteName: 'app.hellotax.com',
     internalPage: true,
   },
   {
@@ -41,7 +41,7 @@ export default [
     name: 'Pixel2HTML',
     color: 'rgba(62,70,110,.1)',
     logo: pixelLogo,
-    siteName: 'pixel2html.netlify.com',
+    siteName: 'pixel2html.netlify.app',
     internalPage: true,
   },
   {
