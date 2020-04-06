@@ -46,21 +46,19 @@
       <section>
         <h3>Core Technologies:</h3>
         <ul>
-          <li v-for="(tech, index) in data.technologies" :key="index">
-            {{ tech }}
-          </li>
+          <!-- prettier-ignore -->
+          <li v-for="(tech, index) in data.technologies" :key="index">{{ tech }}</li>
         </ul>
       </section>
 
       <section>
         <h3>Others:</h3>
         <ul>
+          <!-- prettier-ignore -->
           <li
             v-for="(proficiency, index) in data.otherProficiencies"
             :key="index"
-          >
-            {{ proficiency }}
-          </li>
+          >{{ proficiency }}</li>
         </ul>
       </section>
     </aside>
