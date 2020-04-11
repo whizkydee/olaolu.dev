@@ -6,7 +6,7 @@
   >
     <PageHeader title="shelf" noDot />
     <!-- List posts -->
-    <ol class="posts">
+    <ol class="posts" aria-label="Posts">
       <PostCard
         v-for="edge in $page.posts.edges"
         :key="edge.node.id"

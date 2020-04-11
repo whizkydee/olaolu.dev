@@ -8,15 +8,17 @@
         :src="post.cover_image"
       />
     </div>
-    <div class="post-card__content">
+    <article class="post-card__content" aria-label="Post">
+      <g-link class="post-card__link color-off" :to="post.path">{{
+        post.title
+      }}</g-link>
+
       <PostMeta class="post-card__meta" :post="post" />
       <h2 class="post-card__title" v-html="post.title" />
       <p class="post-card__description" v-html="post.description" />
 
       <PostTags class="post-card__tags" :post="post" v-if="post.tags" />
-
-      <g-link class="post-card__link color-off" :to="post.path">Link</g-link>
-    </div>
+    </article>
   </li>
 </template>
 

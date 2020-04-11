@@ -1,8 +1,8 @@
 <template>
   <header class="page-header">
-    <h1 class="page-header__heading" v-if="title">
-      <span v-if="!hideDecor">{{ preTitleSymbol }}</span
-      >{{ title }}<span v-if="!noDot && !hideDecor">.</span>
+    <h1 class="page-header__heading" v-if="title" :aria-label="title">
+      <span v-if="!hideDecor" aria-hidden="true">{{ preTitleSymbol }}</span
+      >{{ title }}<span v-if="!noDot && !hideDecor" aria-hidden="true">.</span>
     </h1>
     <p class="page-header__desc" v-if="desc">
       {{ desc }}

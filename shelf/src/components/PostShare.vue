@@ -25,6 +25,7 @@ import { unslashEnd } from '@mrolaolu/helpers'
 import { TwitterIcon, FacebookIcon } from '@saucedrip/core/icons'
 
 export default {
+  props: ['post'],
   components: {
     TwitterIcon,
     FacebookIcon,

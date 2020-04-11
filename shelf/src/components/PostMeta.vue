@@ -1,8 +1,11 @@
 <template>
   <div class="post-meta">
-    <time class="post-meta__date" :datetime="computedDate">{{
-      post.date
-    }}</time>
+    <time
+      class="post-meta__date"
+      :datetime="computedDate"
+      :aria-label="'Published on: ' + post.date"
+      >{{ post.date }}</time
+    >
     <template v-if="post.timeToRead">
       <span class="post-meta__ttr">{{ post.timeToRead }} min read</span>
     </template>
