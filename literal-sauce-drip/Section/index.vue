@@ -1,5 +1,5 @@
 <template>
-  <StyledFooter :data-section="name" tabindex="-1" v-if="isFooter">
+  <StyledFooter :data-section="name" :tabindex="isHome && '-1'" v-if="isFooter">
     <slot />
   </StyledFooter>
 
