@@ -2,7 +2,7 @@
   <main id="main" role="main" tabindex="-1">
     <slot />
 
-    <Announcer v-if="isShelfEnv" ref="announcer" :message="announcement" />
+    <Announcer v-if="isShelfEnv" :message="announcement" />
   </main>
 </template>
 
