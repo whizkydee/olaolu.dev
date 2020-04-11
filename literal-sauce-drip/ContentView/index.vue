@@ -1,6 +1,8 @@
 <template>
   <main id="main" role="main" tabindex="-1">
     <slot />
+
+    <Announcer v-if="isShelfEnv" ref="announcer" :message="announcement" />
   </main>
 </template>
 
@@ -31,6 +33,7 @@ export default {
   },
 
   props: {
+    announcement: String,
     id: { type: String, required: true },
   },
 }

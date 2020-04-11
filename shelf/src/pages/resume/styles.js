@@ -1,28 +1,27 @@
-import ContentView from '@saucedrip/core/ContentView'
-import { default as styled, css } from 'vue-styled-components'
+import Layout from '~/layouts/Default'
+import { default as styled, css, injectGlobal } from 'vue-styled-components'
 
 const StyledResume = css`
-  position: relative;
-
-  main {
-    position: relative;
+  #main {
     display: flex;
     max-width: unset;
-    padding-bottom: 6.7rem;
+    position: relative;
     padding-top: 6.7rem;
+    padding-bottom: 6.7rem;
     background-color: var(--bg-color);
 
-  @media (max-width: 790px) {
-    flex-direction: column;
-    padding-right: var(--space);
-  }
+    @media (max-width: 790px) {
+      flex-direction: column;
+      padding-right: var(--space);
+    }
 
-  @media (min-width: 1024px) {
-    margin-top: 0;
-  }
+    @media (min-width: 1024px) {
+      margin-top: 0;
+    }
 
-  @media (min-width: 1200px) {
-    margin: calc(var(--space) * 1.2) 7vw;
+    @media (min-width: 1200px) {
+      margin: calc(var(--space) * 1.2) 7vw;
+    }
   }
 
   p,
@@ -351,9 +350,19 @@ const StyledResume = css`
   }
 `
 
+injectGlobal`
+  #skip-link {
+    top: -9em;
+
+    &:focus {
+      top: -6em;
+    }
+  }
+`
+
 export default Object.assign(
   { name: 'StyledResume' },
-  styled(ContentView, {
+  styled(Layout, {
     isPDF: Boolean,
   })([StyledResume])
 )
