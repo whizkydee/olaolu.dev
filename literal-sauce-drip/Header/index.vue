@@ -18,6 +18,7 @@
     <button
       type="button"
       :aria-label="getLabel()"
+      ref="menuToggler"
       aria-controls="contact-menu"
       :aria-expanded="String(menuOpen)"
       @click="toggleMenu"
@@ -53,14 +54,14 @@ export default {
       window.addEventListener('resize', this.maybeTransform)
       window.addEventListener('scroll', this.maybeTransform)
     }
-    document.addEventListener('keydown', this.maybeCloseMenu)
+    document.addEventListener('keyup', this.maybeCloseMenu)
     document.addEventListener('mouseup', this.maybeCloseMenu)
   },
 
   beforeDestroy() {
     window.removeEventListener('resize', this.maybeTransform)
     window.removeEventListener('scroll', this.maybeTransform)
-    document.removeEventListener('keydown', this.maybeCloseMenu)
+    document.removeEventListener('keyup', this.maybeCloseMenu)
     document.removeEventListener('mouseup', this.maybeCloseMenu)
   },
 
@@ -108,16 +109,30 @@ export default {
     },
 
     maybeCloseMenu(event) {
-      if (this.menuOpen) {
-        switch (event.type) {
-          case 'keydown':
-            ;['Escape', 'Esc'].indexOf(event.key) !== -1 && this.closeMenu()
-            break
-          case 'mouseup':
-            if (event.target.closest('.menu-toggle, #contact-menu')) return
+      const isForeignNode =
+        event.target !== this.$refs.menuToggler &&
+        !this.$refs.contactMenu.contains(event.target)
+
+      switch (event.type) {
+        case 'keyup':
+          if (['Escape', 'Esc'].indexOf(event.key) !== -1) {
+            if (!this.menuOpen) return
             this.closeMenu()
-            break
-        }
+          }
+
+          // Close the contact menu once the user tabs away from it
+          if (event.key == 'Tab' && isForeignNode) {
+            this.closeMenu()
+          }
+          break
+        case 'mouseup':
+          if (
+            event.target.closest('.menu-toggle, #contact-menu') ||
+            !this.menuOpen
+          )
+            return
+          this.closeMenu()
+          break
       }
     },
   },
