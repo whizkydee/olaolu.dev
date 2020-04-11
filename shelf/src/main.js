@@ -5,7 +5,7 @@ import '@saucedrip/core/global-styles'
 // Import main css
 import '~/assets/style/index.scss'
 
-import { registerEnv } from '@saucedrip/core/helpers'
+import { registerEnv, getAnnouncer } from '@saucedrip/core/helpers'
 // Import sauce drip global components
 import * as components from '@saucedrip/core'
 import { SharedMixins } from '@saucedrip/core/mixins'
@@ -18,10 +18,31 @@ import PageHeader from '~/components/PageHeader'
 
 // The Client API can be used here. Learn more: gridsome.org/docs/client-api
 export default function(Vue, { router, head, isClient }) {
+  // Cache gridsome's default router scroll behavior handler
+  // so we can override it later.
+  const cachedScrollBehavior = router.options.scrollBehavior
+
   registerEnv(Vue, 'SHELF')
   Vue.config.productionTip = false
 
   head.style.push({ type: 'text/css', cssText: fonts })
+
+  // Here, we override the scroll behaviour with one that allows
+  // for better a11y with SRs by manipulating the focus target
+  router.options.scrollBehavior = function(to, from, saved) {
+    const announcer = getAnnouncer()
+    const mainElem = document.getElementById('main')
+
+    if (mainElem) {
+      mainElem.focus()
+      // Read out the announcement.
+      announcer && announcer.setAttribute('aria-hidden', 'false')
+      // Reset document scroll.
+      return { x: 0, y: 0 }
+    }
+    if (typeof cachedScrollBehavior == 'function')
+      cachedScrollBehavior(to, from, saved)
+  }
 
   // Initialize sauce drip shared mixins.
   Vue.mixin(SharedMixins)
