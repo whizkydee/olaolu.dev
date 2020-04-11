@@ -16,10 +16,15 @@
 </template>
 
 <script>
-import { isObject } from '@mrolaolu/helpers'
+import { isObject, isMacintosh, isWindows } from '@mrolaolu/helpers'
 
 export default {
   methods: {
+    isCmdOrCtrlKey(event) {
+      const { metaKey, ctrlKey } = event
+      return (isMacintosh() && metaKey) || (isWindows() && ctrlKey)
+    },
+
     handleClick(event) {
       const { href } = this
 
@@ -32,9 +37,11 @@ export default {
 
       // Use Vue router to handle all shelf links
       // while in the shelf environment.
+      // Resort to handling Cmd/Ctrl clicks the native way.
       if (
         this.isShelfEnv &&
         isObject(this.$router) &&
+        !this.isCmdOrCtrlKey(event) &&
         [this.workURL, this.shelfURL, this.resumeURL].indexOf(href) !== -1
       ) {
         event.preventDefault()
