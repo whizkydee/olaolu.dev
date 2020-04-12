@@ -18,6 +18,7 @@
             <h5>{{ project.name }}</h5>
             <a
               target="_blank"
+              aria-label="Opens in a new tab."
               v-if="project.siteName"
               rel="noopener noreferrer"
               :href="project.siteURL"
