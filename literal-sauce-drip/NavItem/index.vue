@@ -5,7 +5,7 @@
       :class="className"
       @click="handleClick"
       v-bind="anchorAttrs"
-      :aria-label="computedAriaLabel"
+      :aria-label="computedLabel"
       :aria-current="ariaCurrent"
       :target="external && '_blank'"
       :rel="external && 'noreferrer noopener'"
@@ -20,7 +20,7 @@ import { isObject, isMacintosh, isWindows } from '@mrolaolu/helpers'
 
 export default {
   computed: {
-    computedAriaLabel() {
+    computedLabel() {
       const { ariaLabel } = this
 
       if (external) {
