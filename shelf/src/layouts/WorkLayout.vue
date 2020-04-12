@@ -20,7 +20,7 @@
         <slide v-for="(image, index) in images" :key="index">
           <img
             :src="image"
-            :alt="`${name}: Screen ${index + 1}`"
+            :alt="`${name}: Screen ${index + 1}.`"
             @click="handleSlideClick"
           />
         </slide>
