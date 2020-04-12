@@ -23,7 +23,7 @@ export default {
     computedLabel() {
       const { ariaLabel } = this
 
-      if (external) {
+      if (this.external) {
         return ariaLabel && ariaLabel.length > 1
           ? ariaLabel + ', opens in a new tab.'
           : 'Opens in a new tab.'
