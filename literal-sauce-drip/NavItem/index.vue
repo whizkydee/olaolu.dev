@@ -5,7 +5,7 @@
       :class="className"
       @click="handleClick"
       v-bind="anchorAttrs"
-      :aria-label="ariaLabel"
+      :aria-label="computedLabel"
       :aria-current="ariaCurrent"
       :target="external && '_blank'"
       :rel="external && 'noreferrer noopener'"
@@ -16,10 +16,28 @@
 </template>
 
 <script>
-import { isObject } from '@mrolaolu/helpers'
+import { isObject, isMacintosh, isWindows } from '@mrolaolu/helpers'
 
 export default {
+  computed: {
+    computedLabel() {
+      const { ariaLabel } = this
+
+      if (external) {
+        return ariaLabel && ariaLabel.length > 1
+          ? ariaLabel + ', opens in a new tab.'
+          : 'Opens in a new tab.'
+      }
+
+      return ariaLabel
+    },
+  },
   methods: {
+    isCmdOrCtrlKey(event) {
+      const { metaKey, ctrlKey } = event
+      return (isMacintosh() && metaKey) || (isWindows() && ctrlKey)
+    },
+
     handleClick(event) {
       const { href } = this
 
@@ -32,9 +50,11 @@ export default {
 
       // Use Vue router to handle all shelf links
       // while in the shelf environment.
+      // Resort to handling Cmd/Ctrl clicks the native way.
       if (
         this.isShelfEnv &&
         isObject(this.$router) &&
+        !this.isCmdOrCtrlKey(event) &&
         [this.workURL, this.shelfURL, this.resumeURL].indexOf(href) !== -1
       ) {
         event.preventDefault()

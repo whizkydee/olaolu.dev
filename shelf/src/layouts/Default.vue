@@ -1,13 +1,13 @@
 <template>
   <ThemeProvider id="app" :style="!ready && 'display: none'" :theme="theme">
     <SkipLink to="#main">Skip to content</SkipLink>
-    <Header :noMenuShadow="!id.startsWith('work')" />
+    <Header :noMenuShadow="!id.startsWith('work')" v-if="!noBanners" />
 
-    <ContentView :id="id">
+    <ContentView :id="id" :announcement="composedAnnouncement">
       <slot />
     </ContentView>
 
-    <Footer id="site-footer" />
+    <Footer id="site-footer" v-if="!noBanners" />
   </ThemeProvider>
 </template>
 
@@ -17,7 +17,17 @@ import theme from '@saucedrip/core/theme'
 import { ThemeProvider } from 'vue-styled-components'
 
 export default {
-  data: () => ({ theme, ready: process.env.NODE_ENV === 'development' }),
+  data: () => ({
+    theme,
+    ready: process.env.NODE_ENV === 'development'
+  }),
+
+ computed: {
+    composedAnnouncement() {
+      return 'You just navigated to: ' + this.title
+    }
+  },
+
   created() {
     // hack to hide display until sauce drip
     // components are rendered and painted
@@ -45,6 +55,7 @@ export default {
   props: {
     id: String,
     title: { type: String, required: true },
+    noBanners: { type: Boolean, default: false },
     description: { type: String, required: true },
   },
   components: { ThemeProvider },

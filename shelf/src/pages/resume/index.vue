@@ -1,11 +1,19 @@
 <template>
-  <StyledResume id="resume" :style="!ready && 'display: none'" :isPDF="isPDF">
+  <StyledResume
+    noBanners
+    id="resume"
+    :isPDF="isPDF"
+    title="Olaolu's Résumé"
+    :description="
+      `Work experience of Olaolu, expert frontend developer and UX Engineer with ${YEO} years of experience`
+    "
+  >
     <div class="meta">
       <a
         target="_blank"
         class="no-marker linkedin"
         :href="socialProfiles.linkedIn"
-        aria-label="Connect with Olaolu on LinkedIn"
+        aria-label="Connect with Olaolu on LinkedIn, opens a new tab."
         @click="$ga.event('Resume', 'click', 'LinkedIn Button')"
       >
         <LinkedInIcon />
@@ -23,7 +31,7 @@
         target="_blank"
         :hidden="isPDF"
         class="no-marker"
-        aria-label="Download a PDF copy of this resume"
+        aria-label="Download a PDF copy of this resume, opens a new tab."
         @click="$ga.event('Resume', 'click', 'Download PDF Button')"
       >
         <DownloadIcon />
@@ -33,7 +41,7 @@
 
     <aside>
       <section>
-        <a href="https://olaolu.dev">olaolu.dev</a>
+        <a href="https://olaolu.dev" aria-label="olaolu dot dev">olaolu.dev</a>
         <span>Lagos, Nigeria</span>
         <a
           href="mailto:hello@olaolu.dev"
@@ -79,8 +87,7 @@
 
         <p>
           I’ve worked on a handful of web projects over the past
-          {{ new Date().getFullYear() - 2011 }} years, some of which were for
-          the following organizations:
+          {{ YEO }} years, some of which were for the following organizations:
         </p>
 
         <ul id="companies">
@@ -143,43 +150,45 @@
     background-color: #fff;
   }
 
-  h3,
-  h4,
-  a:not(.no-marker) {
-    font-weight: bold;
-    display: inline-block;
+  #main {
+    h3,
+    h4,
+    a:not(.no-marker) {
+      font-weight: bold;
+      display: inline-block;
 
-    &:not(.color-off) {
-      color: var(--electric-blue);
-    }
-  }
-
-  .heading,
-  a:not(.no-marker) {
-    z-index: 1;
-    position: relative;
-
-    &:after {
-      content: '';
-      background: var(--lime);
-      height: 0.4em;
-      width: 109%;
-      display: block;
-      margin-top: -0.6rem;
-      margin-left: -4%;
-      position: absolute;
-      z-index: -1;
-    }
-  }
-
-  a:not(.no-marker) {
-    &:after {
-      transform: none;
-      transition: transform 0.3s;
+      &:not(.color-off) {
+        color: var(--electric-blue);
+      }
     }
 
-    &:hover:after {
-      transform: translateY(0.2em) scaleY(0.5);
+    .heading,
+    a:not(.no-marker) {
+      z-index: 1;
+      position: relative;
+
+      &:after {
+        content: '';
+        background: var(--lime);
+        height: 0.4em;
+        width: 109%;
+        display: block;
+        margin-top: -0.6rem;
+        margin-left: -4%;
+        position: absolute;
+        z-index: -1;
+      }
+    }
+
+    a:not(.no-marker) {
+      &:after {
+        transform: none;
+        transition: transform 0.3s;
+      }
+
+      &:hover:after {
+        transform: translateY(0.2em) scaleY(0.5);
+      }
     }
   }
 }
@@ -192,23 +201,16 @@ import { createMeta } from '~/helpers'
 import { MailIcon, DownloadIcon, LinkedInIcon } from '@saucedrip/core/icons'
 
 export default {
-  data: () => ({
-    data,
-    ready: process.env.NODE_ENV === 'development',
-  }),
-
-  created() {
-    // hack to hide display until scripts for
-    // styled components have been executed.
-    // TODO: Fix this
-    if (typeof window !== 'undefined') {
-      window.setTimeout(() => (this.ready = true), 0)
-    }
-  },
+  name: 'Résumé',
+  data: () => ({ data }),
 
   computed: {
     isPDF() {
       return this.$route.query.pdf === 'true'
+    },
+
+    YEO() {
+      return new Date().getFullYear() - 2011
     },
   },
 
@@ -233,6 +235,5 @@ export default {
     DownloadIcon,
     LinkedInIcon,
   },
-  name: 'Resume',
 }
 </script>

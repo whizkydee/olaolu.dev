@@ -1,4 +1,5 @@
 export * from './media-helpers'
+import { focusableSelectors } from '@mrolaolu/helpers'
 import { SECTION_SELECTOR, CURRENT_SECTION } from './constants'
 const { SHELF_PORT, LANDING_PORT } = require('../config')
 
@@ -24,31 +25,29 @@ export function goToSection(store, opts) {
   })
 
   // determine what section to go to based on the modifier.
-  switch (modifier) {
-    case 'next':
-      node = findSection(1)
-      break
-    case 'previous':
-      node = findSection(-1)
-      break
-    default:
-    // node = node
+  if (modifier == 'next') {
+    node = findSection(1)
+  } else if (modifier == 'previous') {
+    node = findSection(-1)
   }
 
   if (node instanceof HTMLElement) {
     window.setTimeout(() => {
+      // Add a `scrolled` className so we know not to
+      // animate all the items in the section again.
       node.classList.add('scrolled')
     }, 1000)
 
-    if (smooth) {
-      smoothScrollToElem(node)
-    } else {
-      window.scrollTo(0, node.offsetTop)
+    if (smooth) smoothScrollToElem(node)
+    else window.scrollTo(0, node.offsetTop)
+
+    if (focus) {
+      // Make sure we bring focus to the current section
+      // as early as possible.
+      node.focus()
     }
 
     window.setTimeout(() => {
-      if (focus) node.focus()
-
       store && store.commit(CURRENT_SECTION, getSectionId())
       app.dataset[CURRENT_SECTION] = getSectionId()
     }, 200)
@@ -100,6 +99,16 @@ export function smoothScrollToElem(
 
 export function createMenuShadow(color = 'rgba(72, 49, 212, .05)') {
   return `0 10px 53px 0 ${color}`
+}
+
+export function getAnnouncer() {
+  return document.getElementById('Announcer')
+}
+
+export function getFocusableNodes(elem) {
+  if (!(elem instanceof HTMLElement)) return []
+
+  return Array.from(elem.querySelectorAll(focusableSelectors))
 }
 
 export function isDev() {

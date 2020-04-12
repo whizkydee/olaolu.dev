@@ -4,7 +4,12 @@
 
     <ul>
       <NavItem href="mailto:hello@olaolu.dev">hello@olaolu.dev</NavItem>
-      <NavItem href="https://t.me/mrolaolu" external>t.me/mrolaolu</NavItem>
+      <NavItem
+        external
+        href="https://t.me/mrolaolu"
+        ariaLabel="t dot me forward slash mrolaolu"
+        >t.me/mrolaolu</NavItem
+      >
     </ul>
   </StyledBasicContact>
 </template>
