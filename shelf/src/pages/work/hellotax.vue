@@ -27,7 +27,7 @@
       documenting flaws and identifying strategies to tackle them. We settled to
       use Vue as their in-house team was more familiar with it. I bootstrapped
       the project, and within a few weeks the designated MVP which included a
-      partial UI library optimized for accessibility was ready.
+      partial component library optimized for accessibility was ready.
     </p>
 
     <p>
