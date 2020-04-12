@@ -1,8 +1,11 @@
-const fs = require('fs')
+const Fs = require('fs')
+const fs = Fs.promises
 const path = require('path')
 const makeDir = require('make-dir')
 const runAll = require('npm-run-all')
 const moveFile = require('move-file')
+const { promisify } = require('util')
+const glob = promisify(require('glob'))
 const { excludeFromShelfDir } = require('./config')
 
 const dist = { shelf: 'shelf/dist', landing: 'landing/dist' }
@@ -18,11 +21,44 @@ runAll(['build:*'], {
   stderr: process.stderr,
 })
   .then(async () => {
+    const htmlGlob = path.join(dist.shelf, '**/*.html')
     const rootDist = await makeDir('dist')
     const distFiles = {
-      shelf: fs.readdirSync(dist.shelf),
-      landing: fs.readdirSync(dist.landing),
+      shelf: Fs.readdirSync(dist.shelf),
+      landing: Fs.readdirSync(dist.landing),
     }
+
+    // Fix broken paths like "work", "resume", "work-images"
+    // prefixed with "/shelf/" across the shelf environment.
+    await glob(htmlGlob, {}).then(async htmlFiles => {
+      const pathsToFixRE = new RegExp(
+        '/shelf/([' + excludeFromShelfDir.join('|').replace('-', '\\-') + '])',
+        'g'
+      )
+
+      try {
+        for (const file of htmlFiles) {
+          await fs.access(file, fs.F_OK).then(async () => {
+            const fileContent = await fs.readFile(file, { encoding: 'utf8' })
+
+            if (
+              typeof fileContent != 'string' ||
+              fileContent.match(pathsToFixRE).length === 0
+            )
+              return
+            const result = fileContent.replace(
+              pathsToFixRE,
+              (_, p1) => '/' + p1
+            )
+
+            // Perform a write op on the file with the updated content.
+            await fs.writeFile(file, result)
+          })
+        }
+      } catch (e) {
+        console.error(e)
+      }
+    })
 
     console.log(
       '✅ INDIVIDUAL BUILDS SUCCESSFUL... Proceeding to combined build...'

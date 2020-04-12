@@ -31,6 +31,7 @@
     "eslint": "5.16.0",
     "eslint-plugin-prettier": "3.1.0",
     "eslint-plugin-vue": "5.0.0",
+    "glob": "^7.1.6",
     "make-dir": "^3.0.0",
     "move-file": "^1.2.0",
     "netlify-cli": "^2.15.0",
