@@ -10,9 +10,21 @@
     />
 
     <section class="work-container">
-      <ul id="projects">
+      <ul id="projects" aria-label="Projects.">
         <li v-for="(project, key) in projects" :key="key" class="project">
-          <figure v-html="project.logo"></figure>
+          <a
+            class="project__link"
+            :aria-label="project.summaryLinkLabel"
+            :target="!project.internalPage && '_blank'"
+            :rel="!project.internalPage && 'noopener noreferrer'"
+            :href="project.internalPage ? project.path : project.siteURL"
+            >{{ project.name }} project summary.</a
+          >
+
+          <figure class="project__logo">
+            <span v-html="project.logo" aria-hidden="true" />
+            <figcaption class="visuallyhidden">{{ project.name }} logo.</figcaption>
+          </figure>
 
           <div class="project__info">
             <h5>{{ project.name }}</h5>
@@ -22,16 +34,10 @@
               rel="noopener noreferrer"
               :href="project.siteURL"
               class="project__info__siteName"
+              :aria-label="project.name + ' live demo, opens in a new tab.'"
               >{{ project.siteName }}</a
             >
           </div>
-          <a
-            :target="!project.internalPage && '_blank'"
-            :rel="!project.internalPage && 'noopener noreferrer'"
-            :href="project.internalPage ? project.path : project.siteURL"
-            class="project__link"
-            >Link</a
-          >
         </li>
       </ul>
     </section>
@@ -42,7 +48,17 @@
 import projectsData from './data'
 import Layout from '~/layouts/Default'
 import { hyphenateName } from '~/helpers'
-import { default as styled } from 'vue-styled-components'
+import { default as styled, injectGlobal } from 'vue-styled-components'
+
+injectGlobal`
+  .is-tabbing .project__link:focus {
+    outline: none;
+
+    & + .project__logo {
+      filter: contrast(0.8);
+    }
+  }
+`
 
 const StyledWork = styled(Layout)`
   main {
@@ -88,11 +104,12 @@ const StyledWork = styled(Layout)`
       box-shadow: 15px 8px 6px -6px rgba(235, 234, 242, 0.58);
     }
 
-    figure {
+    &__logo {
       margin: 0;
       height: 10em;
       display: flex;
       align-items: center;
+      transition: filter 0.3s;
       justify-content: center;
       background: rgba(245, 244, 252, 0.62);
     }
@@ -125,6 +142,7 @@ const StyledWork = styled(Layout)`
 `
 
 export default {
+  components: { StyledWork },
   async beforeCreate() {
     process.env.NODE_ENV === 'production' &&
       console.log(`${await import('raw-loader!@saucedrip/core/cat.txt').then(
@@ -146,15 +164,15 @@ export default {
     projects() {
       return projectsData.map(project => ({
         ...project,
+        summaryLinkLabel: project.internalPage
+          ? null
+          : project.name + ' live demo, opens in a new tab.',
         siteURL: !!project.siteName ? 'https://' + project.siteName : null,
         path: '/work/' + hyphenateName(project.name),
       }))
     },
   },
 
-  components: {
-    StyledWork,
-  },
   metaInfo: {
     title: 'Work',
   },

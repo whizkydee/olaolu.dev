@@ -157,6 +157,18 @@ const GlobalStyle = injectGlobal`
     overflow: hidden !important;
   }
 
+  .visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap;
+  }
+
   #skip-link {
     top: -4em;
     z-index: 1001;

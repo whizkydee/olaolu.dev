@@ -47,7 +47,7 @@ end.
 It’s an absolutely normal and almost inevitable practice to have third-party
 resources and scripts on our sites because we most of the time consume
 third-party content and services whether it’s analytics, ads, social media
-plugin-ins, framework/library resources, we use them.
+plugins, framework/library resources, we use them.
 
 However, so many times, the authors of these third-party resources just tell us
 to plug in their resources to our sites: resources that might depend on other
@@ -71,10 +71,10 @@ a little bit extra work.
 
 We all have that one big file on our sites &ndash; the one big JavaScript asset
 or the pretty 1MB image from Unsplash. JavaScript occupies is on top of the list
-of frontend resources that impact performance negatively, followed by images
-and really, it’s difficult to keep track of these things when everyone is in a
-rush and hell-bent on results so we under-prioritize or forget about optmizing
-for performance, something that affects our users directly. Users know when your
+of frontend resources that impact performance negatively, followed by images and
+really, it’s difficult to keep track of these things when everyone is in a rush
+and hell-bent on results so we under-prioritize or forget about optmizing for
+performance, something that affects our users directly. Users know when your
 site is slow, they also know most times what sites consume a lot of their mobile
 data.
 
@@ -87,9 +87,9 @@ accessible quickly, you do not even get the chance to show anything to the user.
 
 ### 3. Excessive HTTP Requests
 
-Get! Post! Frontend developers, we love to do that a lot: consuming APIs and
-all — it’s fun actually, being able to communicate with a web server, that’s
-pretty incredible, right?
+Get! Post! Frontend developers, we love to do that a lot: consuming APIs and all
+— it’s fun actually, being able to communicate with a web server, that’s pretty
+incredible, right?
 
 Well, yes, it is but sure comes at a cost. Sending requests back and forth can
 quickly become overwhelming for a web server to handle. Imagine for a moment

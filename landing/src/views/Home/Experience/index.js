@@ -59,7 +59,7 @@ const Experience = Vue.component('Experience', {
 
           <figure class="work-illo" aria-hidden={!isVisible}>
             <OlaoluWorkIllo />
-            <figcaption>
+            <figcaption class="visuallyhidden">
               Illustration of Olaolu and cardboards of some of his work.
             </figcaption>
           </figure>

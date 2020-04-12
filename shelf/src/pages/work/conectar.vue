@@ -26,6 +26,7 @@
       <a
         href="https://docs.google.com/document/d/1jl72mN3IvXzw0rAIT607MGTrtHS1QP8blejRi9lC090/edit?usp=sharing"
         target="_blank"
+        aria-label="Opens in a new tab."
         rel="noopener noreferrer"
         >proposal</a
       >, based on that I built the design system and a brand new marketing site
@@ -71,6 +72,7 @@
       <a
         href="https://twitter.com/AbstractOnion"
         target="_blank"
+        aria-label="Opens in a new tab."
         rel="noopener noreferrer"
         >Caleb</a
       >

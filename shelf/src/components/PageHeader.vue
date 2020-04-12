@@ -1,8 +1,10 @@
 <template>
   <header class="page-header">
-    <h1 class="page-header__heading" v-if="title">
-      <span v-if="!hideDecor">{{ preTitleSymbol }}</span
-      >{{ title }}<span v-if="!noDot && !hideDecor">.</span>
+    <h1 class="page-header__heading" v-if="title" :aria-label="title + '.'">
+      <span aria-hidden="true">
+        <span v-if="!hideDecor">{{ preTitleSymbol }}</span
+        >{{ title }}<span v-if="!noDot && !hideDecor">.</span>
+      </span>
     </h1>
     <p class="page-header__desc" v-if="desc">
       {{ desc }}
@@ -33,7 +35,7 @@ export default {
     user-select: none;
     font-size: 1.802em;
 
-    span {
+    > span > span {
       opacity: 0.7;
     }
   }

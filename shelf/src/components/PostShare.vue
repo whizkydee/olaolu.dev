@@ -3,7 +3,7 @@
     <a
       target="_blank"
       :href="fbShareURL"
-      aria-label="Share this post on Facebook"
+      aria-label="Share this post on Facebook, opens in a new tab."
       @click="$ga.event('Post', 'click', 'Facebook share button')"
     >
       <FacebookIcon />
@@ -12,7 +12,7 @@
     <a
       target="_blank"
       :href="twitterShareURL"
-      aria-label="Share this post on Twitter"
+      aria-label="Share this post on Twitter, opens in a new tab."
       @click="$ga.event('Post', 'click', 'Twitter share button')"
     >
       <TwitterIcon />
@@ -25,6 +25,7 @@ import { unslashEnd } from '@mrolaolu/helpers'
 import { TwitterIcon, FacebookIcon } from '@saucedrip/core/icons'
 
 export default {
+  props: ['post'],
   components: {
     TwitterIcon,
     FacebookIcon,
@@ -58,8 +59,8 @@ export default {
   position: relative;
 
   a {
-    transition: 0.2s;
     position: relative;
+    transition: transform 0.2s, filter 0.2s;
 
     &:hover {
       transform: scale(1.5);

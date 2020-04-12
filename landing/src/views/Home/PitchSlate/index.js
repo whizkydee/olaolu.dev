@@ -6,6 +6,27 @@ import { NAVIGATION_ID } from '@/constants'
 
 const PitchSlate = Vue.component('PitchSlate', {
   props: ['name'],
+  methods: {
+    renderHighlights({ vocalize = false }) {
+      return (
+        <ul
+          aria-hidden={!vocalize}
+          aria-label={!vocalize ? null : 'Highlights.'}
+          class={'highlights' + (vocalize ? ' visuallyhidden' : '')}
+        >
+          <li>
+            Highly skilled at progressive enhancement, design systems &amp; UI
+            Engineering.
+          </li>
+          <li>
+            Nearly a decade of experience including work for clients across
+            several countries.
+          </li>
+        </ul>
+      )
+    },
+  },
+
   render() {
     return (
       <StyledPitchSlate name={this.name}>
@@ -18,26 +39,22 @@ const PitchSlate = Vue.component('PitchSlate', {
             theme="lime"
             text="I like to craft solid and scalable FE products with great user experiences."
           >
-            <h1 slot="heading" aria-label="Frontend Developer.">
-              Frontend
-              <br /> Developer<span>.</span>
+            <h1 slot="heading" aria-label="Frontend Developer">
+              <span aria-hidden="true">
+                Frontend
+                <br /> Developer
+                <span>.</span>
+              </span>
             </h1>
+
+            {this.renderHighlights({ vocalize: true })}
           </Cavalier>
 
           {!this.isPortrait && <Visage />}
         </div>
 
         <div class="inner-content bottom">
-          <ul class="deux-points">
-            <li>
-              Highly skilled at progressive enhancement, design systems &amp; UI
-              Engineering.
-            </li>
-            <li>
-              Nearly a decade of experience including work for clients across
-              several countries.
-            </li>
-          </ul>
+          {this.renderHighlights({ vocalize: false })}
 
           {!this.isMediumScreen && <Navigation id={NAVIGATION_ID} />}
         </div>

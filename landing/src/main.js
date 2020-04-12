@@ -14,6 +14,22 @@ for (let componentName in components) {
   Vue.component(componentName, components[componentName])
 }
 
+Vue.mixin({
+  methods: {
+    /**
+     * Return the corresponding element for a valid section id.
+     * @param {string=} id
+     * @return {HTMLElement}
+     */
+    getSection(id = this.currentSection) {
+      const sectionElem = this.$root.$el.querySelector(`[data-section='${id}']`)
+
+      if (!sectionElem) return
+      return sectionElem
+    },
+  },
+})
+
 Vue.config.productionTip = false
 
 new Vue({
