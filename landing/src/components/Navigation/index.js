@@ -17,7 +17,7 @@ const Navigation = Vue.component('Navigation', {
     },
 
     isCurrent(sectionId) {
-      return this.currentSection === sectionId && 'page'
+      return this.currentSection === sectionId ? 'page' : null
     },
   },
 
