@@ -2,11 +2,15 @@ import ContentView from '@saucedrip/core/ContentView'
 import { default as styled, css } from 'vue-styled-components'
 
 const StyledResume = css`
-  display: flex;
-  max-width: unset;
-  padding-top: 6.7rem;
-  padding-bottom: 6.7rem;
-  background-color: var(--bg-color);
+  position: relative;
+
+  main {
+    position: relative;
+    display: flex;
+    max-width: unset;
+    padding-bottom: 6.7rem;
+    padding-top: 6.7rem;
+    background-color: var(--bg-color);
 
   @media (max-width: 790px) {
     flex-direction: column;
