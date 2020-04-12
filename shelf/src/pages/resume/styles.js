@@ -2,12 +2,14 @@ import Layout from '~/layouts/Default'
 import { default as styled, css, injectGlobal } from 'vue-styled-components'
 
 const StyledResume = css`
+  position: relative;
+
   #main {
-    display: flex;
     max-width: unset;
-    position: relative;
+    display: flex;
     padding-top: 6.7rem;
     padding-bottom: 6.7rem;
+    position: relative;
     background-color: var(--bg-color);
 
     @media (max-width: 790px) {
@@ -46,9 +48,9 @@ const StyledResume = css`
 
   #name {
     margin-top: 0;
-    line-height: 1;
-    font-size: 4.5rem;
     margin-bottom: 1rem;
+    font-size: 4.5rem;
+    line-height: 1;
     letter-spacing: -0.03em;
     color: var(--electric-blue);
   }
