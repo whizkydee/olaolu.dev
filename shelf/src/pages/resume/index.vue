@@ -13,7 +13,7 @@
         target="_blank"
         class="no-marker linkedin"
         :href="socialProfiles.linkedIn"
-        aria-label="Connect with Olaolu on LinkedIn"
+        aria-label="Connect with Olaolu on LinkedIn, opens a new tab."
         @click="$ga.event('Resume', 'click', 'LinkedIn Button')"
       >
         <LinkedInIcon />
@@ -31,7 +31,7 @@
         target="_blank"
         :hidden="isPDF"
         class="no-marker"
-        aria-label="Download a PDF copy of this resume"
+        aria-label="Download a PDF copy of this resume, opens a new tab."
         @click="$ga.event('Resume', 'click', 'Download PDF Button')"
       >
         <DownloadIcon />
@@ -41,7 +41,7 @@
 
     <aside>
       <section>
-        <a href="https://olaolu.dev">olaolu.dev</a>
+        <a href="https://olaolu.dev" aria-label="olaolu dot dev">olaolu.dev</a>
         <span>Lagos, Nigeria</span>
         <a
           href="mailto:hello@olaolu.dev"
