@@ -62,10 +62,10 @@ It’s sad news that third-party resources today have taken over control of tons
 of sites that they start to have unintended (sometimes malicious) side effects,
 and as developers, most of the time we’re just lazy to take it back. It's very
 common to see sites include a huge third-party resource, and then end up using a
-very minimal portion of it, say 5% e.g including a 20kb UI library only to end
-up using a component that’s barely worth a kilobyte. That's usually not a great
-idea as most of these things can easily be implemented in-house with just a
-little bit extra work.
+very minimal portion of it, say 5% e.g including a 20kb component library only
+to end up using a component that’s barely worth a kilobyte. That's usually not a
+great idea as most of these things can easily be implemented in-house with just
+a little bit extra work.
 
 ### 2. Heavy assets and resources
 
