@@ -120,18 +120,6 @@ const Homepage = Vue.component('Homepage', {
     },
 
     /**
-     * Return the corresponding element for a valid section id.
-     * @param {string=} id
-     * @return {HTMLElement}
-     */
-    getSection(id = this.currentSection) {
-      const sectionElem = this.$root.$el.querySelector(`[data-section='${id}']`)
-
-      if (!sectionElem) return
-      return sectionElem
-    },
-
-    /**
      * Go to the section after the current one.
      * @return {void}
      */
