@@ -65,7 +65,7 @@ const StyledPitchSlate = styled(Section)`
         margin-bottom: 4em;
       `}
 
-      .deux-points {
+      .highlights {
         display: flex;
       }
     }
@@ -85,7 +85,7 @@ const StyledPitchSlate = styled(Section)`
         font-size: 4.4em;
       `}
 
-      span {
+      > span > span {
         color: #eeffff;
       }
     }
@@ -122,7 +122,7 @@ const StyledPitchSlate = styled(Section)`
     }
   }
 
-  .deux-points {
+  .highlights {
     line-height: 1.5;
     justify-content: space-between;
     color: ${({ theme }) => theme.colors.lime};
