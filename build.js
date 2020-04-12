@@ -28,15 +28,18 @@ runAll(['build:*'], {
       landing: Fs.readdirSync(dist.landing),
     }
 
-    // Fix broken paths like "work", "resume", "work-images"
+    // Fix broken routes like "work", "resume", "work-images"
     // prefixed with "/shelf/" across the shelf environment.
     await glob(htmlGlob, {}).then(async htmlFiles => {
       const pathsToFixRE = new RegExp(
         '/shelf/([' + excludeFromShelfDir.join('|').replace('-', '\\-') + '])',
         'g'
       )
-
       try {
+        console.log(
+          'ℹ️  Starting to patch broken routes in the shelf environment...'
+        )
+
         for (const file of htmlFiles) {
           await fs.access(file, fs.F_OK).then(async () => {
             const fileContent = await fs.readFile(file, { encoding: 'utf8' })
@@ -85,7 +88,7 @@ runAll(['build:*'], {
     }
 
     console.log(
-      '✨ All done! dist files have been merged into the root dist directory.'
+      '✨ All done! Both dist directories have been merged into the root dist directory.'
     )
   })
   .catch(err => {
