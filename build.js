@@ -9,6 +9,10 @@ const glob = promisify(require('glob'))
 const { excludeFromShelfDir } = require('./config')
 
 const dist = { shelf: 'shelf/dist', landing: 'landing/dist' }
+const routesToFixRE = new RegExp(
+  '/shelf/([' + excludeFromShelfDir.join('|').replace('-', '\\-') + '])',
+  'g'
+)
 
 // Run the production build scripts for homepage (vue-cli)
 // and the shelf (gridsome).
@@ -30,11 +34,7 @@ runAll(['build:*'], {
 
     // Fix broken routes like "work", "resume", "work-images"
     // prefixed with "/shelf/" across the shelf environment.
-    await glob(htmlGlob, {}).then(async htmlFiles => {
-      const pathsToFixRE = new RegExp(
-        '/shelf/([' + excludeFromShelfDir.join('|').replace('-', '\\-') + '])',
-        'g'
-      )
+    await glob(htmlGlob).then(async htmlFiles => {
       try {
         console.log(
           'ℹ️  Starting to patch broken routes in the shelf environment...'
@@ -46,11 +46,11 @@ runAll(['build:*'], {
 
             if (
               typeof fileContent != 'string' ||
-              fileContent.match(pathsToFixRE).length === 0
+              fileContent.match(routesToFixRE).length === 0
             )
               return
             const result = fileContent.replace(
-              pathsToFixRE,
+              routesToFixRE,
               (_, p1) => '/' + p1
             )
 
