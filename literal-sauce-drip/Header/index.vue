@@ -44,6 +44,7 @@ import StyledHeader from './styles'
 import { wait } from '@mrolaolu/helpers'
 import CrossSiteNav from '../CrossSiteNav'
 import ContactPortal from '../ContactPortal'
+import { getFocusableNodes } from '../helpers'
 
 export default {
   data: () => ({ menuOpen: false }),
@@ -72,6 +73,11 @@ export default {
 
     closeMenu() {
       this.menuOpen = false
+
+      if (this.getSection()) {
+        const [firstFocusableNode] = getFocusableNodes(this.getSection())
+        firstFocusableNode && firstFocusableNode.focus()
+      }
     },
 
     toggleMenu() {
@@ -109,6 +115,8 @@ export default {
     },
 
     maybeCloseMenu(event) {
+      if (!this.menuOpen) return
+
       const isForeignNode =
         event.target !== this.$refs.menuToggler &&
         !this.$refs.contactMenu.contains(event.target)
@@ -116,7 +124,6 @@ export default {
       switch (event.type) {
         case 'keyup':
           if (['Escape', 'Esc'].indexOf(event.key) !== -1) {
-            if (!this.menuOpen) return
             this.closeMenu()
           }
 
@@ -126,11 +133,7 @@ export default {
           }
           break
         case 'mouseup':
-          if (
-            event.target.closest('.menu-toggle, #contact-menu') ||
-            !this.menuOpen
-          )
-            return
+          if (event.target.closest('.menu-toggle, #contact-menu')) return
           this.closeMenu()
           break
       }
