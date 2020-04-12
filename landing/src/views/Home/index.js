@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import {
   SECTIONS,
+  SECTION_MAP,
   NAVIGATION_ID,
   SECTION_SELECTOR,
   CURRENT_SECTION,
@@ -30,6 +31,10 @@ const Homepage = Vue.component('Homepage', {
     ...mapState([CURRENT_SECTION]),
     firstSection: { get: () => SECTIONS[0] },
     lastSection: { get: () => SECTIONS[SECTIONS.length - 1] },
+    announcement() {
+      const sectionName = SECTION_MAP[this.currentSection]
+      return `You are now in the "${sectionName}" section.`
+    },
     scrollableElems() {
       return [
         this.$el,
@@ -308,11 +313,11 @@ const Homepage = Vue.component('Homepage', {
   },
 
   render() {
-    const { isSectionHidden } = this
+    const { isSectionHidden, announcement } = this
     const [une, deux, trois, quatre, cinq] = SECTIONS
 
     return (
-      <ContentView id="homepage">
+      <ContentView id="homepage" announcement={announcement} readAnnouncement>
         <PitchSlate name={une} aria-hidden={isSectionHidden(une)} />
         <Cornerstone name={deux} aria-hidden={isSectionHidden(deux)} />
         <Experience name={trois} aria-hidden={isSectionHidden(trois)} />
