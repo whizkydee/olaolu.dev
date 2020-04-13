@@ -10,7 +10,7 @@ const { excludeFromShelfDir } = require('./config')
 
 const dist = { shelf: 'shelf/dist', landing: 'landing/dist' }
 const routesToFixRE = new RegExp(
-  '/shelf/([' + excludeFromShelfDir.join('|').replace('-', '\\-') + '])',
+  '/shelf/(' + excludeFromShelfDir.join('|').replace('-', '\\-') + ')+',
   'g'
 )
 
