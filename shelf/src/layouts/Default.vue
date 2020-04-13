@@ -1,7 +1,7 @@
 <template>
   <ThemeProvider id="app" :style="!ready && 'display: none'" :theme="theme">
     <SkipLink to="#main">Skip to content</SkipLink>
-    <Header :noMenuShadow="!id.startsWith('work')" v-if="!noBanners" />
+    <Header :noMenuShadow="!isWorkLayout" v-if="!noBanners" />
 
     <ContentView :id="id" :announcement="composedAnnouncement">
       <slot />
@@ -14,18 +14,31 @@
 <script>
 import { createMeta } from '../helpers'
 import theme from '@saucedrip/core/theme'
+import { unslashEnd } from '@mrolaolu/helpers'
 import { ThemeProvider } from 'vue-styled-components'
 
 export default {
   data: () => ({
     theme,
-    ready: process.env.NODE_ENV === 'development'
+    ready: process.env.NODE_ENV === 'development',
   }),
 
- computed: {
+  computed: {
+    isWorkLayout() {
+      return this.id.startsWith('work-')
+    },
+
     composedAnnouncement() {
       return 'You just navigated to: ' + this.title
-    }
+    },
+
+    computedSeoURL() {
+      const seoURL = this.isWorkLayout
+        ? 'https://olaolu.dev' + this.$route.fullPath
+        : this.seoURLs[this.id]
+
+      return unslashEnd(seoURL || '')
+    },
   },
 
   created() {
@@ -40,7 +53,7 @@ export default {
   metaInfo() {
     return {
       meta: [
-        ...createMeta.urls(this.shelfURL + this.$route.fullPath, 1),
+        ...createMeta.urls(this.computedSeoURL, 1),
         ...createMeta.titles(this.title, 1),
         ...createMeta.descriptions(this.description),
         { name: 'og:locale', content: 'en_US' },

@@ -214,19 +214,8 @@ export default {
     },
   },
 
-  metaInfo() {
-    return {
-      title: `My Résumé`,
-      meta: [
-        ...createMeta.urls(this.resumeURL, 1),
-        ...createMeta.titles(`Olaolu's Résumé`, 1),
-        { name: 'og:locale', content: 'en_US' },
-        { name: 'og:type', content: 'website' },
-        { name: 'twitter:card', content: 'summary' },
-        { name: 'twitter:site', content: '@mrolaolu' },
-        { name: 'twitter:creator', content: '@mrolaolu' },
-      ],
-    }
+  metaInfo:  {
+    title: `My Résumé`,
   },
 
   components: {

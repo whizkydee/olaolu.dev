@@ -1,6 +1,6 @@
 export * from './media-helpers'
-import { focusableSelectors } from '@mrolaolu/helpers'
 import { SECTION_SELECTOR, CURRENT_SECTION } from './constants'
+import { focusableSelectors, inBrowser } from '@mrolaolu/helpers'
 const { SHELF_PORT, LANDING_PORT } = require('../config')
 
 export function registerEnv(Vue, value) {
@@ -115,7 +115,7 @@ export function isDev() {
   return process.env.NODE_ENV === 'development'
 }
 
-const host = typeof location !== 'undefined' ? 'https://' + location.host : ''
+const host = inBrowser() ? 'https://' + location.host : ''
 
 export function getShelfURL() {
   return isDev() ? 'http://localhost:' + SHELF_PORT : host + '/shelf'
