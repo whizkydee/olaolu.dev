@@ -23,6 +23,15 @@ export const SharedMixins = {
       return (this.DEV ? this.shelfURL : this.landingURL) + '/resume'
     },
 
+    seoURLs() {
+      return {
+        'list-of-posts': 'https://olaolu.dev/shelf',
+        resume: 'https://olaolu.dev/resume',
+        work: 'https://olaolu.dev/work',
+        'post-page': 'https://olaolu.dev/shelf/' + this.$route.fullPath,
+      }
+    },
+
     resumePDF() {
       return this.landingURL + `/Resume-Olaolu-Olawuyi.pdf`
     },
