@@ -41,15 +41,15 @@ export function goToSection(store, opts) {
     if (smooth) smoothScrollToElem(node)
     else window.scrollTo(0, node.offsetTop)
 
-    if (focus) {
-      // Make sure we bring focus to the current section
-      // as early as possible.
-      node.focus()
-    }
-
     window.setTimeout(() => {
       store && store.commit(CURRENT_SECTION, getSectionId())
       app.dataset[CURRENT_SECTION] = getSectionId()
+
+      if (focus) {
+        // Make sure we bring focus to the current section
+        // as early as possible.
+        node.focus()
+      }
     }, 200)
   }
 }
