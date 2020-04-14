@@ -8,7 +8,7 @@
       `Work experience of Olaolu, expert frontend developer and UX Engineer with ${YEO} years of experience`
     "
   >
-    <div class="meta">
+    <aside class="meta" role="complementary">
       <a
         target="_blank"
         class="no-marker linkedin"
@@ -37,9 +37,9 @@
         <DownloadIcon />
         Download
       </a>
-    </div>
+    </aside>
 
-    <aside>
+    <div id="resume-outlines">
       <section>
         <a href="https://olaolu.dev" aria-label="olaolu dot dev">olaolu.dev</a>
         <span>Lagos, Nigeria</span>
@@ -69,7 +69,7 @@
           >{{ proficiency }}</li>
         </ul>
       </section>
-    </aside>
+    </div>
 
     <article>
       <header id="profile-summary">
@@ -97,9 +97,8 @@
             class="company"
           >
             <header>
-              <h4>
-                {{ company.name }} <span>{{ company.role }}</span>
-              </h4>
+              <!-- prettier-ignore -->
+              <h4>{{ company.name }} <span>{{ company.role }}</span></h4>
               <span class="period">{{ company.period }}</span>
             </header>
 
@@ -214,7 +213,7 @@ export default {
     },
   },
 
-  metaInfo:  {
+  metaInfo: {
     title: `My Résumé`,
   },
 

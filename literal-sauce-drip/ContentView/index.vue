@@ -1,5 +1,5 @@
 <template>
-  <main id="main" role="main" tabindex="-1">
+  <main id="main" tabindex="-1">
     <slot />
 
     <Announcer :message="announcement" :readOut="readAnnouncement" />

@@ -112,7 +112,7 @@ const StyledResume = css`
     }
   }
 
-  aside {
+  #resume-outlines {
     display: flex;
     flex-shrink: 0;
     position: relative;

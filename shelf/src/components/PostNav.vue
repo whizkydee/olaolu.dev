@@ -1,6 +1,7 @@
 <template>
   <nav class="post-nav">
     <a
+      rel="prev"
       :href="prevPost"
       class="post-nav__previous"
       :aria-hidden="!prevPost"
@@ -31,6 +32,7 @@
     </a>
 
     <a
+      rel="next"
       :href="nextPost"
       class="post-nav__next"
       :aria-hidden="!nextPost"
