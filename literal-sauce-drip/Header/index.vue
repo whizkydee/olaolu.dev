@@ -74,7 +74,7 @@ export default {
     closeMenu() {
       this.menuOpen = false
 
-      if (this.getSection()) {
+      if (this.isHome && this.getSection()) {
         const [firstFocusableNode] = getFocusableNodes(this.getSection())
         firstFocusableNode && firstFocusableNode.focus()
       }
