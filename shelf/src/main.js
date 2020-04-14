@@ -5,7 +5,7 @@ import '@saucedrip/core/global-styles'
 // Import main css
 import '~/assets/style/index.scss'
 
-import { registerEnv, getAnnouncer } from '@saucedrip/core/helpers'
+import { registerEnv, getAnnouncer, isDev } from '@saucedrip/core/helpers'
 // Import sauce drip global components
 import * as components from '@saucedrip/core'
 import { SharedMixins } from '@saucedrip/core/mixins'
@@ -34,14 +34,22 @@ export default function(Vue, { router, head, isClient }) {
     const mainElem = document.getElementById('main')
 
     if (mainElem) {
-      mainElem.focus()
-      // Read out the announcement.
-      announcer && announcer.setAttribute('aria-hidden', 'false')
-      // Reset document scroll.
-      return { x: 0, y: 0 }
+      const announceRouteChange = () => {
+        mainElem.focus()
+        // Read out the announcement.
+        announcer && announcer.setAttribute('aria-hidden', 'false')
+        // Reset document scroll.
+        window.scrollTo(0, 0)
+      }
+
+      // In production, delay route change announcement.
+      if (isDev()) announceRouteChange()
+      else window.setTimeout(announceRouteChange, 0)
     }
-    if (typeof cachedScrollBehavior == 'function')
+
+    if (typeof cachedScrollBehavior == 'function') {
       cachedScrollBehavior(to, from, saved)
+    }
   }
 
   // Initialize sauce drip shared mixins.
