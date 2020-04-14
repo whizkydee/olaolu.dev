@@ -1,5 +1,5 @@
 <template>
-  <StyledNewsletter id="newsletter">
+  <StyledNewsletter id="newsletter" role="complementary">
     <form
       method="post"
       rel="noopener"
