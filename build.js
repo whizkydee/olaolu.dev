@@ -46,8 +46,7 @@ runAll(['build:*'], {
 
             if (
               typeof fileContent != 'string' ||
-              (Array.isArray(fileContent.match(routesToFixRE)) &&
-                fileContent.match(routesToFixRE).length === 0)
+              !routesToFixRE.test(fileContent)
             )
               return
             const result = fileContent.replace(
