@@ -2,10 +2,10 @@
   <StyledHeader
     role="banner"
     id="site-header"
+    :env="isHome ? 'home' : 'shelf'"
     :noMenuShadow="noMenuShadow"
     :data-compact="String(compact)"
     :blue="isMediumScreen && menuOpen"
-    :data-blue="isMediumScreen && menuOpen"
   >
     <a
       id="logo"
@@ -60,6 +60,7 @@ export default {
   },
 
   beforeDestroy() {
+    document.body.classList.remove('no-scroll')
     window.removeEventListener('resize', this.maybeTransform)
     window.removeEventListener('scroll', this.maybeTransform)
     document.removeEventListener('keyup', this.maybeCloseMenu)
