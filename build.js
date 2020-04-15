@@ -9,6 +9,7 @@ const glob = promisify(require('glob'))
 const { excludeFromShelfDir } = require('./config')
 
 const dist = { shelf: 'shelf/dist', landing: 'landing/dist' }
+const htmlGlob = path.join(dist.shelf, '**/*.html')
 const routesToFixRE = new RegExp(
   '/shelf/(' + excludeFromShelfDir.join('|').replace('-', '\\-') + ')+',
   'g'
@@ -16,16 +17,16 @@ const routesToFixRE = new RegExp(
 
 // Run the production build scripts for homepage (vue-cli)
 // and the shelf (gridsome).
-runAll(['build:*'], {
-  parallel: true,
-  printLabel: true,
-  stdin: process.stdin,
-  continueOnError: true,
-  stdout: process.stdout,
-  stderr: process.stderr,
-})
-  .then(async () => {
-    const htmlGlob = path.join(dist.shelf, '**/*.html')
+async function main() {
+  try {
+    await runAll(['build:*'], {
+      parallel: true,
+      printLabel: true,
+      stdin: process.stdin,
+      continueOnError: true,
+      stdout: process.stdout,
+      stderr: process.stderr,
+    })
     const rootDist = await makeDir('dist')
     const distFiles = {
       shelf: Fs.readdirSync(dist.shelf),
@@ -90,7 +91,9 @@ runAll(['build:*'], {
     console.log(
       '✨ All done! Both dist directories have been merged into the root dist directory.'
     )
-  })
-  .catch(err => {
-    console.log('❌ BUILD FAILED!!', err)
-  })
+  } catch (e) {
+    console.error('❌ BUILD FAILED!!', e)
+  }
+}
+
+main()
