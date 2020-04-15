@@ -43,6 +43,12 @@ const StyledHomepage = injectGlobal`
     `}
 
     &${`.${TABBING_CLASSNAME}`} {
+      ${media.maxWidth('portrait')`
+        .menu-toggle:focus {
+          outline-color: ${colors.lime};
+        }
+      `}
+
       [data-current-section='cinq'] #logo:focus {
         outline-color: ${colors.electricBlue};
       }
