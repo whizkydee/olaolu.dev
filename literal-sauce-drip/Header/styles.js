@@ -184,16 +184,18 @@ const StyledHeader = css`
       height: 100vh;
       background: #fff;
       font-size: 2.2rem;
-      transition: opacity .3s;
+      transition: opacity .3s, visibility .3s;
       justify-content: space-around;
 
       &:not(.open) {
         opacity: 0;
+        visibility: hidden;
         pointer-events: none;
       }
 
       &.open {
         opacity: 1;
+        visibility: visible;
         pointer-events: auto;
       }
 
