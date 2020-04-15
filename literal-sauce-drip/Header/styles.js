@@ -7,12 +7,18 @@ const StyledHeader = css`
   width: 100%;
   display: flex;
   z-index: 1000;
-  font-size: 1rem;
   max-height: 12rem;
   align-items: center;
   background: transparent;
   justify-content: space-between;
-  height: ${theme.header.height};
+  font-size: ${({ env }) => (env == 'shelf' ? '0.72rem' : '1rem')};
+  height: ${({ env }) => (env == 'home' ? theme.header.height : 'unset')};
+  ${({ env }) =>
+    env == 'shelf' &&
+    css`
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    `}
 
   ${media.minWidth('>medium')`
     position: fixed;
@@ -322,6 +328,7 @@ const StyledHeader = css`
 export default Object.assign(
   { name: 'StyledHeader' },
   styled('header', {
+    env: String,
     noMenuShadow: Boolean,
     blue: Boolean,
   })([StyledHeader])

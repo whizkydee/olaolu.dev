@@ -77,14 +77,7 @@ export default {
 
 <style lang="scss">
 #site-header {
-  font-size: 0.72rem;
-  height: unset;
-
-  &:not([data-blue='true']) {
-    position: unset;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
+  position: unset;
 
   @media (max-width: 650px) {
     padding-left: 8.5vw;
