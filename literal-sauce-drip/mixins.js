@@ -1,7 +1,14 @@
+import {
+  getShelfURL,
+  getLandingURL,
+  breakpoints,
+  isDev,
+  getMainElem,
+  getAnnouncer,
+} from './helpers'
 import Vue from 'vue'
 import { SOCIAL_PROFILES } from './constants'
 import { toPx as px } from '@mrolaolu/helpers'
-import { getShelfURL, getLandingURL, breakpoints, isDev } from './helpers'
 
 export const SharedMixins = {
   data: () => ({
@@ -15,6 +22,8 @@ export const SharedMixins = {
   }),
 
   computed: {
+    mainElem: () => getMainElem(),
+    announcer: () => getAnnouncer(),
     workURL() {
       return (this.DEV ? this.shelfURL : this.landingURL) + '/work'
     },

@@ -101,9 +101,10 @@ export function createMenuShadow(color = 'rgba(72, 49, 212, .05)') {
   return `0 10px 53px 0 ${color}`
 }
 
-export function getAnnouncer() {
-  return document.getElementById('Announcer')
-}
+export const [getMainElem, getAnnouncer] = [
+  () => document.getElementById('main'),
+  () => document.getElementById('Announcer'),
+]
 
 export function getFocusableNodes(elem) {
   if (!(elem instanceof HTMLElement)) return []
