@@ -82,6 +82,8 @@ export default {
     },
 
     toggleMenu() {
+      const { currentSection, mainElem } = this
+
       this.menuOpen = !this.menuOpen
       this.$refs.contactMenu.classList.remove('shadow')
 
@@ -98,10 +100,9 @@ export default {
       }
 
       if (this.isHome && !this.menuOpen) {
-        let container =
-          this.currentSection === 'footer'
-            ? this.$root.$el.querySelector('[data-section="footer]')
-            : document.getElementById('main')
+        const footer = this.$root.$el.querySelector('[data-section="footer]')
+        const container = currentSection === 'footer' ? footer : mainElem
+
         container && container.focus()
       }
     },

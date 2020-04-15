@@ -5,7 +5,12 @@ import '@saucedrip/core/global-styles'
 // Import main css
 import '~/assets/style/index.scss'
 
-import { registerEnv, getAnnouncer, isDev } from '@saucedrip/core/helpers'
+import {
+  isDev,
+  registerEnv,
+  getMainElem,
+  getAnnouncer,
+} from '@saucedrip/core/helpers'
 // Import sauce drip global components
 import * as components from '@saucedrip/core'
 import { SharedMixins } from '@saucedrip/core/mixins'
@@ -30,8 +35,8 @@ export default function(Vue, { router, head, isClient }) {
   // Here, we override the scroll behaviour with one that allows
   // for better a11y with SRs by manipulating the focus target
   router.options.scrollBehavior = function(to, from, saved) {
+    const mainElem = getMainElem()
     const announcer = getAnnouncer()
-    const mainElem = document.getElementById('main')
 
     if (mainElem) {
       const announceRouteChange = () => {
