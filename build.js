@@ -41,9 +41,9 @@ async function main() {
           'ℹ️  Starting to patch broken routes in the shelf environment...'
         )
 
-        for (const path of htmlFiles) {
-          await fs.access(path, fs.F_OK).then(async () => {
-            const fileContent = await fs.readFile(path, { encoding: 'utf8' })
+        for (const file of htmlFiles) {
+          await fs.access(file, fs.F_OK).then(async () => {
+            const fileContent = await fs.readFile(file, { encoding: 'utf8' })
 
             if (
               typeof fileContent != 'string' ||
@@ -56,12 +56,9 @@ async function main() {
             )
 
             // Perform a write op on the file with the updated content.
-            await fs.writeFile(path, result)
+            await fs.writeFile(file, result)
           })
         }
-        console.log(
-          '✅ Success! Patched broken routes in the shelf environment.'
-        )
       } catch (e) {
         console.error(e)
       }
@@ -72,21 +69,21 @@ async function main() {
     )
 
     // Move files from the homepage dist directory to the root dist directory
-    for (let path of distFiles.landing) {
-      await moveFile(path.join(dist.landing, path), path.join(rootDist, path))
+    for (let file of distFiles.landing) {
+      await moveFile(path.join(dist.landing, file), path.join(rootDist, file))
     }
     console.log(
       '✅ landing dist files moved... Proceeding to shelf dist files...'
     )
 
     // Move files from the shelf dist directory to the root dist directory
-    for (let path of distFiles.shelf) {
+    for (let file of distFiles.shelf) {
       await moveFile(
-        path.join(dist.shelf, path),
+        path.join(dist.shelf, file),
         path.join(
           rootDist,
-          excludeFromShelfDir.includes(path) ? '/' : '/shelf/',
-          path
+          excludeFromShelfDir.includes(file) ? '/' : '/shelf/',
+          file
         )
       )
     }
