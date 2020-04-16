@@ -24,7 +24,7 @@
         id
         title
         path
-        date (format: "D MMMM YYYY")
+        date
         description
         ...on Post {
             id
