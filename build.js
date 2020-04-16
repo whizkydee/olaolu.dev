@@ -59,6 +59,8 @@ async function main() {
             await fs.writeFile(file, result)
           })
         }
+
+        console.log('✅ Success! Patched broken routes in the shelf environment.')
       } catch (e) {
         console.error(e)
       }
