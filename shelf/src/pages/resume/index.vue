@@ -5,7 +5,7 @@
     :isPDF="isPDF"
     title="Olaolu's Résumé"
     :description="
-      `Work experience of Olaolu, expert frontend developer and UX Engineer with ${YEO} years of experience`
+      `Work experience of Olaolu, expert frontend developer and UX Engineer with ${YOE} years of experience`
     "
   >
     <aside class="meta" role="complementary">
@@ -87,7 +87,7 @@
 
         <p>
           I’ve worked on a handful of web projects over the past
-          {{ YEO }} years, some of which were for the following organizations:
+          {{ YOE }} years, some of which were for the following organizations:
         </p>
 
         <ul id="companies">
@@ -208,7 +208,7 @@ export default {
       return this.$route.query.pdf === 'true'
     },
 
-    YEO() {
+    YOE() {
       return new Date().getFullYear() - 2011
     },
   },
