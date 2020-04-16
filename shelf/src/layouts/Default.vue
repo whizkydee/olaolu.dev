@@ -76,6 +76,10 @@ export default {
 </script>
 
 <style lang="scss">
+html {
+  scroll-behavior: smooth;
+}
+
 #site-header {
   position: unset;
 
