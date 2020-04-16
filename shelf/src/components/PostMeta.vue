@@ -2,9 +2,9 @@
   <div class="post-meta">
     <time
       class="post-meta__date"
-      :datetime="computedDate"
-      :aria-label="'Published on: ' + post.date"
-      >{{ post.date }}</time
+      :datetime="post.date"
+      :aria-label="'Published on: ' + computedDate"
+      >{{ computedDate }}</time
     >
     <template v-if="post.timeToRead">
       <span class="post-meta__ttr">{{ post.timeToRead }} min read</span>
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { prefixWithZero } from '@mrolaolu/helpers'
+import { monthNames } from '@mrolaolu/helpers'
 
 export default {
   computed: {
@@ -22,11 +22,11 @@ export default {
       if (Number.isNaN(date.getDate())) return
 
       return (
-        date.getFullYear() +
-        '-' +
-        prefixWithZero(date.getMonth() + 1) +
-        '-' +
-        prefixWithZero(date.getDate())
+        date.getDate() +
+        ' ' +
+        monthNames[date.getMonth()] +
+        ' ' +
+        date.getFullYear()
       )
     },
   },
