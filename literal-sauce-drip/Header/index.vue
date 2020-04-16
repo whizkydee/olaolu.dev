@@ -22,14 +22,14 @@
       aria-controls="contact-menu"
       :aria-expanded="String(menuOpen)"
       @click="toggleMenu"
-      :class="{ 'menu-toggle': true, x: menuOpen }"
+      :class="['menu-toggle', { x: menuOpen }]"
     />
 
     <nav
       ref="contactMenu"
       id="contact-menu"
       aria-label="Contact menu"
-      :class="menuOpen && 'open'"
+      :class="{ open: menuOpen }"
       :aria-hidden="isMediumScreen && !menuOpen"
     >
       <CrossSiteNav />
