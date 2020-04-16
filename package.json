@@ -20,7 +20,8 @@
     "build:landing": "cd landing && pwd && pwd && yarn build",
     "build": "yarn fresh && pwd && node build.js && pwd",
     "build-resume": "node resume-to-pdf",
-    "deploy": "yarn build && netlify deploy --prod"
+    "predeploy": "yarn build",
+    "deploy": "netlify deploy --prod"
   },
   "devDependencies": {
     "@vue/cli-plugin-eslint": "3.8.0",
@@ -48,5 +49,8 @@
     "vue": "2.6.11",
     "vue-styled-components": "1.4.5",
     "vuex": "^3.1.1"
+  },
+  "engines": {
+    "node": ">=11.15.0"
   }
 }
