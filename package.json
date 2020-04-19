@@ -12,14 +12,13 @@
   "author": "Olaolu Olawuyi <mrolaolu@gmail.com> (https://olaolu.dev)",
   "scripts": {
     "flush": "del dist landing/dist shelf/dist",
-    "fresh": "yarn flush && yarn build-resume",
     "serve:shelf": "cd shelf && yarn develop",
     "serve:landing": "cd landing && yarn serve",
     "serve": "yarn flush && node scripts/dev.js",
-    "build:shelf": "cd shelf && pwd && pwd && yarn build",
-    "build:landing": "cd landing && pwd && pwd && yarn build",
-    "build": "yarn fresh && pwd && node scripts/build.js && pwd",
-    "build-resume": "node scripts/resume-to-pdf.js",
+    "build:shelf": "cd shelf && yarn build",
+    "build:landing": "cd landing && yarn build",
+    "build:resume": "node scripts/resume-to-pdf.js",
+    "build": "yarn flush && node scripts/build.js",
     "predeploy": "yarn build",
     "deploy": "netlify deploy --prod"
   },
