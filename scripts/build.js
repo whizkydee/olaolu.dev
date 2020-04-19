@@ -6,12 +6,12 @@ const runAll = require('npm-run-all')
 const moveFile = require('move-file')
 const { promisify } = require('util')
 const glob = promisify(require('glob'))
-const { excludeFromShelfDir } = require('./config')
+const { excludeFromShelfDir } = require('../config')
 
 const dist = { shelf: 'shelf/dist', landing: 'landing/dist' }
 const htmlGlob = path.join(dist.shelf, '**/*.html')
 const routesToFixRE = new RegExp(
-  '/shelf/(' + excludeFromShelfDir.join('|').replace('-', '\\-') + ')+',
+  `/shelf/(${excludeFromShelfDir.join('|').replace('-', '\\-')})+`,
   'g'
 )
 
@@ -60,14 +60,16 @@ async function main() {
           })
         }
 
-        console.log('✅ Success! Patched broken routes in the shelf environment.')
+        console.log(
+          '✅ Finished patching broken routes in the shelf environment.'
+        )
       } catch (e) {
         console.error(e)
       }
     })
 
     console.log(
-      '✅ INDIVIDUAL BUILDS SUCCESSFUL... Proceeding to combined build...'
+      '✅ Individual builds successful... Proceeding to combined build...'
     )
 
     // Move files from the homepage dist directory to the root dist directory
@@ -75,7 +77,7 @@ async function main() {
       await moveFile(path.join(dist.landing, file), path.join(rootDist, file))
     }
     console.log(
-      '✅ landing dist files moved... Proceeding to shelf dist files...'
+      '✅ Success! Files in landing/dist have been moved... Proceeding to shelf dist files...'
     )
 
     // Move files from the shelf dist directory to the root dist directory

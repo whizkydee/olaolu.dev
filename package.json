@@ -15,10 +15,10 @@
     "fresh": "yarn flush && yarn build-resume",
     "serve:shelf": "cd shelf && yarn develop",
     "serve:landing": "cd landing && yarn serve",
-    "serve": "yarn flush && node dev.js",
+    "serve": "yarn flush && node scripts/dev.js",
     "build:shelf": "cd shelf && pwd && pwd && yarn build",
     "build:landing": "cd landing && pwd && pwd && yarn build",
-    "build": "yarn fresh && pwd && node build.js && pwd",
+    "build": "yarn fresh && pwd && node scripts/build.js && pwd",
     "build-resume": "node resume-to-pdf",
     "predeploy": "yarn build",
     "deploy": "netlify deploy --prod"
