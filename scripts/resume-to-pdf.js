@@ -1,8 +1,7 @@
-const path = require('path')
 const kill = require('tree-kill')
 const puppeteer = require('puppeteer')
+const { spawn } = require('child_process')
 const { SHELF_PORT } = require('../config')
-const spawn = require('child_process').spawn
 
 async function main() {
   try {
