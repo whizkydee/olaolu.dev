@@ -38,7 +38,7 @@
 </page-query>
 
 <script>
-import PostCard from '~/components/PostCard.vue'
+import PostCard from '~/components/PostCard'
 
 export default {
   components: { PostCard },
