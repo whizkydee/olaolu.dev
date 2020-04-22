@@ -149,7 +149,7 @@ export default {
         m => m.default
       )}
     Hey there 👋, curious!
-    You're probably wondering how cool my site is, yeah?
+    You're probably wondering how cool this site is, yeah?
     I can do even better, so, if your company is currently
     looking for someone with my kind of skills, feel free to hit me up
     on https://twitter.com/mrolaolu or via hello@olaolu.dev ✨.

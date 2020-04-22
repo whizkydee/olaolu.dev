@@ -21,7 +21,7 @@ import WorkLayout from '~/layouts/WorkLayout'
 
 import PageHeader from '~/components/PageHeader'
 
-// The Client API can be used here. Learn more: gridsome.org/docs/client-api
+// The Client API can be used here. Learn more: https://gridsome.org/docs/client-api
 export default function(Vue, { router, head, isClient }) {
   // Cache gridsome's default router scroll behavior handler
   // so we can override it later.
