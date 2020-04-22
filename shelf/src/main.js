@@ -16,8 +16,8 @@ import * as components from '@saucedrip/core'
 import { SharedMixins } from '@saucedrip/core/mixins'
 
 // Import default layout so we don't need to import it to every page
-import DefaultLayout from '~/layouts/Default.vue'
-import WorkLayout from '~/layouts/WorkLayout.vue'
+import DefaultLayout from '~/layouts/Default'
+import WorkLayout from '~/layouts/WorkLayout'
 
 import PageHeader from '~/components/PageHeader'
 
