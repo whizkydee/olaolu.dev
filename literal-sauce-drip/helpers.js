@@ -1,7 +1,8 @@
-export * from './media-helpers'
+const { SHELF_PORT, LANDING_PORT } = require('../config')
 import { SECTION_SELECTOR, CURRENT_SECTION } from './constants'
 import { focusableSelectors, inBrowser } from '@mrolaolu/helpers'
-const { SHELF_PORT, LANDING_PORT } = require('../config')
+
+export * from './media-helpers'
 
 export function registerEnv(Vue, value) {
   Vue.prototype.__currentEnv = value
