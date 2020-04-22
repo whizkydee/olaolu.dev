@@ -4,6 +4,7 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"],
+      "~/*": ["src/*"],
       "@saucedrip/core/*": ["../literal-sauce-drip/*"]
     }
   },
