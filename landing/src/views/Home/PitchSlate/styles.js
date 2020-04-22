@@ -2,9 +2,13 @@ import { media } from '@/helpers'
 import { colors } from '@/base/theme'
 import { Section } from '@/components'
 import styled from 'vue-styled-components'
+import { flattenStr } from '@mrolaolu/helpers'
 import { FACE_MARGIN_LEFT } from '@/constants'
 
-const gradient = `90deg, ${colors.electricBlue} 67%, ${colors.lime} 33%`
+const gradient = flattenStr(`
+  90deg, ${colors.electricBlue} 67%,
+  ${colors.lime} 33%
+`)
 const StyledPitchSlate = styled(Section)`
   flex-direction: column;
   padding-bottom: 4.17rem;
