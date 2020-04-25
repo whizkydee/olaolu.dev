@@ -2,72 +2,52 @@ import Vue from 'vue'
 import { mapState } from 'vuex'
 import { goToSection } from '@/helpers'
 import StyledNavigation from './styles'
-import { NAVIGATION_BULLET, CURRENT_SECTION } from '@/constants'
+import { NAVIGATION_BULLET, CURRENT_SECTION, SECTION_MAP } from '@/constants'
 
-const Navigation = Vue.component('Navigation', {
-  computed: mapState([CURRENT_SECTION]),
-  methods: {
-    jumpToSection(event) {
-      const sectionId = event.target.getAttribute('href').slice(1)
-      const sectionSelector = `[data-section='${sectionId}']`
-
-      goToSection({
-        node: this.$root.$el.querySelector(sectionSelector),
-      })
-    },
-
-    isCurrent(sectionId) {
-      return this.currentSection === sectionId ? 'page' : null
-    },
-  },
-
+export default Vue.component('Navigation', {
   render() {
     return (
       <StyledNavigation role="navigation" aria-label="Main navigation.">
         <ul ref="list">
-          <NavItem
-            href="#une"
-            clickFn={this.jumpToSection}
-            className={NAVIGATION_BULLET}
-            ariaCurrent={this.isCurrent('une')}
-            ariaLabel="Go to first section. Pitch."
-          />
-
-          <NavItem
-            href="#deux"
-            clickFn={this.jumpToSection}
-            className={NAVIGATION_BULLET}
-            ariaCurrent={this.isCurrent('deux')}
-            ariaLabel="Go to second section. Cornerstone."
-          />
-
-          <NavItem
-            href="#trois"
-            clickFn={this.jumpToSection}
-            className={NAVIGATION_BULLET}
-            ariaCurrent={this.isCurrent('trois')}
-            ariaLabel="Go to third section. Experience."
-          />
-
-          <NavItem
-            href="#quatre"
-            clickFn={this.jumpToSection}
-            className={NAVIGATION_BULLET}
-            ariaCurrent={this.isCurrent('quatre')}
-            ariaLabel="Go to fourth section. Carriageway."
-          />
-
-          <NavItem
-            href="#cinq"
-            clickFn={this.jumpToSection}
-            className={NAVIGATION_BULLET}
-            ariaCurrent={this.isCurrent('cinq')}
-            ariaLabel="Go to fifth section. Contact."
-          />
+          <Bullet name="une" ordinal="first" />
+          <Bullet name="deux" ordinal="second" />
+          <Bullet name="trois" ordinal="third" />
+          <Bullet name="quatre" ordinal="fourth" />
+          <Bullet name="cinq" ordinal="fifth" />
         </ul>
       </StyledNavigation>
     )
   },
 })
 
-export default Navigation
+const Bullet = Vue.component('Bullet', {
+  computed: mapState([CURRENT_SECTION]),
+  methods: {
+    handleClick(event) {
+      const sectionName = event.target.getAttribute('href').slice(1)
+      const sectionSelector = `[data-section='${sectionName}']`
+
+      goToSection({
+        node: this.$root.$el.querySelector(sectionSelector),
+      })
+    },
+  },
+
+  render() {
+    const { name, ordinal } = this
+    return (
+      <NavItem
+        href={'#' + name}
+        className={NAVIGATION_BULLET}
+        clickFn={this.handleClick}
+        ariaCurrent={this.currentSection === name ? 'page' : null}
+        ariaLabel={`Go to ${ordinal} section. ${SECTION_MAP[name]}.`}
+      />
+    )
+  },
+
+  props: {
+    name: { type: String, required: true },
+    ordinal: { type: String, required: true },
+  },
+})
