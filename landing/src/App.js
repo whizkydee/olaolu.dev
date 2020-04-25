@@ -9,6 +9,8 @@ import { mapState } from 'vuex'
 import { theme } from '@/base/theme'
 import { CURRENT_SECTION, HEADER_COMPACT } from './constants'
 
+import Home from '@/home'
+
 // prettier-ignore
 export default Vue.component('App', {
   computed: mapState([
@@ -25,7 +27,7 @@ export default Vue.component('App', {
           currentSection={this.currentSection}
           store={this.$store}
         />
-        <RouterView />
+        <Home />
         <Footer currentSection={this.currentSection} />
       </ThemeProvider>
     )
