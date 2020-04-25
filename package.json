@@ -12,14 +12,13 @@
   "author": "Olaolu Olawuyi <mrolaolu@gmail.com> (https://olaolu.dev)",
   "scripts": {
     "flush": "del dist landing/dist shelf/dist",
-    "fresh": "yarn flush && yarn build-resume",
     "serve:shelf": "cd shelf && yarn develop",
     "serve:landing": "cd landing && yarn serve",
-    "serve": "yarn flush && node dev.js",
-    "build:shelf": "cd shelf && pwd && pwd && yarn build",
-    "build:landing": "cd landing && pwd && pwd && yarn build",
-    "build": "yarn fresh && pwd && node build.js && pwd",
-    "build-resume": "node resume-to-pdf",
+    "serve": "yarn flush && node scripts/dev.js",
+    "build:shelf": "cd shelf && yarn build",
+    "build:landing": "cd landing && yarn build",
+    "build:resume": "node scripts/resume-to-pdf.js",
+    "build": "yarn flush && node scripts/build.js",
     "predeploy": "yarn build",
     "deploy": "netlify deploy --prod"
   },
@@ -40,7 +39,8 @@
     "npm-run-all": "^4.1.5",
     "puppeteer": "^2.0.0",
     "raw-loader": "^3.1.0",
-    "sass-loader": "^7.1.0"
+    "sass-loader": "^7.1.0",
+    "tree-kill": "^1.2.2"
   },
   "dependencies": {
     "@gridsome/cli": "0.3.1",
