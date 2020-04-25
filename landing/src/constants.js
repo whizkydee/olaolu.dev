@@ -8,3 +8,4 @@ export const SECTION_MAP = {
   cinq: 'Contact',
   footer: 'Footer',
 }
+export const SECTIONS = Object.keys(SECTION_MAP)

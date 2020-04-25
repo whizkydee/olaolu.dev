@@ -4,7 +4,6 @@ export const TABBING_CLASSNAME = 'is-tabbing'
 export const HEADER_COMPACT = 'isHeaderCompact'
 export const SECTION_SELECTOR = '[data-section]'
 export const CURRENT_SECTION = 'currentSection'
-export const SECTIONS = ['une', 'deux', 'trois', 'quatre', 'cinq', 'footer']
 export const SOCIAL_PROFILES = {
   twitter: 'https://twitter.com/mrolaolu',
   github: 'https://github.com/whizkydee',
