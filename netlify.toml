@@ -13,3 +13,17 @@
   pretty_urls = true
 [build.processing.images]
   compress = false
+[[redirects]]
+  from = "/"
+  to = "/index.html"
+  status = 200
+[[redirects]]
+  from = "/shelf/resume"
+  to = "/resume"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/shelf/work"
+  to = "/work"
+  status = 301
+  force = true
