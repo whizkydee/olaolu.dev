@@ -17,18 +17,3 @@
   from = "/"
   to = "/index.html"
   status = 200
-[[redirects]]
-  from = "/shelf/work"
-  to = "/work"
-  status = 301
-  force = true
-[[redirects]]
-  from = "/shelf/resume"
-  to = "/resume"
-  status = 301
-  force = true
-[[redirects]]
-  from = "/shelf/work-images"
-  to = "/work-images"
-  status = 301
-  force = true

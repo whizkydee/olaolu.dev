@@ -41,6 +41,11 @@ async function patchBrokenRoutes() {
     const htmlFiles = await glob(path.join(dist.shelf, '**/*.html'))
 
     log('ℹ️  Starting to patch broken routes in the shelf environment...')
+    // Automate creation of redirect rules for "/shelf/(work|resume|work-images)"
+    await createRedirectRules()
+
+    // Search for occurences of "/shelf/(work|resume|work-images)"
+    // in html files then strip off "/shelf" and update the file.
     for (const file of htmlFiles) {
       await fs.access(file, fs.F_OK).then(async () => {
         const fileContent = await fs.readFile(file, { encoding: 'utf8' })
@@ -99,6 +104,30 @@ async function mergeDistDirectories() {
       '✨ All done! Both dist directories have been merged ' +
         'into the root dist directory.'
     )
+  } catch (exception) {
+    throw exception
+  }
+}
+
+async function createRedirectRules() {
+  try {
+    const netlifyBaseConfig = path.join(root, 'netlify.base.toml')
+    const configContent = await fs.readFile(netlifyBaseConfig, {
+      encoding: 'utf8',
+    })
+
+    const result = excludeFromShelfDir.reduce(
+      (acc, path) =>
+        acc.concat(`
+[[redirects]]
+  from = "/shelf/${path}"
+  to = "/${path}"
+  status = 301
+  force = true`),
+      configContent.replace(/\s$/, '')
+    )
+
+    await fs.writeFile(path.join(root, 'netlify.toml'), result + '\n')
   } catch (exception) {
     throw exception
   }
