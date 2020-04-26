@@ -1,13 +1,15 @@
 import path from 'path'
-import { default as Fs, promises as fs } from 'fs'
 import moveFile from 'move-file'
-import { root, dist, log, excludeFromShelfDir } from './util'
+import { default as Fs, promises as fs } from 'fs'
+import { root, dist, log, excludeFromShelfDir, useAsync } from './util'
 
-export default async function mergeDistDirectories() {
-  try {
+export default async function() {
+  const [result, error] = await useAsync(async () => {
     const rootDist = path.join(root, 'dist')
     const distFiles = Object.fromEntries(
-      Object.entries(dist).map(([key, value]) => [key, Fs.readdirSync(value)])
+      Object.entries(dist).map(([key, value]) => {
+        return [key, Fs.readdirSync(value)]
+      })
     )
 
     // Create "dist" in the root directory.
@@ -38,7 +40,7 @@ export default async function mergeDistDirectories() {
       '✨ All done! Both dist directories have been merged ' +
         'into the root dist directory.'
     )
-  } catch (exception) {
-    throw exception
-  }
+  })
+  if (error) throw error
+  return result
 }
