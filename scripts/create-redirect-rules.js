@@ -1,9 +1,9 @@
 import path from 'path'
 import { promises as fs } from 'fs'
-import { root, excludeFromShelfDir } from './util'
+import { root, excludeFromShelfDir, useAsync } from './util'
 
-export default async function createRedirectRules() {
-  try {
+export default async function() {
+  const [result, error] = await useAsync(async () => {
     const netlifyBaseConfig = path.join(root, 'netlify.base.toml')
     const configContent = await fs.readFile(netlifyBaseConfig, {
       encoding: 'utf8',
@@ -21,7 +21,7 @@ export default async function createRedirectRules() {
     )
 
     await fs.writeFile(path.join(root, 'netlify.toml'), `${result}\n`)
-  } catch (exception) {
-    throw exception
-  }
+  })
+  if (error) throw error
+  return result
 }

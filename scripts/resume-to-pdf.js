@@ -1,6 +1,7 @@
 import puppeteer from 'puppeteer'
 import { SHELF_PORT } from '../config'
 import kill from 'tree-kill'
+import { log, error } from './util'
 import { spawn } from 'child_process'
 
 async function main() {
@@ -30,7 +31,7 @@ async function main() {
       margin: { top: '85px', right: '85px', bottom: '85px', left: '85px' },
     })
 
-    console.log('📄 Done generating the resume PDF.')
+    log('📄 Done generating the resume PDF.')
     await browser.close()
   } catch (e) {
     const shelfServerNotRunning = e.message.startsWith(
@@ -43,7 +44,7 @@ async function main() {
       // and re-run the PDF generation script. Kill the process after.
       const shelfServeProc = spawn('yarn', ['serve:shelf'])
 
-      console.log(`Starting the shelf server since it wasn't running already..`)
+      log(`Starting the shelf server since it wasn't running already..`)
 
       // Make sure to print errors from the shelf serve process.
       shelfServeProc.stderr.on('error', err => {
@@ -52,10 +53,10 @@ async function main() {
 
       shelfServeProc.stdout.on('data', async output => {
         if (output.toString().includes('Site running at')) {
-          console.log('Shelf development server is now running')
+          log('Shelf development server is now running')
 
           // Attempt to re-run the resume PDF generation script.
-          console.log('Re-running the PDF generation script...')
+          log('Re-running the PDF generation script...')
           await main()
 
           // Kill the process once we're done.
@@ -67,7 +68,7 @@ async function main() {
         process.exit(0)
       })
     } else {
-      console.error(e)
+      error(e)
       process.exit(1)
     }
   }

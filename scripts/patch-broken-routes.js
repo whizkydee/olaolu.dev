@@ -1,8 +1,8 @@
 import path from 'path'
-import { dist, log, excludeFromShelfDir } from './util'
 import { promisify } from 'util'
 import { promises as fs } from 'fs'
 import createRedirectRules from './create-redirect-rules'
+import { dist, log, excludeFromShelfDir, useAsync } from './util'
 
 const glob = promisify(require('glob'))
 const routesToFixRE = new RegExp(
@@ -10,8 +10,8 @@ const routesToFixRE = new RegExp(
   'g'
 )
 
-export default async function patchBrokenRoutes() {
-  try {
+export default async function() {
+  const [result, error] = await useAsync(async () => {
     const htmlFiles = await glob(path.join(dist.shelf, '**/*.html'))
 
     log('ℹ️  Starting to patch broken routes in the shelf environment...')
@@ -38,7 +38,7 @@ export default async function patchBrokenRoutes() {
         '\n   ' +
         'Individual builds successful... Proceeding to combined build...'
     )
-  } catch (exception) {
-    throw exception
-  }
+  })
+  if (error) throw error
+  return result
 }

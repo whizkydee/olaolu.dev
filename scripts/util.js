@@ -5,4 +5,10 @@ const root = path.resolve(__dirname, '../')
 const dist = { shelf: 'shelf/dist', landing: 'landing/dist' }
 const { log, error } = console
 
-export { log, error, root, dist, excludeFromShelfDir }
+function useAsync(promiseCb) {
+  return promiseCb()
+    .then(result => [null, result])
+    .catch(err => [err])
+}
+
+export { log, error, root, dist, excludeFromShelfDir, useAsync }
