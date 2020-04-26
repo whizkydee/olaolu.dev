@@ -1,4 +1,4 @@
-const runAll = require('npm-run-all')
+import runAll from 'npm-run-all'
 
 // Run the development scripts for homepage (vue-cli)
 // and the shelf (gridsome).

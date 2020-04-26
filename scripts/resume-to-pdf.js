@@ -1,7 +1,7 @@
-const kill = require('tree-kill')
-const puppeteer = require('puppeteer')
-const { spawn } = require('child_process')
-const { SHELF_PORT } = require('../config')
+import puppeteer from 'puppeteer'
+import { SHELF_PORT } from '../config'
+import kill from 'tree-kill'
+import { spawn } from 'child_process'
 
 async function main() {
   try {
@@ -18,9 +18,9 @@ async function main() {
     })
 
     await page.goto(pdfURL, { waitUntil: 'networkidle2' })
-    const height = await page.evaluate(() => {
-      return parseInt(getComputedStyle(document.body).height)
-    })
+    const height = await page.evaluate(() =>
+      parseInt(getComputedStyle(document.body).height)
+    )
 
     await page.pdf({
       printBackground: true,
