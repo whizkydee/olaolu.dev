@@ -1,22 +1,20 @@
 const Fs = require('fs')
 const fs = Fs.promises
 const path = require('path')
-const makeDir = require('make-dir')
 const runAll = require('npm-run-all')
 const moveFile = require('move-file')
 const { promisify } = require('util')
 const glob = promisify(require('glob'))
 const { excludeFromShelfDir } = require('../config')
 
+const { log, error } = console
+const root = path.resolve(__dirname, '../')
 const dist = { shelf: 'shelf/dist', landing: 'landing/dist' }
-const htmlGlob = path.join(dist.shelf, '**/*.html')
 const routesToFixRE = new RegExp(
   `/shelf/(${excludeFromShelfDir.join('|').replace('-', '\\-')})+`,
   'g'
 )
 
-// Run the production build scripts for homepage (vue-cli)
-// and the shelf (gridsome).
 async function main() {
   try {
     await runAll(['build:*'], {
@@ -27,57 +25,63 @@ async function main() {
       stdout: process.stdout,
       stderr: process.stderr,
     })
-    const rootDist = await makeDir('dist')
-    const distFiles = {
-      shelf: Fs.readdirSync(dist.shelf),
-      landing: Fs.readdirSync(dist.landing),
-    }
-
     // Fix broken routes like "work", "resume", "work-images"
     // prefixed with "/shelf/" across the shelf environment.
-    await glob(htmlGlob).then(async htmlFiles => {
-      try {
-        console.log(
-          'ℹ️  Starting to patch broken routes in the shelf environment...'
-        )
+    await patchBrokenRoutes()
 
-        for (const file of htmlFiles) {
-          await fs.access(file, fs.F_OK).then(async () => {
-            const fileContent = await fs.readFile(file, { encoding: 'utf8' })
+    // Merge "landing/dist" and "shelf/dist" into a single "dist" directory.
+    await mergeDistDirectories()
+  } catch (e) {
+    error('❌ BUILD FAILED!!', e)
+  }
+}
 
-            if (
-              typeof fileContent != 'string' ||
-              !routesToFixRE.test(fileContent)
-            )
-              return
-            const result = fileContent.replace(
-              routesToFixRE,
-              (_, p1) => '/' + p1
-            )
+async function patchBrokenRoutes() {
+  try {
+    const htmlFiles = await glob(path.join(dist.shelf, '**/*.html'))
 
-            // Perform a write op on the file with the updated content.
-            await fs.writeFile(file, result)
-          })
-        }
+    log('ℹ️  Starting to patch broken routes in the shelf environment...')
+    for (const file of htmlFiles) {
+      await fs.access(file, fs.F_OK).then(async () => {
+        const fileContent = await fs.readFile(file, { encoding: 'utf8' })
 
-        console.log(
-          '✅ Finished patching broken routes in the shelf environment.'
-        )
-      } catch (e) {
-        console.error(e)
-      }
-    })
+        if (typeof fileContent != 'string' || !routesToFixRE.test(fileContent))
+          return
+        const result = fileContent.replace(routesToFixRE, (_, p1) => '/' + p1)
 
-    console.log(
-      '✅ Individual builds successful... Proceeding to combined build...'
+        // Perform a write op on the file with the updated content.
+        await fs.writeFile(file, result)
+      })
+    }
+
+    log(
+      '✅ Finished patching broken routes in the shelf environment.' +
+        '\n   ' +
+        'Individual builds successful... Proceeding to combined build...'
     )
+  } catch (exception) {
+    throw exception
+  }
+}
+
+async function mergeDistDirectories() {
+  try {
+    const rootDist = path.join(root, 'dist')
+    const distFiles = Object.fromEntries(
+      Object.entries(dist).map(([key, value]) => [key, Fs.readdirSync(value)])
+    )
+
+    // Create "dist" in the root directory.
+    await fs.mkdir(rootDist, { recursive: true })
 
     // Move files from the homepage dist directory to the root dist directory
     for (let file of distFiles.landing) {
       await moveFile(path.join(dist.landing, file), path.join(rootDist, file))
     }
-    console.log(
-      '✅ Success! Files in landing/dist have been moved... Proceeding to shelf dist files...'
+    log(
+      '✅ Success! Files in landing/dist have been moved...' +
+        '\n   ' +
+        'Proceeding to shelf dist files...'
     )
 
     // Move files from the shelf dist directory to the root dist directory
@@ -91,12 +95,12 @@ async function main() {
         )
       )
     }
-
-    console.log(
-      '✨ All done! Both dist directories have been merged into the root dist directory.'
+    log(
+      '✨ All done! Both dist directories have been merged ' +
+        'into the root dist directory.'
     )
-  } catch (e) {
-    console.error('❌ BUILD FAILED!!', e)
+  } catch (exception) {
+    throw exception
   }
 }
 
