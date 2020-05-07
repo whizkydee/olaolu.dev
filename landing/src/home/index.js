@@ -20,7 +20,7 @@ import PitchSlate from './PitchSlate'
 import Experience from './Experience'
 import Cornerstone from './Cornerstone'
 import Carriageway from './Carriageway'
-import { goToSection } from '@/helpers'
+import { goToSection as GoToSection } from '@/helpers'
 
 const Homepage = Vue.component('Homepage', {
   data: () => ({
@@ -116,12 +116,27 @@ const Homepage = Vue.component('Homepage', {
     },
 
     /**
+     * Configurable fn to scroll to a section - accepts a node
+     *
+     * Default opts: `{ smooth = true, focus = true }`. Toggle the
+     * values to disable/enable smooth scrolling and focusing the
+     * section on arrival respectfully.
+     * @return {void}
+     */
+    goToSection(...args) {
+      // Ensure we only call `requestAnimationFrame` on screens
+      // wider than medium. Prevents the scroll bug on mobile Chrome.
+      if (this.isMediumScreen) return
+      return GoToSection(this.$store, ...args)
+    },
+
+    /**
      * Recalculate position of the current section.
      * @return {void}
      */
     recalcSection() {
       // Immediately resize sections on window resize (no smooth).
-      goToSection({ node: this.getSection(), smooth: false })
+      this.goToSection({ node: this.getSection(), smooth: false })
     },
 
     /**
@@ -129,7 +144,7 @@ const Homepage = Vue.component('Homepage', {
      * @return {void}
      */
     goToNextSection() {
-      goToSection({ modifier: 'next', node: this.getSection() })
+      this.goToSection({ modifier: 'next', node: this.getSection() })
     },
 
     /**
@@ -137,7 +152,7 @@ const Homepage = Vue.component('Homepage', {
      * @return {void}
      */
     goToPrevSection() {
-      goToSection({ modifier: 'previous', node: this.getSection() })
+      this.goToSection({ modifier: 'previous', node: this.getSection() })
     },
 
     /**
@@ -145,7 +160,7 @@ const Homepage = Vue.component('Homepage', {
      * @return {void}
      */
     goToFirstSection() {
-      goToSection({ node: this.getSection(this.firstSection) })
+      this.goToSection({ node: this.getSection(this.firstSection) })
     },
 
     /**
@@ -153,7 +168,7 @@ const Homepage = Vue.component('Homepage', {
      * @return {void}
      */
     goToLastSection() {
-      goToSection({ node: this.getSection(this.lastSection) })
+      this.goToSection({ node: this.getSection(this.lastSection) })
     },
 
     /**
@@ -184,7 +199,7 @@ const Homepage = Vue.component('Homepage', {
       const mostVisibleSection = sections.find(this.getOffsetFromViewport)
 
       if (mostVisibleSection) {
-        goToSection({ focus: false, node: mostVisibleSection })
+        this.goToSection({ focus: false, node: mostVisibleSection })
 
         if (!isFirstSection) {
           this.$store.commit('headerCompact', true)
@@ -292,8 +307,7 @@ const Homepage = Vue.component('Homepage', {
         this.scrollingLudicrouslyFast(500) ||
         !(isNavFocused || isSectionFocused || isScrollableElemFocused)
       ) {
-        // ...do not scroll!
-        return
+        return // ...do not scroll!
       }
 
       if (downwardKeys.includes(event.key)) {
