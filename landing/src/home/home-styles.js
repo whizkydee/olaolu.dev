@@ -65,21 +65,6 @@ const StyledHomepage = injectGlobal`
   }
 
   #app {
-    ${media.maxWidth('medium')`
-      /* hack to prevent address bar on Chrome for
-      mobile from hiding because it causes a resize
-      which distorts the layout for a split-second. */
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 1px;
-      overflow-y: auto;
-      overflow-x: hidden;
-      position: absolute;
-      overflow-behavior: contain;
-      -webkit-overflow-scrolling: touch;
-   `}
-
     &[data-current-section='footer'] #${NAVIGATION_ID} {
       display: none;
     }
