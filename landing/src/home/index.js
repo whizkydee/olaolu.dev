@@ -124,8 +124,8 @@ const Homepage = Vue.component('Homepage', {
      * @return {void}
      */
     goToSection(...args) {
-      // Ensure we only call `requestAnimationFrame` on screens
-      // wider than medium. Prevents the scroll bug on mobile Chrome.
+      // The guard below ensures we only call `requestAnimationFrame`
+      // on screens wider than medium. Prevents the scroll bug on mobile Chrome.
       if (this.isMediumScreen) return
       return GoToSection(this.$store, ...args)
     },

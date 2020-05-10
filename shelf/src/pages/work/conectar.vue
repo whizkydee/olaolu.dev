@@ -64,7 +64,7 @@
       I was the Lead Frontend engineer so I got to work with other engineers and
       contractors on various tools. It certainly was a great learning
       experience. Unfortunately, the product hasn't made it yet to the real
-      world and I absolutely hope and it does someday.
+      world and I absolutely hope that it does someday.
     </p>
 
     <p>
