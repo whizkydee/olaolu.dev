@@ -39,25 +39,6 @@ module.exports = {
         },
       },
     },
-    {
-      use: 'gridsome-plugin-pwa',
-      options: {
-        title: `Olaolu's shelf`,
-        startUrl: '/',
-        display: 'standalone',
-        statusBarStyle: 'default',
-        manifestPath: 'manifest.json',
-        disableServiceWorker: true,
-        serviceWorkerPath: 'service-worker.js',
-        cachedFileTypes: 'js,json,css,html,png,jpg,jpeg,svg',
-        shortName: `Olaolu's shelf`,
-        themeColor: '#4831D8',
-        backgroundColor: '#4831d4',
-        icon: 'src/favicon.png',
-        msTileImage: 'src/favicon.png',
-        // msTileColor: '#666600',
-      },
-    },
   ],
 
   configureWebpack: {
