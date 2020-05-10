@@ -15,16 +15,12 @@ export function goToSection(store, opts) {
   const app = document.getElementById('app')
   const sections = Array.from(document.querySelectorAll(SECTION_SELECTOR))
 
-  const findSection = (idx = 0) => {
-    return sections[curSectionIndex + idx]
-  }
-  const getSectionId = () => {
-    return node.dataset.section
-  }
+  const getSectionId = () => node.dataset.section
   const curSectionIndex = sections.findIndex(({ dataset }) => {
     return dataset.section === getSectionId()
   })
 
+  const findSection = (idx = 0) => sections[curSectionIndex + idx]
   // determine what section to go to based on the modifier.
   if (modifier == 'next') {
     node = findSection(1)
@@ -32,39 +28,35 @@ export function goToSection(store, opts) {
     node = findSection(-1)
   }
 
-  if (node instanceof HTMLElement) {
-    window.setTimeout(() => {
-      // Add a `scrolled` className so we know not to
-      // animate all the items in the section again.
-      node.classList.add('scrolled')
-    }, 1000)
+  if (!(node instanceof HTMLElement)) return
 
-    if (smooth) smoothScrollToElem(node)
-    else window.scrollTo(0, node.offsetTop)
+  setTimeout(() => {
+    // Add a `scrolled` className so we know not to
+    // animate all the items in the section again.
+    node.classList.add('scrolled')
+  }, 1000)
 
-    window.setTimeout(() => {
-      store && store.commit(CURRENT_SECTION, getSectionId())
-      app.dataset[CURRENT_SECTION] = getSectionId()
+  if (smooth) smoothScrollToElem(node)
+  else scrollTo(0, node.offsetTop)
 
-      if (focus) {
-        // Make sure we bring focus to the current section
-        // as early as possible.
-        node.focus()
-      }
-    }, 200)
-  }
+  setTimeout(() => {
+    store && store.commit(CURRENT_SECTION, getSectionId())
+    app.dataset[CURRENT_SECTION] = getSectionId()
+
+    if (focus) {
+      // Make sure we bring focus to the current section
+      // as early as possible.
+      node.focus()
+    }
+  }, 200)
 }
 
-export function smoothScrollToElem(
-  elem,
-  speed = 1000,
-  easing = 'easeInOutCubic'
-) {
+export function smoothScrollToElem(elem, speed = 1000) {
   if (!(elem instanceof HTMLElement)) return
 
   let currentTime = 0
   const scrollTargetY = elem.offsetTop
-  const scrollY = window.pageYOffset || document.documentElement.scrollTop
+  const scrollY = pageYOffset || document.documentElement.scrollTop
 
   // min time .1, max time .8 seconds
   const time = Math.max(
@@ -73,25 +65,23 @@ export function smoothScrollToElem(
   )
 
   // easing equations from https://github.com/danro/easing-js/blob/master/easing.js
-  const easingEquations = {
-    easeInOutCubic: pos => {
-      if ((pos /= 0.5) < 1) return 0.5 * Math.pow(pos, 3)
-      return 0.5 * (Math.pow(pos - 2, 3) + 2)
-    },
+  const easeInOutCubic = pos => {
+    if ((pos /= 0.5) < 1) return 0.5 * Math.pow(pos, 3)
+    return 0.5 * (Math.pow(pos - 2, 3) + 2)
   }
 
   function tick() {
     currentTime += 1 / 60
 
     let p = currentTime / time
-    let t = easingEquations[easing](p)
+    let t = easeInOutCubic(p)
 
     if (p < 1) {
-      window.requestAnimationFrame(tick)
+      requestAnimationFrame(tick)
 
-      window.scrollTo(0, scrollY + (scrollTargetY - scrollY) * t)
+      scrollTo(0, scrollY + (scrollTargetY - scrollY) * t)
     } else {
-      window.scrollTo(0, scrollTargetY)
+      scrollTo(0, scrollTargetY)
     }
   }
 

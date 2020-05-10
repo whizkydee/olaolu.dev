@@ -45,7 +45,7 @@ export default {
         href.charAt(0) === '#' && event.preventDefault()
       }
       if (typeof this.clickFn === 'function') {
-        this.clickFn.call(this, event)
+        this.clickFn(event)
       }
 
       // Use Vue router to handle all shelf links

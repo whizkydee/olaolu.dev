@@ -27,7 +27,7 @@ const Bullet = Vue.component('Bullet', {
       const sectionName = event.target.getAttribute('href').slice(1)
       const sectionSelector = `[data-section='${sectionName}']`
 
-      goToSection({
+      goToSection(this.$store, {
         node: this.$root.$el.querySelector(sectionSelector),
       })
     },
