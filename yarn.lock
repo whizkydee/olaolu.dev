@@ -165,12 +165,12 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@mrolaolu/helpers@0.2.14":
-  version "0.2.14"
-  resolved "https://registry.yarnpkg.com/@mrolaolu/helpers/-/helpers-0.2.14.tgz#c5922588c4313d0ad02707cf80e230580a58ca71"
-  integrity sha512-o7MzVwBX4sopiKPlIJVwF5GbwjuRS1qXKM2YbqXk1l9fYdbiwqIamZmJTJCofhGsarkpBASXbk9LDFCwO0tjDg==
+"@mrolaolu/helpers@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@mrolaolu/helpers/-/helpers-0.3.0.tgz#93934087da57c58359b9f00ef2e5ec9c9af4b050"
+  integrity sha512-H26W1/ERV9aYMfKrEHXkGWhPLQxYPhhvIj+ih8v6AXnOSmVptip5mrgfGAyJwPN6iFsU4tVtwxIiybd6aGne7A==
   dependencies:
-    core-js "^3.3.4"
+    safely-iterate "^1.0.1"
 
 "@netlify/cli-utils@^1.0.7":
   version "1.1.0"
@@ -2084,11 +2084,6 @@ core-js@^2.6.5:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.9.tgz#6b4b214620c834152e179323727fc19741b084f2"
   integrity sha512-HOpZf6eXmnl7la+cUdMnLvUxKNqLUzJvgIziQ0DiF3JwSImNphIqdGqzj6hIKyX04MmV0poclQ7+wjWvxQyR2A==
-
-core-js@^3.3.4:
-  version "3.6.4"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.6.4.tgz#440a83536b458114b9cb2ac1580ba377dc470647"
-  integrity sha512-4paDGScNgZP2IXXilaffL9X7968RuvwlkK3xWtZRVqgd8SYNiVKRJvkFd1aqqEuPfN7E68ZHEp9hDj6lHj4Hyw==
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
@@ -7567,6 +7562,11 @@ safe-regex@^1.1.0:
   integrity sha1-QKNmnzsHfR6UPURinhV91IAjvy4=
   dependencies:
     ret "~0.1.10"
+
+safely-iterate@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/safely-iterate/-/safely-iterate-1.0.1.tgz#bc3e7edea990e6ccec94e260ddfb38004c7a7313"
+  integrity sha512-DrRekCK/UxJFg+xpwH7mxcSSvqmAONJxQz5pvf+aM2kLeiy470uajXZPKls9oR35PFRpJN60zgpjMOt64stDDg==
 
 "safer-buffer@>= 2.1.2 < 3", safer-buffer@^2.0.2, safer-buffer@^2.1.0, safer-buffer@~2.1.0:
   version "2.1.2"

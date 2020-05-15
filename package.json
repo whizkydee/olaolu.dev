@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@gridsome/cli": "0.3.1",
-    "@mrolaolu/helpers": "0.2.14",
+    "@mrolaolu/helpers": "^0.3.0",
     "core-js": "^2.6.5",
     "svg-to-vue-component": "^0.3.8",
     "vue": "2.6.11",

@@ -1,6 +1,6 @@
+import { inBrowser } from '@mrolaolu/helpers'
 const { SHELF_PORT, LANDING_PORT } = require('../config')
 import { SECTION_SELECTOR, CURRENT_SECTION } from './constants'
-import { focusableSelectors, inBrowser } from '@mrolaolu/helpers'
 
 export * from './media-helpers'
 
@@ -96,12 +96,6 @@ export const [getMainElem, getAnnouncer] = [
   () => document.getElementById('main'),
   () => document.getElementById('Announcer'),
 ]
-
-export function getFocusableNodes(elem) {
-  if (!(elem instanceof HTMLElement)) return []
-
-  return Array.from(elem.querySelectorAll(focusableSelectors))
-}
 
 export function isDev() {
   return process.env.NODE_ENV === 'development'
