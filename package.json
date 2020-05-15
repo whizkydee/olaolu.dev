@@ -44,9 +44,9 @@
     "tree-kill": "^1.2.2"
   },
   "dependencies": {
-    "@gridsome/cli": "0.3.1",
+    "@gridsome/cli": "0.3.2",
     "@mrolaolu/helpers": "^0.3.0",
-    "core-js": "^2.6.5",
+    "core-js": "^3.6.5",
     "svg-to-vue-component": "^0.3.8",
     "vue": "2.6.11",
     "vue-styled-components": "1.4.5",
