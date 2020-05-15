@@ -15,7 +15,7 @@ const StyledNavigation = styled.nav`
   }
 
   li {
-    width: 0.4em;
+    width: 0.523em;
   }
 
   a {
@@ -34,7 +34,7 @@ const StyledNavigation = styled.nav`
     &:after {
       content: '';
       width: 100%;
-      height: 0.4em;
+      height: 0.523em;
       position: absolute;
       transform: rotate(45deg);
       background-color: currentColor;
