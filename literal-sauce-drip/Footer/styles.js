@@ -46,11 +46,11 @@ const StyledFooter = css`
   }
 
   .basic-contact {
-    ${media.maxWidth(460)`
+    ${media.maxWidth('460px')`
       margin-right: 12vw;
     `}
 
-    ${media.minWidth(461)`
+    ${media.minWidth('461px')`
       margin-right: 18vw;
     `}
   }
@@ -62,7 +62,7 @@ const StyledFooter = css`
       transition-delay: 300ms;
     `}
 
-    ${media.maxWidth(370)`
+    ${media.maxWidth('420px')`
       flex-direction: column;
     `}
 
@@ -83,7 +83,7 @@ const StyledFooter = css`
       transition-delay: 500ms;
     `}
 
-    ${media.maxWidth(460)`
+    ${media.maxWidth('460px')`
       justify-content: left;
     `}
   }
@@ -95,7 +95,7 @@ const StyledFooter = css`
       }
     `}
 
-    ${media.maxWidth(460)`
+    ${media.maxWidth('460px')`
       display: none;
     `}
   }

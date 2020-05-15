@@ -8,7 +8,7 @@ import {
 } from './helpers'
 import Vue from 'vue'
 import { SOCIAL_PROFILES } from './constants'
-import { toPx as px } from '@mrolaolu/helpers'
+import { toPx as px, inBrowser } from '@mrolaolu/helpers'
 
 export const SharedMixins = {
   data: () => ({
@@ -54,22 +54,15 @@ export const SharedMixins = {
     },
 
     isShelf() {
-      return (
-        typeof window !== 'undefined' && location.href.startsWith(this.shelfURL)
-      )
+      return inBrowser() && location.href.startsWith(this.shelfURL)
     },
 
     isWork() {
-      return (
-        typeof window !== 'undefined' && location.href.startsWith(this.workURL)
-      )
+      return inBrowser() && location.href.startsWith(this.workURL)
     },
 
     isResume() {
-      return (
-        typeof window !== 'undefined' &&
-        location.href.startsWith(this.resumeURL)
-      )
+      return inBrowser() && location.href.startsWith(this.resumeURL)
     },
   },
 

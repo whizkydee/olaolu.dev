@@ -117,15 +117,14 @@ const Homepage = Vue.component('Homepage', {
 
     /**
      * Configurable fn to scroll to a section - accepts a node
-     *
-     * Default opts: `{ smooth = true, focus = true }`. Toggle the
-     * values to disable/enable smooth scrolling and focusing the
-     * section on arrival respectfully.
+     * Default opts: `{ smooth: true, focus: true }`.
+     * Toggle the values to disable/enable smooth scrolling
+     * and focusing the section on arrival respectfully.
      * @return {void}
      */
     goToSection(...args) {
-      // The guard below ensures we only call `requestAnimationFrame`
-      // on screens wider than medium. Prevents the scroll bug on mobile Chrome.
+      // Ensure we only call `requestAnimationFrame` on screens wider
+      // than medium. Prevents the scroll bug on mobile Chrome.
       if (this.isMediumScreen) return
       return GoToSection(this.$store, ...args)
     },
@@ -135,7 +134,7 @@ const Homepage = Vue.component('Homepage', {
      * @return {void}
      */
     recalcSection() {
-      // Immediately resize sections on window resize (no smooth).
+      // Immediately reposition sections on window resize (no smooth).
       this.goToSection({ node: this.getSection(), smooth: false })
     },
 
@@ -296,11 +295,15 @@ const Homepage = Vue.component('Homepage', {
       const isScrollableElemFocused = this.scrollableElems.includes(
         event.target
       )
-      const inEventPath = cb => getEventPath(event).some(cb)
 
-      const isNavFocused = inEventPath(o => o && o.id === NAVIGATION_ID)
-      const isSectionFocused = inEventPath(o => o.dataset && o.dataset.section)
-      const isFormFocused = inEventPath(o => o.tagName && o.tagName === 'FORM')
+      const inEventPath = predicate =>
+        getEventPath(event)
+          .filter(el => el instanceof HTMLElement)
+          .some(predicate)
+
+      const isNavFocused = inEventPath(el => el && el.id === NAVIGATION_ID)
+      const isSectionFocused = inEventPath(el => el && el.dataset.section)
+      const isFormFocused = inEventPath(el => el && el.tagName === 'FORM')
 
       if (
         isFormFocused ||

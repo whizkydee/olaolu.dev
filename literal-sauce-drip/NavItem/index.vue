@@ -41,8 +41,8 @@ export default {
     handleClick(event) {
       const { href } = this
 
-      if (href) {
-        href.charAt(0) === '#' && event.preventDefault()
+      if (href && href.charAt(0) === '#') {
+        event.preventDefault()
       }
       if (typeof this.clickFn === 'function') {
         this.clickFn(event)
