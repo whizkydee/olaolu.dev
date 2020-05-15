@@ -41,10 +41,9 @@
 
 <script>
 import StyledHeader from './styles'
-import { wait } from '@mrolaolu/helpers'
 import CrossSiteNav from '../CrossSiteNav'
 import ContactPortal from '../ContactPortal'
-import { getFocusableNodes } from '../helpers'
+import { wait, getFirstFocusableNode } from '@mrolaolu/helpers'
 
 export default {
   data: () => ({ menuOpen: false }),
@@ -76,7 +75,7 @@ export default {
       this.menuOpen = false
 
       if (this.isHome && this.getSection()) {
-        const [firstFocusableNode] = getFocusableNodes(this.getSection())
+        const firstFocusableNode = getFirstFocusableNode(this.getSection())
         firstFocusableNode && firstFocusableNode.focus()
       }
     },
