@@ -82,6 +82,7 @@ export default {
 
     toggleMenu() {
       const { currentSection, mainElem } = this
+      const shouldAddShadow = !this.noMenuShadow && !this.isMediumScreen
 
       this.menuOpen = !this.menuOpen
       this.$refs.contactMenu.classList.remove('shadow')
@@ -92,8 +93,10 @@ export default {
         document.body.classList.remove('no-scroll')
       }
 
-      if (this.menuOpen && !this.noMenuShadow && !this.isMediumScreen) {
+      if (this.menuOpen && shouldAddShadow) {
         wait(150, () => {
+          // wait till the contact menu reveal animation is
+          // completed before adding the shadow
           this.$refs.contactMenu.classList.add('shadow')
         })
       }
@@ -124,12 +127,11 @@ export default {
 
       switch (event.type) {
         case 'keyup':
-          if (['Escape', 'Esc'].indexOf(event.key) !== -1) {
-            this.closeMenu()
-          }
-
-          // Close the contact menu once the user tabs away from it
-          if (event.key == 'Tab' && isForeignNode) {
+          if (
+            ['Escape', 'Esc'].indexOf(event.key) !== -1 ||
+            // Close the contact menu once the user tabs away from it
+            (event.key == 'Tab' && isForeignNode)
+          ) {
             this.closeMenu()
           }
           break
