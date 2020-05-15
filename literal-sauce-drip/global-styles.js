@@ -5,7 +5,9 @@ import { injectGlobal } from 'vue-styled-components'
 const { fontFamily } = theme
 
 const GlobalStyle = injectGlobal`
-  * {
+  *,
+  *::before,
+  *::after {
     box-sizing: border-box;
   }
 
@@ -28,10 +30,10 @@ const GlobalStyle = injectGlobal`
     width: 100%;
     position: relative;
     font-family: ${fontFamily};
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-    -moz-osx-font-smoothing: grayscale;
+
+    text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 
     &${`:not(.${TABBING_CLASSNAME})`} {
       a:focus {
