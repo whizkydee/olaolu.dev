@@ -13,7 +13,7 @@
 
     <a
       :href="shelfURL"
-      aria-label="See all posts"
+      aria-label="Go to all posts"
       class="post-nav__squares"
       @click="$ga.event('Post', 'click', 'Post nav squares')"
     >
