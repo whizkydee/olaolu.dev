@@ -209,10 +209,10 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@mrolaolu/helpers@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@mrolaolu/helpers/-/helpers-0.3.0.tgz#93934087da57c58359b9f00ef2e5ec9c9af4b050"
-  integrity sha512-H26W1/ERV9aYMfKrEHXkGWhPLQxYPhhvIj+ih8v6AXnOSmVptip5mrgfGAyJwPN6iFsU4tVtwxIiybd6aGne7A==
+"@mrolaolu/helpers@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@mrolaolu/helpers/-/helpers-0.3.1.tgz#9c67f45166e0809dbb6690cac37aabc994f7f987"
+  integrity sha512-OR7Z6dQqjUGZ7ey/rrXvi6zPN5dt2sW5VijwxBR62ezq5Up9VYwB0BXt6Hz8Rj1ezCm3LcqTqTwtpCzEbtV/wg==
   dependencies:
     safely-iterate "^1.0.1"
 
