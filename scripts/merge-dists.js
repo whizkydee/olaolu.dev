@@ -3,7 +3,7 @@ import moveFile from 'move-file'
 import { default as Fs, promises as fs } from 'fs'
 import { root, dist, log, excludeFromShelfDir, useAsync } from './util'
 
-export default async function() {
+export default async () => {
   const [result, error] = await useAsync(async () => {
     const rootDist = path.join(root, 'dist')
     const distFiles = Object.fromEntries(
@@ -20,9 +20,8 @@ export default async function() {
       await moveFile(path.join(dist.landing, file), path.join(rootDist, file))
     }
     log(
-      '✅ Success! Files in landing/dist have been moved...' +
-        '\n   ' +
-        'Proceeding to shelf dist files...'
+      `✅ Success! Files in landing/dist have been moved...
+   Proceeding to shelf dist files...`
     )
 
     // Move files from the shelf dist directory to the root dist directory
@@ -41,6 +40,9 @@ export default async function() {
         'into the root dist directory.'
     )
   })
-  if (error) throw error
+
+  if (error != null) {
+    throw error
+  }
   return result
 }
