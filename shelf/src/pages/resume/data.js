@@ -34,7 +34,7 @@ export default {
     {
       name: 'MOONDA',
       period: 'Nov 2018 - Jan 2019',
-      role: 'Frontend Engineer (Contractor)',
+      role: 'Senior Frontend Engineer (Contractor)',
       intro: `I worked with MOONDA as a senior contractor via Pixel2HTML to create the web experience for John Deere's ATU 300 product.`,
       points: [
         'Built a contest application from the ground up using React which enabled users of the product from all around the globe to post photos and share reviews about the product',
