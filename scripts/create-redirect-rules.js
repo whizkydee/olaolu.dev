@@ -2,7 +2,7 @@ import path from 'path'
 import { promises as fs } from 'fs'
 import { root, excludeFromShelfDir, useAsync } from './util'
 
-export default async function() {
+export default async () => {
   const [result, error] = await useAsync(async () => {
     const netlifyBaseConfig = path.join(root, 'netlify.base.toml')
     const configContent = await fs.readFile(netlifyBaseConfig, {
@@ -22,6 +22,9 @@ export default async function() {
 
     await fs.writeFile(path.join(root, 'netlify.toml'), `${result}\n`)
   })
-  if (error) throw error
+
+  if (error != null) {
+    throw error
+  }
   return result
 }

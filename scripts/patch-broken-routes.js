@@ -10,7 +10,7 @@ const routesToFixRE = new RegExp(
   'g'
 )
 
-export default async function() {
+export default async () => {
   const [result, error] = await useAsync(async () => {
     const htmlFiles = await glob(path.join(dist.shelf, '**/*.html'))
 
@@ -34,11 +34,13 @@ export default async function() {
     }
 
     log(
-      '✅ Finished patching broken routes in the shelf environment.' +
-        '\n   ' +
-        'Individual builds successful... Proceeding to combined build...'
+      `✅ Finished patching broken routes in the shelf environment.
+   Individual builds successful... Proceeding to combined build...`
     )
   })
-  if (error) throw error
+
+  if (error != null) {
+    throw error
+  }
   return result
 }
