@@ -70,7 +70,7 @@ const Homepage = Vue.component('Homepage', {
     // Set current section to the first section by default.
     this.$root.$el.dataset[CURRENT_SECTION] = this.currentSection
 
-    window.addEventListener('resize', debounce(this.recalcSection, 200))
+    window.addEventListener('resize', this.handleResize)
     document.addEventListener('keydown', this.maybeScrollJack)
     document.addEventListener('touchstart', this.handleTouchstart)
     document.addEventListener('touchmove', this.handleTouchmove, {
@@ -83,7 +83,7 @@ const Homepage = Vue.component('Homepage', {
   beforeDestroy() {
     const { documentElement: docElem } = document
 
-    window.removeEventListener('resize', this.recalcSection)
+    window.removeEventListener('resize', this.handleResize)
     document.removeEventListener('keydown', this.maybeScrollJack)
     docElem.removeEventListener('wheel', this.handleMouseWheel, false)
     docElem.removeEventListener('mousewheel', this.handleMouseWheel, false)
@@ -130,11 +130,11 @@ const Homepage = Vue.component('Homepage', {
     },
 
     /**
-     * Recalculate position of the current section.
+     * Recalculate position of the current section
+     * then adjust based on that information.
      * @return {void}
      */
     recalcSection() {
-      // Immediately reposition sections on window resize (no smooth).
       this.goToSection({ node: this.getSection(), smooth: false })
     },
 
@@ -271,6 +271,15 @@ const Homepage = Vue.component('Homepage', {
             return this.goToPrevSection()
         }
       }
+    },
+
+    /**
+     * When the window is resized, recalculate the
+     * position of the current section.
+     * @return {void}
+     */
+    handleResize() {
+      return debounce(this.recalcSection, 200)()
     },
 
     /**
