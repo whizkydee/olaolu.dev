@@ -1,6 +1,6 @@
-import { inBrowser } from '@mrolaolu/helpers'
-const { SHELF_PORT, LANDING_PORT } = require('../config')
-import { SECTION_SELECTOR, CURRENT_SECTION } from './constants'
+import { SHELF_PORT, LANDING_PORT } from '../config'
+import { inBrowser, getFirstFocusableNode } from '@mrolaolu/helpers'
+import { SECTION_SELECTOR, CURRENT_SECTION, NAVIGATION_ID } from './constants'
 
 export * from './media-helpers'
 
@@ -44,9 +44,15 @@ export function goToSection(store, opts) {
     app.dataset[CURRENT_SECTION] = getSectionId()
 
     if (focus) {
-      // Make sure we bring focus to the current section
-      // as early as possible.
-      node.focus()
+      // If there's a focusable node in the current section,
+      // bring focus to that node, otherwise, restore focus to the navigation.
+      const navigationEl = document.getElementById(NAVIGATION_ID)
+      const nodeToFocus = !getFirstFocusableNode(node)
+        ? getFirstFocusableNode(navigationEl)
+        : node
+
+      if (nodeToFocus === null) return
+      nodeToFocus.focus()
     }
   }, 200)
 }
@@ -70,14 +76,14 @@ export function smoothScrollToElem(elem, speed = 1000) {
     return 0.5 * (Math.pow(pos - 2, 3) + 2)
   }
 
-  function tick() {
+  function runAnimation() {
     currentTime += 1 / 60
 
     let p = currentTime / time
     let t = easeInOutCubic(p)
 
     if (p < 1) {
-      requestAnimationFrame(tick)
+      requestAnimationFrame(runAnimation)
 
       scrollTo(0, scrollY + (scrollTargetY - scrollY) * t)
     } else {
@@ -85,7 +91,7 @@ export function smoothScrollToElem(elem, speed = 1000) {
     }
   }
 
-  tick()
+  runAnimation()
 }
 
 export function createMenuShadow(color = 'rgba(72, 49, 212, .05)') {
