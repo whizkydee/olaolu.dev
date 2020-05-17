@@ -9,16 +9,15 @@ export default async () => {
       encoding: 'utf8',
     })
 
-    const result = excludeFromShelfDir.reduce(
-      (acc, path) =>
-        acc.concat(`
+    const result = excludeFromShelfDir.reduce((acc, path) => {
+      const redirectTemplate = `
 [[redirects]]
   from = "/shelf/${path}"
   to = "/${path}"
   status = 301
-  force = true`),
-      configContent.replace(/\s$/, '')
-    )
+  force = true`
+      return acc.concat(redirectTemplate)
+    }, configContent.replace(/\s$/, ''))
 
     await fs.writeFile(path.join(root, 'netlify.toml'), `${result}\n`)
   })
