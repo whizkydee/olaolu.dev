@@ -48,6 +48,10 @@ export default {
     if (typeof window !== 'undefined') {
       window.setTimeout(() => (this.ready = true), 0)
     }
+
+    if (this.DEV && typeof this.seoURLs[this.id] !== 'string') {
+      console.warn(`[Layout]: Expected to find an entry for page with id "${this.id}" in "seoURLs".`)
+    }
   },
 
   metaInfo() {
