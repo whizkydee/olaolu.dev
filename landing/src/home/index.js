@@ -245,13 +245,17 @@ const Homepage = Vue.component('Homepage', {
      * @return {void}
      */
     handleTouchmove(event) {
-      if (event.changedTouches === undefined || this.isMediumScreen) return
+      if (
+        this.isMediumScreen ||
+        event.changedTouches === undefined ||
+        this.scrollingLudicrouslyFast()
+      )
+        return
 
       const curTouchY = event.changedTouches[0].clientY
-      if (!this.scrollingLudicrouslyFast()) {
-        if (this.touchY > curTouchY) this.goToNextSection()
-        else this.goToPrevSection()
-      }
+
+      if (this.touchY > curTouchY) this.goToNextSection()
+      else this.goToPrevSection()
     },
 
     /**
@@ -261,15 +265,13 @@ const Homepage = Vue.component('Homepage', {
      * @return {void}
      */
     handleMouseWheel(event) {
-      if (this.isMediumScreen) return
+      if (this.isMediumScreen || this.scrollingLudicrouslyFast()) return
 
-      if (!this.scrollingLudicrouslyFast()) {
-        switch (Math.sign(event.deltaY)) {
-          case 1:
-            return this.goToNextSection()
-          case -1:
-            return this.goToPrevSection()
-        }
+      switch (Math.sign(event.deltaY)) {
+        case 1:
+          return this.goToNextSection()
+        case -1:
+          return this.goToPrevSection()
       }
     },
 
