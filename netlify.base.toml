@@ -14,6 +14,21 @@
 [build.processing.images]
   compress = false
 [[redirects]]
+  from = "/music"
+  to = "https://soundcloud.com/kitanmusic"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/palenight"
+  to = "https://marketplace.visualstudio.com/items?itemName=whizkydee.material-palenight-theme"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/palenight-repo"
+  to = "https://github.com/whizkydee/vscode-palenight-theme"
+  status = 301
+  force = true
+[[redirects]]
   from = "/"
   to = "/index.html"
   status = 200
