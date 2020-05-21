@@ -29,11 +29,11 @@ const StyledHomepage = injectGlobal`
       }
     `}
 
-    ${media.between('>medium', 1600)`
+    ${media.between('>medium', '1600px')`
       font-size: 1vw;
     `}
 
-    ${media.minWidth(1601)`
+    ${media.minWidth('1601px')`
       /* max font-size more or less */
       font-size: 16.2px;
     `}
