@@ -36,7 +36,7 @@ const StyledNewsletter = styled.div`
   padding: var(--space);
   background-color: #fff;
 
-  ${media.maxWidth(440)`
+  ${media.maxWidth('440px')`
     width: 110%;
     margin-left: -5%;
   `}
@@ -69,7 +69,7 @@ const StyledNewsletter = styled.div`
   .form-inner {
     display: flex;
 
-    ${media.maxWidth(440)`
+    ${media.maxWidth('440px')`
       flex-direction: column;
 
       .sauce-button {
@@ -77,7 +77,7 @@ const StyledNewsletter = styled.div`
       }
     `}
 
-    ${media.minWidth(441)`
+    ${media.minWidth('441px')`
       align-items: flex-end;
     `}
   }

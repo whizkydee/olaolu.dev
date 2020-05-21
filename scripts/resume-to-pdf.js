@@ -38,10 +38,10 @@ async function main() {
       'net::ERR_CONNECTION_REFUSED'
     )
 
+    // Instead of breaking the entire build process when the shelf
+    // server is not running, automatically start it (the server)
+    // and re-run the PDF generation script. Kill the process after.
     if (shelfServerNotRunning) {
-      // Instead of breaking the entire build process when the shelf
-      // server is not running, automatically start it (the server)
-      // and re-run the PDF generation script. Kill the process after.
       const shelfServeProc = spawn('yarn', ['serve:shelf'])
 
       log(`Starting the shelf server since it wasn't running already..`)

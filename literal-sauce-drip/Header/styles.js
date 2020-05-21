@@ -215,7 +215,7 @@ const StyledHeader = css`
       }
     `}
 
-    ${media.maxWidth(350)`
+    ${media.maxWidth('350px')`
       padding: 2.473em;
     `}
 

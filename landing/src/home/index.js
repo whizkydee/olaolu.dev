@@ -185,7 +185,7 @@ const Homepage = Vue.component('Homepage', {
 
     /**
      * Determine what section is most visible in the viewport,
-     * and then ensure it occupies the entire viewpor.
+     * and then ensure it occupies the entire viewport.
      * @return {void}
      */
     maybeRestoreSection() {
