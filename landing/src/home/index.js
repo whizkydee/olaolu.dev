@@ -100,17 +100,11 @@ const Homepage = Vue.component('Homepage', {
      * @return {'true' | 'false'}
      */
     isSectionHidden(id) {
-      const section = this.getSection(id)
-      let hidden = false
-
-      if (this.isMaxHeight) {
-        hidden = this.currentSection !== id
-      } else {
-        if (!section) return
-        hidden = !elementInView(section, {
-          threshold: 0.5,
-        })
-      }
+      const hidden = this.isMaxHeight
+        ? this.currentSection !== id
+        : !elementInView(this.getSection(id), {
+            threshold: 0.5,
+          })
 
       return String(hidden)
     },
@@ -123,9 +117,7 @@ const Homepage = Vue.component('Homepage', {
      * @return {void}
      */
     goToSection(...args) {
-      // Ensure we only call `requestAnimationFrame` on screens wider
-      // than medium. Prevents the scroll bug on mobile Chrome.
-      if (this.isMediumScreen) return
+      if (this.isMediumScreen) return /* don't call rAF on medium screens */
       return GoToSection(this.$store, ...args)
     },
 
@@ -135,7 +127,8 @@ const Homepage = Vue.component('Homepage', {
      * @return {void}
      */
     recalcSection() {
-      this.goToSection({ node: this.getSection(), smooth: false })
+      const currentSection = this.getSection()
+      this.goToSection({ node: currentSection, smooth: false })
     },
 
     /**
@@ -189,14 +182,13 @@ const Homepage = Vue.component('Homepage', {
      * @return {void}
      */
     maybeRestoreSection() {
+      const sectionEls = this.$root.$el.querySelectorAll(SECTION_SELECTOR)
       const isFirstSection = this.currentSection === this.firstSection
-      const sections = Array.from(
-        this.$root.$el.querySelectorAll(SECTION_SELECTOR)
+      const mostVisibleSection = Array.from(sectionEls).find(
+        this.getOffsetFromViewport
       )
 
       // Set current section to the most visible section upon reload
-      const mostVisibleSection = sections.find(this.getOffsetFromViewport)
-
       if (mostVisibleSection) {
         this.goToSection({ focus: false, node: mostVisibleSection })
 
