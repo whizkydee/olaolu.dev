@@ -234,7 +234,7 @@ const Homepage = Vue.component('Homepage', {
      * @return {void}
      */
     handleTouchstart(event) {
-      if (event.touches === undefined || this.isMediumScreen) return
+      if (!Array.isArray(event.touches) || this.isMediumScreen) return
       this.touchY = event.touches[0].clientY
     },
 
@@ -247,7 +247,7 @@ const Homepage = Vue.component('Homepage', {
     handleTouchmove(event) {
       if (
         this.isMediumScreen ||
-        event.changedTouches === undefined ||
+        !Array.isArray(event.changedTouches) ||
         this.scrollingLudicrouslyFast()
       )
         return
