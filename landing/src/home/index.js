@@ -102,9 +102,7 @@ const Homepage = Vue.component('Homepage', {
     isSectionHidden(id) {
       const hidden = this.isMaxHeight
         ? this.currentSection !== id
-        : !elementInView(this.getSection(id), {
-            threshold: 0.5,
-          })
+        : !elementInView(this.getSection(id), { threshold: 0.5 })
 
       return String(hidden)
     },
@@ -117,7 +115,7 @@ const Homepage = Vue.component('Homepage', {
      * @return {void}
      */
     goToSection(...args) {
-      if (this.isMediumScreen) return /* don't call rAF on medium screens */
+      if (this.isMediumScreen) return // don't call rAF on medium screens
       return GoToSection(this.$store, ...args)
     },
 
@@ -164,37 +162,26 @@ const Homepage = Vue.component('Homepage', {
     },
 
     /**
-     * Determine what section is most visible in the viewport
-     * @param {HTMLElement} section - the section
-     * @return {number} - the percentage left for the element to
-     * occupy the entire viewport.
-     */
-    getOffsetFromViewport(section) {
-      const offsetTop = parseInt(section.offsetTop)
-      const docElemScrollTop = parseInt(document.documentElement.scrollTop)
-
-      return Math.abs((offsetTop - docElemScrollTop) / 100) < 2 // 2 percent
-    },
-
-    /**
      * Determine what section is most visible in the viewport,
      * and then ensure it occupies the entire viewport.
      * @return {void}
      */
     maybeRestoreSection() {
-      const sectionEls = this.$root.$el.querySelectorAll(SECTION_SELECTOR)
-      const isFirstSection = this.currentSection === this.firstSection
-      const mostVisibleSection = Array.from(sectionEls).find(
-        this.getOffsetFromViewport
-      )
+      const mostVisibleSection = Array.from(
+        this.$root.$el.querySelectorAll(SECTION_SELECTOR)
+      ).find(section => {
+        const sectionOffsetTop = parseInt(section.offsetTop)
+        const docElemScrollTop = parseInt(document.documentElement.scrollTop)
+
+        return Math.abs((sectionOffsetTop - docElemScrollTop) / 100) < 2 // 2 percent
+      })
 
       // Set current section to the most visible section upon reload
       if (mostVisibleSection) {
         this.goToSection({ focus: false, node: mostVisibleSection })
 
-        if (!isFirstSection) {
-          this.$store.commit('headerCompact', true)
-        }
+        if (this.currentSection === this.firstSection) return
+        this.$store.commit('headerCompact', true)
       } else {
         wait(100, () => {
           // ...reset scroll!
