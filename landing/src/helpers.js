@@ -7,8 +7,8 @@ export function goToSection(store, opts) {
   let { node, modifier, smooth = true, focus = true } = opts
 
   if (!node) return
+  const sections = getSections()
   const app = document.getElementById('app')
-  const sections = Array.from(document.querySelectorAll(SECTION_SELECTOR))
 
   const getSectionId = () => node.dataset.section
   const curSectionIndex = sections.findIndex(({ dataset }) => {
@@ -51,6 +51,10 @@ export function goToSection(store, opts) {
     }
   }, 200)
 }
+
+export const [getSections] = [
+  () => Array.from(document.querySelectorAll(SECTION_SELECTOR)),
+]
 
 function smoothScrollToElem(elem, speed = 1000) {
   if (!(elem instanceof HTMLElement)) return
