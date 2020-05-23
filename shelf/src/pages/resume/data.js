@@ -22,13 +22,12 @@ export default {
       intro:
         'I worked on a couple of projects for organizations and individuals as a frontend engineering contractor.',
       points: [
-        'Building frontend applications for our several clients. Most especially JavaScript and React applications.',
-        'Migrating the company site from HTML/CSS to React/Gatsby.',
-        'Crafting and improving design, web accessibility and user experience for clients.',
-        'Enforcing healthy codebases, coding style and standards.',
-        'Completing projects on time and delivering to clients accordingly.',
-        'Communicating constantly with project managers and the team.',
-        'Staying up to date with emerging technologies and implementing where necessary.',
+        'Built frontend applications for our several clients. Most especially JavaScript and React applications.',
+        "Rebuilt the company's marketing site initially written in HTML/CSS using React and Gatsby.",
+        'Crafted, audited and improved design, accessibility and overall experience of several products.',
+        'Enforced healthy codebases, coding style and standards.',
+        'Completed projects on time and delivered to clients accordingly.',
+        'Communicated effectively with project managers and the team.',
       ],
     },
     {
