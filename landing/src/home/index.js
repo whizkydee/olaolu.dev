@@ -3,7 +3,6 @@ import {
   SECTIONS,
   SECTION_MAP,
   NAVIGATION_ID,
-  SECTION_SELECTOR,
   CURRENT_SECTION,
 } from '@/constants'
 import {
@@ -20,7 +19,7 @@ import PitchSlate from './PitchSlate'
 import Experience from './Experience'
 import Cornerstone from './Cornerstone'
 import Carriageway from './Carriageway'
-import { goToSection as GoToSection } from '@/helpers'
+import { goToSection as GoToSection, getSections } from '@/helpers'
 
 const Homepage = Vue.component('Homepage', {
   data: () => ({
@@ -44,10 +43,7 @@ const Homepage = Vue.component('Homepage', {
       return `You are now in the "${sectionName}" section.`
     },
     mostVisibleSection() {
-      const sectionEls = Array.from(
-        this.$root.$el.querySelectorAll(SECTION_SELECTOR)
-      )
-      return sectionEls.find(section => {
+      return getSections().find(section => {
         const sectionOffsetTop = parseInt(section.offsetTop)
         const docElemScrollTop = parseInt(document.documentElement.scrollTop)
 
