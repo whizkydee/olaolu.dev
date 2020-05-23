@@ -31,10 +31,6 @@ const Homepage = Vue.component('Homepage', {
     ...mapState([CURRENT_SECTION]),
     firstSection: { get: () => SECTIONS[0] },
     lastSection: { get: () => SECTIONS[SECTIONS.length - 1] },
-    announcement() {
-      const sectionName = SECTION_MAP[this.currentSection]
-      return `You are now in the "${sectionName}" section.`
-    },
     scrollableElems() {
       return [
         this.$el,
@@ -42,6 +38,21 @@ const Homepage = Vue.component('Homepage', {
         this.$root.$el,
         window.document.documentElement,
       ]
+    },
+    announcement() {
+      const sectionName = SECTION_MAP[this.currentSection]
+      return `You are now in the "${sectionName}" section.`
+    },
+    mostVisibleSection() {
+      const sectionEls = Array.from(
+        this.$root.$el.querySelectorAll(SECTION_SELECTOR)
+      )
+      return sectionEls.find(section => {
+        const sectionOffsetTop = parseInt(section.offsetTop)
+        const docElemScrollTop = parseInt(document.documentElement.scrollTop)
+
+        return Math.abs((sectionOffsetTop - docElemScrollTop) / 100) < 2 // 2 percent
+      })
     },
   },
 
@@ -162,24 +173,16 @@ const Homepage = Vue.component('Homepage', {
     },
 
     /**
-     * Determine what section is most visible in the viewport,
-     * and then ensure it occupies the entire viewport.
+     * Set current section to the most visible section upon
+     * reload (if we're able to determine that), otherwise, just
+     * reset the document scroll.
      * @return {void}
      */
     maybeRestoreSection() {
-      const mostVisibleSection = Array.from(
-        this.$root.$el.querySelectorAll(SECTION_SELECTOR)
-      ).find(section => {
-        const sectionOffsetTop = parseInt(section.offsetTop)
-        const docElemScrollTop = parseInt(document.documentElement.scrollTop)
+      if (this.mostVisibleSection) {
+        this.goToSection({ focus: false, node: this.mostVisibleSection })
 
-        return Math.abs((sectionOffsetTop - docElemScrollTop) / 100) < 2 // 2 percent
-      })
-
-      // Set current section to the most visible section upon reload
-      if (mostVisibleSection) {
-        this.goToSection({ focus: false, node: mostVisibleSection })
-
+        // don't enable header compact style if we're on the first section.
         if (this.currentSection === this.firstSection) return
         this.$store.commit('headerCompact', true)
       } else {
