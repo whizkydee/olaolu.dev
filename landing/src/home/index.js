@@ -175,21 +175,20 @@ const Homepage = Vue.component('Homepage', {
      * @return {void}
      */
     maybeRestoreSection() {
-      if (this.mostVisibleSection) {
-        this.goToSection({ focus: false, node: this.mostVisibleSection })
+      if (!this.mostVisibleSection) return wait(100, resetScroll)
 
-        // don't enable header compact style if we're on the first section.
-        if (this.currentSection === this.firstSection) return
-        this.$store.commit('headerCompact', true)
-      } else {
-        wait(100, () => {
-          // ...reset scroll!
-          Object.assign(document.documentElement, {
-            scrollTop: 0,
-            scrollLeft: 0,
-          })
+      const resetScroll = () => {
+        Object.assign(document.documentElement, {
+          scrollTop: 0,
+          scrollLeft: 0,
         })
       }
+
+      this.goToSection({ focus: false, node: this.mostVisibleSection })
+
+      // don't enable header compact style if we're on the first section.
+      if (this.currentSection === this.firstSection) return
+      this.$store.commit('headerCompact', true)
     },
 
     /**

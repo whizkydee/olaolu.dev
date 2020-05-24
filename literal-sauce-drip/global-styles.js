@@ -85,7 +85,8 @@ const GlobalStyle = injectGlobal`
 
   a {
     text-decoration: none;
-    transition: opacity, color, background-color, transform, border .3s;
+    transition-duration: 300ms;
+    transition-property: opacity, color, background-color, transform, border;
   }
 
   button,

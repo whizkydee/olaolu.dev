@@ -7,9 +7,7 @@ export default async () => {
   const [result, error] = await useAsync(async () => {
     const rootDist = path.join(root, 'dist')
     const distFiles = Object.fromEntries(
-      Object.entries(dist).map(([key, value]) => {
-        return [key, Fs.readdirSync(value)]
-      })
+      Object.entries(dist).map(([key, value]) => [key, Fs.readdirSync(value)])
     )
 
     // Create "dist" in the root directory.
