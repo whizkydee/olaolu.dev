@@ -20,7 +20,7 @@ export default async () => {
       await moveFile(path.join(dist.landing, file), path.join(rootDist, file))
     }
     log(
-      `✅ Success! Combined build completed - files in landing/dist have been moved.
+      `✅ Success! All files in /landing/dist have been moved.
    Proceeding to shelf dist files...`
     )
 
