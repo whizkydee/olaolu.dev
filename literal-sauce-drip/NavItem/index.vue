@@ -2,6 +2,7 @@
   <li>
     <a
       :href="href"
+      ref="anchorRef"
       :class="className"
       @click="handleClick"
       v-bind="anchorAttrs"
@@ -16,7 +17,7 @@
 </template>
 
 <script>
-import { isObject, isMacintosh, isWindows } from '@mrolaolu/helpers'
+import { isObject, isMacintosh, isWindows, unslashEnd } from '@mrolaolu/helpers'
 
 export default {
   computed: {
@@ -62,6 +63,26 @@ export default {
         this.$router.push(pathname)
       }
     },
+  },
+
+  mounted() {
+    const { itemprop } = this.$attrs
+
+    if (
+      itemprop === 'itemListElement' &&
+      this.$refs.anchorRef instanceof HTMLElement
+    ) {
+      const { href } = new URL(this.href, 'https://olaolu.dev')
+
+      for (const [attr, value] of Object.entries({
+        itemscope: '',
+        itemtype: 'https://schema.org/WebPage',
+        itemprop: 'item',
+        itemid: unslashEnd(href),
+      })) {
+        this.$refs.anchorRef.setAttribute(attr, value)
+      }
+    }
   },
 
   props: {
