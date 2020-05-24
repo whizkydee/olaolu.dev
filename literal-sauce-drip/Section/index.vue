@@ -89,11 +89,11 @@ function createStyledSection(tagName = 'section', props = {}) {
       `}
 
       ${media.between('>portrait', 'medium')`
-        padding: 0 7em;
+        padding: 0 7rem;
       `}
 
       ${media.minWidth('>medium')`
-        padding: 0 10em;
+        padding: 0 10rem;
       `}
 
       ${media.between('>medium', 'xLarge')`
