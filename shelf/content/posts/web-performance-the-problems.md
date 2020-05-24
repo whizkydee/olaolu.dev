@@ -138,9 +138,9 @@ you’re actually solving that problem in the most efficient way.
 
 One critical factor often overlooked is the capabilities of the web server
 behind the front-end. Nearly all articles and discussions about web performance
-are usually focused on the front-end. Now, while that isn't wrong as 90% of the
-work is on the front-end, the server that powers a front-end can also greatly
-affect overall performance.
+are usually focused on the front-end. Now, while that isn't wrong as most of the
+work is usually on the front-end, the server that powers a front-end can also
+greatly affect overall performance.
 
 I mean, sure, you could have a pretty fast front-end but if your server fails to
 respond on time, the front-end never even makes it. So, what do I mean? Some

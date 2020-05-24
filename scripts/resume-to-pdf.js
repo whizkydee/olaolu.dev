@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer'
 import { SHELF_PORT } from '../config'
 import kill from 'tree-kill'
-import { log, error } from './util'
+import { log } from './util'
 import { spawn } from 'child_process'
 
 async function main() {
@@ -52,23 +52,21 @@ async function main() {
       })
 
       shelfServeProc.stdout.on('data', async output => {
-        if (output.toString().includes('Site running at')) {
-          log('Shelf development server is now running')
+        if (!output.toString().includes('Site running at')) return
 
-          // Attempt to re-run the resume PDF generation script.
-          log('Re-running the PDF generation script...')
-          await main()
+        log('Shelf development server is now running')
 
-          // Kill the process once we're done.
-          kill(shelfServeProc.pid)
-        }
+        // Attempt to re-run the resume PDF generation script.
+        log('Re-running the PDF generation script...')
+        await main()
+
+        // Kill the process once we're done.
+        kill(shelfServeProc.pid)
       })
 
-      shelfServeProc.on('close', () => {
-        process.exit(0)
-      })
+      shelfServeProc.on('close', () => process.exit(0))
     } else {
-      error(e)
+      console.error(e)
       process.exit(1)
     }
   }
