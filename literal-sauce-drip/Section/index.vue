@@ -50,7 +50,9 @@ function createStyledSection(tagName = 'section', props = {}) {
 
     ${media.minWidth('>medium')`
       @media (max-height: 1199px) {
-        &:not([data-section='une']) { height: 100vh; }
+        &:not([data-section='une']) {
+          height: 100vh;
+        }
       }
 
       &[aria-hidden='true'] {
@@ -76,7 +78,11 @@ function createStyledSection(tagName = 'section', props = {}) {
       `}
 
       .cavalier {
-        p, h1 { opacity: 1; transform: translate3d(0, 0, 0); }
+        p,
+        h1 {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+        }
       }
     }
 

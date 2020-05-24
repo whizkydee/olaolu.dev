@@ -18,7 +18,7 @@ Vue.mixin({
     /**
      * Return the corresponding element for a valid section id.
      * @param {string=} id
-     * @return {HTMLElement}
+     * @return {HTMLElement | void}
      */
     getSection(id = this.currentSection) {
       const sectionElem = this.$root.$el.querySelector(`[data-section='${id}']`)

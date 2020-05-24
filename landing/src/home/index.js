@@ -173,7 +173,7 @@ const Homepage = Vue.component('Homepage', {
      * Set current section to the most visible section upon
      * reload (if we're able to determine that), otherwise, just
      * reset the document scroll.
-     * @return {void}
+     * @return {number | void}
      */
     maybeRestoreSection() {
       if (!this.mostVisibleSection) return wait(100, resetScroll)
