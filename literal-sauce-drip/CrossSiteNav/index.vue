@@ -3,85 +3,23 @@
     v-if="isShelf"
     itemscope
     class="cross-site-nav"
-    itemtype="http://schema.org/BreadcrumbList"
+    itemtype="http://schema.org/SiteNavigationElement"
   >
-    <NavItem
-      :href="landingURL"
-      itemprop="itemListElement"
-      itemscope
-      itemtype="http://schema.org/ListItem"
-    >
-      Home
-    </NavItem>
-    <NavItem
-      :href="workURL"
-      itemprop="itemListElement"
-      itemscope
-      itemtype="http://schema.org/ListItem"
-    >
-      My Work
-    </NavItem>
-    <NavItem
-      :href="resumeURL"
-      external
-      itemprop="itemListElement"
-      itemscope
-      itemtype="http://schema.org/ListItem"
-    >
-      My Résumé
-    </NavItem>
+    <NavItem :href="landingURL">Home</NavItem>
+    <NavItem :href="workURL">My Work</NavItem>
+    <NavItem :href="resumeURL" external>My Résumé</NavItem>
   </ul>
 
   <ul
     v-else
     itemscope
     class="cross-site-nav"
-    itemtype="http://schema.org/BreadcrumbList"
+    itemtype="http://schema.org/SiteNavigationElement"
   >
-    <NavItem
-      v-if="isWork"
-      :href="landingURL"
-      itemscope
-      itemprop="itemListElement"
-      itemtype="http://schema.org/ListItem"
-    >
-      Home
-    </NavItem>
-    <NavItem
-      v-else
-      :href="workURL"
-      itemscope
-      itemprop="itemListElement"
-      itemtype="http://schema.org/ListItem"
-    >
-      My Work
-    </NavItem>
-    <NavItem
-      v-if="isHome || isWork"
-      :href="shelfURL"
-      itemscope
-      itemprop="itemListElement"
-      itemtype="http://schema.org/ListItem"
-    >
-      My Shelf
-    </NavItem>
-    <NavItem
-      v-else
-      :href="landingURL"
-      itemscope
-      itemprop="itemListElement"
-      itemtype="http://schema.org/ListItem"
-    >
-      Home
-    </NavItem>
-    <NavItem
-      external
-      itemscope
-      :href="resumeURL"
-      itemprop="itemListElement"
-      itemtype="http://schema.org/ListItem"
-    >
-      My Résumé
-    </NavItem>
+    <NavItem :href="landingURL" v-if="isWork">Home</NavItem>
+    <NavItem :href="workURL" v-else>My Work</NavItem>
+    <NavItem :href="shelfURL" v-if="isHome || isWork">My Shelf</NavItem>
+    <NavItem :href="landingURL" v-else>Home</NavItem>
+    <NavItem :href="resumeURL" external>My Résumé</NavItem>
   </ul>
 </template>
