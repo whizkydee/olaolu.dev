@@ -109,7 +109,8 @@ const Homepage = Vue.component('Homepage', {
     isSectionHidden(id) {
       const hidden = this.isMaxHeight
         ? this.currentSection !== id
-        : !elementInView(this.getSection(id), { threshold: 0.5 })
+        : this.getSection(id) instanceof HTMLElement &&
+          !elementInView(this.getSection(id), { threshold: 0.5 })
 
       return String(hidden)
     },
