@@ -36,10 +36,10 @@ export default {
       role: 'Senior Frontend Engineer (Contractor)',
       intro: `I worked with MOONDA as a senior contractor via Pixel2HTML to create the web experience for John Deere's ATU 300 product.`,
       points: [
-        'Built a contest application from the ground up using React which enabled users of the product from all around the globe to post photos and share reviews about the product',
-        'Designed and implemented a cross-browser, IE 11 compatible marketing site for the product',
-        'Implemented internationalization on the website with support for over 40 languages',
-        'Implemented automatic locale detection (with proper redirection based on that) and locale-specific content filtering',
+        'Built a contest application from the ground up using React which enabled users of the product from all around the globe to post photos and share reviews about the product.',
+        'Designed and implemented a cross-browser, IE 11 compatible marketing site for the product.',
+        'Implemented internationalization on the website with support for over 40 languages.',
+        'Implemented automatic locale detection (with proper redirection based on that) and locale-specific content filtering.',
       ],
     },
     {
@@ -49,10 +49,10 @@ export default {
       intro:
         'I led a team of developers through building multiple React applications into a single powerful online learning platform. I also re-engineered and designed several components on the platform.',
       points: [
-        'Crafted a solid design system to enforce consistency across the application',
-        'Built a messaging system as powerful as Facebook Messenger with React',
-        'Built a multi-feature audio and video call application powered by React',
-        'Introduced and enforced a consistent coding style across the application',
+        'Crafted a solid design system to enforce consistency across the application.',
+        'Built a messaging system as powerful as Facebook Messenger with React.',
+        'Built a multi-feature audio and video call application powered by React.',
+        'Introduced and enforced a consistent coding style across the application.',
         'Eliminated dead code which saved us about 20% the size of every page bundle.',
         'Eliminated Bootstrap and several other CSS libraries completely from the application, and replaced them with custom styles.',
         'Reduced bundle size from 5MB to a few kilobytes.',
