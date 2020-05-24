@@ -25,6 +25,7 @@ async function main() {
 
     await page.pdf({
       printBackground: true,
+      pageRanges: '1',
       width: '1230px',
       height: Math.min(height, 3090),
       path: pdfFilePath,
