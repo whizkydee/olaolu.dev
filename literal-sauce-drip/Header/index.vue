@@ -5,7 +5,6 @@
     :env="isHome ? 'home' : 'shelf'"
     :noMenuShadow="noMenuShadow"
     :data-compact="String(compact)"
-    :blue="isMediumScreen && menuOpen"
   >
     <a
       id="logo"
