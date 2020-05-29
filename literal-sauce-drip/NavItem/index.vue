@@ -59,7 +59,7 @@ export default {
       ) {
         event.preventDefault()
         const { pathname } = new URL(href)
-        this.$router.push(pathname)
+        this.$router.push(pathname == '/shelf' ? '/' : pathname)
       }
     },
   },
