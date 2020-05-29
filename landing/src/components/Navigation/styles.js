@@ -4,7 +4,7 @@ const StyledNavigation = styled.nav`
   z-index: 999;
   display: flex;
   position: fixed;
-  margin-top: -27px;
+  margin-top: -35px;
   color: ${({ theme }) => theme.colors.electricBlue};
   right: ${({ theme }) => `calc(${theme.header.padding} + 1em)`};
 
@@ -26,7 +26,6 @@ const StyledNavigation = styled.nav`
     min-height: 2em;
     position: relative;
     color: currentColor;
-    align-items: flex-end;
     transition-delay: 100ms;
     outline-color: transparent;
     background-color: transparent;
