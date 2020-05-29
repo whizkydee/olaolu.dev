@@ -34,25 +34,6 @@ const StyledHeader = css`
   ${media.maxWidth('medium')`
     padding-left: 3em;
     padding-right: 3em;
-
-    ${props =>
-      !props.blue &&
-      css`
-        position: absolute;
-      `}
-
-    ${props =>
-      props.blue &&
-      css`
-        top: 0;
-        bottom: auto;
-        position: fixed;
-
-        #logo,
-        .menu-toggle {
-          color: ${theme.colors.electricBlue} !important;
-        }
-      `}
   `}
 
   &[data-compact='true'] {
@@ -325,6 +306,5 @@ export default Object.assign(
   styled('header', {
     env: String,
     noMenuShadow: Boolean,
-    blue: Boolean,
   })([StyledHeader])
 )
