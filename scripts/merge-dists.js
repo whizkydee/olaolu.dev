@@ -34,8 +34,7 @@ export default async () => {
       )
     }
     log(
-      '✨ All done! Both dist directories have been merged ' +
-        'into the root dist directory.'
+      `✨ All done! Both dist directories have been merged into the root dist directory.`
     )
   })
 

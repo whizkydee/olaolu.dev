@@ -71,7 +71,7 @@ export const SharedMixins = {
   },
 
   created() {
-    typeof window !== 'undefined' &&
+    inBrowser() &&
       [
         {
           key: 'isMediumScreen',
