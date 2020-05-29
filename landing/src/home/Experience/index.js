@@ -20,21 +20,29 @@ const Experience = Vue.component('Experience', {
           >
             <p slot="text">
               I've built products for companies and businesses around the globe
-              ranging from basic websites to complex solutions and enterprise
-              apps with focus on fast, elegant and accessible user experiences.
+              ranging from marketing websites to complex solutions and
+              enterprise apps with focus on fast, elegant and accessible user
+              experiences.
             </p>
 
             <p slot="text">
-              Most recently, I was Principal Frontend Software Engineer at
-              hellotax crafting a suite of tools and services tailored at
-              providing robust and fast VAT Registration &amp; Returns solutions
-              for all kinds of traders across Europe.
+              Currently, I work at Shopify as a Senior UX Developer and
+              Accessibility advocate crafting thoughtful and inclusive
+              experiences that adhere to web standards for all our merchants
+              across the world.
             </p>
 
             <p slot="text">
-              Before then, I was a Senior frontend engineering contractor with
-              Pixel2HTML building JavaScript applications and interfaces for
-              orgs and individuals.
+              Before now, I was Principal Frontend Software Engineer at
+              hellotax, where I worked on a suite of tools and services tailored
+              at providing fast, automated VAT Registration &amp; Returns
+              solutions for all kinds of traders across Europe.
+            </p>
+
+            <p slot="text">
+              Prior to hellotax, I was Senior frontend engineering contractor
+              with Pixel2HTML, building JavaScript applications and interfaces
+              for orgs and individuals.
             </p>
 
             <p slot="text">
@@ -43,18 +51,20 @@ const Experience = Vue.component('Experience', {
               powerful online learning platform.
             </p>
 
-            <p slot="text">
-              I'm now available for contracts and remote full-time roles. Want
-              us to work together? You should{' '}
-              <a
-                href={`mailto:hello@olaolu.dev?subject=${encodeURI(
-                  "💡Let's Work Together on Project X"
-                )}`}
-              >
-                contact me
-              </a>
-              .
-            </p>
+            {this.hireable && (
+              <p slot="text">
+                I'm now available for contracts and remote full-time roles. Want
+                us to work together? You should{' '}
+                <a
+                  href={`mailto:hello@olaolu.dev?subject=${encodeURI(
+                    "💡Let's Work Together on Project X"
+                  )}`}
+                >
+                  contact me
+                </a>
+                .
+              </p>
+            )}
           </Cavalier>
 
           <figure class="work-illo" aria-hidden={!isVisible}>

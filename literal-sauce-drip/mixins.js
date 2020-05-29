@@ -1,17 +1,23 @@
 import {
+  isDev,
   getShelfURL,
   getLandingURL,
   breakpoints,
-  isDev,
   getMainElem,
   getAnnouncer,
 } from './helpers'
+import {
+  SOCIAL_PROFILES,
+  BANNER_CONTENT,
+  BANNER_CONTENT_HIREABLE,
+} from './constants'
 import Vue from 'vue'
-import { SOCIAL_PROFILES } from './constants'
+import { hireable } from '../config'
 import { toPx as px, inBrowser } from '@mrolaolu/helpers'
 
 export const SharedMixins = {
   data: () => ({
+    hireable,
     isPortrait: false,
     isMaxHeight: false,
     isMediumScreen: false,
@@ -94,7 +100,23 @@ export const SharedMixins = {
       })
   },
 
-  methods: { getShelfURL, getLandingURL },
+  methods: {
+    getLandingURL,
+    getShelfURL,
+    async showConsoleMarketingBanner() {
+      const contentBody = this.hireable
+        ? BANNER_CONTENT_HIREABLE
+        : BANNER_CONTENT
+      return (
+        !this.DEV &&
+        console.log(
+          `${await import('raw-loader!./cat.txt').then(
+            m => m.default
+          )} ${contentBody}`
+        )
+      )
+    },
+  },
 }
 
 export default Vue.mixin(SharedMixins)

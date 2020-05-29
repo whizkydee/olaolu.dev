@@ -143,21 +143,8 @@ const StyledWork = styled(Layout)`
 
 export default {
   components: { StyledWork },
-  async beforeCreate() {
-    process.env.NODE_ENV === 'production' &&
-      console.log(`${await import('raw-loader!@saucedrip/core/cat.txt').then(
-        m => m.default
-      )}
-    Hey there 👋, curious!
-    You're probably wondering how cool this site is, yeah?
-    I can do even better, so, if your company is currently
-    looking for someone with my kind of skills, feel free to hit me up
-    on https://twitter.com/mrolaolu or via hello@olaolu.dev ✨.
-
-    And... about your curiousity, the code that powers my site is publicly hosted
-    on https://github.com/whizkydee/olaolu.dev. That's a good place to start
-    for sure 🤞.
-    `)
+  created() {
+    this.showConsoleMarketingBanner()
   },
 
   computed: {
