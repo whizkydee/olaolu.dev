@@ -72,10 +72,6 @@ function createStyledButton(tagName, props) {
       }
     }
 
-    &:focus {
-      outline-color: transparent;
-    }
-
     .sauce-button__content {
       z-index: 1;
       display: flex;
@@ -89,7 +85,7 @@ function createStyledButton(tagName, props) {
 
       &:before {
         content: '';
-        width: 100%;
+        width: 101%;
         height: 108%;
         pointer-events: none;
         z-index: -1;
@@ -99,7 +95,7 @@ function createStyledButton(tagName, props) {
         left: 0;
         right: 0;
         background: currentColor;
-        transform: translateX(-101%);
+        transform: translateX(-100%);
         transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
       }
     }

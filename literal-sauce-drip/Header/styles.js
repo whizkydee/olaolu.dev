@@ -127,11 +127,6 @@ const StyledHeader = css`
     margin-top: 0.699em;
     color: ${theme.colors.electricBlue};
 
-    &:focus {
-      outline-offset: 4px;
-      outline-color: transparent;
-    }
-
     &.x {
       transform: scale(0.9);
 

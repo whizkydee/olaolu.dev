@@ -36,7 +36,9 @@ const GlobalStyle = injectGlobal`
     -moz-osx-font-smoothing: grayscale;
 
     &${`:not(.${TABBING_CLASSNAME})`} {
-      a:focus {
+      a:focus,
+      .sauce-button:focus,
+      .menu-toggle:focus {
         outline-color: transparent;
       }
     }
@@ -46,11 +48,18 @@ const GlobalStyle = injectGlobal`
         outline-color: currentColor;
       }
 
+      button:focus {
+        outline-width: 0.2em;
+      }
+
       .sauce-button:focus {
+        outline-style: dashed;
         outline-color: ${colors.electricBlue};
       }
 
       .menu-toggle:focus {
+        outline-offset: 4px;
+        outline-style: dashed;
         outline-color: ${colors.electricBlue};
       }
 
