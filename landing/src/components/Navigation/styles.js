@@ -4,7 +4,7 @@ const StyledNavigation = styled.nav`
   z-index: 999;
   display: flex;
   position: fixed;
-  margin-top: -20px;
+  margin-top: -27px;
   color: ${({ theme }) => theme.colors.electricBlue};
   right: ${({ theme }) => `calc(${theme.header.padding} + 1em)`};
 
@@ -18,31 +18,36 @@ const StyledNavigation = styled.nav`
     width: 0.523em;
   }
 
-  a {
+  button {
     width: 100%;
     display: flex;
-    outline: none;
     width: inherit;
     cursor: pointer;
     min-height: 2em;
     position: relative;
     color: currentColor;
+    align-items: flex-end;
     transition-delay: 100ms;
     outline-color: transparent;
+    background-color: transparent;
     -webkit-tap-highlight-color: transparent;
+
+    &:focus {
+      outline: none;
+    }
 
     &:after {
       content: '';
       width: 100%;
       height: 0.523em;
       position: absolute;
-      transform: rotate(45deg);
       background-color: currentColor;
       border: 1px solid currentColor;
       transition: transform 0.2s 100ms;
+      transform: rotate(45deg);
     }
 
-    &[aria-current='page'] {
+    &.current {
       &:after {
         transform: rotate(0) scale(2);
         background: transparent;

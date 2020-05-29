@@ -58,7 +58,7 @@ const StyledHomepage = injectGlobal`
         outline-color: ${colors.lime};
       }
 
-      #${NAVIGATION_ID} a:focus:after {
+      #${NAVIGATION_ID} button:focus:after {
         box-shadow: 0 0 0 0.3rem rgba(24, 156, 230, 0.4);
       }
     }
@@ -153,14 +153,14 @@ const StyledHomepage = injectGlobal`
           }
         }
 
-        /* Prevent focusable elements in hidden sections
-        from receiving focus via tabbing from an active section. */
+        /* Prevent focusable elements in hidden sections from
+          receiving focus via tabbing from an active section. */
+        a[href],
         [tabindex],
         input:not([disabled]),
         select:not([disabled]),
-        button:not([disabled]),
         textarea:not([disabled]),
-        ${`a[href]:not(.${NAVIGATION_BULLET})`} {
+        ${`button:not([disabled]):not(.${NAVIGATION_BULLET})`} {
           &:not([tabindex='-1']) {
             visibility: hidden;
             transition: visibility 400ms;
