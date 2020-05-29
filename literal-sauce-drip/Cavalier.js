@@ -22,8 +22,8 @@ const Cavalier = Vue.component('Cavalier', {
 
   props: {
     theme: {
-      default: 'blue',
-      validator: v => ['lime', 'blue'].indexOf(v) !== -1,
+      default: 'electric',
+      validator: v => ['lime', 'electric'].indexOf(v) !== -1,
     },
     text: { type: [String, Object] },
     heading: { type: [String, Object] },
