@@ -23,9 +23,8 @@ export default Vue.component('Navigation', {
 const Bullet = Vue.component('Bullet', {
   computed: mapState([CURRENT_SECTION]),
   methods: {
-    handleClick(event) {
-      const sectionName = event.target.getAttribute('href').slice(1)
-      const sectionSelector = `[data-section='${sectionName}']`
+    handleClick() {
+      const sectionSelector = `[data-section='${this.name}']`
 
       goToSection(this.$store, {
         node: this.$root.$el.querySelector(sectionSelector),
@@ -36,13 +35,17 @@ const Bullet = Vue.component('Bullet', {
   render() {
     const { name, ordinal } = this
     return (
-      <NavItem
-        href={'#' + name}
-        className={NAVIGATION_BULLET}
-        clickFn={this.handleClick}
-        ariaCurrent={this.currentSection === name ? 'page' : null}
-        ariaLabel={`Go to ${ordinal} section. ${SECTION_MAP[name]}.`}
-      />
+      <li>
+        <button
+          type="button"
+          onClick={this.handleClick}
+          class={
+            NAVIGATION_BULLET +
+            (this.currentSection == this.name ? ' current' : '')
+          }
+          aria-label={`Go to ${ordinal} section. ${SECTION_MAP[name]}.`}
+        />
+      </li>
     )
   },
 
