@@ -126,9 +126,9 @@ performance. For example, having excessive unused code bumps up file sizes which
 could delay HTTP requests and in turn, affect performance.
 
 In fact, all the points listed previously in one way or the other fall under the
-quality of code you’re delivering and how experienced or competent a developer
-is. Your JavaScript, CSS, HTML and other applications on the back end contribute
-to performance directly or indirectly.
+quality of code you’re delivering and how knowledgeable a developer might be
+with regards to performance. Your JavaScript, CSS, HTML and other applications
+on the backend contribute to performance directly or indirectly.
 
 There are some industry standards and practices that should be followed while
 building sites. Don’t write code that “just works™”. You should consider if
