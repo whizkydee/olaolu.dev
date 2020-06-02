@@ -37,7 +37,7 @@
       round trip time (RTT) was in high numbers which resulted in delayed
       updates. To tackle this, I had to implement a lot of the processing and
       manipulation logic on the frontend, leaving special computation work and
-      business logic for the back end.
+      business logic for the backend.
     </p>
 
     <p>
