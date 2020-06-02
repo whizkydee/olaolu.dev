@@ -4,6 +4,7 @@ import kill from 'tree-kill'
 import { log } from './util'
 import { spawn } from 'child_process'
 
+let documentGenerated = false
 async function main() {
   try {
     const pdfURL = `http://localhost:${SHELF_PORT}/resume?pdf=true`
@@ -53,7 +54,11 @@ async function main() {
       })
 
       shelfServeProc.stdout.on('data', async output => {
-        if (!output.toString().includes('Site running at')) return
+        if (
+          !output.toString().includes('Site running at') ||
+          documentGenerated
+        )
+          return
 
         log('Shelf development server is now running')
 
@@ -61,6 +66,7 @@ async function main() {
         log('Re-running the PDF generation script...')
         await main()
 
+        documentGenerated = true
         // Kill the process once we're done.
         kill(shelfServeProc.pid)
       })
