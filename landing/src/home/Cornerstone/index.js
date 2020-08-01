@@ -37,11 +37,10 @@ const Cornerstone = Vue.component('Cornerstone', {
 
           <Cavalier heading="Engineering">
             <p slot="text">
-              In building JavaScript applications and solid infrastructure, I'm
-              equipped with just the right tools, and can absolutely function
-              independently of them to deliver fast, definitive solutions
-              optimized for scale &mdash; performance and scalabilty are
-              priorities on my radar.
+              In building JavaScript applications, I'm equipped with just the
+              right tools, and can absolutely function independently of them to
+              deliver fast, resilient solutions optimized for scale &mdash;
+              performance and scalabilty are priorities on my radar.
             </p>
 
             <CornerstonePatternsLeft

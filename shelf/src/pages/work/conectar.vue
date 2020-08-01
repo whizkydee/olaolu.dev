@@ -7,8 +7,8 @@
     tech="JavaScript, React, Sass, Redux, Rails"
   >
     <p>
-      Conectar is an online learning platform that connects Russians looking to
-      learn English to professional native English speakers. We had to bring the
+      Conectar is an e-learning platform that connects Russians looking to learn
+      English to professional native English speakers. We had to bring the
       entire classroom experience to the web and make it feel as immersive as
       possible.
     </p>
