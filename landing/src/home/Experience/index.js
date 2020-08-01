@@ -47,8 +47,8 @@ const Experience = Vue.component('Experience', {
 
             <p slot="text">
               I once also led the frontend team at a Russian startup, Conectar
-              through building multiple React applications into a single
-              powerful online learning platform.
+              through building multiple React applications into a single robust
+              learning platform.
             </p>
 
             {this.hireable && (
