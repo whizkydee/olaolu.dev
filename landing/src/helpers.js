@@ -3,14 +3,15 @@ import { SECTION_SELECTOR, CURRENT_SECTION, NAVIGATION_ID } from './constants'
 
 export * from '@saucedrip/core/helpers'
 
+const isMotionReduced = matchMedia('(prefers-reduced-motion: reduce)').matches
 export function goToSection(store, opts) {
-  let { node, modifier, smooth = true, focus = true } = opts
+  let { node: sectionNode, modifier, smooth = true, focus = true } = opts
 
-  if (!node) return
+  if (!sectionNode) return
   const sections = getSections()
   const app = document.getElementById('app')
 
-  const getSectionId = () => node.dataset.section
+  const getSectionId = () => sectionNode.dataset.section
   const curSectionIndex = sections.findIndex(({ dataset }) => {
     return dataset.section === getSectionId()
   })
@@ -18,21 +19,20 @@ export function goToSection(store, opts) {
   const findSection = (idx = 0) => sections[curSectionIndex + idx]
   // determine what section to go to based on the modifier.
   if (modifier == 'next') {
-    node = findSection(1)
+    sectionNode = findSection(1)
   } else if (modifier == 'previous') {
-    node = findSection(-1)
+    sectionNode = findSection(-1)
   }
 
-  if (!(node instanceof HTMLElement)) return
-
+  if (!sectionNode) return
   setTimeout(() => {
     // Add a `scrolled` className so we know not to
     // animate all the items in the section again.
-    node.classList.add('scrolled')
+    sectionNode.classList.add('scrolled')
   }, 1000)
 
-  if (smooth) smoothScrollToElem(node)
-  else scrollTo(0, node.offsetTop)
+  if (smooth) smoothScroll(sectionNode.offsetTop)
+  else scrollTo(0, sectionNode.offsetTop)
 
   setTimeout(() => {
     store && store.commit(CURRENT_SECTION, getSectionId())
@@ -42,9 +42,9 @@ export function goToSection(store, opts) {
       // If there's a focusable node in the current section,
       // bring focus to that node, otherwise, restore focus to the navigation.
       const navigationEl = document.getElementById(NAVIGATION_ID)
-      const nodeToFocus = !getFirstFocusableNode(node)
+      const nodeToFocus = !getFirstFocusableNode(sectionNode)
         ? getFirstFocusableNode(navigationEl)
-        : node
+        : sectionNode
 
       if (nodeToFocus === null) return
       nodeToFocus.focus()
@@ -56,17 +56,15 @@ export const [getSections] = [
   () => Array.from(document.querySelectorAll(SECTION_SELECTOR)),
 ]
 
-function smoothScrollToElem(elem, speed = 1000) {
-  if (!(elem instanceof HTMLElement)) return
-
+function smoothScroll(scrollTargetY, speed = 1000) {
   let currentTime = 0
-  const scrollTargetY = elem.offsetTop
   const scrollY = pageYOffset || document.documentElement.scrollTop
+  const derivedSpeed = isMotionReduced ? 2000 : speed
 
   // min time .1, max time .8 seconds
   const time = Math.max(
     0.1,
-    Math.min(Math.abs(scrollY - scrollTargetY) / speed, 0.8)
+    Math.min(Math.abs(scrollY - scrollTargetY) / derivedSpeed, 0.8)
   )
 
   // easing equations from https://github.com/danro/easing-js/blob/master/easing.js
