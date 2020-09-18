@@ -28,15 +28,15 @@ const Experience = Vue.component('Experience', {
             <p slot="text">
               Currently, I work at Shopify as a Senior UX Developer and
               Accessibility advocate crafting thoughtful and inclusive
-              experiences that adhere to web standards for all our merchants
-              across the world.
+              experiences that adhere to web standards for over a million
+              merchants across the world.
             </p>
 
             <p slot="text">
               Before now, I was Principal Frontend Software Engineer at
               hellotax, where I worked on a suite of tools and services tailored
-              at providing fast, automated VAT Registration &amp; Returns
-              solutions for all kinds of traders across Europe.
+              at providing fast, automated VAT Registration / filings &amp;
+              Returns solutions for multi-channel sellers across Europe.
             </p>
 
             <p slot="text">
