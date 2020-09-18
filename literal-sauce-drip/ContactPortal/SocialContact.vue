@@ -1,15 +1,15 @@
 <template>
   <StyledSocialContact class="social-contact">
-    <NavItem external :href="sp.twitter" ariaLabel="Olaolu on Twitter">
+    <NavItem external :href="_.twitter" ariaLabel="Olaolu on Twitter">
       TW
     </NavItem>
-    <NavItem external :href="sp.github" ariaLabel="Olaolu on GitHub">
+    <NavItem external :href="_.github" ariaLabel="Olaolu on GitHub">
       GH
     </NavItem>
-    <NavItem external :href="sp.linkedIn" ariaLabel="Olaolu on LinkedIn">
+    <NavItem external :href="_.linkedIn" ariaLabel="Olaolu on LinkedIn">
       LN
     </NavItem>
-    <NavItem external :href="sp.youtube" ariaLabel="Olaolu's YouTube channel">
+    <NavItem external :href="_.youtube" ariaLabel="Olaolu's YouTube channel">
       YT
     </NavItem>
   </StyledSocialContact>
@@ -37,7 +37,7 @@ const StyledSocialContact = styled.ul`
 
 export default {
   computed: {
-    sp() {
+    _() {
       return this.socialProfiles
     },
   },
