@@ -62,16 +62,16 @@ It’s sad news that third-party resources today have taken over control of tons
 of sites that they start to have unintended (sometimes malicious) side effects,
 and as developers, most of the time we’re just lazy to take it back. It's very
 common to see sites include a huge third-party resource, and then end up using a
-very minimal portion of it, say 5% e.g including a 20kb component library only
-to end up using a component that’s barely worth a kilobyte. That's usually not a
-great idea as most of these things can easily be implemented in-house with just
-a little bit extra work.
+very minimal portion of it, say 5% e.g including a 20kb library only to end up
+using a component that’s barely worth a kilobyte. That's usually not a great
+idea as most of these things can easily be implemented in-house with just a
+little bit extra work.
 
 ### 2. Heavy assets and resources
 
 We all have that one big file on our sites &ndash; the one big JavaScript asset
-or the pretty 1MB image from Unsplash. JavaScript occupies is on top of the list
-of frontend resources that impact performance negatively, followed by images and
+or the pretty 1MB image from Unsplash. JavaScript is on top of the list of
+frontend resources that impact performance negatively, followed by images and
 really, it’s difficult to keep track of these things when everyone is in a rush
 and hell-bent on results so we under-prioritize or forget about optmizing for
 performance, something that affects our users directly. Users know when your
@@ -101,10 +101,10 @@ confusing, yeah?
 Similar can happen with your server when making requests. If you observe from
 that order, the entire purpose and what matters to you the most is getting your
 snack, just the way your users want to _use_ your product — they want to satisfy
-themselves. Too bad their superior (engineers in this case) took that power away
-from them. You know how tough it can be to say no to that &ndash; same way the
-server can’t say no to your multiple requests. It just must (or at least attempt
-to) process the requests regardless of how complicated it is.
+themselves. Too bad their superior (engineers in this case) took that privilege
+away from them. You know how tough it can be to say no to that &ndash; same way
+the server can’t say no to your multiple requests. It just must (or at least
+attempt to) process the requests regardless of how complicated it is.
 
 Your user might not need all the junks and stuff you’re fetching for them on the
 initial load, they need what matters, and you’re in place to answer those
@@ -137,13 +137,13 @@ you’re actually solving that problem in the most efficient way.
 ## 5. Inadequate server resources
 
 One critical factor often overlooked is the capabilities of the web server
-behind the front-end. Nearly all articles and discussions about web performance
-are usually focused on the front-end. Now, while that isn't wrong as most of the
-work is usually on the front-end, the server that powers a front-end can also
-greatly affect overall performance.
+behind a frontend. Nearly all articles and discussions about performance are
+usually focused on the frontend. Now, while that isn't wrong as most of the work
+is usually on the frontend, the server that powers a frontend can also greatly
+affect overall performance.
 
-I mean, sure, you could have a pretty fast front-end but if your server fails to
-respond on time, the front-end never even makes it. So, what do I mean? Some
+I mean, sure, you could have a pretty fast frontend but if your server fails to
+respond on time, the frontend never even makes it. So, what do I mean? Some
 servers have very high [TTFB](https://web.dev/time-to-first-byte) (Time to First
 Byte) which is the time it takes for the client get the first byte of response
 data from a server after an HTTP request, and so if that server's hardware (CPU,

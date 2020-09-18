@@ -4,7 +4,7 @@ export default {
       name: 'Shopify',
       period: 'May 2020 - Present',
       role: 'Senior UX Developer',
-      intro: `Shaping the future of commerce and entrepreneurship – building and advocating for inclusive and thoughtful experiences for all our merchants across the globe.`,
+      intro: `Shaping the future of commerce and entrepreneurship – building and advocating for inclusive and thoughtful experiences for over a million merchants across the globe.`,
     },
     {
       name: 'hellotax',
