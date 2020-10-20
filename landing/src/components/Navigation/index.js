@@ -7,7 +7,7 @@ import { NAVIGATION_BULLET, CURRENT_SECTION, SECTION_MAP } from '@/constants'
 export default Vue.component('Navigation', {
   render() {
     return (
-      <StyledNavigation role="navigation" aria-label="Main navigation.">
+      <StyledNavigation aria-label="Main navigation.">
         <ul ref="list">
           <Bullet name="une" ordinal="first" />
           <Bullet name="deux" ordinal="second" />

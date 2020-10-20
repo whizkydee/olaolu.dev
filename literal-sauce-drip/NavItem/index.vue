@@ -5,7 +5,7 @@
       :class="className"
       @click="handleClick"
       v-bind="anchorAttrs"
-      :aria-label="computedLabel"
+      :aria-label="ariaLabel"
       :aria-current="ariaCurrent"
       :target="external && '_blank'"
       :rel="external && 'noreferrer noopener'"
@@ -19,19 +19,6 @@
 import { isObject, isMacintosh, isWindows } from '@mrolaolu/helpers'
 
 export default {
-  computed: {
-    computedLabel() {
-      const { ariaLabel } = this
-
-      if (this.external) {
-        return ariaLabel && ariaLabel.length > 1
-          ? ariaLabel + ', opens in a new tab.'
-          : 'Opens in a new tab.'
-      }
-
-      return ariaLabel
-    },
-  },
   methods: {
     isCmdOrCtrlKey(event) {
       const { metaKey, ctrlKey } = event

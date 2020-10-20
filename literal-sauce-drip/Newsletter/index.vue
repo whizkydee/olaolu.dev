@@ -1,5 +1,5 @@
 <template>
-  <StyledNewsletter id="newsletter" role="complementary">
+  <StyledNewsletter id="newsletter">
     <form
       method="post"
       rel="noopener"
@@ -31,7 +31,7 @@
 import { media } from '../media-helpers'
 import styled from 'vue-styled-components'
 
-const StyledNewsletter = styled.div`
+const StyledNewsletter = styled.aside`
   margin-top: 4rem;
   padding: var(--space);
   background-color: #fff;

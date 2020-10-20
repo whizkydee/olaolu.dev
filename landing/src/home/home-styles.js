@@ -35,11 +35,11 @@ const StyledHomepage = injectGlobal`
 
     ${media.minWidth('1601px')`
       /* max font-size more or less */
-      font-size: 16.2px;
+      font-size: 1.013rem;
     `}
 
     ${media.maxWidth('medium')`
-      font-size: 9px;
+      font-size: 0.562rem;
     `}
 
     &${`.${TABBING_CLASSNAME}`} {
@@ -96,7 +96,7 @@ const StyledHomepage = injectGlobal`
 
 
   ${media.maxWidth('portrait')`
-    header[role='banner'] {
+    #site-header {
       font-size: 1.2rem;
 
       .menu-toggle {
