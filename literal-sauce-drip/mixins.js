@@ -60,11 +60,7 @@ export const SharedMixins = {
     },
 
     isShelf() {
-      return (
-        inBrowser() &&
-        location.href.startsWith(this.shelfURL) &&
-        location.pathname.length < 2
-      )
+      return !this.isHome && !this.isWork
     },
 
     isWork() {

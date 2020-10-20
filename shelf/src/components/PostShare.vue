@@ -3,7 +3,7 @@
     <a
       target="_blank"
       :href="fbShareURL"
-      aria-label="Share this post on Facebook, opens in a new tab."
+      aria-label="Share this post on Facebook."
       @click="$ga.event('Post', 'click', 'Facebook share button')"
     >
       <FacebookIcon />
@@ -12,7 +12,7 @@
     <a
       target="_blank"
       :href="twitterShareURL"
-      aria-label="Share this post on Twitter, opens in a new tab."
+      aria-label="Share this post on Twitter."
       @click="$ga.event('Post', 'click', 'Twitter share button')"
     >
       <TwitterIcon />

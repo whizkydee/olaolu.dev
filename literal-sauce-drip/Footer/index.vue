@@ -2,7 +2,6 @@
   <StyledFooter
     isFooter
     name="footer"
-    role="contentinfo"
     :shelfEnv="isShelfEnv"
     :aria-hidden="maybeHidden"
   >

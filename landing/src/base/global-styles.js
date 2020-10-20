@@ -4,7 +4,7 @@ import { injectGlobal } from 'vue-styled-components'
 
 const GlobalStyle = injectGlobal`
   html {
-    font-size: 14.4px;
+    font-size: 0.9rem;
   }
 
   body {

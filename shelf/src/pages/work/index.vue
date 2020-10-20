@@ -34,7 +34,7 @@
               rel="noopener noreferrer"
               :href="project.siteURL"
               class="project__info__siteName"
-              :aria-label="project.name + ' live demo, opens in a new tab.'"
+              :aria-label="project.name + ' live demo.'"
               >{{ project.siteName }}</a
             >
           </div>
@@ -153,7 +153,7 @@ export default {
         ...project,
         summaryLinkLabel: project.internalPage
           ? null
-          : project.name + ' live demo, opens in a new tab.',
+          : project.name + ' live demo.',
         siteURL: !!project.siteName ? 'https://' + project.siteName : null,
         path: '/work/' + hyphenateName(project.name),
       }))

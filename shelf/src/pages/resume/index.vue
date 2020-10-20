@@ -8,7 +8,7 @@
       `Work experience of Olaolu, expert frontend developer and UX Engineer with ${YOE} years of experience`
     "
   >
-    <aside class="meta" role="complementary">
+    <aside class="meta">
       <a
         target="_blank"
         class="no-marker linkedin"

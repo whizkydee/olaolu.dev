@@ -1,7 +1,6 @@
 <template>
   <StyledButtonLink
     :href="url"
-    role="button"
     class="sauce-button"
     :data-theme="lime && 'lime'"
     v-if="typeof url === 'string'"

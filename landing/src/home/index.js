@@ -106,7 +106,7 @@ const Homepage = Vue.component('Homepage', {
      * Configurable fn to scroll to a section - accepts a node
      * Default opts: `{ smooth: true, focus: true }`.
      * Toggle the values to disable/enable smooth scrolling
-     * and focusing the section on arrival respectfully.
+     * and focusing the section on arrival respectively.
      * @return {void}
      */
     goToSection(...args) {

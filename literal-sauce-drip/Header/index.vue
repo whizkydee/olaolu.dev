@@ -1,6 +1,5 @@
 <template>
   <StyledHeader
-    role="banner"
     id="site-header"
     :env="isHome ? 'home' : 'shelf'"
     :noMenuShadow="noMenuShadow"
