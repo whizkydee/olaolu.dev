@@ -29,3 +29,7 @@ export function getShelfURL() {
 export function getLandingURL() {
   return isDev() ? 'http://localhost:' + LANDING_PORT : host
 }
+
+export function isMotionReduced() {
+  return matchMedia('(prefers-reduced-motion: reduce)').matches
+}

@@ -1,9 +1,9 @@
 import { getFirstFocusableNode } from '@mrolaolu/helpers'
 import { SECTION_SELECTOR, CURRENT_SECTION, NAVIGATION_ID } from './constants'
+import { isMotionReduced } from '@saucedrip/core/helpers'
 
 export * from '@saucedrip/core/helpers'
 
-const isMotionReduced = matchMedia('(prefers-reduced-motion: reduce)').matches
 export function goToSection(store, opts) {
   let { node: sectionNode, modifier, smooth = true, focus = true } = opts
 
@@ -59,7 +59,7 @@ export const [getSections] = [
 function smoothScroll(scrollTargetY, speed = 1000) {
   let currentTime = 0
   const scrollY = pageYOffset || document.documentElement.scrollTop
-  const derivedSpeed = isMotionReduced ? 2000 : speed
+  const derivedSpeed = isMotionReduced() ? speed * 3 : speed
 
   // min time .1, max time .8 seconds
   const time = Math.max(
