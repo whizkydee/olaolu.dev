@@ -9,7 +9,7 @@ export default {
     {
       name: 'hellotax',
       period: 'Mar - Nov 2019',
-      role: 'Principal Software Engineer (Contractor)',
+      role: 'Principal Frontend Engineer (Contractor)',
       intro: `I orchestrated and developed the frontend infrastructure, design and functionality for hellotax's new JavaScript-centric app powered by Vue and also managed a co-engineer.`,
       points: [
         'Crafted a scalable component library that enforced accessibility and fluency across the application.',
