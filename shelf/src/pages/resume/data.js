@@ -12,7 +12,7 @@ export default {
       role: 'Principal Software Engineer (Contractor)',
       intro: `I orchestrated and developed the frontend infrastructure, design and functionality for hellotax's new JavaScript-centric app powered by Vue and also managed a co-engineer.`,
       points: [
-        'Crafted a 100% custom scalable component library to enforce accessibility and fluency across the application.',
+        'Crafted a scalable component library that enforced accessibility and fluency across the application.',
         'Built a multi-role user authentication system from the ground up with JavaScript.',
         'Implemented a client-side localization system for the entire app.',
         'Built a client-side multilingual routing system with solid navigation guards.',
