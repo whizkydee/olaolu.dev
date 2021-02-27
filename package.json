@@ -12,6 +12,7 @@
   "author": "Olaolu Olawuyi <mrolaolu@gmail.com> (https://olaolu.dev)",
   "scripts": {
     "flush": "del dist landing/dist shelf/dist",
+    "install": "yarn --cwd ./landing install && yarn --cwd ./shelf install",
     "serve:shelf": "yarn --cwd ./shelf develop",
     "serve:landing": "yarn --cwd ./landing serve",
     "serve": "yarn flush && node -r esm scripts/dev.js",
