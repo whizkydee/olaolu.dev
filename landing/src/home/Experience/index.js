@@ -33,10 +33,10 @@ const Experience = Vue.component('Experience', {
             </p>
 
             <p slot="text">
-              Before now, I was Principal Frontend Frontend Engineer at
-              hellotax, where I worked on a suite of tools and services tailored
-              at providing fast, automated VAT Registration / filings &amp;
-              Returns solutions for multi-channel sellers across Europe.
+              Before now, I was Principal Frontend Engineer at hellotax, where I
+              worked on a suite of tools and services tailored at providing
+              fast, automated VAT Registration / filings &amp; Returns solutions
+              for multi-channel sellers across Europe.
             </p>
 
             <p slot="text">
