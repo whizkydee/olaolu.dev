@@ -56,7 +56,7 @@ const Experience = Vue.component('Experience', {
                 I'm now available for contracts and remote full-time roles. Want
                 us to work together? You should{' '}
                 <a
-                  href={`mailto:hello@olaolu.dev?subject=${encodeURI(
+                  href={`mailto:hello@olaolu.dev?subject=${encodeURIComponent(
                     "💡Let's Work Together on Project X"
                   )}`}
                 >

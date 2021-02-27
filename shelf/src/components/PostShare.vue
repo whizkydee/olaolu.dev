@@ -38,14 +38,14 @@ export default {
 
     fbShareURL() {
       const { title } = this.$page.post
-      return `https://facebook.com/sharer/sharer.php?u=${encodeURI(
+      return `https://facebook.com/sharer/sharer.php?u=${encodeURIComponent(
         `${this.shareableURL}&quote=${title}`
       )}`
     },
 
     twitterShareURL() {
       const { title } = this.$page.post
-      return `https://twitter.com/intent/tweet?${encodeURI(
+      return `https://twitter.com/intent/tweet?${encodeURIComponent(
         `url=${this.shareableURL}&via=mrolaolu&text=${title}`
       )}`
     },
