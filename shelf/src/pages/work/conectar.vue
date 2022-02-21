@@ -37,7 +37,7 @@
       the front-end of major apps from the ground up like the messaging system
       which was based off of the API from our Rails backend. It was quite
       challenging integrating all these features while keeping an eye out for
-      performance and usuability. There were back-and-forths but eventually it
+      performance and usability. There were back-and-forths but eventually it
       was stable and had a bunch of the core features of Facebook Messenger
       which was really beautiful.
     </p>
