@@ -14,25 +14,34 @@ export default async () => {
     await fs.mkdir(rootDist, { recursive: true })
 
     // Move files from the homepage dist directory to the root dist directory
-    for (let file of distFiles.landing) {
-      await moveFile(path.join(dist.landing, file), path.join(rootDist, file))
-    }
+    await Promise.all(
+      distFiles.landing.map(file => {
+        return moveFile(
+          path.join(dist.landing, file),
+          path.join(rootDist, file)
+        )
+      })
+    )
+
     log(
       `✅ Success! All files in /landing/dist have been moved.
    Proceeding to shelf dist files...`
     )
 
     // Move files from the shelf dist directory to the root dist directory
-    for (let file of distFiles.shelf) {
-      await moveFile(
-        path.join(dist.shelf, file),
-        path.join(
-          rootDist,
-          excludeFromShelfDir.includes(file) ? '/' : '/shelf/',
-          file
+    await Promise.all(
+      distFiles.shelf.map(file => {
+        const subDirectory = excludeFromShelfDir.includes(file)
+          ? '/'
+          : '/shelf/'
+
+        return moveFile(
+          path.join(dist.shelf, file),
+          path.join(rootDist, subDirectory, file)
         )
-      )
-    }
+      })
+    )
+
     log(
       `✨ All done! Both dist directories have been merged into the root dist directory.`
     )

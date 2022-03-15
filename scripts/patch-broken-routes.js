@@ -20,22 +20,29 @@ export default async () => {
 
     // Search for occurences of "/shelf/(work|resume|work-images)"
     // in html files then strip off "/shelf" and update the file.
-    for (const file of htmlFiles) {
-      await fs.access(file, fs.F_OK).then(async () => {
-        const fileContent = await fs.readFile(file, { encoding: 'utf8' })
+    await Promise.all(
+      htmlFiles.map(file => {
+        return fs.access(file, fs.F_OK).then(async () => {
+          const fileContent = await fs.readFile(file, { encoding: 'utf8' })
 
-        if (typeof fileContent != 'string' || !routesToFixRE.test(fileContent))
-          return
-        const result = fileContent.replace(routesToFixRE, (_, p1) => `/${p1}`)
+          if (
+            typeof fileContent != 'string' ||
+            !routesToFixRE.test(fileContent)
+          ) {
+            return
+          }
+          const result = fileContent.replace(routesToFixRE, (_, p1) => `/${p1}`)
 
-        // Perform a write op on the file with the updated content.
-        await fs.writeFile(file, result)
+          // Perform a write op on the file with the updated content.
+          await fs.writeFile(file, result)
+        })
       })
-    }
+    )
 
     log(
-      `✅ Finished patching broken routes in the shelf environment.
-   Individual builds successful... Proceeding to combined build...`
+      '✅ Finished patching broken routes in the shelf environment.' +
+        '\n' +
+        'Individual builds successful... Proceeding to combined build...'
     )
   })
 
