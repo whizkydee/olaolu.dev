@@ -3,8 +3,19 @@ export default {
     {
       name: 'Shopify',
       period: 'May 2020 - Present',
-      role: 'Senior UX Developer',
+      role: 'Senior Frontend Engineer',
       intro: `Shaping the future of commerce and entrepreneurship – building and advocating for inclusive and thoughtful experiences for over a million merchants across the globe.`,
+      points: [
+        'Pioneering initiatives around the future of onboarding, signup and developing technical vision for them',
+        'Collaborating with UX designers and researchers to inform the direction of products we craft',
+        'First-hand involvement in early-stage product and UX thinking and rapid prototyping',
+        'Conducting and monitoring several strategic experiments, refining experiences based on resulting metrics and learnings',
+        'Participating and incorporating learnings from real merchant interviews and research sessions',
+        'Identifying gaps around the org-wide frontend infrastructure, drafting proposals and implementing solutions',
+        'Mentoring engineers within and outside my team on best practices, performance and advanced patterns',
+        'Providing guidance around product accessibility and inclusivity across the org',
+        'Built an OAuth 2.0 compliant client-side library for our Identity provider across Shopify',
+      ],
     },
     {
       name: 'hellotax',
@@ -28,9 +39,9 @@ export default {
       intro:
         'I worked on a couple of projects for organizations and individuals as a frontend engineering contractor.',
       points: [
-        'Built frontend applications for our several clients. Most especially JavaScript and React applications.',
+        'Built frontend applications for multiple clients. Most especially JavaScript and React applications.',
         "Rebuilt the company's marketing site initially written in HTML/CSS using React and Gatsby.",
-        'Crafted, audited and improved design, accessibility and overall experience of several products.',
+        'Crafted, audited and improved design, accessibility and overall experience of products.',
         'Enforced healthy codebases, coding style and standards.',
         'Completed projects on time and delivered to clients accordingly.',
         'Communicated effectively with project managers and the team.',
@@ -60,7 +71,7 @@ export default {
         'Built a multi-feature audio and video call application powered by React.',
         'Introduced and enforced a consistent coding style across the application.',
         'Eliminated dead code which saved us about 20% the size of every page bundle.',
-        'Eliminated Bootstrap and several other CSS libraries completely from the application, and replaced them with custom styles.',
+        'Eliminated Bootstrap and other CSS libraries completely from the application, and replaced them with custom styles.',
         'Reduced bundle size from 5MB to a few kilobytes.',
         'Did a major re-engineering of the development workflow which led to over 70% increase in development compile speed.',
         'Built an appointment scheduling system from the ground up with React.',
