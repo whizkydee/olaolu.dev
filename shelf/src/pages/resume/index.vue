@@ -104,8 +104,8 @@
 
             <p>{{ company.intro }}</p>
 
-            <ul class="points">
-              <li v-for="(point, index) in company.points" :key="index">
+            <ul class="points" ref="points">
+              <li v-for="(point, index) in company.points" :key="index" ref="point">
                 {{ point }}
               </li>
             </ul>
@@ -197,15 +197,32 @@
 import data from './data'
 import StyledResume from './styles'
 import { createMeta } from '~/helpers'
+import {PDF_INFO} from '../../../../config'
 import { MailIcon, DownloadIcon, LinkedInIcon } from '@saucedrip/core/icons'
 
 export default {
   name: 'Résumé',
   data: () => ({ data }),
 
+  mounted() {
+    // if (this.isPDF) {
+      this.organizePages()
+    // }
+  },
+
+  methods: {
+    organizePages() {
+      const computedPdfWidth = PDF_INFO.WIDTH - (PDF_INFO.MARGIN * 2)
+      const computedPdfHeight = PDF_INFO.MAX_HEIGHT - (PDF_INFO.MARGIN * 2)
+
+    Array.from(this.$refs.point).find(elem => elem.innerText.toLowerCase().includes('reduced bundle size')).style.marginTop = '185px'
+      // console.log({computedPdfWidth,computedPdfHeight})
+    }
+  },
+
   computed: {
     isPDF() {
-      return this.$route.query.pdf === 'true'
+      return navigator.userAgent.includes('HeadlessChrome')
     },
 
     YOE() {

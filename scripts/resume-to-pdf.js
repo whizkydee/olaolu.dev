@@ -1,15 +1,15 @@
 import puppeteer from 'puppeteer'
-import { SHELF_PORT } from '../config'
 import kill from 'tree-kill'
 import { log } from './util'
 import { spawn } from 'child_process'
+import { SHELF_PORT, PDF_INFO } from '../config'
 
 let documentGenerated = false
 async function main() {
-  try {
-    const pdfURL = `http://localhost:${SHELF_PORT}/resume?pdf=true`
-    const pdfFilePath = 'landing/public/Resume-Olaolu-Olawuyi.pdf'
+  const pdfURL = `http://localhost:${SHELF_PORT}/resume?pdf=true`
+  const pdfFilePath = 'landing/public/Resume-Olaolu-Olawuyi.pdf'
 
+  try {
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
 
@@ -26,11 +26,15 @@ async function main() {
 
     await page.pdf({
       printBackground: true,
-      pageRanges: '1',
-      width: '1230px',
-      height: Math.min(height, 3090),
+      width: PDF_INFO.WIDTH,
+      height: Math.min(height, PDF_INFO.MAX_HEIGHT),
       path: pdfFilePath,
-      margin: { top: '85px', right: '85px', bottom: '85px', left: '85px' },
+      margin: {
+        top: PDF_INFO.MARGIN,
+        right: PDF_INFO.MARGIN,
+        bottom: PDF_INFO.MARGIN,
+        left: PDF_INFO.MARGIN,
+      },
     })
 
     log('📄 Done generating the resume PDF.')
@@ -54,11 +58,10 @@ async function main() {
       })
 
       shelfServeProc.stdout.on('data', async output => {
-        if (
-          !output.toString().includes('Site running at') ||
-          documentGenerated
-        )
+        const shelfServerRunning = output.toString().includes('Site running at')
+        if (!shelfServerRunning || documentGenerated) {
           return
+        }
 
         log('Shelf development server is now running')
 

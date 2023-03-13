@@ -115,6 +115,7 @@ const StyledPitchSlate = styled(Section)`
     height: 738px;
     position: absolute;
     margin-left: -6.2em;
+    pointer-events: none;
     top: ${({ theme }) => theme.header.height};
 
     @media (min-aspect-ratio: 1440/900) and (min-height: 738px)  {
