@@ -35,6 +35,8 @@ export default function(Vue, { router, head, isClient }) {
   // Here, we override the scroll behaviour with one that allows
   // for better a11y with SRs by manipulating the focus target
   router.options.scrollBehavior = function(to, from, saved) {
+    if (to.name === 'home') return
+
     const mainElem = getMainElem()
     const announcer = getAnnouncer()
 
