@@ -1,14 +1,12 @@
 import puppeteer from 'puppeteer'
-import { SHELF_PORT } from '../config'
 import kill from 'tree-kill'
-import { log } from './util'
 import { spawn } from 'child_process'
 
 let documentGenerated = false
 async function main() {
   try {
-    const pdfURL = `http://localhost:${SHELF_PORT}/resume?pdf=true`
-    const pdfFilePath = 'landing/public/Resume-Olaolu-Olawuyi.pdf'
+    const pdfURL = `http://localhost:8081/resume?pdf=true`
+    const pdfFilePath = 'static/Resume-Olaolu-Olawuyi.pdf'
 
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
@@ -33,7 +31,7 @@ async function main() {
       margin: { top: '85px', right: '85px', bottom: '85px', left: '85px' },
     })
 
-    log('📄 Done generating the resume PDF.')
+    console.log('📄 Done generating the resume PDF.')
     await browser.close()
   } catch (e) {
     const shelfServerNotRunning = e.message.startsWith(
@@ -46,7 +44,7 @@ async function main() {
     if (shelfServerNotRunning) {
       const shelfServeProc = spawn('yarn', ['serve:shelf'])
 
-      log(`Starting the shelf server since it wasn't running already..`)
+      console.log(`Starting the shelf server since it wasn't running already..`)
 
       // Make sure to print errors from the shelf serve process.
       shelfServeProc.stderr.on('error', err => {
@@ -54,16 +52,15 @@ async function main() {
       })
 
       shelfServeProc.stdout.on('data', async output => {
-        if (
-          !output.toString().includes('Site running at') ||
-          documentGenerated
-        )
+        const isServerRunning = output.toString().includes('Site running at')
+        if (documentGenerated || !isServerRunning) {
           return
+        }
 
-        log('Shelf development server is now running')
+        console.log('Shelf development server is now running')
 
         // Attempt to re-run the resume PDF generation script.
-        log('Re-running the PDF generation script...')
+        console.log('Re-running the PDF generation script...')
         await main()
 
         documentGenerated = true
