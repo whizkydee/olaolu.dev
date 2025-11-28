@@ -141,7 +141,7 @@ export default {
   mounted() {
     document.addEventListener('keydown', this.maybeScrollCarousel)
   },
-  beforeDestroy() {
+  beforeUnmount() {
     document.removeEventListener('keydown', this.maybeScrollCarousel)
   },
   methods: {
@@ -166,8 +166,8 @@ export default {
         event.key === 'ArrowRight' || event.key === 'Right'
           ? carousel.getNextPage()
           : event.key === 'ArrowLeft' || event.key === 'Left'
-          ? carousel.getPreviousPage()
-          : carousel.currentPage
+            ? carousel.getPreviousPage()
+            : carousel.currentPage
       )
     },
   },

@@ -50,7 +50,9 @@ const StyledCavalier = styled.article`
 
   p,
   h1 {
-    transition: transform 0.5s, opacity 0.2s;
+    transition:
+      transform 0.5s,
+      opacity 0.2s;
   }
 
   h1 {

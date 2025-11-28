@@ -1,9 +1,5 @@
 <template>
-  <Layout
-    id="contact"
-    title="Contact me"
-    description="Send me a message"
-  >
+  <Layout id="contact" title="Contact me" description="Send me a message">
     <StyledContact name="contact">
       <div class="inner-content">
         <Cavalier

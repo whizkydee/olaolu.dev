@@ -21,7 +21,7 @@ export default {
     document.addEventListener('visibilitychange', this.maybeRemoveTabbingId)
   },
 
-  beforeDestroy() {
+  beforeUnmount() {
     document.removeEventListener('mousedown', this.removeTabbingId)
     document.removeEventListener('keydown', this.maybeAddTabbingId)
     document.removeEventListener('visibilitychange', this.maybeRemoveTabbingId)

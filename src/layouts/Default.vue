@@ -50,7 +50,9 @@ export default {
     }
 
     if (this.DEV && typeof this.seoURLs[this.id] !== 'string') {
-      console.warn(`[Layout]: Expected to find an entry for page with id "${this.id}" in "seoURLs".`)
+      console.warn(
+        `[Layout]: Expected to find an entry for page with id "${this.id}" in "seoURLs".`
+      )
     }
   },
 

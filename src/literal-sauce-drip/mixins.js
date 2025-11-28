@@ -88,7 +88,7 @@ export const SharedMixins = {
         {
           key: 'isMaxHeight',
           // prettier-ignore
-          query: `(min-width: ${px(breakpoints['>medium'])}) and (max-height: 1199px)`
+          query: `(min-width: ${px(breakpoints['>medium'])}) and (max-height: 1199px)`,
         },
       ].forEach(({ key, query }) => {
         let mql = window.matchMedia(query)

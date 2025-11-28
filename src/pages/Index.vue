@@ -8,17 +8,18 @@
       <h1>Hey, I'm Olaolu</h1>
 
       <p>
-        A Staff Software Engineer with nearly 15 years of experience building scalable,
-        high-performance web platforms. My work spans UI engineering, tooling, and
-        large-scale architecture, which has shaped how I think about building fast and
-        resilient systems.
+        A Staff Software Engineer with nearly 15 years of experience building
+        scalable, high-performance web platforms. My work spans UI engineering,
+        tooling, and large-scale architecture, which has shaped how I think
+        about building fast and resilient systems.
       </p>
 
       <p>
-        Currently, I work at Shopify, where I focus on web foundations — tooling,
-        performance, and scalable systems. I also help drive high-impact initiatives that improve
-        conversion, deliver millions in incremental revenue, and influence engineering teams on
-        technical investments that create meaningful business impact.
+        Currently, I work at Shopify, where I focus on web foundations —
+        tooling, performance, and scalable systems. I also help drive
+        high-impact initiatives that improve conversion, deliver millions in
+        incremental revenue, and influence engineering teams on technical
+        investments that create meaningful business impact.
       </p>
 
       <p>
@@ -28,19 +29,20 @@
       </p>
 
       <p>
-        Earlier in my career, I worked independently as a software consultant, building
-        custom software solutions for companies and organizations across a wide range
-        of industries.
+        Earlier in my career, I worked independently as a software consultant,
+        building custom software solutions for companies and organizations
+        across a wide range of industries.
       </p>
 
       <p>
-        If you have a question or proposal, or just want to say hello, feel free to
+        If you have a question or proposal, or just want to say hello, feel free
+        to
         <g-link to="/contact">contact me</g-link>.
       </p>
 
       <p v-if="hireable">
-        I'm now available for contracts and remote full-time roles. Want
-        us to work together? You should
+        I'm now available for contracts and remote full-time roles. Want us to
+        work together? You should
         <a
           :href="`mailto:hello@olaolu.dev?subject=${encodeURIComponent(
             `💡Let's Work Together on Project X`

@@ -7,7 +7,9 @@
       action="https://gmail.us20.list-manage.com/subscribe/post?u=04ac543f98469334c684d8753&id=df629ce71c"
     >
       <Cavalier>
-        <h2 slot="heading">Join the newsletter</h2>
+        <template v-slot:heading>
+          <h2>Join the newsletter</h2>
+        </template>
       </Cavalier>
 
       <div class="form-inner">
