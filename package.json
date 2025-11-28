@@ -10,6 +10,10 @@
   "repository": "https://github.com/whizkydee/olaolu.dev",
   "bugs": "https://github.com/whizkydee/olaolu.dev/issues",
   "author": "Olaolu Olawuyi <mrolaolu@gmail.com> (https://olaolu.dev)",
+  "engines": {
+    "node": ">=12.22.12",
+    "yarn": ">=1.22.18"
+  },
   "scripts": {
     "flush": "del dist landing/dist shelf/dist",
     "install": "yarn --cwd ./landing install && yarn --cwd ./shelf install",
@@ -52,8 +56,5 @@
     "vue-styled-components": "1.4.5",
     "vue-template-compiler": "2.6.11",
     "vuex": "^3.1.1"
-  },
-  "engines": {
-    "node": ">=12.0.0"
   }
 }

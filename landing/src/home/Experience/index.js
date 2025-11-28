@@ -26,30 +26,25 @@ const Experience = Vue.component('Experience', {
             </p>
 
             <p slot="text">
-              Currently, I work at Shopify as a Senior UX Developer and
-              Accessibility advocate crafting thoughtful and inclusive
-              experiences that adhere to web standards for over a million
-              merchants across the world.
+              Currently, I work at Shopify as a Staff Engineer, primarily focused on
+              web foundations &ndash; tooling, performance, and scalable systems, but also
+              driving initiatives that improve conversion and deliver millions in 
+              incremental gross profit, and influencing teams and stakeholders across 
+              engineering on high-leverage technical investments that drive business impact.
             </p>
 
             <p slot="text">
-              Before now, I was Principal Frontend Engineer at hellotax, where I
-              worked on a suite of tools and services tailored at providing
-              fast, automated VAT Registration / filings &amp; Returns solutions
-              for multi-channel sellers across Europe.
+              Before now, I was a Lead Frontend Engineer at hellotax, where I worked 
+              on VAT compliance automation software tailored towards multi-channel 
+              merchants in Europe.
             </p>
 
             <p slot="text">
-              Prior to hellotax, I was Senior frontend engineering contractor
-              with Pixel2HTML, building JavaScript applications and interfaces
-              for orgs and individuals.
+              Before hellotax, I worked independently as a software consultant, building
+              custom software solutions for companies and organizations across multiple 
+              industries.
             </p>
 
-            <p slot="text">
-              I once also led the frontend team at a Russian startup, Conectar
-              through building multiple React applications into a single robust
-              learning platform.
-            </p>
 
             {this.hireable && (
               <p slot="text">

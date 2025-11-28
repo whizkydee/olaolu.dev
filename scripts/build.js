@@ -1,7 +1,7 @@
 import { error } from './util'
 import runAll from 'npm-run-all'
-import mergeDistDirectories from './merge-dists'
-import patchBrokenRoutes from './patch-broken-routes'
+import { mergeDistDirectories } from './merge-dists'
+import { patchBrokenRoutes } from './patch-broken-routes'
 
 async function main() {
   try {

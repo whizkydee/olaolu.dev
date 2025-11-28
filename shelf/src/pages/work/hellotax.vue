@@ -8,9 +8,8 @@
     tech="JavaScript, Vue.js, Styled Components, Vuex"
   >
     <p>
-      hellotax is a suite of tools and services tailored at providing robust and
-      fast VAT Registration &amp; Returns solutions for all kinds of online
-      traders across Europe.
+      hellotax is a VAT compliance automation software tailored towards multi-channel
+      merchants across Europe.
     </p>
 
     <p>

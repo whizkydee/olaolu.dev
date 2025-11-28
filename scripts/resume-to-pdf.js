@@ -54,11 +54,10 @@ async function main() {
       })
 
       shelfServeProc.stdout.on('data', async output => {
-        if (
-          !output.toString().includes('Site running at') ||
-          documentGenerated
-        )
+        const isServerRunning = output.toString().includes('Site running at');
+        if (documentGenerated || !isServerRunning) {
           return
+        }
 
         log('Shelf development server is now running')
 

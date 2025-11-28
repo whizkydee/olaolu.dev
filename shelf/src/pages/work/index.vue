@@ -6,7 +6,7 @@
   >
     <PageHeader
       title="work"
-      desc="Selected projects I've worked on in the past."
+      desc="Selected work I've taken on in the past."
     />
 
     <section class="work-container">

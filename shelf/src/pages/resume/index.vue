@@ -42,7 +42,7 @@
     <div id="resume-outlines">
       <section>
         <a href="https://olaolu.dev" aria-label="olaolu dot dev">olaolu.dev</a>
-        <span>Lagos, Nigeria</span>
+        <span>London, England</span>
         <a
           href="mailto:hello@olaolu.dev"
           @click="$ga.event('Resume', 'click', 'Mail Link in Sidebar')"
@@ -73,12 +73,11 @@
 
     <article>
       <header id="profile-summary">
-        <h1 id="name">Olaolu <br />Olawuyi</h1>
-        <h2>Expert Frontend developer and UX Engineer.</h2>
+        <h1 id="name">Olaoluwakitan <br />Kayode-Olawuyi</h1>
+        <h2>Senior Software Engineer.</h2>
         <p>
           Engineer valued for driving high-performance accessible web
-          experiences. I design quality, user-friendly and scalable products
-          regardless of stack.
+          experiences. I design quality, user-friendly and scalable software products.
         </p>
       </header>
 
