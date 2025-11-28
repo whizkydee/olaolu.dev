@@ -25,7 +25,7 @@ yarn-error.log*
 .cache
 .DS_Store
 dist
-*/src/.temp
+src/.temp
 
 # Local Netlify folder
 .netlify
