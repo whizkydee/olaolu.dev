@@ -4,10 +4,7 @@
     title="Work - Olaolu's shelf"
     description="Selected work including open source projects, experimentals and front-end apps by Olaolu"
   >
-    <PageHeader
-      title="work"
-      desc="Selected work I've taken on in the past."
-    />
+    <PageHeader title="work" desc="Selected work I've taken on in the past." />
 
     <section class="work-container">
       <ul id="projects" aria-label="Projects.">
@@ -23,7 +20,9 @@
 
           <figure class="project__logo">
             <span v-html="project.logo" aria-hidden="true" />
-            <figcaption class="visuallyhidden">{{ project.name }} logo.</figcaption>
+            <figcaption class="visuallyhidden">
+              {{ project.name }} logo.
+            </figcaption>
           </figure>
 
           <div class="project__info">

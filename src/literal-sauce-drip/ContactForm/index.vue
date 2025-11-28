@@ -38,9 +38,7 @@
       />
     </div>
 
-    <Button type="submit" id="submit-button">
-      Shoot
-    </Button>
+    <Button type="submit" id="submit-button"> Shoot </Button>
   </StyledContactForm>
 </template>
 

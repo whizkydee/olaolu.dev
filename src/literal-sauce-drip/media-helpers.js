@@ -24,28 +24,34 @@ export function computeValue(value) {
   return typeof value === 'number'
     ? toPx(value)
     : value in breakpoints
-    ? toPx(breakpoints[value])
-    : value
+      ? toPx(breakpoints[value])
+      : value
 }
 
-export const minWidth = value => (...body) => css`
-  @media (min-width: ${computeValue(value)}) {
-    ${css(...(body || ''))}
-  }
-`
+export const minWidth =
+  value =>
+  (...body) => css`
+    @media (min-width: ${computeValue(value)}) {
+      ${css(...(body || ''))}
+    }
+  `
 
-export const maxWidth = value => (...body) => css`
-  @media (max-width: ${computeValue(value)}) {
-    ${css(...(body || ''))}
-  }
-`
+export const maxWidth =
+  value =>
+  (...body) => css`
+    @media (max-width: ${computeValue(value)}) {
+      ${css(...(body || ''))}
+    }
+  `
 
-export const between = (min, max) => (...body) => css`
-  @media (min-width: ${computeValue(min)}) and (max-width: ${computeValue(
-      max
-    )}) {
-    ${css(...(body || ''))}
-  }
-`
+export const between =
+  (min, max) =>
+  (...body) => css`
+    @media (min-width: ${computeValue(min)}) and (max-width: ${computeValue(
+        max
+      )}) {
+      ${css(...(body || ''))}
+    }
+  `
 
 export const media = { between, maxWidth, minWidth, breakpoints }

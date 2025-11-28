@@ -79,7 +79,9 @@ const StyledHeader = css`
   &[data-compact='false'] {
     .logo_svg__lu,
     .logo_svg__ola {
-      transition: opacity 0.3s, transform 0.5s 100ms;
+      transition:
+        opacity 0.3s,
+        transform 0.5s 100ms;
     }
   }
 

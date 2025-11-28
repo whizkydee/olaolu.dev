@@ -60,7 +60,9 @@ export default {
 
   a {
     position: relative;
-    transition: transform 0.2s, filter 0.2s;
+    transition:
+      transform 0.2s,
+      filter 0.2s;
 
     &:hover {
       transform: scale(1.5);

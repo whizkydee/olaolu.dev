@@ -51,7 +51,7 @@ export default {
     document.addEventListener('mouseup', this.maybeCloseMenu)
   },
 
-  beforeDestroy() {
+  beforeUnmount() {
     document.body.classList.remove('no-scroll')
     document.removeEventListener('keyup', this.maybeCloseMenu)
     document.removeEventListener('mouseup', this.maybeCloseMenu)
@@ -90,7 +90,6 @@ export default {
       if (this.isHome && !this.menuOpen) {
         // const footer = this.$root.$el.querySelector('[data-section="footer]')
         // const container = currentSection === 'footer' ? footer : mainElem
-
         // container && container.focus()
       }
     },

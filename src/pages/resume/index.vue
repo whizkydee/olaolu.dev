@@ -4,9 +4,7 @@
     id="resume"
     :isPDF="isPDF"
     title="Olaolu's Résumé"
-    :description="
-      `Work experience of Olaolu, expert web engineer with ${YOE} years of experience`
-    "
+    :description="`Work experience of Olaolu, expert web engineer with ${YOE} years of experience`"
   >
     <aside class="meta">
       <a
@@ -76,8 +74,8 @@
         <h1 id="name">Olaolu <br />Olawuyi</h1>
         <h2>Expert Software Engineer.</h2>
         <p>
-          Focused on building high-performance, accessible software
-          and scalable systems that drive real business impact.
+          Focused on building high-performance, accessible software and scalable
+          systems that drive real business impact.
         </p>
       </header>
 
