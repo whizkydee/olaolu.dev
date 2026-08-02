@@ -1,17 +1,33 @@
 ## Olaolu's website
 
-This repo is home for the codebase that powers my entire website and shelf of
-articles.
+This repository powers [olaolu.dev](https://olaolu.dev): the portfolio, work
+archive, résumé, contact page, and shelf of articles.
 
-## Project setup
+The active site is a React application built with Next.js and TypeScript. The
+previous Vue/Gridsome implementation is retained as a read-only design and
+content reference while the migration settles.
 
-- Run `yarn serve` for development: Simultaneously kicks off
-  `vue-cli-service serve` for the homepage Vue app and `gridsome develop` for
-  the shelf app.
+## Local development
 
-- Run `yarn build` for production: Simultaneously runs `vue-cli-service build`
-  for the homepage Vue app and `gridsome build` for the shelf app, and then
-  merges the two `dist` directories into a root `dist`.
+Use Node.js 20.9 or newer and Yarn 1.22.
+
+```sh
+yarn install
+yarn dev
+```
+
+The site is available at `http://localhost:3000`.
+
+## Validation and production
+
+```sh
+yarn lint
+yarn build
+yarn start
+```
+
+Article source files remain in `content/posts`. Static assets used by the
+Next.js application live in `public`.
 
 ## License
 

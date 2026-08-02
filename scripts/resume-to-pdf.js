@@ -1,26 +1,35 @@
+import { spawn } from 'node:child_process'
 import puppeteer from 'puppeteer'
-import kill from 'tree-kill'
-import { spawn } from 'child_process'
 
-let documentGenerated = false
-async function main() {
+const resumeUrl = 'http://localhost:3000/resume?pdf=true'
+const pdfFilePath = 'public/Resume-Olaolu-Olawuyi.pdf'
+
+async function serverIsReady() {
   try {
-    const pdfURL = `http://localhost:8081/resume?pdf=true`
-    const pdfFilePath = 'static/Resume-Olaolu-Olawuyi.pdf'
+    const response = await fetch(resumeUrl)
+    return response.ok
+  } catch {
+    return false
+  }
+}
 
-    const browser = await puppeteer.launch()
+async function waitForServer() {
+  for (let attempt = 0; attempt < 60; attempt += 1) {
+    if (await serverIsReady()) return
+    await new Promise(resolve => setTimeout(resolve, 500))
+  }
+
+  throw new Error('The Next.js development server did not become ready in time.')
+}
+
+async function generatePdf() {
+  const browser = await puppeteer.launch()
+
+  try {
     const page = await browser.newPage()
-
-    await page.setViewport({
-      width: 1680,
-      height: 971,
-      deviceScaleFactor: 1.5,
-    })
-
-    await page.goto(pdfURL, { waitUntil: 'networkidle2' })
-    const height = await page.evaluate(() =>
-      parseInt(getComputedStyle(document.body).height)
-    )
+    await page.setViewport({ width: 1680, height: 971, deviceScaleFactor: 1.5 })
+    await page.goto(resumeUrl, { waitUntil: 'networkidle2' })
+    const height = await page.evaluate(() => parseInt(getComputedStyle(document.body).height))
 
     await page.pdf({
       printBackground: true,
@@ -31,49 +40,28 @@ async function main() {
       margin: { top: '85px', right: '85px', bottom: '85px', left: '85px' },
     })
 
-    console.log('📄 Done generating the resume PDF.')
+    console.log(`Resume PDF written to ${pdfFilePath}`)
+  } finally {
     await browser.close()
-  } catch (e) {
-    const shelfServerNotRunning = e.message.startsWith(
-      'net::ERR_CONNECTION_REFUSED'
-    )
-
-    // Instead of breaking the entire build process when the shelf
-    // server is not running, automatically start it (the server)
-    // and re-run the PDF generation script. Kill the process after.
-    if (shelfServerNotRunning) {
-      const shelfServeProc = spawn('yarn', ['serve:shelf'])
-
-      console.log(`Starting the shelf server since it wasn't running already..`)
-
-      // Make sure to print errors from the shelf serve process.
-      shelfServeProc.stderr.on('error', err => {
-        process.stderr.write(err.toString())
-      })
-
-      shelfServeProc.stdout.on('data', async output => {
-        const isServerRunning = output.toString().includes('Site running at')
-        if (documentGenerated || !isServerRunning) {
-          return
-        }
-
-        console.log('Shelf development server is now running')
-
-        // Attempt to re-run the resume PDF generation script.
-        console.log('Re-running the PDF generation script...')
-        await main()
-
-        documentGenerated = true
-        // Kill the process once we're done.
-        kill(shelfServeProc.pid)
-      })
-
-      shelfServeProc.on('close', () => process.exit(0))
-    } else {
-      console.error(e)
-      process.exit(1)
-    }
   }
 }
 
-main()
+async function main() {
+  let server
+
+  if (!(await serverIsReady())) {
+    server = spawn('yarn', ['dev'], { stdio: 'inherit' })
+    await waitForServer()
+  }
+
+  try {
+    await generatePdf()
+  } finally {
+    server?.kill('SIGTERM')
+  }
+}
+
+main().catch(error => {
+  console.error(error)
+  process.exitCode = 1
+})

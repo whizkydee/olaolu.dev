@@ -1,57 +1,36 @@
 {
-  "name": "olaolu.dev-next",
+  "name": "olaolu.dev",
+  "version": "2.0.0",
   "private": true,
-  "workspaces": [
-    "src/literal-sauce-drip"
-  ],
   "engines": {
-    "node": ">=20.0.0",
+    "node": ">=20.9.0",
     "yarn": "^1.22.0"
   },
   "scripts": {
-    "build": "gridsome build",
-    "serve": "gridsome develop",
-    "explore": "gridsome explore",
-    "flush": "del dist",
+    "dev": "next dev",
+    "serve": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint src/app components lib --max-warnings=0",
     "build:resume": "node scripts/resume-to-pdf.js",
-    "predeploy": "yarn build",
     "deploy": "netlify deploy --prod"
   },
   "dependencies": {
-    "@gridsome/plugin-google-analytics": "^0.1.2",
-    "@gridsome/remark-prismjs": "^0.5.0",
-    "@gridsome/source-filesystem": "^0.6.2",
-    "@gridsome/transformer-remark": "^0.6.4",
-    "@mrolaolu/helpers": "^0.3.2",
-    "gridsome": "^0.7.0",
-    "vue": "2.6.11",
-    "vue-carousel": "^0.18.0",
-    "vue-styled-components": "^1.6.0"
+    "gray-matter": "^4.0.3",
+    "marked": "^17.0.0",
+    "next": "^16.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   },
   "devDependencies": {
-    "del-cli": "^7.0.0",
-    "eslint": "^9.39.1",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.4",
-    "eslint-plugin-vue": "^10.6.2",
-    "move-file": "^3.1.0",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "eslint": "^9.39.0",
+    "eslint-config-next": "^16.0.0",
     "netlify-cli": "^23.12.1",
-    "node-gyp": "^12.1.0",
     "prettier": "^3.7.1",
     "puppeteer": "^24.31.0",
-    "raw-loader": "^4.0.2",
-    "sass": "^1.94.2",
-    "sass-loader": "^10",
-    "svg-to-vue-component": "^0.3.8",
-    "tree-kill": "^1.2.2",
-    "vue-eslint-parser": "^10.2.0",
-    "vue-server-renderer": "2.6.11",
-    "vue-template-compiler": "2.6.11"
-  },
-  "resolutions": {
-    "sharp": "^0.34.5",
-    "vue": "2.6.11",
-    "vue-template-compiler": "2.6.11",
-    "vue-server-renderer": "2.6.11"
+    "typescript": "^5.9.0"
   }
 }

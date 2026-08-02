@@ -1,31 +1,14 @@
-import globals from 'globals'
-import pluginVue from 'eslint-plugin-vue'
-import prettierConfig from 'eslint-config-prettier'
+import { defineConfig, globalIgnores } from 'eslint/config'
+import nextVitals from 'eslint-config-next/core-web-vitals'
+import nextTypeScript from 'eslint-config-next/typescript'
 
-export default [
-  {
-    files: ['**/*.{js,mjs,cjs,vue}'],
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-        ...globals.node,
-        process: 'readonly',
-      },
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
-    },
-  },
-  ...pluginVue.configs['flat/essential'],
-  {
-    rules: {
-      'vue/multi-word-component-names': 'off',
-      'vue/no-reserved-component-names': 'off',
-      'no-console': 'off',
-      'no-debugger': 'off',
-    },
-  },
-  prettierConfig,
-]
+export default defineConfig([
+  ...nextVitals,
+  ...nextTypeScript,
+  globalIgnores([
+    '.next/**',
+    'dist/**',
+    'node_modules/**',
+    'legacy-gridsome/**',
+  ]),
+])
