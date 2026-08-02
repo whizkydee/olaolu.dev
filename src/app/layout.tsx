@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     default: 'Olaolu Olawuyi: Expert Web Engineer',
     template: '%s — Olaolu Olawuyi',
   },
-  description: 'Olaolu Olawuyi is an Expert Web Engineer with 15 years of experience in tooling, UI engineering and high-performance web architecture.',
+  description: 'Olaolu Olawuyi is an Expert Web Engineer with over 15 years of experience in tooling, UI engineering and high-performance web architecture.',
   icons: { icon: '/favicon.png' },
   openGraph: {
     type: 'website',

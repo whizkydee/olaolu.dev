@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: { absolute: 'Olaolu Olawuyi: Expert Web Engineer' },
-  description: 'Olaolu Olawuyi is an Expert Web Engineer with 15 years of experience in tooling, UI engineering and high-performance web architecture.',
+  description: 'Olaolu Olawuyi is an Expert Web Engineer with over 15 years of experience in tooling, UI engineering and high-performance web architecture.',
   alternates: { canonical: '/' },
 }
 
@@ -12,7 +12,7 @@ export default function HomePage() {
     <div className="home-content">
       <h1 className="home-eyebrow">Hey, I&apos;m Olaolu</h1>
       <p className="home-lead">
-        A Staff Software Engineer with nearly 15 years of experience{' '}
+        A Staff Software Engineer with over 15 years of experience{' '}
         <span>building scalable, high-performance web platforms.</span>
       </p>
       <div className="home-body">
