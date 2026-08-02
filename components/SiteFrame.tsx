@@ -6,6 +6,7 @@ import { SiteFooter } from './SiteFooter'
 import { SiteHeader } from './SiteHeader'
 
 function getRouteKind(pathname: string) {
+  if (pathname === '/') return 'home'
   if (pathname === '/resume') return 'resume'
   if (pathname === '/work') return 'work-index'
   if (pathname.startsWith('/work/')) return 'work-detail'
@@ -41,7 +42,9 @@ export function SiteFrame({ children }: { children: ReactNode }) {
 
   return (
     <>
-      <a id="skip-link" href="#main">Skip to content</a>
+      <a id="skip-link" href="#main">
+        Skip to content
+      </a>
       {!isResume && <SiteHeader key={pathname} pathname={pathname} />}
       <main id="main" tabIndex={-1} data-route-kind={routeKind}>
         {children}

@@ -326,8 +326,82 @@ h5 { font-size: 1.125em; }
 #main[data-route-kind='work-index'] { max-width: 1280px; }
 #main[data-route-kind='work-detail'] { max-width: 1400px; }
 #main[data-route-kind='resume'] { max-width: none; margin-top: 0; }
+#main[data-route-kind='home'] {
+  max-width: none;
+  margin-top: 0;
+  padding-right: clamp(3.5rem, 6.2vw, 8.5rem);
+  padding-left: clamp(3.5rem, 6.2vw, 8.5rem);
+}
 
-.home-content { text-align: left; }
+.home-content {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 3rem 0 4.5rem;
+  text-align: left;
+}
+
+.home-eyebrow {
+  margin: 0 0 2.45rem;
+  color: #66646e;
+  font-size: clamp(0.78rem, 1.1vw, 0.95rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.home-lead {
+  max-width: 1280px;
+  margin: 0 0 2.85rem;
+  color: #44434b;
+  font-size: clamp(1.5rem, 2.1vw, 1.9rem);
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: -0.045em;
+}
+
+.home-lead span { color: #5236e8; }
+
+.home-body {
+  max-width: 1260px;
+  color: #44434b;
+  font-size: clamp(0.8rem, 1.05vw, 0.95rem);
+  line-height: 1.45;
+  letter-spacing: -0.012em;
+}
+
+.home-body p { margin-bottom: 1.65rem; }
+
+.home-contact-copy { margin-bottom: 1.5rem; }
+
+.home-contact {
+  display: inline-flex;
+  gap: 0.35em;
+  align-items: center;
+  margin-top: 1rem;
+  padding-bottom: 0.3rem;
+  color: #5236e8;
+  border-bottom: 2px solid currentColor;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.home-contact svg {
+  width: 0.9em;
+  height: 0.9em;
+  flex: none;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.2s ease;
+}
+
+.home-contact:hover svg,
+.home-contact:focus-visible svg { transform: translate(0.12em, -0.12em); }
 
 #site-footer {
   margin-top: 7rem;
@@ -1005,6 +1079,18 @@ h5 { font-size: 1.125em; }
     padding-left: 8.9vw;
     padding-right: 8.9vw;
   }
+
+  #main[data-route-kind='home'] {
+    padding-right: 8.9vw;
+    padding-left: 8.9vw;
+  }
+
+  .home-content { padding: 2.25rem 0 3rem; }
+  .home-eyebrow { margin-bottom: 1.5rem; font-size: 0.74rem; }
+  .home-lead { margin-bottom: 1.8rem; font-size: clamp(1.45rem, 6vw, 1.7rem); line-height: 1.16; }
+  .home-body { font-size: 0.88rem; line-height: 1.55; }
+  .home-body p { margin-bottom: 1.4rem; }
+  .home-contact { margin-top: 0.8rem; font-size: 0.95rem; }
 
   #site-header {
     padding-left: 8.5vw;
