@@ -2,43 +2,32 @@
   <Layout
     id="home"
     title="Olaolu Olawuyi: Expert Web Engineer"
-    description="Olaolu Olawuyi is an Expert Web Engineer with 15 years of experience in tooling, UI engineering and high-performance web architecture."
+    description="Olaolu Olawuyi is an Expert Web Engineer with over 15 years of experience in tooling, UI engineering and high-performance web architecture."
   >
     <div class="home-content">
-      <h1>Hey, I'm Olaolu</h1>
+      <p class="home-content__eyebrow">Hey, I'm Olaolu</p>
+
+      <h1>
+        A Staff Software Engineer building
+        <em>fast, resilient web systems.</em>
+      </h1>
 
       <p>
-        A Staff Software Engineer with nearly 15 years of experience building
-        scalable, high-performance web platforms. My work spans UI engineering,
-        tooling, and large-scale architecture, which has shaped how I think
-        about building fast and resilient systems.
+        I have over 15 years of experience building scalable, high-performance
+        web platforms. My work spans UI engineering, tooling, and large-scale
+        architecture.
       </p>
 
       <p>
-        Currently, I work at Shopify, where I focus on web foundations —
-        tooling, performance, and scalable systems. I also help drive
-        high-impact initiatives that improve conversion, deliver millions in
-        incremental revenue, and influence engineering teams on technical
-        investments that create meaningful business impact.
+        At Shopify, I focus on web foundations—tooling, performance, and
+        scalable systems. I also help drive initiatives that improve conversion,
+        deliver incremental revenue, and guide technical investments toward
+        meaningful business impact.
       </p>
 
-      <p>
-        Before now, I was a Lead Frontend Engineer at hellotax, where I worked
-        on VAT compliance automation software tailored towards multi-channel
-        merchants in Europe.
-      </p>
-
-      <p>
-        Earlier in my career, I worked independently as a software consultant,
-        building custom software solutions for companies and organizations
-        across a wide range of industries.
-      </p>
-
-      <p>
-        If you have a question or proposal, or just want to say hello, feel free
-        to
-        <g-link to="/contact">contact me</g-link>.
-      </p>
+      <g-link class="home-content__contact" to="/contact">
+        Contact me <span aria-hidden="true">↗</span>
+      </g-link>
 
       <p v-if="hireable">
         I'm now available for contracts and remote full-time roles. Want us to
@@ -128,7 +117,64 @@ export default {
 
 <style scoped>
 .home-content {
+  width: 100%;
+  max-width: 58rem;
+  margin: 5rem auto 7rem;
   text-align: left;
-  /* margin: 4rem 0; */
+}
+
+.home-content__eyebrow {
+  margin-bottom: 1.5rem;
+  color: #625f70;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1 {
+  max-width: 54rem;
+  margin: 0;
+  color: #3f3f45;
+  font-size: clamp(2.7rem, 5.6vw, 5.25rem);
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+}
+
+h1 em {
+  color: var(--electric-blue);
+  font-style: normal;
+}
+
+.home-content > p:not(.home-content__eyebrow) {
+  max-width: 43rem;
+  margin: 1.4rem 0 0;
+  color: #48484f;
+  font-size: 1.08rem;
+  line-height: 1.75;
+}
+
+.home-content__contact {
+  display: inline-block;
+  margin-top: 2rem;
+  padding-bottom: 0.2rem;
+  color: var(--electric-blue);
+  border-bottom: 1px solid currentColor;
+  text-decoration: none;
+}
+
+@media (max-width: 650px) {
+  .home-content {
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+  }
+
+  .home-content > p:not(.home-content__eyebrow) {
+    font-size: 1rem;
+  }
 }
 </style>
