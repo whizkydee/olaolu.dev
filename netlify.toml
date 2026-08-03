@@ -1,3 +1,3 @@
-# This is generated from netlify.base.toml.
 [build]
   command = "yarn build"
+  publish = ".next"
