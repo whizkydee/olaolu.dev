@@ -1,4 +1,4 @@
-import { inBrowser } from '@mrolaolu/helpers'
+import {inBrowser} from '@mrolaolu/helpers'
 
 export * from './media-helpers'
 

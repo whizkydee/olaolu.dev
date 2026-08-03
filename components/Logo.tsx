@@ -2,7 +2,7 @@ type LogoProps = {
   className?: string
 }
 
-export function Logo({ className }: LogoProps) {
+export function Logo({className}: LogoProps) {
   return (
     <svg
       className={className}

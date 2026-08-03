@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { monthNames } from '@mrolaolu/helpers'
+import {monthNames} from '@mrolaolu/helpers'
 
 export default {
   computed: {

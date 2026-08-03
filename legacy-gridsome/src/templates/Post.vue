@@ -59,9 +59,9 @@ export default {
             ? 'summary_large_image'
             : 'summary',
         },
-        { name: 'og:type', content: 'article' },
-        { name: 'article:author', content: 'Olaolu Olawuyi' },
-        { name: 'article:published_time', content: this.$page.post.date },
+        {name: 'og:type', content: 'article'},
+        {name: 'article:author', content: 'Olaolu Olawuyi'},
+        {name: 'article:published_time', content: this.$page.post.date},
       ],
     }
   },

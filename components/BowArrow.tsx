@@ -1,4 +1,8 @@
-export function BowArrow({ direction = 'right' }: { direction?: 'left' | 'right' }) {
+export function BowArrow({
+  direction = 'right',
+}: {
+  direction?: 'left' | 'right'
+}) {
   return (
     <svg width="72" height="22" viewBox="0 0 72 22" aria-hidden="true">
       <path

@@ -93,5 +93,5 @@ export const projects: WorkProject[] = [
 ]
 
 export function getProject(slug: string) {
-  return projects.find((project) => project.slug === slug)
+  return projects.find(project => project.slug === slug)
 }

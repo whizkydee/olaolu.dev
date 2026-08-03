@@ -1,4 +1,4 @@
-import { spawn } from 'node:child_process'
+import {spawn} from 'node:child_process'
 import puppeteer from 'puppeteer'
 
 const resumeUrl = 'http://localhost:3000/resume?pdf=true'
@@ -19,7 +19,9 @@ async function waitForServer() {
     await new Promise(resolve => setTimeout(resolve, 500))
   }
 
-  throw new Error('The Next.js development server did not become ready in time.')
+  throw new Error(
+    'The Next.js development server did not become ready in time.'
+  )
 }
 
 async function generatePdf() {
@@ -27,9 +29,11 @@ async function generatePdf() {
 
   try {
     const page = await browser.newPage()
-    await page.setViewport({ width: 1680, height: 971, deviceScaleFactor: 1.5 })
-    await page.goto(resumeUrl, { waitUntil: 'networkidle2' })
-    const height = await page.evaluate(() => parseInt(getComputedStyle(document.body).height))
+    await page.setViewport({width: 1680, height: 971, deviceScaleFactor: 1.5})
+    await page.goto(resumeUrl, {waitUntil: 'networkidle2'})
+    const height = await page.evaluate(() =>
+      parseInt(getComputedStyle(document.body).height)
+    )
 
     await page.pdf({
       printBackground: true,
@@ -37,7 +41,7 @@ async function generatePdf() {
       width: '1230px',
       height: Math.min(height, 3090),
       path: pdfFilePath,
-      margin: { top: '85px', right: '85px', bottom: '85px', left: '85px' },
+      margin: {top: '85px', right: '85px', bottom: '85px', left: '85px'},
     })
 
     console.log(`Resume PDF written to ${pdfFilePath}`)
@@ -50,7 +54,7 @@ async function main() {
   let server
 
   if (!(await serverIsReady())) {
-    server = spawn('yarn', ['dev'], { stdio: 'inherit' })
+    server = spawn('yarn', ['dev'], {stdio: 'inherit'})
     await waitForServer()
   }
 

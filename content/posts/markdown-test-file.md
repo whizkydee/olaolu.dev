@@ -263,9 +263,7 @@ Markdown will handle the hassle of encoding the ampersands and angle brackets.
 For example, this:
 
 ```html
-<div class="footer">
-  &copy; 2004 Foo Corporation
-</div>
+<div class="footer">&copy; 2004 Foo Corporation</div>
 ```
 
 Regular Markdown syntax is not processed within code blocks. E.g., asterisks are

@@ -1,6 +1,6 @@
-import { BowArrow } from './BowArrow'
+import {BowArrow} from './BowArrow'
 
-export function ContactForm({ id }: { id?: string }) {
+export function ContactForm({id}: {id?: string}) {
   return (
     <form
       id={id}
@@ -13,11 +13,22 @@ export function ContactForm({ id }: { id?: string }) {
       <div className="form-row">
         <label className="input-group" htmlFor={`${id ?? 'contact'}-name`}>
           <span>Your Name</span>
-          <input id={`${id ?? 'contact'}-name`} required name="name" placeholder="Enter your name" />
+          <input
+            id={`${id ?? 'contact'}-name`}
+            required
+            name="name"
+            placeholder="Enter your name"
+          />
         </label>
         <label className="input-group" htmlFor={`${id ?? 'contact'}-email`}>
           <span>Email Address</span>
-          <input id={`${id ?? 'contact'}-email`} required type="email" name="_replyto" placeholder="Enter your email address" />
+          <input
+            id={`${id ?? 'contact'}-email`}
+            required
+            type="email"
+            name="_replyto"
+            placeholder="Enter your email address"
+          />
         </label>
       </div>
       <div className="form-row">

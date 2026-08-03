@@ -1,7 +1,7 @@
-import { BasicContact, SocialContact } from './ContactLinks'
-import { NavLinks } from './NavLinks'
+import {BasicContact, SocialContact} from './ContactLinks'
+import {NavLinks} from './NavLinks'
 
-export function SiteFooter({ pathname }: { pathname: string }) {
+export function SiteFooter({pathname}: {pathname: string}) {
   return (
     <footer id="site-footer">
       <div className="footer-inner">

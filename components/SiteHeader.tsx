@@ -1,12 +1,12 @@
 'use client'
 
 import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
-import { BasicContact, SocialContact } from './ContactLinks'
-import { Logo } from './Logo'
-import { NavLinks } from './NavLinks'
+import {useEffect, useRef, useState} from 'react'
+import {BasicContact, SocialContact} from './ContactLinks'
+import {Logo} from './Logo'
+import {NavLinks} from './NavLinks'
 
-export function SiteHeader({ pathname }: { pathname: string }) {
+export function SiteHeader({pathname}: {pathname: string}) {
   const [open, setOpen] = useState(false)
   const headerRef = useRef<HTMLElement>(null)
   const buttonRef = useRef<HTMLButtonElement>(null)
@@ -22,7 +22,11 @@ export function SiteHeader({ pathname }: { pathname: string }) {
       }
 
       const target = event.target as Node | null
-      if (event instanceof MouseEvent && target && !headerRef.current?.contains(target)) {
+      if (
+        event instanceof MouseEvent &&
+        target &&
+        !headerRef.current?.contains(target)
+      ) {
         setOpen(false)
       }
     }
@@ -53,7 +57,7 @@ export function SiteHeader({ pathname }: { pathname: string }) {
         aria-controls="contact-menu"
         aria-expanded={open}
         className={`menu-toggle${open ? ' x' : ''}`}
-        onClick={() => setOpen((value) => !value)}
+        onClick={() => setOpen(value => !value)}
       />
 
       <nav

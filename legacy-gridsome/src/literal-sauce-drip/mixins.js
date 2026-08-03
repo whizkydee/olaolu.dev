@@ -12,8 +12,8 @@ import {
   BANNER_CONTENT_HIREABLE,
 } from './constants'
 import Vue from 'vue'
-import { hireable } from '../../config'
-import { toPx as px, inBrowser } from '@mrolaolu/helpers'
+import {hireable} from '../../config'
+import {toPx as px, inBrowser} from '@mrolaolu/helpers'
 
 export const SharedMixins = {
   data: () => ({
@@ -90,7 +90,7 @@ export const SharedMixins = {
           // prettier-ignore
           query: `(min-width: ${px(breakpoints['>medium'])}) and (max-height: 1199px)`,
         },
-      ].forEach(({ key, query }) => {
+      ].forEach(({key, query}) => {
         let mql = window.matchMedia(query)
 
         this[key] = mql.matches

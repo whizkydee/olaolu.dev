@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { safeReduce } from '@mrolaolu/helpers'
+import {safeReduce} from '@mrolaolu/helpers'
 
 export default {
   props: ['posts', 'post'],
@@ -74,7 +74,7 @@ export default {
 
   methods: {
     getPost(index) {
-      let { path } = this.computedPosts[index] || {}
+      let {path} = this.computedPosts[index] || {}
       return path ? (this.DEV ? path : '/shelf' + path) : null
     },
   },

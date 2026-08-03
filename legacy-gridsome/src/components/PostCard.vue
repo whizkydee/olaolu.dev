@@ -1,5 +1,5 @@
 <template>
-  <li class="post-card" :class="{ 'post-card--has-poster': post.poster }">
+  <li class="post-card" :class="{'post-card--has-poster': post.poster}">
     <div class="post-card__header" v-if="post.cover_image">
       <g-image
         alt="Cover image"

@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import { media } from '../helpers'
-import styled, { css } from 'vue-styled-components'
+import {media} from '../helpers'
+import styled, {css} from 'vue-styled-components'
 
 function createStyledSection(tagName = 'section', props = {}) {
   const styles = css`
@@ -130,8 +130,8 @@ export default {
   },
 
   props: {
-    name: { type: String, required: true },
-    isFooter: { default: false, type: Boolean },
+    name: {type: String, required: true},
+    isFooter: {default: false, type: Boolean},
   },
 }
 </script>

@@ -20,14 +20,14 @@
       aria-controls="contact-menu"
       :aria-expanded="String(menuOpen)"
       @click="toggleMenu"
-      :class="['menu-toggle', { x: menuOpen }]"
+      :class="['menu-toggle', {x: menuOpen}]"
     />
 
     <nav
       ref="contactMenu"
       id="contact-menu"
       aria-label="Contact menu"
-      :class="{ open: menuOpen }"
+      :class="{open: menuOpen}"
       :aria-hidden="isMediumScreen && !menuOpen"
     >
       <CrossSiteNav />
@@ -41,10 +41,10 @@
 import StyledHeader from './styles'
 import CrossSiteNav from '../CrossSiteNav'
 import ContactPortal from '../ContactPortal'
-import { wait, getFirstFocusableNode } from '@mrolaolu/helpers'
+import {wait, getFirstFocusableNode} from '@mrolaolu/helpers'
 
 export default {
-  data: () => ({ menuOpen: false }),
+  data: () => ({menuOpen: false}),
 
   mounted() {
     document.addEventListener('keyup', this.maybeCloseMenu)
@@ -67,7 +67,7 @@ export default {
     },
 
     toggleMenu() {
-      const { currentSection, mainElem } = this
+      const {currentSection, mainElem} = this
       const shouldAddShadow = !this.noMenuShadow && !this.isMediumScreen
 
       this.menuOpen = !this.menuOpen
@@ -123,9 +123,9 @@ export default {
 
   props: {
     store: Object,
-    compact: { type: Boolean, default: false },
-    currentSection: { type: String, default: '' },
-    noMenuShadow: { type: Boolean, default: false },
+    compact: {type: Boolean, default: false},
+    currentSection: {type: String, default: ''},
+    noMenuShadow: {type: Boolean, default: false},
   },
 
   components: {

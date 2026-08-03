@@ -19,7 +19,7 @@ export default {
     title: String,
     noDot: Boolean,
     hideDecor: Boolean,
-    preTitleSymbol: { type: String, default: '/' },
+    preTitleSymbol: {type: String, default: '/'},
   },
 }
 </script>

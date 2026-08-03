@@ -5,35 +5,35 @@ pre {
 }
 
 code {
-  padding: .2em .5em;
+  padding: 0.2em 0.5em;
 }
 
-code[class*="language-"],
-pre[class*="language-"] {
+code[class*='language-'],
+pre[class*='language-'] {
   tab-size: 2;
-	hyphens: none;
+  hyphens: none;
   line-height: 2;
   text-align: left;
-	white-space: pre;
-	word-wrap: normal;
-	word-break: normal;
-	word-spacing: normal;
+  white-space: pre;
+  word-wrap: normal;
+  word-break: normal;
+  word-spacing: normal;
   font-family: Menlo, Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
 @media print {
-	code[class*="language-"],
-	pre[class*="language-"] {
-		text-shadow: none;
-	}
+  code[class*='language-'],
+  pre[class*='language-'] {
+    text-shadow: none;
+  }
 }
 
 /* Inline code */
-:not(pre) > code[class*="language-"] {
-	border-radius: var(--radius);
+:not(pre) > code[class*='language-'] {
+  border-radius: var(--radius);
   white-space: normal;
   background: #edebfe;
-  padding: .2em .4em;
+  padding: 0.2em 0.4em;
 }
 
 pre[class*='language-'] {
@@ -41,7 +41,7 @@ pre[class*='language-'] {
   overflow: auto;
   color: #d6deeb;
   margin: 0.5em 0;
-  font-size: .85em;
+  font-size: 0.85em;
   background: #292d3e;
 }
 
@@ -50,7 +50,7 @@ pre[class*='language-'] ::-moz-selection,
 :not(pre) > code[class*='language-']::-moz-selection,
 :not(pre) > code[class*='language-'] ::-moz-selection {
   text-shadow: none;
-  background: rgba(117,128,184,0.31);
+  background: rgba(117, 128, 184, 0.31);
 }
 
 pre[class*='language-']::selection,
@@ -58,7 +58,7 @@ pre[class*='language-'] ::selection,
 :not(pre) > code[class*='language-']::selection,
 :not(pre) > code[class*='language-'] ::selection {
   text-shadow: none;
-  background: rgba(117,128,184,0.31);
+  background: rgba(117, 128, 184, 0.31);
 }
 
 @media print {
@@ -70,7 +70,7 @@ pre[class*='language-'] ::selection,
 
 :not(pre) > code {
   padding: 0.1em;
-  font-size: .85em;
+  font-size: 0.85em;
   border-radius: 0.3em;
   white-space: normal;
 }
@@ -87,7 +87,7 @@ pre[class*='language-'] ::selection,
 }
 
 .token.parameter {
-  color: #7986E7;
+  color: #7986e7;
 }
 
 .namespace {
@@ -126,7 +126,7 @@ pre[class*='language-'] ::selection,
 .token.function,
 .token.builtin,
 .token.char {
-  color: #89DDFF;
+  color: #89ddff;
 }
 
 .token.atrule .token.rule {
@@ -139,7 +139,7 @@ pre[class*='language-'] ::selection,
 }
 
 .token.inserted {
-  color: #C3E88D;
+  color: #c3e88d;
   font-style: italic;
 }
 
@@ -149,14 +149,13 @@ pre[class*='language-'] ::selection,
 .token.attr-value,
 .language-css .token.string,
 .style .token.string {
-  color: #C3E88D;
+  color: #c3e88d;
 }
 
 .token.selector,
 .token.attr-name {
   color: #ffcb6b;
 }
-
 
 .token.class-name {
   color: rgb(255, 203, 139);
@@ -179,7 +178,7 @@ pre[class*='language-'] ::selection,
 
 pre[class='language-jsx'] {
   .token.function {
-    color: #82AAFF;
+    color: #82aaff;
   }
 
   .token.tag .token.class-name {
@@ -187,6 +186,6 @@ pre[class='language-jsx'] {
   }
 
   .token.script {
-    color: #89DDFF;
+    color: #89ddff;
   }
 }

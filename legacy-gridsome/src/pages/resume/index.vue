@@ -119,7 +119,7 @@
           <a
             href="https://olaolu.dev/work"
             @click="
-              $ga.event('Resume', 'click', 'Work link', { transport: 'beacon' })
+              $ga.event('Resume', 'click', 'Work link', {transport: 'beacon'})
             "
           >
             olaolu.dev/work
@@ -193,12 +193,12 @@
 <script>
 import data from './data'
 import StyledResume from './styles'
-import { createMeta } from '~/helpers'
-import { MailIcon, DownloadIcon, LinkedInIcon } from '@saucedrip/core/icons'
+import {createMeta} from '~/helpers'
+import {MailIcon, DownloadIcon, LinkedInIcon} from '@saucedrip/core/icons'
 
 export default {
   name: 'Résumé',
-  data: () => ({ data }),
+  data: () => ({data}),
 
   computed: {
     isPDF() {

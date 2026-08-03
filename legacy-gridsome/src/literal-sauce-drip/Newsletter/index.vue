@@ -20,7 +20,7 @@
           id="mce-EMAIL"
           label="Email Address"
           placeholder="email@domain.com"
-          :inputAttrs="{ inputmode: 'email' }"
+          :inputAttrs="{inputmode: 'email'}"
         />
 
         <Button type="submit" noArrow>Subscribe</Button>
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { media } from '../media-helpers'
+import {media} from '../media-helpers'
 import theme from '../theme'
 import styled from 'vue-styled-components'
 
@@ -92,6 +92,6 @@ const StyledNewsletter = styled.aside`
 StyledNewsletter.name = 'StyledNewsletter'
 
 export default {
-  components: { StyledNewsletter },
+  components: {StyledNewsletter},
 }
 </script>

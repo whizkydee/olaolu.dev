@@ -13,7 +13,7 @@ import {
 } from '@saucedrip/core/helpers'
 // Import sauce drip global components
 import * as components from '@saucedrip/core'
-import { SharedMixins } from '@saucedrip/core/mixins'
+import {SharedMixins} from '@saucedrip/core/mixins'
 
 // Import default layout so we don't need to import it to every page
 import DefaultLayout from '~/layouts/Default'
@@ -22,7 +22,7 @@ import WorkLayout from '~/layouts/WorkLayout'
 import PageHeader from '~/components/PageHeader'
 
 // The Client API can be used here. Learn more: https://gridsome.org/docs/client-api
-export default function(Vue, { router, head, isClient }) {
+export default function (Vue, {router, head, isClient}) {
   // Cache gridsome's default router scroll behavior handler
   // so we can override it later.
   const cachedScrollBehavior = router.options.scrollBehavior
@@ -30,11 +30,11 @@ export default function(Vue, { router, head, isClient }) {
   registerEnv(Vue, 'SHELF')
   Vue.config.productionTip = false
 
-  head.style.push({ type: 'text/css', cssText: fonts })
+  head.style.push({type: 'text/css', cssText: fonts})
 
   // Here, we override the scroll behaviour with one that allows
   // for better a11y with SRs by manipulating the focus target
-  router.options.scrollBehavior = function(to, from, saved) {
+  router.options.scrollBehavior = function (to, from, saved) {
     if (to.name === 'home') return
 
     const mainElem = getMainElem()

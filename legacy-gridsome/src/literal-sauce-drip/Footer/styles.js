@@ -1,13 +1,13 @@
 import theme from '../theme'
 import Section from '../Section'
-import { media } from '../helpers'
-import { default as styled, css } from 'vue-styled-components'
+import {media} from '../helpers'
+import {default as styled, css} from 'vue-styled-components'
 
 const StyledFooter = css`
   color: ${theme.colors.limeAlt};
   background: ${theme.colors.default};
 
-  ${({ shelfEnv }) =>
+  ${({shelfEnv}) =>
     !shelfEnv &&
     css`
       ${media.minWidth('>medium')`
@@ -36,7 +36,7 @@ const StyledFooter = css`
     width: 100%;
     display: flex;
 
-    ${({ shelfEnv }) =>
+    ${({shelfEnv}) =>
       !shelfEnv &&
       css`
         ${media.minWidth('medium')`
@@ -100,7 +100,7 @@ const StyledFooter = css`
     `}
   }
 
-  ${({ shelfEnv }) =>
+  ${({shelfEnv}) =>
     !shelfEnv &&
     css`
       &[aria-hidden='false'] {
@@ -114,7 +114,7 @@ const StyledFooter = css`
 `
 
 export default Object.assign(
-  { name: 'StyledFooter' },
+  {name: 'StyledFooter'},
   styled(Section, {
     shelfEnv: Boolean,
   })([StyledFooter])

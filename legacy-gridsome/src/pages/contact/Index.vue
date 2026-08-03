@@ -17,7 +17,7 @@
 import ContactForm from '~/literal-sauce-drip/ContactForm'
 import Cavalier from '~/literal-sauce-drip/Cavalier'
 import styled from 'vue-styled-components'
-import { media } from '~/literal-sauce-drip/media-helpers'
+import {media} from '~/literal-sauce-drip/media-helpers'
 
 const StyledContact = styled.div`
   position: relative;

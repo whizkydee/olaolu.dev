@@ -11,9 +11,18 @@ export function Newsletter() {
         <div className="newsletter-inner">
           <label className="input-group" htmlFor="mce-EMAIL">
             <span>Email Address</span>
-            <input required type="email" name="EMAIL" id="mce-EMAIL" inputMode="email" placeholder="email@domain.com" />
+            <input
+              required
+              type="email"
+              name="EMAIL"
+              id="mce-EMAIL"
+              inputMode="email"
+              placeholder="email@domain.com"
+            />
           </label>
-          <button type="submit" className="sauce-button">Subscribe</button>
+          <button type="submit" className="sauce-button">
+            Subscribe
+          </button>
         </div>
       </form>
     </aside>

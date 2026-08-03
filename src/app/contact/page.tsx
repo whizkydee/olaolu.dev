@@ -1,11 +1,11 @@
-import type { Metadata } from 'next'
-import { Cavalier } from '@/components/Cavalier'
-import { ContactForm } from '@/components/ContactForm'
+import type {Metadata} from 'next'
+import {Cavalier} from '@/components/Cavalier'
+import {ContactForm} from '@/components/ContactForm'
 
 export const metadata: Metadata = {
   title: 'Contact',
   description: 'Send Olaolu a message',
-  alternates: { canonical: '/contact' },
+  alternates: {canonical: '/contact'},
 }
 
 export default function ContactPage() {

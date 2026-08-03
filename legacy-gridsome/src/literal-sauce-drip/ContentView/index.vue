@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { TABBING_CLASSNAME } from '../constants'
+import {TABBING_CLASSNAME} from '../constants'
 
 export default {
   data: () => ({
@@ -49,8 +49,8 @@ export default {
 
   props: {
     announcement: String,
-    id: { type: String, required: true },
-    readAnnouncement: { type: Boolean, default: false },
+    id: {type: String, required: true},
+    readAnnouncement: {type: Boolean, default: false},
   },
 }
 </script>

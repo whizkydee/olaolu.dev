@@ -1,5 +1,5 @@
 import Layout from '~/layouts/Default'
-import { default as styled, css, injectGlobal } from 'vue-styled-components'
+import {default as styled, css, injectGlobal} from 'vue-styled-components'
 
 const StyledResume = css`
   position: relative;
@@ -88,7 +88,7 @@ const StyledResume = css`
 
       &.linkedin {
         color: #0077b5;
-        ${({ isPDF }) =>
+        ${({isPDF}) =>
           isPDF &&
           css`
             margin-right: 0;
@@ -363,7 +363,7 @@ injectGlobal`
 `
 
 export default Object.assign(
-  { name: 'StyledResume' },
+  {name: 'StyledResume'},
   styled(Layout, {
     isPDF: Boolean,
   })([StyledResume])

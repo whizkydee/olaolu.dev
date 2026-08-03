@@ -33,7 +33,7 @@ const StyledBasicContact = styled.div`
 `
 
 export default {
-  components: { StyledBasicContact, NavItem },
+  components: {StyledBasicContact, NavItem},
 }
 
 StyledBasicContact.name = 'StyledBasicContact'

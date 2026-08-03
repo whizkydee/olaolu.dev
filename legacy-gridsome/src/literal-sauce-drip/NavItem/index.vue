@@ -16,17 +16,17 @@
 </template>
 
 <script>
-import { isObject, isMacintosh, isWindows } from '@mrolaolu/helpers'
+import {isObject, isMacintosh, isWindows} from '@mrolaolu/helpers'
 
 export default {
   methods: {
     isCmdOrCtrlKey(event) {
-      const { metaKey, ctrlKey } = event
+      const {metaKey, ctrlKey} = event
       return (isMacintosh() && metaKey) || (isWindows() && ctrlKey)
     },
 
     handleClick(event) {
-      const { href } = this
+      const {href} = this
 
       if (href && href.charAt(0) === '#') {
         event.preventDefault()
@@ -57,7 +57,7 @@ export default {
     className: String,
     anchorAttrs: Object,
     ariaCurrent: [String, Boolean],
-    external: { type: Boolean, default: false },
+    external: {type: Boolean, default: false},
   },
 }
 </script>

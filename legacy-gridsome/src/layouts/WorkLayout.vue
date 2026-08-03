@@ -43,9 +43,9 @@
 
 <script>
 import DefaultLayout from './Default'
-import { hyphenateName } from '~/helpers'
-import { openExternalWindow } from '@mrolaolu/helpers'
-import { default as styled, injectGlobal } from 'vue-styled-components'
+import {hyphenateName} from '~/helpers'
+import {openExternalWindow} from '@mrolaolu/helpers'
+import {default as styled, injectGlobal} from 'vue-styled-components'
 
 injectGlobal`
   :root:not(.is-tabbing) {
@@ -150,7 +150,7 @@ export default {
     },
 
     maybeScrollCarousel(event) {
-      const { carousel } = this.$refs
+      const {carousel} = this.$refs
 
       if (!carousel) return
 
@@ -202,11 +202,11 @@ export default {
     Carousel: () =>
       process.isClient
         ? import('vue-carousel').then(m => m.Carousel)
-        : Promise.resolve({ render: h => h('div') }),
+        : Promise.resolve({render: h => h('div')}),
     Slide: () =>
       process.isClient
         ? import('vue-carousel').then(m => m.Slide)
-        : Promise.resolve({ render: h => h('div') }),
+        : Promise.resolve({render: h => h('div')}),
   },
   props: {
     id: {

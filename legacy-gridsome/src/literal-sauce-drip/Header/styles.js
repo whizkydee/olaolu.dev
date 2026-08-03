@@ -1,7 +1,7 @@
 import theme from '../theme'
-import { media } from '../media-helpers'
-import { createMenuShadow } from '../helpers'
-import styled, { css } from 'vue-styled-components'
+import {media} from '../media-helpers'
+import {createMenuShadow} from '../helpers'
+import styled, {css} from 'vue-styled-components'
 
 const StyledHeader = css`
   width: 100%;
@@ -321,7 +321,7 @@ const StyledHeader = css`
 `
 
 export default Object.assign(
-  { name: 'StyledHeader' },
+  {name: 'StyledHeader'},
   styled('header', {
     noMenuShadow: Boolean,
     blue: Boolean,

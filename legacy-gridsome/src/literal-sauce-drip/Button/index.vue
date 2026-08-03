@@ -27,7 +27,7 @@
 <script>
 import theme from '../theme'
 import BowArrow from '../bow-arrow'
-import styled, { css } from 'vue-styled-components'
+import styled, {css} from 'vue-styled-components'
 
 function createStyledButton(tagName, props) {
   const styles = css`

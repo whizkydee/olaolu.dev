@@ -1,4 +1,4 @@
-import { media } from '../helpers'
+import {media} from '../helpers'
 import styled from 'vue-styled-components'
 
 export default Object.assign(
@@ -83,5 +83,5 @@ export default Object.assign(
       `}
     }
   `,
-  { name: 'StyledContactForm' }
+  {name: 'StyledContactForm'}
 )

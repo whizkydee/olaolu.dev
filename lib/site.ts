@@ -17,18 +17,18 @@ export const SITE_URL = 'https://olaolu.dev'
 export function getNavigation(pathname: string) {
   if (pathname === '/') {
     return [
-      { href: '/work', label: 'My Work' },
-      { href: '/shelf', label: 'My Shelf' },
-      { href: '/resume', label: 'My Résumé', external: true },
+      {href: '/work', label: 'My Work'},
+      {href: '/shelf', label: 'My Shelf'},
+      {href: '/resume', label: 'My Résumé', external: true},
     ]
   }
 
   const isShelf = pathname.startsWith('/shelf') || pathname.startsWith('/tag')
   return [
-    { href: '/', label: 'Home' },
+    {href: '/', label: 'Home'},
     isShelf
-      ? { href: '/work', label: 'My Work' }
-      : { href: '/shelf', label: 'My Shelf' },
-    { href: '/resume', label: 'My Résumé', external: true },
+      ? {href: '/work', label: 'My Work'}
+      : {href: '/shelf', label: 'My Shelf'},
+    {href: '/resume', label: 'My Résumé', external: true},
   ]
 }

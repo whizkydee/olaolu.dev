@@ -46,8 +46,8 @@
 <script>
 import projectsData from './data'
 import Layout from '~/layouts/Default'
-import { hyphenateName } from '~/helpers'
-import { default as styled, injectGlobal } from 'vue-styled-components'
+import {hyphenateName} from '~/helpers'
+import {default as styled, injectGlobal} from 'vue-styled-components'
 
 injectGlobal`
   .is-tabbing .project__link:focus {
@@ -141,7 +141,7 @@ const StyledWork = styled(Layout)`
 `
 
 export default {
-  components: { StyledWork },
+  components: {StyledWork},
   created() {
     this.showConsoleMarketingBanner()
   },

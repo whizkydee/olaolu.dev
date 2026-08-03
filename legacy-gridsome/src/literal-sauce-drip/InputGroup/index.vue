@@ -1,5 +1,5 @@
 <template>
-  <StyledInputGroup :data-id="id" :class="['input-group', { focused }]">
+  <StyledInputGroup :data-id="id" :class="['input-group', {focused}]">
     <label :for="id" v-if="label"> {{ label }}</label>
 
     <input
@@ -33,7 +33,7 @@
 
 <script>
 import theme from '../theme'
-import { toPx } from '@mrolaolu/helpers'
+import {toPx} from '@mrolaolu/helpers'
 import styled from 'vue-styled-components'
 
 const BORDER_THICKNESS = 1
@@ -83,7 +83,7 @@ const StyledInputGroup = styled.div`
 `
 
 export default {
-  data: () => ({ focused: false }),
+  data: () => ({focused: false}),
 
   methods: {
     handleFocus(event) {
@@ -112,9 +112,9 @@ export default {
     placeholder: String,
     inputAttrs: Object,
     required: Boolean,
-    id: { type: String, required: true },
-    type: { type: String, default: 'text' },
-    textarea: { type: Boolean, default: false },
+    id: {type: String, required: true},
+    type: {type: String, default: 'text'},
+    textarea: {type: Boolean, default: false},
   },
 }
 

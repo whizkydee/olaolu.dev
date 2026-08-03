@@ -41,7 +41,7 @@ query Tag ($id: ID!) {
 import PostCard from '~/components/PostCard'
 
 export default {
-  components: { PostCard },
+  components: {PostCard},
   metaInfo() {
     return {
       title: `Posts tagged "${this.$page.tag.title}"`,

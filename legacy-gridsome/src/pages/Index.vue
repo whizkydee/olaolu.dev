@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import { hireable } from '../../config'
+import {hireable} from '../../config'
 
 console.log(hireable)
 

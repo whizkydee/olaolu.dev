@@ -1,5 +1,5 @@
-import { toPx } from '@mrolaolu/helpers'
-import { css } from 'vue-styled-components'
+import {toPx} from '@mrolaolu/helpers'
+import {css} from 'vue-styled-components'
 
 export const BREAKPOINTS = {
   small: 420,
@@ -54,4 +54,4 @@ export const between =
     }
   `
 
-export const media = { between, maxWidth, minWidth, breakpoints }
+export const media = {between, maxWidth, minWidth, breakpoints}

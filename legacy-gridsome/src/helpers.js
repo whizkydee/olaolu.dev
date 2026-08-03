@@ -1,8 +1,8 @@
 function createSEOProps(name, content, exclude) {
   const payload = [
-    { name, content },
-    { name: `og:${name}`, content },
-    { name: `twitter:${name}`, content },
+    {name, content},
+    {name: `og:${name}`, content},
+    {name: `twitter:${name}`, content},
   ]
 
   return payload.splice(exclude, payload.length)

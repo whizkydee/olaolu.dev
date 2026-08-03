@@ -122,9 +122,10 @@ impacted positively or negatively in conversion rates and revenue on products.
 - [DoubleClick by Google found 53% of mobile site visits were abandoned](https://www.doubleclickbygoogle.com/articles/mobile-speed-matters/)
   if a page took longer than 3 seconds to load.
 - [TRAC Research found, in a survey of 300 companies](http://www.slideshare.net/KenGodskind/alertsitetrac),
-  that the average revenue loss for an hour of downtime was
-  $21,000. For the same set of companies, average revenue loss due to an hour of slow performance (defined as load times exceeding 4.4 seconds) was $4,100.
-  Website slowdowns occurred ten times more often than outages.
+  that the average revenue loss for an hour of downtime was $21,000. For the
+  same set of companies, average revenue loss due to an hour of slow performance
+  (defined as load times exceeding 4.4 seconds) was $4,100. Website slowdowns
+  occurred ten times more often than outages.
 
 Case studies sourced from [WPO Stats](https://wpostats.com).
 

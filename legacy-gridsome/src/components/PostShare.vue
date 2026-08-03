@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import { unslashEnd } from '@mrolaolu/helpers'
-import { TwitterIcon, FacebookIcon } from '@saucedrip/core/icons'
+import {unslashEnd} from '@mrolaolu/helpers'
+import {TwitterIcon, FacebookIcon} from '@saucedrip/core/icons'
 
 export default {
   props: ['post'],
@@ -37,14 +37,14 @@ export default {
     },
 
     fbShareURL() {
-      const { title } = this.$page.post
+      const {title} = this.$page.post
       return `https://facebook.com/sharer/sharer.php?u=${encodeURIComponent(
         `${this.shareableURL}&quote=${title}`
       )}`
     },
 
     twitterShareURL() {
-      const { title } = this.$page.post
+      const {title} = this.$page.post
       return `https://twitter.com/intent/tweet?${encodeURIComponent(
         `url=${this.shareableURL}&via=mrolaolu&text=${title}`
       )}`

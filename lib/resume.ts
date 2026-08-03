@@ -4,7 +4,8 @@ export const resumeData = {
       name: 'Shopify',
       period: 'May 2020 - Present',
       role: 'Staff Engineer',
-      intro: 'Shaping the future of commerce and entrepreneurship – building software solutions for millions of merchants across the globe.',
+      intro:
+        'Shaping the future of commerce and entrepreneurship – building software solutions for millions of merchants across the globe.',
       points: [
         'Primarily working on web foundations – tooling, performance and setting applications up to scale',
         'Influencing teams and stakeholders across engineering on high-leverage technical investments that drive scale, reliability, and business impact',
@@ -18,7 +19,8 @@ export const resumeData = {
       name: 'hellotax',
       period: 'Mar - Nov 2019',
       role: 'Lead Frontend Engineer',
-      intro: "I orchestrated and developed the frontend infrastructure, design and functionality for hellotax's new web application.",
+      intro:
+        "I orchestrated and developed the frontend infrastructure, design and functionality for hellotax's new web application.",
       points: [
         'Crafted a scalable component library that enforced accessibility and fluency across the application.',
         'Built a multi-role user authentication system from the ground up with JavaScript.',
@@ -33,7 +35,8 @@ export const resumeData = {
       name: 'Pixel2HTML',
       period: 'Nov 2018 - Oct 2019',
       role: 'Senior Frontend Engineer',
-      intro: 'I worked on a couple of projects for organizations and individuals as a frontend engineer.',
+      intro:
+        'I worked on a couple of projects for organizations and individuals as a frontend engineer.',
       points: [
         'Built frontend applications for multiple clients. Most especially JavaScript and React applications.',
         "Rebuilt the company's marketing site initially written in HTML/CSS using React and Gatsby.",
@@ -47,7 +50,8 @@ export const resumeData = {
       name: 'MOONDA',
       period: 'Nov 2018 - Jan 2019',
       role: 'Senior Frontend Engineer',
-      intro: "I worked with MOONDA via Pixel2HTML to create the web experience for John Deere's ATU 300 product.",
+      intro:
+        "I worked with MOONDA via Pixel2HTML to create the web experience for John Deere's ATU 300 product.",
       points: [
         'Built a contest application from the ground up using React which enabled users of the product from all around the globe to post photos and share reviews about the product.',
         'Designed and implemented a cross-browser, IE 11 compatible marketing site for the product.',
@@ -59,7 +63,8 @@ export const resumeData = {
       name: 'Conectar',
       period: 'Jun - Nov 2018',
       role: 'Lead Frontend Engineer',
-      intro: 'I led a team of developers through building multiple React applications into a single powerful online learning platform. I also re-engineered and designed several components on the platform.',
+      intro:
+        'I led a team of developers through building multiple React applications into a single powerful online learning platform. I also re-engineered and designed several components on the platform.',
       points: [
         'Designed and implemented a robust design system to ensure UI consistency across the application.',
         'Developed a messaging system with React, nearly matching the capabilities of Facebook Messenger at the time.',
@@ -68,9 +73,36 @@ export const resumeData = {
         'Re-engineered the development workflow, achieving a 70%+ improvement in compile speed.',
         'Designed and built a React-based appointment scheduling system from scratch.',
       ],
-      outro: 'See the extended list <a target="_blank" rel="noreferrer noopener" href="https://docs.google.com/document/d/1Gw4mcURKddzOJ7OoZsMghJDAhW5zMXler4EeOY9BP6E/edit">here.</a>',
+      outro:
+        'See the extended list <a target="_blank" rel="noreferrer noopener" href="https://docs.google.com/document/d/1Gw4mcURKddzOJ7OoZsMghJDAhW5zMXler4EeOY9BP6E/edit">here.</a>',
     },
   ],
-  technologies: ['JavaScript', 'React', 'CSS-in-JS', 'TypeScript', 'Vue.js', 'Sass', 'Flux', 'ESNext', 'Flow', 'NodeJS', 'GraphQL', 'LessCSS', 'Next.js'],
-  otherProficiencies: ['Design Systems', 'E2E Testing', 'PWAs', 'Performance Optimization', 'Software Testing', 'SE Optimization', 'Progressive Enhancement', 'Accessibility auditing', 'Build Automation', 'Responsive Web Design', 'UX Design/Strategy'],
+  technologies: [
+    'JavaScript',
+    'React',
+    'CSS-in-JS',
+    'TypeScript',
+    'Vue.js',
+    'Sass',
+    'Flux',
+    'ESNext',
+    'Flow',
+    'NodeJS',
+    'GraphQL',
+    'LessCSS',
+    'Next.js',
+  ],
+  otherProficiencies: [
+    'Design Systems',
+    'E2E Testing',
+    'PWAs',
+    'Performance Optimization',
+    'Software Testing',
+    'SE Optimization',
+    'Progressive Enhancement',
+    'Accessibility auditing',
+    'Build Automation',
+    'Responsive Web Design',
+    'UX Design/Strategy',
+  ],
 } as const

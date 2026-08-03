@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import theme from './theme'
-import { media } from './media-helpers'
+import {media} from './media-helpers'
 import styled from 'vue-styled-components'
 
 const Cavalier = Vue.component('Cavalier', {
@@ -25,8 +25,8 @@ const Cavalier = Vue.component('Cavalier', {
       default: 'electric',
       validator: v => ['lime', 'electric'].indexOf(v) !== -1,
     },
-    text: { type: [String, Object] },
-    heading: { type: [String, Object] },
+    text: {type: [String, Object]},
+    heading: {type: [String, Object]},
   },
 })
 

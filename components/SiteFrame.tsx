@@ -1,9 +1,9 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
-import { useEffect, type ReactNode } from 'react'
-import { SiteFooter } from './SiteFooter'
-import { SiteHeader } from './SiteHeader'
+import {usePathname} from 'next/navigation'
+import {useEffect, type ReactNode} from 'react'
+import {SiteFooter} from './SiteFooter'
+import {SiteHeader} from './SiteHeader'
 
 function getRouteKind(pathname: string) {
   if (pathname === '/') return 'home'
@@ -14,7 +14,7 @@ function getRouteKind(pathname: string) {
   return 'default'
 }
 
-export function SiteFrame({ children }: { children: ReactNode }) {
+export function SiteFrame({children}: {children: ReactNode}) {
   const pathname = usePathname()
   const routeKind = getRouteKind(pathname)
   const isResume = routeKind === 'resume'
@@ -37,7 +37,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
     document.documentElement.dataset.route = routeKind
     window.scrollTo(0, 0)
     const main = document.getElementById('main')
-    if (pathname !== '/') main?.focus({ preventScroll: true })
+    if (pathname !== '/') main?.focus({preventScroll: true})
   }, [pathname, routeKind])
 
   return (

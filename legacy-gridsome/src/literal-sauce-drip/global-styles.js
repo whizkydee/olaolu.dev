@@ -1,8 +1,8 @@
-import { theme, colors } from './theme'
-import { TABBING_CLASSNAME } from './constants'
-import { injectGlobal } from 'vue-styled-components'
+import {theme, colors} from './theme'
+import {TABBING_CLASSNAME} from './constants'
+import {injectGlobal} from 'vue-styled-components'
 
-const { fontFamily } = theme
+const {fontFamily} = theme
 
 const GlobalStyle = injectGlobal`
   *,

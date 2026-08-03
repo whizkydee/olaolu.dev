@@ -7,32 +7,45 @@ body {
 }
 
 p {
-	margin-bottom: 1.25em;
+  margin-bottom: 1.25em;
 }
 
-h1, h2, h3, h4, h5 {
-  transition: color .6s;
+h1,
+h2,
+h3,
+h4,
+h5 {
+  transition: color 0.6s;
   color: var(--title-color);
   margin: 2.75rem 0 1rem;
   font-weight: bold;
   line-height: 1.15;
 }
 
-
 h1 {
   margin-top: 0;
   font-size: 1.802em;
 }
 
-h2 {font-size: 1.602em;}
+h2 {
+  font-size: 1.602em;
+}
 
-h3 {font-size: 1.424em;}
+h3 {
+  font-size: 1.424em;
+}
 
-h4 {font-size: 1.266em;}
+h4 {
+  font-size: 1.266em;
+}
 
-h5 {font-size: 1.125em;}
+h5 {
+  font-size: 1.125em;
+}
 
-small {font-size: .889em;}
+small {
+  font-size: 0.889em;
+}
 
 strong {
   font-weight: bold;

@@ -5,7 +5,7 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 const path = require('path')
-const { SHELF_PORT, ANALYTICS_ID } = require('./config')
+const {SHELF_PORT, ANALYTICS_ID} = require('./config')
 
 module.exports = {
   port: SHELF_PORT,
