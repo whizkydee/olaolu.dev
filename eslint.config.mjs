@@ -5,10 +5,5 @@ import nextTypeScript from 'eslint-config-next/typescript'
 export default defineConfig([
   ...nextVitals,
   ...nextTypeScript,
-  globalIgnores([
-    '.next/**',
-    'dist/**',
-    'node_modules/**',
-    'legacy-gridsome/**',
-  ]),
+  globalIgnores(['.next/**', 'dist/**', 'node_modules/**']),
 ])

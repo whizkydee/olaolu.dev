@@ -3,9 +3,7 @@
 This repository powers [olaolu.dev](https://olaolu.dev): the portfolio, work
 archive, résumé, contact page, and shelf of articles.
 
-The active site is a React application built with Next.js and TypeScript. The
-previous Vue/Gridsome implementation is retained as a read-only design and
-content reference while the migration settles.
+The site is a React application built with Next.js and TypeScript.
 
 ## Local development
 
