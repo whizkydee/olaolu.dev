@@ -1,4 +1,5 @@
 import type {ReactNode} from 'react'
+import localFont from 'next/font/local'
 import type {Metadata, Viewport} from 'next'
 import {GoogleAnalytics} from '@next/third-parties/google'
 
@@ -65,7 +66,7 @@ export default function RootLayout({
   children,
 }: Readonly<{children: ReactNode}>) {
   return (
-    <html lang="en">
+    <html lang="en" className={sfUiText.variable}>
       <body>
         <SiteFrame>{children}</SiteFrame>
       </body>
@@ -73,3 +74,30 @@ export default function RootLayout({
     </html>
   )
 }
+
+const sfUiText = localFont({
+  src: [
+    {
+      path: '../../public/fonts/SF-UI-Text-Light.woff',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/SF-UI-Text-Regular.woff',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/SF-UI-Text-RegularItalic.woff',
+      weight: '400',
+      style: 'italic',
+    },
+    {
+      path: '../../public/fonts/SF-UI-Text-Bold.woff',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  display: 'swap',
+  variable: '--font-sf-ui-text',
+})
