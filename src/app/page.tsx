@@ -71,35 +71,32 @@ export default function HomePage() {
       <div className={styles.content}>
         <h1 className={styles.eyebrow}>Hey, I&apos;m Olaolu</h1>
         <p className={styles.lead}>
-          A Staff Software Engineer with over 15 years of experience{' '}
-          <span>building scalable, high-performance web platforms.</span>
+          A Staff Software Engineer{' '}
+          <span>building fast, resilient web products at scale.</span>
         </p>
         <div className={styles.body}>
           <p>
-            My work spans UI engineering, tooling, and large-scale architecture,
-            which has shaped how I think about building fast and resilient
-            systems.
+            I have over 15 years of experience building web platforms, developer
+            tooling, and the foundations that help engineering teams move
+            quickly without compromising performance or reliability.
           </p>
           <p>
-            Currently, I work at Shopify, where I focus on web foundations —
-            tooling, performance, and scalable systems. I also help drive
-            high-impact initiatives that improve conversion, deliver millions in
-            incremental revenue, and influence engineering teams on technical
-            investments that create meaningful business impact.
+            At Shopify, I work on the web foundations behind our
+            highest-converting surfaces, leading technical initiatives that
+            uncover how performance and reliability influence conversion and
+            business metrics. This work has contributed millions in incremental
+            revenue and informed broader engineering investments.
           </p>
           <p>
-            Before now, I was a Lead Frontend Engineer at hellotax, where I
-            worked on VAT compliance automation software tailored towards
-            multi-channel merchants in Europe.
-          </p>
-          <p>
-            Earlier in my career, I worked independently as a software
-            consultant, building custom software solutions for companies and
-            organizations across a wide range of industries.
+            Before my current role, I spent a lot of time as a consultant...
+            working with companies across different countries and industries,
+            helping them build, improve, and scale their digital products.
           </p>
           <p className={styles.contactCopy}>
-            If you have a question or proposal, or just want to say hello, feel
-            free to contact me.
+            Outside of software, I&apos;m deeply interested in cars. I enjoy
+            driving them, understanding how they work, and making them go
+            faster. It&apos;s another space where I get to explore the
+            relationship between complex systems, reliability, and performance.
           </p>
           <Link className={styles.contact} href="/contact">
             Contact me
