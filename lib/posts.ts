@@ -44,7 +44,7 @@ function readPost(filename: string): Post {
     description: String(data.description ?? ''),
     content,
     html: renderMarkdown(content),
-    timeToRead: Math.max(1, Math.ceil(wordCount / 220)),
+    timeToRead: Math.max(1, Math.ceil(wordCount / 250)),
   }
 }
 
@@ -67,6 +67,10 @@ export function slugifyTag(tag: string) {
     .trim()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '')
+}
+
+export function tagPath(tag: string) {
+  return `/tag/${encodeURIComponent(tag.toLowerCase().trim())}`
 }
 
 export function formatPostDate(date: string) {

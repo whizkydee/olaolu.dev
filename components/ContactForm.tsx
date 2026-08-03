@@ -45,8 +45,10 @@ export function ContactForm({id}: {id?: string}) {
         </label>
       </div>
       <button type="submit" className="sauce-button" id="submit-button">
-        <span>Shoot</span>
-        <BowArrow />
+        <span className="sauce-button__content">
+          <span>Shoot</span>
+          <BowArrow />
+        </span>
       </button>
     </form>
   )

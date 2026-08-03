@@ -8,14 +8,26 @@ import {NavLinks} from './NavLinks'
 
 export function SiteHeader({pathname}: {pathname: string}) {
   const [open, setOpen] = useState(false)
+  const [shadow, setShadow] = useState(false)
   const headerRef = useRef<HTMLElement>(null)
   const buttonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
-    document.body.classList.toggle('no-scroll', open)
+    if (!open || !pathname.startsWith('/work')) return
+
+    const timeout = window.setTimeout(() => setShadow(true), 150)
+    return () => window.clearTimeout(timeout)
+  }, [open, pathname])
+
+  useEffect(() => {
+    document.body.classList.toggle(
+      'no-scroll',
+      open && window.matchMedia('(max-width: 700px)').matches
+    )
 
     function closeOnInteraction(event: KeyboardEvent | MouseEvent) {
       if (event instanceof KeyboardEvent && event.key === 'Escape') {
+        setShadow(false)
         setOpen(false)
         buttonRef.current?.focus()
         return
@@ -27,6 +39,7 @@ export function SiteHeader({pathname}: {pathname: string}) {
         target &&
         !headerRef.current?.contains(target)
       ) {
+        setShadow(false)
         setOpen(false)
       }
     }
@@ -45,7 +58,7 @@ export function SiteHeader({pathname}: {pathname: string}) {
       <Link
         id="logo"
         href="/"
-        aria-label={`Logo, go to ${pathname === '/' ? 'homepage' : 'homepage'}.`}
+        aria-label={`Logo, go to ${pathname === '/' ? 'homepage' : 'shelf'}.`}
       >
         <Logo />
       </Link>
@@ -57,14 +70,17 @@ export function SiteHeader({pathname}: {pathname: string}) {
         aria-controls="contact-menu"
         aria-expanded={open}
         className={`menu-toggle${open ? ' x' : ''}`}
-        onClick={() => setOpen(value => !value)}
+        onClick={() => {
+          if (open) setShadow(false)
+          setOpen(!open)
+        }}
       />
 
       <nav
         id="contact-menu"
         aria-label="Contact menu"
         aria-hidden={!open}
-        className={open ? 'open' : ''}
+        className={`${open ? 'open' : ''}${shadow ? ' shadow' : ''}`}
       >
         <NavLinks pathname={pathname} />
         <BasicContact />

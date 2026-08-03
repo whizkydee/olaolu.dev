@@ -1,12 +1,12 @@
 import type {MetadataRoute} from 'next'
-import {getPublishedPosts, slugifyTag} from '@/lib/posts'
+import {getPublishedPosts, tagPath} from '@/lib/posts'
 import {projects} from '@/lib/work'
 import {SITE_URL} from '@/lib/site'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getPublishedPosts()
   const tags = Array.from(
-    new Set(posts.flatMap(post => post.tags.map(slugifyTag)))
+    new Set(posts.flatMap(post => post.tags.map(tagPath)))
   )
   const paths = [
     '',
@@ -15,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/shelf',
     '/work',
     ...posts.map(post => `/shelf/${post.slug}`),
-    ...tags.map(tag => `/tag/${tag}`),
+    ...tags,
     ...projects
       .filter(project => project.internalPage)
       .map(project => `/work/${project.slug}`),

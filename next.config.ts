@@ -33,6 +33,11 @@ const nextConfig: NextConfig = {
       },
       {source: '/shelf/work', destination: '/work', permanent: true},
       {source: '/shelf/resume', destination: '/resume', permanent: true},
+      {
+        source: '/shelf/work-images/:path*',
+        destination: '/work-images/:path*',
+        permanent: true,
+      },
     ]
   },
 }

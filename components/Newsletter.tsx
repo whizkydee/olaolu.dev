@@ -7,7 +7,9 @@ export function Newsletter() {
         target="_blank"
         action="https://gmail.us20.list-manage.com/subscribe/post?u=04ac543f98469334c684d8753&id=df629ce71c"
       >
-        <h2>Join the newsletter</h2>
+        <div className="cavalier newsletter-cavalier">
+          <h2>Join the newsletter</h2>
+        </div>
         <div className="newsletter-inner">
           <label className="input-group" htmlFor="mce-EMAIL">
             <span>Email Address</span>
@@ -21,7 +23,7 @@ export function Newsletter() {
             />
           </label>
           <button type="submit" className="sauce-button">
-            Subscribe
+            <span className="sauce-button__content">Subscribe</span>
           </button>
         </div>
       </form>

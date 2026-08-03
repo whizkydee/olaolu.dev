@@ -2,6 +2,8 @@ export type WorkProject = {
   slug: string
   name: string
   logo: string
+  logoWidth: number
+  logoHeight: number
   siteName?: string
   internalPage: boolean
   slideCount: number
@@ -14,6 +16,8 @@ export const projects: WorkProject[] = [
     slug: 'hellotax',
     name: 'hellotax',
     logo: '/work-logos/hellotax-logo.svg',
+    logoWidth: 150,
+    logoHeight: 50,
     siteName: 'app.hellotax.com',
     internalPage: true,
     slideCount: 18,
@@ -31,6 +35,8 @@ export const projects: WorkProject[] = [
     slug: 'conectar',
     name: 'Conectar',
     logo: '/work-logos/conectar-logo.svg',
+    logoWidth: 170,
+    logoHeight: 44.07,
     internalPage: true,
     slideCount: 18,
     imageFormat: 'jpg',
@@ -49,6 +55,8 @@ export const projects: WorkProject[] = [
     slug: 'john-deere',
     name: 'John Deere',
     logo: '/work-logos/deere-logo.svg',
+    logoWidth: 180,
+    logoHeight: 33.65,
     siteName: 'atu300.deere.com',
     internalPage: true,
     slideCount: 0,
@@ -58,6 +66,8 @@ export const projects: WorkProject[] = [
     slug: 'personal-website',
     name: 'Personal Website',
     logo: '/work-logos/olaolu-logo.svg',
+    logoWidth: 110,
+    logoHeight: 45,
     siteName: 'olaolu.dev',
     internalPage: false,
     slideCount: 0,
@@ -67,6 +77,8 @@ export const projects: WorkProject[] = [
     slug: 'pixel2html',
     name: 'Pixel2HTML',
     logo: '/work-logos/pixel-logo.svg',
+    logoWidth: 170,
+    logoHeight: 59.59,
     siteName: 'pixel2html.netlify.app',
     internalPage: true,
     slideCount: 0,
@@ -76,6 +88,8 @@ export const projects: WorkProject[] = [
     slug: 'dropd',
     name: 'dropd',
     logo: '/work-logos/dropd-logo.svg',
+    logoWidth: 110,
+    logoHeight: 42.44,
     siteName: 'npm.im/react-dropd',
     internalPage: false,
     slideCount: 0,
@@ -85,6 +99,8 @@ export const projects: WorkProject[] = [
     slug: 'dignisia',
     name: 'Dignisia',
     logo: '/work-logos/dignisia-logo.svg',
+    logoWidth: 120,
+    logoHeight: 173.33,
     siteName: 'dignisia.com',
     internalPage: true,
     slideCount: 0,

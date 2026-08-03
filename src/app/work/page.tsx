@@ -40,14 +40,20 @@ export default function WorkPage() {
                   {project.name} project summary.
                 </Link>
                 <figure className="project__logo">
-                  <Image
-                    src={project.logo}
-                    alt=""
-                    aria-hidden
-                    width={230}
-                    height={100}
-                    loading="eager"
-                  />
+                  <span className="project__logo-art">
+                    <Image
+                      src={project.logo}
+                      alt=""
+                      aria-hidden
+                      width={project.logoWidth}
+                      height={project.logoHeight}
+                      style={{
+                        width: project.logoWidth,
+                        height: project.logoHeight,
+                      }}
+                      loading="eager"
+                    />
+                  </span>
                   <figcaption className="visually-hidden">
                     {project.name} logo.
                   </figcaption>
