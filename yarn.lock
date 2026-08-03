@@ -1337,6 +1337,13 @@
   resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-16.2.12.tgz#1d75fd3b4ff50609ad19956718e0920cfa70f0f5"
   integrity sha512-F6fakeHuFTLOPt0bslQJdf+xtT+WIP9DVn/m4y1w1mRnVPyh3D/cNvzlRkxM444xfm+IvvYNSOrKiA2CDJ0Uxw==
 
+"@next/third-parties@^16.0.0":
+  version "16.3.0"
+  resolved "https://registry.yarnpkg.com/@next/third-parties/-/third-parties-16.3.0.tgz#69b0e0d609911a2fc4eee787e3cc52d3b61e5ed1"
+  integrity sha512-cAA96hSI9NC7083b6sEsKjgyvM/YJ2eqXs4HWv8a/z5LE12CL1sUJS+cmcTwNMY4yAFpLyyuZHrMBEfh/4Xupw==
+  dependencies:
+    third-party-capital "1.0.20"
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
@@ -8762,6 +8769,11 @@ text-hex@1.0.x:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/text-hex/-/text-hex-1.0.0.tgz#69dc9c1b17446ee79a92bf5b884bb4b9127506f5"
   integrity sha512-uuVGNWzgJ4yhRaNSiubPY7OjISw4sw4E5Uv0wbjp+OzcbmVU/rsT8ujgcXJhn9ypzsgr5vlzpPqP+MBBKcGvbg==
+
+third-party-capital@1.0.20:
+  version "1.0.20"
+  resolved "https://registry.yarnpkg.com/third-party-capital/-/third-party-capital-1.0.20.tgz#e218a929a35bf4d2245da9addb8ab978d2f41685"
+  integrity sha512-oB7yIimd8SuGptespDAZnNkzIz+NWaJCu2RMsbs4Wmp9zSDUM8Nhi3s2OOcqYuv3mN4hitXc8DVx+LyUmbUDiA==
 
 thread-stream@^3.0.0:
   version "3.1.0"

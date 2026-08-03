@@ -1,5 +1,6 @@
 import type {ReactNode} from 'react'
 import type {Metadata, Viewport} from 'next'
+import {GoogleAnalytics} from '@next/third-parties/google'
 
 import {SITE_URL} from '@/lib/site'
 import {SiteFrame} from '@/components/SiteFrame'
@@ -49,6 +50,7 @@ export default function RootLayout({
       <body>
         <SiteFrame>{children}</SiteFrame>
       </body>
+      <GoogleAnalytics gaId="G-4FDC290KKM" />
     </html>
   )
 }
