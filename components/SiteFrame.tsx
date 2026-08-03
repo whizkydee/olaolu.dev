@@ -5,15 +5,6 @@ import {useEffect, type ReactNode} from 'react'
 import {SiteFooter} from './SiteFooter'
 import {SiteHeader} from './SiteHeader'
 
-function getRouteKind(pathname: string) {
-  if (pathname === '/') return 'home'
-  if (pathname === '/resume') return 'resume'
-  if (pathname === '/work') return 'work-index'
-  if (pathname.startsWith('/work/')) return 'work-detail'
-  if (pathname.startsWith('/shelf/')) return 'post'
-  return 'default'
-}
-
 export function SiteFrame({children}: {children: ReactNode}) {
   const pathname = usePathname()
   const routeKind = getRouteKind(pathname)
@@ -55,4 +46,14 @@ export function SiteFrame({children}: {children: ReactNode}) {
       {!isResume && <SiteFooter pathname={pathname} />}
     </>
   )
+}
+
+function getRouteKind(pathname: string) {
+  if (pathname === '/') return 'home'
+  if (pathname === '/resume') return 'resume'
+  if (pathname === '/work') return 'work-index'
+  if (pathname.startsWith('/work/')) return 'work-detail'
+  if (pathname.startsWith('/shelf/')) return 'post'
+
+  return 'default'
 }

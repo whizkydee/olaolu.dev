@@ -1,5 +1,6 @@
 import type {Metadata} from 'next'
 import {notFound} from 'next/navigation'
+
 import {Newsletter} from '@/components/Newsletter'
 import {PostFooter} from '@/components/PostFooter'
 import {formatPostDate, getPost, getPublishedPosts} from '@/lib/posts'

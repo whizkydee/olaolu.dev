@@ -1,8 +1,23 @@
-import {spawn} from 'node:child_process'
 import puppeteer from 'puppeteer'
+import {spawn} from 'node:child_process'
 
 const resumeUrl = 'http://localhost:3000/resume?pdf=true'
 const pdfFilePath = 'public/Resume-Olaolu-Olawuyi.pdf'
+
+async function main() {
+  let server
+
+  if (!(await serverIsReady())) {
+    server = spawn('yarn', ['dev'], {stdio: 'inherit'})
+    await waitForServer()
+  }
+
+  try {
+    await generatePdf()
+  } finally {
+    server?.kill('SIGTERM')
+  }
+}
 
 async function serverIsReady() {
   try {
@@ -29,7 +44,11 @@ async function generatePdf() {
 
   try {
     const page = await browser.newPage()
-    await page.setViewport({width: 1680, height: 971, deviceScaleFactor: 1.5})
+    await page.setViewport({
+      width: 1680,
+      height: 971,
+      deviceScaleFactor: 1.5,
+    })
     await page.goto(resumeUrl, {waitUntil: 'networkidle2'})
     const height = await page.evaluate(() =>
       parseInt(getComputedStyle(document.body).height)
@@ -47,21 +66,6 @@ async function generatePdf() {
     console.log(`Resume PDF written to ${pdfFilePath}`)
   } finally {
     await browser.close()
-  }
-}
-
-async function main() {
-  let server
-
-  if (!(await serverIsReady())) {
-    server = spawn('yarn', ['dev'], {stdio: 'inherit'})
-    await waitForServer()
-  }
-
-  try {
-    await generatePdf()
-  } finally {
-    server?.kill('SIGTERM')
   }
 }
 

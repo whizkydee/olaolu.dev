@@ -1,7 +1,9 @@
-import type {Metadata, Viewport} from 'next'
 import type {ReactNode} from 'react'
-import {SiteFrame} from '@/components/SiteFrame'
+import type {Metadata, Viewport} from 'next'
+
 import {SITE_URL} from '@/lib/site'
+import {SiteFrame} from '@/components/SiteFrame'
+
 import './globals.css'
 
 export const metadata: Metadata = {

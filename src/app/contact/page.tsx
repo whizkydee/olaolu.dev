@@ -1,4 +1,5 @@
 import type {Metadata} from 'next'
+
 import {Cavalier} from '@/components/Cavalier'
 import {ContactForm} from '@/components/ContactForm'
 

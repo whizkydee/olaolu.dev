@@ -2,9 +2,10 @@
 
 import Link from 'next/link'
 import {useEffect, useRef, useState} from 'react'
-import {BasicContact, SocialContact} from './ContactLinks'
+
 import {Logo} from './Logo'
 import {NavLinks} from './NavLinks'
+import {BasicContact, SocialContact} from './ContactLinks'
 
 export function SiteHeader({pathname}: {pathname: string}) {
   const [open, setOpen] = useState(false)

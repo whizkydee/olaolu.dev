@@ -1,10 +1,11 @@
 import type {Metadata} from 'next'
 import {notFound} from 'next/navigation'
+
 import {Cavalier} from '@/components/Cavalier'
-import {ContactForm} from '@/components/ContactForm'
-import {PageHeader} from '@/components/PageHeader'
-import {WorkCarousel} from '@/components/WorkCarousel'
 import {getProject, projects} from '@/lib/work'
+import {PageHeader} from '@/components/PageHeader'
+import {ContactForm} from '@/components/ContactForm'
+import {WorkCarousel} from '@/components/WorkCarousel'
 
 type Props = {params: Promise<{slug: string}>}
 
@@ -33,7 +34,8 @@ export default async function WorkDetailPage({params}: Props) {
   const extension = project.imageFormat ?? 'jpg'
   const images = Array.from(
     {length: project.slideCount},
-    (_, index) => `/work-images/${project.slug}/screen${index + 1}.${extension}`
+    (_value, index) =>
+      `/work-images/${project.slug}/screen${index + 1}.${extension}`
   )
 
   return (

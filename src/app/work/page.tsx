@@ -1,8 +1,9 @@
-import type {Metadata} from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
-import {PageHeader} from '@/components/PageHeader'
+import Image from 'next/image'
+import type {Metadata} from 'next'
+
 import {projects} from '@/lib/work'
+import {PageHeader} from '@/components/PageHeader'
 
 export const metadata: Metadata = {
   title: 'Work',

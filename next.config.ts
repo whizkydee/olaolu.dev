@@ -1,6 +1,6 @@
 import type {NextConfig} from 'next'
 
-const nextConfig: NextConfig = {
+export default {
   poweredByHeader: false,
   trailingSlash: false,
   async redirects() {
@@ -40,6 +40,4 @@ const nextConfig: NextConfig = {
       },
     ]
   },
-}
-
-export default nextConfig
+} satisfies NextConfig

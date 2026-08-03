@@ -1,7 +1,8 @@
 import type {MetadataRoute} from 'next'
-import {getPublishedPosts, tagPath} from '@/lib/posts'
-import {projects} from '@/lib/work'
+
 import {SITE_URL} from '@/lib/site'
+import {projects} from '@/lib/work'
+import {getPublishedPosts, tagPath} from '@/lib/posts'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getPublishedPosts()

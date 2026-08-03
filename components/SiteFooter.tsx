@@ -1,5 +1,5 @@
-import {BasicContact, SocialContact} from './ContactLinks'
 import {NavLinks} from './NavLinks'
+import {BasicContact, SocialContact} from './ContactLinks'
 
 export function SiteFooter({pathname}: {pathname: string}) {
   return (

@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import {Fragment} from 'react'
-import type {Post} from '@/lib/posts'
+
 import {SITE_URL} from '@/lib/site'
-import {tagPath} from '@/lib/posts'
+import {tagPath, type Post} from '@/lib/posts'
+
 import {BowArrow} from './BowArrow'
 
 export function PostFooter({

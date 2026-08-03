@@ -1,14 +1,11 @@
 import type {Metadata} from 'next'
 import {notFound} from 'next/navigation'
-import {PageHeader} from '@/components/PageHeader'
+
 import {PostCard} from '@/components/PostCard'
+import {PageHeader} from '@/components/PageHeader'
 import {getPublishedPosts, slugifyTag, tagPath} from '@/lib/posts'
 
 type Props = {params: Promise<{tag: string}>}
-
-function normalizeTagParam(tag: string) {
-  return decodeURIComponent(tag)
-}
 
 export function generateStaticParams() {
   const tags = new Set(
@@ -52,4 +49,8 @@ export default async function TagPage({params}: Props) {
       </ol>
     </>
   )
+}
+
+function normalizeTagParam(tag: string) {
+  return decodeURIComponent(tag)
 }

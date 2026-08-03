@@ -1,4 +1,5 @@
 import Link from 'next/link'
+
 import {getNavigation} from '@/lib/site'
 
 export function NavLinks({pathname}: {pathname: string}) {

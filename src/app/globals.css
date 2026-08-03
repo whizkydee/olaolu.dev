@@ -1032,11 +1032,11 @@ h5 {
 #post p,
 #post li,
 #post time,
-#post span:not(.token),
+#post span:not(.token):not(.sauce-button__content),
 .posts p,
 .posts li,
 .posts time,
-.posts span:not(.token) {
+.posts span:not(.token):not(.sauce-button__content) {
   letter-spacing: 0.011rem;
 }
 

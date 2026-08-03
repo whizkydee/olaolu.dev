@@ -1,7 +1,8 @@
 import type {Metadata} from 'next'
-import {PageHeader} from '@/components/PageHeader'
-import {PostCard} from '@/components/PostCard'
+
 import {getPublishedPosts} from '@/lib/posts'
+import {PostCard} from '@/components/PostCard'
+import {PageHeader} from '@/components/PageHeader'
 
 export const metadata: Metadata = {
   title: 'Posts',
