@@ -3,8 +3,9 @@
 import {usePathname} from 'next/navigation'
 import {useEffect, type ReactNode} from 'react'
 
-import {SiteFooter} from './SiteFooter'
-import {SiteHeader} from './SiteHeader'
+import {SiteFooter} from '../SiteFooter'
+import {SiteHeader} from '../SiteHeader'
+
 import styles from './SiteFrame.module.css'
 
 export function SiteFrame({children}: {children: ReactNode}) {

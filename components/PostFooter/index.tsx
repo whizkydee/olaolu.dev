@@ -4,7 +4,8 @@ import {Fragment} from 'react'
 import {SITE_URL} from '@/lib/site'
 import {tagPath, type Post} from '@/lib/posts'
 
-import {BowArrow} from './BowArrow'
+import {BowArrow} from '../BowArrow'
+
 import styles from './PostFooter.module.css'
 
 export function PostFooter({

@@ -1,4 +1,5 @@
-import {BowArrow} from './BowArrow'
+import {BowArrow} from '../BowArrow'
+
 import styles from './ContactForm.module.css'
 
 export function ContactForm({

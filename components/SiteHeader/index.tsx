@@ -3,9 +3,10 @@
 import Link from 'next/link'
 import {useEffect, useRef, useState} from 'react'
 
-import {Logo} from './Logo'
-import {NavLinks} from './NavLinks'
-import {BasicContact, SocialContact} from './ContactLinks'
+import {Logo} from '../Logo'
+import {NavLinks} from '../NavLinks'
+import {BasicContact, SocialContact} from '../ContactLinks'
+
 import styles from './SiteHeader.module.css'
 
 export function SiteHeader({pathname}: {pathname: string}) {

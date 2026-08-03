@@ -1,5 +1,6 @@
-import {NavLinks} from './NavLinks'
-import {BasicContact, SocialContact} from './ContactLinks'
+import {NavLinks} from '../NavLinks'
+import {BasicContact, SocialContact} from '../ContactLinks'
+
 import styles from './SiteFooter.module.css'
 
 export function SiteFooter({pathname}: {pathname: string}) {

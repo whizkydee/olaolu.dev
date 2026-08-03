@@ -4,7 +4,7 @@ import {notFound} from 'next/navigation'
 import {Newsletter} from '@/components/Newsletter'
 import {PostFooter} from '@/components/PostFooter'
 import {formatPostDate, getPost, getPublishedPosts} from '@/lib/posts'
-import postContentStyles from '@/components/PostContent.module.css'
+import postContentStyles from '@/components/PostContent/PostContent.module.css'
 
 import styles from './page.module.css'
 

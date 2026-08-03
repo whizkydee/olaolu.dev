@@ -6,7 +6,7 @@ import {getProject, projects} from '@/lib/work'
 import {PageHeader} from '@/components/PageHeader'
 import {ContactForm} from '@/components/ContactForm'
 import {WorkCarousel} from '@/components/WorkCarousel'
-import postContentStyles from '@/components/PostContent.module.css'
+import postContentStyles from '@/components/PostContent/PostContent.module.css'
 
 import styles from './page.module.css'
 
