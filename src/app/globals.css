@@ -483,9 +483,32 @@ h5 {
 
 .footer-inner {
   width: 100%;
-  max-width: 1500px;
   margin: 0 auto;
-  padding: 5rem 10rem 3rem;
+  padding: 8rem 10rem 5rem;
+}
+
+@media (min-width: 701px) and (max-width: 1500px) {
+  .footer-inner {
+    max-width: 1500px;
+  }
+}
+
+@media (min-width: 1501px) {
+  .footer-inner {
+    max-width: 1760px;
+  }
+}
+
+@media (min-width: 651px) and (max-width: 1129px) {
+  .footer-inner {
+    padding: 5rem var(--space) 3rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .footer-inner {
+    padding: 3rem 8.9vw;
+  }
 }
 
 .footer-main,
@@ -1574,9 +1597,6 @@ h5 {
   }
   #main[data-route-kind='work-detail'] .page-header h1 {
     display: block;
-  }
-  .footer-inner {
-    padding: 3rem 8.9vw;
   }
   .posts {
     margin-top: var(--space);
