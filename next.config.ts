@@ -3,6 +3,14 @@ import type {NextConfig} from 'next'
 export default {
   poweredByHeader: false,
   trailingSlash: false,
+  async headers() {
+    return [
+      {
+        source: '/Resume-Olaolu-Olawuyi.pdf',
+        headers: [{key: 'X-Robots-Tag', value: 'noindex'}],
+      },
+    ]
+  },
   async redirects() {
     return [
       {

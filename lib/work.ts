@@ -6,6 +6,7 @@ export type WorkProject = {
   logoHeight: number
   siteName?: string
   internalPage: boolean
+  indexable?: boolean
   slideCount: number
   imageFormat?: 'jpg' | 'png'
   content: string[]
@@ -59,6 +60,7 @@ export const projects: WorkProject[] = [
     logoHeight: 33.65,
     siteName: 'atu300.deere.com',
     internalPage: true,
+    indexable: false,
     slideCount: 0,
     content: ['Coming soon.'],
   },
@@ -81,6 +83,7 @@ export const projects: WorkProject[] = [
     logoHeight: 59.59,
     siteName: 'pixel2html.netlify.app',
     internalPage: true,
+    indexable: false,
     slideCount: 0,
     content: ['Coming soon.'],
   },
@@ -103,6 +106,7 @@ export const projects: WorkProject[] = [
     logoHeight: 173.33,
     siteName: 'dignisia.com',
     internalPage: true,
+    indexable: false,
     slideCount: 0,
     content: ['Coming soon.'],
   },

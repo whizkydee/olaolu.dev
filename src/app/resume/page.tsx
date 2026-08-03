@@ -1,20 +1,21 @@
 import clsx from 'clsx'
 import Link from 'next/link'
-import type {Metadata} from 'next'
 
 import {Logo} from '@/components/Logo'
 import {resumeData} from '@/lib/resume'
 import {SOCIAL_PROFILES} from '@/lib/site'
+import {createPageMetadata} from '@/lib/seo'
 
 import styles from './resume.module.css'
 
 type Props = {searchParams: Promise<{pdf?: string}>}
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: 'My Résumé',
-  description: `Work experience of Olaolu, expert web engineer with ${new Date().getFullYear() - 2011} years of experience`,
-  alternates: {canonical: '/resume'},
-}
+  description:
+    "Olaolu Olawuyi's résumé: over 15 years of experience building high-performance web platforms, developer tooling, and scalable systems.",
+  path: '/resume',
+})
 
 export default async function ResumePage({searchParams}: Props) {
   const {pdf} = await searchParams

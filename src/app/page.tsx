@@ -1,79 +1,36 @@
 import Link from 'next/link'
-import type {Metadata} from 'next'
+
+import {JsonLd} from '@/components/JsonLd'
+import {
+  PERSON_ID,
+  SITE_NAME,
+  SITE_TITLE,
+  WEBSITE_ID,
+  PERSON_PROFILES,
+  SITE_DESCRIPTION,
+  getAbsoluteUrl,
+  createPageMetadata,
+} from '@/lib/seo'
 
 import styles from './page.module.css'
 
-export const metadata: Metadata = {
-  title: {absolute: 'Olaolu Olawuyi: Expert Web Engineer'},
-  description:
-    'Olaolu Olawuyi is an Expert Web Engineer with over 15 years of experience in tooling, UI engineering and high-performance web architecture.',
-  alternates: {canonical: '/'},
-}
+export const metadata = createPageMetadata({
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  path: '/',
+  absoluteTitle: true,
+})
 
 export default function HomePage() {
-  const websiteSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    '@id': '#website',
-    name: 'Olaolu Olawuyi',
-    alternateName: 'Olaolu',
-    url: 'https://olaolu.dev',
-    sameAs: [
-      'https://facebook.com/mrolaolu',
-      'https://twitter.com/mrolaolu',
-      'https://medium.com/@mrolaolu',
-      'https://github.com/whizkydee',
-    ],
-  }
-  const navigationSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'ItemList',
-    name: 'Olaolu Olawuyi',
-    alternateName: 'Olaolu',
-    itemListElement: [
-      {
-        '@type': 'SiteNavigationElement',
-        position: 1,
-        url: 'https://olaolu.dev/work',
-        name: 'My Work',
-        description:
-          'Selected work including open source projects, experimentals and front-end apps.',
-      },
-      {
-        '@type': 'SiteNavigationElement',
-        position: 2,
-        url: 'https://olaolu.dev/shelf',
-        name: 'My Shelf',
-        description:
-          'Articles related to design, frontend dev, learning and life.',
-      },
-      {
-        '@type': 'SiteNavigationElement',
-        position: 3,
-        url: 'https://olaolu.dev/resume',
-        name: 'My Résumé',
-        description:
-          "Document outlining my skills, expertise and companies I've worked with in the past.",
-      },
-    ],
-  }
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{__html: JSON.stringify(websiteSchema)}}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{__html: JSON.stringify(navigationSchema)}}
-      />
+      <JsonLd data={homeSchema} />
       <div className={styles.content}>
-        <h1 className={styles.eyebrow}>Hey, I&apos;m Olaolu</h1>
-        <p className={styles.lead}>
+        <p className={styles.eyebrow}>Hey, I&apos;m Olaolu</p>
+        <h1 className={styles.lead}>
           A Staff Software Engineer{' '}
           <span>building fast, resilient web products at scale.</span>
-        </p>
+        </h1>
         <div className={styles.body}>
           <p>
             I have over 15 years of experience building web platforms, developer
@@ -108,4 +65,48 @@ export default function HomePage() {
       </div>
     </>
   )
+}
+
+const homeSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': WEBSITE_ID,
+      url: getAbsoluteUrl('/'),
+      name: SITE_NAME,
+      alternateName: 'Olaolu',
+      inLanguage: 'en',
+      publisher: {'@id': PERSON_ID},
+    },
+    {
+      '@type': 'ProfilePage',
+      '@id': `${getAbsoluteUrl('/')}#profile`,
+      url: getAbsoluteUrl('/'),
+      name: SITE_TITLE,
+      mainEntity: {
+        '@type': 'Person',
+        '@id': PERSON_ID,
+        name: SITE_NAME,
+        alternateName: 'Olaolu',
+        url: getAbsoluteUrl('/'),
+        jobTitle: 'Staff Software Engineer',
+        description: SITE_DESCRIPTION,
+        sameAs: PERSON_PROFILES,
+        knowsAbout: [
+          'Web performance',
+          'Frontend architecture',
+          'Developer tooling',
+          'Design systems',
+          'Accessibility',
+          'Scalable web platforms',
+        ],
+        worksFor: {
+          '@type': 'Organization',
+          name: 'Shopify',
+          url: 'https://www.shopify.com',
+        },
+      },
+    },
+  ],
 }

@@ -12,6 +12,7 @@ export type Post = {
   description: string
   content: string
   html: string
+  wordCount: number
   timeToRead: number
 }
 
@@ -37,7 +38,7 @@ export function slugifyTag(tag: string) {
 }
 
 export function tagPath(tag: string) {
-  return `/tag/${encodeURIComponent(tag.toLowerCase().trim())}`
+  return `/tag/${slugifyTag(tag)}`
 }
 
 export function formatPostDate(date: string) {
@@ -60,7 +61,7 @@ function renderMarkdown(content: string) {
 
   return rendered.replace(
     /<a href="(https?:\/\/[^\"]+)"/g,
-    '<a href="$1" target="_blank" rel="nofollow noopener noreferrer"'
+    '<a href="$1" target="_blank" rel="noopener noreferrer"'
   )
 }
 
@@ -83,6 +84,7 @@ function readPost(filename: string): Post {
     description: String(data.description ?? ''),
     content,
     html: renderMarkdown(content),
+    wordCount,
     timeToRead: Math.max(1, Math.ceil(wordCount / 250)),
   }
 }

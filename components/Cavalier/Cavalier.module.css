@@ -3,7 +3,7 @@
   text-align: left;
 }
 
-.cavalier h1 {
+.cavalier :is(h1, h2) {
   margin: 0;
   color: var(--electric-blue);
   font-size: 4em;
@@ -22,7 +22,7 @@
   margin-bottom: 2.5em;
 }
 
-.contact h1 {
+.contact :is(h1, h2) {
   max-width: none;
   font-size: 3.2em;
   font-weight: 700;
@@ -41,7 +41,7 @@
   margin-right: 3em;
 }
 
-.work h1 {
+.work :is(h1, h2) {
   max-width: 30vw;
 }
 
@@ -57,7 +57,7 @@
 }
 
 @media (max-width: 1198px) {
-  .work h1 {
+  .work :is(h1, h2) {
     font-size: 3em;
   }
 }
@@ -67,7 +67,7 @@
     margin: 0;
   }
 
-  .work h1 {
+  .work :is(h1, h2) {
     max-width: none;
   }
 }

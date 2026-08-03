@@ -1,15 +1,15 @@
-import type {Metadata} from 'next'
-
+import {createPageMetadata} from '@/lib/seo'
 import {Cavalier} from '@/components/Cavalier'
 import {ContactForm} from '@/components/ContactForm'
 
 import styles from './page.module.css'
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: 'Contact',
-  description: 'Send Olaolu a message',
-  alternates: {canonical: '/contact'},
-}
+  description:
+    'Contact Olaolu Olawuyi about staff-level software engineering, web platforms, performance, reliability, or consulting opportunities.',
+  path: '/contact',
+})
 
 export default function ContactPage() {
   return (

@@ -18,12 +18,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...posts.map(post => `/shelf/${post.slug}`),
     ...tags,
     ...projects
-      .filter(project => project.internalPage)
+      .filter(project => project.internalPage && project.indexable !== false)
       .map(project => `/work/${project.slug}`),
   ]
 
   return paths.map(path => ({
     url: `${SITE_URL}${path}`,
-    changeFrequency: path === '' ? 'monthly' : 'yearly',
   }))
 }

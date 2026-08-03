@@ -18,8 +18,12 @@ export function PostFooter({
   next?: Post
 }) {
   const shareableURL = `${SITE_URL}/shelf/${post.slug}`
-  const facebook = `https://facebook.com/sharer/sharer.php?u=${encodeURIComponent(`${shareableURL}&quote=${post.title}`)}`
-  const twitter = `https://twitter.com/intent/tweet?${encodeURIComponent(`url=${shareableURL}&via=mrolaolu&text=${post.title}`)}`
+  const facebookShareURL = `https://facebook.com/sharer/sharer.php?${new URLSearchParams(
+    {u: shareableURL, quote: post.title}
+  )}`
+  const twitterShareURL = `https://twitter.com/intent/tweet?${new URLSearchParams(
+    {url: shareableURL, via: 'mrolaolu', text: post.title}
+  )}`
 
   return (
     <footer className={styles.footer}>
@@ -35,7 +39,7 @@ export function PostFooter({
         </div>
         <div className={styles.share}>
           <a
-            href={facebook}
+            href={facebookShareURL}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Share this post on Facebook."
@@ -45,7 +49,7 @@ export function PostFooter({
             </svg>
           </a>
           <a
-            href={twitter}
+            href={twitterShareURL}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Share this post on Twitter."

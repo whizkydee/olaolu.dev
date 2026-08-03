@@ -7,17 +7,22 @@ export function Cavalier({
   heading,
   children,
   variant,
-}: {
-  heading: string
-  children: ReactNode
-  variant?: 'contact' | 'work'
-}) {
+  headingLevel = 1,
+}: Props) {
   const className = clsx(styles.cavalier, variant && styles[variant])
+  const Heading = headingLevel === 1 ? 'h1' : 'h2'
 
   return (
     <article className={className}>
-      <h1>{heading}</h1>
+      <Heading>{heading}</Heading>
       <p>{children}</p>
     </article>
   )
+}
+
+type Props = {
+  heading: string
+  children: ReactNode
+  variant?: 'contact' | 'work'
+  headingLevel?: 1 | 2
 }

@@ -2,12 +2,20 @@ import clsx from 'clsx'
 import type {Metadata} from 'next'
 import {notFound} from 'next/navigation'
 
+import {JsonLd} from '@/components/JsonLd'
 import {Cavalier} from '@/components/Cavalier'
-import {getProject, projects} from '@/lib/work'
 import {PageHeader} from '@/components/PageHeader'
 import {ContactForm} from '@/components/ContactForm'
 import {WorkCarousel} from '@/components/WorkCarousel'
+import {getProject, projects, type WorkProject} from '@/lib/work'
 import postContentStyles from '@/components/PostContent/PostContent.module.css'
+import {
+  PERSON_ID,
+  AUTHOR_NAME,
+  getAbsoluteUrl,
+  createPageMetadata,
+  createBreadcrumbSchema,
+} from '@/lib/seo'
 
 import styles from './page.module.css'
 
@@ -23,11 +31,15 @@ export async function generateMetadata({params}: Props): Promise<Metadata> {
   const {slug} = await params
   const project = getProject(slug)
   if (!project || !project.internalPage) return {}
-  return {
+  return createPageMetadata({
     title: project.name,
-    description: `Highlights of the work process on ${project.name}.`,
-    alternates: {canonical: `/work/${project.slug}`},
-  }
+    description:
+      project.indexable === false
+        ? `Project summary for ${project.name}.`
+        : project.content[0],
+    path: `/work/${project.slug}`,
+    index: project.indexable !== false,
+  })
 }
 
 export default async function WorkDetailPage({params}: Props) {
@@ -49,6 +61,14 @@ export default async function WorkDetailPage({params}: Props) {
 
   return (
     <>
+      <JsonLd data={createProjectSchema(project)} />
+      <JsonLd
+        data={createBreadcrumbSchema([
+          {name: 'Home', path: '/'},
+          {name: 'Work', path: '/work'},
+          {name: project.name, path: `/work/${project.slug}`},
+        ])}
+      />
       <PageHeader title={project.name} hideDecor alwaysVisible />
       <WorkCarousel name={project.name} images={images} />
       <article className={copyClassName}>
@@ -57,7 +77,11 @@ export default async function WorkDetailPage({params}: Props) {
         ))}
       </article>
       <section className={styles.contact}>
-        <Cavalier heading="Let's work together!" variant="work">
+        <Cavalier
+          heading="Let's work together!"
+          headingLevel={2}
+          variant="work"
+        >
           Like my work and want something similar for your company? Sure,
           let&apos;s get to business!
         </Cavalier>
@@ -65,4 +89,24 @@ export default async function WorkDetailPage({params}: Props) {
       </section>
     </>
   )
+}
+
+function createProjectSchema(project: WorkProject) {
+  const url = getAbsoluteUrl(`/work/${project.slug}`)
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    '@id': `${url}#project`,
+    url,
+    name: project.name,
+    description: project.content[0],
+    inLanguage: 'en',
+    creator: {
+      '@type': 'Person',
+      '@id': PERSON_ID,
+      name: AUTHOR_NAME,
+      url: getAbsoluteUrl('/'),
+    },
+  }
 }

@@ -59,8 +59,9 @@
   padding: 2em;
 }
 
-.info h5 {
+.info h2 {
   margin: 0;
+  font-size: 0.83em;
 }
 
 .info a {

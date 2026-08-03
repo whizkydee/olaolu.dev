@@ -4,36 +4,55 @@ import {GoogleAnalytics} from '@next/third-parties/google'
 
 import {SITE_URL} from '@/lib/site'
 import {SiteFrame} from '@/components/SiteFrame'
+import {
+  AUTHOR_NAME,
+  SITE_NAME,
+  SITE_TITLE,
+  SOCIAL_IMAGE,
+  SITE_DESCRIPTION,
+} from '@/lib/seo'
 
 import './globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Olaolu Olawuyi: Expert Web Engineer',
+    default: SITE_TITLE,
     template: '%s — Olaolu Olawuyi',
   },
-  description:
-    'Olaolu Olawuyi is an Expert Web Engineer with over 15 years of experience in tooling, UI engineering and high-performance web architecture.',
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  authors: [{name: AUTHOR_NAME, url: SITE_URL}],
+  creator: AUTHOR_NAME,
+  publisher: AUTHOR_NAME,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
   icons: {icon: '/favicon.png'},
   openGraph: {
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
     type: 'website',
     locale: 'en_US',
-    siteName: "Olaolu's shelf",
-    images: [
-      {
-        url: '/og.png',
-        width: 1730,
-        height: 909,
-        alt: "Hey, I'm Olaolu — Staff Software Engineer",
-      },
-    ],
+    siteName: SITE_NAME,
+    images: [SOCIAL_IMAGE],
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     creator: '@mrolaolu',
     site: '@mrolaolu',
-    images: ['/og.png'],
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: [SOCIAL_IMAGE],
   },
 }
 

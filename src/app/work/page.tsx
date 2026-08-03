@@ -1,18 +1,18 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import type {Metadata} from 'next'
 
 import {projects} from '@/lib/work'
+import {createPageMetadata} from '@/lib/seo'
 import {PageHeader} from '@/components/PageHeader'
 
 import styles from './page.module.css'
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: 'Work',
   description:
-    'Selected work including open source projects, experimentals and front-end apps by Olaolu',
-  alternates: {canonical: '/work'},
-}
+    'Selected web platforms, products, design systems, and frontend engineering projects built or led by Olaolu Olawuyi.',
+  path: '/work',
+})
 
 export default function WorkPage() {
   return (
@@ -63,7 +63,7 @@ export default function WorkPage() {
                   </figcaption>
                 </figure>
                 <div className={styles.info}>
-                  <h5>{project.name}</h5>
+                  <h2>{project.name}</h2>
                   {project.siteName && (
                     <a
                       href={`https://${project.siteName}`}
