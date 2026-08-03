@@ -75,6 +75,11 @@
     padding-right: 8.9vw;
   }
 
+  .main.resume {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   .home {
     padding-right: 8.9vw;
     padding-left: 8.9vw;
