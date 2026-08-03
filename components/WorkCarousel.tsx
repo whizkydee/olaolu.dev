@@ -6,22 +6,45 @@ import styles from './WorkCarousel.module.css'
 
 export function WorkCarousel({name, images}: {name: string; images: string[]}) {
   const [current, setCurrent] = useState(0)
+  const [autoPlayCycle, setAutoPlayCycle] = useState(0)
+  const [hasFocus, setHasFocus] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
   const carouselRef = useRef<HTMLElement>(null)
 
-  const goPrevious = useCallback(
-    () => setCurrent(value => (value - 1 + images.length) % images.length),
-    [images.length]
-  )
-  const goNext = useCallback(
+  const advance = useCallback(
     () => setCurrent(value => (value + 1) % images.length),
     [images.length]
   )
 
+  const restartAutoPlay = useCallback(
+    () => setAutoPlayCycle(cycle => cycle + 1),
+    []
+  )
+
+  const showPrevious = useCallback(() => {
+    setCurrent(value => (value - 1 + images.length) % images.length)
+    restartAutoPlay()
+  }, [images.length, restartAutoPlay])
+
+  const showNext = useCallback(() => {
+    advance()
+    restartAutoPlay()
+  }, [advance, restartAutoPlay])
+
+  const showSlide = useCallback(
+    (index: number) => {
+      setCurrent(index)
+      restartAutoPlay()
+    },
+    [restartAutoPlay]
+  )
+
   useEffect(() => {
+    if (!images.length || hasFocus || isHovered) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    const timer = window.setInterval(goNext, 3000)
+    const timer = window.setInterval(advance, 3000)
     return () => window.clearInterval(timer)
-  }, [goNext])
+  }, [advance, autoPlayCycle, hasFocus, images.length, isHovered])
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
@@ -33,12 +56,12 @@ export function WorkCarousel({name, images}: {name: string; images: string[]}) {
       ) {
         return
       }
-      if (event.key === 'ArrowLeft') goPrevious()
-      if (event.key === 'ArrowRight') goNext()
+      if (event.key === 'ArrowLeft') showPrevious()
+      if (event.key === 'ArrowRight') showNext()
     }
     document.addEventListener('keydown', handleKeyDown)
     return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [goNext, goPrevious])
+  }, [showNext, showPrevious])
 
   if (!images.length) {
     return (
@@ -59,11 +82,17 @@ export function WorkCarousel({name, images}: {name: string; images: string[]}) {
       className={styles.carousel}
       aria-roledescription="carousel"
       aria-label={`${name} screenshots`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onFocusCapture={() => setHasFocus(true)}
+      onBlurCapture={event =>
+        setHasFocus(event.currentTarget.contains(event.relatedTarget))
+      }
     >
       <button
         type="button"
         className={`${styles.arrow} ${styles.previous}`}
-        onClick={goPrevious}
+        onClick={showPrevious}
         aria-label="Previous screenshot"
       >
         ◀
@@ -101,7 +130,7 @@ export function WorkCarousel({name, images}: {name: string; images: string[]}) {
       <button
         type="button"
         className={`${styles.arrow} ${styles.next}`}
-        onClick={goNext}
+        onClick={showNext}
         aria-label="Next screenshot"
       >
         ▶
@@ -113,7 +142,7 @@ export function WorkCarousel({name, images}: {name: string; images: string[]}) {
             type="button"
             aria-label={`Go to screen ${index + 1}`}
             aria-current={index === current}
-            onClick={() => setCurrent(index)}
+            onClick={() => showSlide(index)}
           />
         ))}
       </div>
