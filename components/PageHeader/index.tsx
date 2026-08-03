@@ -1,3 +1,5 @@
+import clsx from 'clsx'
+
 import styles from './PageHeader.module.css'
 
 export function PageHeader({
@@ -17,10 +19,14 @@ export function PageHeader({
   alwaysVisible?: boolean
   compactHeading?: boolean
 }) {
+  const headerClassName = clsx(
+    styles.header,
+    alwaysVisible && styles.alwaysVisible,
+    compactHeading && styles.compactHeading
+  )
+
   return (
-    <header
-      className={`${styles.header}${alwaysVisible ? ` ${styles.alwaysVisible}` : ''}${compactHeading ? ` ${styles.compactHeading}` : ''}`}
-    >
+    <header className={headerClassName}>
       <h1 aria-label={`${title}.`}>
         {!hideDecor && <span className={styles.decor}>{preTitleSymbol}</span>}
         {title}

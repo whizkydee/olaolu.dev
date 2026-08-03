@@ -1,3 +1,5 @@
+import clsx from 'clsx'
+
 import {BowArrow} from '../BowArrow'
 
 import styles from './ContactForm.module.css'
@@ -9,7 +11,7 @@ export function ContactForm({
   id?: string
   variant?: 'contact' | 'work'
 }) {
-  const className = `${styles.form}${variant ? ` ${styles[variant]}` : ''}`
+  const className = clsx(styles.form, variant && styles[variant])
 
   return (
     <form
@@ -65,7 +67,7 @@ export function ContactForm({
       </div>
       <button
         type="submit"
-        className={`${styles.button} ${styles.submitButton}`}
+        className={clsx(styles.button, styles.submitButton)}
       >
         <span className={styles.buttonContent}>
           <span>Shoot</span>

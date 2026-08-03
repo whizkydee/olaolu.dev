@@ -1,5 +1,6 @@
 'use client'
 
+import clsx from 'clsx'
 import {usePathname} from 'next/navigation'
 import {useEffect, type ReactNode} from 'react'
 
@@ -13,7 +14,10 @@ export function SiteFrame({children}: {children: ReactNode}) {
   const routeKind = getRouteKind(pathname)
   const isResume = routeKind === 'resume'
   const routeClassName = routeClassNames[routeKind]
-  const mainClassName = `${styles.main}${routeClassName ? ` ${styles[routeClassName]}` : ''}`
+  const mainClassName = clsx(
+    styles.main,
+    routeClassName && styles[routeClassName]
+  )
 
   useEffect(() => {
     const root = document.documentElement

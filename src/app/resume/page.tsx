@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import Link from 'next/link'
 import type {Metadata} from 'next'
 
@@ -21,11 +22,11 @@ export default async function ResumePage({searchParams}: Props) {
   const yearsOfExperience = new Date().getFullYear() - 2011
 
   return (
-    <div className={`${styles.page}${isPDF ? ` ${styles.pdf}` : ''}`}>
+    <div className={clsx(styles.page, isPDF && styles.pdf)}>
       <aside className={styles.meta}>
         <a
           target="_blank"
-          className={`${styles.icon} ${styles.linkedIn}`}
+          className={clsx(styles.icon, styles.linkedIn)}
           href={SOCIAL_PROFILES.linkedIn}
           rel="noopener noreferrer"
           aria-label="Connect with Olaolu on LinkedIn, opens a new tab."
@@ -33,7 +34,7 @@ export default async function ResumePage({searchParams}: Props) {
           <LinkedInIcon />
         </a>
         <a
-          className={`${styles.icon} ${styles.mail}`}
+          className={clsx(styles.icon, styles.mail)}
           href="mailto:hello@olaolu.dev"
           aria-label="Send Olaolu a mail"
         >

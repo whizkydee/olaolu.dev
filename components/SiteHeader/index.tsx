@@ -1,5 +1,6 @@
 'use client'
 
+import clsx from 'clsx'
 import Link from 'next/link'
 import {useEffect, useRef, useState} from 'react'
 
@@ -14,6 +15,11 @@ export function SiteHeader({pathname}: {pathname: string}) {
   const [shadow, setShadow] = useState(false)
   const headerRef = useRef<HTMLElement>(null)
   const buttonRef = useRef<HTMLButtonElement>(null)
+  const menuClassName = clsx(
+    styles.menu,
+    open && styles.menuOpen,
+    shadow && styles.menuShadow
+  )
 
   useEffect(() => {
     if (!open || !pathname.startsWith('/work')) return
@@ -72,7 +78,7 @@ export function SiteHeader({pathname}: {pathname: string}) {
         aria-label={`${open ? 'Close' : 'Open'} contact menu`}
         aria-controls="contact-menu"
         aria-expanded={open}
-        className={`${styles.toggle}${open ? ` ${styles.toggleOpen}` : ''}`}
+        className={clsx(styles.toggle, open && styles.toggleOpen)}
         onClick={() => {
           if (open) setShadow(false)
           setOpen(!open)
@@ -83,7 +89,7 @@ export function SiteHeader({pathname}: {pathname: string}) {
         id="contact-menu"
         aria-label="Contact menu"
         aria-hidden={!open}
-        className={`${styles.menu}${open ? ` ${styles.menuOpen}` : ''}${shadow ? ` ${styles.menuShadow}` : ''}`}
+        className={menuClassName}
       >
         <NavLinks className={styles.navigation} pathname={pathname} />
         <BasicContact className={styles.basic} />

@@ -1,5 +1,6 @@
 'use client'
 
+import clsx from 'clsx'
 import {useCallback, useEffect, useRef, useState} from 'react'
 
 import styles from './WorkCarousel.module.css'
@@ -91,7 +92,7 @@ export function WorkCarousel({name, images}: {name: string; images: string[]}) {
     >
       <button
         type="button"
-        className={`${styles.arrow} ${styles.previous}`}
+        className={clsx(styles.arrow, styles.previous)}
         onClick={showPrevious}
         aria-label="Previous screenshot"
       >
@@ -129,7 +130,7 @@ export function WorkCarousel({name, images}: {name: string; images: string[]}) {
       </div>
       <button
         type="button"
-        className={`${styles.arrow} ${styles.next}`}
+        className={clsx(styles.arrow, styles.next)}
         onClick={showNext}
         aria-label="Next screenshot"
       >

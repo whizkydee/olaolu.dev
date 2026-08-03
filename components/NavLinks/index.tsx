@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import Link from 'next/link'
 
 import {getNavigation} from '@/lib/site'
@@ -13,7 +14,7 @@ export function NavLinks({
 }) {
   return (
     <ul
-      className={`${styles.nav}${className ? ` ${className}` : ''}`}
+      className={clsx(styles.nav, className)}
       itemScope
       itemType="https://schema.org/SiteNavigationElement"
     >

@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import type {Metadata} from 'next'
 import {notFound} from 'next/navigation'
 
@@ -40,14 +41,17 @@ export default async function WorkDetailPage({params}: Props) {
     (_value, index) =>
       `/work-images/${project.slug}/screen${index + 1}.${extension}`
   )
+  const copyClassName = clsx(
+    styles.copy,
+    postContentStyles.content,
+    images.length === 0 && styles.copyAfterEmpty
+  )
 
   return (
     <>
       <PageHeader title={project.name} hideDecor alwaysVisible />
       <WorkCarousel name={project.name} images={images} />
-      <article
-        className={`${styles.copy} ${postContentStyles.content}${images.length ? '' : ` ${styles.copyAfterEmpty}`}`}
-      >
+      <article className={copyClassName}>
         {project.content.map(paragraph => (
           <p key={paragraph} dangerouslySetInnerHTML={{__html: paragraph}} />
         ))}

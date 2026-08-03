@@ -1,10 +1,12 @@
+import clsx from 'clsx'
+
 import {SOCIAL_PROFILES} from '@/lib/site'
 
 import styles from './ContactLinks.module.css'
 
 export function BasicContact({className}: {className?: string}) {
   return (
-    <div className={`${styles.basic}${className ? ` ${className}` : ''}`}>
+    <div className={clsx(styles.basic, className)}>
       <span className={styles.sayHello}>Say Hello</span>
       <ul>
         <li>
@@ -27,7 +29,7 @@ export function BasicContact({className}: {className?: string}) {
 
 export function SocialContact({className}: {className?: string}) {
   return (
-    <ul className={`${styles.social}${className ? ` ${className}` : ''}`}>
+    <ul className={clsx(styles.social, className)}>
       <li>
         <a
           href={SOCIAL_PROFILES.twitter}
