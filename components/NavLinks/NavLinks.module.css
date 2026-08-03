@@ -1,0 +1,27 @@
+.nav a {
+  position: relative;
+  color: currentColor;
+}
+
+@media (hover: hover) and (any-pointer: fine) {
+  .nav a:hover::after {
+    opacity: 0.2;
+    transform: translateX(0.5em);
+  }
+
+  .nav a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20%;
+    min-width: 1em;
+    height: 100%;
+    opacity: 0;
+    background: currentColor;
+    transform: translateX(0);
+    transform-origin: left;
+    pointer-events: none;
+    transition: 0.3s;
+  }
+}

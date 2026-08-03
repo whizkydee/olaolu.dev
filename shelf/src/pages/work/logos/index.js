@@ -1,7 +1,0 @@
-export { default as conectarLogo } from '!raw-loader!./conectar-logo.svg'
-export { default as olaoluLogo } from '!raw-loader!./olaolu-logo.svg'
-export { default as pixelLogo } from '!raw-loader!./pixel-logo.svg'
-export { default as deereLogo } from '!raw-loader!./deere-logo.svg'
-export { default as hellotaxLogo } from '!raw-loader!./hellotax-logo.svg'
-export { default as dropdLogo } from '!raw-loader!./dropd-logo.svg'
-export { default as dignisiaLogo } from '!raw-loader!./dignisia-logo.svg'

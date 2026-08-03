@@ -1,0 +1,85 @@
+import Link from 'next/link'
+import Image from 'next/image'
+
+import {projects} from '@/lib/work'
+import {createPageMetadata} from '@/lib/seo'
+import {PageHeader} from '@/components/PageHeader'
+
+import styles from './page.module.css'
+
+export const metadata = createPageMetadata({
+  title: 'Work',
+  description:
+    'Selected web platforms, products, design systems, and frontend engineering projects built or led by Olaolu Olawuyi.',
+  path: '/work',
+})
+
+export default function WorkPage() {
+  return (
+    <>
+      <PageHeader
+        title="work"
+        description="Selected work I've taken on in the past."
+        compactHeading
+      />
+      <section>
+        <ul className={styles.projects} aria-label="Projects.">
+          {projects.map(project => {
+            const href = project.internalPage
+              ? `/work/${project.slug}`
+              : `https://${project.siteName}`
+            return (
+              <li className={styles.project} key={project.slug}>
+                <Link
+                  className={styles.link}
+                  href={href}
+                  aria-label={
+                    project.internalPage
+                      ? `${project.name} project summary.`
+                      : `${project.name} live demo.`
+                  }
+                  target={project.internalPage ? undefined : '_blank'}
+                  rel={project.internalPage ? undefined : 'noopener noreferrer'}
+                >
+                  {project.name} project summary.
+                </Link>
+                <figure className={styles.logo}>
+                  <span>
+                    <Image
+                      src={project.logo}
+                      alt=""
+                      aria-hidden
+                      width={project.logoWidth}
+                      height={project.logoHeight}
+                      style={{
+                        width: project.logoWidth,
+                        height: project.logoHeight,
+                      }}
+                      loading="eager"
+                    />
+                  </span>
+                  <figcaption className="visually-hidden">
+                    {project.name} logo.
+                  </figcaption>
+                </figure>
+                <div className={styles.info}>
+                  <h2>{project.name}</h2>
+                  {project.siteName && (
+                    <a
+                      href={`https://${project.siteName}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${project.name} live demo.`}
+                    >
+                      {project.siteName}
+                    </a>
+                  )}
+                </div>
+              </li>
+            )
+          })}
+        </ul>
+      </section>
+    </>
+  )
+}

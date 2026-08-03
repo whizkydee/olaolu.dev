@@ -1,7 +1,0 @@
-{
-  "version": "1.0.0",
-  "name": "@saucedrip/core",
-  "description": "Shared components and helpers for olaolu.dev",
-  "author": "Olaolu Olawuyi <mrolaolu@gmail.com> (https://olaolu.dev)",
-  "repository": "https://github.com/whizkydee/olaolu.dev/tree/master/literal-sauce-drip"
-}

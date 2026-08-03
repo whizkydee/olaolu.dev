@@ -1,0 +1,13 @@
+.posts p,
+.posts li,
+.posts time,
+.posts span {
+  letter-spacing: 0.011rem;
+}
+
+@media (max-width: 650px) {
+  .posts {
+    margin-top: var(--space);
+    font-size: 0.9em;
+  }
+}
