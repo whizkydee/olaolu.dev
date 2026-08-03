@@ -4,6 +4,10 @@
   flex-direction: column;
 }
 
+.footer a:focus-visible {
+  outline-color: currentColor;
+}
+
 .meta {
   display: flex;
   margin: 1em 0 2.5rem;

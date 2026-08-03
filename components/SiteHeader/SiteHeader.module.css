@@ -109,6 +109,12 @@
   color: var(--electric-blue);
 }
 
+.logo:focus-visible,
+.toggle:focus-visible,
+.menu a:focus-visible {
+  outline-color: currentColor;
+}
+
 @media (min-width: 701px) {
   .header {
     padding-right: var(--space);

@@ -17,6 +17,11 @@
   outline: 3px solid var(--fading-electric);
 }
 
+.content a:focus-visible {
+  outline-width: 2px;
+  outline-color: currentColor;
+}
+
 .content img {
   display: block;
   width: calc(100% + var(--space) * 2);
