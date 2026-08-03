@@ -1,0 +1,89 @@
+.cavalier {
+  position: relative;
+  text-align: left;
+}
+
+.cavalier h1 {
+  margin: 0;
+  color: var(--electric-blue);
+  font-size: 4em;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.cavalier p {
+  color: var(--purple);
+  line-height: 1.6;
+}
+
+.contact {
+  width: min(100%, 800px);
+  margin-bottom: 2.5em;
+}
+
+.contact h1 {
+  max-width: none;
+  font-size: 3.2em;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.contact p {
+  max-width: 701px;
+  margin-top: 15px;
+  font-size: 1.6em;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.work {
+  margin-right: 3em;
+}
+
+.work h1 {
+  max-width: 30vw;
+}
+
+@media (min-width: 701px) {
+  .cavalier p {
+    max-width: 701px;
+    font-size: 1.07em;
+  }
+
+  .contact p {
+    font-size: 1.6em;
+  }
+}
+
+@media (max-width: 1198px) {
+  .work h1 {
+    font-size: 3em;
+  }
+}
+
+@media (max-width: 800px) {
+  .work {
+    margin: 0;
+  }
+
+  .work h1 {
+    max-width: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .cavalier p {
+    font-size: 1.3em;
+  }
+
+  .contact p {
+    font-size: 1.6em;
+  }
+}
+
+@media (max-width: 500px) {
+  .work {
+    font-size: 0.8em;
+  }
+}

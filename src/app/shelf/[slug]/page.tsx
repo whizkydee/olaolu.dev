@@ -4,6 +4,9 @@ import {notFound} from 'next/navigation'
 import {Newsletter} from '@/components/Newsletter'
 import {PostFooter} from '@/components/PostFooter'
 import {formatPostDate, getPost, getPublishedPosts} from '@/lib/posts'
+import postContentStyles from '@/components/PostContent.module.css'
+
+import styles from './page.module.css'
 
 type Props = {params: Promise<{slug: string}>}
 
@@ -35,9 +38,9 @@ export default async function PostPage({params}: Props) {
   const index = posts.findIndex(entry => entry.slug === slug)
 
   return (
-    <article id="post">
-      <header className="post-header">
-        <div className="post-meta post-meta--full">
+    <article className={styles.post}>
+      <header className={styles.header}>
+        <div className={styles.meta}>
           <time
             dateTime={post.date}
             aria-label={`Published on: ${formatPostDate(post.date)}`}
@@ -49,7 +52,7 @@ export default async function PostPage({params}: Props) {
         <h1>{post.title}</h1>
       </header>
       <div
-        className="post-content"
+        className={postContentStyles.content}
         dangerouslySetInnerHTML={{__html: post.html}}
       />
       <PostFooter

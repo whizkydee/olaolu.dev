@@ -5,6 +5,7 @@ import {SITE_URL} from '@/lib/site'
 import {tagPath, type Post} from '@/lib/posts'
 
 import {BowArrow} from './BowArrow'
+import styles from './PostFooter.module.css'
 
 export function PostFooter({
   post,
@@ -20,9 +21,9 @@ export function PostFooter({
   const twitter = `https://twitter.com/intent/tweet?${encodeURIComponent(`url=${shareableURL}&via=mrolaolu&text=${post.title}`)}`
 
   return (
-    <footer className="post-footer">
-      <div className="post-footer__meta">
-        <div className="post-tags">
+    <footer className={styles.footer}>
+      <div className={styles.meta}>
+        <div className={styles.tags}>
           <span>Tags:</span>{' '}
           {post.tags.map((tag, index) => (
             <Fragment key={tag}>
@@ -31,7 +32,7 @@ export function PostFooter({
             </Fragment>
           ))}
         </div>
-        <div className="post-share">
+        <div className={styles.share}>
           <a
             href={facebook}
             target="_blank"
@@ -54,11 +55,11 @@ export function PostFooter({
           </a>
         </div>
       </div>
-      <nav className="post-nav" aria-label="Post navigation">
+      <nav className={styles.navigation} aria-label="Post navigation">
         <Link
           rel="prev"
           href={previous ? `/shelf/${previous.slug}` : '#'}
-          className="post-nav__previous"
+          className={styles.previous}
           aria-hidden={!previous}
           tabIndex={previous ? undefined : -1}
         >
@@ -68,7 +69,7 @@ export function PostFooter({
         <Link
           href="/shelf"
           aria-label="Go to all posts"
-          className="post-nav__squares"
+          className={styles.squares}
         >
           <svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true">
             <path d="M.5 15.194V.7h14.494v14.494zM21.006 15.194V.7H35.5v14.494zM.5 35.7V21.207h14.494V35.7zM21.006 35.7V21.207H35.5V35.7z" />
@@ -77,7 +78,7 @@ export function PostFooter({
         <Link
           rel="next"
           href={next ? `/shelf/${next.slug}` : '#'}
-          className="post-nav__next"
+          className={styles.next}
           aria-hidden={!next}
           tabIndex={next ? undefined : -1}
         >

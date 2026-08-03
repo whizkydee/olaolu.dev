@@ -5,6 +5,8 @@ import {PostCard} from '@/components/PostCard'
 import {PageHeader} from '@/components/PageHeader'
 import {getPublishedPosts, slugifyTag, tagPath} from '@/lib/posts'
 
+import styles from '../../shelf/posts.module.css'
+
 type Props = {params: Promise<{tag: string}>}
 
 export function generateStaticParams() {
@@ -42,7 +44,7 @@ export default async function TagPage({params}: Props) {
   return (
     <>
       <PageHeader title={` ${title}`} preTitleSymbol="#" noDot />
-      <ol className="posts" aria-label={`Posts tagged ${title}`}>
+      <ol className={styles.posts} aria-label={`Posts tagged ${title}`}>
         {posts.map(post => (
           <PostCard key={post.slug} post={post} />
         ))}

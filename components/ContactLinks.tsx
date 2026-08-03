@@ -1,9 +1,11 @@
 import {SOCIAL_PROFILES} from '@/lib/site'
 
-export function BasicContact() {
+import styles from './ContactLinks.module.css'
+
+export function BasicContact({className}: {className?: string}) {
   return (
-    <div className="basic-contact">
-      <span className="say-hello">Say Hello</span>
+    <div className={`${styles.basic}${className ? ` ${className}` : ''}`}>
+      <span className={styles.sayHello}>Say Hello</span>
       <ul>
         <li>
           <a href="mailto:hello@olaolu.dev">hello@olaolu.dev</a>
@@ -23,9 +25,9 @@ export function BasicContact() {
   )
 }
 
-export function SocialContact() {
+export function SocialContact({className}: {className?: string}) {
   return (
-    <ul className="social-contact">
+    <ul className={`${styles.social}${className ? ` ${className}` : ''}`}>
       <li>
         <a
           href={SOCIAL_PROFILES.twitter}

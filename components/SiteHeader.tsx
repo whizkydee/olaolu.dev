@@ -6,6 +6,7 @@ import {useEffect, useRef, useState} from 'react'
 import {Logo} from './Logo'
 import {NavLinks} from './NavLinks'
 import {BasicContact, SocialContact} from './ContactLinks'
+import styles from './SiteHeader.module.css'
 
 export function SiteHeader({pathname}: {pathname: string}) {
   const [open, setOpen] = useState(false)
@@ -55,9 +56,9 @@ export function SiteHeader({pathname}: {pathname: string}) {
   }, [open])
 
   return (
-    <header id="site-header" ref={headerRef}>
+    <header className={styles.header} ref={headerRef}>
       <Link
-        id="logo"
+        className={styles.logo}
         href="/"
         aria-label={`Logo, go to ${pathname === '/' ? 'homepage' : 'shelf'}.`}
       >
@@ -70,7 +71,7 @@ export function SiteHeader({pathname}: {pathname: string}) {
         aria-label={`${open ? 'Close' : 'Open'} contact menu`}
         aria-controls="contact-menu"
         aria-expanded={open}
-        className={`menu-toggle${open ? ' x' : ''}`}
+        className={`${styles.toggle}${open ? ` ${styles.toggleOpen}` : ''}`}
         onClick={() => {
           if (open) setShadow(false)
           setOpen(!open)
@@ -81,11 +82,11 @@ export function SiteHeader({pathname}: {pathname: string}) {
         id="contact-menu"
         aria-label="Contact menu"
         aria-hidden={!open}
-        className={`${open ? 'open' : ''}${shadow ? ' shadow' : ''}`}
+        className={`${styles.menu}${open ? ` ${styles.menuOpen}` : ''}${shadow ? ` ${styles.menuShadow}` : ''}`}
       >
-        <NavLinks pathname={pathname} />
-        <BasicContact />
-        <SocialContact />
+        <NavLinks className={styles.navigation} pathname={pathname} />
+        <BasicContact className={styles.basic} />
+        <SocialContact className={styles.social} />
       </nav>
     </header>
   )

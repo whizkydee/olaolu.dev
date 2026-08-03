@@ -2,13 +2,17 @@
 
 import {usePathname} from 'next/navigation'
 import {useEffect, type ReactNode} from 'react'
+
 import {SiteFooter} from './SiteFooter'
 import {SiteHeader} from './SiteHeader'
+import styles from './SiteFrame.module.css'
 
 export function SiteFrame({children}: {children: ReactNode}) {
   const pathname = usePathname()
   const routeKind = getRouteKind(pathname)
   const isResume = routeKind === 'resume'
+  const routeClassName = routeClassNames[routeKind]
+  const mainClassName = `${styles.main}${routeClassName ? ` ${styles[routeClassName]}` : ''}`
 
   useEffect(() => {
     const root = document.documentElement
@@ -33,11 +37,16 @@ export function SiteFrame({children}: {children: ReactNode}) {
 
   return (
     <>
-      <a id="skip-link" href="#main">
+      <a className={styles.skipLink} href="#main">
         Skip to content
       </a>
       {!isResume && <SiteHeader key={pathname} pathname={pathname} />}
-      <main id="main" tabIndex={-1} data-route-kind={routeKind}>
+      <main
+        id="main"
+        tabIndex={-1}
+        className={mainClassName}
+        data-route-kind={routeKind}
+      >
         {children}
         <span className="visually-hidden" role="status" aria-live="polite">
           You just navigated to: {pathname}
@@ -47,6 +56,15 @@ export function SiteFrame({children}: {children: ReactNode}) {
     </>
   )
 }
+
+const routeClassNames = {
+  default: null,
+  home: 'home',
+  post: null,
+  resume: 'resume',
+  'work-detail': 'workDetail',
+  'work-index': 'workIndex',
+} as const
 
 function getRouteKind(pathname: string) {
   if (pathname === '/') return 'home'

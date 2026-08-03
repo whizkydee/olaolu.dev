@@ -1,0 +1,59 @@
+.sayHello {
+  color: #cbc9e2;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.basic {
+  position: relative;
+  font-size: 1em;
+  line-height: 2.5;
+}
+
+.basic ul {
+  font-size: 1.15em;
+}
+
+.basic a,
+.social a {
+  color: currentColor;
+}
+
+.social {
+  position: relative;
+  display: flex;
+}
+
+.social li:not(:last-child) {
+  margin-right: 2.5em;
+}
+
+@media (hover: hover) and (any-pointer: fine) {
+  .basic a,
+  .social a {
+    position: relative;
+  }
+
+  .basic a:hover::after,
+  .social a:hover::after {
+    opacity: 0.2;
+    transform: translateX(0.5em);
+  }
+
+  .basic a::after,
+  .social a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20%;
+    min-width: 1em;
+    height: 100%;
+    opacity: 0;
+    background: currentColor;
+    transform: translateX(0);
+    transform-origin: left;
+    pointer-events: none;
+    transition: 0.3s;
+  }
+}

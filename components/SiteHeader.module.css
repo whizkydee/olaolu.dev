@@ -1,0 +1,280 @@
+.header {
+  position: relative;
+  z-index: 1000;
+  display: flex;
+  width: 100%;
+  max-width: 1760px;
+  margin: 0 auto;
+  padding: 3rem max(8.5vw, var(--space));
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.72rem;
+}
+
+.logo {
+  display: flex;
+  width: 8.34em;
+  height: 3.195em;
+  color: var(--electric-blue);
+  outline-color: transparent;
+}
+
+.logo svg {
+  width: 100%;
+  height: 100%;
+}
+
+.logo path {
+  fill: currentColor;
+}
+
+.toggle {
+  position: relative;
+  z-index: 1001;
+  width: 2.78em;
+  height: 2.09em;
+  margin-top: 0.699em;
+  color: var(--electric-blue);
+  background: none;
+}
+
+.toggle::before,
+.toggle::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transition:
+    transform 0.2s ease,
+    top 0.2s ease,
+    width 0.2s ease;
+}
+
+.toggle::before {
+  top: 0;
+}
+
+.toggle::after {
+  top: 1.13em;
+  width: 72%;
+}
+
+.toggleOpen {
+  transform: scale(0.9);
+}
+
+.toggleOpen::before {
+  transform: rotate(45deg);
+}
+
+.toggleOpen::after {
+  top: 0;
+  width: 100%;
+  transform: rotate(-45deg);
+}
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 998;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  padding: 3.473em;
+  flex-direction: column;
+  justify-content: space-around;
+  background: #fff;
+  user-select: none;
+  font-size: 2.2rem;
+  transition:
+    opacity 0.3s,
+    visibility 0.3s;
+}
+
+.menu[aria-hidden='true'] {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.menu[aria-hidden='false'] {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.menu.menu a {
+  color: var(--electric-blue);
+}
+
+@media (min-width: 701px) {
+  .header {
+    padding-right: var(--space);
+    padding-left: var(--space);
+  }
+
+  .menu {
+    position: absolute;
+    inset: auto 3.41em auto auto;
+    top: 1.39em;
+    width: 22.223em;
+    height: auto;
+    min-height: 28em;
+    padding: 3.473em;
+    justify-content: flex-start;
+    background: transparent;
+    box-shadow: none;
+    font-size: 1.1em;
+    transition:
+      opacity 0.25s,
+      visibility 0s 0.3s,
+      box-shadow 0.25s;
+  }
+
+  .menu::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    transform: scale(0.3826, 0.27);
+    transform-origin: top right;
+    transition: transform 0.3s;
+  }
+
+  .menu > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .menu[aria-hidden='true'] {
+    opacity: 0;
+  }
+
+  .menu[aria-hidden='false'] {
+    opacity: 1;
+    transition-delay: 0s;
+  }
+
+  .menuOpen.menuShadow {
+    box-shadow: 0 10px 53px rgba(72, 49, 212, 0.05);
+  }
+
+  .menuOpen::before {
+    transform: scale(1);
+  }
+
+  .navigation,
+  .basic ul,
+  .social {
+    opacity: 0;
+    transition:
+      opacity 0.16s,
+      transform 0.22s;
+  }
+
+  .navigation {
+    margin: 1.2em 0;
+    font-size: 1.15em;
+    line-height: 2.5;
+    transform: translateY(50px);
+  }
+
+  .basic {
+    margin-top: 0.8em;
+  }
+
+  .basic ul {
+    margin-bottom: 2.78em;
+    transform: translateY(40px);
+  }
+
+  .social {
+    font-size: 0.9em;
+    line-height: inherit;
+    transform: translateY(30px);
+  }
+
+  .basic > span {
+    opacity: 0;
+    transition: opacity 0.16s;
+  }
+
+  .menuOpen .navigation,
+  .menuOpen .basic ul,
+  .menuOpen .social,
+  .menuOpen .basic > span {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .menuOpen .navigation {
+    transition:
+      opacity 0s 200ms,
+      transform 0.3s 200ms;
+  }
+
+  .menuOpen .basic ul {
+    transition:
+      opacity 0s 400ms,
+      transform 0.3s 400ms;
+  }
+
+  .menuOpen .social {
+    transition:
+      opacity 0s 600ms,
+      transform 0.3s 600ms;
+  }
+
+  .menuOpen .basic > span {
+    transition: opacity 0.2s 400ms;
+  }
+}
+
+@media (min-width: 1130px) {
+  .header {
+    padding-right: 6em;
+    padding-left: 6em;
+  }
+}
+
+@media (max-width: 700px) {
+  .header {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .logo,
+  .toggle {
+    z-index: 1001;
+  }
+
+  .menu {
+    font-size: 1.1rem;
+  }
+
+  .menu ul {
+    font-size: 1em;
+    line-height: 2.5;
+  }
+
+  .menu .social li:not(:last-child) {
+    margin-right: 7.5vw;
+  }
+}
+
+@media (max-width: 650px) {
+  .header {
+    padding-right: 8.5vw;
+    padding-left: 8.5vw;
+  }
+}
+
+@media (max-width: 350px) {
+  .menu {
+    padding: 2.473em;
+  }
+}

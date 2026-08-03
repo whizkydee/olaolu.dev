@@ -2,10 +2,18 @@ import Link from 'next/link'
 
 import {getNavigation} from '@/lib/site'
 
-export function NavLinks({pathname}: {pathname: string}) {
+import styles from './NavLinks.module.css'
+
+export function NavLinks({
+  pathname,
+  className,
+}: {
+  pathname: string
+  className?: string
+}) {
   return (
     <ul
-      className="cross-site-nav"
+      className={`${styles.nav}${className ? ` ${className}` : ''}`}
       itemScope
       itemType="https://schema.org/SiteNavigationElement"
     >

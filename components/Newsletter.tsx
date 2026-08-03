@@ -1,17 +1,19 @@
+import styles from './Newsletter.module.css'
+
 export function Newsletter() {
   return (
-    <aside id="newsletter">
+    <aside className={styles.newsletter}>
       <form
         method="post"
         rel="noopener"
         target="_blank"
         action="https://gmail.us20.list-manage.com/subscribe/post?u=04ac543f98469334c684d8753&id=df629ce71c"
       >
-        <div className="cavalier newsletter-cavalier">
+        <div className={styles.cavalier}>
           <h2>Join the newsletter</h2>
         </div>
-        <div className="newsletter-inner">
-          <label className="input-group" htmlFor="mce-EMAIL">
+        <div className={styles.inner}>
+          <label className={styles.inputGroup} htmlFor="mce-EMAIL">
             <span>Email Address</span>
             <input
               required
@@ -22,8 +24,10 @@ export function Newsletter() {
               placeholder="email@domain.com"
             />
           </label>
-          <button type="submit" className="sauce-button">
-            <span className="sauce-button__content">Subscribe</span>
+          <button type="submit" className={styles.button}>
+            <span className={styles.buttonContent} data-button-content>
+              Subscribe
+            </span>
           </button>
         </div>
       </form>

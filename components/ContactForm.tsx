@@ -1,17 +1,29 @@
 import {BowArrow} from './BowArrow'
+import styles from './ContactForm.module.css'
 
-export function ContactForm({id}: {id?: string}) {
+export function ContactForm({
+  id,
+  variant,
+}: {
+  id?: string
+  variant?: 'contact' | 'work'
+}) {
+  const className = `${styles.form}${variant ? ` ${styles[variant]}` : ''}`
+
   return (
     <form
       id={id}
       method="POST"
       target="_blank"
-      className="contact-form"
+      className={className}
       action="https://formspree.io/hello@olaolu.dev"
     >
       <input type="hidden" name="_subject" value="Message from olaolu.dev!" />
-      <div className="form-row">
-        <label className="input-group" htmlFor={`${id ?? 'contact'}-name`}>
+      <div className={styles.row}>
+        <label
+          className={styles.inputGroup}
+          htmlFor={`${id ?? 'contact'}-name`}
+        >
           <span>Your Name</span>
           <input
             id={`${id ?? 'contact'}-name`}
@@ -20,7 +32,10 @@ export function ContactForm({id}: {id?: string}) {
             placeholder="Enter your name"
           />
         </label>
-        <label className="input-group" htmlFor={`${id ?? 'contact'}-email`}>
+        <label
+          className={styles.inputGroup}
+          htmlFor={`${id ?? 'contact'}-email`}
+        >
           <span>Email Address</span>
           <input
             id={`${id ?? 'contact'}-email`}
@@ -31,8 +46,11 @@ export function ContactForm({id}: {id?: string}) {
           />
         </label>
       </div>
-      <div className="form-row">
-        <label className="input-group" htmlFor={`${id ?? 'contact'}-message`}>
+      <div className={styles.row}>
+        <label
+          className={styles.inputGroup}
+          htmlFor={`${id ?? 'contact'}-message`}
+        >
           <span>Your Message</span>
           <textarea
             id={`${id ?? 'contact'}-message`}
@@ -44,8 +62,11 @@ export function ContactForm({id}: {id?: string}) {
           />
         </label>
       </div>
-      <button type="submit" className="sauce-button" id="submit-button">
-        <span className="sauce-button__content">
+      <button
+        type="submit"
+        className={`${styles.button} ${styles.submitButton}`}
+      >
+        <span className={styles.buttonContent}>
           <span>Shoot</span>
           <BowArrow />
         </span>

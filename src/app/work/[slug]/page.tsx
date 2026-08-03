@@ -6,6 +6,9 @@ import {getProject, projects} from '@/lib/work'
 import {PageHeader} from '@/components/PageHeader'
 import {ContactForm} from '@/components/ContactForm'
 import {WorkCarousel} from '@/components/WorkCarousel'
+import postContentStyles from '@/components/PostContent.module.css'
+
+import styles from './page.module.css'
 
 type Props = {params: Promise<{slug: string}>}
 
@@ -40,19 +43,21 @@ export default async function WorkDetailPage({params}: Props) {
 
   return (
     <>
-      <PageHeader title={project.name} hideDecor />
+      <PageHeader title={project.name} hideDecor alwaysVisible />
       <WorkCarousel name={project.name} images={images} />
-      <article className="work-copy post-content">
+      <article
+        className={`${styles.copy} ${postContentStyles.content}${images.length ? '' : ` ${styles.copyAfterEmpty}`}`}
+      >
         {project.content.map(paragraph => (
           <p key={paragraph} dangerouslySetInnerHTML={{__html: paragraph}} />
         ))}
       </article>
-      <section className="work-contact">
-        <Cavalier heading="Let's work together!">
+      <section className={styles.contact}>
+        <Cavalier heading="Let's work together!" variant="work">
           Like my work and want something similar for your company? Sure,
           let&apos;s get to business!
         </Cavalier>
-        <ContactForm id={`${project.slug}-contact-form`} />
+        <ContactForm id={`${project.slug}-contact-form`} variant="work" />
       </section>
     </>
   )

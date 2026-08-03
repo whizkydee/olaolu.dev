@@ -2,9 +2,12 @@
 
 import {useCallback, useEffect, useRef, useState} from 'react'
 
+import styles from './WorkCarousel.module.css'
+
 export function WorkCarousel({name, images}: {name: string; images: string[]}) {
   const [current, setCurrent] = useState(0)
   const carouselRef = useRef<HTMLElement>(null)
+
   const goPrevious = useCallback(
     () => setCurrent(value => (value - 1 + images.length) % images.length),
     [images.length]
@@ -41,11 +44,11 @@ export function WorkCarousel({name, images}: {name: string; images: string[]}) {
     return (
       <section
         ref={carouselRef}
-        className="work-carousel work-carousel--empty"
+        className={styles.carousel}
         aria-roledescription="carousel"
         aria-label={`${name} screenshots`}
       >
-        <div className="carousel-empty" aria-hidden="true" />
+        <div aria-hidden="true" />
       </section>
     )
   }
@@ -53,21 +56,21 @@ export function WorkCarousel({name, images}: {name: string; images: string[]}) {
   return (
     <section
       ref={carouselRef}
-      className="work-carousel"
+      className={styles.carousel}
       aria-roledescription="carousel"
       aria-label={`${name} screenshots`}
     >
       <button
         type="button"
-        className="carousel-arrow carousel-arrow--previous"
+        className={`${styles.arrow} ${styles.previous}`}
         onClick={goPrevious}
         aria-label="Previous screenshot"
       >
         ◀
       </button>
-      <div className="carousel-viewport">
+      <div className={styles.viewport}>
         <div
-          className="carousel-track"
+          className={styles.track}
           style={{transform: `translateX(-${current * 100}%)`}}
         >
           {images.map((image, index) => (
@@ -77,7 +80,7 @@ export function WorkCarousel({name, images}: {name: string; images: string[]}) {
               role="tabpanel"
               aria-hidden={index !== current}
               tabIndex={index === current ? 0 : -1}
-              className={`carousel-slide${index === current ? ' carousel-slide--active' : ''}`}
+              className={styles.slide}
               onClick={() =>
                 window.open(image, '_blank', 'noopener,noreferrer')
               }
@@ -97,13 +100,13 @@ export function WorkCarousel({name, images}: {name: string; images: string[]}) {
       </div>
       <button
         type="button"
-        className="carousel-arrow carousel-arrow--next"
+        className={`${styles.arrow} ${styles.next}`}
         onClick={goNext}
         aria-label="Next screenshot"
       >
         ▶
       </button>
-      <div className="carousel-dots" aria-label="Choose screenshot">
+      <div className={styles.dots} aria-label="Choose screenshot">
         {images.map((image, index) => (
           <button
             key={image}

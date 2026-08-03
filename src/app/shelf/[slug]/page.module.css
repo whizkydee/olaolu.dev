@@ -1,0 +1,27 @@
+.post p,
+.post li,
+.post time,
+.post span:not(.token):not([data-button-content]) {
+  letter-spacing: 0.011rem;
+}
+
+.header {
+  padding: 1rem 0;
+  text-align: left;
+}
+
+.header h1 {
+  margin-bottom: 0;
+  color: var(--electric-blue);
+  font-size: 2em;
+}
+
+.meta {
+  display: flex;
+  gap: 7vw;
+  padding-bottom: 0.6rem;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.8em;
+}

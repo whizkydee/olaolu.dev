@@ -5,6 +5,8 @@ import type {Metadata} from 'next'
 import {projects} from '@/lib/work'
 import {PageHeader} from '@/components/PageHeader'
 
+import styles from './page.module.css'
+
 export const metadata: Metadata = {
   title: 'Work',
   description:
@@ -18,17 +20,18 @@ export default function WorkPage() {
       <PageHeader
         title="work"
         description="Selected work I've taken on in the past."
+        compactHeading
       />
-      <section className="work-container">
-        <ul id="projects" aria-label="Projects.">
+      <section>
+        <ul className={styles.projects} aria-label="Projects.">
           {projects.map(project => {
             const href = project.internalPage
               ? `/work/${project.slug}`
               : `https://${project.siteName}`
             return (
-              <li className="project" key={project.slug}>
+              <li className={styles.project} key={project.slug}>
                 <Link
-                  className="project__link"
+                  className={styles.link}
                   href={href}
                   aria-label={
                     project.internalPage
@@ -40,8 +43,8 @@ export default function WorkPage() {
                 >
                   {project.name} project summary.
                 </Link>
-                <figure className="project__logo">
-                  <span className="project__logo-art">
+                <figure className={styles.logo}>
+                  <span>
                     <Image
                       src={project.logo}
                       alt=""
@@ -59,7 +62,7 @@ export default function WorkPage() {
                     {project.name} logo.
                   </figcaption>
                 </figure>
-                <div className="project__info">
+                <div className={styles.info}>
                   <h5>{project.name}</h5>
                   {project.siteName && (
                     <a

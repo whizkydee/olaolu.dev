@@ -5,6 +5,8 @@ import {Logo} from '@/components/Logo'
 import {resumeData} from '@/lib/resume'
 import {SOCIAL_PROFILES} from '@/lib/site'
 
+import styles from './resume.module.css'
+
 type Props = {searchParams: Promise<{pdf?: string}>}
 
 export const metadata: Metadata = {
@@ -19,11 +21,11 @@ export default async function ResumePage({searchParams}: Props) {
   const yearsOfExperience = new Date().getFullYear() - 2011
 
   return (
-    <div className={`resume-page${isPDF ? ' resume-page--pdf' : ''}`}>
-      <aside className="resume-meta">
+    <div className={`${styles.page}${isPDF ? ` ${styles.pdf}` : ''}`}>
+      <aside className={styles.meta}>
         <a
           target="_blank"
-          className="resume-icon linkedin"
+          className={`${styles.icon} ${styles.linkedIn}`}
           href={SOCIAL_PROFILES.linkedIn}
           rel="noopener noreferrer"
           aria-label="Connect with Olaolu on LinkedIn, opens a new tab."
@@ -31,7 +33,7 @@ export default async function ResumePage({searchParams}: Props) {
           <LinkedInIcon />
         </a>
         <a
-          className="resume-icon resume-mail"
+          className={`${styles.icon} ${styles.mail}`}
           href="mailto:hello@olaolu.dev"
           aria-label="Send Olaolu a mail"
         >
@@ -41,14 +43,14 @@ export default async function ResumePage({searchParams}: Props) {
           hidden={isPDF}
           href="/Resume-Olaolu-Olawuyi.pdf"
           target="_blank"
-          className="resume-icon resume-download"
+          className={styles.icon}
           aria-label="Download a PDF copy of this resume, opens a new tab."
         >
           <DownloadIcon /> Download
         </a>
       </aside>
 
-      <div id="resume-outlines">
+      <div className={styles.outlines}>
         <section>
           <a href="https://olaolu.dev" aria-label="olaolu dot dev">
             olaolu.dev
@@ -74,9 +76,9 @@ export default async function ResumePage({searchParams}: Props) {
         </section>
       </div>
 
-      <article className="resume-article">
-        <header id="profile-summary">
-          <h1 id="resume-name">
+      <article className={styles.article}>
+        <header className={styles.summary}>
+          <h1 className={styles.name}>
             Olaolu <br />
             Olawuyi
           </h1>
@@ -87,31 +89,31 @@ export default async function ResumePage({searchParams}: Props) {
           </p>
         </header>
 
-        <section id="experience">
-          <h3 className="marked-heading">Experience</h3>
+        <section className={styles.experience}>
+          <h3 className={styles.markedHeading}>Experience</h3>
           <p>
             I’ve worked on a handful of web projects over the past{' '}
             {yearsOfExperience} years, some of which were for the following
             organizations:
           </p>
-          <ul id="companies">
+          <ul>
             {resumeData.companies.map(company => (
-              <li className="company" key={company.name}>
+              <li className={styles.company} key={company.name}>
                 <header>
                   <h4>
                     {company.name} <span>{company.role}</span>
                   </h4>
-                  <span className="period">{company.period}</span>
+                  <span className={styles.period}>{company.period}</span>
                 </header>
                 <p>{company.intro}</p>
-                <ul className="points">
+                <ul className={styles.points}>
                   {company.points.map(point => (
                     <li key={point}>{point}</li>
                   ))}
                 </ul>
                 {'outro' in company && company.outro && (
                   <p
-                    className="outro"
+                    className={styles.outro}
                     dangerouslySetInnerHTML={{__html: company.outro}}
                   />
                 )}
@@ -120,15 +122,15 @@ export default async function ResumePage({searchParams}: Props) {
           </ul>
         </section>
 
-        <section id="resume-projects">
-          <h3 className="marked-heading">Projects</h3>
+        <section className={styles.projects}>
+          <h3 className={styles.markedHeading}>Projects</h3>
           <p>
             Links to some of my work can be found on{' '}
             <Link href="/work">olaolu.dev/work</Link> and details can be
             provided upon request via a scheduled demo call.
           </p>
         </section>
-        <Logo className="resume-logo" />
+        <Logo className={styles.logo} />
       </article>
     </div>
   )

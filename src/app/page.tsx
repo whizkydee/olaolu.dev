@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import type {Metadata} from 'next'
 
+import styles from './page.module.css'
+
 export const metadata: Metadata = {
   title: {absolute: 'Olaolu Olawuyi: Expert Web Engineer'},
   description:
@@ -66,13 +68,13 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{__html: JSON.stringify(navigationSchema)}}
       />
-      <div className="home-content">
-        <h1 className="home-eyebrow">Hey, I&apos;m Olaolu</h1>
-        <p className="home-lead">
+      <div className={styles.content}>
+        <h1 className={styles.eyebrow}>Hey, I&apos;m Olaolu</h1>
+        <p className={styles.lead}>
           A Staff Software Engineer with over 15 years of experience{' '}
           <span>building scalable, high-performance web platforms.</span>
         </p>
-        <div className="home-body">
+        <div className={styles.body}>
           <p>
             My work spans UI engineering, tooling, and large-scale architecture,
             which has shaped how I think about building fast and resilient
@@ -95,11 +97,11 @@ export default function HomePage() {
             consultant, building custom software solutions for companies and
             organizations across a wide range of industries.
           </p>
-          <p className="home-contact-copy">
+          <p className={styles.contactCopy}>
             If you have a question or proposal, or just want to say hello, feel
             free to contact me.
           </p>
-          <Link className="home-contact" href="/contact">
+          <Link className={styles.contact} href="/contact">
             Contact me
             <svg viewBox="0 0 16 16" aria-hidden="true">
               <path d="M3.5 12.5 12.5 3.5M6 3.5h6.5V10" />

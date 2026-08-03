@@ -1,0 +1,82 @@
+.skipLink {
+  position: absolute;
+  top: -4em;
+  left: 0;
+  z-index: 2000;
+  padding: 8px 15px;
+  color: #eff;
+  background: var(--purple);
+  border-bottom-right-radius: 3px;
+  font-size: 14.5px;
+  transition: top 0.2s;
+}
+
+.skipLink:focus {
+  top: 0;
+  outline: 0;
+}
+
+.main {
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 var(--space);
+}
+
+.main:focus {
+  outline: none;
+}
+
+.workIndex {
+  max-width: 1280px;
+}
+
+.workDetail {
+  max-width: 1400px;
+}
+
+.resume {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  background: #fff;
+}
+
+.home {
+  max-width: none;
+  margin-top: 0;
+  padding-right: clamp(3.5rem, 6.2vw, 8.5rem);
+  padding-left: clamp(3.5rem, 6.2vw, 8.5rem);
+}
+
+@media (min-width: 701px) {
+  .main {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main {
+    margin-top: calc(var(--space) * 1.2);
+  }
+
+  .home,
+  .resume {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 650px) {
+  .main {
+    min-height: 0;
+    margin-top: 0;
+    padding-left: 8.9vw;
+    padding-right: 8.9vw;
+  }
+
+  .home {
+    padding-right: 8.9vw;
+    padding-left: 8.9vw;
+  }
+}
