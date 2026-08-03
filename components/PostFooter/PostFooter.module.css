@@ -1,0 +1,145 @@
+.footer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer a:focus-visible {
+  outline-color: currentColor;
+}
+
+.meta {
+  display: flex;
+  margin: 1em 0 2.5rem;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.tags {
+  max-width: 70%;
+  flex-wrap: wrap;
+  font-size: 0.9em;
+}
+
+.tags a:not(:last-child),
+.tags span:not(:last-child) {
+  margin-right: 0.7em;
+}
+
+.tags a {
+  position: relative;
+  z-index: 2;
+  color: currentColor;
+  border: 0;
+}
+
+.share {
+  display: flex;
+}
+
+.share a {
+  position: relative;
+  z-index: 2;
+  border: 0;
+  transition:
+    transform 0.2s,
+    filter 0.2s;
+}
+
+.share a:first-child {
+  margin-right: 1em;
+  color: #4172b8;
+}
+
+.share a:nth-child(2) {
+  color: #1da1f2;
+}
+
+.share a:hover {
+  transform: scale(1.5);
+  filter: contrast(0.9);
+}
+
+.share svg {
+  width: 20px;
+  height: 20px;
+}
+
+.share path {
+  fill: currentColor;
+}
+
+.navigation {
+  display: flex;
+  width: 100%;
+  margin-bottom: 2.5rem;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--electric-blue);
+  font-size: 0.78em;
+  user-select: none;
+}
+
+.navigation a {
+  display: flex;
+  align-items: center;
+  color: currentColor;
+  border: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.navigation a[aria-hidden='true'] {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.navigation svg {
+  width: 3.5em;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.previous svg {
+  margin-right: 1em;
+}
+
+.next svg {
+  margin-left: 1em;
+}
+
+.previous:hover svg {
+  transform: translateX(-10px);
+}
+
+.next:hover svg {
+  transform: translateX(10px);
+}
+
+.squares svg {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.squares path {
+  fill: currentColor;
+}
+
+@media (min-width: 500px) {
+  .previous span::after,
+  .next span::after {
+    content: ' Post';
+  }
+}
+
+@media (max-width: 350px) {
+  .squares {
+    display: none;
+  }
+}
+
+@media (max-width: 349px) {
+  .navigation a span {
+    font-size: 0.9em;
+  }
+}

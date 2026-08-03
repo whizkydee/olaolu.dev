@@ -1,0 +1,397 @@
+:global(html):has(.route) {
+  --base-font-size: 16px;
+}
+
+.route {
+  display: flow-root;
+  background-color: #fff;
+}
+
+.page {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 1760px;
+  margin: 0 auto;
+  padding: 6.7rem var(--space);
+  background: var(--bg-color);
+}
+
+.page p,
+.page ul {
+  color: rgba(71, 71, 71, 0.75);
+}
+
+.page a:not(.icon),
+.page h3,
+.page .markedHeading,
+.page h4 {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  color: var(--electric-blue);
+  font-weight: 700;
+}
+
+.page a:not(.icon)::after,
+.page .markedHeading::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  display: block;
+  width: 109%;
+  height: 0.4em;
+  margin-top: -0.6rem;
+  margin-left: -4%;
+  background: var(--lime);
+  transition: transform 0.3s;
+}
+
+.page a:not(.icon):hover::after {
+  transform: translateY(0.2em) scaleY(0.5);
+}
+
+.meta {
+  position: absolute;
+  top: 2em;
+  right: 2em;
+  display: flex;
+  font-size: 0.9em;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  color: rgba(71, 71, 71, 0.9);
+  font-weight: 400;
+}
+
+.icon:not(:last-child) {
+  margin-right: 1em;
+}
+
+.linkedIn {
+  color: #0077b5;
+}
+
+.icon svg {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+}
+
+.icon svg path {
+  fill: currentColor;
+}
+
+.icon:last-of-type svg {
+  margin-right: 0.3em;
+  opacity: 0.8;
+}
+
+.icon[hidden] {
+  display: none;
+}
+
+.pdf .linkedIn {
+  margin-right: 0;
+}
+
+.mail {
+  display: none;
+}
+
+.outlines {
+  position: relative;
+  display: flex;
+  margin-right: 6rem;
+  flex-shrink: 0;
+  flex-direction: column;
+}
+
+.outlines section {
+  position: relative;
+}
+
+.outlines section:not(:last-child) {
+  margin-bottom: 2em;
+}
+
+.outlines h3 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.outlines span {
+  display: block;
+}
+
+.page li {
+  position: relative;
+}
+
+.page li::before {
+  content: '';
+  display: inline-block;
+  width: 0.4em;
+  height: 0.4em;
+  margin-right: 0.3em;
+  vertical-align: 10%;
+  background: currentColor;
+  filter: contrast(1.2);
+}
+
+.article {
+  max-width: 80vw;
+}
+
+.article > section {
+  position: relative;
+}
+
+.article > section:not(:last-of-type) {
+  margin-bottom: 5em;
+}
+
+.article p {
+  font-size: 1.2em;
+}
+
+.name {
+  margin: 0 0 1rem;
+  color: var(--electric-blue);
+  font-size: 4.5rem;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.summary {
+  position: relative;
+  margin-bottom: 5rem;
+}
+
+.summary::after {
+  content: '';
+  position: absolute;
+  width: 118%;
+  height: 1px;
+  margin-left: -8%;
+  background: var(--border-color);
+}
+
+.summary h2 {
+  margin: 0;
+  font-weight: 400;
+}
+
+.summary p {
+  max-width: 70%;
+  margin: 3em 0 2em;
+}
+
+.experience > p,
+.company > p,
+.points {
+  max-width: 70%;
+}
+
+.markedHeading {
+  margin: 0;
+}
+
+.page .company::before {
+  display: none;
+}
+
+.company:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+.company header {
+  display: flex;
+}
+
+.company h4 {
+  margin: 0 1em 1rem 0;
+  line-height: 1.4;
+}
+
+.company h4 span {
+  color: rgba(71, 71, 71, 0.75);
+  font-weight: 400;
+}
+
+.company h4 span::before {
+  content: '— ';
+}
+
+.period {
+  margin-right: 2em;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.company p {
+  margin: 0;
+}
+
+.points {
+  margin: 1em 0 0 1em;
+  font-size: 1.1em;
+}
+
+.points li {
+  text-indent: -0.97em;
+}
+
+.points li:not(:last-child) {
+  margin-bottom: 0.3em;
+}
+
+.outro {
+  margin-top: 1em;
+  font-size: 1.1em;
+}
+
+.projects {
+  margin-bottom: 14em;
+}
+
+.projects p {
+  max-width: 70%;
+  font-size: 1.1em;
+}
+
+.projects a {
+  margin: 0 0.2em;
+}
+
+.logo {
+  position: absolute;
+  bottom: 2em;
+  left: 4em;
+  width: 7em;
+  color: var(--electric-blue);
+}
+
+.logo path {
+  fill: currentColor;
+}
+
+@media (min-width: 1200px) {
+  .page {
+    width: calc(100% - 14vw);
+    margin: calc(var(--space) * 1.2) auto;
+  }
+}
+
+@media (min-width: 1441px) {
+  :global(html):has(.route) {
+    --base-font-size: 19.2px;
+  }
+}
+
+@media (max-width: 999px) and (min-width: 791px) {
+  .outlines {
+    margin-right: 3rem;
+  }
+
+  .summary p,
+  .experience > p,
+  .company > p,
+  .points {
+    max-width: 90%;
+  }
+
+  .summary::after {
+    width: 115%;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1199px) {
+  .summary::after {
+    width: 115%;
+  }
+}
+
+@media (max-width: 790px) {
+  .page {
+    width: 100%;
+    margin: 0;
+    padding-right: var(--space);
+    flex-direction: column;
+  }
+
+  .mail {
+    display: flex;
+  }
+
+  .outlines {
+    margin: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 0.9em;
+  }
+
+  .outlines section:first-child {
+    display: none;
+  }
+
+  .outlines section:last-child {
+    margin-left: 1em;
+  }
+
+  .outlines ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .outlines li::before {
+    display: none;
+  }
+
+  .outlines li:not(:last-child)::after {
+    content: ',';
+    margin-right: 0.2em;
+  }
+
+  .article {
+    max-width: none;
+  }
+
+  .summary p,
+  .experience > p,
+  .company > p,
+  .points,
+  .projects p {
+    max-width: none;
+  }
+
+  .summary::after {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .company header {
+    margin-bottom: 1em;
+    flex-direction: column;
+  }
+
+  .company h4 {
+    margin-bottom: 0.2em;
+  }
+
+  .period {
+    margin: 0;
+  }
+
+  .logo {
+    left: 2.5em;
+  }
+}
+
+@media (max-width: 650px) {
+  .page {
+    padding-left: 8.9vw;
+  }
+}

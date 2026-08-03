@@ -1,0 +1,28 @@
+.header {
+  position: relative;
+  margin: 1.1em 0 var(--space);
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 1.802em;
+  user-select: none;
+}
+
+.decor {
+  opacity: 0.7;
+}
+
+.compactHeading h1 {
+  margin-bottom: 0;
+}
+
+@media (max-width: 650px) {
+  .header h1 {
+    display: none;
+  }
+
+  .alwaysVisible h1 {
+    display: block;
+  }
+}

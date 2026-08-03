@@ -1,0 +1,214 @@
+.form {
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.contact {
+  width: min(100%, 800px);
+}
+
+.work {
+  flex-basis: 70%;
+}
+
+.row {
+  position: relative;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.row:not(:last-of-type) {
+  margin-bottom: 3rem;
+}
+
+.inputGroup {
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  color: rgba(61, 21, 95, 0.5);
+}
+
+.inputGroup:not(:last-child) {
+  margin-right: 20px;
+}
+
+.row:first-of-type .inputGroup {
+  width: 45%;
+}
+
+.inputGroup span {
+  margin-bottom: 5px;
+}
+
+.inputGroup input,
+.inputGroup textarea {
+  position: relative;
+  padding: 0.6em;
+  padding-left: 0;
+  color: currentColor;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  line-height: 1.15;
+  resize: none;
+}
+
+.form .inputGroup input,
+.form .inputGroup textarea {
+  font-size: 1.15em;
+  line-height: 1.5;
+}
+
+.contact label,
+.contact input,
+.contact textarea {
+  font-weight: 200;
+}
+
+.work .inputGroup input,
+.work .inputGroup textarea {
+  font-size: 0.9em;
+}
+
+.inputGroup input:required,
+.inputGroup input:invalid,
+.inputGroup textarea:required,
+.inputGroup textarea:invalid {
+  box-shadow: none;
+}
+
+.inputGroup input:focus,
+.inputGroup textarea:focus,
+.inputGroup:focus-within {
+  color: var(--electric-blue);
+  outline: none;
+}
+
+.form input::placeholder,
+.form textarea::placeholder {
+  transition: color 0.1s ease-out;
+}
+
+.form input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 100px #f9f9f9 inset !important;
+}
+
+.inputGroup input:focus::placeholder,
+.inputGroup textarea:focus::placeholder {
+  color: transparent;
+}
+
+.inputGroup textarea {
+  height: 4.2em;
+}
+
+.button {
+  position: relative;
+  display: inline-flex;
+  overflow: hidden;
+  background: transparent;
+  font-size: 0.9em;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.buttonContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  padding: 1.25em 3em;
+  align-items: center;
+  justify-content: center;
+  color: var(--electric-blue);
+  border: 1px solid currentColor;
+}
+
+.buttonContent::before {
+  position: absolute;
+  inset: -0.1em 0 0;
+  z-index: -1;
+  width: 101%;
+  height: 108%;
+  content: '';
+  pointer-events: none;
+  background: currentColor;
+  transform: translateX(-100%);
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.button:hover .buttonContent,
+.button:focus-visible .buttonContent {
+  color: #fff;
+  border-color: var(--electric-blue);
+}
+
+.button:hover .buttonContent::before,
+.button:focus-visible .buttonContent::before {
+  background: var(--electric-blue);
+  transform: translateX(0);
+}
+
+.button svg {
+  width: 3.1em;
+  height: 1.7em;
+  margin-left: 1.55em;
+}
+
+.submitButton {
+  align-self: flex-start;
+  margin-top: 5.2em;
+}
+
+.work .submitButton {
+  margin-top: 3em;
+}
+
+@media (min-width: 701px) {
+  .contact {
+    min-width: 500px;
+  }
+}
+
+@media (max-width: 580px) {
+  .row {
+    flex-direction: column;
+  }
+
+  .row:first-of-type .inputGroup {
+    width: 100%;
+  }
+
+  .row .inputGroup:first-of-type {
+    margin-bottom: 3rem;
+  }
+
+  .inputGroup textarea {
+    height: 6em;
+  }
+
+  .submitButton,
+  .work .submitButton {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 581px) and (max-width: 700px) {
+  .contact {
+    width: 90%;
+  }
+}
+
+@media (max-width: 500px) {
+  .work .submitButton {
+    font-size: 0.7em;
+  }
+}

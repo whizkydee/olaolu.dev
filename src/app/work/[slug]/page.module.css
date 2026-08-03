@@ -1,0 +1,25 @@
+.copy {
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.copyAfterEmpty {
+  padding-top: 1em;
+}
+
+.copyAfterEmpty > p:first-child {
+  margin-top: 0;
+}
+
+.contact {
+  display: flex;
+  margin-top: 3rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--border-color);
+}
+
+@media (max-width: 800px) {
+  .contact {
+    flex-direction: column;
+  }
+}

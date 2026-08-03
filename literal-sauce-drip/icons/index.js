@@ -1,5 +1,0 @@
-export { default as MailIcon } from './mail-icon.svg'
-export { default as TwitterIcon } from './twiiter-icon.svg'
-export { default as FacebookIcon } from './facebook-icon.svg'
-export { default as LinkedInIcon } from './linkedin-icon.svg'
-export { default as DownloadIcon } from './download-icon.svg'

@@ -1,0 +1,109 @@
+.content {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 3rem 0 4.5rem;
+  text-align: left;
+}
+
+.eyebrow {
+  margin: 0 0 2.45rem;
+  color: #66646e;
+  font-size: clamp(0.78rem, 1.1vw, 0.95rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.lead {
+  max-width: 1280px;
+  margin: 0 0 2.85rem;
+  color: #44434b;
+  font-size: clamp(1.5rem, 2.1vw, 1.9rem);
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: -0.045em;
+}
+
+.lead span {
+  color: #5236e8;
+}
+
+.body {
+  max-width: 1260px;
+  color: #44434b;
+  font-size: clamp(0.8rem, 1.05vw, 0.95rem);
+  line-height: 1.45;
+  letter-spacing: -0.012em;
+}
+
+.body p {
+  margin-top: 0;
+  margin-bottom: 1.65rem;
+}
+
+.body .contactCopy {
+  margin-bottom: 1.65rem;
+}
+
+.contact {
+  display: inline-flex;
+  gap: 0.35em;
+  align-items: center;
+  margin-top: 1rem;
+  padding-bottom: 0.3rem;
+  color: #5236e8;
+  border-bottom: 2px solid currentColor;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.contact svg {
+  width: 0.9em;
+  height: 0.9em;
+  flex: none;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.2s ease;
+}
+
+.contact:hover svg,
+.contact:focus-visible svg {
+  transform: translate(0.12em, -0.12em);
+}
+
+@media (max-width: 650px) {
+  .content {
+    padding: 2.25rem 0 3rem;
+  }
+
+  .eyebrow {
+    margin-bottom: 1.5rem;
+    font-size: 0.74rem;
+  }
+
+  .lead {
+    margin-bottom: 1.8rem;
+    font-size: clamp(1.45rem, 6vw, 1.7rem);
+    line-height: 1.16;
+  }
+
+  .body {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .body p {
+    margin-bottom: 1.4rem;
+  }
+
+  .contact {
+    margin-top: 0.8rem;
+    font-size: 0.95rem;
+  }
+}

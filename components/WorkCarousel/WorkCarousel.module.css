@@ -1,0 +1,79 @@
+.carousel {
+  --carousel-height: 42.5vw;
+
+  position: relative;
+  width: 100%;
+}
+
+.viewport {
+  height: var(--carousel-height);
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  height: var(--carousel-height);
+  transition: transform 1s;
+}
+
+.slide {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-width: 100%;
+  height: var(--carousel-height);
+  padding: 0;
+  overflow: hidden;
+  flex: 0 0 100%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  padding: 8px;
+  color: #000;
+  background: transparent;
+  font-size: 1em;
+  line-height: 1.15;
+}
+
+.previous {
+  left: 0;
+  transform: translate(-100%, -50%);
+}
+
+.next {
+  right: 0;
+  transform: translate(100%, -50%);
+}
+
+.dots {
+  display: flex;
+  width: 100%;
+  padding-top: 40px;
+  flex-wrap: wrap;
+  row-gap: 20px;
+  justify-content: center;
+}
+
+.dots button {
+  width: 30px;
+  height: 30px;
+  padding: 10px;
+  border-radius: 50%;
+  background: #efefef;
+  background-clip: content-box;
+}
+
+.dots button[aria-current='true'] {
+  background-color: #000;
+}
